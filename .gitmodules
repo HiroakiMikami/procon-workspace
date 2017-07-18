@@ -1,0 +1,3 @@
+[submodule "procon-utils"]
+	path = procon-utils
+	url = git@github.com:HiroakiMikami/procon-utils.git
