@@ -1,8 +1,12 @@
-*
+build/
+cmake-build-debug/
+*.in
+*.out
+src/CMakeLists.txt
+
 
 # whitelist
 !*.cc
 !.gitignore
 !CMakeLists.txt
-!/src/
-!/src/**
+!/src/atcoder/**/*.cc
