@@ -1,12 +1,16 @@
 build/
 cmake-build-debug/
+.vscode
 *.in
 *.out
-src/CMakeLists.txt
 
 
 # whitelist
 !*.cc
 !.gitignore
-!CMakeLists.txt
+!/CMakeLists.txt
+
+
 !/src/atcoder/**/*.cc
+
+src/CMakeLists.txt
