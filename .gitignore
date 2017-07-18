@@ -1,0 +1,8 @@
+*
+
+# whitelist
+!*.cc
+!.gitignore
+!CMakeLists.txt
+!/src/
+!/src/**
