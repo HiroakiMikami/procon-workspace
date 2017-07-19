@@ -139,7 +139,7 @@ void body() {
     auto Y = read<u64>();
     auto x = max(X, Y);
     auto y = min(X, Y);
-    if (abs(x - y) <= 1) {
+    if (abs(static_cast<i64>(x - y)) <= 1) {
         cout << "Brown" << endl;
     } else {
         cout << "Alice" << endl;
