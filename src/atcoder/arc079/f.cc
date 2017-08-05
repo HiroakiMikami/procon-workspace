@@ -205,14 +205,16 @@ int main (int argc, char **argv) {
     return body(argc, argv);
 }
 
-void find_cycle(const V<V<i64>> &edges, V<i64> &path) {
-    if (path.size() > 1 && path.front() == path.back()) {
-        return ;
-    }
+void find_cycle(const V<V<i64>> &edges, V<bool> &is_visited, V<i64> &path) {
+    is_visited[path.back()] = true;
 
     FORE (n, edges[path.back()]) {
         path.push_back(n);
-        find_cycle(edges, path);
+        if (path.front() == path.back()) {
+            return ;
+        }
+        if (is_visited[path.back()]) continue ;
+        find_cycle(edges, is_visited, path);
         if (path.size() > 1 && path.front() == path.back()) {
             return ;
         }
@@ -242,9 +244,11 @@ int body(int &argc, char **argv) {
     // Find cycle
     V<i64> cycle;
     auto s = stack<V<i64>>();
+    V<bool> is_visited(N);
     REP (i, N) {
+        if (is_visited[i]) continue ;
         cycle = {i};
-        find_cycle(edges, cycle);
+        find_cycle(edges, is_visited, cycle);
 
         if (cycle.size() > 1 && cycle.front() == cycle.back()) {
             break ;
@@ -257,23 +261,22 @@ int body(int &argc, char **argv) {
             return values[n];
         }
 
-        auto es = edges[n];
-        sort(es.begin(), es.end(), [&](auto e1, auto e2) { return values[e1] < values[e2];});
-        es.erase(unique(es.begin(), es.end(), [&](auto e1, auto e2) { return values[e1] == values[e2]; }), es.end());
-        i64 v = 0;
-        FORE (e, es) {
-            if (v == values[e]) {
-                v = values[e] + 1;
-            } else {
-                break;
-            }
+        unordered_set<i64> xs;
+        FORE (n2, edges[n]) {
+            xs.insert(f(n2, f));
         }
 
-        values[n] = v;
+        REP(i, xs.size() + 1) {
+            if (xs.find(i) == xs.end()) {
+                values[n] = i;
+                return i;
+            }
+        }
     };
 
+    unordered_set<i64> in_cycles(cycle.begin(), cycle.end());
     REP (i, N) {
-        if (find(cycle.begin(), cycle.end(), i) != cycle.end()) {
+        if (in_cycles.find(i) != in_cycles.end()) {
             continue;
         }
 
@@ -282,23 +285,37 @@ int body(int &argc, char **argv) {
 
     bool possible = false;
     auto start = cycle.back();
-    REP (x, edges[start].size() + 1) {
+    unordered_set<i64> start_edges;
+    i64 v1 = 0;
+    i64 cnt = 0;
+    FORE(e, edges[start]) {
+        if (values[e] == -1) {
+            cnt += 1;
+        }
+        v1 = max(v1, values[e]);
+        start_edges.insert(values[e]);
+    }
+    auto max_candidate = v1 + 2 + cnt;
+    REP (x, max_candidate) {
+        if (start_edges.find(x) != start_edges.end()) {
+            continue ;
+        }
+
         auto vs = values;
         vs[start] = x;
         FORR (i, 1, cycle.size() - 1) {
             auto n = cycle[i];
-            auto es = edges[n];
-            sort(es.begin(), es.end(), [&](auto e1, auto e2) { return vs[e1] < vs[e2];});
-            es.erase(unique(es.begin(), es.end(), [&](auto e1, auto e2) { return vs[e1] == vs[e2]; }), es.end());
-            i64 v = 0;
-            FORE (e, es) {
-                if (v == vs[e]) {
-                    v = vs[e] + 1;
-                } else {
-                    break;
+            unordered_set<i64> xs;
+            FORE (n2, edges[n]) {
+                xs.insert(vs[n2]);
+            }
+
+            REP(j, xs.size() + 1) {
+                if (xs.find(j) == xs.end()) {
+                    vs[n] = j;
+                    break ;
                 }
             }
-            vs[n] = v;
         }
 
         auto n = cycle[0];
