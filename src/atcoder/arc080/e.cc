@@ -196,22 +196,6 @@ namespace std {
     };
 }
 
-int n;
-int dat_odd[2 * (1 << 17) - 1];
-int dat_even[2 * (1 << 17) - 1];
-
-void init(int n_) {
-    n = 1;
-    while (n < n_) {
-        n *= 2;
-    }
-
-    REP (i, 2 * n - 1) {
-        dat_odd[i] = 100000;
-        dat_even[i] = 100000;
-    }
-}
-
 
 int body(int &argc, char **argv);
 
@@ -224,8 +208,27 @@ int main (int argc, char **argv) {
 
 vector<int> ps;
 
+int n;
+i64 dat_odd[2 * (1 << 17) - 1];
+i64 dat_even[2 * (1 << 17) - 1];
+
+i64 MAX = 1e7;
+
+
+void init(int n_) {
+    n = 1;
+    while (n < n_) {
+        n *= 2;
+    }
+
+    REP (i, 2 * n - 1) {
+        dat_odd[i] = MAX;
+        dat_even[i] = MAX;
+    }
+}
+
 void update(int k, int a) {
-    int *dat = nullptr;
+    i64 *dat = nullptr;
     if (k % 2 == 0) {
         dat = dat_even;
         k /= 2;
@@ -240,9 +243,9 @@ void update(int k, int a) {
         k = (k - 1) / 2;
         auto n1 = dat[k * 2 + 1];
         auto n2 = dat[k * 2 + 2];
-        if (n1 == 100000) {
+        if (n1 == MAX) {
             dat[k] = n2;
-        } else if (n2 == 100000) {
+        } else if (n2 == MAX) {
             dat[k] = n1;
         } else {
             if (ps[n1] < ps[n2]) {
@@ -254,9 +257,9 @@ void update(int k, int a) {
     }
 }
 
-int query(int * dat,int a, int b, int k, int l, int r) {
+int query(i64 * dat,int a, int b, int k, int l, int r) {
     if (r <= a || b <= l) {
-        return 100000;
+        return MAX;
     }
 
     if (a <= l && r <= b) {
@@ -264,9 +267,9 @@ int query(int * dat,int a, int b, int k, int l, int r) {
     } else {
         int vl = query(dat, a, b, k * 2 + 1, l, (l + r) / 2);
         int vr = query(dat, a, b, k * 2 + 2, (l + r) / 2, r);
-        if (vl >= 100000) {
+        if (vl >= MAX) {
             return vr;
-        } else if (vr >= 100000) {
+        } else if (vr >= MAX) {
             return vl;
         }
         if (ps[vl] < ps[vr]) {
@@ -279,7 +282,7 @@ int query(int * dat,int a, int b, int k, int l, int r) {
 
 // [a, b)の最小値
 int query_int(int a, int b, int k, int l, int r) {
-    int *dat = nullptr;
+    i64 *dat = nullptr;
     if (a % 2 == 0) {
         dat = dat_even;
     } else {
