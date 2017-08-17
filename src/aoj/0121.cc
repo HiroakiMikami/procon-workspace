@@ -217,56 +217,74 @@ u32 to_int(const State& state) {
     return retval;
 }
 
+i32 get(u32 state, size_t index) {
+    return (state & (07 << (3*index))) >> (3*index);
+}
+
 int body(int &argc, char **argv) {
     array<int, 4> ds = {-1, 1, -4, 4};
-    State fin = {0, 1, 2, 3, 4, 5, 6, 7};
+    auto fin = to_int({0, 1, 2, 3, 4, 5, 6, 7});
 
-    while (cin) {
-        auto cs_ = read<i32>(8);
-        State cs;
-        REP (i, 8) {
-            cs[i] = cs_[i];
-        }
-        if (cs[0] == 0 && cs[1] == 0) {
-            break ;
-        }
-        using namespace debug;
+    auto distance = unordered_map<u32, i64>();
+    //distance.reserve(1e7);
 
-        auto q = queue<pair<State, i64>>();
-        auto visited = unordered_set<u32>();
-        q.push({cs, 0});
-        while (!q.empty()) {
-            auto x = q.front();
-            auto c = x.first;
-            q.pop();
+    auto q = queue<tuple<u32, size_t, i64>>();
+    q.push(make_tuple(fin, 0, 0));
+    distance.insert({fin, 0});
 
-            auto s = to_int(c);
-            if (visited.find(s) != visited.end()) {
+    while (!q.empty()) {
+        auto x = q.front();
+        auto c = get<0>(x);
+        auto index = get<1>(x);
+        auto dist = get<2>(x);
+        q.pop();
+
+        FORE (d, ds) {
+            if (index == 3 && d == 1) {
                 continue ;
             }
-            visited.insert(s);
-            if (to_int(fin) == s) {
-                cout << x.second << endl;
-                break;
+            if (index == 4 && d == -1) {
+                continue ;
             }
 
-            auto index = 0;
+            auto n = index + d;
+            if (n < 0 || n >= 8) {
+                continue ;
+            }
+
+            auto c2 = 0;
             REP (i, 8) {
-                if (c[i] == 0) {
-                    index = i;
+                if (i == n) {
+                    c2 |= get(c, index) << (3 * i);
+                } else if (i == index) {
+                    c2 |= get(c, n) << (3 * i);
+                } else {
+                    c2 |= get(c, i) << (3 * i);
                 }
             }
-            FORE (d, ds) {
-                auto n = index + d;
-                if (n < 0 || n >= 8) {
-                    continue ;
-                }
-                auto c2 = c;
-                c2[n] = c[index];
-                c2[index] = c[n];
-                q.push({c2, x.second + 1});
+
+            if (distance.find(c2) == distance.end()) {
+                q.push(make_tuple(c2, n, dist + 1));
+                distance.insert({c2, dist + 1});
             }
         }
+    }
+
+    while (cin) {
+        u32 init = 0;
+        auto i_first = -1;
+        REP (i, 8) {
+            auto x = read<i32>();
+            if (x == 0) {
+                i_first = i;
+            }
+            init |= x << (3 * i);
+        }
+        if (init == 0 || i_first < 0) {
+            break ;
+        }
+
+        cout << distance.find(init)->second << endl;
     }
     return 0;
 }
