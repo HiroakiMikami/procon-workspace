@@ -229,34 +229,66 @@ int main (int argc, char **argv) {
 int body(int &argc, char **argv) {
     auto A = read<string>();
 
-    V<bool> os(26, 0);
-    size_t cnt = 0;
-    size_t n = 0;
-    string hoge = "";
-    REP (i, A.size()) {
-        auto a = A[i];
-        if (!os[a - 'a']) {
-            cnt += 1;
-            os[a - 'a'] = true;
-        }
-        hoge += a;
+    array<V<size_t>, 26> next; // next[c-'a'][i]: i以降でcが登場する最小の添字
+    V<pair<size_t, char>> dp(A.size() + 1); // dp[i]: A[i]A[i+1]...に対して条件を満たす最小文字列の長さと、その時の最初の文字（辞書順最小）
+    dp.back() = {1, 'a'};
 
-        if (cnt == 26) {
-            os = V<bool>(26, 0);
-            cnt = 0;
-            n += 1;
-            cout << hoge << endl;
-            hoge = "";
+    array<deque<size_t>, 26> occurrence;
+
+    REP (i, A.size()) {
+        occurrence[A[i] - 'a'].push_back(i);
+    }
+
+    // Precompute next
+    REP (i, A.size()) {
+        REP (c, 26) {
+            if (occurrence[c].size() >= 1) {
+                next[c].push_back(occurrence[c].front());
+            } else {
+                next[c].push_back(-1);
+            }
+        }
+
+        occurrence[A[i] - 'a'].pop_front();
+    }
+
+    // dp
+    REPR(i, A.size()) {
+        size_t min = A.size() + 1;
+        char c = '\0';
+        REP (j, 26) {
+            auto n = next[j][i];
+            if (n < 0) {
+                break;
+            }
+
+            auto len = dp[n + 1].first + 1;
+            if (min > len) {
+                min = len;
+                c = j + 'a';
+            }
+        }
+        dp[i] = {min, c};
+    }
+
+    // Get answer
+    string ans = "";
+    size_t index = 0;
+    while (true) {
+        auto c = dp[index].second;
+        ans += c;
+        auto i = next[c - 'a'][index];
+        if (i == -1) {
+            break ;
+        }
+        index = next[c - 'a'][index] + 1;
+
+        if (index == A.size()) {
+            break;
         }
     }
-    cout << hoge << endl;
 
-    // 求めるものの長さはn+1
-
-
-    // frqnvhydscshfcgdemurlfrutcpzhopfotpifgepnqjxupnskapziurswqazdwnwbgdhyktfyhqqxpoidfhjdakoxraiedxskywuepzfniuyskxiyjpjlxuqnfgmnjcvtlpnclfkpervxmdbvrbrdn
+    cout << ans << endl;
 
     return 0;
 }
-
-
