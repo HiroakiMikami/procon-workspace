@@ -227,6 +227,87 @@ int main (int argc, char **argv) {
 }
 
 int body(int &argc, char **argv) {
+    using namespace debug;
+
+    auto H = read<i32>();
+    auto W = read<i32>();
+    auto ss = read<string>(H);
+
+    auto ps = V<V<bool>>(H + 1, V<bool>(W + 1, true));
+
+    FOR (h, 1, H) {
+        FOR (w, 1, W) {
+            auto s1 = ss[h - 1][w - 1];
+            auto s2 = ss[h - 1][w];
+            auto s3 = ss[h][w - 1];
+            auto s4 = ss[h][w];
+
+            size_t num = 0;
+            if (s1 == '#') {
+                num += 1;
+            }
+            if (s2 == '#') {
+                num += 1;
+            }
+            if (s3 == '#') {
+                num += 1;
+            }
+            if (s4 == '#') {
+                num += 1;
+            }
+
+            if ((num % 2) == 0) {
+                ps[h][w] = true;
+            } else {
+                ps[h][w] = false;
+            }
+        }
+    }
+
+    auto dp_height = V<V<i64>>(H + 1, V<i64>(W + 1, 1));
+    FOR (h, 1, H + 1) {
+        REP (w, W + 1) {
+            if (ps[h][w]) {
+                dp_height[h][w] = min<i64>(H, dp_height[h - 1][w] + 1);
+            } else {
+                dp_height[h][w] = 0;
+            }
+        }
+    }
+
+    i64 area = max(W, H);
+    FOR (h, 1, H) {
+        auto s = stack<pair<i64, size_t>>();
+        FOR (w, 1, W) {
+            while (!s.empty() && s.top().first > dp_height[h][w]) {
+                auto x = s.top();
+                s.pop();
+
+                auto p = x.first;
+                auto q = w - x.second + 1;
+
+                i64 new_area = p * q;
+
+                area = max(area, new_area);
+            }
+            if (s.empty() || s.top().first < dp_height[h][w]) {
+                s.push({dp_height[h][w], w});
+            }
+        }
+
+        while (!s.empty()) {
+            auto x = s.top();
+            s.pop();
+
+            auto p = x.first;
+            auto q = W - x.second + 1;
+
+            i64 new_area = p * q;
+            area = max(area, new_area);
+        }
+    }
+
+    cout << area << endl;
 
     return 0;
 }
