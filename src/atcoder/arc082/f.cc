@@ -233,27 +233,56 @@ int body(int &argc, char **argv) {
     auto Q = read<i32>();
     auto qs = read<i64, i64>(Q);
 
+    auto precompute = V<tuple<i64, i64, i64>>(K + 1);
+    precompute[0] = make_tuple(0, X, 0);
+
+    FOR (i, 1, K + 1) {
+        auto r = rs[i - 1] - ((i == 1) ? 0 : rs[i - 2]);
+        if (i % 2 != 0) {
+            r *= -1;
+        }
+
+        auto C = get<2>(precompute[i - 1]) + r;
+        auto E1 = get<0>(precompute[i - 1]);
+        if (E1 + C < 0) {
+            E1 = -C;
+        } else if (E1 + C > X) {
+            E1 = X - C;
+        }
+
+        auto E2 = get<1>(precompute[i - 1]);
+        if (E2 + C < 0) {
+            E2 = -C;
+        } else if (E2 + C > X) {
+            E2 = X - C;
+        }
+
+        precompute[i] = make_tuple(E1, E2, C);
+    }
+    using namespace debug;
+
     FORE (q, qs) {
         auto t = q.first;
         auto a = q.second;
 
-        auto b = X - a;
-        auto i = 0;
-        while (i < K && rs[i] < t) {
-            auto diff = (i == 0) ? rs[i] : rs[i] - rs[i - 1];
+        auto i = K;
 
-            if (i % 2 == 0) {
-                diff = min(diff, a);
-                a -= diff;
-                b += diff;
-            } else {
-                diff = min(diff, b);
-                a += diff;
-                b -= diff;
-            }
-
-            i += 1;
+        if (rs[K - 1] >= t) {
+            i = distance(rs.begin(), lower_bound(CTR(rs), t));
         }
+
+        auto E1 = get<0>(precompute[i]);
+        auto E2 = get<1>(precompute[i]);
+        auto C = get<2>(precompute[i]);
+
+        if (a <= E1) {
+            a = E1 + C;
+        } else if (E2 <= a) {
+            a = E2 + C;
+        } else {
+            a = a + C;
+        }
+        auto b = X - a;
 
         auto r = (i == 0) ? 0 : rs[i - 1];
         if (i % 2 == 0) {
