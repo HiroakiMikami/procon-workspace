@@ -249,90 +249,28 @@ int body(int &argc, char **argv) {
     auto W = read<i32>();
     auto d = read<i64>();
 
-    V<char> cs = {'R', 'Y', 'G', 'B'};
+    auto convert = [&](auto h, auto w) {
+        return make_pair(h + w, h - w + W - 1);
+    };
 
-    V<V<i32>> ans(H, V<i32>(W, -1));
+    auto color = [&](pair<i32, i32> p) {
+        auto x = p.first / d;
+        auto y = p.second / d;
 
-    i32 i = -1;
-    i32 j = 0;
-    REP (t, W) {
-        auto i = -1;
-        auto j = t + 1;
-        REP (j, H) {
-            i += 1;
-            j -= 1;
-            if (ans[i][j] < 0) {
-                V<bool> use(4, true);
-                // 左上
-                REP (k, d + 1) {
-                    auto i2 = i - k;
-                    auto j2 = j - (d - k);
-                    if (i2 < 0 || j2 < 0) {
-                        continue;
-                    }
-                    if (ans[i2][j2] >= 0) {
-                        use[ans[i2][j2]] = false;
-                    }
-                }
-                // 右上
-                REP (k, d + 1) {
-                    auto i2 = i - k;
-                    auto j2 = j + (d - k);
-                    if (i2 < 0 || j2 >= W) {
-                        continue;
-                    }
-                    if (ans[i2][j2] >= 0) {
-                        use[ans[i2][j2]] = false;
-                    }
-                }
-                // 左下
-                REP (k, d + 1) {
-                    auto i2 = i + k;
-                    auto j2 = j - (d - k);
-                    if (i2 >= H || j2 < 0) {
-                        continue;
-                    }
-                    if (ans[i2][j2] >= 0) {
-                        use[ans[i2][j2]] = false;
-                    }
-                }
-                // 右下
-                REP (k, d + 1) {
-                    auto i2 = i + k;
-                    auto j2 = j + (d - k);
-                    if (i2 >= H || j2 >= W) {
-                        continue;
-                    }
-                    if (ans[i2][j2] >= 0) {
-                        use[ans[i2][j2]] = false;
-                    }
-                }
-
-                i32 x = -1;
-                REP (k, 4) {
-                    if (use[k]) {
-                        x = k;
-                        break;
-                    }
-                }
-                if (x != -1) {
-                    ans[i][j] = x;
-                }
-            }
-
-            if (j + 2 * d < W) {
-                ans[i][j + 2 * d] = ans[i][j];
-            }
-            if (i + 2 * d < H) {
-                ans[i + 2 * d][j] = ans[i][j];
-            }
+        if (x % 2 == 0 && y % 2 == 0) {
+            return 'R';
+        } else if (x % 2 == 1 && y % 2 == 0) {
+            return 'Y';
+        } else if (x % 2 == 0 && y % 2 == 1) {
+            return 'G';
+        } else {
+            return 'B';
         }
-    }
+    };
 
-    cout << ans << endl;
     REP (i, H) {
         REP (j, W) {
-            cout << cs.at(ans[i][j]);
+            cout << color(convert(i, j));
         }
         cout << endl;
     }
