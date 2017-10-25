@@ -244,27 +244,7 @@ int body(int &argc, char **argv) {
         }
     }
 
-    i64 a = 0; // +Aへ行くまでの最小回数
-    REP (i, H / 2) {
-        REP (j, W) {
-            auto m1 = m[i][j];
-            auto m2 = m[H - i - 1][j];
-            if (m1 != m2) {
-                a += 1;
-            }
-        }
-    }
-    i64 b = 0; // +Bへ行くまでの最小回数
-    REP (i, H) {
-        REP (j, W / 2) {
-            auto m1 = m[i][j];
-            auto m2 = m[i][W - j - 1];
-            if (m1 != m2) {
-                b += 1;
-            }
-        }
-    }
-    i64 c = 0; // +(A+B)へ行くまでの最小回数
+    V<i32> num(6, 0);
     REP (i, H / 2) {
         REP (j, W / 2) {
             auto m1 = m[i][j];
@@ -272,55 +252,88 @@ int body(int &argc, char **argv) {
             auto m3 = m[i][W - j - 1];
             auto m4 = m[H - i - 1][W - j - 1];
 
-            if (!(m1 == m2 && m2 == m3 && m3 == m4)) {
+            if (m1 == m2 && m2 == m3 && m3 == m4) {
                 if (m1 == 'S') {
-                    c += 1;
+                    /*
+                     * oo
+                     * oo
+                     */
+                    num[0] += 1;
                 }
-                if (m2 == 'S') {
-                    c += 1;
-                }
-                if (m3 == 'S') {
-                    c += 1;
-                }
-                if (m4 == 'S') {
-                    c += 1;
+            } else {
+                auto n = 0;
+                n += (m1 == 'S') ? 1 : 0;
+                n += (m2 == 'S') ? 1 : 0;
+                n += (m3 == 'S') ? 1 : 0;
+                n += (m4 == 'S') ? 1 : 0;
+                if (n == 1) {
+                    /*
+                     * ox
+                     * xx
+                     */
+                    num[1] += 1;
+                } else if (n == 2) {
+                    if ((m1 == 'S' && m4 == 'S') || (m2 == 'S' && m3 == 'S')) {
+                        /*
+                         * ox
+                         * xo
+                         */
+                        num[2] += 1;
+                    } else if ((m1 == 'S' && m3 == 'S') || (m2 == 'S' && m4 == 'S')) {
+                        /*
+                         * oo
+                         * xx
+                         */
+                        num[3] += 1;
+                    } else {
+                        /*
+                         * ox
+                         * ox
+                         */
+                        num[4] += 1;
+                    }
+                } else {
+                    /*
+                     * oo
+                     * ox
+                     */
+                    num[5] += 1;
                 }
             }
         }
     }
-
-
-    // +A -> 0 -> +Aの繰り返し
-    auto c1 = A * ((S - a) / 2 + 1) + B;
-    if (a == 0) {
-        c1 -= A;
+    // 南北方向から合わせる場合
+    i64 c1 = 0;
+    /// 1. 南北方向に対称にする
+    if (num[1] != 0 || num[2] != 0 || num[3] != 0 || num[5] != 0) {
+        c1 += A;
     }
-    // +B -> 0 -> +Bの繰り返し
-    auto c2 = B * ((S - b) / 2 + 1) + A;
-    if (b == 0) {
-        c2 -= B;
-    }
-    // +(A+B)->0->max(A, B)->0->+(A+B)の繰り返し
-    auto tmp = max(A, B);
-    auto c3 = (A + B + tmp) * ((S - c) / 4) + A + B;
-    if (c == 0) {
-        c3 -= (A + B);
-    }
-    // +A -> +(A+B) -> 0 -> max(A, B) -> 0 -> +(A+B)の繰り返し
-    auto c4 = c3;
-    if (a < c) {
-        c4 += A * ((c - a)/2 - 1);
-    }
-    // +B -> +(A+B) -> 0 -> max(A, B) -> 0 -> +(A+B)の繰り返し
-    auto c5 = c3;
-    if (b < c) {
-        c5 += B * ((c - b)/2 - 1);
+    /// 2. 対称なものを取り除く
+    if (num[4] != 0 || num[5] != 0) {
+        c1 += (num[4] + num[5]) * A + B;
+    } else if (c1 != 0 ){
+        // 南北に対称なものがないなら、最初からA+B
+        c1 += B;
     }
 
-    i64 ans = max(c1, c2);
-    ans = max(ans, c3);
-    ans = max(ans, c4);
-    ans = max(ans, c5);
+    // 東西方向から合わせる場合
+    i64 c2 = 0;
+    /// 1. 東西方向に対称にする
+    if (num[1] != 0 || num[2] != 0 || num[4] != 0 || num[5] != 0) {
+        c2 += B;
+    }
+    /// 2. 対称なものを取り除く
+    if (num[3] != 0 || num[5] != 0) {
+        c2 += (num[3] + num[5]) * B + A;
+    } else if (c2 != 0){
+        // 東西に対称なものがないなら、最初からA+B
+        c2 += A;
+    }
+
+    auto ans = max(c1, c2);
+
+    // 4つを取り除く
+    ans += num[0] * (max(A, B) + A + B);
 
     cout << ans << endl;
 
