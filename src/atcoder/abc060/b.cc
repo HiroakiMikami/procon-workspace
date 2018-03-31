@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc060/tasks/abc060_b
+SCORE 200
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 整数
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
