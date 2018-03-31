@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc059/tasks/abc059_b
+SCORE 200
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 基本
+FAILURE_TYPE ループ順序
+NOTES
+ */
 #include <iostream>
 #include <utility>
 #include <vector>
