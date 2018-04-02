@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc061/tasks/abc061_c
+SCORE 300
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 数列
+FAILURE_TYPE オーバーフロー
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>

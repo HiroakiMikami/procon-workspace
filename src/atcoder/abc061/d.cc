@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc061/tasks/abc061_d
+SCORE 400
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE グラフ 最短経路 ベルマンフォード
+FAILURE_TYPE オーバーフロー 場合分けミス
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
