@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc064/tasks/abc064_d
+SCORE 400
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 基本
+FAILURE_TYPE 変数書き間違え
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
