@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc070/tasks/abc070_c
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 数学 GCD
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

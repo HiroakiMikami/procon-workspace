@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc070/tasks/abc070_d
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ 木 最短経路
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
