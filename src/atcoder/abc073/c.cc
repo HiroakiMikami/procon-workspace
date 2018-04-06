@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc073/tasks/abc073_c
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE シミュレーション
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc073/tasks/abc073_d
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ 最短経路 ワーシャルフロイド
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
