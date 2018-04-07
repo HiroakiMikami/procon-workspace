@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc076/tasks/abc076_d
+SCORE 400
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE シミュレーション
+FAILURE_TYPE 浮動小数点出力
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

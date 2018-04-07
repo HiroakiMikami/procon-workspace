@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc076/tasks/abc076_c
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 辞書順
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
