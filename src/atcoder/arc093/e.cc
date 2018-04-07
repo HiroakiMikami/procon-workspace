@@ -6,7 +6,7 @@ WA false
 TLE false
 MLE false
 TASK_TYPE グラフ MST mod 数え上げ
-FAILURE_TYPE 知識 util不足
+FAILURE_TYPE 知識不足 util不足
 NOTES
  「ある条件を満たす全域木の中でコスト最小」みたいな場合はこの問題同様、
  MSTを作る -> 条件を満たすような辺の入れ替え、の方針が有力そう.
