@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc075/tasks/abc075_d
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 図形 全探索
+FAILURE_TYPE 計算量見積もり
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

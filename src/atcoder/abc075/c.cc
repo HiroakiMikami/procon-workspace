@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc075/tasks/abc075_c
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ Bridge
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
