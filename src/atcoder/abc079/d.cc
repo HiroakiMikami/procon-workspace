@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/abc079/tasks/abc079_d
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ 最短経路 ワーシャルフロイド
+FAILURE_TYPE
+NOTES
+コストの計算をグラフと最短経路でとく
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
