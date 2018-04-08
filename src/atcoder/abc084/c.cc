@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc084/tasks/abc084_c
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE シミュレーション
+FAILURE_TYPE ループ回数
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

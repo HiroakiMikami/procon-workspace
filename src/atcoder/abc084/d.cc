@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/abc084/tasks/abc084_d
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 素数判定
+FAILURE_TYPE 計算量見積もり
+NOTES
+素数判定の計算量見積もりに手間取った。
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
