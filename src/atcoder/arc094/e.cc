@@ -5,7 +5,7 @@ AC true
 WA true
 TLE false
 MLE false
-TASK_TYPE シミュレーション 最適行動
+TASK_TYPE シミュレーション 最適行動 ゲーム
 FAILURE_TYPE 考察力不足
 NOTES
 最初は考察力が足りず、嘘解法を実装した（最適でない操作のシミュレーションをした）。
