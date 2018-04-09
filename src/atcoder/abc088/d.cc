@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc088/tasks/abc088_d
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ グリッド 最短経路 幅優先探索
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

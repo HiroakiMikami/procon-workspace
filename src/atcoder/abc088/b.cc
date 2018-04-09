@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc088/tasks/abc088_b
+SCORE 200
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE ゲーム 最適行動
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

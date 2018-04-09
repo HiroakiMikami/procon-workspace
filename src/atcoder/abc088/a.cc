@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/abc088/tasks/abc088_a
+SCORE 100
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 組み合わせ
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

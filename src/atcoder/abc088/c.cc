@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/abc088/tasks/abc088_c
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 割当 判定
+FAILURE_TYPE
+NOTES
+a1は固定してよかったが、これに気づくまで時間がかかった。
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
