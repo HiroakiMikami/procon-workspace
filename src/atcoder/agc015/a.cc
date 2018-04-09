@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/agc015/tasks/agc015_a
+SCORE 200
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 数え上げ
+FAILURE_TYPE テスト無視
+NOTES
+問題文のテストケースをやればわかったミスをそのまま提出してWA
+*/
 #include <iostream>
 #include <utility>
 #include <vector>

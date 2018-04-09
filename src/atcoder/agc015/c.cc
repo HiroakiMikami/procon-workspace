@@ -1,3 +1,17 @@
+/*
+URL https://beta.atcoder.jp/contests/agc015/tasks/agc015_c
+SCORE 700
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ 木 森 累積和
+FAILURE_TYPE 問題読解
+NOTES
+・森であることの条件が読み取りづらい
+・連結成分を頂点と辺の差へ帰着
+・二次元累積和（長方形へのクエリを扱う場合によくあるらしい）
+*/
 #include <iostream>
 #include <utility>
 #include <vector>

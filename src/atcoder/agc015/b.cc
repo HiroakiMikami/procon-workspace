@@ -1,3 +1,16 @@
+/*
+URL https://beta.atcoder.jp/contests/agc015/tasks/agc015_b
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 場合分け 数え上げ
+FAILURE_TYPE
+NOTES
+上がって終わり(1回)、下がって終わり(1回)、上がって下がる(2回)、下がって上がる(2回)の4パターンしかなく、
+最初にいる階ごとに上記の場合の数を考えれば良い。
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
