@@ -1,3 +1,17 @@
+/*
+URL https://beta.atcoder.jp/contests/agc017/tasks/agc017_b
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 判定 整数 数列 制限を加えて高速化
+FAILURE_TYPE 考察力不足
+NOTES
+「最初m回は小さくして、その後大きくする」としても一般性を失わないので、それを活かして数式をいじる
+
+改めて見ても全く手が出なかったので要注意
+*/
 #include <iostream>
 #include <utility>
 #include <vector>

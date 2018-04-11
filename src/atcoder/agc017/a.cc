@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/agc017/tasks/agc017_a
+SCORE 200
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 組み合わせ 場合の数 場合分け
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
