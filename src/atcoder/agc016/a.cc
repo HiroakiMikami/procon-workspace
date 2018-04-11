@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/agc016/tasks/agc016_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 全探索 アルファベット 文字列
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
