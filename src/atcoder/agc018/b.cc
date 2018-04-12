@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/agc018/tasks/agc018_b
+SCORE 700
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 貪欲法
+FAILURE_TYPE 考察力不足
+NOTES
+増やしていく貪欲、減らしていく貪欲くらいは適当に試しても良さそう
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

@@ -1,3 +1,16 @@
+/*
+URL https://beta.atcoder.jp/contests/agc017/tasks/agc017_b
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 判定 GCD 数学
+FAILURE_TYPE アルゴリズム理解
+NOTES
+やってみたら証明はできないが法則はわかった系。
+GCDの理屈・アルゴリズムを覚える必要ありそう
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
