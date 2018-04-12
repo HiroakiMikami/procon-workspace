@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/agc019/tasks/agc019_b
+SCORE 500
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 数え上げ
+FAILURE_TYPE 考察ミス 考察力不足
+NOTES
+一回の操作だけに着目して回文っぽく思えてしまうが、複数回の操作の差のほうが数え上げには大事
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

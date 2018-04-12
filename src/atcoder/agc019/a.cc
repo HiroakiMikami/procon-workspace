@@ -1,4 +1,27 @@
-#include <iostream>
+/*
+URL https://beta.atcoder.jp/contests/agc019/tasks/agc019_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 貪欲法
+FAILURE_TYPE 実装力不足
+NOTES
+*/
+#include <iostream>/*
+URL https://beta.atcoder.jp/contests/agc019/tasks/agc019_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 貪欲法
+FAILURE_TYPE 考察力不足
+NOTES
+増やしていく貪欲、減らしていく貪欲くらいは適当に試しても良さそう
+*/
+
 #include <cstdint>
 #include <utility>
 #include <tuple>
