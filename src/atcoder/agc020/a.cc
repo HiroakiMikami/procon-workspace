@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/agc020/tasks/agc020_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE シミュレーション
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
