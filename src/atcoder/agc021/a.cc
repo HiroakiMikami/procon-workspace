@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/agc021/tasks/agc021_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 基本 10進数
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
