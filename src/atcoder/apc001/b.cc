@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/apc001/tasks/apc001_b
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE シミュレーション
+FAILURE_TYPE
+NOTES
+条件に着目してシミュレーションを簡略化する系統の問題、全部まとめてシミュレーションで良いのだろうか
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

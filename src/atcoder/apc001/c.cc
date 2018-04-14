@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/apc001/tasks/apc001_c
+SCORE 500
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 判定 場合分け 二分探索
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

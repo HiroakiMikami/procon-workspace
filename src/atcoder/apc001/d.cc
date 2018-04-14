@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/agc021/tasks/agc021_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ 森 連結 コスト最小化
+FAILURE_TYPE
+NOTES
+最初から条件を満たしているケースがコーナーケースで苦戦した
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
