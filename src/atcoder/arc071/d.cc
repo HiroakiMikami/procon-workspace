@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/arc071/tasks/arc071_b
+SCORE 500
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 数え上げ mod 式変形
+FAILURE_TYPE 考察力不足
+NOTES
+pureな式を書き下して、そこから変形するという考え方があまりないので考慮する必要あり
+*/
 #include <iostream>
 #include <utility>
 #include <vector>

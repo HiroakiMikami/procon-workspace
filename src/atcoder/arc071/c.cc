@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc071/tasks/arc071_a
+SCORE 300
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 文字列 辞書順
+FAILURE_TYPE インデックス 配列長さでの1加減算
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
