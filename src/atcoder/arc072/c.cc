@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc072/tasks/arc072_a
+SCORE 300
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 場合分け シミュレーション
+FAILURE_TYPE 考察不足 デバッグ出力の消し忘れ
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>

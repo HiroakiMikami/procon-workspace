@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/arc072/tasks/arc072_b
+SCORE 500
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 最適行動 ゲーム
+FAILURE_TYPE オーバーフロー
+NOTES
+ABC059 Dで解いている
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
