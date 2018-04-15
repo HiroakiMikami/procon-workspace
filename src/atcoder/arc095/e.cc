@@ -1,13 +1,19 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/arc095/tasks/arc095_c
+SCORE 700
 AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 全探索 判定
+FAILURE_TYPE 考察力不足 実装力 コーナーケース処理
 NOTES
+・行に対するペアを列挙しないといけないことはわかったが、計算量見積もりが悪かった
+    ・11!と見積もってみたが、実際には11!!で10^3くらいオーダーが違った
+・行に対するペアを列挙し、探索するコードがかけなかった
+    ・lambda式の制限から再帰関数を書くのを避けているところがある
+    ・defineでかけるようにする
+
 */
 #include <iostream>
 #include <cstdint>
@@ -329,105 +335,120 @@ int main (int argc, char **argv) {
 
 void body() {
     using namespace debug;
-    auto check = [](auto S1, auto S2) {
-        V<bool> used_i(S2.size(), false);
-        V<bool> used_j(S2.size(), false);
-        int cnt = 0;
-        int fail_cnt = 0;
-        REP (i, S1.size()) {
-            if (used_i[i]) continue ;
-            auto s = S1[i];
-            bool succ = false;
-            REP (j, S2.size()) {
-                if (used_j[j]) continue ;
-                if (i != j && s == S2[j] && S1[j] == S2[i]) {
-                    used_j[j] = true;
-                    used_j[i] = true;
-                    used_i[i] = true;
-                    used_i[j] = true;
-                    cnt += 1;
-                    succ = true;
-                    break ;
-                }
-            }
-            if (!succ) {
-                fail_cnt += 1;
-            }
-            if (fail_cnt > 2) {
-                return false;
-            }
-        }
-        cnt *= 2;
-        if (S2.size() % 2 == 0 && cnt == S2.size()) {
-            return true;
-        }
-        if (S2.size() % 2 == 1 && cnt + 1 == S2.size()) {
-            size_t index = 0;
-            REP (i, S1.size()) {
-                if (!used_i[i]) {
-                    index = i;
-                    break;
-                }
-            }
-            if (S1[index] == S2[index]) {
-                return true;
-            }
-        }
-        return false;
-    };
-
     auto H = read<i64>();
     auto W = read<i64>();
     auto Ss = read<string>(H);
 
-    auto f = [check](auto Ss, auto H, auto W) {
-
-        V<bool> used(H, false);
-        int cnt = 0;
-        REP (i, H) {
+    auto check_col = [&](V<pair<size_t, size_t>> &pairs) {
+        V<bool> used(W, false);
+        REP(i, W) {
             if (used[i]) continue;
-            REP (j, H) {
-                if (i == j) continue;
-                if (used[j]) continue;
+            // i列目の割当を考える
+            FOR(j, i + 1, W) {
+                if (used[j]) continue ;
 
-                if (check(Ss[i], Ss[j])) {
+                bool flag = true;
+                FORE (p, pairs) {
+                    auto r1 = p.first;
+                    auto r2 = p.second;
+                    if (!(Ss[r1][i] == Ss[r2][j] && Ss[r1][j] == Ss[r2][i])) {
+                        // i列目とj列目の組み合わせは条件を満たさない
+                        flag = false;
+                    }
+                }
+
+                if (flag) {
                     used[i] = true;
                     used[j] = true;
-                    cnt += 1;
+                    break ;
                 }
             }
         }
-        cnt *= 2;
 
-        if (H % 2 == 0 && cnt == H) {
+        size_t cnt = 0;
+        size_t index = 0;
+        REP (i, W) {
+            if (!used[i]) {
+                cnt += 1;
+                index = i;
+            }
+        }
+
+        if (W % 2 == 0 && cnt == 0) {
             return true;
         }
-        if (H % 2 == 1 && cnt + 1 == H) {
-            return true;
+
+        if (W % 2 == 1 && cnt == 1) {
+            bool flag = true;
+            FORE(p, pairs) {
+                auto r1 = p.first;
+                auto r2 = p.second;
+                if (!(Ss[r1][index] == Ss[r2][index])) {
+                    // index列目（真ん中に来るはずの列）が点対称になるか
+                    flag = false;
+                }
+            }
+            if (flag) {
+                return true;
+            }
         }
+
         return false;
     };
 
-    bool flag1 = f(Ss, H, W);
-    auto Ss2 = V<V<char>>(W, V<char>(H));
-    REP (i, H) {
-        REP (j, W) {
-            Ss2[j][i] = Ss[i][j];
-        }
-    }
-    bool flag2 = f(Ss2, W, H);
+    // 行のペアを列挙して調査する
+    auto _check_row =
+            [&](int cnt, V<bool> used, V<pair<size_t, size_t>> pairs, auto f) {
+                if (cnt == H) {
+                    return check_col(pairs);
+                }
 
-    if (flag1 && flag2) {
+                // pairを1つ加える
+                int index = -1;
+                REP (i, H) {
+                    if (used[i]) continue;
+                    index = i;
+                    break;
+                }
+
+                bool flag = false;
+                FOR (j, index, H) {
+                    if (used[j]) continue;
+                    if (index == j) {
+                        if (H % 2 == 0) continue ;
+                        if (cnt % 2 == 1) continue ;
+                        pairs.emplace_back(index, j);
+                        used[index] = true;
+                        used[j] = true;
+                        if (f(cnt + 1, used, pairs, f)) {
+                            flag = true;
+                            break;
+                        }
+                        used[index] = false;
+                        used[j] = false;
+                        pairs.pop_back();
+                    } else {
+                        pairs.emplace_back(index, j);
+                        used[index] = true;
+                        used[j] = true;
+                        if (f(cnt + 2, used, pairs, f)) {
+                            flag = true;
+                            break;
+                        }
+                        used[index] = false;
+                        used[j] = false;
+                        pairs.pop_back();
+                    }
+                }
+
+                return flag;
+    };
+
+    V<bool> used(H, false);
+    V<pair<size_t, size_t>> pairs;
+    if (_check_row(0, used, pairs, _check_row)) {
         cout << "YES" << endl;
     } else {
         cout << "NO" << endl;
     }
-
-    return ;
-#if 0
-    cout << check("ABC", "ABC") << endl;
-    cout << check("ABC", "ACB") << endl;
-    cout << check("ABCD", "DCBA") << endl;
-    cout << check("ABCD", "DCAB") << endl;
-#endif
 }
