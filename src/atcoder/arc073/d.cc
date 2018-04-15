@@ -1,3 +1,16 @@
+/*
+URL https://beta.atcoder.jp/contests/arc073/tasks/arc073_b
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 全探索 ナップザック
+FAILURE_TYPE 考察力不足
+NOTES
+重さが4パターンに絞れる制約には気づいたが、そこからどうすればよいのかわからなかった。
+それぞれの重さにつき個数を決めて全探索していくのが厳しいように思っていたが、たしかに4重forループで良い
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
