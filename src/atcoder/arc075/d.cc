@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc075/tasks/arc075_b
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE DP 二分探索 最大化・最小化
+FAILURE_TYPE 考察力不足 考察不足
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>

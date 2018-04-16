@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc075/tasks/arc075_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE DP 場合分け 最大化・最小化
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
