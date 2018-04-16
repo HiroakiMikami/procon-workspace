@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/arc074/tasks/arc074_b
+SCORE 500
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE DP 全探索 優先度付きキュー
+FAILURE_TYPE 考察力不足
+NOTES
+今考えなおしてもわからなかった。要注意
+*/
 #include <iostream>
 #include <utility>
 #include <vector>

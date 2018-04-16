@@ -1,3 +1,17 @@
+/*
+URL https://beta.atcoder.jp/contests/arc074/tasks/arc074_a
+SCORE 400
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE DP 数え上げ 平面図形
+FAILURE_TYPE
+NOTES
+WAしているが原因がよくわからない。i64をi32にしたらACしている。
+（diffをとってもそのようにしか見えないし、実際それでWAかACか決まる）
+要確認
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
