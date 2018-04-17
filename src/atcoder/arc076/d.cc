@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc076/tasks/arc076_b
+SCORE 500
+AC true
+WA false
+TLE true
+MLE false
+TASK_TYPE グラフ MST
+FAILURE_TYPE 考察力不足
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>

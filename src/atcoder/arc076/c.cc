@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc076/tasks/arc076_a
+SCORE 300
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 数え上げ 場合分け mod
+FAILURE_TYPE 考察不足
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
