@@ -1,3 +1,16 @@
+/*
+URL https://beta.atcoder.jp/contests/arc077/tasks/arc077_b
+SCORE 600
+AC true
+WA false
+TLE true
+MLE false
+TASK_TYPE 前計算 mod 組み合わせ
+FAILURE_TYPE 考察力不足 知識不足
+NOTES
+解いたときには積和演算は削れる可能性が高そうという考察をしているが本当かは知らない
+組み合わせの前計算と、あとで重複を引く高速化方法は大事。
+*/
 #include <iostream>
 #include <utility>
 #include <vector>

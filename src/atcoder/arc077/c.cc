@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc077/tasks/arc077_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE シミュレーション
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
