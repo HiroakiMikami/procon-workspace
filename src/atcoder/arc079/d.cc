@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc079/tasks/arc079_b
+SCORE 600
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 具体例構成
+FAILURE_TYPE 考察力不足
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

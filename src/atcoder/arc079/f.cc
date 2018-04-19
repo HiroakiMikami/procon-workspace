@@ -1,3 +1,16 @@
+/*
+URL https://beta.atcoder.jp/contests/arc079/tasks/arc079_d
+SCORE 800
+AC true
+WA true
+TLE true
+MLE false
+TASK_TYPE グラフ 閉路 判定
+FAILURE_TYPE 考察不足 計算量見積もり
+NOTES
+・findがO(n)なことに気づかずTLE -> ループ内でfindはせずunordered_mapへ事前に変換
+・閉路を見つける時、逆に辿れるようにするか、再帰関数+mutable stackとするか
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

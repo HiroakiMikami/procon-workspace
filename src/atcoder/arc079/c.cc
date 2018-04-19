@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc079/tasks/arc079_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ 全探索
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

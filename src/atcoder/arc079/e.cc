@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/arc079/tasks/arc079_c
+SCORE 600
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE シミュレーション 全探索
+FAILURE_TYPE 計算量見積もり
+NOTES
+探索範囲を絞り、高速な判定方法を構成してから全探索
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
