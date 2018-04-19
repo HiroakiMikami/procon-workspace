@@ -1,3 +1,16 @@
+/*
+URL https://beta.atcoder.jp/contests/arc078/tasks/arc078_b
+SCORE 400
+AC true
+WA true
+TLE true
+MLE false
+TASK_TYPE グラフ 木 幅優先探索
+FAILURE_TYPE 知識不足 計算量見積もり
+NOTES
+(幅/深さ)優先探索のスタートは複数ヶ所でも良いことは認識しておくべき
+BFSやDFSのついでにパスを保存するとメモリコピーとかでO(N^2)になるので注意
+*/
 #include <iostream>
 #include <utility>
 #include <vector>

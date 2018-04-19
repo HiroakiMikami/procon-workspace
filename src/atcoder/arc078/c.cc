@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc078/tasks/arc078_a
+SCORE 300
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 最大化・最小化 累積和 全探索
+FAILURE_TYPE オーバーフロー
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
