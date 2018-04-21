@@ -4,7 +4,7 @@ SCORE 400
 AC true
 WA false
 TLE true
-MLE true
+MLE false
 TASK_TYPE 組み合わせ 条件考察
 FAILURE_TYPE アルゴリズム計算量見落とし g++バージョン違い
 NOTES

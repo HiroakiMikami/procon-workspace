@@ -4,7 +4,7 @@ SCORE 500
 AC true
 WA true
 TLE true
-MLE true
+MLE false
 TASK_TYPE 全探索 数学 n進数
 FAILURE_TYPE 考察力不足 コーナーケース処理
 NOTES
