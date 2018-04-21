@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/arc081/tasks/arc081_c
+SCORE 600
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE DP 辞書順
+FAILURE_TYPE 考察力不足 知識不足
+NOTES
+辞書順最小の問題に対しては、後ろからDPして最後に経路復元が一つのテンプレート
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

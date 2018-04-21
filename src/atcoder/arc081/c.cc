@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc081/tasks/arc081_a
+SCORE 300
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 最大化・最小化
+FAILURE_TYPE コーナーケース処理
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
