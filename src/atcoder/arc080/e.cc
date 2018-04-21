@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc080/tasks/arc080_c
+SCORE 800
+AC true
+WA true
+TLE true
+MLE false
+TASK_TYPE RMQ セグメント木 考察力不足
+FAILURE_TYPE 最大値のオーダー指定ミス ライブラリ計算量見積もりミス util不足
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

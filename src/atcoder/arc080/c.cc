@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc080/tasks/arc080_a
+SCORE 400
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 場合分け 判定
+FAILURE_TYPE コーナーケース処理 実装ミス
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

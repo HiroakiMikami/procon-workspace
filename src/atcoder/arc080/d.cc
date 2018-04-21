@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc080/tasks/arc080_b
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 具体例構成
+FAILURE_TYPE 実装ミス
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
