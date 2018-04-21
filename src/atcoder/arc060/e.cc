@@ -1,9 +1,36 @@
+/*
+URL https://beta.atcoder.jp/contests/arc060/tasks/arc060_c
+SCORE 700
+AC true
+WA false
+TLE true
+MLE false
+TASK_TYPE DP クエリ 最大化・最小化 前計算
+FAILURE_TYPE 考察力不足
+NOTES
+・ある場所から1日で行ける最大範囲のみ考えれば良い
+・前計算をすることで高速化しないといけないこと
+まではわかったが、dp[a][b] = aからbまでの時間というDP・前計算を考えて、O(N^2)となりそこからだめだった。
+また、dp[b] = x_0からbまでの時間として、dp[a]とdp[b]から累積和のようにできないかと考えてだめだった。
+
+考え方は下の2stepで、前計算にO(N^2)かかる時には検討の必要あり
+ 1. k日で行ける最大範囲を考える（前計算が終わると、各クエリはO(logN)だが、前計算がO(N^2)）
+ 2. 二分探索では2^kごとにしか見ないから前計算を簡略化
+*/
 #include <iostream>
-#include <utility>
-#include <vector>
-#include <tuple>
 #include <cstdint>
+#include <utility>
+#include <tuple>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <unordered_map>
+#include <unordered_set>
 #include <algorithm>
+#include <limits>
+#include <numeric>
+#include <iomanip>
+#include <type_traits>
 
 using namespace std;
 
@@ -16,12 +43,15 @@ using i64 = int64_t; using u64 = uint64_t;
 template <class T> using V = vector<T>;
 
 // Loops
-#define REP(i, n) for (int i = 0; i < n; ++i)
-#define REPR(i, n) for (int i = n - 1; i >= 0; --i)
-#define FOR(i, n, m) for (int i = n; i < m; ++i)
-#define FORR(i, n, m) for (int i = m - 1; i >= n; --i)
+#define REP(i, n) for (i64 i = 0; i < static_cast<decltype(i)>(n); ++i)
+#define REPR(i, n) for (i64 i = (n) - 1; i >= static_cast<decltype(i)>(0); --i)
+#define FOR(i, n, m) for (i64 i = (n); i < static_cast<decltype(i)>(m); ++i)
+#define FORR(i, n, m) for (i64 i = (m) - 1; i >= static_cast<decltype(i)>(n); --i)
 
-#define FORE(x, xs) for (auto &x: xs)
+#define FORE(x, xs) for (auto &x: (xs))
+
+// Macros
+#define CTR(x) (x).begin(), (x).end()
 
 // Utils for Tuple
 namespace tuple_utils {
@@ -42,7 +72,136 @@ namespace tuple_utils {
     void print(ostream& stream, Tuple const& t, seq<Is...>) {
         static_cast<void>((int[]){0, (void(stream << (Is == 0 ?  "" : ", ") << get<Is>(t)), 0)...});
     }
+
+    template <size_t I, class F, class A, class... Elems>
+    struct ForEach {
+        void operator()(A &arg, tuple<Elems...> const& t) const {
+            F()(arg, get<I>(t));
+            ForEach<I - 1, F, A, Elems...>()(arg, t);
+        };
+        void operator()(A &arg, tuple<Elems...>& t) const {
+            F()(arg, get<I>(t));
+            ForEach<I - 1, F, A, Elems...>()(arg, t);
+        };
+    };
+    template <class F, class A, class... Elems>
+    struct ForEach<0, F, A, Elems...> {
+        void operator()(A &arg, tuple<Elems...> const& t) const {
+            F()(arg, get<0>(t));
+        };
+        void operator()(A &arg, tuple<Elems...>& t) const {
+            F()(arg, get<0>(t));
+        };
+    };
+    template <class F, class A, class... Elems>
+    void for_each(A &arg, tuple<Elems...> const& t) {
+        ForEach<tuple_size<tuple<Elems...>>::value - 1, F, A, Elems...>()(arg, t);
+    };
+    template <class F, class A, class... Elems>
+    void for_each(A &arg, tuple<Elems...>& t) {
+        ForEach<tuple_size<tuple<Elems...>>::value - 1, F, A, Elems...>()(arg, t);
+    };
+
+    struct hash_for_element {
+        template <class V>
+        void operator()(size_t &size, const V& v) const {
+            size ^= hash<V>()(v);
+        }
+    };
 }
+
+// STL support
+template <class Iterator>
+struct Container {
+    Container(const Iterator &begin, const Iterator &end) : m_begin(begin), m_end(end) {}
+    const Iterator& begin() const {
+        return this->m_begin;
+    }
+    const Iterator& end() const {
+        return this->m_end;
+    }
+    Iterator m_begin;
+    Iterator m_end;
+};
+
+template <class Functions>
+struct BaseIterator {
+    using State = typename Functions::State;
+
+    BaseIterator(const State &state, const Functions &func) : state(state), func(func) {
+        while (!this->is_end() && !this->is_valid()) {
+            this->next();
+        }
+    }
+    BaseIterator(const State &state) : state(state), func() {
+        while (!this->is_end() && !this->is_valid()) {
+            this->next();
+        }
+    }
+
+    decltype(auto) operator*() {
+        return this->func.get_value(this->state);
+    }
+
+    decltype(auto) operator*() const {
+        return this->func.get_value(this->state);
+    }
+
+    BaseIterator &operator++() {
+        if (this->is_end()) {
+            return *this;
+        }
+
+        this->next();
+        while (!this->is_end() && !this->is_valid()) {
+            this->next();
+        }
+
+        return *this;
+    }
+
+    BaseIterator &operator--() {
+        if (this->is_begin()) {
+            return *this;
+        }
+
+        this->previous();
+        while (!this->is_begin() && !this->is_valid()) {
+            this->previous();
+        }
+
+        return *this;
+    }
+
+    bool operator==(const BaseIterator<Functions> &rhs) const {
+        return this->state == rhs.state;
+    }
+    bool operator!=(const BaseIterator<Functions> &rhs) const {
+        return !(*this == rhs);
+    }
+
+    bool is_begin() const {
+        return this->func.is_begin(this->state);
+    }
+    bool is_end() const {
+        return this->func.is_end(this->state);
+    }
+    const State &get_state() const {
+        return this->state;
+    }
+private:
+    bool is_valid() const {
+        return this->func.is_valid(this->state);
+    }
+    void next() {
+        this->func.next(this->state);
+    }
+    void previous() {
+        this->func.previous(this->state);
+    }
+    State state;
+    Functions func;
+};
 
 // Input
 template <class F, class S>
@@ -116,73 +275,127 @@ namespace debug {
         return stream;
     }
 
-    template <class T, class Alloc>
-    ostream &operator<<(ostream& stream, const vector<T, Alloc> &vector) {
+    template <class Iterator>
+    Container<Iterator> container(const Iterator &begin, const Iterator &end) {
+        return Container<Iterator>(begin, end);
+    }
+
+    template <class Iterator>
+    ostream &operator<<(ostream &stream, const Container<Iterator> &container) {
         stream << "[";
 
-        for (auto i = 0; i < vector.size(); i++) {
-            stream << vector[i];
+        size_t cnt = 0;
+        for (const auto &it: container) {
+            stream << it;
+            stream << "," << ((cnt % 10 == 9) ? "\n " : "\t");
 
-            if (i != vector.size() - 1) {
-                stream << "," << ((i % 10 == 9) ? "\n " : "\t");
-            }
+            cnt += 1;
         }
 
-        stream << "]";
+        stream << "\b\b]";
         return stream;
+    }
+
+    template <class T, class Alloc>
+    ostream &operator<<(ostream& stream, const vector<T, Alloc> &vector) {
+        return stream << container(vector.begin(), vector.end());
     }
 }
 
-// Body
+// Hash
+namespace std {
+    template <class F, class S>
+    struct hash<pair<F, S>> {
+        size_t operator ()(const pair<F, S> &p) const {
+            return hash<F>()(p.first) ^ hash<S>()(p.second);
+        }
+    };
+
+    template <class ...Args>
+    struct hash<tuple<Args...>> {
+        size_t operator ()(const tuple<Args...> &t) const {
+            size_t retval = 0;
+
+            tuple_utils::for_each<tuple_utils::hash_for_element, size_t, Args...>(retval, t);
+
+            return retval;
+        }
+    };
+}
+#define MAIN
+void body();
+
+// main function (DO NOT EDIT)
+int main (int argc, char **argv) {
+    cin.tie(0);
+    ios_base::sync_with_stdio(false);
+
+    cout << fixed;
+    body();
+
+    return 0;
+}
+
+#include <cmath>
 void body() {
-    // Read
-    auto N = read<u32>();
+    using namespace debug;
+    auto N = read<i64>();
     auto xs = read<i64>(N);
     auto L = read<i64>();
-    auto Q = read<u32>();
-    auto qs = read<u32, u32>(Q);
-    FORE(q, qs) {
+    auto Q = read<i64>();
+    auto qs = read<i64, i64>(Q);
+
+    FORE (q, qs) {
+        if (q.first > q.second) {
+            swap(q.first, q.second);
+        }
         q.first -= 1;
         q.second -= 1;
     }
 
-    auto index = 0;
-    auto ns = V<u32>(N);
-    REP(i, N) {
-        auto x = static_cast<i64>(xs[i]);
-        auto bound = distance(
-            xs.begin(),
-            find_if(xs.begin() + index, xs.begin() + i, [L, x](const i64 &y) { return y  >= x - L ; }));
-        ns[i] = bound;
+    auto K = static_cast<i64>(std::log2(xs.back() - xs.front()) + 1);
 
-        index = ns[i];
-    }
+    V<V<size_t>> dp(N, V<size_t>(K, 0)); // dp[i][k] = iから2^k日でたどり着ける最も右のホテル
 
-    // DP
-    auto dp = V<V<u32>>(N, V<u32>(N, 1000000));
-    REP(i, N) {
-        dp[i][i] = 0;
-    }
-    FOR(i, 1, N) {
-        REP(j, N - i) { // dp[j][j+i], dp[j+i][j]
-            auto x = ns[j + i];
-            if (x < j) {
-                dp[j][j + i] = 1;
-            } else {
-                dp[j][j + i] = min(dp[j][j + i], dp[j][x] + 1);
+    /* 初期化 */
+    size_t index = 0;
+    REP (i, N) {
+        auto x_i = xs[i];
+        if (index != N) {
+            FOR (j, index, N) {
+                auto x_j = xs[j];
+                if (x_j - x_i > L) {
+                    break;
+                }
+                index += 1;
             }
-            dp[j + i][j] = dp[j][j+i];
+        }
+        dp[i][0] = index - 1;
+    }
+
+    FOR (k, 1, K) {
+        REP (i, N) {
+            dp[i][k] = dp[dp[i][k - 1]][k - 1];
         }
     }
+    FORE (q, qs) {
+        auto a = q.first;
+        auto b = q.second;
+        auto x = a;
 
-    FORE(q, qs) {
-        cout << dp[q.first][q.second] << endl;
+        size_t cnt = 0;
+        while (true) {
+            auto it = std::lower_bound(CTR(dp[x]), b);
+            auto k = distance(dp[x].begin(), it);
+            if (k == 0) {
+                // 1回の移動でbまで行ける
+                cnt += 1;
+                break;
+            }
+            k -= 1;
+            cnt += pow(2, k);
+            x = dp[x][k];
+        }
+        cout << cnt << endl;
     }
-}
-
-// main function (DO NOT EDIT)
-int main () {
-    ios_base::sync_with_stdio(false);
-    body();
-    return 0;
 }
