@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc082/tasks/arc082_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 全探索 二分探索 条件考察
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

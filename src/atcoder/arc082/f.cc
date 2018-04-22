@@ -1,3 +1,17 @@
+/*
+URL https://beta.atcoder.jp/contests/arc082/tasks/arc082_d
+SCORE 700
+AC true
+WA false
+TLE true
+MLE false
+TASK_TYPE 式考察 シミュレーション 前計算 二分探索 DP
+FAILURE_TYPE 考察力不足
+NOTES
+前計算+二分探索までは思いついたが、どのような前計算をすればよいかわからなかった。
+場合分けが多くなる場合でも、適当な定数を置くことで単純な式にできることがある？
+まずは前計算のところでDP/漸化式っぽい考え方を試してみることからか。
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
