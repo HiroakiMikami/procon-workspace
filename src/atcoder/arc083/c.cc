@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc083/tasks/arc083_a
+SCORE 300
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 全探索
+FAILURE_TYPE 実装ミス 式変形ミス
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

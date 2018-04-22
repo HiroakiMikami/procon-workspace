@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/arc083/tasks/arc083_c
+SCORE 700
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ 木 判定 色割り当て DP
+FAILURE_TYPE
+NOTES
+今やったらあまり解ける気がしない。部分木に着目して構成していく問題であることは確か
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

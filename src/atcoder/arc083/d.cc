@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc083/tasks/arc083_b
+SCORE 500
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ 最短経路 ワーシャルフロイド
+FAILURE_TYPE 計算量見積もり
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
