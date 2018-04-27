@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/arc084/tasks/arc084_b
+SCORE 700
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 最大化・最小化 グラフ 01BFS 最短経路
+FAILURE_TYPE 知識不足 考察力不足
+NOTES
+数をグラフとして表すという考えがそもそも乏しかった。
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

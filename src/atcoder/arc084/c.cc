@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/arc083/tasks/arc083_a
+SCORE 300
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 二分探索
+FAILURE_TYPE 考察力不足
+NOTES
+上段から決めようとしてO(N^2)でしばらく詰まってしまう。
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
