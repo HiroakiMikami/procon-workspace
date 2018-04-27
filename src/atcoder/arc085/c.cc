@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/arc085/tasks/arc085_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 数学 期待値
+FAILURE_TYPE 数学力不足
+NOTES
+この問題で必要だったかとは別に、等比数列、等差数列の和くらいはすぐ出せるようになっておきたい
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

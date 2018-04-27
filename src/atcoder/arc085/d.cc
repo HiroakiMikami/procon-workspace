@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/arc085/tasks/arc085_b
+SCORE 500
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE DP ゲーム 最適行動 シミュレーション
+FAILURE_TYPE 考察力不足
+NOTES
+後ろの状態から順々に考えていくとこのコードより遥かにかんたんに解ける
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
