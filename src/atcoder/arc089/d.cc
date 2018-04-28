@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/arc089/tasks/arc089_b
+SCORE 500
+AC true
+WA false
+TLE true
+MLE false
+TASK_TYPE 尺取り法 全探索
+FAILURE_TYPE 考察不足 実装力不足
+NOTES
+K^2の全探索までは思いついたが、その実装と高速化に手間取った。
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

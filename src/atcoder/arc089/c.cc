@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc089/tasks/arc089_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE DP シミュレーション 平面座標 判定
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
