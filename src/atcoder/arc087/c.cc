@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc087/tasks/arc087_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE DP シミュレーション
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

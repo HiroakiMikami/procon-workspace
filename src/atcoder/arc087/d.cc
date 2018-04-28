@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/arc087/tasks/arc087_b
+SCORE 500
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE DP シミュレーション 平面座標 判定
+FAILURE_TYPE 考察力不足
+NOTES
+YES/NOの判定系は追加情報を入れてDPを構成するケース多い気がする
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
