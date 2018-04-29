@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc091/tasks/arc091_b
+SCORE 400
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 数え上げ 場合分け 整数
+FAILURE_TYPE オーバーフロー
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

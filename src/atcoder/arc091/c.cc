@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc091/tasks/arc091_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 平面座標 シミュレーション 場合分け
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
