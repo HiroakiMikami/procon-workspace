@@ -1,3 +1,17 @@
+/*
+URL https://beta.atcoder.jp/contests/arc090/tasks/arc090_b
+SCORE 400
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 判定 グラフ DFS
+FAILURE_TYPE コーナーケース処理
+NOTES
+全条件を調べていく話なのでグラフなんて作らなくてもできそうな気が細書した。
+ただ、連結な成分のどこから数字を決めていくかを考えるにはグラフとして扱ったほうが都合が良い。
+コーナーケース処理は、グラフの連結性の判定を忘れていた。
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

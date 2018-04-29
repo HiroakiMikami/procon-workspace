@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc090/tasks/arc090_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 平面座標 グラフ 全探索
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
