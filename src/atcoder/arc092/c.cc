@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc092/tasks/arc092_a
+SCORE 400
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 全探索 平面座標
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
