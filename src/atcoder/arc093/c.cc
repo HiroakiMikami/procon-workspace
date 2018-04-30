@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/arc093/tasks/arc093_a
+SCORE 300
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 累積和
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
