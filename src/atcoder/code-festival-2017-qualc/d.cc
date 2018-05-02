@@ -1,3 +1,17 @@
+/*
+URL https://beta.atcoder.jp/contests/code-festival-2017-qualc/tasks/code_festival_2017_qualc_d
+SCORE 700
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 前計算 DP ハッシュ
+FAILURE_TYPE 考察力不足 知識不足
+NOTES
+「64個以内の要素（例えばアルファベット）が01をとる」という風にまとめられる時は、それでハッシュ関数を作ってbit演算、という解き方をする可能性あり
+
+DP+前計算までは察しがついたがそこからわからなかった。
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

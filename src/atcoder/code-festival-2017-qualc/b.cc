@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/code-festival-2017-qualc/tasks/code_festival_2017_qualc_b
+SCORE 200
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 数え上げ 補集合
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

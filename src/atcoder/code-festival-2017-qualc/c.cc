@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/code-festival-2017-qualc/tasks/code_festival_2017_qualc_c
+SCORE 400
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE シミュレーション 回文
+FAILURE_TYPE 考察不足 複雑に考えすぎ
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
