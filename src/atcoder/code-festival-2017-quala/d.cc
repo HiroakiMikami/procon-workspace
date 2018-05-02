@@ -1,3 +1,16 @@
+/*
+URL https://beta.atcoder.jp/contests/code-festival-2017-quala/tasks/code_festival_2017_quala_d
+SCORE 700
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE マンハッタン距離 チェビシェフ距離
+FAILURE_TYPE 知識不足 考察力不足
+NOTES
+マンハッタン距離の問題は45度回転してチェビシェフ距離の問題に置き換えるのが定石とのこと。
+要するにチェビシェフ距離は扱いやすくて便利だからできるならチェビシェフ距離にすると良いということだと思う。
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

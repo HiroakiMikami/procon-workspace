@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/code-festival-2017-quala/tasks/code_festival_2017_quala_b
+SCORE 200
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 全探索 シミュレーション 操作順入れ替え
+FAILURE_TYPE 実装ミス 副作用見逃し
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

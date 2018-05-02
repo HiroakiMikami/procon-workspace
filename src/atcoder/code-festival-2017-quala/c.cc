@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/code-festival-2017-quala/tasks/code_festival_2017_quala_c
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 貪欲法 回文
+FAILURE_TYPE
+NOTES
+貪欲法を使うのは若干嘘解法っぽい恐れもあるが、直感的には正しいと感じている。
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
