@@ -1,3 +1,16 @@
+/*
+URL https://beta.atcoder.jp/contests/colopl2018-qual/tasks/colopl2018_qual_c
+SCORE 400
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 整数 素数判定 全探索 再帰
+FAILURE_TYPE 実装力不足 考察不足
+NOTES
+・各要素を入れる/入れないで分ける全探索を書くのが苦手
+・2の倍数、3の倍数を考えることによる計算量の見積もりには失敗している
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/colopl2018-qual/tasks/colopl2018_qual_b
+SCORE 200
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 基本 シミュレーション
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
