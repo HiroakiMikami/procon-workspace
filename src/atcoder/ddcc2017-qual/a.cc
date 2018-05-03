@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/ddcc2017-qual/tasks/ddcc2017_qual_a
+SCORE 100
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 基本
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

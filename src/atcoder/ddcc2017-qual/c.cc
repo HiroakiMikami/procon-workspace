@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/ddcc2017-qual/tasks/ddcc2017_qual_c
+SCORE 300
+AC true
+WA false
+TLE true
+MLE false
+TASK_TYPE 貪欲法
+FAILURE_TYPE 計算量見積もり アルゴリズム計算量見落とし 考察不足
+NOTES
+配列の要素削除はO(N)であることを忘れてTLEしている
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

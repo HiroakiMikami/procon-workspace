@@ -1,3 +1,16 @@
+/*
+URL https://beta.atcoder.jp/contests/ddcc2017-qual/tasks/ddcc2017_qual_d
+SCORE 600
+AC true
+WA true
+TLE false
+MLE false
+TASK_TYPE 場合分け 数え上げ
+FAILURE_TYPE 場合分けミス 考察力不足
+NOTES
+問題のatomicな要素となるものをみつけたら、それを1単位として問題を再度考え直す。
+今回だと、東西南北に対称な4点を1単位とする。
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
