@@ -1,3 +1,14 @@
+/*
+URL https://beta.atcoder.jp/contests/yahoo-procon2018-qual/tasks/yahoo_procon2018_qual_a
+SCORE 100
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 基本
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
