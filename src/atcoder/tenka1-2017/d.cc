@@ -1,3 +1,15 @@
+/*
+URL https://beta.atcoder.jp/contests/tenka1-2017/tasks/tenka1_2017_d
+SCORE 500
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE ビット演算 全探索 最大化・最小化
+FAILURE_TYPE 考察力不足 bit演算に対する考察ミス
+NOTES
+bit演算が含まれる場合、bitに着目して候補を列挙すると、O(logN)で全探索ができることがある。
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
