@@ -1,3 +1,14 @@
+/*
+URL https://code.google.com/codejam/contest/32016/dashboard#s=p0
+SCORE
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 数学 ソート
+FAILURE_TYPE 考察力不足
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
