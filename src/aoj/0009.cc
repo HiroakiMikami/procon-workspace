@@ -1,3 +1,14 @@
+/*
+URL http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0009
+SCORE 0
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 素数判定 エラトステネスのふるい 数学
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

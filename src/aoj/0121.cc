@@ -1,3 +1,15 @@
+/*
+URL http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0121
+SCORE 0
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 全探索 前計算 幅優先探索
+FAILURE_TYPE 考察力不足
+NOTES
+最終状態から幅優先探索して全クエリに対する答えを最初に用意するという発想がなかった
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

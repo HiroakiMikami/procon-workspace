@@ -1,3 +1,15 @@
+/*
+URL http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0188
+SCORE 0
+AC false
+WA false
+TLE false
+MLE false
+TASK_TYPE
+FAILURE_TYPE
+NOTES
+解いている問題が違うように見える
+*/
 #include <iostream>
 #include <utility>
 #include <vector>

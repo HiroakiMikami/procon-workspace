@@ -1,3 +1,15 @@
+/*
+URL http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0005
+SCORE 0
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 数学 ユークリッドの互除法 GCD LCM
+FAILURE_TYPE
+NOTES
+今回入らなかったが、LCMはより効率の良い方法があるらしい
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>
