@@ -1,3 +1,14 @@
+/*
+URL https://code.google.com/codejam/contest/204113/dashboard#s=p0
+SCORE
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 貪欲法 最大化・最小化
+FAILURE_TYPE 考察力不足
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
