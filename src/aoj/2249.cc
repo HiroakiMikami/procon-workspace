@@ -1,3 +1,15 @@
+/*
+URL http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2249
+SCORE 0
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ 最小経路 ダイクストラ 経路復元
+FAILURE_TYPE 考察力不足
+NOTES
+経路復元のやり方を工夫する必要があるダイクストラ
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

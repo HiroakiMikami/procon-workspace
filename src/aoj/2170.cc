@@ -1,3 +1,14 @@
+/*
+URL http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2170
+SCORE 0
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE UnionFind グラフ 後ろから状態復元
+FAILURE_TYPE 実装ミス
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

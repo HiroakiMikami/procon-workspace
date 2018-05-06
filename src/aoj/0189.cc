@@ -1,3 +1,14 @@
+/*
+URL http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0189
+SCORE 0
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE ワーシャルフロイド グラフ 最短経路 最大化・最小化
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

@@ -1,3 +1,14 @@
+/*
+URL http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0525
+SCORE 0
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 全探索
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

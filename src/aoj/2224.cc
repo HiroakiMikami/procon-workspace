@@ -1,3 +1,15 @@
+/*
+URL http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2224
+SCORE 0
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 最小全域木 双対グラフ
+FAILURE_TYPE 知識不足
+NOTES
+「もとの平面グラフの全域木で使われた辺を、双対グラフ上で削除するとそのグラフは双対グラフの全域木となる」
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

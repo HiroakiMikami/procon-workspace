@@ -1,3 +1,14 @@
+/*
+URL http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2170
+SCORE 0
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ 最短経路 ワーシャルフロイド DP
+FAILURE_TYPE 考察不足
+NOTES
+*/
 #include <iostream>
 #include <cstdint>
 #include <utility>

@@ -1,3 +1,14 @@
+/*
+URL http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0558
+SCORE 0
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE グラフ 平面座標 幅優先探索 最短経路
+FAILURE_TYPE
+NOTES
+*/
 #include <iostream>
 #include <utility>
 #include <vector>
