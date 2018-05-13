@@ -1,0 +1,880 @@
+/*
+URL https://beta.atcoder.jp/contests/arc066/tasks/arc066_b
+SCORE 600
+AC true
+WA false
+TLE false
+MLE false
+TASK_TYPE 数え上げ 桁DP bit演算 mod 場合の数
+FAILURE_TYPE 知識不足 状態遷移考察ミス 考察力不足
+NOTES
+Editionalとhttps://kimiyuki.net/blog/2018/04/05/arc-066-d/を参照した。
+解けなかった原因は、
+1) 桁DPの知識不足
+N<=10^18みたいな、明らかにO(N)では間に合わない処理だし、xorが含まれるのでbit表現で考えるというところまではわかったが、
+上から埋めていく桁DPをきれいに考察できなかった。
+さらに、Nとここまで埋めた数の差が3以上なら同一視しても大丈夫ということに気づけなかった。
+ （bit表現を使うDPの場合、1桁動くごとに前の桁の値がシフトするので、こういうケースはそれなりにありそう）
+
+2) 状態遷移の検討ミス
+DPの状態遷移をミスしていて最後時間をかけた。次元の大きいDPテーブルの可視化方法がほしい
+
+3) その他
+・a = (a & b), b = (a | b)とすることで、(u, v)と(a, b)を1対1に対応できる。いわれてみればなるほどという感じだが気づくのが難しい。
+・a + b = (a & b) << 1 + a ^ b、覚えておいたほうが良さそう
+*/
+#include <iostream>
+#include <cstdint>
+#include <utility>
+#include <tuple>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <unordered_map>
+#include <unordered_set>
+#include <map>
+#include <set>
+#include <algorithm>
+#include <limits>
+#include <numeric>
+#include <iomanip>
+#include <type_traits>
+#include <functional>
+
+using namespace std; // TODO Remove this
+
+/* macros */
+// loops
+#define REP(i, n) for (i64 i = 0; i < static_cast<decltype(i)>(n); ++i)
+#define REPR(i, n) for (i64 i = (n) - 1; i >= static_cast<decltype(i)>(0); --i)
+#define FOR(i, n, m) for (i64 i = (n); i < static_cast<decltype(i)>(m); ++i)
+#define FORR(i, n, m) for (i64 i = (m) - 1; i >= static_cast<decltype(i)>(n); --i)
+#define EACH(x, xs) for (auto &x: (xs))
+
+// helpers
+#define CTR(x) (x).begin(), (x).end()
+
+/* internal code */
+namespace internal {
+    /* utils for std::tuple */
+    namespace tuple_utils {
+        template<size_t...>
+        struct seq {};
+
+        template<size_t N, size_t... Is>
+        struct gen_seq : gen_seq<N - 1, N - 1, Is...> {};
+
+        template<size_t... Is>
+        struct gen_seq<0, Is...> : seq<Is...> {};
+
+        template<class Tuple, size_t... Is>
+        void read(istream &stream, Tuple &t, seq<Is...>) {
+            static_cast<void>((int[]) {0, (void(stream >> get<Is>(t)), 0)...});
+        }
+
+        template<class Tuple, size_t... Is>
+        void print(ostream &stream, Tuple const &t, seq<Is...>) {
+            static_cast<void>((int[]) {0, (void(stream << (Is == 0 ? "" : ", ") << get<Is>(t)), 0)...});
+        }
+
+        template<size_t I, class F, class A, class... Elems>
+        struct ForEach {
+            void operator()(A &arg, tuple<Elems...> const &t) const {
+                F()(arg, get<I>(t));
+                ForEach<I - 1, F, A, Elems...>()(arg, t);
+            }
+
+            void operator()(A &arg, tuple<Elems...> &t) const {
+                F()(arg, get<I>(t));
+                ForEach<I - 1, F, A, Elems...>()(arg, t);
+            }
+        };
+
+        template<class F, class A, class... Elems>
+        struct ForEach<0, F, A, Elems...> {
+            void operator()(A &arg, tuple<Elems...> const &t) const {
+                F()(arg, get<0>(t));
+            }
+
+            void operator()(A &arg, tuple<Elems...> &t) const {
+                F()(arg, get<0>(t));
+            }
+        };
+
+        template<class F, class A, class... Elems>
+        void for_each(A &arg, tuple<Elems...> const &t) {
+            ForEach<tuple_size<tuple<Elems...>>::value - 1, F, A, Elems...>()(arg, t);
+        }
+
+        template<class F, class A, class... Elems>
+        void for_each(A &arg, tuple<Elems...> &t) {
+            ForEach<tuple_size<tuple<Elems...>>::value - 1, F, A, Elems...>()(arg, t);
+        }
+
+        struct hash_for_element {
+            template<class V>
+            void operator()(size_t &size, const V &v) const {
+                size ^= hash<V>()(v);
+            }
+        };
+    }
+
+    /* utils for std::vector */
+    namespace vector_utils {
+        template <typename V, int N>
+        struct matrix_t {
+            using type = std::vector<typename matrix_t<V, N-1>::type>;
+        };
+        template <typename V>
+        struct matrix_t<V, 0> {
+            using type = V;
+        };
+
+        template <typename V, int N>
+        using Matrix = typename internal::vector_utils::matrix_t<V, N>::type;
+
+        template <typename V, typename It, int N>
+        struct matrix_helper {
+            static Matrix<V, N> create(const It &begin, const It &end, const V &default_value) {
+                return Matrix<V, N>(*begin, matrix_helper<V, It, N - 1>::create(begin + 1, end, default_value));
+            }
+        };
+        template <typename V, typename It>
+        struct matrix_helper<V, It, 0> {
+            static Matrix<V, 0> create(const It &begin, const It &end, const V &default_value) {
+                return default_value;
+            }
+        };
+    }
+}
+
+
+/* Primitive types */
+using i8  =  int8_t; using  u8 =  uint8_t;
+using i16 = int16_t; using u16 = uint16_t;
+using i32 = int32_t; using u32 = uint32_t;
+using i64 = int64_t; using u64 = uint64_t;
+using usize = size_t;
+
+/* Data structure type */
+template <class T> using V = vector<T>; // TODO Replace with Vector
+template <typename T> using Vector = internal::vector_utils::Matrix<T, 1>;
+template <typename T, int N> using Matrix = internal::vector_utils::Matrix<T, N>;
+template <typename V> using OrderedSet = std::set<V>;
+template <typename V> using HashSet = std::unordered_set<V>;
+template <typename K, typename V> using OrderedMap = std::map<K, V>;
+template <typename K, typename V> using HashMap = std::unordered_map<K, V>;
+
+/* utils for std::vector */
+template <typename V>
+std::vector<V> make_pre_allocated_vector(size_t N) {
+    std::vector<V> retval;
+    retval.reserve(N);
+    return retval;
+}
+
+template <class V, int N>
+Matrix<V, N> make_matrix(const std::array<size_t, N> &shape, V default_value = V()) {
+    return internal::vector_utils::matrix_helper<V, decltype(shape.begin()), N>::create(shape.begin(), shape.end(), default_value);
+}
+/* utils for STL containers */
+template <class Iterator>
+struct Container {
+    Container(const Iterator &begin, const Iterator &end) : m_begin(begin), m_end(end) {}
+    const Iterator& begin() const {
+        return this->m_begin;
+    }
+    const Iterator& end() const {
+        return this->m_end;
+    }
+    Iterator m_begin;
+    Iterator m_end;
+};
+
+/* utils for STL iterators */
+template <typename Iterator, typename F>
+struct MappedIterator {
+    MappedIterator(const Iterator &it, const F &function) : it(it), function(function) {}
+    auto operator *() const {
+        return this->function(*this->it);
+    }
+    void operator++() { ++this->it; }
+    void operator+=(size_t n) { this->it += n; }
+    auto operator+(size_t n) const {
+        return MappedIterator<Iterator, F>(this->it + n, this->function);
+    }
+    bool operator==(const MappedIterator<Iterator, F> &rhs) const {
+        return this->it == rhs.it;
+    }
+    bool operator!=(const MappedIterator<Iterator, F> &rhs) const {
+        return !(*this == rhs);
+    }
+private:
+    Iterator it;
+    F function;
+};
+template <typename Iterator, typename P>
+struct FilteredIterator {
+    FilteredIterator(const Iterator &it, const Iterator &end, const P &predicate)
+            : it(it), end(end), predicate(predicate) {
+        if (this->it != end) {
+            if (!predicate(*this->it)) {
+                this->increment();
+            }
+        }
+    }
+    decltype(auto) operator *() const {
+        return *this->it;
+    }
+    void operator++() {
+        this->increment();
+    }
+    void operator+=(size_t n) {
+        REP (i, n) {
+            this->increment();
+        }
+    }
+    auto operator+(size_t n) const {
+        auto retval = *this;
+        retval += n;
+        return retval;
+    }
+    bool operator==(const FilteredIterator<Iterator, P> &rhs) const {
+        return this->it == rhs.it;
+    }
+    bool operator!=(const FilteredIterator<Iterator, P> &rhs) const {
+        return !(*this == rhs);
+    }
+private:
+    void increment() {
+        if (this->it == this->end) {
+            return ;
+        }
+        ++this->it;
+        while (this->it != this->end && !this->predicate(*this->it)) {
+            ++this->it;
+        }
+    }
+    Iterator it;
+    Iterator end;
+    P predicate;
+};
+template <typename Iterator, typename ElementIterator>
+struct FlattenedIterator {
+    FlattenedIterator(const Iterator &it, const Iterator &end) : it(it), end(end), elem_it() {
+        if (this->it != this->end) {
+            this->elem_it = it->begin();
+        }
+    }
+    decltype(auto) operator *() const {
+        return *this->elem_it;
+    }
+    void operator++() {
+        this->increment();
+    }
+    void operator+=(size_t n) {
+        REP (i, n) {
+            this->increment();
+        }
+    }
+    auto operator+(size_t n) const {
+        auto retval = *this;
+        retval += n;
+        return retval;
+    }
+    bool operator==(const FlattenedIterator<Iterator, ElementIterator> &rhs) const {
+        if (this->it != rhs.it) {
+            return false;
+        }
+        if (this->it == this->end || rhs.it == rhs.end) {
+            if (this->end == rhs.end) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return this->elem_it == rhs.elem_it;
+        }
+    }
+    bool operator!=(const FlattenedIterator<Iterator, ElementIterator> &rhs) const {
+        return !(*this == rhs);
+    }
+private:
+    void increment() {
+        if (this->it == this->end) return ;
+
+        ++this->elem_it;
+        if (this->elem_it == this->it->end()) {
+            ++this->it;
+            if (this->it != this->end) {
+                this->elem_it = this->it->begin();
+            }
+        }
+    }
+    Iterator it;
+    Iterator end;
+    ElementIterator elem_it;
+};
+
+template <typename C, typename F>
+auto iterator_map(const C &c, F function) {
+    using Iterator = std::remove_const_t<std::remove_reference_t<decltype(c.begin())>>;
+    return Container<MappedIterator<Iterator, F>>(MappedIterator<Iterator, F>(c.begin(), function),
+            MappedIterator<Iterator, F>(c.end(), function));
+}
+
+template <typename C, typename P>
+auto iterator_filter(const C &c, P predicate) {
+    using Iterator = std::remove_const_t<std::remove_reference_t<decltype(c.begin())>>;
+    return Container<FilteredIterator<Iterator, P>>(FilteredIterator<Iterator, P>(c.begin(), c.end(), predicate),
+                                                    FilteredIterator<Iterator, P>(c.end(), c.end(), predicate));
+}
+
+template <typename C>
+auto iterator_flatten(const C &c) {
+    using Iterator = std::remove_const_t<std::remove_reference_t<decltype(c.begin())>>;
+    using ElementIterator = std::remove_const_t<std::remove_reference_t<decltype(c.begin()->begin())>>;
+    return Container<FlattenedIterator<Iterator, ElementIterator>>(
+            FlattenedIterator<Iterator, ElementIterator>(c.begin(), c.end()),
+            FlattenedIterator<Iterator, ElementIterator>(c.end(), c.end()));
+}
+
+/* utils for STL iterators (TODO deprecated because it is too complex) */
+template <class Functions>
+struct BaseIterator {
+    using State = typename Functions::State;
+
+    BaseIterator(const State &state, const Functions &func) : state(state), func(func) {
+        while (!this->is_end() && !this->is_valid()) {
+            this->next();
+        }
+    }
+    BaseIterator(const State &state) : state(state), func() {
+        while (!this->is_end() && !this->is_valid()) {
+            this->next();
+        }
+    }
+
+    decltype(auto) operator*() {
+        return this->func.get_value(this->state);
+    }
+
+    decltype(auto) operator*() const {
+        return this->func.get_value(this->state);
+    }
+
+    BaseIterator &operator++() {
+        if (this->is_end()) {
+            return *this;
+        }
+
+        this->next();
+        while (!this->is_end() && !this->is_valid()) {
+            this->next();
+        }
+
+        return *this;
+    }
+
+    BaseIterator &operator--() {
+        if (this->is_begin()) {
+            return *this;
+        }
+
+        this->previous();
+        while (!this->is_begin() && !this->is_valid()) {
+            this->previous();
+        }
+
+        return *this;
+    }
+
+    bool operator==(const BaseIterator<Functions> &rhs) const {
+        return this->state == rhs.state;
+    }
+    bool operator!=(const BaseIterator<Functions> &rhs) const {
+        return !(*this == rhs);
+    }
+
+    bool is_begin() const {
+        return this->func.is_begin(this->state);
+    }
+    bool is_end() const {
+        return this->func.is_end(this->state);
+    }
+    const State &get_state() const {
+        return this->state;
+    }
+private:
+    bool is_valid() const {
+        return this->func.is_valid(this->state);
+    }
+    void next() {
+        this->func.next(this->state);
+    }
+    void previous() {
+        this->func.previous(this->state);
+    }
+    State state;
+    Functions func;
+};
+
+/* input */
+template <class F, class S>
+istream &operator>>(istream &stream, pair<F, S> &pair) {
+    stream >> pair.first;
+    stream >> pair.second;
+    return stream;
+}
+template <class ...Args>
+istream &operator>>(istream &stream, tuple<Args...> &tuple) {
+    internal::tuple_utils::read(stream, tuple, internal::tuple_utils::gen_seq<sizeof...(Args)>());
+    return stream;
+}
+
+template <class T>
+T read() {
+    T t;
+    cin >> t;
+    return t;
+}
+template <class F, class S>
+pair<F, S> read() {
+    pair<F, S> p;
+    cin >> p;
+    return p;
+}
+template <class T1, class T2, class T3, class ...Args>
+tuple<T1, T2, T3, Args...> read() {
+    tuple<T1, T2, T3, Args...> t;
+    cin >> t;
+    return t;
+}
+template <typename T, typename F = std::function<T()>>
+Vector<T> read(const usize length, F r) {
+    auto retval = make_pre_allocated_vector<T>(length);
+    REP (i, length) {
+        retval.emplace_back(r());
+    }
+    return retval;
+}
+
+template <class T>
+Vector<T> read(const usize length) {
+    return read<T>(length, [] { return read<T>(); });
+}
+template <class F, class S>
+Vector<pair<F, S>> read(const usize length) {
+    return read<pair<F, S>>(length);
+}
+template <class T1, class T2, class T3, class ...Args>
+Vector<tuple<T1, T2, T3, Args...>> read(const usize length) {
+    return read<tuple<T1, T2, T3, Args...>>(length);
+}
+
+/* debug output */
+template <class F, class S>
+ostream &operator<<(ostream& stream, const pair<F, S> &pair) {
+    stream << "{" << pair.first << ", " << pair.second << "}";
+    return stream;
+}
+template <class ...Args>
+ostream &operator<<(ostream& stream, const tuple<Args...> &tuple) {
+    stream << "{";
+    internal::tuple_utils::print(stream, tuple, internal::tuple_utils::gen_seq<sizeof...(Args)>());
+    stream << "}";
+    return stream;
+}
+
+template <typename T>
+void dump(const T& t) {
+    std::cerr << t << std::endl;
+}
+template <typename F, typename S>
+void dump(const pair<F, S>& p) {
+    std::cerr << p << std::endl;
+}
+template <class ...Args>
+void dump(const tuple<Args...> &tuple) {
+    std::cerr << tuple << std::endl;
+}
+template <typename V1, typename V2, typename ...Args>
+void dump(const V1 &v1, const V2 &v2, const Args&... args) {
+    const auto x = std::make_tuple(v1, v2, args...);
+    internal::tuple_utils::print(std::cerr, x, internal::tuple_utils::gen_seq<sizeof...(Args) + 2>());
+    std::cerr << std::endl;
+}
+
+template <typename T>
+void dump_matrix(const Matrix<T, 0> & matrix) {
+    dump(matrix);
+}
+template <typename T>
+void dump_matrix(const Matrix<T, 1> & matrix) {
+    EACH (x, matrix) {
+        std::cerr << x << " ";
+    }
+    std::cerr << std::endl;
+}
+template <typename T>
+void dump_matrix(const Matrix<T, 2> & matrix) {
+    EACH (x, matrix) {
+        dump_matrix<T>(x);
+    }
+}
+
+template <typename C>
+void dump_set(const C &container) {
+    EACH(c, container) {
+        dump(c);
+    }
+}
+template <typename C>
+void dump_seq(const C &container) {
+    int index = 0;
+    EACH(c, container) {
+        dump(index, c);
+        index += 1;
+    }
+}
+template <typename C>
+void dump_map(const C &container) {
+    EACH(c, container) {
+        const auto &key = c.first;
+        const auto &value = c.second;
+        std::cerr << key << "\t:" << value << std::endl;
+    }
+}
+
+// Hash
+namespace std {
+    template <class F, class S>
+    struct hash<pair<F, S>> {
+        size_t operator ()(const pair<F, S> &p) const {
+            return hash<F>()(p.first) ^ hash<S>()(p.second);
+        }
+    };
+
+    template <class ...Args>
+    struct hash<tuple<Args...>> {
+        size_t operator ()(const tuple<Args...> &t) const {
+            size_t retval = 0;
+
+            internal::tuple_utils::for_each<internal::tuple_utils::hash_for_element, size_t, Args...>(retval, t);
+
+            return retval;
+        }
+    };
+}
+#define MAIN
+void body();
+#define MAIN
+void body();
+
+// main function (DO NOT EDIT)
+int main (int argc, char **argv) {
+    cin.tie(0);
+    ios_base::sync_with_stdio(false);
+
+    cout << fixed;
+    body();
+
+    return 0;
+}
+
+#ifndef MAIN
+#include "common.cc"
+#endif
+
+/*
+ * n^r
+ */
+template<class V>
+static V pow(V n, i64 r) {
+    if (r == 0) {
+        return 1;
+    }
+
+    auto r2 = r / 2;
+    auto x2 = pow(n, r2);
+
+    return x2 * x2 * ((r % 2 == 0) ? 1 : n);
+}
+
+static i64 gcd(i64 a, i64 b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
+}
+
+template<class Iterator>
+static i64 gcd_ctr(const Iterator &begin, const Iterator &end) {
+    if (begin == end) {
+        return -1;
+    } else {
+        auto ans = *begin;
+        auto it = begin;
+        ++it;
+        for (; it != end; ++it) {
+            auto x = *it;
+            ans = gcd(ans, x);
+        }
+        return ans;
+    }
+}
+
+static i64 gcd_ctr(const V<i64> &xs) {
+    return gcd_ctr(xs.begin(), xs.end());
+}
+
+static i64 lcm(i64 a, i64 b) {
+    auto x = gcd(a, b);
+    return a / x * b;
+}
+
+template<class Iterator>
+static i64 lcm_ctr(const Iterator &begin, const Iterator &end) {
+    if (begin == end) {
+        return -1;
+    } else {
+        auto ans = *begin;
+        auto it = begin;
+        ++it;
+        for (; it != end; ++it) {
+            auto x = *it;
+            ans = lcm(ans, x);
+        }
+        return ans;
+    }
+}
+
+static i64 lcm_ctr(const V<i64> &xs) {
+    return lcm_ctr(xs.begin(), xs.end());
+}
+
+template<class V>
+static V combination(V n, i64 r) {
+    if (r == 0) {
+        return 1;
+    }
+
+    V x = 1;
+    FOR (d, 1, r + 1) {
+        x *= n;
+        n -= 1;
+        x /= d;
+    }
+    return x;
+}
+
+static bool is_prime(i64 n) {
+    if (n <= 1) return false;
+    for (i64 i = 2; i * i <= n; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+static V<i64> divisor(i64 n) {
+    V<i64> res;
+    for (i64 i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            res.push_back(i);
+            if (i != n / i) res.push_back(n / i);
+        }
+    }
+    return res;
+}
+
+static unordered_map<i64, size_t> prime_factor(i64 n) {
+    unordered_map<i64, size_t> res;
+    for (i64 i = 2; i * i <= n; i++) {
+        while (n % i == 0) {
+            res[i] += 1;
+            n /= i;
+        }
+    }
+    if (n != 1) res[n] = 1;
+    return res;
+}
+
+static pair<V<i64>, V<bool>> sieve(i64 n) {
+    V<i64> prime;
+    V<bool> is_prime_(n + 1, true);
+    is_prime_[0] = is_prime_[1] = false;
+
+    FOR (i, 2, n + 1) {
+        if (is_prime_[i]) {
+            prime.push_back(i);
+            for (i64 j = 2 * i; j <= n; j += i) {
+                is_prime_[j] = false;
+            }
+        }
+    }
+    return {prime, is_prime_};
+}
+
+
+#ifndef MAIN
+#include "common.cc"
+#include "math.cc"
+#endif
+
+namespace mod {
+    const i64 MOD = 1000000007;
+
+    struct Integer {
+        Integer() : value(0) {}
+        Integer(i64 value) {
+            update_value((value));
+        }
+
+        Integer inverse() const {
+            return pow(*this, 1000000005);
+        }
+
+        Integer operator+(const Integer &rhs) const {
+            return this->value + rhs.value;
+        }
+        Integer operator-(const Integer &rhs) const {
+            return this->value - rhs.value;
+        }
+
+        Integer operator*(const Integer &rhs) const {
+            return this->value * rhs.value;
+        }
+
+        Integer operator /(const Integer &rhs) const {
+            return this->value * rhs.inverse().value;
+        }
+
+        void operator +=(const Integer &rhs) {
+            update_value(this->value + rhs.value);
+        }
+
+        void operator -=(const Integer &rhs) {
+            update_value(this->value - rhs.value);
+        }
+
+        void operator *=(const Integer &rhs) {
+            update_value(this->value * rhs.value);
+        }
+
+        void operator /=(const Integer &rhs) {
+            update_value(this->value * rhs.inverse().value);
+        }
+
+        bool operator==(const Integer &rhs) const {
+            return this->value == rhs.value;
+        }
+        template <class V>
+        bool operator==(V rhs) const {
+            return this->value == rhs;
+        }
+
+        bool operator!=(const Integer &rhs) const {
+            return this->value != rhs.value;
+        }
+        template <class V>
+        bool operator!=(V rhs) const {
+            return this->value != rhs;
+        }
+
+        const i64 &get() const {
+            return this->value;
+        }
+
+    private:
+        void update_value(i64 new_value) {
+            this->value = new_value;
+            if (this->value < 0) {
+                this->value += MOD;
+            }
+            if (this->value >= MOD) {
+                this->value %= MOD;
+            }
+        }
+        i64 value;
+    };
+
+    template <class V>
+    static bool operator==(V lhs, const Integer &rhs) {
+        return rhs ==lhs;
+    }
+    template <class V>
+    static bool operator!=(V lhs, const Integer &rhs) {
+        return rhs != lhs;
+    }
+
+    struct fact {
+        Integer value;
+        Integer inverse;
+    };
+
+    static V<fact> fact_table(const size_t n) {
+        V<fact> retval(n + 1);
+
+        retval[0].value = 1;
+        FOR(i, 1, n + 1) {
+            retval[i].value = retval[i - 1].value * i;
+        }
+
+        retval[n].inverse = retval[n].value.inverse();
+        REPR(i, n) {
+            retval[i].inverse = retval[i + 1].inverse * (i + 1);
+        }
+
+        return retval;
+    }
+}
+#include <cmath>
+#include <bitset>
+void body() {
+    auto N = read<i64>();
+
+    using namespace mod;
+    // dp[i][j][k] = 上からi bit目までが決まっている時の場合の数で、決まっている部分のbit表現でのvとNの差分が0,1,2,3以上のどれか（j)と下から繰り上がりがあると仮定するか（k)をメモする
+    auto dp = make_matrix<Integer, 3>({65, 4, 2}, Integer(0));
+    /*
+     * jについて補足
+     *
+     * a, b, v, Nの上からi bit目をそれぞれa_i, b_i, v_i, N_iとして、N_i - v_i >= 3と仮定する。
+     * この時、常にN_{i+1} - (a_{i+1} + b_{i+1}) >= 3となる。この差分が最も小さくなるのは、
+     * 1) a, bの上からi+1 bit目が1
+     * 2) 下から繰り上がりがある
+     * 3) Nの上からi+1 bit目が0
+     * の場合で、
+     * N_{i+1} -  v_{i+1}
+     * = (N_i << 2 + 0) - ((a_i << 2 + 1) + (b_i << 2 + 1) + 1)
+     * = (N_i - (a_i + b_i)) << 2 - 3
+     * >= (3 << 2) - 3 = 3
+     * となる
+     */
+
+    bitset<64> n(N);
+    Vector<pair<i64, i64>> cands = {{1, 1}, {1, 0}, {0, 0}};
+    FOR (i, 1, 65) {
+        if ((N >> (64 - i)) == 0) {
+            dp[i][0][0] = 1;
+            continue ;
+        }
+
+        // dp[i][.][.]を決める
+        EACH (c, cands) {
+            REP (k, 2) {
+                auto x = c.first + c.second + k;
+                auto n_i = i64(n[64 - i]);
+                auto diff = n_i - x;
+                if (x >= 2) diff += 2; // x >= 2（繰り上がりあり）のとき、繰り上がり分はdpテーブルの方ですでに計算済
+                REP (j, 4) {
+                    // dp[i - 1][j][x >= 2]がどこに対応するか
+                    auto tmp = min((j << 1) + diff, i64(3));
+                    if (tmp < 0) continue;
+                    dp[i][tmp][k] += dp[i - 1][j][int(x >= 2)];
+                }
+            }
+        }
+    }
+    Integer ans = 0;
+    ans = dp[64][0][0] + dp[64][1][0] + dp[64][2][0] + dp[64][3][0]; // 最後の桁に繰り上がりが下から来ることはないので4パターンを足す
+    cout << ans.get() << endl;
+}
