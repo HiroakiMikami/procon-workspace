@@ -1,13 +1,18 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/arc097/tasks/arc097_c
+SCORE 600
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 転倒数 DP 前計算
+FAILURE_TYPE 考察不足 知識不足
 NOTES
+まず、「最終状態を決めるとswapの回数は転倒数」というのを知らなかったのが一つ目の問題。
+これが原因で最終状態を決めたあとのswap回数の結果に自信を持てなかった。
+
+解き方としては、最終状態を（実質的に）全探索するDPではなく、最終状態を構成する方に向かってしまったこと。
+どちらが解き方の可能性も確かにあり得るが、転倒数は最終状態の右側と初期状態の左側に気をつければ状態の圧縮が容易という点でDPのほうが良さそう
 */
 #include <iostream>
 #include <cstdint>
@@ -569,114 +574,70 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto Bs = read<char, i64>(2 * N);
+    EACH (B, Bs) {
+        B.second -= 1;
+    }
 
-    OrderedMap<i64, i64> num2index_b;
-    OrderedMap<i64, i64> num2index_w;
+    OrderedMap<pair<char, i64>, i64> ball2index;
     REP (i, 2 * N) {
-        if (Bs[i].first == 'B') {
-            num2index_b.emplace(Bs[i].second, i);
-        } else {
-            num2index_w.emplace(Bs[i].second, i);
-        }
+        ball2index.emplace(Bs[i], i);
     }
 
-    i64 ans = 0;
-    /* 黒を揃えることを考える */
-    i64 next = 1;
-    Vector<pair<i64, i64>> move_b;
-    move_b.reserve(N);
-    REP (i, 2 * N) {
-        if (Bs[i].first != 'B') continue;
+    // B_i: 黒のi, W_i: 白のj
+    /* 前計算 */
+    auto cost_BB = Vector<i64>(N, 0); // cost_BB[i] = {B_{i+1}...B_N-1}の中で、B_iより左側にあるものの個数
+    auto cost_WW = Vector<i64>(N, 0); // cost_WW[i] = {W_{i+1}...W_N-1}の中で、W_iより左側にあるものの個数
+    auto cost_BW = make_matrix<i64, 2>({N, N + 1}, 0); // cost_BW[i][j] = {W_j...W_N-1}の中で、B_iより左側にあるものの個数
+    auto cost_WB = make_matrix<i64, 2>({N, N + 1}, 0); // cost_WW[i][j] = {B_j...B_N-1}の中で、W_iより左側にあるものの個数
 
-        if (Bs[i].second > next) {
-            // next ... Bs[i].second - 1をiより左側に持ってくる
-            FOR (j, next, Bs[i].second) {
-                ans += num2index_b[j] - i;
-                move_b.emplace_back(i, num2index_b[j]);
-                dump(j, i, num2index_b[j]);
+    REP (i, N) {
+        auto B_i = ball2index[make_pair('B', i)];
+        auto W_i = ball2index[make_pair('W', i)];
+        FOR (j, i + 1, N) {
+            if (ball2index[make_pair('B', j)] < B_i) {
+                cost_BB[i] += 1;
             }
-            dump("---");
-            next = Bs[i].second + 1;
-        } else if (next == Bs[i].second){
-            next += 1;
-        }
-    }
-
-    /* 白を揃えることを考える */
-    next = N;
-    Vector<pair<i64, i64>> move_w;
-    move_w.reserve(N);
-    REPR (i, 2 * N) {
-        if(Bs[i].first != 'W') continue;
-
-        if (next > Bs[i].second) {
-            // Bs[i].second + 1... nextをiより右側に持ってくる
-            FOR (j, Bs[i].second + 1, next + 1) {
-                auto n = j - Bs[i].second - 1;
-                ans += i - num2index_w[j];
-                move_w.emplace_back(num2index_w[j], i);
+            if (ball2index[make_pair('W', j)] < W_i) {
+                cost_WW[i] += 1;
             }
-            dump("---");
-            next = Bs[i].second - 1;
-        } else if (next == Bs[i].second){
-            next -= 1;
+        }
+
+        REPR(j, N) {
+            /* cost_BW[i][j]の更新 */
+            cost_BW[i][j] = (j != N - 1) ? cost_BW[i][j + 1] : 0; // {W_{j+1}...W_{N-1}の結果を使う
+           if (ball2index[make_pair('W', j)] < B_i) { // W_jがB_iより左側
+               cost_BW[i][j] += 1;
+           }
+           /* cost_WB[i][j]の更新 */
+           cost_WB[i][j] = (j != N - 1) ? cost_WB[i][j + 1] : 0; // {B_{j+1}...B_{N-1}の結果を使う
+           if (ball2index[make_pair('B', j)] < W_i) { // B_jがW_iより左側
+               cost_WB[i][j] += 1;
+           }
         }
     }
 
-    // 移動を共通化できる数を引く
-    dump(ans);
-    EACH (b, move_b) {
-        EACH (w, move_w) {
-            // bとwがかぶっているなら共通化できる
-            auto x = max(b.first, w.first);
-            auto y = min(b.second, w.second);
-            if (x < y) {
-                auto x2 = min(b.first, w.first);
-                auto y2 = max(b.second, w.second);
-                auto p = make_pair(x2, y2);
-                if (p == b || p == w) {
-                    continue;
-                }
-                ans -= 1;
+    auto dp = make_matrix<i64, 2>({N + 1, N + 1}, 0); // dp[i][j] = 左から{B_0,...B_i-1, W_0,..,W_j-1}を並べた状態が最終状態のときの操作回数の最小値
+    dp[0][0] = 0;
+    REP (i, N + 1) {
+        REP (j, N + 1) {
+            if (i == 0 && j == 0) continue;
+            /* dp[i][j]の更新 */
+            dp[i][j] = numeric_limits<i64>::max();
+            if(i != 0) {
+                // 一番右をB_{i-1}とする場合
+                /*
+                 * B_{i-1}分の転倒数を足す
+                 *
+                 * 最終状態でB_{i-1}より右にあるのは、{B_i, ..., B_{N-1}と{W_j, W_{N-1}}なので、これらのうち初期状態ではB_{i-1}より左にあるものの個数を足す
+                 */
+                dp[i][j] = min(dp[i][j], dp[i - 1][j] + cost_BB[i-1] + cost_BW[i - 1][j]);
+            }
+            if(j != 0) {
+                // 一番右をW_{i-1}とする場合
+                dp[i][j] = min(dp[i][j], dp[i][j - 1] + cost_WW[j-1] + cost_WB[j - 1][i]);
             }
         }
     }
 
-    EACH (b, move_b) {
-        EACH (w, move_b) {
-            if (b > w) continue;
-            // bとwがかぶっているなら共通化できる
-            auto x = max(b.first, w.first);
-            auto y = min(b.second, w.second);
-            if (x < y) {
-                auto x2 = min(b.first, w.first);
-                auto y2 = max(b.second, w.second);
-                auto p = make_pair(x2, y2);
-                if (p == b || p == w) {
-                    continue;
-                }
-                ans -= 1;
-            }
-        }
-    }
-    EACH (b, move_w) {
-        EACH (w, move_w) {
-            if (b > w) continue;
-            // bとwがかぶっているなら共通化できる
-            auto x = max(b.first, w.first);
-            auto y = min(b.second, w.second);
-            if (x < y) {
-                auto x2 = min(b.first, w.first);
-                auto y2 = max(b.second, w.second);
-                auto p = make_pair(x2, y2);
-                if (p == b || p == w) {
-                    continue;
-                }
-                ans -= 1;
-            }
-        }
-    }
-
-    cout << ans << endl;
-
+    cout << dp[N][N] << endl;
 }
