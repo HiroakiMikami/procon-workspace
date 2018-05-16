@@ -1,13 +1,23 @@
-/*
-URL https://
-SCORE 0
-AC false
+ /*
+URL https://beta.atcoder.jp/contests/arc097/tasks/arc097_d
+SCORE 800
+AC true
 WA false
-TLE false
+TLE true
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 木 グラフ 木DP 前計算
+FAILURE_TYPE 考察不足 考察漏れ 計算量見積もりミス
 NOTES
+最初の段階（テストWA）
+・最後元の場所に戻る必要がないことを見落とし
+
+最初の段階（RE)
+・dp tableを配列で取ってMLE+RE
+・木DPのdp tableは二分木でとるべき
+
+次の段階（TLE）
+・ルートノードにN-1個のコードがぶら下がっているような場合、result, cnt, diffをループで計算してはO(N^2)
+・前計算というかメモ化というかしてうまいこと高速化
 */
 #include <iostream>
 #include <cstdint>
@@ -567,5 +577,171 @@ int main (int argc, char **argv) {
 }
 
 void body() {
+    auto N = read<i64>();
+    auto xy = read<i64, i64>(N - 1);
+    auto cs = read<string>();
 
+    auto edges = Vector<Vector<i64>>(N);
+    auto edge_set = OrderedMap<i64, OrderedSet<i64>>();
+    REP (i, N) {
+        edge_set.emplace(i, OrderedSet<i64>());
+    }
+    EACH (edge, xy) {
+        edge.first -= 1;
+        edge.second -= 1;
+        edges[edge.first].push_back(edge.second);
+        edges[edge.second].push_back(edge.first);
+        edge_set[edge.first].insert(edge.second);
+        edge_set[edge.second].insert(edge.first);
+    }
+
+    // dp[i][j] = 頂点iからjへ移動したあと、jの子要素（i側をrootとする）をすべて黒にしてjに戻ってくるまでの最小時間
+    OrderedMap<i64, OrderedMap<i64, i64>> dp;
+    // dp2[i][j] = 頂点iからjへ移動したあと、jの子要素（i側をrootとする）をすべて黒にするまでの最小時間
+    OrderedMap<i64, OrderedMap<i64, i64>> dp2;
+    REP (i, N) {
+        dp.emplace(i, OrderedMap<i64, i64>());
+        dp2.emplace(i, OrderedMap<i64, i64>());
+    }
+
+    Vector<i64> sum(N, 0); // sum[i] = iに隣接する頂点jに対するdp[i][j] != 1であるdp[i][j]の和
+    Vector<i64> cnt(N, 0); // sum[i] = iに隣接する頂点jに対するdp[i][j] != 1であるjの個数
+    /*
+     * diff[i][0] = (dp2[i][j] - dp[i][j])が最小となるjとその値
+     * diff[i][1] = (dp2[i][j] - dp[i][j])が番目に小さいjとその値
+     */
+    Vector<Vector<pair<i64, i64>>> diff(N);
+    auto _dfs = [&](i64 i, i64 j, auto dfs) -> void {
+        // i -> jへ移動した時を考える (dp[i][j], dp2[i][j]の更新）
+        Vector<i64> tmp;
+        tmp.reserve(N);
+        EACH (k, edge_set[j]) {
+            if (k == i) continue; // 移動してくるもとなので無視
+            dfs(j, k, dfs); // dp[j][k], dp2[j][k]の更新
+            tmp.push_back(k);
+        }
+        EACH (k, tmp) {
+            edge_set[j].erase(k); // もうDFSでは辿らなくて良いので無視
+        }
+
+        if(i == -1) return;
+        auto cnt2 = cnt[j];
+        if (dp[j].find(i) != dp[j].end() && dp[j][i] != 1) {
+            // dp[j][i]がsumとcntに含まれる
+            cnt2 -= 1;
+        }
+        i64 result = sum[j] + 2 * cnt2;
+        if (dp[j].find(i) != dp[j].end() && dp[j][i] != 1) {
+            // dp[j][i]がsumとcntに含まれる
+            result -= dp[j][i];
+        }
+        i64 diff2 = 0;
+        REP (k, 2) {
+            if (diff[j].size() <= k) break; // 配列範囲外
+
+            if (i == diff[j][k].first) continue; // j -> iへ戻る辺は無視
+
+            diff2 = diff[j][k].second;
+            break;
+        }
+
+        auto result2 = result;
+        // dp[i][j], dp2[i][j]の更新
+        if (cs[j] == 'W') {
+            if (cnt2 % 2 == 0) {
+                /*
+                 * i->jの移動でjの色は白->黒
+                 * cntが偶数回のとき、jの色は黒 -> 白 -> 黒 ... -> 黒
+                 * となるので、戻ってきた時jの色は黒
+                 * 一方、戻ってこない場合は最後にjを出る時白なので、反転が必要
+                 */
+                if(cnt2 != 0) result2 += 1; // ただし、cnt==0のときは黒にして終わりなので大丈夫
+            } else {
+                /*
+                 * 上の逆なので、戻ってきた時jの色は白なので、反転が必要
+                 * 戻ってこない場合は黒にして出ていくので反転は不要
+                 */
+                result += 1;
+            }
+        } else {
+            if (cnt2 % 2 == 0) {
+                /*
+                 * i->jの移動でjの色は黒->白
+                 * cntが偶数回のとき、jの色は白 -> 黒 -> 白 ... -> 白
+                 * となるので、戻ってきた時jの色は白なので、戻ってきた場合は反転が必要
+                 */
+                result += 1;
+            } else {
+                // 上の逆なので、反転は必要ないが、戻ってこないときは反転が必要
+                result2 += 1;
+            }
+        }
+        dp[i][j] = result;
+        dp2[i][j] = result2 + diff2;
+
+        /*
+         * dp[i][j] == 1の時、iからjに行き、jの色を反転し、jからiに戻るのが最短となる
+         * この場合、iからjに行かないほうが短い時間ですべて黒にできるので無視する
+         */
+        if (dp[i][j] != 1) {
+            sum[i] += dp[i][j];
+            cnt[i] += 1;
+
+            // 戻ってこなくて良い場合、どれだけ時間を短くできるかをメモ化
+            diff[i].emplace_back(j, (dp2[i][j] + 1) - (dp[i][j] + 2));
+            push_heap(CTR(diff[i]), [](auto rhs, auto lhs) { return rhs.second > lhs.second; });
+        }
+
+    };
+
+    /* dpテーブルの更新 */
+    /*
+     * dp[i][j]は、iとjが隣接している時のみ更新される。
+     * よって、dp[i][j]のうち更新されるセルの数は2*(N-1)個（木なので辺数はN-1）
+     *
+     * _dfsはdp[i][j]の更新回数だけ呼ばれるので、この計算量はO(N)
+     */
+    REP (i, N) {
+        _dfs(-1, i, _dfs);
+    }
+
+    /* 最小値の探索 */
+    i64 ans = numeric_limits<i64>::max();
+    REP (i, N) {
+        i64 x = 0;
+        i64 diff = 0;
+        i64 cnt = 0;
+        EACH (j, edges[i]) {
+            if (dp[i][j] == 1) continue ; // dfs中のコメント同様、この頂点には行かなくて良い
+            x += dp[i][j] + 2;
+            diff = min(diff, (dp2[i][j] + 1) - (dp[i][j] + 2)); // 戻ってこなくて良い場合、一番時間を短くできる部分木を最後にする
+            cnt += 1;
+        }
+        if (cs[i] == 'W') {
+            if (cnt % 2 == 0) {
+                /*
+                 * cntが偶数回のとき、jの色は白 -> 黒 -> 白 ... -> 黒
+                 * よって、反転は不要（ただし、cnt==0のときは白のままなので反転が必要
+                 */
+                if (cnt == 0) x += 1;
+            } else {
+                // 上の逆なので、戻ってきた時jの色は白
+                x += 1;
+            }
+        } else {
+            if (cnt % 2 == 0) {
+                /*
+                 * i->jの移動でjの色は黒->白
+                 * cntが偶数回のとき、jの色は黒 -> 白 -> 黒 ... -> 白
+                 * となるので、戻ってきた時jの色は白
+                 */
+                if (cnt != 0) x += 1; // cnt == 0の時、黒のままなのではんｔ年は不要
+            } else {
+                // 上の逆なので、反転が不要
+            }
+        }
+        ans = min(ans, x + diff);
+    }
+
+    cout << ans << endl;
 }
