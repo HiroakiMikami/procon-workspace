@@ -594,99 +594,49 @@ void body() {
     auto Q = read<i64>();
     auto As = read<i64>(N);
 
-    auto Xs = As;
-    sort(CTR(Xs));
-
-    i64 ans = Xs.back() - Xs.front();
-    REP (k, N - Q) {
-        auto Y = Xs[k];
+    i64 ans = numeric_limits<i64>::max();
+    REP (k, N) {
+        auto Y = As[k];
 
         /*
-         * 最小値をYにする
-         * 1) Yより小さい値を取らずに操作ができる => Y以上の値のみをとって操作できるかはO(N)
-         * 2) 1の条件を満たしたままの最大値を考える => Xs[k + i] それぞれについて、前後のYより小さいindexを見れば良いので、O(NlogN)
+         * 最小値をY以上にする
+         * => Y以上でとれるものを小さい順にリストアップ + 小さい方からQ個選ぶ
          */
 
-        Vector<i64> I_under_Y;
-        OrderedMap<i64, Vector<i64>> target;
-        REP(i, N - k) {
-            target.emplace(Xs[k + i], Vector<i64>());
-        }
-        I_under_Y.reserve(N);
-        // 1) + 2)の前計算
-        {
-            i64 num = 0;
-            i64 index = 0;
-            REP (i, N) {
-                // 前計算
-                if (As[i] < Y) {
-                    I_under_Y.push_back(i);
-                }
-                if (target.find(As[i]) != target.end()) {
-                    target.find(As[i])->second.push_back(i);
-                }
-
-                if (As[i] < Y && index != -1) {
-                    num += max(0L, i - index - K + 1);
-                    index = -1;
-                } else if (index < 0) {
-                    index = i;
-                }
+        priority_queue<i64> cands;
+        // 前計算
+        auto update = [&](auto b, auto e) {
+            Vector<i64> xs(As.begin() + b, As.begin() + e);
+            sort(CTR(xs));
+            REP (i, max(0L, e - b - K + 1)) {
+                cands.push(-xs[i]);
             }
-            if (index >= 0) {
-                num += max(0L, N - index - K + 1);
-            }
+        };
 
-            if (num < Q) {
-                // 条件を満たさない
-                continue;
+        i64 index = -1;
+        REP (i, N) {
+            if (As[i] < Y && index != -1) {
+                update(index, i);
+                index = -1;
+            } else if (As[i] >= Y && index < 0) {
+                index = i;
             }
         }
-
-        // 2)
-        {
-            bool f2 = true;
-            int cnt = 0;
-            i64 X = -1;
-            EACH (elem, target) {
-                bool flag = false;
-                EACH (i, elem.second) { // 合わせてO(N)
-                    auto begin = upper_bound(I_under_Y.rbegin(), I_under_Y.rend(), i, std::greater<i64>());
-                    i64 b = 0;
-                    if (begin != I_under_Y.rend()) {
-                        b = *begin + 1;
-                    }
-                    auto end = upper_bound(CTR(I_under_Y), i);
-                    auto e = N - 1;
-                    if (end != I_under_Y.end()) {
-                        e = *end - 1;
-                    }
-
-                    if (e - b + 1 >= K) {
-                        flag = true;
-                        cnt += 1;
-                        if (cnt == Q) {
-                            X = elem.first;
-                            break;
-                        }
-                    }
-                }
-
-                if (!flag && elem.first == Y) {
-                    // Yができない場合
-                    f2 = false;
-                }
-
-                if (cnt == Q) {
-                    break;
-                }
-            }
-
-            if(X >= 0 && f2) {
-                // 条件を満たす
-                ans = std::min(ans, X - Y);
-            }
+        if (index >= 0) {
+            update(index, N);
         }
+
+        if (cands.size() < Q) {
+            // Q個とれない
+            continue ;
+        }
+
+        auto Y2 = -cands.top();
+        REP (i, Q - 1) {
+            cands.pop();
+        }
+        auto X = -cands.top();
+        ans = std::min(ans, X - Y2);
     }
 
     cout << ans << endl;
