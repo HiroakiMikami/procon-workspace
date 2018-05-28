@@ -1,13 +1,17 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/arc098/tasks/arc098_c
+SCORE 600
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 最大化・最小化 貪欲法
+FAILURE_TYPE 考察不足 実装ミス
 NOTES
+コンテスト中の解法は嘘解法で、1 11 10 5, K=2みたいな場合に1を出力してしまうはず
+
+その後貪欲法とわかってからの解法はY以上の区間を求めるコードでミスがあったらしいが、どこかよくわからない
+提出解法を見て書き直したら動いてしまった。コードもきれいになったし今後は書き方に注意するということでひとまず終える
 */
 #include <iostream>
 #include <cstdint>
@@ -604,26 +608,23 @@ void body() {
          */
 
         priority_queue<i64> cands;
-        // 前計算
-        auto update = [&](auto b, auto e) {
-            Vector<i64> xs(As.begin() + b, As.begin() + e);
-            sort(CTR(xs));
-            REP (i, max(0L, e - b - K + 1)) {
-                cands.push(-xs[i]);
+        i64 i = 0;
+        while (i < N) {
+            Vector<i64> tmp;
+            tmp.reserve(N);
+            FOR (j, i, N) {
+                i += 1;
+                if (As[j] >= Y) {
+                    tmp.push_back(As[j]);
+                } else {
+                    break ;
+                }
             }
-        };
 
-        i64 index = -1;
-        REP (i, N) {
-            if (As[i] < Y && index != -1) {
-                update(index, i);
-                index = -1;
-            } else if (As[i] >= Y && index < 0) {
-                index = i;
+            sort(CTR(tmp));
+            REP(i, std::max<size_t>(0, tmp.size() - K + 1)) {
+                cands.push(-tmp[i]);
             }
-        }
-        if (index >= 0) {
-            update(index, N);
         }
 
         if (cands.size() < Q) {
