@@ -727,7 +727,7 @@ void body() {
 
     // 前計算
     auto primes = sieve(1e5);
-    dump(primes.first.back());
+    dump(primes.first.size());
     OrderedMap<i64, OrderedSet<i64>> kinds; // kinds[x] = 間隔xで停車する列車で帰る名産品の数
 
 }
