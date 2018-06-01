@@ -729,10 +729,13 @@ void body() {
     FOR (m, 1, M + 1) {
         i64 ans = 0;
         REP (i, N) {
+            if (lr[i].first <= lr[i].second - (lr[i].second % m)) {
+                ans += 1;
+            }
             if (lr[i].first % m == 0) {
-                ans += 1;
+                //ans += 1;
             } else if (lr[i].first / m != lr[i].second / m) {
-                ans += 1;
+                //ans += 1;
             }
         }
         cout << ans << endl;
