@@ -721,6 +721,13 @@ int main (int argc, char **argv) {
 }
 
 void body() {
-    auto x = sieve(3 * 1e5);
-    dump(x.first.size());
+    auto N = read<i64>();
+    auto M = read<i64>();
+    auto lr = read<i64, i64>(N);
+
+    // 前計算
+    auto primes = sieve(M);
+    dump(primes.first.back());
+    OrderedMap<i64, OrdredSet<i64>> kinds; // kinds[x] = 間隔xで停車する列車で帰る名産品の数
+
 }
