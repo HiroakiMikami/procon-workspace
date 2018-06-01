@@ -725,9 +725,16 @@ void body() {
     auto M = read<i64>();
     auto lr = read<i64, i64>(N);
 
-    // 前計算
-    auto primes = sieve(1e5);
-    dump(primes.first.size());
-    OrderedMap<i64, OrderedSet<i64>> kinds; // kinds[x] = 間隔xで停車する列車で帰る名産品の数
-
+    // 愚直解
+    FOR (m, 1, M + 1) {
+        i64 ans = 0;
+        REP (i, N) {
+            if (lr[i].first % m == 0) {
+                ans += 1;
+            } else if (lr[i].first / m != lr[i].second / m) {
+                ans += 1;
+            }
+        }
+        cout << ans << endl;
+    }
 }
