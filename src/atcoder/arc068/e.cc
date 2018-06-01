@@ -728,6 +728,6 @@ void body() {
     // 前計算
     auto primes = sieve(M);
     dump(primes.first.back());
-    OrderedMap<i64, OrdredSet<i64>> kinds; // kinds[x] = 間隔xで停車する列車で帰る名産品の数
+    OrderedMap<i64, OrderedSet<i64>> kinds; // kinds[x] = 間隔xで停車する列車で帰る名産品の数
 
 }
