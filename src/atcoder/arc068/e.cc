@@ -646,11 +646,11 @@ struct BinaryIndexedTree {
     auto cend() const {
         return this->m_bit.cend();
     }
+    vector<T> m_bit;
 private:
     static auto lsb(size_t i) {
         return i & -i;
     }
-    vector<T> m_bit;
 };
 template <class T> using BIT = BinaryIndexedTree<T>;
 
@@ -676,12 +676,12 @@ void body() {
         X.add(elem.second + 1, -1);
     }
 
+    dump_seq(X.m_bit);
     // 愚直解
     FOR (m, 1, M + 1) {
         i64 ans = 0;
         FOR (k, 1, M / m) {
             auto x = k * m;
-            dump(x, X.at(x));
             ans += X.sum(x);
         }
         cout << ans << endl;
