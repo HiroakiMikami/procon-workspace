@@ -679,10 +679,9 @@ void body() {
     // 愚直解
     FOR (m, 1, M + 1) {
         i64 ans = 0;
-        REP (i, N) {
-            if (lr[i].first <= lr[i].second - (lr[i].second % m)) {
-                ans += 1;
-            }
+        FOR (k, 1, M / m) {
+            auto x = k * m;
+            ans += X.at(x);
         }
         cout << ans << endl;
     }
