@@ -673,7 +673,7 @@ void body() {
     auto K = Vector<pair<i64, i64>>(); // 長さ順にsortされた名産品
     K.reserve(N);
     EACH (elem, lr) {
-        K.emplace_back(lr.second - lr.first + 1, lr.first);
+        K.emplace_back(elem.second - elem.first + 1, elem.first);
     }
     sort(CTR(K));
 
