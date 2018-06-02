@@ -676,6 +676,10 @@ void body() {
         X.add(elem.second + 1, -1);
     }
 
+    REP (m, M + 2) {
+        dump(m, X.at(m));
+    }
+
     // 愚直解
     FOR (m, 1, M + 1) {
         i64 ans = 0;
