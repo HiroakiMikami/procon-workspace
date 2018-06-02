@@ -676,13 +676,12 @@ void body() {
         X.add(elem.second + 1, -1);
     }
 
-    dump_seq(X.m_bit);
     // 愚直解
     FOR (m, 1, M + 1) {
         i64 ans = 0;
         FOR (k, 1, M / m) {
             auto x = k * m;
-            ans += X.sum(x);
+            ans += X.sum(x + 1);
         }
         cout << ans << endl;
     }
