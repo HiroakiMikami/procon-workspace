@@ -1,13 +1,18 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/arc068/tasks/arc068_c
+SCORE 700
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 累積和 BinaryIndexedTree 区間 クエリ処理 全探索
+FAILURE_TYPE 知識不足 考察力不足
 NOTES
+愚直解の構成はできた。ただ、
+1) 停車駅を探索するループでなく、名産品を探索するループを書いたこと
+2) その後の高速化で素因数分解などにむかったこと
+の2点が間違っていて高速化できなかった。1については、BITを使うことを思いつけば方向転換はできる気がする。2については経験不足。
+区間[l, r]に対して一律xを足す操作は、lで+x, (r+1)で-xをBIT上で足すことでO(logN)で実現できることは覚えておく必要がある
 */
 #include <iostream>
 #include <cstdint>
