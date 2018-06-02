@@ -677,7 +677,7 @@ void body() {
     }
 
     REP (m, M + 2) {
-        dump(m, X.at(m));
+        dump(m, X.sum(m));
     }
 
     // 愚直解
