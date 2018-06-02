@@ -691,6 +691,7 @@ void body() {
 
             k += 1;
         }
+        dump(m, k);
 
         i64 ans = N - k;
         FOR (k, 1, M / m + 1) {
