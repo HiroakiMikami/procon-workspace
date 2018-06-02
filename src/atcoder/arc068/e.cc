@@ -700,6 +700,7 @@ void body() {
             if (x > M) continue;
             ans += X.sum(x + 1);
         }
+        dump(m, ans);
         cout << ans << endl;
     }
 }
