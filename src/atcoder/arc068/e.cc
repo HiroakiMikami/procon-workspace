@@ -682,7 +682,7 @@ void body() {
         FOR (k, 1, M / m) {
             auto x = k * m;
             dump(x, X.at(x));
-            ans += X.at(x);
+            ans += X.sum(x);
         }
         cout << ans << endl;
     }
