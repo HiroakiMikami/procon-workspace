@@ -670,20 +670,32 @@ void body() {
     auto M = read<i64>();
     auto lr = read<i64, i64>(N);
 
-    BIT<i64> X(M + 2);
+    auto K = Vector<pair<i64, i64>>(); // 長さ順にsortされた名産品
+    K.reserve(N);
     EACH (elem, lr) {
-        X.add(elem.first, 1);
-        X.add(elem.second + 1, -1);
+        K.emplace_back(lr.second - lr.first + 1, lr.first);
     }
+    sort(CTR(K));
 
-    // 愚直解
+    BIT<i64> X(M + 2); // X.sum(x + 1) := xで買えるる名産品の数（ただし、1回しか停車できない場合）
+
+
+    size_t k = 0;
     FOR (m, 1, M + 1) {
-        i64 ans = 0;
-        dump(m, M / m);
+        // length <= mを満たす名産品について、Xへ追加
+        while (k < N) {
+            if (K[k].first > m) break;
+
+            X.add(K[k].second, 1);
+            X.add(K[k].second + K[k].second, -1);
+
+            k += 1;
+        }
+
+        i64 ans = N - k;
         FOR (k, 1, M / m + 1) {
             auto x = k * m;
             if (x > M) continue;
-            dump(x);
             ans += X.sum(x + 1);
         }
         cout << ans << endl;
