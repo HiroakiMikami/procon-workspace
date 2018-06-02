@@ -680,8 +680,9 @@ void body() {
     FOR (m, 1, M + 1) {
         i64 ans = 0;
         dump(m, M / m);
-        FOR (k, 1, M / m) {
+        FOR (k, 1, M / m + 1) {
             auto x = k * m;
+            if (x > M) continue;
             dump(x);
             ans += X.sum(x + 1);
         }
