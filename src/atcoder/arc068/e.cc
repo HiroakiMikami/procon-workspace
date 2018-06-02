@@ -681,6 +681,7 @@ void body() {
         i64 ans = 0;
         FOR (k, 1, M / m) {
             auto x = k * m;
+            dump(x);
             ans += X.at(x);
         }
         cout << ans << endl;
