@@ -688,7 +688,7 @@ void body() {
 
             dump("append", k, K[k]);
             X.add(K[k].second, 1);
-            X.add(K[k].second + K[k].second, -1);
+            X.add(K[k].second + K[k].first, -1);
 
             k += 1;
         }
