@@ -679,20 +679,17 @@ void body() {
 
     BIT<i64> X(M + 2); // X.sum(x + 1) := xで買えるる名産品の数（ただし、1回しか停車できない場合）
 
-
     size_t k = 0;
     FOR (m, 1, M + 1) {
         // length <= mを満たす名産品について、Xへ追加
         while (k < N) {
             if (K[k].first > m) break;
 
-            dump("append", k, K[k]);
             X.add(K[k].second, 1);
             X.add(K[k].second + K[k].first, -1);
 
             k += 1;
         }
-        dump(m, k);
 
         i64 ans = N - k;
         FOR (i, 1, M / m + 1) {
@@ -700,7 +697,6 @@ void body() {
             if (x > M) continue;
             ans += X.sum(x + 1);
         }
-        dump(m, ans);
         cout << ans << endl;
     }
 }
