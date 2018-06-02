@@ -686,6 +686,7 @@ void body() {
         while (k < N) {
             if (K[k].first > m) break;
 
+            dump("append", k);
             X.add(K[k].second, 1);
             X.add(K[k].second + K[k].second, -1);
 
@@ -694,8 +695,8 @@ void body() {
         dump(m, k);
 
         i64 ans = N - k;
-        FOR (k, 1, M / m + 1) {
-            auto x = k * m;
+        FOR (i, 1, M / m + 1) {
+            auto x = i * m;
             if (x > M) continue;
             ans += X.sum(x + 1);
         }
