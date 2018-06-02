@@ -686,7 +686,7 @@ void body() {
         while (k < N) {
             if (K[k].first > m) break;
 
-            dump("append", k);
+            dump("append", k, K[k]);
             X.add(K[k].second, 1);
             X.add(K[k].second + K[k].second, -1);
 
