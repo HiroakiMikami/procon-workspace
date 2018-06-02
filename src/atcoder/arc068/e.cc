@@ -682,6 +682,7 @@ void body() {
         dump(m, M / m);
         FOR (k, 1, M / m) {
             auto x = k * m;
+            dump(x);
             ans += X.sum(x + 1);
         }
         cout << ans << endl;
