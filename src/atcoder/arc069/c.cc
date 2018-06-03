@@ -540,6 +540,8 @@ void body() {
         // X個Sにかえるとき
         auto n = N + X;
         auto m = M - 2 * X;
+        if (X < 0) continue;
+        if (m < 0) continue;
         if (2 * n < m) {
             ans = std::max(ans, n);
         } else {
