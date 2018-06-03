@@ -570,6 +570,21 @@ void body() {
             }
         }
 
+        // str[N-1], str[0], str[1]が矛盾していないか
+        if (str[0] == 'W') {
+            if (s[0] == 'o') {
+                if (str[N - 1] == str[1]) return "";
+            } else {
+                if (str[N - 1] != str[1]) return "";
+            }
+        } else {
+            if (s[0] == 'o') {
+                if (str[N - 1] != str[1]) return "";
+            } else {
+                if (str[N - 1] == str[1]) return "";
+            }
+        }
+
         return str;
     };
 
