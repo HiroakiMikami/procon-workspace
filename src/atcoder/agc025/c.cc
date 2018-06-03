@@ -804,6 +804,7 @@ void body() {
                     // 終わり
                     break;
                 }
+                dump(result);
                 is_used[result.first] = true;
 
                 // TODO i.second < x
@@ -827,6 +828,7 @@ void body() {
                 }
                 is_used[result.first] = true;
 
+                dump(result);
                 // TODO i.first > x
                 K += std::abs(x - result.second.first);
                 x = result.second.first;
