@@ -838,6 +838,7 @@ void body() {
             // 次は逆側
             to_left = !to_left;
         }
+        dump(x);
         return K + abs(x);
     };
 
