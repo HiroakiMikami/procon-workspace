@@ -773,8 +773,8 @@ void body() {
     auto Is = read<i64, i64>(N);
 
     auto solve = [=](bool to_left) {
-        auto L = [](const auto i1, const auto i2) { return i1.first < i2.first; };
-        auto R = [](const auto i1, const auto i2) { return i1.second > i2.second; };
+        auto L = [](const auto i1, const auto i2) { return i1.second.first < i2.second.first; };
+        auto R = [](const auto i1, const auto i2) { return i1.second.second > i2.second.second; };
         std::priority_queue<pair<i64, pair<i64, i64>>, vector<pair<i64, pair<i64, i64>>>, decltype(L)> I_l(L);
         std::priority_queue<pair<i64, pair<i64, i64>>, vector<pair<i64, pair<i64, i64>>>, decltype(R)> I_r(R);
 
