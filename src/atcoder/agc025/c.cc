@@ -794,6 +794,9 @@ void body() {
                 while (!I_r.empty()) {
                     auto i = I_r.top();
                     I_r.pop();
+                    if (i.second.second < x) {
+                        continue;
+                    }
                     if (!is_used[i.first]) {
                         result = i;
                         break ;
@@ -816,6 +819,9 @@ void body() {
                 while (!I_l.empty()) {
                     auto i = I_l.top();
                     I_l.pop();
+                    if (i.second.first > x) {
+                        continue;
+                    }
                     if (!is_used[i.first]) {
                         result = i;
                         break ;
