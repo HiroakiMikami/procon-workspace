@@ -794,7 +794,7 @@ void body() {
                 while (!I_r.empty()) {
                     auto i = I_r.top();
                     I_r.pop();
-                    if (i.second.second < x) {
+                    if (i.second.second > x) {
                         continue;
                     }
                     if (!is_used[i.first]) {
@@ -810,7 +810,6 @@ void body() {
                 dump(x, result);
                 is_used[result.first] = true;
 
-                // TODO i.second < x
                 K += std::abs(x - result.second.second);
                 x = result.second.second;
             } else {
@@ -819,7 +818,7 @@ void body() {
                 while (!I_l.empty()) {
                     auto i = I_l.top();
                     I_l.pop();
-                    if (i.second.first > x) {
+                    if (i.second.first < x) {
                         continue;
                     }
                     if (!is_used[i.first]) {
@@ -835,7 +834,6 @@ void body() {
                 is_used[result.first] = true;
 
                 dump(x, result);
-                // TODO i.first > x
                 K += std::abs(x - result.second.first);
                 x = result.second.first;
 
