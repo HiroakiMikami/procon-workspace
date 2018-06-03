@@ -781,8 +781,8 @@ void body() {
         Vector<bool> is_used(N, false);
 
         REP (i, Is) {
-            I_l.emplace(i, make_pair(Is[i]));
-            I_r.emplace(i, make_pair(Is[i]));
+            I_l.emplace(i, Is[i]);
+            I_r.emplace(i, Is[i]);
         }
 
         i64 x = 0; // xにあり、次に左に動く(to_left == true) or 右に動く(to_left == false)
