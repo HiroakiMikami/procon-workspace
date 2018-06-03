@@ -838,7 +838,7 @@ void body() {
             // 次は逆側
             to_left = !to_left;
         }
-        return K;
+        return K + abs(x);
     };
 
     auto k1 = solve(true);
