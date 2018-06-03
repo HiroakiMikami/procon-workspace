@@ -844,7 +844,6 @@ void body() {
     };
 
     auto k1 = solve(true);
-    dump("---");
     auto k2 = solve(false);
     cout << std::max(k1, k2) << std::endl;
 
