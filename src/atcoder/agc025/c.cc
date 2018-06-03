@@ -813,7 +813,7 @@ void body() {
             } else {
                 // 左に動く = R_iが最小の範囲を選ぶ
                 pair<i64, pair<i64, i64>> result = {-1, {0, 0}};
-                while (!I_r.empty()) {
+                while (!I_l.empty()) {
                     auto i = I_l.top();
                     I_l.pop();
                     if (!is_used[i.first]) {
@@ -842,6 +842,7 @@ void body() {
     };
 
     auto k1 = solve(true);
+    dump("---")
     auto k2 = solve(false);
     cout << std::max(k1, k2) << std::endl;
 
