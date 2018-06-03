@@ -780,7 +780,7 @@ void body() {
 
         Vector<bool> is_used(N, false);
 
-        REP (i, Is) {
+        REP (i, N) {
             I_l.emplace(i, Is[i]);
             I_r.emplace(i, Is[i]);
         }
