@@ -807,8 +807,8 @@ void body() {
                 is_used[i.first] = true;
 
                 // TODO i.second < x
-                K += std::abs(x - i.second.second);
-                x = i.second.second;
+                K += std::abs(x - result.second.second);
+                x = result.second.second;
             } else {
                 // 左に動く = R_iが最小の範囲を選ぶ
                 pair<i64, pair<i64, i64>> result = {-1, {0, 0}};
@@ -825,11 +825,11 @@ void body() {
                     // 終わり
                     break;
                 }
-                is_used[i.first] = true;
+                is_used[result.first] = true;
 
                 // TODO i.first > x
-                K += std::abs(x - i.second.first);
-                x = i.second.first;
+                K += std::abs(x - result.second.first);
+                x = result.second.first;
 
             }
 
