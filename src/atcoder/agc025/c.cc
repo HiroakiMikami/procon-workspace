@@ -794,7 +794,7 @@ void body() {
                 while (!I_r.empty()) {
                     auto i = I_r.top();
                     I_r.pop();
-                    if (!is_used[i]) {
+                    if (!is_used[i.first]) {
                         result = i;
                         break ;
                     }
