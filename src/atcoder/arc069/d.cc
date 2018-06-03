@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/arc069/tasks/arc069_b
+SCORE 500
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE シミュレーション 全探索 判定
 FAILURE_TYPE
 NOTES
+2匹を決めればあとはO(N)で判定できるので、2匹の決め方2^2=4通りを全探索
 */
 #include <iostream>
 #include <cstdint>
