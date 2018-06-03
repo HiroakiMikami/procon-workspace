@@ -794,6 +794,7 @@ void body() {
                 while (!I_r.empty()) {
                     auto i = I_r.top();
                     I_r.pop();
+                    dump(x, i, "tmp");
                     if (!is_used[i.first]) {
                         result = i;
                         break ;
@@ -811,7 +812,7 @@ void body() {
                 K += std::abs(x - result.second.second);
                 x = result.second.second;
             } else {
-                // 左に動く = R_iが最小の範囲を選ぶ
+                // 右に動く = L_iが最大の範囲を選ぶ
                 pair<i64, pair<i64, i64>> result = {-1, {0, 0}};
                 while (!I_l.empty()) {
                     auto i = I_l.top();
