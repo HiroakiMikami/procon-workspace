@@ -807,7 +807,6 @@ void body() {
                     // 終わり
                     break;
                 }
-                dump(x, result);
                 is_used[result.first] = true;
 
                 K += std::abs(x - result.second.second);
@@ -833,7 +832,6 @@ void body() {
                 }
                 is_used[result.first] = true;
 
-                dump(x, result);
                 K += std::abs(x - result.second.first);
                 x = result.second.first;
 
@@ -842,7 +840,6 @@ void body() {
             // 次は逆側
             to_left = !to_left;
         }
-        dump(x);
         return K + abs(x);
     };
 
