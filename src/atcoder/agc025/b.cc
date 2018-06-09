@@ -1037,15 +1037,16 @@ void body() {
     REP (n, N + 1) {
         // Aでn個を塗る
         auto R = K - n * A;
+        if (R < 0) continue;
         if (R % B != 0) continue;
 
-        i64 m = R/ B;
+        i64 m = R / B;
 
         if (n > N || m > N) continue;
 
         /* Aで塗るものn個、Bで塗るものm個を決める */
-        auto a = fact[N].value * fact[N - n].inverse * fact[n].inverse;
-        auto b = fact[N].value * fact[N - m].inverse * fact[m].inverse;
+        auto a = fact[N].value * fact[N - n].value.inverse() * fact[n].value.inverse();
+        auto b = fact[N].value * fact[N - m].value.inverse() * fact[m].value.inverse();
         ans += a * b;
     }
     cout << ans.get() << endl;
