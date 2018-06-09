@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/arc069/tasks/arc069_c
+SCORE 700
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 最小化・最大化 辞書順 貪欲法 シミュレーション
+FAILURE_TYPE 考察不足
 NOTES
+試行錯誤しているときの不要な実装によって1WA
 */
 #include <iostream>
 #include <cstdint>
