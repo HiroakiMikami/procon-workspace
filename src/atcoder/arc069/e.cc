@@ -548,14 +548,12 @@ void body() {
     i64 P = 0;
     i64 total = 0;
     FORR(i, 1, Xs.size()) {
-        dump(Xs[i].first, "foo");
         auto n_0 = Xs[i].first;
         auto n_1 = Xs[i - 1].first;
         if (Xs[i].second.empty()) continue;
         if (M > Xs[i].second.front()) {
             M = Xs[i].second.front();
             P = n_0;
-            dump(M, P);
         }
         total += Xs[i].second.size();
 
