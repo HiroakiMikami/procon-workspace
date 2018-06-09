@@ -541,7 +541,7 @@ void body() {
     Vector<pair<i64, Vector<i64>>> Xs = {make_pair(0L, Vector<i64>())};
     EACH (x, xs) {
         Xs.push_back(x);
-        dump(x);
+        dump(x.first, Xs.size());
     }
 
     Vector<i64> ans(N, 0);
