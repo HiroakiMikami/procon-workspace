@@ -545,7 +545,6 @@ void body() {
 
     Vector<i64> ans(N, 0);
     i64 M = numeric_limits<i64>::max();
-    i64 P = 0;
     i64 total = 0;
     FORR(i, 1, Xs.size()) {
         auto n_0 = Xs[i].first;
@@ -553,11 +552,10 @@ void body() {
         if (Xs[i].second.empty()) continue;
         if (M > Xs[i].second.front()) {
             M = Xs[i].second.front();
-            P = n_0;
         }
         total += Xs[i].second.size();
 
-        ans[M] += total * (P - n_1);
+        ans[M] += total * (n_0 - n_1);
     }
 
     REP (i, N) {
