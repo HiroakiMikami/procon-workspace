@@ -1032,7 +1032,7 @@ void body() {
     auto fact = mod::fact_table(N);
     auto fact_inv = Vector<mod::Integer>(N + 1);
     REP (i, N + 1) {
-        fact_inv = fact[i].inverse();
+        fact_inv[i] = fact[i].inverse();
     }
 
     using namespace mod;
