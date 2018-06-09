@@ -546,13 +546,17 @@ void body() {
 
     Vector<i64> ans(N, 0);
     i64 M = numeric_limits<i64>::max();
+    i64 N = 0;
     FORR(i, 1, Xs.size()) {
         auto n_0 = Xs[i].first;
         auto n_1 = Xs[i - 1].first;
         if (Xs[i].second.empty()) continue;
-        M = std::min(M, Xs[i].second.front());
+        if (M > Xs[i].second.front()) {
+            M = Xs[i].second.front();
+            N = n_0;
+        }
 
-        ans[M] += Xs[i].second.size() * (n_0 - n_1);
+        ans[M] += Xs[i].second.size() * (N - n_1);
     }
 
     REP (i, N) {
