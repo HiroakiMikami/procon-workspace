@@ -541,8 +541,8 @@ void body() {
     Vector<pair<i64, Vector<i64>>> Xs = {make_pair(0L, Vector<i64>())};
     EACH (x, xs) {
         Xs.push_back(x);
+        dump(x);
     }
-    dump_seq(Xs);
 
     Vector<i64> ans(N, 0);
     i64 M = numeric_limits<i64>::max();
