@@ -542,6 +542,7 @@ void body() {
     EACH (x, xs) {
         Xs.push_back(x);
     }
+    dump_seq(Xs);
 
     Vector<i64> ans(N, 0);
     i64 M = numeric_limits<i64>::max();
