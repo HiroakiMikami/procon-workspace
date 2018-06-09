@@ -541,22 +541,21 @@ void body() {
     Vector<pair<i64, Vector<i64>>> Xs = {make_pair(0L, Vector<i64>())};
     EACH (x, xs) {
         Xs.push_back(x);
-        dump(x.first, Xs.size());
     }
 
     Vector<i64> ans(N, 0);
     i64 M = numeric_limits<i64>::max();
-    i64 N = 0;
+    i64 P = 0;
     FORR(i, 1, Xs.size()) {
         auto n_0 = Xs[i].first;
         auto n_1 = Xs[i - 1].first;
         if (Xs[i].second.empty()) continue;
         if (M > Xs[i].second.front()) {
             M = Xs[i].second.front();
-            N = n_0;
+            P = n_0;
         }
 
-        ans[M] += Xs[i].second.size() * (N - n_1);
+        ans[M] += Xs[i].second.size() * (P - n_1);
     }
 
     REP (i, N) {
