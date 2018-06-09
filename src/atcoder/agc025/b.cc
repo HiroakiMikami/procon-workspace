@@ -1027,7 +1027,7 @@ void body() {
     auto N = read<i64>();
     auto A = read<i64>();
     auto B = read<i64>();
-    auto K = read<u64>();
+    auto K = read<i64>();
 
     auto fact = mod::fact_table(N);
 
