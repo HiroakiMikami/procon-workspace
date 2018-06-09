@@ -547,6 +547,7 @@ void body() {
     i64 M = numeric_limits<i64>::max();
     i64 P = 0;
     FORR(i, 1, Xs.size()) {
+        dump(Xs[i].first, "foo");
         auto n_0 = Xs[i].first;
         auto n_1 = Xs[i - 1].first;
         if (Xs[i].second.empty()) continue;
