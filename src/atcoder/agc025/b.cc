@@ -1030,10 +1030,6 @@ void body() {
     auto K = read<u64>();
 
     auto fact = mod::fact_table(N);
-    auto fact_inv = Vector<mod::Integer>(N + 1);
-    REP (i, N + 1) {
-        fact_inv[i] = fact[i].inverse();
-    }
 
     using namespace mod;
     Integer ans;
@@ -1048,8 +1044,8 @@ void body() {
         if (n > N || m > N) continue;
 
         /* Aで塗るものn個、Bで塗るものm個を決める */
-        auto a = fact[N] * fact_inv[N - n] * fact_inv[n];
-        auto b = fact[N] * fact_inv[N - m] * fact_inv[m];
+        auto a = fact[N].value * fact[N - n].inverse * fact[n].inverse;
+        auto b = fact[N].value * fact[N - m].inverse * fact[m].inverse;
         ans += a * b;
     }
     cout << ans.get() << endl;
