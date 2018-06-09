@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/agc025/tasks/agc025_b
+SCORE 700
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 数え上げ 組み合わせ mod
+FAILURE_TYPE 知識不足 オーバーフロー
 NOTES
+コンテストではmod 1e9+7以外での条件がわからず撤退した。
+解説を見た後のミスとしては、Kをu64で確保したため、その演算結果であるRもu64となって、R<0のときに領域外アクセスを起こした
 */
 #include <iostream>
 #include <cstdint>
