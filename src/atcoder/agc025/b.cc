@@ -1043,7 +1043,7 @@ void body() {
         auto R = K - n * A;
         if (R % B != 0) continue;
 
-        auto m = R/ B;
+        i64 m = R/ B;
 
         if (n > N || m > N) continue;
 
