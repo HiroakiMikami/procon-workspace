@@ -553,6 +553,7 @@ void body() {
         if (M > Xs[i].second.front()) {
             M = Xs[i].second.front();
             P = n_0;
+            dump(M, P);
         }
 
         ans[M] += Xs[i].second.size() * (P - n_1);
