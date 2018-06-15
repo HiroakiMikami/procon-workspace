@@ -771,7 +771,7 @@ int main (int argc, char **argv) {
 void body() {
     auto a = read<i64>();
     auto b = read<i64>();
-    auto x = b - a;
+    auto X = b - a;
     auto L = (X * (X - 1)) / 2;
     cout << L - a << endl;
 }
