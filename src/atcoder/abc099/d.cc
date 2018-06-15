@@ -780,7 +780,7 @@ void body() {
     auto Cs = make_matrix<i64, 2>({N, N}, 0);
     REP (i, N) {
         REP (j, N) {
-            N[i][j] = read<i64>() - 1;
+            Cs[i][j] = read<i64>() - 1;
         }
     }
 
