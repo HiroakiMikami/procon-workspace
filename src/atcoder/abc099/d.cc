@@ -803,7 +803,7 @@ void body() {
                 i64 d = 0;
                 REP (x, 3) {
                     REP (c, C) {
-                        d += num[x][c] * D[c][cs[x]]
+                        d += num[x][c] * D[c][cs[x]];
                     }
                 }
 
