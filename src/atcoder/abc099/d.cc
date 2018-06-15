@@ -771,20 +771,20 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto C = read<i64>();
-    auto D = make_matrix<2, i64>({C, C}, 0);
+    auto D = make_matrix<i64, 2>({C, C}, 0);
     REP (i, C) {
         REP (j, C) {
             D[i][j] = read<i64>();
         }
     }
-    auto Cs = make_matrix<2, i64>({N, N}, 0);
+    auto Cs = make_matrix<i64, 2>({N, N}, 0);
     REP (i, N) {
         REP (j, N) {
             N[i][j] = read<i64>() - 1;
         }
     }
 
-    auto num = make_matrix<2, i64>({3, C}, 0);
+    auto num = make_matrix<i64, 2>({3, C}, 0);
     REP (i, N) {
         REP (j, N) {
             auto x = (i + 1 + j + 1) % 3;
