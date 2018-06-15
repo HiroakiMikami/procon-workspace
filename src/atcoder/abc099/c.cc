@@ -918,7 +918,7 @@ void body() {
         }
 
         // 9**jを引き出す
-        REP (j, 5) {
+        REP (j, 6) {
             if (pow(9, j) > i) continue;
             dp[i] = min(dp[i], dp[i - pow(9, j)] + 1);
         }
