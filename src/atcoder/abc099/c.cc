@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/abc099/tasks/abc099_c
+SCORE 300
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE DP 最大化・最小化
+FAILURE_TYPE 境界条件ミス
 NOTES
+9**j<=100000を満たすjの範囲を計算ミスして1WA
+DPを思いつくまで少しかかったのも問題
 */
 #include <iostream>
 #include <cstdint>
