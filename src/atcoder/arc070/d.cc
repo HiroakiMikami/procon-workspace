@@ -810,7 +810,7 @@ void body() {
     sort(CTR(as));
 
     /* 不要な最大のa_iを求める */
-    i64 lower = 0;
+    i64 lower = -1;
     i64 upper = N;
     i64 i = (lower + upper) / 2;
     while (upper - lower > 1) {
