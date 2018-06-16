@@ -828,10 +828,6 @@ void body() {
         }
     }
 
-    EACH (e, sums) {
-        dump(as_map(e.second));
-    }
-
     i64 ans = 0;
     REP (i, N) {
         if (as[i] >= K) continue;
