@@ -852,5 +852,5 @@ void body() {
         }
     }
 
-    cout << lower + 1 << endl;
+    cout << lower << endl;
 }
