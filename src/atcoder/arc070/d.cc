@@ -815,6 +815,7 @@ void body() {
     i64 upper = N;
     i64 i = N - 1; //(lower + upper) / 2;
     while (upper - lower > 1) {
+        dump(i);
         if (as[i] >= K) {
             upper = i;
             i = (lower + upper) / 2;
