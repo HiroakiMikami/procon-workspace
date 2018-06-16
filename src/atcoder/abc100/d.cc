@@ -812,7 +812,7 @@ void body() {
 
         FOR (n, 1, N + 1) {
             auto c_n = xyz[n];
-            FOR (m, 1, n + 1) {
+            FOR (m, 1, min(M + 1,n + 1)) {
                 // dp[n][m]の更新
                 dp[n][m] = dp[n-1][m];
                 auto x = sign_x * get<0>(c_n) + sign_y * get<1>(c_n) + sign_z * get<2>(c_n);
