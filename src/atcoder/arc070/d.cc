@@ -822,6 +822,7 @@ void body() {
 
             REP (k, K) {
                 if (!sums[as[i]][k]) continue;
+                if (k + as[j] >= K) continue;
                 sums[as[i]][k + as[j]] = true;
             }
         }
