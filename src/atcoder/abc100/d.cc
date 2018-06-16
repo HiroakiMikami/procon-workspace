@@ -810,7 +810,7 @@ void body() {
     auto solve = [&](int sign_x, int sign_y, int sign_z) {
         auto dp = make_matrix<i64, 2>({N + 1, M + 1}, 0); // dp[n][m] := n個までからm個選ぶときの最大値（上記条件のもと）
 
-        FOR (n, 1, N) {
+        FOR (n, 1, N + 1) {
             auto c_n = xyz[n];
             FOR (m, 1, n + 1) {
                 // dp[n][m]の更新
