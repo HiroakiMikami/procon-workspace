@@ -832,5 +832,7 @@ void body() {
     anses[6] = solve(1, 1, -1);
     anses[7] = solve(1, 1, 1);
 
+    dump(as_set(anses));
+
     cout << *max_element(CTR(anses)) << endl;
 }
