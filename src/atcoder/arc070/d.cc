@@ -847,10 +847,10 @@ void body() {
         }
         if (flag) {
             upper = i;
-            i = (lower = upper) / 2;
+            i = (lower + upper) / 2;
         } else {
             lower = i;
-            i = (lower = upper) / 2;
+            i = (lower + upper) / 2;
         }
     }
 
