@@ -826,11 +826,11 @@ void body() {
     anses[0] = solve(-1, -1, -1);
     anses[1] = solve(-1, -1, 1);
     anses[2] = solve(-1, 1, -1);
-    anses[3] = solve(-1, 1, -1);
+    anses[3] = solve(-1, 1, 1);
     anses[4] = solve(1, -1, -1);
     anses[5] = solve(1, -1, 1);
     anses[6] = solve(1, 1, -1);
-    anses[7] = solve(1, 1, -1);
+    anses[7] = solve(1, 1, 1);
 
     dump(as_set(anses));
 
