@@ -812,7 +812,7 @@ void body() {
     i64 t = (upper + lower) / 2;
     while (upper - lower > 1) {
         auto x_t = t * (t + 1) / 2;
-        if (x_t <= X) {
+        if (x_t < X) {
             lower = t;
         } else {
             upper = t;
@@ -820,8 +820,6 @@ void body() {
         t = (lower + upper) / 2;
     }
 
-    auto x_t = lower * (lower + 1) / 2;
-    auto diff = X - x_t;
-    cout << lower + diff << endl;
+    cout << lower + 1 << endl;
 
 }
