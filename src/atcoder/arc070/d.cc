@@ -828,7 +828,9 @@ void body() {
         }
     }
 
-    dump(as_map(sums));
+    ELEM(e, sums) {
+        dump(as_map(e.second));
+    }
 
     i64 ans = 0;
     REP (i, N) {
