@@ -808,6 +808,7 @@ void body() {
     auto as = read<i64>(N);
 
     sort(CTR(as));
+    dump(as_map(as));
 
     /* 不要な最大のa_iを求める */
     i64 lower = 0;
