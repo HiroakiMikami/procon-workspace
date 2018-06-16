@@ -828,6 +828,8 @@ void body() {
         }
     }
 
+    dump(as_map(sums));
+
     i64 ans = 0;
     REP (i, N) {
         if (as[i] >= K) continue;
