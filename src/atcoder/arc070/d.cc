@@ -828,7 +828,7 @@ void body() {
         }
     }
 
-    ELEM(e, sums) {
+    EACH (e, sums) {
         dump(as_map(e.second));
     }
 
