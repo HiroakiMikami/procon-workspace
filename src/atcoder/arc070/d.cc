@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
-TLE false
+URL https://beta.atcoder.jp/contests/arc070/tasks/arc070_b
+SCORE 600
+AC true
+WA true
+TLE true
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 二分探索 DP
+FAILURE_TYPE 考察不足 実装ミス
 NOTES
+部分点まではできたが、そこから二分探索に繋げられなかった。
+二分探索でも、lower=0として常に1個は不要なものがある前提で実装してしまいWAした。
 */
 #include <iostream>
 #include <cstdint>

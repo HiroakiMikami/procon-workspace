@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/arc070/tasks/arc070_a
+SCORE 200
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE 最大化・最小化
-FAILURE_TYPE
+TASK_TYPE 最大化・最小化 二分探索
+FAILURE_TYPE utilバグ 考察不足
 NOTES
+t(t+1)/2>=Xなら常にたどり着けるというところの考察ができていなかった。
 */
 #include <iostream>
 #include <cstdint>
@@ -821,5 +822,4 @@ void body() {
     }
 
     cout << lower + 1 << endl;
-
 }
