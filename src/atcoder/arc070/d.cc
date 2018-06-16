@@ -807,42 +807,50 @@ void body() {
     auto K = read<i64>();
     auto as = read<i64>(N);
 
-    OrderedMap<i64, Vector<bool>> sums; // sums[i][k] := iを含んで総和k+iを作れるか
-    REP (i, N) {
-        if (sums.find(as[i]) != sums.end()) {
-            continue ;
-        }
-        if (as[i] >= K) continue;
+    sort(CTR(as));
 
-        sums[as[i]] = Vector<bool>(K, false);
-        sums[as[i]][0] = true;
+    /* 不要な最大のa_iを求める */
+    i64 lower = 0;
+    i64 upper = N;
+    i64 i = (lower + upper) / 2;
+    while (upper - lower > 1) {
+        if (as[i] >= K) {
+            upper = i;
+            i = (lower = upper) / 2;
+            continue;
+        }
+
+        // sum[k] := iを含んで総和k+iを作れるか
+        Vector<bool> sum(K, false);
+        sum[0] = true;
 
         REP (j, N) {
             if (i == j) continue;
 
             REPR (k, K) {
-                if (!sums[as[i]][k]) continue;
+                if (!sum[k]) continue;
                 if (k + as[j] >= K) continue;
-                sums[as[i]][k + as[j]] = true;
+                sum[k + as[j]] = true;
             }
         }
-    }
-
-    i64 ans = 0;
-    REP (i, N) {
-        if (as[i] >= K) continue;
 
         // iを含んでK〜K+as[i]-1が作れる時だめ
-        // sums[as[i]][K-as[i]]〜sums[as[i]][K-1]がtrueならだめ
+        // sum[K-as[i]]〜sum[K-1]がtrueならだめ
         bool flag = false;
         FOR (j, 1, as[i] + 1) {
-            if (sums[as[i]][K - j]) {
+            if (sum[K - j]) {
                 flag = true;
                 break;
             }
         }
-        if (flag) continue;
-        ans += 1;
+        if (flag) {
+            upper = i;
+            i = (lower = upper) / 2;
+        } else {
+            lower = i;
+            i = (lower = upper) / 2;
+        }
     }
-    cout << ans << endl;
+
+    cout << lower + 1 << endl;
 }
