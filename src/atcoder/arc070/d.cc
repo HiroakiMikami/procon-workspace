@@ -808,7 +808,6 @@ void body() {
     auto as = read<i64>(N);
 
     sort(CTR(as));
-    dump(as_map(as));
 
     /* 不要な最大のa_iを求める */
     i64 lower = 0;
@@ -817,7 +816,7 @@ void body() {
     while (upper - lower > 1) {
         if (as[i] >= K) {
             upper = i;
-            i = (lower = upper) / 2;
+            i = (lower + upper) / 2;
             continue;
         }
 
