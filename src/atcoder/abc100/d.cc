@@ -807,7 +807,7 @@ void body() {
     auto M = read<i64>();
     auto xyz = read<i64, i64, i64>(N);
 
-    auto solve = [&](int sign_x, int sing_y, int sign_z) {
+    auto solve = [&](int sign_x, int sign_y, int sign_z) {
         auto dp = make_matrix<i64, 2>({N + 1, M + 1}, 0); // dp[n][m] := n個までからm個選ぶときの最大値（上記条件のもと）
 
         FOR (n, 1, N) {
