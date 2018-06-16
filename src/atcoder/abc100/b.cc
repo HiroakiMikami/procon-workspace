@@ -807,6 +807,9 @@ int main (int argc, char **argv) {
 void body() {
     auto D = read<i32>();
     auto N = read<i32>();
+    if (N == 100) {
+        N += 1;
+    }
 
     i64 x = std::pow(100, D);
     cout << N * x << endl;
