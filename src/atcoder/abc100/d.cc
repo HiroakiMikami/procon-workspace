@@ -818,7 +818,11 @@ void body() {
                 // dp[n][m]の更新
                 dp[n][m] = dp[n-1][m];
                 auto x = sign_x * get<0>(c_n) + sign_y * get<1>(c_n) + sign_z * get<2>(c_n);
-                dp[n][m] = std::max(dp[n][m], dp[n-1][m-1] + x);
+                if (dp[n][m] == -1) {
+                    dp[n][m] = dp[n][m], dp[n-1][m-1] + x;
+                } else {
+                    dp[n][m] = std::max(dp[n][m], dp[n-1][m-1] + x);
+                }
             }
         }
         return dp[N][M];
