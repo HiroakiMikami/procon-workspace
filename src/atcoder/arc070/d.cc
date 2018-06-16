@@ -807,7 +807,7 @@ void body() {
     auto K = read<i64>();
     auto as = read<i64>(N);
 
-    OrderedMap<i64, Vector<bool>> sums; // sums[i][k] := iを含んで総和kを作れるか
+    OrderedMap<i64, Vector<bool>> sums; // sums[i][k] := iを含んで総和k+iを作れるか
     REP (i, N) {
         if (sums.find(as[i]) != sums.end()) {
             continue ;
@@ -815,7 +815,7 @@ void body() {
         if (as[i] >= K) continue;
 
         sums[as[i]] = Vector<bool>(K, false);
-        sums[as[i]][as[i]] = true;
+        sums[as[i]][0] = true;
 
         REP (j, N) {
             if (i == j) continue;
@@ -828,4 +828,21 @@ void body() {
         }
     }
 
+    i64 ans = 0;
+    REP (i, N) {
+        if (as[i] >= K) continue;
+
+        // iを含んでK〜K+as[i]-1が作れる時だめ
+        // sums[as[i]][K-as[i]]〜sums[as[i]][K-1]がtrueならだめ
+        bool flag = false;
+        FOR (j, 1, as[i] + 1) {
+            if (sums[as[i]][K - j]) {
+                flag = true;
+                break;
+            }
+        }
+        if (flag) continue;
+        ans += 1;
+    }
+    cout << ans << endl;
 }
