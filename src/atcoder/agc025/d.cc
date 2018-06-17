@@ -1121,7 +1121,7 @@ void body() {
     g_2.to_undirected();
 
     // 彩色
-    HashSet<i64> V11, V12;
+    OrderedSet<i64> V11, V12;
     REP (id, 4 * N * N) {
         if (V11.find(id) != V11.end() || V12.find(id) != V12.end()) {
             continue;
@@ -1150,7 +1150,7 @@ void body() {
         }
     }
 
-    HashSet<i64> V21, V22;
+    OrderedSet<i64> V21, V22;
     REP (id, 4 * N * N) {
         if (V21.find(id) != V21.end() || V22.find(id) != V22.end()) {
             continue;
