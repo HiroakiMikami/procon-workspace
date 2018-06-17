@@ -1148,10 +1148,6 @@ void body() {
         }
     }
 
-    EACH_V(edge, g_2.edges()) {
-        dump(to_p(get<0>(edge)), to_p(get<1>(edge)));
-    }
-
     // 彩色
     Vector<i64> V1(4 * N * N, 0);
     REP (id, 4 * N * N) {
