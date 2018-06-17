@@ -1131,13 +1131,11 @@ void body() {
 
     REP (s, 2 * N) {
         FOR (t, s, 2 * N) {
-            auto id1 = to_id(s, t);
-            auto id2 = to_id(t, s);
             REP (i, 2 * N) {
                 i64 j_1 = static_cast<i64>(std::sqrt(D1 - i * i));
                 i64 j_2 = static_cast<i64>(std::sqrt(D2 - i * i));
 
-                //if (j_1 < i && j_2 < i) break;
+                if (j_1 < i && j_2 < i) break;
 
                 if (j_1 >= i && i * i + j_1 * j_1 == D1) {
                     add_edge(g_1, s, t, i, j_1);
@@ -1148,6 +1146,10 @@ void body() {
                 }
             }
         }
+    }
+
+    EACH_V(edge, g_1.edges()) {
+        dump(to_p(get<0>(edge)), to_p(get<1>(edge)));
     }
 
     // 彩色
