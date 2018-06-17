@@ -1117,6 +1117,8 @@ void body() {
             }
         }
     }
+    g_1.to_undirected();
+    g_2.to_undirected();
 
     // 彩色
     HashSet<i64> V11, V12;
