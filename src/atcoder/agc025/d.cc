@@ -1106,22 +1106,26 @@ void body() {
     // グラフの構築
     auto add_edge = [&](auto &g, auto s, auto t, auto i, auto j) {
         HashSet<pair<i64, i64>> edges;
-        edges.emplace(to_id(s, t), to_id(s+i, t+j));
-        edges.emplace(to_id(s, t), to_id(s+i, t-j));
-        edges.emplace(to_id(s, t), to_id(s-i, t+j));
-        edges.emplace(to_id(s, t), to_id(s-i, t-j));
-        edges.emplace(to_id(s, t), to_id(s+j, t+i));
-        edges.emplace(to_id(s, t), to_id(s+j, t-i));
-        edges.emplace(to_id(s, t), to_id(s-j, t+i));
-        edges.emplace(to_id(s, t), to_id(s-j, t-i));
-        edges.emplace(to_id(t, s), to_id(t+i, s+j));
-        edges.emplace(to_id(t, s), to_id(t+i, s-j));
-        edges.emplace(to_id(t, s), to_id(t-i, s+j));
-        edges.emplace(to_id(t, s), to_id(t-i, s-j));
-        edges.emplace(to_id(t, s), to_id(t+j, s+i));
-        edges.emplace(to_id(t, s), to_id(t+j, s-i));
-        edges.emplace(to_id(t, s), to_id(t-j, s+i));
-        edges.emplace(to_id(t, s), to_id(t-j, s-i));
+        auto f = [&](auto from, auto to) {
+            if (to < 0) return ;
+            g.add_edge(make_tuple(from, to));
+        };
+        f(to_id(s, t), to_id(s+i, t+j));
+        f(to_id(s, t), to_id(s+i, t-j));
+        f(to_id(s, t), to_id(s-i, t+j));
+        f(to_id(s, t), to_id(s-i, t-j));
+        f(to_id(s, t), to_id(s+j, t+i));
+        f(to_id(s, t), to_id(s+j, t-i));
+        f(to_id(s, t), to_id(s-j, t+i));
+        f(to_id(s, t), to_id(s-j, t-i));
+        f(to_id(t, s), to_id(t+i, s+j));
+        f(to_id(t, s), to_id(t+i, s-j));
+        f(to_id(t, s), to_id(t-i, s+j));
+        f(to_id(t, s), to_id(t-i, s-j));
+        f(to_id(t, s), to_id(t+j, s+i));
+        f(to_id(t, s), to_id(t+j, s-i));
+        f(to_id(t, s), to_id(t-j, s+i));
+        f(to_id(t, s), to_id(t-j, s-i));
 
         EACH (elem, edges) {
             if (elem.second < 0) continue;
@@ -1131,7 +1135,6 @@ void body() {
 
     REP (s, 2 * N) {
         FOR (t, s, 2 * N) {
-            dump(s, t);
             REP (i, 2 * N) {
                 if (D1 - i * i < 0 && D2 - i * i < 0) break;
                 i64 j_1 = static_cast<i64>(std::sqrt(D1 - i * i));
@@ -1144,7 +1147,7 @@ void body() {
                 }
 
                 if (j_2 >= i && i * i + j_2 * j_2 == D2) {
-                    //add_edge(g_2, s, t, i, j_2);
+                    add_edge(g_2, s, t, i, j_2);
                 }
             }
         }
