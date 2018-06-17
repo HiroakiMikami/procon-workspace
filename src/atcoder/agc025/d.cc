@@ -1132,6 +1132,7 @@ void body() {
     REP (s, 2 * N) {
         FOR (t, s, 2 * N) {
             REP (i, 2 * N) {
+                if (D1 - i * i < 0 && D2 - i *i < 0) break;
                 i64 j_1 = static_cast<i64>(std::sqrt(D1 - i * i));
                 i64 j_2 = static_cast<i64>(std::sqrt(D2 - i * i));
 
