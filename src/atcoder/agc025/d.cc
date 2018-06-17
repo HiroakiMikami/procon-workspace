@@ -1104,11 +1104,9 @@ void body() {
         FOR (y, x, 2 * N) {
             auto id1 = to_id(x, y);
             auto id2 = to_id(y, x);
-            g_1.container[id1].reserve(2 * N);
-            g_2.container[id1].reserve(2 * N);
             REP (i, 2 * N - x) {
-                i64 j_1 = std::sqrt(D1 - i * i);
-                i64 j_2 = std::sqrt(D2 - i * i);
+                i64 j_1 = static_cast<i64>(std::sqrt(D1 - i * i));
+                i64 j_2 = static_cast<i64>(std::sqrt(D2 - i * i));
 
                 if (i * i + j_1 * j_1 == D1 && y + j_1 < 2 * N) {
                     g_1.add_edge(make_tuple(id1, to_id(x + i, y + j_1)));
