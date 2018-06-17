@@ -1109,10 +1109,10 @@ void body() {
                 i64 j_2 = std::sqrt(D2 - d * d);
 
                 if (d * d + j_1 * j_1 == D1 && y + j_1 < 2 * N) {
-                    g_1.add_edge(make_tuple(id1, to_id(x, y + j_1)));
+                    g_1.add_edge(make_tuple(id1, to_id(i, y + j_1)));
                 }
                 if (d * d + j_2 * j_2 == D2 && y + j_2 < 2 * N) {
-                    g_2.add_edge(make_tuple(id1, to_id(x, y + j_2)));
+                    g_2.add_edge(make_tuple(id1, to_id(i, y + j_2)));
                 }
             }
         }
