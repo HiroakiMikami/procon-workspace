@@ -1105,7 +1105,6 @@ void body() {
 
     // グラフの構築
     auto add_edge = [&](auto &g, auto s, auto t, auto i, auto j) {
-        HashSet<pair<i64, i64>> edges;
         auto f = [&](auto from, auto to) {
             if (to < 0) return ;
             g.add_edge(make_tuple(from, to));
@@ -1118,18 +1117,15 @@ void body() {
         f(to_id(s, t), to_id(s+j, t-i));
         f(to_id(s, t), to_id(s-j, t+i));
         f(to_id(s, t), to_id(s-j, t-i));
-        f(to_id(t, s), to_id(t+i, s+j));
-        f(to_id(t, s), to_id(t+i, s-j));
-        f(to_id(t, s), to_id(t-i, s+j));
-        f(to_id(t, s), to_id(t-i, s-j));
-        f(to_id(t, s), to_id(t+j, s+i));
-        f(to_id(t, s), to_id(t+j, s-i));
-        f(to_id(t, s), to_id(t-j, s+i));
-        f(to_id(t, s), to_id(t-j, s-i));
-
-        EACH (elem, edges) {
-            if (elem.second < 0) continue;
-            g.add_edge(make_tuple(elem.first, elem.second));
+        if (s != t) {
+            f(to_id(t, s), to_id(t+i, s+j));
+            f(to_id(t, s), to_id(t+i, s-j));
+            f(to_id(t, s), to_id(t-i, s+j));
+            f(to_id(t, s), to_id(t-i, s-j));
+            f(to_id(t, s), to_id(t+j, s+i));
+            f(to_id(t, s), to_id(t+j, s-i));
+            f(to_id(t, s), to_id(t-j, s+i));
+            f(to_id(t, s), to_id(t-j, s-i));
         }
     };
 
