@@ -1,12 +1,12 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/abc100/tasks/abc100_b
+SCORE 200
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 基本
+FAILURE_TYPE コーナーケース処理
 NOTES
 */
 #include <iostream>

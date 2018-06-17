@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/abc100/tasks/abc100_d
+SCORE 400
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE DP 場合分け
+FAILURE_TYPE 考察不足
 NOTES
+大丈夫だろうと思って実装を簡略化したところでWA
 */
 #include <iostream>
 #include <cstdint>
@@ -837,8 +838,6 @@ void body() {
     anses[5] = solve(1, -1, 1);
     anses[6] = solve(1, 1, -1);
     anses[7] = solve(1, 1, 1);
-
-    dump(as_set(anses));
 
     cout << *max_element(CTR(anses)) << endl;
 }
