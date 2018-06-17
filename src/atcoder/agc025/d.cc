@@ -1103,6 +1103,7 @@ void body() {
     REP (x, 2 * N) {
         REP (y, 2 * N) {
             auto id1 = to_id(x, y);
+            g_1.container[id1].reserve(2 * N);
             FOR (i, x, 2 * N) {
                 auto d = i - x;
                 i64 j_1 = std::sqrt(D1 - d * d);
