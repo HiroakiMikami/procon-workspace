@@ -1092,34 +1092,59 @@ void body() {
     SimpleAdjacencyList g_1(4 * N * N);
     SimpleAdjacencyList g_2(4 * N * N);
 
-    auto to_id = [N](i64 x, i64 y) -> i64 { return 2 * N * x + y; };
+    auto to_id = [N](i64 x, i64 y) -> i64 {
+        if (x < 0 || x >= 2 * N) return -1;
+        if (y < 0 || y >= 2 * N) return -1;
+        return 2 * N * x + y;
+    };
     auto to_p = [N](i64 id) -> pair<i64, i64> {
         i64 y = id % (2 * N);
         i64 x = (id - y) / (2 * N);
         return make_pair(x, y);
     };
-    dump(to_p(to_id(2 * N -1 , 2 * N -1)));
 
     // グラフの構築
-    REP (x, 2 * N) {
-        FOR (y, x, 2 * N) {
-            auto id1 = to_id(x, y);
-            auto id2 = to_id(y, x);
-            REP (i, 2 * N - x) {
+    auto add_edge = [&](auto &g, auto s, auto t, auto i, auto j) {
+        OrderedSet<pair<i64, i64>> edges;
+        edges.emplace(to_id(s, t), to_id(s+i, t+j));
+        edges.emplace(to_id(s, t), to_id(s+i, t-j));
+        edges.emplace(to_id(s, t), to_id(s-i, t+j));
+        edges.emplace(to_id(s, t), to_id(s-i, t-j));
+        edges.emplace(to_id(s, t), to_id(s+j, t+i));
+        edges.emplace(to_id(s, t), to_id(s+j, t-i));
+        edges.emplace(to_id(s, t), to_id(s-j, t+i));
+        edges.emplace(to_id(s, t), to_id(s-j, t-i));
+        edges.emplace(to_id(t, s), to_id(t+i, s+j));
+        edges.emplace(to_id(t, s), to_id(t+i, s-j));
+        edges.emplace(to_id(t, s), to_id(t-i, s+j));
+        edges.emplace(to_id(t, s), to_id(t-i, s-j));
+        edges.emplace(to_id(t, s), to_id(t+j, s+i));
+        edges.emplace(to_id(t, s), to_id(t+j, s-i));
+        edges.emplace(to_id(t, s), to_id(t-j, s+i));
+        edges.emplace(to_id(t, s), to_id(t-j, s-i));
+
+        EACH (elem, edges) {
+            if (elem.second < 0) continue;
+            g.add_edge(make_tuple(elem.first, elem.second));
+        }
+    };
+
+    REP (s, 2 * N) {
+        FOR (t, s, 2 * N) {
+            auto id1 = to_id(s, t);
+            auto id2 = to_id(t, s);
+            REP (i, 2 * N) {
                 i64 j_1 = static_cast<i64>(std::sqrt(D1 - i * i));
                 i64 j_2 = static_cast<i64>(std::sqrt(D2 - i * i));
 
-                if (i * i + j_1 * j_1 == D1 && y + j_1 < 2 * N) {
-                    g_1.add_edge(make_tuple(id1, to_id(x + i, y + j_1)));
-                    if (id1 != id2) {
-                        g_1.add_edge(make_tuple(id2, to_id(y + j_1, x + i)));
-                    }
+                if (j_1 > i && j_2 > i) break;
+
+                if (j_1 <= i && i * i + j_1 * j_1 == D1) {
+                    add_edge(g_1, s, t, i, j_1);
                 }
-                if (i * i + j_2 * j_2 == D2 && y + j_2 < 2 * N) {
-                    g_2.add_edge(make_tuple(id1, to_id(x + i, y + j_2)));
-                    if (id1 != id2) {
-                        g_2.add_edge(make_tuple(id2, to_id(y + j_2, x + i)));
-                    }
+
+                if (j_2 <= i && i * i + j_2 * j_2 == D1) {
+                    add_edge(g_2, s, t, i, j_2);
                 }
             }
         }
