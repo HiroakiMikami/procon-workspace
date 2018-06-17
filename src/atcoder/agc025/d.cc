@@ -1152,7 +1152,7 @@ void body() {
 
     HashSet<i64> V21, V22;
     REP (id, 4 * N * N) {
-        if (V21.find(id) != V11.end() || V22.find(id) != V12.end()) {
+        if (V21.find(id) != V21.end() || V22.find(id) != V22.end()) {
             continue;
         }
 
