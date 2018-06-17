@@ -1110,18 +1110,14 @@ void body() {
 
                 if (i * i + j_1 * j_1 == D1 && y + j_1 < 2 * N) {
                     g_1.add_edge(make_tuple(id1, to_id(x + i, y + j_1)));
-                    g_1.add_edge(make_tuple(to_id(x + i, y + j_1), id1));
                     if (id1 != id2) {
                         g_1.add_edge(make_tuple(id2, to_id(y + j_1, x + i)));
-                        g_1.add_edge(make_tuple(to_id(y + j_1, x + i), id2));
                     }
                 }
                 if (i * i + j_2 * j_2 == D2 && y + j_2 < 2 * N) {
                     g_2.add_edge(make_tuple(id1, to_id(x + i, y + j_2)));
-                    g_2.add_edge(make_tuple(to_id(x + i, y + j_2), id1));
                     if (id1 != id2) {
                         g_2.add_edge(make_tuple(id2, to_id(y + j_2, x + i)));
-                        g_2.add_edge(make_tuple(to_id(y + j_2, x + i), id2));
                     }
                 }
             }
@@ -1171,7 +1167,7 @@ void body() {
 
             if (V2[x] != 0) continue;
 
-            if (prev == -1) {
+            if (prev == 0) {
                 V2[x] = 1;
             } else {
                 V2[x] = -V2[prev];
