@@ -1121,6 +1121,7 @@ void body() {
     // 彩色
     OrderedSet<i64> V11, V12;
     REP (id, 4 * N * N) {
+        dump(id, g_1.vertices_size());
         std::stack<pair<i64, i64>> s;
         s.emplace(-1, id);
         while (!s.empty()) {
