@@ -1117,6 +1117,7 @@ void body() {
             }
         }
     }
+    dump("fin construct graph");
     g_1.to_undirected();
     g_2.to_undirected();
 
@@ -1149,6 +1150,7 @@ void body() {
             }
         }
     }
+    dump("fin grouping g1");
 
     OrderedSet<i64> V21, V22;
     REP (id, 4 * N * N) {
@@ -1178,6 +1180,7 @@ void body() {
             }
         }
     }
+    dump("fin grouping g2");
 
     auto dump = [&](auto V1, auto V2) -> bool {
         Vector<pair<i64, i64>> ps;
