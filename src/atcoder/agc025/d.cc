@@ -1117,7 +1117,7 @@ void body() {
         }
     }
     EACH_V(e, g_1.edges()) {
-        dump(e);
+        dump(to_p(get<0>(e)), to_p(get<1>(e)));
     }
 
     // 彩色
