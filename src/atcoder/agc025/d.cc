@@ -1123,6 +1123,10 @@ void body() {
     // 彩色
     HashSet<i64> V11, V12;
     REP (id, 4 * N * N) {
+        if (V11.find(id) != V11.end() || V12.find(id) != V12.end()) {
+            continue;
+        }
+
         std::stack<pair<i64, i64>> s;
         s.emplace(-1, id);
         while (!s.empty()) {
@@ -1148,6 +1152,10 @@ void body() {
 
     HashSet<i64> V21, V22;
     REP (id, 4 * N * N) {
+        if (V21.find(id) != V11.end() || V22.find(id) != V12.end()) {
+            continue;
+        }
+
         std::stack<pair<i64, i64>> s;
         s.emplace(-1, id);
         while (!s.empty()) {
