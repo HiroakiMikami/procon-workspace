@@ -1138,7 +1138,7 @@ void body() {
                 V12.emplace(x);
             }
 
-            EACH (edge, g_1.outgoings(x)) {
+            EACH_V (edge, g_1.outgoings(x)) {
                 s.emplace(get<0>(edge), get<1>(edge));
             }
         }
