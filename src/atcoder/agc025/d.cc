@@ -1131,6 +1131,9 @@ void body() {
             s.pop();
             auto prev = elem.first;
             auto x = elem.second;
+            if (V11.find(x) != V11.end() || V12.find(x) != V12.end()) {
+                continue;
+            }
 
             if (prev == -1 || V12.find(prev) != V12.end()) {
                 V11.emplace(x);
@@ -1139,9 +1142,6 @@ void body() {
             }
 
             EACH_V (edge, g_1.outgoings(x)) {
-                if (V11.find(get<1>(edge)) != V11.end() || V12.find(get<1>(edge)) != V12.end()) {
-                    continue;
-                }
                 s.emplace(get<0>(edge), get<1>(edge));
             }
         }
