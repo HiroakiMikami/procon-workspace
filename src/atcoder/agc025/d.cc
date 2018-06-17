@@ -1116,6 +1116,7 @@ void body() {
             }
         }
     }
+    dump(as_set(g_1.edges()));
 
     // 彩色
     OrderedSet<i64> V11, V12;
@@ -1145,13 +1146,7 @@ void body() {
                 s.emplace(get<0>(edge), get<1>(edge));
             }
         }
-        dump(as_set(V11));
-        dump(as_set(V12));
-        dump("---");
     }
-
-    dump(as_set(V11));
-    dump(as_set(V12));
 
     OrderedSet<i64> V21, V22;
     REP (id, 4 * N * N) {
