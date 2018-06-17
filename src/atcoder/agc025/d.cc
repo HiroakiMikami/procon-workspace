@@ -1,13 +1,19 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
-TLE false
+URL https://beta.atcoder.jp/contests/agc025/tasks/agc025_d
+SCORE 800
+AC true
+WA true
+TLE true
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE グラフ 二部グラフ 平面座標
+FAILURE_TYPE 知識不足 考察力不足 実装ミス
 NOTES
+以下の考え方は一つの定石としてあるようだ
+・"4*N^2の集合からN^2を選ぶ"かつ"制約が2つ" -> 二部グラフを2つ作って共通部分を求める
+
+これに思い当たらなかった知識/考察力が不足していたのが最初の問題。
+実装で小手先のテクニックで高速化しようとしてWAを繰り返したのが次の問題。
+最後に、定数倍だから大丈夫と思った処理がネックになってTLEした。O(N^3)系のアルゴリズムは定数倍が結構効いてくるということか。
 */
 #include <iostream>
 #include <cstdint>
