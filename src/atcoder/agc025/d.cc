@@ -1118,8 +1118,6 @@ void body() {
         }
     }
     dump("fin construct graph");
-    g_1.to_undirected();
-    g_2.to_undirected();
 
     // 彩色
     OrderedSet<i64> V11, V12;
