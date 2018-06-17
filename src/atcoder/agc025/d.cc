@@ -1137,7 +1137,7 @@ void body() {
                 i64 j_1 = static_cast<i64>(std::sqrt(D1 - i * i));
                 i64 j_2 = static_cast<i64>(std::sqrt(D2 - i * i));
 
-                if (j_1 > i && j_2 > i) break;
+                //if (j_1 > i && j_2 > i) break;
 
                 if (j_1 <= i && i * i + j_1 * j_1 == D1) {
                     add_edge(g_1, s, t, i, j_1);
