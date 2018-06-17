@@ -1120,6 +1120,10 @@ void body() {
     // 彩色
     OrderedSet<i64> V11, V12;
     REP (id, 4 * N * N) {
+        if (V11.find(id) != V11.end() || V12.find(id) != V12.end()) {
+            continue;
+        }
+
         std::stack<pair<i64, i64>> s;
         s.emplace(-1, id);
         while (!s.empty()) {
@@ -1128,10 +1132,6 @@ void body() {
             auto prev = elem.first;
             auto x = elem.second;
 
-            if (V11.find(x) != V11.end() || V12.find(x) != V12.end()) {
-                continue;
-            }
-
             if (prev == -1 || V12.find(prev) != V12.end()) {
                 V11.emplace(x);
             } else {
@@ -1139,6 +1139,9 @@ void body() {
             }
 
             EACH_V (edge, g_1.outgoings(x)) {
+                if (V11.find(get<1>(edge)) != V11.end() || V12.find(get<1>(edge)) != V12.end()) {
+                    continue;
+                }
                 s.emplace(get<0>(edge), get<1>(edge));
             }
         }
