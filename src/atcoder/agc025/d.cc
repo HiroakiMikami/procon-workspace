@@ -1148,7 +1148,7 @@ void body() {
         }
     }
 
-    EACH_V(edge, g_1.edges()) {
+    EACH_V(edge, g_2.edges()) {
         dump(to_p(get<0>(edge)), to_p(get<1>(edge)));
     }
 
