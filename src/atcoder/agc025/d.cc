@@ -1101,20 +1101,22 @@ void body() {
 
     // グラフの構築
     REP (x, 2 * N) {
-        REP (y, 2 * N) {
+        FOR (y, x, 2 * N) {
             auto id1 = to_id(x, y);
+            auto id2 = to_id(y, x);
             g_1.container[id1].reserve(2 * N);
             g_2.container[id1].reserve(2 * N);
-            FOR (i, x, 2 * N) {
-                auto d = i - x;
-                i64 j_1 = d; //std::sqrt(D1 - d * d);
-                i64 j_2 = d; //std::sqrt(D2 - d * d);
+            REP (i, 2 * N - x) {
+                i64 j_1 = std::sqrt(D1 - i * i);
+                i64 j_2 = std::sqrt(D2 - i * i);
 
-                if (d * d + j_1 * j_1 == D1 && y + j_1 < 2 * N) {
-                    g_1.add_edge(make_tuple(id1, to_id(i, y + j_1)));
+                if (i * i + j_1 * j_1 == D1 && y + j_1 < 2 * N) {
+                    g_1.add_edge(make_tuple(id1, to_id(x + i, y + j_1)));
+                    g_1.add_edge(make_tuple(id2, to_id(y + j_1, x + i)));
                 }
-                if (d * d + j_2 * j_2 == D2 && y + j_2 < 2 * N) {
-                    g_2.add_edge(make_tuple(id1, to_id(i, y + j_2)));
+                if (i * i + j_2 * j_2 == D2 && y + j_2 < 2 * N) {
+                    g_2.add_edge(make_tuple(id1, to_id(x + i, y + j_2)));
+                    g_2.add_edge(make_tuple(id2, to_id(y + j_2, x + i)));
                 }
             }
         }
