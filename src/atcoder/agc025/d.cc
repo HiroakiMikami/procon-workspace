@@ -1098,6 +1098,7 @@ void body() {
         i64 x = (id - y) / (2 * N);
         return make_pair(x, y);
     };
+    dump(to_p(to_id(2 * N -1 , 2 * N -1)));
 
     // グラフの構築
     REP (x, 2 * N) {
