@@ -1107,8 +1107,8 @@ void body() {
             g_2.container[id1].reserve(2 * N);
             FOR (i, x, 2 * N) {
                 auto d = i - x;
-                i64 j_1 = std::sqrt(D1 - d * d);
-                i64 j_2 = std::sqrt(D2 - d * d);
+                i64 j_1 = d; //std::sqrt(D1 - d * d);
+                i64 j_2 = d; //std::sqrt(D2 - d * d);
 
                 if (d * d + j_1 * j_1 == D1 && y + j_1 < 2 * N) {
                     g_1.add_edge(make_tuple(id1, to_id(i, y + j_1)));
