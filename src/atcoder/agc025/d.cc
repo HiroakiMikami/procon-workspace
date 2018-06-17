@@ -1154,7 +1154,7 @@ void body() {
             auto prev = elem.first;
             auto x = elem.second;
 
-            if (V21.find(x) != V11.end() || V22.find(x) != V22.end()) {
+            if (V21.find(x) != V21.end() || V22.find(x) != V22.end()) {
                 continue;
             }
 
