@@ -1111,21 +1111,29 @@ void body() {
         };
         f(to_id(s, t), to_id(s+i, t+j));
         f(to_id(s, t), to_id(s+i, t-j));
-        f(to_id(s, t), to_id(s-i, t+j));
-        f(to_id(s, t), to_id(s-i, t-j));
+        if (i != 0) {
+            f(to_id(s, t), to_id(s-i, t+j));
+            f(to_id(s, t), to_id(s-i, t-j));
+        }
         f(to_id(s, t), to_id(s+j, t+i));
-        f(to_id(s, t), to_id(s+j, t-i));
         f(to_id(s, t), to_id(s-j, t+i));
-        f(to_id(s, t), to_id(s-j, t-i));
+        if (i != 0) {
+            f(to_id(s, t), to_id(s+j, t-i));
+            f(to_id(s, t), to_id(s-j, t-i));
+        }
         if (s != t) {
             f(to_id(t, s), to_id(t+i, s+j));
             f(to_id(t, s), to_id(t+i, s-j));
-            f(to_id(t, s), to_id(t-i, s+j));
-            f(to_id(t, s), to_id(t-i, s-j));
+            if (i != 0) {
+                f(to_id(t, s), to_id(t-i, s+j));
+                f(to_id(t, s), to_id(t-i, s-j));
+            }
             f(to_id(t, s), to_id(t+j, s+i));
-            f(to_id(t, s), to_id(t+j, s-i));
             f(to_id(t, s), to_id(t-j, s+i));
-            f(to_id(t, s), to_id(t-j, s-i));
+            if (i != 0) {
+                f(to_id(t, s), to_id(t+j, s-i));
+                f(to_id(t, s), to_id(t-j, s-i));
+            }
         }
     };
 
@@ -1148,7 +1156,6 @@ void body() {
             }
         }
     }
-    dump("fin graph construct");
 
     // 彩色
     Vector<i64> V1(4 * N * N, 0);
