@@ -1092,8 +1092,8 @@ void body() {
     SimpleAdjacencyList g_1(4 * N * N);
     SimpleAdjacencyList g_2(4 * N * N);
 
-    auto to_id = [N](auto x, auto y ) { return 2 * N * x + y; };
-    auto to_p = [N](auto id) -> pair<i64, i64> {
+    auto to_id = [N](i64 x, i64 y) -> i64 { return 2 * N * x + y; };
+    auto to_p = [N](i64 id) -> pair<i64, i64> {
         i64 y = id % (2 * N);
         i64 x = (id - y) / (2 * N);
         return make_pair(x, y);
@@ -1146,6 +1146,9 @@ void body() {
             }
         }
     }
+
+    dump(as_set(V11));
+    dump(as_set(V12));
 
     OrderedSet<i64> V21, V22;
     REP (id, 4 * N * N) {
