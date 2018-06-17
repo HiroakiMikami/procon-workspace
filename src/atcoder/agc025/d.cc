@@ -1110,20 +1110,23 @@ void body() {
 
                 if (i * i + j_1 * j_1 == D1 && y + j_1 < 2 * N) {
                     g_1.add_edge(make_tuple(id1, to_id(x + i, y + j_1)));
+                    g_1.add_edge(make_tuple(to_id(x + i, y + j_1), id1));
                     if (id1 != id2) {
                         g_1.add_edge(make_tuple(id2, to_id(y + j_1, x + i)));
+                        g_1.add_edge(make_tuple(to_id(y + j_1, x + i), id2));
                     }
                 }
                 if (i * i + j_2 * j_2 == D2 && y + j_2 < 2 * N) {
                     g_2.add_edge(make_tuple(id1, to_id(x + i, y + j_2)));
+                    g_2.add_edge(make_tuple(to_id(x + i, y + j_2), id1));
                     if (id1 != id2) {
                         g_2.add_edge(make_tuple(id2, to_id(y + j_2, x + i)));
+                        g_2.add_edge(make_tuple(to_id(y + j_2, x + i), id2));
                     }
                 }
             }
         }
     }
-    dump("fin construct graph");
 
     // 彩色
     Vector<i64> V1(4 * N * N, 0);
@@ -1153,7 +1156,6 @@ void body() {
             }
         }
     }
-    dump("fin grouping g1");
 
     Vector<i64> V2(4 * N * N, 0);
     REP (id, 4 * N * N) {
@@ -1180,7 +1182,6 @@ void body() {
             }
         }
     }
-    dump("fin grouping g2");
 
     auto dump = [&](auto v1, auto v2) -> bool {
         Vector<pair<i64, i64>> ps;
