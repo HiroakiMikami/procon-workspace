@@ -1116,6 +1116,9 @@ void body() {
             }
         }
     }
+    EACH_V(edge, g_1.edges()) {
+        dump(to_p(get<0>(edge), to_p(get<1>(edge))));
+    }
 
     // 彩色
     OrderedSet<i64> V11, V12;
