@@ -1116,7 +1116,7 @@ void body() {
             }
         }
     }
-    dump(as_set(g_1.edges()));
+    dump(as_map(g_1.edges()));
 
     // 彩色
     OrderedSet<i64> V11, V12;
