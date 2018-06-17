@@ -1122,11 +1122,11 @@ void body() {
     // 彩色
     OrderedSet<i64> V11, V12;
     REP (id, 4 * N * N) {
+        dump(id, to_p(id));
         if (V11.find(id) != V11.end() || V12.find(id) != V12.end()) {
             continue;
         }
 
-        dump(id, to_p(id));
         std::stack<pair<i64, i64>> s;
         s.emplace(-1, id);
         while (!s.empty()) {
