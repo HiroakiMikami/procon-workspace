@@ -1119,7 +1119,7 @@ void body() {
     }
 
     // 彩色
-    OrderedSet<i64> V11, V12;
+    HashSet<i64> V11, V12;
     REP (id, 4 * N * N) {
         std::stack<pair<i64, i64>> s;
         s.emplace(-1, id);
@@ -1144,7 +1144,7 @@ void body() {
         }
     }
 
-    OrderedSet<i64> V21, V22;
+    HashSet<i64> V21, V22;
     REP (id, 4 * N * N) {
         std::stack<pair<i64, i64>> s;
         s.emplace(-1, id);
@@ -1170,78 +1170,34 @@ void body() {
         }
     }
 
-    // よい集合の抽出
-    {
-        // V11-V21の組み合わせ
-        OrderedSet<pair<i64, i64>> ps;
-        EACH (v, V11) {
-            if (V21.find(v) != V21.end()) {
-                ps.insert(to_p(v));
+    auto dump = [&](auto V1, auto V2) -> bool {
+        Vector<pair<i64, i64>> ps;
+        EACH (v, V1) {
+            if (V2.find(v) != V2.end()) {
+                ps.push_back(to_p(v));
             }
         }
         if (ps.size() >= N * N) {
-            int cnt = 0;
-            EACH (p, ps) {
+            REP (i, N * N) {
+                auto p = ps[i];
                 cout << p.first << " " << p.second << endl;
-                cnt += 1;
-                if (cnt >= N * N) break;
             }
-            return ;
+            return true;
         }
-    }
-    {
-        // V11-V22の組み合わせ
-        OrderedSet<pair<i64, i64>> ps;
-        EACH (v, V11) {
-            if (V22.find(v) != V22.end()) {
-                ps.insert(to_p(v));
-            }
-        }
-        if (ps.size() >= N * N) {
-            int cnt = 0;
-            EACH (p, ps) {
-                cout << p.first << " " << p.second << endl;
-                cnt += 1;
-                if (cnt >= N * N) break;
-            }
-            return ;
-        }
-    }
+        return false;
+    };
 
-    {
-        // V12-V21の組み合わせ
-        OrderedSet<pair<i64, i64>> ps;
-        EACH (v, V12) {
-            if (V21.find(v) != V21.end()) {
-                ps.insert(to_p(v));
-            }
-        }
-        if (ps.size() >= N * N) {
-            int cnt = 0;
-            EACH (p, ps) {
-                cout << p.first << " " << p.second << endl;
-                cnt += 1;
-                if (cnt >= N * N) break;
-            }
-            return ;
-        }
+    // よい集合の抽出
+    if (dump(V11, V21)) {
+        return ;
     }
-    {
-        // V12-V22の組み合わせ
-        OrderedSet<pair<i64, i64>> ps;
-        EACH (v, V12) {
-            if (V22.find(v) != V22.end()) {
-                ps.insert(to_p(v));
-            }
-        }
-        if (ps.size() >= N * N) {
-            int cnt = 0;
-            EACH (p, ps) {
-                cout << p.first << " " << p.second << endl;
-                cnt += 1;
-                if (cnt >= N * N) break;
-            }
-            return ;
-        }
+    if (dump(V11, V22)) {
+        return ;
+    }
+    if (dump(V12, V21)) {
+        return ;
+    }
+    if (dump(V12, V22)) {
+        return;
     }
 }
