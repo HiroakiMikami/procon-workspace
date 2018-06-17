@@ -1167,7 +1167,7 @@ void body() {
 
             if (V2[x] != 0) continue;
 
-            if (prev == 0) {
+            if (prev == -1) {
                 V2[x] = 1;
             } else {
                 V2[x] = -V2[prev];
