@@ -1105,7 +1105,7 @@ void body() {
 
     // グラフの構築
     auto add_edge = [&](auto &g, auto s, auto t, auto i, auto j) {
-        OrderedSet<pair<i64, i64>> edges;
+        HashSet<pair<i64, i64>> edges;
         edges.emplace(to_id(s, t), to_id(s+i, t+j));
         edges.emplace(to_id(s, t), to_id(s+i, t-j));
         edges.emplace(to_id(s, t), to_id(s-i, t+j));
