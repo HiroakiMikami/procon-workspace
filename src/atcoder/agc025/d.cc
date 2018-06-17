@@ -1133,6 +1133,7 @@ void body() {
             s.pop();
             auto prev = elem.first;
             auto x = elem.second;
+            dump(to_p(x));
 
             if (prev == -1 || V12.find(prev) != V12.end()) {
                 V11.emplace(x);
