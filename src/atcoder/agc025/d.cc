@@ -1141,7 +1141,7 @@ void body() {
                     add_edge(g_1, s, t, i, j_1);
                 }
 
-                if (j_2 >= i && i * i + j_2 * j_2 == D1) {
+                if (j_2 >= i && i * i + j_2 * j_2 == D2) {
                     add_edge(g_2, s, t, i, j_2);
                 }
             }
