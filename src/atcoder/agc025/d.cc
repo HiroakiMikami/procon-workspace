@@ -1180,8 +1180,11 @@ void body() {
             }
         }
         if (ps.size() >= N * N) {
+            int cnt = 0;
             EACH (p, ps) {
                 cout << p.first << " " << p.second << endl;
+                cnt += 1;
+                if (cnt >= N * N) break;
             }
             return ;
         }
@@ -1195,8 +1198,11 @@ void body() {
             }
         }
         if (ps.size() >= N * N) {
+            int cnt = 0;
             EACH (p, ps) {
                 cout << p.first << " " << p.second << endl;
+                cnt += 1;
+                if (cnt >= N * N) break;
             }
             return ;
         }
@@ -1211,8 +1217,11 @@ void body() {
             }
         }
         if (ps.size() >= N * N) {
+            int cnt = 0;
             EACH (p, ps) {
                 cout << p.first << " " << p.second << endl;
+                cnt += 1;
+                if (cnt >= N * N) break;
             }
             return ;
         }
@@ -1226,8 +1235,11 @@ void body() {
             }
         }
         if (ps.size() >= N * N) {
+            int cnt = 0;
             EACH (p, ps) {
                 cout << p.first << " " << p.second << endl;
+                cnt += 1;
+                if (cnt >= N * N) break;
             }
             return ;
         }
