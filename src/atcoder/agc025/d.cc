@@ -1147,6 +1147,7 @@ void body() {
             }
         }
     }
+    dump("fin graph construct");
 
     // 彩色
     Vector<i64> V1(4 * N * N, 0);
