@@ -1103,8 +1103,8 @@ void body() {
     REP (x, 2 * N) {
         REP (y, 2 * N) {
             auto id1 = to_id(x, y);
-            /*
             FOR (i, x, 2 * N) {
+                /*
                 auto d = i - x;
                 i64 j_1 = std::sqrt(D1 - d * d);
                 i64 j_2 = std::sqrt(D2 - d * d);
@@ -1115,9 +1115,8 @@ void body() {
                 if (d * d + j_2 * j_2 == D2 && y + j_2 < 2 * N) {
                     g_2.add_edge(make_tuple(id1, to_id(i, y + j_2)));
                 }
+                 */
             }
-                             */
-
         }
     }
     dump("fin construct graph");
