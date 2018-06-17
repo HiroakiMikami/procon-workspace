@@ -1129,6 +1129,7 @@ void body() {
         }
     };
 
+    dump(std::sqrt(-1));
     REP (s, 2 * N) {
         FOR (t, s, 2 * N) {
             REP (i, 2 * N) {
