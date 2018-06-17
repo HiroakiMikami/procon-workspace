@@ -1126,7 +1126,7 @@ void body() {
             continue;
         }
 
-        dump(to_p(id));
+        dump(id, to_p(id));
         std::stack<pair<i64, i64>> s;
         s.emplace(-1, id);
         while (!s.empty()) {
