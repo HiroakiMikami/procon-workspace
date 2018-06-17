@@ -1120,12 +1120,9 @@ void body() {
     dump("fin construct graph");
 
     // 彩色
-    OrderedSet<i64> V11, V12;
+    Vector<i64> V1(4 * N * N, 0);
     REP (id, 4 * N * N) {
-        dump(id, to_p(id));
-        if (V11.find(id) != V11.end() || V12.find(id) != V12.end()) {
-            continue;
-        }
+        if (V1[id] != 0) continue;
 
         std::stack<pair<i64, i64>> s;
         s.emplace(-1, id);
@@ -1135,27 +1132,26 @@ void body() {
             auto prev = elem.first;
             auto x = elem.second;
 
-            if (prev == -1 || V12.find(prev) != V12.end()) {
-                V11.emplace(x);
+            if (V1[x] != 0) {
+                continue;
+            }
+
+            if (prev == -1) {
+                V1[x] = 1;
             } else {
-                V12.emplace(x);
+                V1[x] = -V1[prev];
             }
 
             EACH_V (edge, g_1.outgoings(x)) {
-                if (V11.find(get<1>(edge)) != V11.end() || V12.find(get<1>(edge)) != V12.end()) {
-                    continue;
-                }
                 s.emplace(get<0>(edge), get<1>(edge));
             }
         }
     }
     dump("fin grouping g1");
 
-    OrderedSet<i64> V21, V22;
+    Vector<i64> V2(4 * N * N, 0);
     REP (id, 4 * N * N) {
-        if (V21.find(id) != V21.end() || V22.find(id) != V22.end()) {
-            continue;
-        }
+        if (V2[id] != 0) continue;
 
         std::stack<pair<i64, i64>> s;
         s.emplace(-1, id);
@@ -1165,27 +1161,29 @@ void body() {
             auto prev = elem.first;
             auto x = elem.second;
 
-            if (prev == -1 || V22.find(prev) != V22.end()) {
-                V21.emplace(x);
+            if (V2[x] != 0) continue;
+
+            if (prev == -1) {
+                V2[x] = 1;
             } else {
-                V22.emplace(x);
+                V2[x] = -V2[prev];
             }
 
             EACH_V (edge, g_2.outgoings(x)) {
-                if (V21.find(get<1>(edge)) != V21.end() || V22.find(get<1>(edge)) != V22.end()) {
-                    continue;
-                }
                 s.emplace(get<0>(edge), get<1>(edge));
             }
         }
     }
     dump("fin grouping g2");
 
-    auto dump = [&](auto V1, auto V2) -> bool {
+    auto dump = [&](auto v1, auto v2) -> bool {
         Vector<pair<i64, i64>> ps;
-        EACH (v, V1) {
-            if (V2.find(v) != V2.end()) {
-                ps.push_back(to_p(v));
+        REP (i, 4 * N * N) {
+            if (V1[i] == v1 && V2[i] == v2) {
+                ps.push_back(to_p(i));
+                if (ps.size() >= N * N) {
+                    break;
+                }
             }
         }
         if (ps.size() >= N * N) {
@@ -1199,16 +1197,16 @@ void body() {
     };
 
     // よい集合の抽出
-    if (dump(V11, V21)) {
+    if (dump(1, 1)) {
         return ;
     }
-    if (dump(V11, V22)) {
+    if (dump(1, -1)) {
         return ;
     }
-    if (dump(V12, V21)) {
+    if (dump(-1, 1)) {
         return ;
     }
-    if (dump(V12, V22)) {
+    if (dump(-1, 1)) {
         return;
     }
 }
