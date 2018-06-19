@@ -1,12 +1,12 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/abc051/tasks/abc051_c
+SCORE 300
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 最短経路 シミュレーション
+FAILURE_TYPE 実装ミス 変数名前ミス
 NOTES
 */
 #include <iostream>
