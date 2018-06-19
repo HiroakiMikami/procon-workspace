@@ -868,7 +868,7 @@ void body() {
     REP (i, tx - sy + 1) {
         cout << "L";
     }
-    cout << "U" << endl;
+    cout << "U";
 
     cout << endl;
 }
