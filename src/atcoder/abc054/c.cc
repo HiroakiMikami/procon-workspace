@@ -1,12 +1,12 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc054/tasks/abc054_c
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE グラフ 全探索 順列生成
+FAILURE_TYPE utilバグ
 NOTES
 */
 #include <iostream>
