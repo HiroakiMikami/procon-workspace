@@ -1146,11 +1146,9 @@ void body() {
             auto v2 = vs[i];
 
             if (!g.has_edge(v1, v2)) {
-                dump("break");
                 flag = false;
                 break;
             }
-            dump("cont");
         }
         if (flag) {
             ans += 1;
