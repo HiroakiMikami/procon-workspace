@@ -1128,7 +1128,6 @@ void body() {
 
     SimpleAdjacencyMatrix g(N);
     EACH (elem, ab) {
-        dump(elem);
         g.add_edge(make_tuple(elem.first, elem.second));
     }
     g.to_undirected();
@@ -1145,6 +1144,8 @@ void body() {
         REP (i, N - 1) {
             auto v1 = vs[i];
             auto v2 = vs[i + 1];
+            dump(v1, v2);
+
             if (!g.has_edge(v1, v2)) {
                 flag = false;
                 break;
