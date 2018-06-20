@@ -1144,6 +1144,7 @@ void body() {
         REP (i, N - 1) {
             auto v1 = vs[i];
             auto v2 = vs[i + 1];
+            dump(g.container.size());
             dump(v1, v2);
 
             if (!g.has_edge(v1, v2)) {
