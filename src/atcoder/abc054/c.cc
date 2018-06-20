@@ -1141,7 +1141,7 @@ void body() {
 
     do {
         bool flag = true;
-        REP (i, N) {
+        REP (i, N - 1) {
             auto v1 = (i == 0) ? 0 : vs[i - 1];
             auto v2 = vs[i];
             dump(v1, v2);
