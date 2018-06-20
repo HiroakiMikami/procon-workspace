@@ -1151,7 +1151,7 @@ void body() {
         if (flag) {
             ans += 1;
         }
-    } while (std::next_permutation(CTR(vs));
+    } while (std::next_permutation(CTR(vs)));
 
 
     cout << ans << endl;
