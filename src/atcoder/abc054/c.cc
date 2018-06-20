@@ -1124,6 +1124,7 @@ void body() {
     EACH (elem, ab) {
         elem.first -= 1;
         elem.second -= 1;
+        dump(edge);
     }
 
     SimpleAdjacencyMatrix g(N);
