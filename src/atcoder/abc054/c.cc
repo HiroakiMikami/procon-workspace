@@ -38,6 +38,7 @@ using std::endl;
 using std::flush;
 
 // basic types
+using std::nullptr_t;
 using std::experimental::optional;
 using std::pair;
 using std::tuple;
@@ -1142,7 +1143,7 @@ void body() {
     do {
         bool flag = true;
         REP (i, N - 1) {
-            auto v1 = (i == 0) ? 0 : vs[i - 1];
+            auto v1 = (i == 0) ? 0 : s[i - 1];
             auto v2 = vs[i];
 
             if (!g.has_edge(v1, v2)) {
