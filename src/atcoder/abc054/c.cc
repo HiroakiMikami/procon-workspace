@@ -1144,8 +1144,6 @@ void body() {
         REP (i, N - 1) {
             auto v1 = (i == 0) ? 0 : vs[i - 1];
             auto v2 = vs[i];
-            dump(v1, v2);
-            dump(as_map(g.container[v1]));
 
             if (!g.has_edge(v1, v2)) {
                 dump("break");
