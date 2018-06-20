@@ -27,6 +27,7 @@ NOTES
 #include <type_traits>
 #include <functional>
 #include <experimental/optional>
+#include <cassert>
 
 /* import STL */
 // stream
