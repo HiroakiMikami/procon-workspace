@@ -1124,11 +1124,11 @@ void body() {
     EACH (elem, ab) {
         elem.first -= 1;
         elem.second -= 1;
-        dump(elem);
     }
 
     SimpleAdjacencyMatrix g(N);
     EACH (elem, ab) {
+        dump(elem);
         g.add_edge(make_tuple(elem.first, elem.second));
     }
     g.to_undirected();
