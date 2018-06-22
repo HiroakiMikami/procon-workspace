@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc057/tasks/abc057_c
+SCORE 300
+AC true
 WA false
-TLE false
+TLE true
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 全探索 最大化・最小化
+FAILURE_TYPE 実装ミス
 NOTES
+breakを挟む位置を間違え、O(sqrt(N))のアルゴリズムが最悪O(N)になっていた。
 */
 #include <iostream>
 #include <cstdint>
