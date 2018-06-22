@@ -811,11 +811,10 @@ void body() {
     i64 ans = std::numeric_limits<i64>::max();
     FOR (A, 1, N + 1) {
         auto B = N / A;
-        if (A * B != N) continue;
         if (A > B) {
-            dump(A, B);
             break;
         }
+        if (A * B != N) continue;
 
         auto x = static_cast<i64>(std::log10(B)) + 1;
         ans = std::min(x, ans);
