@@ -813,9 +813,8 @@ void body() {
         if (A * B != N) continue;
         if (A > B) break;
 
-        std::ostringstream oss;
-        oss << B;
-        ans = std::min(static_cast<i64>(oss.str().size()), ans);
+        auto x = static_cast<i64>(std::log10(B)) + 1;
+        ans = std::min(x, ans);
     }
     cout << ans << endl;
 }
