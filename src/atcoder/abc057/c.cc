@@ -815,7 +815,7 @@ void body() {
 
         std::ostringstream oss;
         oss << B;
-        ans = std::min(oss.str().size(), ans);
+        ans = std::min(static_cast<i64>(oss.str().size()), ans);
     }
     cout << ans << endl;
 }
