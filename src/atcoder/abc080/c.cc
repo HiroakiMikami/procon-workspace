@@ -829,7 +829,7 @@ void body() {
         REP (n, N) {
             REP (i, 5) {
                 REP (j, 2) {
-                    if (F[n][i][j] && x[i * 2 + j]) {
+                    if (F[n][i][j] && X[i * 2 + j]) {
                         num[n] += 1;
                     }
                 }
