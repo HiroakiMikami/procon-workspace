@@ -823,12 +823,8 @@ void body() {
     }
 
     i64 ans = std::numeric_limits<i64>::min();
-    FOR (x, 1, 1023) {
+    FOR (x, 1, 1024) {
         std::bitset<10> X(x);
-        REP (i, 10) {
-            dump(X[i]);
-        }
-        dump("---");
         Vector<i64> num(N, 0);
         REP (n, N) {
             REP (i, 5) {
