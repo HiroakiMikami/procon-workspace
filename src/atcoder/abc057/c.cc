@@ -808,7 +808,7 @@ void body() {
     auto N = read<i64>();
 
     i64 ans = std::numeric_limits<i64>::max();
-    REP (A, N) {
+    FOR (A, 1, N + 1) {
         auto B = N / A;
         if (A * B != N) continue;
         if (A > B) break;
