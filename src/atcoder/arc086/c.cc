@@ -819,7 +819,7 @@ void body() {
     sort(CTR(num2));
 
     i64 ans = 0;
-    REP (i, std::max(0, num2.size() - K)) {
+    REP (i, std::max(0L, num2.size() - K)) {
         ans += num2[i];
     }
     cout << ans << endl;
