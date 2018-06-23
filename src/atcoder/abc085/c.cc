@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc085/tasks/abc085_c
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 全探索
 FAILURE_TYPE
 NOTES
 */
