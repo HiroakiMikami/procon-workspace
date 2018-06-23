@@ -812,14 +812,15 @@ void body() {
         num[A] += 1;
     }
 
-    i64 ans = 0;
-    i64 cnt = 0;
+    Vector<i64> num2;
     EACH (n, num) {
-        dump(n);
-        if (cnt + K == num.size()) break;
-        ans += n.second;
+        num2.push_back(n.second);
+    }
+    sort(CTR(num2));
 
-        cnt += 1;
+    i64 ans = 0;
+    REP (i, std::max(0, num2.size() - K)) {
+        ans += num2[i];
     }
     cout << ans << endl;
 }
