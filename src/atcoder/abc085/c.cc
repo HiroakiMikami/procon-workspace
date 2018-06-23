@@ -809,8 +809,8 @@ void body() {
 
     REP (i, N + 1) {
         REP (j, N + 1 - i) {
-            auto X = 1000 + i + 5000 + j;
-            auto k = (Y - X) / 10000;
+            auto X = 1000 * i + 5000 * j;
+            i64 k = (Y - X) / 10000;
             if (X + 10000 * k == Y) {
                 cout << i << " "<< j << " "<< k << endl;
                 return ;
