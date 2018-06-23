@@ -815,15 +815,15 @@ void body() {
     auto n = [&](auto x) { return num[x - 'A']; };
 
     i64 ans = 0;
-    ans += n['M'] * n['A'] * n['R'];
-    ans += n['M'] * n['A'] * n['C'];
-    ans += n['M'] * n['A'] * n['H'];
-    ans += n['M'] * n['R'] * n['C'];
-    ans += n['M'] * n['R'] * n['H'];
-    ans += n['M'] * n['C'] * n['H'];
-    ans += n['A'] * n['R'] * n['C'];
-    ans += n['A'] * n['R'] * n['H'];
-    ans += n['A'] * n['C'] * n['H'];
-    ans += n['R'] * n['C'] * n['H'];
+    ans += n('M') * n('A') * n('R');
+    ans += n('M') * n('A') * n('C');
+    ans += n('M') * n('A') * n('H');
+    ans += n('M') * n('R') * n('C');
+    ans += n('M') * n('R') * n('H');
+    ans += n('M') * n('C') * n('H');
+    ans += n('A') * n('R') * n('C');
+    ans += n('A') * n('R') * n('H');
+    ans += n('A') * n('C') * n('H');
+    ans += n('R') * n('C') * n('H');
     cout << ans << endl;
 }
