@@ -815,6 +815,7 @@ void body() {
     i64 ans = 0;
     i64 cnt = 0;
     EACH (n, num) {
+        dump(n);
         if (cnt + K == num.size()) break;
         ans += n.second;
 
