@@ -941,8 +941,8 @@ void body() {
     auto Y = read<i64>();
 
     REP (i, 100) {
-        if (pow(2, i) * X <= Y) continue;
-        dump(pow(2, i) * X, Y);
+        if (pow<i64>(2, i) * X <= Y) continue;
+        dump(pow(2, i) * X);
         cout << i << endl;
         return ;
     }
