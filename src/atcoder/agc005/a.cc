@@ -805,7 +805,7 @@ int main (int argc, char **argv) {
 
 void body() {
     auto X = read<string>();
-    pair<i64, i64> n = {0, 0};
+    Vector<i64> n = {0, 0};
     char prev = '\0';
 
     i64 ans = 0;
