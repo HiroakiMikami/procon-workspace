@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/arc088/tasks/arc088_a
+SCORE 300
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 数学 累乗 全探索
+FAILURE_TYPE 実装ミス 丸め誤差
 NOTES
+std::powで大丈夫だろうと思ったら浮動小数点の誤差でWAを
 */
 #include <iostream>
 #include <cstdint>
@@ -942,7 +943,6 @@ void body() {
 
     REP (i, 100) {
         if (pow<i64>(2, i) * X <= Y) continue;
-        dump(pow(2, i) * X);
         cout << i << endl;
         return ;
     }
