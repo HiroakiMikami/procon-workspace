@@ -809,6 +809,12 @@ void body() {
     auto X = read<i64>();
     auto Y = read<i64>();
 
+    REP (i, 100) {
+        if (std::pow(2, i) * X <= Y) continue;
+        cout << i << endl;
+        return ;
+    }
+
     auto m = static_cast<i64>(std::log2(Y) - std::log2(X)) + 1;
 
     if (std::pow(2, m) * X > Y) {
