@@ -805,26 +805,18 @@ int main (int argc, char **argv) {
 
 void body() {
     auto X = read<string>();
-    Vector<i64> n = {0, 0};
-    char prev = '\0';
+    i64 n = 0;
 
     i64 ans = X.size();
     EACH (x, X) {
-        if (prev == x) {
-            n[(x == 'T') ? 0 : 1] += 1;
-        } else {
-            if (x == 'S') {
-                n[0] = 0;
-                n[1] = 1;
-            } else {
-                n[0] = 1;
+        if (x == 'T') {
+            if (n > 0) {
+                n -= 1;
+                ans -= 2;
             }
+        } else {
+            n += 1;
         }
-
-        if (x == 'T' && n[0] <= n[1]) {
-            ans -= 2;
-        }
-        prev = x;
     }
 
     cout << ans << endl;
