@@ -806,9 +806,14 @@ int main (int argc, char **argv) {
 void body() {
     auto K = read<i64>();
     FOR (i, 1, std::min(10L, K + 1)) {
+        /* 1桁の数字はSunuke Number */
         cout << i << endl;
     }
     FOR (i, std::min(10L, K + 1), K + 1) {
+        /* 2桁以上の場合は
+         * 1) 下一桁が9以外の場合、n/S(n) > (n+1)/S(n+1)となる
+         * 2)
+         */
         auto k = i - 9;
 
         cout << 10 * k + 9 << endl;
