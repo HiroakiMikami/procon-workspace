@@ -814,12 +814,4 @@ void body() {
         cout << i << endl;
         return ;
     }
-
-    auto m = static_cast<i64>(std::log2(Y) - std::log2(X)) + 1;
-
-    if (std::pow(2, m) * X > Y) {
-        m -= 1;
-    }
-
-    cout << m + 1 << endl;
 }
