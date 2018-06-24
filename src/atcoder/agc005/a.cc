@@ -808,12 +808,10 @@ void body() {
     Vector<i64> n = {0, 0};
     char prev = '\0';
 
-    i64 ans = 0;
+    i64 ans = X.size();
     EACH (x, X) {
-        auto f = (x == 'T') ? 0 : 1;
-
         if (prev == x) {
-            n[f] += 1;
+            n[(x == 'T') ? 0 : 1] += 1;
         } else {
             if (x == 'S') {
                 n[0] = 0;
@@ -824,10 +822,10 @@ void body() {
         }
 
         if (x == 'T' && n[0] <= n[1]) {
-            ans += 1;
+            ans -= 2;
         }
         prev = x;
     }
 
-    cout << X.size() - ans * 2 << endl;
+    cout << ans << endl;
 }
