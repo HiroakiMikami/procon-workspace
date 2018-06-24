@@ -805,10 +805,10 @@ int main (int argc, char **argv) {
 
 void body() {
     auto K = read<i64>();
-    FOR (i, 1, std::min(10, K + 1)) {
+    FOR (i, 1, std::min(10L, K + 1)) {
         cout << i << endl;
     }
-    FOR (i, std::min(10, K + 1), K + 1) {
+    FOR (i, std::min(10L, K + 1), K + 1) {
         auto k = i - 9;
 
         cout << 10 * k + 9 << endl;
