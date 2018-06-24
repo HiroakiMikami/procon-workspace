@@ -811,6 +811,7 @@ void body() {
 
     REP (i, 100) {
         if (std::pow(2, i) * X <= Y) continue;
+        dump(std::pow(2, i) * X);
         cout << i << endl;
         return ;
     }
