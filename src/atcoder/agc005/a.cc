@@ -1,12 +1,12 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/agc005/tasks/agc005_a
+SCORE 300
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE シミュレーション
+FAILURE_TYPE 考察不足
 NOTES
 */
 #include <iostream>
