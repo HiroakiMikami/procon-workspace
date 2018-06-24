@@ -829,5 +829,5 @@ void body() {
         prev = x;
     }
 
-    cout << X.size() - ans << endl;
+    cout << X.size() - ans * 2 << endl;
 }
