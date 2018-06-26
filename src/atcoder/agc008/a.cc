@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/agc008/tasks/agc008_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 場合分け
 FAILURE_TYPE
 NOTES
+きれいに場合分けがかけないか考えていたら時間がかかった。
 */
 #include <iostream>
 #include <cstdint>
