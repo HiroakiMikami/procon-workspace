@@ -806,7 +806,7 @@ int main (int argc, char **argv) {
 void body() {
     auto x = read<i64>();
     auto y = read<i64>();
-    auto d = std::abs(std::abs(x) * std::abs(y));
+    auto d = std::abs(std::abs(x) - std::abs(y));
 
     if (x * y > 0) {
         if (y >= x) {
