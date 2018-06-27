@@ -810,7 +810,7 @@ void body() {
     i64 ans = 0;
     REPR(i, N) {
         auto A = ABs[i].first + ans;
-        auto B = Abs[i].second;
+        auto B = ABs[i].second;
 
         if (A % B != 0) {
             auto k = static_cast<i64>(A / B) + 1;
