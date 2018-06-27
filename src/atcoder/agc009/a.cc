@@ -811,7 +811,7 @@ void body() {
     i64 ans = 0;
     REPR(i, N) {
         auto A = As[i] + ans;
-        auto B = As[i];
+        auto B = Bs[i];
 
         if (A % B != 0) {
             auto k = static_cast<i64>(A / B) + 1;
