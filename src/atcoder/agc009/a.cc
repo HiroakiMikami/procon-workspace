@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/agc009/tasks/agc009_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 貪欲法 最大化・最小化 数列
 FAILURE_TYPE
 NOTES
 */
