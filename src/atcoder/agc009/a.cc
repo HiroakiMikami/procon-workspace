@@ -805,13 +805,12 @@ int main (int argc, char **argv) {
 
 void body() {
     auto N = read<i64>();
-    auto As = read<i64>(N);
-    auto Bs = read<i64>(N);
+    auto ABs = read<i64, i64>(N);
 
     i64 ans = 0;
     REPR(i, N) {
-        auto A = As[i] + ans;
-        auto B = Bs[i];
+        auto A = ABs[i].first + ans;
+        auto B = Abs[i].second;
 
         if (A % B != 0) {
             auto k = static_cast<i64>(A / B) + 1;
