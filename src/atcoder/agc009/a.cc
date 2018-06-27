@@ -815,7 +815,6 @@ void body() {
         if (A % B != 0) {
             auto k = static_cast<i64>(A / B) + 1;
             ans += k * B - A;
-            dump(A, B, k * B, k * B - A);
         }
     }
 
