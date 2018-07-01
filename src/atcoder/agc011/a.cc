@@ -817,8 +817,6 @@ void body() {
         auto T = Ts[i];
         auto S = T + K;
 
-        dump(T, S, ans, num, next);
-
         if (next < T) {
             // 次の乗客を待てない
             ans += 1;
@@ -838,8 +836,6 @@ void body() {
         num += 1;
     }
 
-    if (num != 1) {
-        ans += 1;
-    }
+    ans += 1;
     cout << ans << endl;
 }
