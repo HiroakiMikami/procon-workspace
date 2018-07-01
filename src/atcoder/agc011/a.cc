@@ -817,6 +817,8 @@ void body() {
         auto T = Ts[i];
         auto S = T + K;
 
+        dump(ans, num, next);
+
         if (next < T) {
             // 次の乗客を待てない
             ans += 1;
