@@ -807,7 +807,7 @@ void body() {
     auto N = read<i64>();
     auto C = read<i64>();
     auto K = read<i64>();
-    auto Ts = read<i64>();
+    auto Ts = read<i64>(N);
     sort(CTR(Ts));
 
     i64 ans = 0;
