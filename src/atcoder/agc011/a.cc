@@ -809,6 +809,7 @@ void body() {
     auto K = read<i64>();
     auto Ts = read<i64>(N);
     sort(CTR(Ts));
+    dump(as_set(Ts));
 
     i64 ans = 0;
     i64 num = 1;
