@@ -809,7 +809,6 @@ void body() {
     auto K = read<i64>();
     auto Ts = read<i64>(N);
     sort(CTR(Ts));
-    dump(as_set(Ts));
 
     i64 ans = 0;
     i64 num = 1;
@@ -818,7 +817,7 @@ void body() {
         auto T = Ts[i];
         auto S = T + K;
 
-        dump(ans, num, next);
+        dump(T, S, ans, num, next);
 
         if (next < T) {
             // 次の乗客を待てない
