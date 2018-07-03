@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/agc012/tasks/agc012_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 最大化・最小化 ソート シミュレーション
+FAILURE_TYPE 考察力不足
 NOTES
+正しいことの証明まではできていないが、多分正しい
 */
 #include <iostream>
 #include <cstdint>
