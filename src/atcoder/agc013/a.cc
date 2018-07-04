@@ -808,7 +808,7 @@ void body() {
     auto As = read<i64>(N);
 
     int dir = 0;
-    i64 ans = 0;
+    i64 ans = 1;
     REP (i, N - 1) {
         auto A1 = As[i];
         auto A2 = As[i + 1];
