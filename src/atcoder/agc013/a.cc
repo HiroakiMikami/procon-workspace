@@ -817,15 +817,18 @@ void body() {
         } else if (A1 > A2) {
             if (dir > 0) {
                 ans += 1;
+                dir = 0;
+            } else {
+                dir = -1;
             }
-
-            dir = -1;
         } else {
             // A1 < A2
             if (dir < 0) {
                 ans += 1;
+                dir = 0;
+            } else {
+                dir = 1;
             }
-            dir = 1;
         }
     }
 
