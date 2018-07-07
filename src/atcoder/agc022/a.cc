@@ -838,14 +838,14 @@ void body() {
 
             if (x != '\0') {
                 cout << S.substr(0, i) << x << endl;
-                break;
+                return ;
             }
 
             if (!can_use.empty()) {
             }
 
             can_use.insert(S[i]);
-
         }
+        cout << -1 << endl;
     }
 }
