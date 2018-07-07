@@ -813,7 +813,6 @@ void body() {
     } else {
         i64 ans = 0;
         while (true) {
-            dump(A, B, C);
             if (A % 2 == 1 || B % 2 == 1 || C % 2 == 1) {
                 break;
             }
@@ -823,6 +822,7 @@ void body() {
             A = a;
             B = b;
             C = c;
+            ans += 1;
         }
         cout << ans << endl;
     }

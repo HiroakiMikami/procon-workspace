@@ -1,7 +1,7 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/arc100/tasks/arc100_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
