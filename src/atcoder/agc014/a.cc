@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/agc014/tasks/agc014_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE シミュレーション
+FAILURE_TYPE 考察力不足
 NOTES
+数列の一般解を求めようとしてしまい、ただのシミュレーションで間に合うことに気づかなかった。
+低い配点であれば、愚直解が間に合う可能性を考慮する必要あり？
 */
 #include <iostream>
 #include <cstdint>
