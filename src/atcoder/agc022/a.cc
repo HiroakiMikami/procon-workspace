@@ -829,9 +829,9 @@ void body() {
             EACH (s2, can_use) {
                 if (s < s2) {
                     if (x == '\0') {
-                        x = s;
+                        x = s2;
                     } else {
-                        x = std::min(x, s);
+                        x = std::min(x, s2);
                     }
                 }
             }
