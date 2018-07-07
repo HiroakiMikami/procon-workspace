@@ -804,7 +804,7 @@ int main (int argc, char **argv) {
 }
 
 void body() {
-    auto S = read<i64>();
+    auto S = read<sting>();
 
     if (S.size() < 26) {
         Vector<bool> contains(26);
