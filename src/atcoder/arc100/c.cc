@@ -5,9 +5,10 @@ AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE ソート メディアン
+FAILURE_TYPE 考察力不足
 NOTES
+メディアンを取れば良い気がしたが、iを事前に打ち消せば良いことに気付くまでに時間がかかった。
 */
 #include <iostream>
 #include <cstdint>
@@ -832,7 +833,5 @@ void body() {
         auto y3 = calc(x3);
 
         cout << std::min(y1, std::min(y2, y3)) << endl;
-
     }
-
 }
