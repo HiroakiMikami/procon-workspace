@@ -808,7 +808,7 @@ int main (int argc, char **argv) {
 void body() {
     auto S = read<string>();
 
-    std::regex re("A?KIHA?B?R?");
+    std::regex re("A?KIHA?BA?RA?");
     if (std::regex_match(S, re)) {
         cout <<"YES" << endl;
     } else {
