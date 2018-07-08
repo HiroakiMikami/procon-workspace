@@ -5,7 +5,7 @@ AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 文字列 正規表現
 FAILURE_TYPE
 NOTES
 */
