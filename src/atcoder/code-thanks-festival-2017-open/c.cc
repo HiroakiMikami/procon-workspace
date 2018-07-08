@@ -821,6 +821,7 @@ void body() {
     i64 ans = 0;
     REP (i, K) {
         auto n = time.top();
+        dump(n);
         time.pop();
         ans += n.first;
         time.emplace(n.first + n.second, n.second);
