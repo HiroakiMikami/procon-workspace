@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/cf16-final-open/tasks/codefestival_2016_final_b
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 数列 二分探索 最大化・最小化
 FAILURE_TYPE
 NOTES
 */
