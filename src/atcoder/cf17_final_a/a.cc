@@ -6,8 +6,10 @@ WA false
 TLE false
 MLE false
 TASK_TYPE 文字列 正規表現
-FAILURE_TYPE
+FAILURE_TYPE 実装ミス
 NOTES
+正規表現の書き間違えでWA。
+かんたんな文字列処理なら正規表現を使うのは悪くない(自分でパースするよりは書きやすくそれなりに早い）
 */
 #include <iostream>
 #include <cstdint>
