@@ -1,8 +1,8 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/cf17-final-open/tasks/cf17_final_a
+SCORE 300
+AC true
+WA true
 TLE false
 MLE false
 TASK_TYPE 文字列 正規表現
