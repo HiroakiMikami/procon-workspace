@@ -811,7 +811,7 @@ void body() {
     auto K = read<i64>();
     auto abs = read<i64, i64>(N);
 
-    auto f = [&](auto rhs, auto lhs) { return rhs.first < lhs.first; };
+    auto f = [&](auto rhs, auto lhs) { return rhs.first > lhs.first; };
     PriorityQueue<pair<i64, i64>, decltype(f)> time(f);
 
     EACH (ab, abs) {
