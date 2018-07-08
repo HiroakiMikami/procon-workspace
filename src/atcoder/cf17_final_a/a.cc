@@ -806,7 +806,7 @@ int main (int argc, char **argv) {
 #include <regex>
 
 void body() {
-    auto S = read<i64>();
+    auto S = read<string>();
 
     std::regex re("A?KIHA?B?R?");
     if (std::regex_match(S, re)) {
