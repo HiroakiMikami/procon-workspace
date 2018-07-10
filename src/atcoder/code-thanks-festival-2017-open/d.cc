@@ -943,6 +943,6 @@ void body() {
     if (k == 0) {
         cout << 0 << endl;
     } else {
-        cout << gcd(k, M) << endl;
+        cout << M - gcd(k, M) << endl;
     }
 }
