@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/code-thanks-festival-2017-open/tasks/code_thanks_festival_2017_d
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE GCD 整数
+FAILURE_TYPE 考察速度不足
 NOTES
+空席数はグループ数を増やしていくともとにもどるので最大値が必ず存在することまではすぐわかったが、その後最大値を計算方法を思いつくのに時間がかかった気がする。
 */
 #include <iostream>
 #include <cstdint>
