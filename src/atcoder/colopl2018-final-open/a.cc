@@ -827,7 +827,7 @@ void body() {
         }
     }
 
-    i64 k = 0;
+    k = 0;
     REP (i, S.size()) {
         if (S[(i + first_b) % S.size()] == 'b') {
             k = 0;
