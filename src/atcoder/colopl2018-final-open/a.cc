@@ -836,5 +836,7 @@ void body() {
         }
     }
 
+    dump(first_b, d1, d2);
+
     cout << d1 + d2 * (N - 1) << endl;
 }
