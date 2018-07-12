@@ -819,7 +819,10 @@ void body() {
     }
 
     if (first_b == -1) {
-        
+        auto n = S.size() * N;
+        cout << n * (n + 1) / 2 << endl;
+
+        return ;
     }
 
     i64 k = 0;
