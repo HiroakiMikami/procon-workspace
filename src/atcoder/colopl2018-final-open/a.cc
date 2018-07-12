@@ -1,12 +1,12 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/colopl2018-final-open/tasks/colopl2018_final_a
+SCORE 300
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE シミュレーション
+FAILURE_TYPE 考察不足 コーナーケース処理
 NOTES
 */
 #include <iostream>
