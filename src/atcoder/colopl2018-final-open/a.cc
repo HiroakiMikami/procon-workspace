@@ -838,8 +838,5 @@ void body() {
         }
     }
 
-    dump(first_b);
-    dump(d1, d2);
-
     cout << d1 + d2 * (N - 1) << endl;
 }
