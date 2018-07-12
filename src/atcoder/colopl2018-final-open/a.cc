@@ -810,12 +810,16 @@ void body() {
 
     i64 d1 = 0, d2 = 0;
 
-    int first_b = 0;
+    int first_b = -1;
     REP (i, S.size()) {
         if (S[i] == 'B') {
             first_b = i;
             break;
         }
+    }
+
+    if (first_b == -1) {
+        
     }
 
     i64 k = 0;
