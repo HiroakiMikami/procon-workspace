@@ -808,7 +808,7 @@ void body() {
     auto N = read<i64>();
     auto S = read<string>();
 
-    i64 d1, d2;
+    i64 d1 = 0, d2 = 0;
 
     int first_b = 0;
     REP (i, S.size()) {
