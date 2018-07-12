@@ -812,7 +812,7 @@ void body() {
 
     int first_b = 0;
     REP (i, S.size()) {
-        if (S[i] == 'b') {
+        if (S[i] == 'B') {
             first_b = i;
             break;
         }
@@ -820,7 +820,7 @@ void body() {
 
     i64 k = 0;
     REP (i, S.size()) {
-        if (S[i] == 'b') {
+        if (S[i] == 'B') {
             k = 0;
         } else {
             d1 += k + 1;
@@ -829,7 +829,7 @@ void body() {
 
     k = 0;
     REP (i, S.size()) {
-        if (S[(i + first_b) % S.size()] == 'b') {
+        if (S[(i + first_b) % S.size()] == 'B') {
             k = 0;
         } else {
             d2 += k + 1;
