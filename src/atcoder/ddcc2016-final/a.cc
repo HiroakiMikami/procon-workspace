@@ -823,8 +823,8 @@ void body() {
             }
         }
 
-        // (x, y) (x-1, y)でy/C個とれる
-        ans += y / C;
+        // (x, n) (x-1, n)でy/C個とれる
+        ans += n / C;
     }
     cout << ans * 4 << endl;
 }
