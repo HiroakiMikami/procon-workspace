@@ -808,6 +808,7 @@ void body() {
     auto K = read<i64>();
 
     auto solve = [&](i64 R) {
+        auto r = R / 2;
         auto n = R / K;
         i64 ans = 0;
         if (n % 2 == 1) {
@@ -815,8 +816,8 @@ void body() {
             //// 中央
             auto Y = 0;
             // x座標K / 2のときのy座標の最大値を求める
-            REPR (y, R + 1) {
-                if (R * R * 4 > y * y * 4 + K * K) {
+            REPR (y, r + 1) {
+                if (r * r * 4 > y * y * 4 + K * K) {
                     Y = y;
                     break;
                 }
@@ -828,11 +829,11 @@ void body() {
             //// 左右
             REP (i, (n - 1) / 2) {
                 // x座標がK / 2 + K * iからK / 2 +  * (i + 1)の間でとれるチップ
-                // K * (i + 1)のときのy座標の最大値を求める
+                // K / 2 + K * (i + 1)のときのy座標の最大値を求める
                 auto x = K + 2 * K * (i + 1);
                 auto Y = 0;
-                REPR (y, R + 1) {
-                    if (R * R * 4 > y * y * 4 + x * x) {
+                REPR (y, r + 1) {
+                    if (r * r * 4 > y * y * 4 + x * x) {
                         Y = y;
                         break;
                     }
@@ -848,8 +849,8 @@ void body() {
                 // K * (i + 1)のときのy座標の最大値を求める
                 auto x = K * (i + 1);
                 auto Y = 0;
-                REPR (y, R + 1) {
-                    if (R * R > y * y + x * x) {
+                REPR (y, r + 1) {
+                    if (r * r > y * y + x * x) {
                         Y = y;
                         break;
                     }
