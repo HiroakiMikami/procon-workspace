@@ -816,7 +816,7 @@ void body() {
             auto Y = 0;
             // x座標K / 2のときのy座標の最大値を求める
             REPR (y, R + 1) {
-                if (R * R * 4 > y * y * 4 + K * x) {
+                if (R * R * 4 > y * y * 4 + K * K) {
                     Y = y;
                     break;
                 }
