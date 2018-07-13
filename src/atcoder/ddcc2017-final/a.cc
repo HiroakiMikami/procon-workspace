@@ -809,7 +809,6 @@ void body() {
 
     auto solve = [&](i64 R) {
         auto n = R / K;
-        dump(R, K, n);
         i64 ans = 0;
         if (n % 2 == 1) {
             // 中央に1列 + 左右に(n-1)/2列ずつ
@@ -822,6 +821,7 @@ void body() {
                     break;
                 }
             }
+            dump(Y, "center");
 
             ans += (2 * Y / K);
 
@@ -837,7 +837,7 @@ void body() {
                         break;
                     }
                 }
-
+                dump(Y, i);
                 ans += (2 * Y / K) * 2;
             }
 
