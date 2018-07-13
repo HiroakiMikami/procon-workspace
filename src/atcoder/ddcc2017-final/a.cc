@@ -826,13 +826,13 @@ void body() {
             ans += (2 * Y / K);
 
             //// 左右
-            FOR (i, 1, (n - 1) / 2) {
-                // x座標がK * iからK * (i + 1)の間でとれるチップ
+            REP (i, (n - 1) / 2) {
+                // x座標がK / 2 + K * iからK / 2 +  * (i + 1)の間でとれるチップ
                 // K * (i + 1)のときのy座標の最大値を求める
-                auto x = K * (i + 1);
+                auto x = K + 2 * K * (i + 1);
                 auto Y = 0;
                 REPR (y, R + 1) {
-                    if (R * R > y * y + x * x) {
+                    if (R * R * 4 > y * y * 4 + x * x) {
                         Y = y;
                         break;
                     }
