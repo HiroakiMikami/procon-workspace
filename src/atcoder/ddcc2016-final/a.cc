@@ -822,6 +822,7 @@ void body() {
                 break;
             }
         }
+        dump(x, n);
 
         // (x, n) (x-1, n)でy/C個とれる
         ans += n / C;
