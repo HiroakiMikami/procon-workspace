@@ -821,7 +821,7 @@ void body() {
                     break;
                 }
             }
-            dump(Y, K/2, "center");
+            dump(Y, K, "center");
 
             ans += (2 * Y / K);
 
