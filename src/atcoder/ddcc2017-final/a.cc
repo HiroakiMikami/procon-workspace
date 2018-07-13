@@ -809,6 +809,7 @@ void body() {
 
     auto solve = [&](i64 R) {
         auto n = R / K;
+        dump(R, K, n);
         i64 ans = 0;
         if (n % 2 == 1) {
             // 中央に1列 + 左右に(n-1)/2列ずつ
