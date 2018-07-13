@@ -810,8 +810,8 @@ void body() {
 
     i64 ans = 0;
     REP (i, R / C) {
-        // x軸がR*(i + 1)の時を考える
-        auto x = R * (i + 1);
+        // x軸がC*(i + 1)の時を考える
+        auto x = C * (i + 1);
         i64 n = 0;
         FORR (y, 1, R + 1) {
             // (x, y)が円内かどうか
