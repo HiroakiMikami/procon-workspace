@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/ddcc2016-final/tasks/ddcc_2016_final_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 平面図形 平面座標 シミュレーション
 FAILURE_TYPE
 NOTES
 */
