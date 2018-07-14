@@ -1227,7 +1227,7 @@ void body() {
         // 子機それぞれについて、必要なPackDropを計算する
         i64 m = std::numeric_limits<i64>::max();
         EACH_V(edge, graph.outgoings(n)) {
-            f(get<1>(edge));
+            f(get<1>(edge), f);
             m = std::min(m, drops[get<1>(edge)]);
         }
 
