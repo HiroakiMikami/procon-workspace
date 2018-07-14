@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/soundhound2018-summer-qual/tasks/soundhound2018_summer_qual_c
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 期待値 数列
+FAILURE_TYPE 考察力不足
 NOTES
+隣り合う項だけを考えれば良いことに気づけなかった。
 */
 #include <iostream>
 #include <cstdint>
