@@ -1226,6 +1226,7 @@ void body() {
     while (!q.empty()) {
         auto n = q.front();
         q.pop();
+        dump(n);
 
         // 子機の必要個数を計算
 
