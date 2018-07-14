@@ -1209,8 +1209,8 @@ void body() {
     SimpleAdjacencyList graph(N);
     SimpleAdjacencyList graph2(N);
     REP (i, N - 1) {
-        graph.add_edge(i, Ps[i]);
-        graph2.add_edge(Ps[i], i);
+        graph.add_edge(make_tuple(i + 1, Ps[i]));
+        graph2.add_edge(make_tuple(Ps[i], i + 1));
     }
 
     std::queue<i64> q;
