@@ -1227,10 +1227,10 @@ void body() {
     while (!q.empty()) {
         auto n = q.front();
         q.pop();
-        dump(n);
         if (visited[n]) {
             continue ;
         }
+        dump(n);
         visited[n] = true;
 
         // 子機の必要個数を計算
