@@ -1218,6 +1218,7 @@ void body() {
     EACH (elem, BC) {
         drops[elem.first] = elem.second;
     }
+    graph::show(graph);
 
     auto _solve = [&](i64 n, auto f) -> void {
         if (drops[n] != 0) {
