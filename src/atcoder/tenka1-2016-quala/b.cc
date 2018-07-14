@@ -1215,6 +1215,7 @@ void body() {
 
     std::queue<i64> q;
     OrderedMap<i64, i64> drops;
+    Vector<bool> visited(N, false);
     REP (i, N) {
         drops[i] = -1;
     }
@@ -1227,6 +1228,10 @@ void body() {
         auto n = q.front();
         q.pop();
         dump(n);
+        if (visited[n]) {
+            continue ;
+        }
+        visited[n] = true;
 
         // 子機の必要個数を計算
 
