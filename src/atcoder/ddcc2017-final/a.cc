@@ -856,7 +856,6 @@ void body() {
                         break;
                     }
                 }
-                dump(Y, x);
 
                 ans += (Y / K) * 4;
             }
