@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/tenka1-2016-quala/tasks/tenka1_2016_qualA_b
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE グラフ DFS 最大化・最小化
 FAILURE_TYPE
 NOTES
+再帰関数を避けて時間がかかったりなどしたが特に問題なし
 */
 #include <iostream>
 #include <cstdint>
@@ -1218,7 +1219,6 @@ void body() {
     EACH (elem, BC) {
         drops[elem.first] = elem.second;
     }
-    graph::show(graph);
 
     auto _solve = [&](i64 n, auto f) -> void {
         if (drops[n] != 0) {
