@@ -824,7 +824,7 @@ void body() {
             }
             dump(Y, "center");
 
-            ans += (2 * Y / K);
+            ans += 1 + (Y * 2 - K) / (2 * K);
 
             //// 左右
             REP (i, (n - 1) / 2) {
@@ -856,7 +856,7 @@ void body() {
                     }
                 }
 
-                ans += (2 * Y / K) * 2;
+                ans += 1 + (Y * 2 - K) / (2 * K);
             }
         }
 
