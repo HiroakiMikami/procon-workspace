@@ -839,7 +839,7 @@ void body() {
                     }
                 }
                 dump(Y, x);
-                ans += 1 + (Y * 2 - K) / (2 * K);
+                ans += (1 + (Y * 2 - K) / (2 * K)) * 2;
             }
 
         } else {
