@@ -1207,37 +1207,43 @@ void body() {
     auto BC = read<i64, i64>(M);
 
     SimpleAdjacencyList graph(N);
-    SimpleAdjacencyList graph2(N);
     REP (i, N - 1) {
-        graph.add_edge(make_tuple(i + 1, Ps[i]));
-        graph2.add_edge(make_tuple(Ps[i], i + 1));
+        graph.add_edge(make_tuple(Ps[i], i + 1));
     }
 
-    std::queue<i64> q;
     OrderedMap<i64, i64> drops;
-    Vector<bool> visited(N, false);
     REP (i, N) {
-        drops[i] = -1;
+        drops[i] = 0;
     }
     EACH (elem, BC) {
-        q.push(elem.first);
         drops[elem.first] = elem.second;
     }
 
-    while (!q.empty()) {
-        auto n = q.front();
-        q.pop();
-        if (visited[n]) {
-            continue ;
+    auto _solve = [&](i64 n, auto f) -> void {
+        if (drops[n] != 0) {
+            return ;
         }
-        dump(n);
-        visited[n] = true;
 
-        // 子機の必要個数を計算
+        // 子機それぞれについて、必要なPackDropを計算する
+        i64 m = std::numeric_limits<i64>::max();
+        EACH_V(edge, graph.outgoings(n)) {
+            f(get<1>(edge));
+            m = std::min(m, drops[get<1>(edge)]);
+        }
 
         EACH_V(edge, graph.outgoings(n)) {
-            q.push(get<1>(edge));
+            drops[get<1>(edge)] -= m;
         }
+        drops[n] = m;
+    };
+    auto solve = [&](i64 n) { return _solve(n, _solve); };
+    EACH_V(edge, graph.outgoings(0)) {
+        solve(get<1>(edge));
     }
 
+    i64 ans = 0;
+    EACH (elem, drops) {
+        ans += elem.second;
+    }
+    cout << ans << endl;
 }
