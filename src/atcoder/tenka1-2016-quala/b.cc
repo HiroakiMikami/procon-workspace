@@ -1220,7 +1220,7 @@ void body() {
     }
     EACH (elem, BC) {
         q.push(elem.first);
-        drops[elem.first] = elem.scond;
+        drops[elem.first] = elem.second;
     }
 
     while (!q.empty()) {
