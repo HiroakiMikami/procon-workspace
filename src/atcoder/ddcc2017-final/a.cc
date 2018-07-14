@@ -839,7 +839,7 @@ void body() {
                     }
                 }
                 dump(Y, x);
-                ans += (2 * Y / K) * 2;
+                ans += 1 + (Y * 2 - K) / (2 * K);
             }
 
         } else {
@@ -856,7 +856,7 @@ void body() {
                     }
                 }
 
-                ans += 1 + (Y * 2 - K) / (2 * K);
+                ans += (2 * Y / K) * 2;
             }
         }
 
