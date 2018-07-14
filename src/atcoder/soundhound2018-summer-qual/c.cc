@@ -798,7 +798,7 @@ int main (int argc, char **argv) {
     cin.tie(0);
     std::ios_base::sync_with_stdio(false);
 
-    cout << std::fixed;
+    cout << std::fixed << std::setprecision(10);
     body();
 
     return 0;
