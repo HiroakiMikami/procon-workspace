@@ -838,9 +838,9 @@ void body() {
                         break;
                     }
                 }
-                dump(Y, x);
-                ans += (1 + (Y * 2 - K) / (2 * K) * 2) * 2;
-                dump((1 + (Y * 2 - K) / (2 * K) * 2));
+                if (Y != 0) {
+                    ans += (1 + (Y * 2 - K) / (2 * K) * 2) * 2;
+                }
             }
 
         } else {
