@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/ddcc2017-final/tasks/ddcc2017_final_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 整数 数え上げ
+FAILURE_TYPE 実装ミス コーナーケース処理
 NOTES
+ただただ数え上げのやり方を間違えた
 */
 #include <iostream>
 #include <cstdint>
