@@ -817,7 +817,7 @@ void body() {
 
     // dp[i][n] = 0..(i-1)個からn個を選ぶときの価値の最小値
     auto dp = make_matrix<i64, 2>({N + 1, N + 1}, static_cast<i64>(1e20));
-
+    dump(dp[0][0]);
     REP (i, N + 1) {
         dp[i][0] = 0;
     }
