@@ -1248,6 +1248,8 @@ namespace graph {
                 REP (j, N) {
                     if (distance[i][k].cost != max && distance[k][j].cost != max &&
                         distance[i][j].cost > distance[i][k].cost + distance[k][j].cost) {
+                        dump("update");
+                        dump(i, j, k);
                         distance[i][j] = C(distance[i][k].cost + distance[k][j].cost, {k});
                     } else if (distance[i][k].cost != max && distance[k][j].cost != max &&
                         distance[i][j].cost == distance[i][k].cost + distance[k][j].cost) {
