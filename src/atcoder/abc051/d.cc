@@ -1293,8 +1293,6 @@ void body() {
     REP (i, N) {
         REP (j, N) {
             auto vs = ret[i][j].previous_vertex;
-            dump(i, j);
-            dump(as_set(vs));
             EACH (k, vs) {
                 // k -> jが最短経路に含まれる
                 edges.erase(make_pair(std::min<size_t>(k, j), std::max<size_t>(k, j)));
