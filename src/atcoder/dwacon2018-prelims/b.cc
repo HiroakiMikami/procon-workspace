@@ -807,8 +807,6 @@ int main (int argc, char **argv) {
 void body() {
     auto s = read<string>();
 
-    i64 ans = 0;
-
     i64 used_num = 0;
     Vector<bool> used(s.size(), false);
 
