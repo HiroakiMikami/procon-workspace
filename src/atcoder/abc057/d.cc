@@ -830,6 +830,7 @@ void body() {
 
     i64 n = -1;
     FOR (i, A, B + 1) {
+        dump(dp[N][i], i);
         if (n == -1) {
             n = i;
             continue;
@@ -842,5 +843,4 @@ void body() {
     }
 
     cout << dp[N][n] * 1.0 / n << endl;
-    cout << n << endl;
 }
