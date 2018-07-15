@@ -837,6 +837,8 @@ void body() {
         }
     }
 
+    dump(as_map(dp));
+
     i64 ans = std::numeric_limits<i64>::max();
     FOR (i, 1, 41) {
         auto A = i * M_a;
