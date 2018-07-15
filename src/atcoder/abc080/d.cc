@@ -815,5 +815,35 @@ void body() {
     auto ws = read<i64, i64, i64>(N);
 
     std::sort(CTR(ws), [](auto x, auto y) { return get<0>(x) < get<0>(y); });
-    dump(ws);
+
+    Vector<pair<i64, i64>> recorders; // (録画終了時刻, channel)
+
+    EACH (w, ws) {
+        auto s = get<0>(w);
+        auto t = get<1>(w);
+        auto c = get<2>(w);
+
+        // 予約できるか録画機があるか調べる
+        i64 x = -1;
+        REP (i, recorders.size()) {
+            auto recorder = recorders[i];
+
+            if (recorder.second == c) {
+                x = i;
+                break;
+            }
+            if (recorder.first < s) {
+                x = i;
+            }
+        }
+
+        if (x == -1) {
+            // 録画機を追加
+            recorders.emplace_back(t, c);
+        } else {
+            recorders[x] = {t, c};
+        }
+    }
+
+    cout << recorders.size() << endl;
 }
