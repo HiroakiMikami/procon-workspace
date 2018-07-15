@@ -829,9 +829,15 @@ void body() {
         auto c = get<2>(abcs[i]);
         FOR (A, a, N * 10 + 1) {
             FOR (B, b, N * 10 + 1) {
-                dp[i + 1][A][B] = dp[i][A][B];
+                if (dp[i][A][B] != -1) {
+                    dp[i + 1][A][B] = dp[i][A][B];
+                }
                 if (dp[i][A - a][B - b] != -1) {
-                    dp[i + 1][A][B] = std::min(dp[i + 1][A][B], dp[i][A - a][B - b] + c);
+                    if (dp[i + 1][A][B] == -1) {
+                        dp[i + 1][A][B] = dp[i][A - a][B - b] + c;
+                    } else {
+                        dp[i + 1][A][B] = std::min(dp[i + 1][A][B], dp[i][A - a][B - b] + c);
+                    }
                 }
             }
         }
