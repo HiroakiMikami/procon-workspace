@@ -818,5 +818,5 @@ void body() {
         }
     }
 
-    cout << *max_element(CTR(dp)) << endl;
+    cout << *max_element(CTR(dp)) * 2 << endl;
 }
