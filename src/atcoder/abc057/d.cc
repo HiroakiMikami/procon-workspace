@@ -842,4 +842,5 @@ void body() {
     }
 
     cout << dp[N][n] * 1.0 / n << endl;
+    cout << n << endl;
 }
