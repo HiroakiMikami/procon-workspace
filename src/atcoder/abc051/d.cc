@@ -1273,14 +1273,9 @@ namespace graph {
 
 void body() {
     auto N = read<i64>();
-    N = 100;
     auto M = read<i64>();
 
     auto es = read<size_t, size_t, i64>(M);
-    es = {};
-    REP (i, 1000) {
-        es.emplace_back(1, 2, 1);
-    }
 
     WeightedAdjacencyList g(N);
     OrderedSet<std::pair<i64, i64>> edges;
@@ -1293,6 +1288,7 @@ void body() {
     }
     g.to_undirected();
 
+#if 0
     auto ret = graph::warshall_floyd(g);
 
     REP (i, N) {
@@ -1304,6 +1300,6 @@ void body() {
             }
         }
     }
-
+#endif
     cout << edges.size() << endl;
 }
