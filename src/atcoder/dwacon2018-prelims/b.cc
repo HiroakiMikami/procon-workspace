@@ -805,7 +805,7 @@ int main (int argc, char **argv) {
 }
 
 void body() {
-    auto s = read<i64>();
+    auto s = read<string>();
 
     if (s.size() % 2 != 1) {
         cout << -1 << endl;
@@ -815,7 +815,6 @@ void body() {
     i64 n_2 = 0;
     i64 n_5 = 0;
     i64 ans = 0;
-
 
     REP (i, s.size()) {
         auto c = s[i];
