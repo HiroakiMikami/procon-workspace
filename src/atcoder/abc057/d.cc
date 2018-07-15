@@ -824,7 +824,7 @@ void body() {
     REP (i, N) {
         FOR (n, 1, N + 1) {
             // dp[i + 1][n]の更新
-            dp[i + 1][n] = std::min(dp[i][n], dp[i][n - 1] + vs[i]);
+            dp[i + 1][n] = std::max(dp[i][n], dp[i][n - 1] + vs[i]);
         }
     }
 
@@ -837,7 +837,7 @@ void body() {
         }
 
         // 平均の比較
-        if (n * dp[N][i] < i * dp[N][n]) {
+        if (n * dp[N][i] > i * dp[N][n]) {
             n = i;
         }
     }
