@@ -1284,11 +1284,10 @@ void body() {
         get<0>(e) -= 1;
         get<1>(e) -= 1;
         g.add_edge(e);
+        g.add_edge(make_tuple(get<1>(e), get<0>(e), get<2>(e)));
         edges.emplace(std::min(get<0>(e), get<1>(e)), std::max(get<0>(e), get<1>(e)));
     }
-    g.to_undirected();
 
-#if 0
     auto ret = graph::warshall_floyd(g);
 
     REP (i, N) {
@@ -1300,6 +1299,6 @@ void body() {
             }
         }
     }
-#endif
+
     cout << edges.size() << endl;
 }
