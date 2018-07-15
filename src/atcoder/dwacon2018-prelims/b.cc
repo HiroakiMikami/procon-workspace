@@ -807,47 +807,40 @@ int main (int argc, char **argv) {
 void body() {
     auto s = read<string>();
 
-    if (s.size() % 2 == 1) {
-        cout << -1 << endl;
-        return ;
-    }
+    i64 ans = 0;
 
-    i64 n_2 = 0;
-    i64 n_5 = 0;
-    i64 ans = 1;
+    i64 used_num = 0;
+    Vector<bool> used(s.size(), false);
 
-    REP (i, s.size()) {
-        auto c = s[i];
-
-        if (c == '2') {
-            n_2 += 1;
-        } else {
-            n_5 += 1;
+    i64 ans = 0;
+    while (used_num != s.size()) {
+        auto prev_n = used_num;
+        // 1つめの文字列を構成する
+        char last_ch = '5';
+        REP (i, s.size()) {
+            if (used[i]) continue;
+            if (s[i] == '2' && last_ch == '5') {
+                last_ch = '2';
+                used[i] = true;
+                used_num += 1;
+            } else if (s[i] == '5' && last_ch == '2') {
+                last_ch = '5';
+                used[i] = true;
+                used_num += 1;
+            }
         }
 
-        if (n_5 > n_2) {
+        if (last_ch != '5') {
             cout << -1 << endl;
             return ;
         }
+        ans += 1;
 
-        if (c == '2' && n_2 - n_5 >= 2) {
-            ans += 1;
+
+        if (prev_n == used_num) {
+            cout << -1 << endl;
+            return ;
         }
-
-        dump(c);
-        dump(n_2, n_5);
-        /*
-         *
-         * 2 2 5 5 2 5 2 2 5 2 2 2 2  5  5  5  5  5  2  5  2  2  2  5  5  2  5  5
-         * 1 2 2 2 3 3 4 5 5 6 7 8 9 10 10 10 10 10 11 11 12 13 14 14 14 15 15 15
-         * 0 0 1 2 2 3 3 3 4 4 4 4 4  5  6  7  8  9  9 10 10 10 10 11 12 12 13 14
-         *
-         */
-    }
-
-    if (n_2 != n_5) {
-        cout << -1 << endl;
-        return ;
     }
     cout << ans << endl;
 }
