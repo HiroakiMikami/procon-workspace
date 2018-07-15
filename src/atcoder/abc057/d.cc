@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/abc057/tasks/abc057_d
+SCORE 400
 AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE DP ナップザックDP 数え上げ
+FAILURE_TYPE 実装ミス
 NOTES
+条件を満たす個数を出力するのを見落としていたので、あとでその実装をいれたらバグらせた
 */
 #include <iostream>
 #include <cstdint>
