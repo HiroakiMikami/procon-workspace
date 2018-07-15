@@ -822,12 +822,10 @@ void body() {
         dp[i][0] = 0;
     }
 
-    FOR (i, 1, N + 1) {
+    REP (i, N + 1) {
         FOR (n, 1, N + 1) {
-            // dp[i][n]の更新
-            dp[i][n] = std::min(dp[i - 1][n], dp[i - 1][n - 1] + vs[i]);
+            // dp[i + 1][n]の更新
+            dp[i + 1][n] = std::min(dp[i][n], dp[i][n - 1] + vs[i]);
         }
     }
-
-
 }
