@@ -1210,7 +1210,7 @@ namespace graph {
 namespace graph {
     template <class Cost>
     struct CostWithPreviousVertex {
-        CostWithPreviousVertex(Cost cost, UnOrderedSet<size_t> previous_vertex)
+        CostWithPreviousVertex(Cost cost, UnorderedSet<size_t> previous_vertex)
                 : cost(cost), previous_vertex(previous_vertex) {}
         Cost cost;
         Vector<size_t> previous_vertex;
