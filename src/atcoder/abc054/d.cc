@@ -837,7 +837,7 @@ void body() {
         }
     }
 
-    dump(as_map(dp));
+    dump(as_set(dp));
 
     i64 ans = std::numeric_limits<i64>::max();
     FOR (i, 1, 41) {
