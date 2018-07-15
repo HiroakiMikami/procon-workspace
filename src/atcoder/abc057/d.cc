@@ -837,6 +837,7 @@ void body() {
         }
 
         // 平均の比較
+        dump(dp[N][i]);
         if (n * dp[N][i] < i * dp[N][n]) {
             n = i;
         }
