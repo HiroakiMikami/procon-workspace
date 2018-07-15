@@ -821,13 +821,12 @@ void body() {
         dp[i][0][0] = 0;
     }
 
-    REP (i, N + 1) {
+    REP (i, N) {
         /*
          * 薬品iを追加できる
          * -> dp[i + 1][A][B] = min(dp[i][A][B], dp[i][A-a_i][B-b_i] + c_i)
          */
         auto a = get<0>(abcs[i]);
-        dump(i, abcs.size());
         auto b = get<1>(abcs[i]);
         auto c = get<2>(abcs[i]);
         FOR (A, a, N * 10 + 1) {
