@@ -1271,6 +1271,8 @@ void body() {
     OrderedSet<std::pair<i64, i64>> edges;
 
     EACH (e, es) {
+        get<0>(e) -= 1;
+        get<1>(e) -= 1;
         g.add_edge(e);
         edges.emplace(std::min(get<0>(e), get<1>(e)), std::max(get<0>(e), get<1>(e)));
     }
