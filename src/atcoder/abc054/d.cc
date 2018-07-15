@@ -838,11 +838,12 @@ void body() {
     }
 
     i64 ans = std::numeric_limits<i64>::max();
-    FOR (i, 1, N + 1) {
+    FOR (i, 1, 41) {
         auto A = i * M_a;
         auto B = i * M_b;
 
-        dump(A, B);
+        if (A > N * 10) continue;
+        if (B > N * 10) continue;
 
         if (dp[N][A][B] == -1) continue;
         ans = std::min(ans, dp[N][A][B]);
