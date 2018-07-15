@@ -825,6 +825,8 @@ void body() {
             n_5 += 1;
         }
 
+        dump(n_2, n_5);
+
         if (n_5 > n_2) {
             cout << -1 << endl;
             return ;
