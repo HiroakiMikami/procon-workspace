@@ -1278,4 +1278,16 @@ void body() {
     }
 
     auto ret = graph::warshall_floyd(g);
+
+    REP (i, N) {
+        REP (j, N) {
+            auto vs = ret[i][j].previous_vertex;
+            EACH (k, vs) {
+                // k -> jが最短経路に含まれる
+                edges.erase(make_pair(std::min<size_t>(k, j), std::max<size_t>(k, j)));
+            }
+        }
+    }
+
+    cout << edges.size() << endl;
 }
