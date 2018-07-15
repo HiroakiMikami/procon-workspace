@@ -1213,7 +1213,7 @@ namespace graph {
         CostWithPreviousVertex(Cost cost, HashSet<size_t> previous_vertex)
                 : cost(cost), previous_vertex(previous_vertex) {}
         Cost cost;
-        Vector<size_t> previous_vertex;
+        HashSet<size_t> previous_vertex;
 
         bool operator==(const CostWithPreviousVertex<Cost> &rhs) const {
             return this->cost == rhs.cost && this->previous_vertex == rhs.previous_vertex;
