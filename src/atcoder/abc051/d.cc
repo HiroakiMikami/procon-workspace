@@ -1231,7 +1231,7 @@ namespace graph {
         using C = CostWithPreviousVertex<EdgeLabel>;
 
         auto max = std::numeric_limits<EdgeLabel>::max();
-        CostWithPreviousVertex<EdgeLabel>(0, make_optional(0));
+        CostWithPreviousVertex<EdgeLabel>(0, {0});
 
         auto N = g.vertices_size();
         vector<vector<C>> distance(N, vector<C>(N, C(max, {})));
