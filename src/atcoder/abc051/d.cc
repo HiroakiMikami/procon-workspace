@@ -1248,14 +1248,10 @@ namespace graph {
                 REP (j, N) {
                     if (distance[i][k].cost != max && distance[k][j].cost != max &&
                         distance[i][j].cost > distance[i][k].cost + distance[k][j].cost) {
-                        auto prev_opt = distance[k][j].previous_vertex;
-                        auto prev = prev_opt.value_or(k);
-                        distance[i][j] = C(distance[i][k].cost + distance[k][j].cost, {prev});
+                        distance[i][j] = C(distance[i][k].cost + distance[k][j].cost, {k});
                     } else if (distance[i][k].cost != max && distance[k][j].cost != max &&
                         distance[i][j].cost == distance[i][k].cost + distance[k][j].cost) {
-                        auto prev_opt = distance[k][j].previous_vertex;
-                        auto prev = prev_opt.value_or(k);
-                        distance[i][j].previous_vertex.push_back(prev);
+                        distance[i][j].previous_vertex.push_back(k);
                     }
                 }
             }
