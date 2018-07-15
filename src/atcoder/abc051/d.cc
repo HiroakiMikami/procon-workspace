@@ -1239,7 +1239,7 @@ namespace graph {
         REP (k, N) {
             distance[k][k] = C(0, {});
             for (auto edge: g.outgoings(k)) {
-                distance[k][get<1>(edge)] = C(get<2>(edge), {k});
+                distance[k][get<1>(edge)] = C(get<2>(edge), {static_cast<size_t>(k)});
             }
         }
 
