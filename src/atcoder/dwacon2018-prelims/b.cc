@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/dwacon2018-prelims/tasks/dwacon2018_prelims_b
+SCORE 300
 AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE シミュレーション
+FAILURE_TYPE 考察力不足
 NOTES
+見当違いの解法を書いてテストで失敗→|s|<=2525なのでシミュレーションすれば間に合うことに気付く
+要素数が少ない時にO(N)の解法を思いついたら間違っていると疑ってかかるほうが良い？
 */
 #include <iostream>
 #include <cstdint>
@@ -813,7 +815,6 @@ void body() {
     i64 ans = 0;
     while (used_num != s.size()) {
         auto prev_n = used_num;
-        // 1つめの文字列を構成する
         char last_ch = '5';
         REP (i, s.size()) {
             if (used[i]) continue;
