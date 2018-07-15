@@ -1,13 +1,20 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/abc051/tasks/abc051_d
+SCORE 400
 AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE グラフ 最短経路 ワーシャルフロイド
+FAILURE_TYPE utilsバグ utils不足
 NOTES
+Warshall Floydの改造に時間がかかった。Editionalを見ると
+  dist(s, i) + edges(i, j) = dist(s, j)
+を満たす辺(i, j)を削除する方針が書かれていて、このほうが確かに書きやすい。
+最短経路に含まれる辺を数え上げるときの一つの典型なのだろうか
+
+(Weighted)AdjacencyListのto_undirectedが何らかの条件でREを起こすことがあるらしい。
+this->edges()が一番怪しい？
 */
 #include <iostream>
 #include <cstdint>
