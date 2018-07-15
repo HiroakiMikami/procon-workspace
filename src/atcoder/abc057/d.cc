@@ -817,7 +817,6 @@ void body() {
 
     // dp[i][n] = 0..(i-1)個からn個を選ぶときの価値の最小値
     auto dp = make_matrix<i64, 2>({N + 1, N + 1}, static_cast<i64>(1e20));
-    dump(dp[0][0]);
     REP (i, N + 1) {
         dp[i][0] = 0;
     }
@@ -825,6 +824,7 @@ void body() {
     REP (i, N) {
         FOR (n, 1, N + 1) {
             // dp[i + 1][n]の更新
+            dump(dp[i][n], dp[i][n - 1] + vs[i]));
             dp[i + 1][n] = std::min(dp[i][n], dp[i][n - 1] + vs[i]);
         }
     }
