@@ -834,6 +834,7 @@ void body() {
             }
         }
     }
+    dump(as_set(vs));
     dump(N - 1, dp[N - 1][2]);
     dump(N, dp[N][2]);
 
