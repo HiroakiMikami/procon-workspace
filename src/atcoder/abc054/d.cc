@@ -838,7 +838,7 @@ void body() {
                     if (dp[i + 1][A][B] == -1) {
                         dp[i + 1][A][B] = dp[i][A - a][B - b] + c;
                     } else {
-                        dp[i + 1][A][B] = std::min(dp[i + 1][A][B], dp[i][A - a][B - b] + c);
+                        //dp[i + 1][A][B] = std::min(dp[i + 1][A][B], dp[i][A - a][B - b] + c);
                     }
                 }
             }
@@ -853,8 +853,8 @@ void body() {
         if (A > N * 10) continue;
         if (B > N * 10) continue;
 
-//        if (dp[N][A][B] == -1) continue;
-//        ans = std::min(ans, dp[N][A][B]);
+        if (dp[N][A][B] == -1) continue;
+        ans = std::min(ans, dp[N][A][B]);
     }
 
     if (ans == std::numeric_limits<i64>::max()) {
