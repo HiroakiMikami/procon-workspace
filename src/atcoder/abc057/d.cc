@@ -815,16 +815,23 @@ void body() {
     auto B = read<i64>();
     auto vs = read<i64>(N);
 
-    // dp[i][n] = 0..(i-1)個からn個を選ぶときの価値の最小値
-    auto dp = make_matrix<i64, 2>({N + 1, N + 1}, 0);
+    // dp[i][n] = 0..(i-1)個からn個を選ぶときの価値の最小値と当てはまる選び方
+    auto dp = make_matrix<pair<i64, i64>, 2>({N + 1, N + 1}, {0, 0});
     REP (i, N + 1) {
-        dp[i][0] = 0;
+        dp[i][0].second = 1;
     }
 
     REP (i, N) {
         FOR (n, 1, N + 1) {
             // dp[i + 1][n]の更新
-            dp[i + 1][n] = std::max(dp[i][n], dp[i][n - 1] + vs[i]);
+            if (dp[i][n].first < dp[i][n - 1].first + vs[i]) {
+                dp[i + 1][n].first = dp[i][n - 1].first + vs[i];
+                dp[i + 1][n].second = dp[i][n - 1].second;
+            } else if(dp[i][n].first == dp[i][n - 1].first + vs[i]) {
+                dp[i + 1][n].second += dp[i][n - 1].second;
+            } else {
+                dp[i + 1][n] = dp[i][n];
+            }
         }
     }
 
@@ -836,10 +843,11 @@ void body() {
         }
 
         // 平均の比較
-        if (n * dp[N][i] > i * dp[N][n]) {
+        if (n * dp[N][i].first > i * dp[N][n].first) {
             n = i;
         }
     }
 
-    cout << dp[N][n] * 1.0 / n << endl;
+    cout << dp[N][n].first * 1.0 / n << endl;
+    cout << dp[N][n].second << endl;
 }
