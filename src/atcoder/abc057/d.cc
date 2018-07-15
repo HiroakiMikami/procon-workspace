@@ -835,6 +835,7 @@ void body() {
         }
     }
     dump(N - 1, dp[N - 1][2]);
+    dump(N, dp[N][2]);
 
     i64 n = A;
     FOR (i, A, B + 1) {
