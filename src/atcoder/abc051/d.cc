@@ -1257,7 +1257,7 @@ namespace graph {
                         distance[i][j].cost == distance[i][k].cost + distance[k][j].cost) {
                         auto prev_opt = distance[k][j].previous_vertex;
                         EACH (x, prev_opt) {
-                            distance[i][j].previous_vertex.insert(x);
+                            distance[i][j].previous_vertex.emplace(x);
                         }
                         if (prev_opt.empty()) {
                             distance[i][j].previous_vertex.insert(k);
