@@ -835,8 +835,9 @@ void body() {
         }
     }
 
-    dump(as_map(dp));
-
+    REP (i, N) {
+        dump(as_map(dp[i + 1]));
+    }
     i64 n = -1;
     FOR (i, A, B + 1) {
         if (n == -1) {
