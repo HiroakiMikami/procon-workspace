@@ -1251,7 +1251,7 @@ namespace graph {
                         auto prev_opt = distance[k][j].previous_vertex;
                         distance[i][j] = C(distance[i][k].cost + distance[k][j].cost, prev_opt);
                         if (prev_opt.empty()) {
-                            distance[i][j].push_back(k);
+                            distance[i][j].previous_vertex.push_back(k);
                         }
                     } else if (distance[i][k].cost != max && distance[k][j].cost != max &&
                         distance[i][j].cost == distance[i][k].cost + distance[k][j].cost) {
