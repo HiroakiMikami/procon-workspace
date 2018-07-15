@@ -816,7 +816,7 @@ void body() {
     auto vs = read<i64>(N);
 
     // dp[i][n] = 0..(i-1)個からn個を選ぶときの価値の最小値
-    auto dp = make_matrix<i64, 2>({N + 1, N + 1}, static_cast<i64>(1e17));
+    auto dp = make_matrix<i64, 2>({N + 1, N + 1}, 0);
     REP (i, N + 1) {
         dp[i][0] = 0;
     }
@@ -830,7 +830,6 @@ void body() {
 
     i64 n = -1;
     FOR (i, A, B + 1) {
-        dump(dp[N][i], i);
         if (n == -1) {
             n = i;
             continue;
