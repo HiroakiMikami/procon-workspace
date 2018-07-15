@@ -1251,7 +1251,7 @@ namespace graph {
                         auto prev_opt = distance[k][j].previous_vertex;
                         distance[i][j] = C(distance[i][k].cost + distance[k][j].cost, prev_opt);
                         if (prev_opt.empty()) {
-                            distance[i][j].previous_vertex.insert(k);
+                            distance[i][j].previous_vertex.emplace(k);
                         }
                     } else if (distance[i][k].cost != max && distance[k][j].cost != max &&
                         distance[i][j].cost == distance[i][k].cost + distance[k][j].cost) {
@@ -1260,7 +1260,7 @@ namespace graph {
                             distance[i][j].previous_vertex.emplace(x);
                         }
                         if (prev_opt.empty()) {
-                            distance[i][j].previous_vertex.insert(k);
+                            distance[i][j].previous_vertex.emplace(k);
                         }
                     }
                 }
