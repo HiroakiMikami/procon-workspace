@@ -826,7 +826,7 @@ void body() {
          */
         auto a = get<0>(abcs[i]);
         auto b = get<1>(abcs[i]);
-        auto c = get<c>(abcs[i]);
+        auto c = get<2>(abcs[i]);
         FOR (A, a, N * 10 + 1) {
             FOR (B, b, N * 10 + 1) {
                 dp[i + 1][A][B] = dp[i][A][B];
