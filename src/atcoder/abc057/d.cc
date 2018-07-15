@@ -841,18 +841,23 @@ void body() {
             }
         }
     }
-    REP (i, N + 1) {
-        dump(i, dp[i]);
-    }
 
     i64 n = A;
+    Vector<i64> ns({A});
     FOR (i, A, B + 1) {
         // 平均の比較
         if (n * dp[N][i].first > i * dp[N][n].first) {
             n = i;
+            ns = {i};
+        } else if (n * dp[N][i].first == i * dp[N][n].first) {
+            ns.push_back(i);
         }
     }
 
     cout << dp[N][n].first * 1.0 / n << endl;
-    cout << dp[N][n].second << endl;
+    i64 total = 0;
+    EACH (n, ns) {
+        total += dp[N][n].second;
+    }
+    cout << total << endl;
 }
