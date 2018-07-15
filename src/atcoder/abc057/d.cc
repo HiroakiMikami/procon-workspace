@@ -829,7 +829,7 @@ void body() {
                 dp[i + 1][n].second = dp[i][n - 1].second;
             } else if(dp[i][n].first == dp[i][n - 1].first + vs[i]) {
                 dp[i + 1][n].first = dp[i][n].first;
-                dp[i + 1][n].second += dp[i][n - 1].second;
+                dp[i + 1][n].second = dp[i][n].second + dp[i][n - 1].second;
             } else {
                 dp[i + 1][n] = dp[i][n];
             }
