@@ -828,4 +828,19 @@ void body() {
             dp[i + 1][n] = std::min(dp[i][n], dp[i][n - 1] + vs[i]);
         }
     }
+
+    i64 n = -1;
+    FOR (i, A, B + 1) {
+        if (n == -1) {
+            n = i;
+            continue;
+        }
+
+        // 平均の比較
+        if (n * dp[N][i] < i * dp[N][n]) {
+            n = i;
+        }
+    }
+
+    cout << dp[N][n] * 1.0 / n << endl;
 }
