@@ -1291,17 +1291,13 @@ void body() {
     WeightedAdjacencyList g(N);
     OrderedSet<std::pair<i64, i64>> edges;
 
-    EACH_V(edge, g.edges()) {
-        dump(edge);
-    }
-
     EACH (e, es) {
         get<0>(e) -= 1;
         get<1>(e) -= 1;
         g.add_edge(e);
-        g.add_edge(make_tuple(get<1>(e), get<0>(e), get<2>(e)));
         edges.emplace(std::min(get<0>(e), get<1>(e)), std::max(get<0>(e), get<1>(e)));
     }
+    g.to_undirected();
 
     auto ret = graph::warshall_floyd(g);
 
