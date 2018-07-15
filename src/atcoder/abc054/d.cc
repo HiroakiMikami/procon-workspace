@@ -851,8 +851,8 @@ void body() {
         if (A > N * 10) continue;
         if (B > N * 10) continue;
 
-        if (dp[N][A][B] == -1) continue;
         dump(dp[N][A][B], A, B);
+        if (dp[N][A][B] == -1) continue;
         ans = std::min(ans, dp[N][A][B]);
     }
 
