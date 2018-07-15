@@ -807,7 +807,7 @@ int main (int argc, char **argv) {
 void body() {
     auto s = read<string>();
 
-    if (s.size() % 2 != 1) {
+    if (s.size() % 2 == 1) {
         cout << -1 << endl;
         return ;
     }
@@ -824,8 +824,6 @@ void body() {
         } else {
             n_5 += 1;
         }
-
-        dump(n_2, n_5);
 
         if (n_5 > n_2) {
             cout << -1 << endl;
