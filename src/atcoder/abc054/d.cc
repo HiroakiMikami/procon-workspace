@@ -817,9 +817,11 @@ void body() {
 
     // dp[i][A][B] = 0..i-1番目までの薬品で、タイプAをA g, タイプBをB g含むときの最小価格
     auto dp = make_matrix<i64, 3>({N + 1, N * 10 + 1, N * 10 + 1}, -1);
-    dp[0][0][0] = 0;
+    REP (i, N + 1) {
+        dp[i][0][0] = 0;
+    }
 
-    REP (i, N) {
+    REP (i, N + 1) {
         /*
          * 薬品iを追加できる
          * -> dp[i + 1][A][B] = min(dp[i][A][B], dp[i][A-a_i][B-b_i] + c_i)
