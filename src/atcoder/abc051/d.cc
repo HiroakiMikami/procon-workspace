@@ -1278,8 +1278,8 @@ void body() {
 
     auto es = read<size_t, size_t, i64>(M);
     es = {};
-    REP (i, N - 1) {
-        es.emplace_back(i + 1, i + 2, 1);
+    REP (i, 1000) {
+        es.emplace_back(1, 2, 1);
     }
 
     WeightedAdjacencyList g(N);
