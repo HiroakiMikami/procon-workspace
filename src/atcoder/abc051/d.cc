@@ -1278,6 +1278,7 @@ void body() {
         g.add_edge(e);
         edges.emplace(std::min(get<0>(e), get<1>(e)), std::max(get<0>(e), get<1>(e)));
     }
+    g.to_undirected();
 
     auto ret = graph::warshall_floyd(g);
 
