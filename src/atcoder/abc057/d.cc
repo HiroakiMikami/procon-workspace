@@ -844,7 +844,7 @@ void body() {
 
     i64 n = A;
     Vector<i64> ns({A});
-    FOR (i, A, B + 1) {
+    FOR (i, A + 1, B + 1) {
         // 平均の比較
         if (n * dp[N][i].first > i * dp[N][n].first) {
             n = i;
