@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/dwacon2017-prelims/tasks/dwango2017qual_b
+SCORE 300
 AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE DP 最大化・最小化 文字列
+FAILURE_TYPE 考察速度不足
 NOTES
+DPを思いつくのに何故か時間がかかった。全探索がTLEしそうなときは、探索の小手先高速化よりとりあえずDP考えてよかったはず。
 */
 #include <iostream>
 #include <cstdint>
