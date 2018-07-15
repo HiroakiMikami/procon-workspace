@@ -1277,6 +1277,10 @@ void body() {
     auto M = read<i64>();
 
     auto es = read<size_t, size_t, i64>(M);
+    es = {};
+    REP (i, N - 1) {
+        es.emplace_back(i + 1, i + 2, 1);
+    }
 
     WeightedAdjacencyList g(N);
     OrderedSet<std::pair<i64, i64>> edges;
