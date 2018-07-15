@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/abc054/tasks/abc054_d
+SCORE 400
 AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE DP ナップザックDP
+FAILURE_TYPE 知識不足 初期条件ミス 遷移ミス
 NOTES
+ナップザックDPの典型に当たるものと思うが、使うまでに時間がかかった。考察後は初期条件や遷移条件ミスで3WA。
+ナップザックDPは"使う or 使わない"の判断を漸化式で扱うもの（多くの場合minやmaxの中に"使う or 使わない"の判断が存在する）
 */
 #include <iostream>
 #include <cstdint>
