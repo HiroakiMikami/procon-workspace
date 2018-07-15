@@ -814,6 +814,6 @@ void body() {
     auto C = read<i64>();
     auto ws = read<i64, i64, i64>(N);
 
-    std::sort(CTR(ws), [](auto x, auto y) { return get<0>(x) < get<1>(x); });
+    std::sort(CTR(ws), [](auto x, auto y) { return get<0>(x) < get<0>(y); });
     dump(ws);
 }
