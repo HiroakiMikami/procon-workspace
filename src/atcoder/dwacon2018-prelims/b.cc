@@ -814,7 +814,7 @@ void body() {
 
     i64 n_2 = 0;
     i64 n_5 = 0;
-    i64 ans = 0;
+    i64 ans = 1;
 
     REP (i, s.size()) {
         auto c = s[i];
