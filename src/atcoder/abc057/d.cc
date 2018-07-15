@@ -824,14 +824,20 @@ void body() {
     REP (i, N) {
         FOR (n, 1, N + 1) {
             // dp[i + 1][n]の更新
-            if (dp[i][n].first < dp[i][n - 1].first + vs[i]) {
-                dp[i + 1][n].first = dp[i][n - 1].first + vs[i];
-                dp[i + 1][n].second = dp[i][n - 1].second;
-            } else if(dp[i][n].first == dp[i][n - 1].first + vs[i]) {
-                dp[i + 1][n].first = dp[i][n].first;
-                dp[i + 1][n].second = dp[i][n].second + dp[i][n - 1].second;
-            } else {
+            if (dp[i][n].second != 0) {
                 dp[i + 1][n] = dp[i][n];
+            }
+
+            if (dp[i][n - 1].second != 0) {
+                if (dp[i + 1][n].first < dp[i][n - 1].first + vs[i]) {
+                    dp[i + 1][n].first = dp[i][n - 1].first + vs[i];
+                    dp[i + 1][n].second = dp[i][n - 1].second;
+                } else if(dp[i + 1][n].first == dp[i][n - 1].first + vs[i]) {
+                    dp[i + 1][n].first = dp[i][n].first;
+                    dp[i + 1][n].second = dp[i][n].second + dp[i][n - 1].second;
+                } else {
+                    dp[i + 1][n] = dp[i][n];
+                }
             }
         }
     }
