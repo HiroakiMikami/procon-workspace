@@ -828,13 +828,14 @@ void body() {
                 dp[i + 1][n].first = dp[i][n - 1].first + vs[i];
                 dp[i + 1][n].second = dp[i][n - 1].second;
             } else if(dp[i][n].first == dp[i][n - 1].first + vs[i]) {
-                dump(i, n, dp[i][n].first);
                 dp[i + 1][n].second += dp[i][n - 1].second;
             } else {
                 dp[i + 1][n] = dp[i][n];
             }
         }
     }
+
+    dump(as_map(dp));
 
     i64 n = -1;
     FOR (i, A, B + 1) {
