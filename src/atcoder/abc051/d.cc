@@ -1210,7 +1210,7 @@ namespace graph {
 namespace graph {
     template <class Cost>
     struct CostWithPreviousVertex {
-        CostWithPreviousVertex(Cost cost, UnorderedSet<size_t> previous_vertex)
+        CostWithPreviousVertex(Cost cost, UnOrderedSet<size_t> previous_vertex)
                 : cost(cost), previous_vertex(previous_vertex) {}
         Cost cost;
         Vector<size_t> previous_vertex;
@@ -1251,16 +1251,16 @@ namespace graph {
                         auto prev_opt = distance[k][j].previous_vertex;
                         distance[i][j] = C(distance[i][k].cost + distance[k][j].cost, prev_opt);
                         if (prev_opt.empty()) {
-                            distance[i][j].previous_vertex.push_back(k);
+                            distance[i][j].previous_vertex.insert(k);
                         }
                     } else if (distance[i][k].cost != max && distance[k][j].cost != max &&
                         distance[i][j].cost == distance[i][k].cost + distance[k][j].cost) {
                         auto prev_opt = distance[k][j].previous_vertex;
                         EACH (x, prev_opt) {
-                            distance[i][j].previous_vertex.push_back(x);
+                            distance[i][j].previous_vertex.insert(x);
                         }
                         if (prev_opt.empty()) {
-                            distance[i][j].previous_vertex.push_back(k);
+                            distance[i][j].previous_vertex.insert(k);
                         }
                     }
                 }
