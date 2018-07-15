@@ -1272,7 +1272,8 @@ namespace graph {
 }
 
 void body() {
-    auto N = 100; //read<i64>();
+    auto N = read<i64>();
+    N = 100;
     auto M = read<i64>();
 
     auto es = read<size_t, size_t, i64>(M);
