@@ -835,16 +835,8 @@ void body() {
         }
     }
 
-    REP (i, N) {
-        dump(as_map(dp[i + 1]));
-    }
-    i64 n = -1;
+    i64 n = A;
     FOR (i, A, B + 1) {
-        if (n == -1) {
-            n = i;
-            continue;
-        }
-
         // 平均の比較
         if (n * dp[N][i].first > i * dp[N][n].first) {
             n = i;
