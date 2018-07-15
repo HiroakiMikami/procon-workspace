@@ -818,7 +818,7 @@ void body() {
     // dp[i][A][B] = 0..i-1番目までの薬品で、タイプAをA g, タイプBをB g含むときの最小価格
     auto dp = make_matrix<i64, 3>({N + 1, N * 10 + 1, N * 10 + 1}, -1);
     REP (i, N + 1) {
-        dp[i][0][0] = 0;
+        //dp[i][0][0] = 0;
     }
 
     REP (i, N + 1) {
@@ -838,7 +838,7 @@ void body() {
                     if (dp[i + 1][A][B] == -1) {
                         dp[i + 1][A][B] = dp[i][A - a][B - b] + c;
                     } else {
-                        //dp[i + 1][A][B] = std::min(dp[i + 1][A][B], dp[i][A - a][B - b] + c);
+                        dp[i + 1][A][B] = std::min(dp[i + 1][A][B], dp[i][A - a][B - b] + c);
                     }
                 }
             }
