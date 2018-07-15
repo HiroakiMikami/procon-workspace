@@ -1287,6 +1287,8 @@ void body() {
     WeightedAdjacencyList g(N);
     OrderedSet<std::pair<i64, i64>> edges;
 
+    g.edges();
+
     EACH (e, es) {
         get<0>(e) -= 1;
         get<1>(e) -= 1;
