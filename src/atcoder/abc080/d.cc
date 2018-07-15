@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/abc080/tasks/abc080_d
+SCORE 400
 AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE シミュレーション
 FAILURE_TYPE
 NOTES
+Editionalは、同時に放送しているチャンネルの数を数える方法だった。そのほうがスマートのような気はする。
 */
 #include <iostream>
 #include <cstdint>
@@ -825,7 +826,7 @@ void body() {
 
         // 予約できるか録画機があるか調べる
         i64 x = -1;
-        REP (i, recorders.size()) {
+        REP (i, recorders.size()) { // たかだかチャンネル数のはずなので間に合う
             auto recorder = recorders[i];
 
             if (recorder.second == c) {
