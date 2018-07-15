@@ -842,6 +842,7 @@ void body() {
         auto A = i * M_a;
         auto B = i * M_b;
 
+        dump(A, B);
 
         if (dp[N][A][B] == -1) continue;
         ans = std::min(ans, dp[N][A][B]);
