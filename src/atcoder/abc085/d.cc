@@ -828,7 +828,7 @@ void body() {
     i64 ans = 0;
     i64 i = 0;
     while (H > 0) {
-        if (bs[i] > A) {
+        if (i < bs.size() && bs[i] > A) {
             H -= bs[i];
             ans += 1;
             i += 1;
