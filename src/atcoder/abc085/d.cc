@@ -825,5 +825,18 @@ void body() {
     auto A = *max_element(CTR(as));
     sort(CTR(bs), [](auto x, auto y) { return x > y; });
 
-    dump(as_map(bs));
+    i64 ans = 0;
+    i64 i = 0;
+    while (H > 0) {
+        if (bs[i] > A) {
+            H -= bs[i];
+            ans += 1;
+            i += 1;
+        } else {
+            auto n = (H + A - 1) / A;
+            ans += n;
+            H -= n * A;
+        }
+    }
+    cout << ans << endl;
 }
