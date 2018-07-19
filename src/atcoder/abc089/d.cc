@@ -843,8 +843,9 @@ void body() {
             auto p2 = n2p[y];
             auto m = std::abs(p2.first - p.first) + std::abs(p2.second - p.second);
 
-            dump(x, y, m);
             ns[x][n] = ns[x][n - 1] + m;
+
+            p = p2;
             n += 1;
         }
     }
