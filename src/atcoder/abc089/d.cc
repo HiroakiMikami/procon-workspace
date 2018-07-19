@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/abc089/tasks/abc089_d
+SCORE 400
 AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 累積和
+FAILURE_TYPE 実装ミス
 NOTES
+境界条件を考えるのが面倒で(D, H*W)のメモリを確保したらTLEした。
 */
 #include <iostream>
 #include <cstdint>
