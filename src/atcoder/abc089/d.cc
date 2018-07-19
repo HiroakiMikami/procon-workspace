@@ -858,6 +858,4 @@ void body() {
 
         cout << ns[x][n2] - ns[x][n1] << endl;
     }
-
-    cout << ans << endl;
 }
