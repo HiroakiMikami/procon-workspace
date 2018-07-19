@@ -848,7 +848,6 @@ void body() {
         }
     }
 
-    i64 ans = 0;
     EACH (q, qs) {
         auto R = q.first - 1;
         auto L = q.second - 1;
@@ -857,7 +856,7 @@ void body() {
         auto n1 = (L - x) / D;
         auto n2 = (R - x) / D;
 
-        ans += ns[x][n2] - ns[x][n1];
+        cout << ns[x][n2] - ns[x][n1] << endl;
     }
 
     cout << ans << endl;
