@@ -850,8 +850,8 @@ void body() {
 
     i64 ans = 0;
     EACH (q, qs) {
-        auto R = q.first;
-        auto L = q.second;
+        auto R = q.first - 1;
+        auto L = q.second - 1;
 
         auto x = L % D;
         auto n1 = (L - x) / D;
