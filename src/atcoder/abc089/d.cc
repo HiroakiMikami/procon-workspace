@@ -830,7 +830,7 @@ void body() {
     }
 
     // ns[x][n] := xからx+nDまで動くのに必要な魔力
-    auto ns = make_matrix<i64, 2>({D, H * W}, 0);
+    auto ns = make_matrix<i64, 2>({D, H * W / D + 1}, 0);
     REP (x, D) {
         auto p = n2p[x];
         ns[x][0] = 0;
