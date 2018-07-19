@@ -857,8 +857,8 @@ void body() {
         auto n2 = (R - x) / D;
 
         dump(x, n1, n2, ns[x][n2], ns[x][n1]);
-        dump(n2p[L], n2p[R]);
 
-        cout << ns[x][n2] - ns[x][n1] << endl;
+
+        cout << ns[x][n1] - ns[x][n2] << endl;
     }
 }
