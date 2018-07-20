@@ -1,6 +1,6 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/agc002/tasks/agc002_b
+SCORE 
 AC false
 WA false
 TLE false
