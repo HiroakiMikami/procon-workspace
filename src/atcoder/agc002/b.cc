@@ -825,7 +825,6 @@ void body() {
         auto x = xy.first;
         auto y = xy.second;
 
-        dump(x, y, state[x], state[y]);
         if (state[x].first == 1 && state[x].second) {
             state[x].second = false;
             state[y].second = true;
@@ -834,7 +833,7 @@ void body() {
         }
 
         state[x].first -= 1;
-        state[y].first -= 1;
+        state[y].first += 1;
     }
 
     i64 ans = 0;
