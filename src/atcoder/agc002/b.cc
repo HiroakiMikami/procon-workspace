@@ -1,11 +1,11 @@
 /*
 URL https://beta.atcoder.jp/contests/agc002/tasks/agc002_b
-SCORE 
-AC false
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE シミュレーション
 FAILURE_TYPE
 NOTES
 */
