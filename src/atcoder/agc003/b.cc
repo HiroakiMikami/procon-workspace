@@ -819,7 +819,11 @@ void body() {
         auto n = A + prev;
         ans += n / 2;
         dump(A, n);
-        prev = n % 2;
+        if (A == 0) {
+            prev = 0;
+        } else {
+            prev = n % 2;
+        }
     }
 
     cout << ans << endl;
