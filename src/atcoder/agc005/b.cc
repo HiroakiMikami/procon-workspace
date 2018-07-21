@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/agc005/tasks/agc005_b
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 数え上げ
+FAILURE_TYPE 考察速度不足
 NOTES
+最初はRMQでセグ木なのかと思ってそちらの方向で考えて遅くなった。
 */
 #include <iostream>
 #include <cstdint>
