@@ -847,7 +847,6 @@ void body() {
 
         auto L = r - l - 1;
         u64 n = (k - l) * (L - k + l + 1);
-        dump(L, l, r, k, n);
         ans += n * i;
 
         used_i.insert(k);
