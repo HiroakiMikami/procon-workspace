@@ -846,6 +846,7 @@ void body() {
         }
 
         auto L = r - l - 1;
+        dump(L, l, r, k);
         u64 n = (k - l) * (L - k + l - 1);
         ans += n;
 
