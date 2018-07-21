@@ -819,14 +819,14 @@ void body() {
     Vector<pair<i64, i64>> ps;
     EACH (ab, abs) {
         if (ps.empty()) {
-            ps.push_back(ps);
+            ps.push_back(ab);
         } else {
             auto &p = ps.back();
             if (p.second > ab.first) {
                 p.first = std::max(p.first, ab.first);
                 p.second = std::min(p.second, ab.second);
             } else {
-                ps.push_back(p);
+                ps.push_back(ab);
             }
         }
     }
