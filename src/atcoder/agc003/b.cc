@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/agc003/tasks/agc003_b
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE シミュレーション
 FAILURE_TYPE
 NOTES
 */
@@ -818,7 +818,6 @@ void body() {
     EACH (A, As) {
         auto n = A + prev;
         ans += n / 2;
-        dump(A, n);
         if (A == 0) {
             prev = 0;
         } else {
