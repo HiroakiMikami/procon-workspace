@@ -5,9 +5,11 @@ AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE DP 最大化・最小化 一部条件の全探索
+FAILURE_TYPE 考察速度不足 問題読解ミス
 NOTES
+最初は変色が各スライムごとに行われるのかと思って考察し直しになった。
+再考察では、変色の回数を固定して考えればよいことに気付くまで時間がかかった。
 */
 #include <iostream>
 #include <cstdint>
