@@ -814,6 +814,7 @@ void body() {
     auto as = read<i64>(N);
 
     auto used_i = OrderedSet<i64>();
+    auto used_i2 = OrderedSet<i64>();
     auto n2index = OrderedMap<i64, i64>();
     REP (i, N) {
         n2index[as[i]] = i;
@@ -838,11 +839,10 @@ void body() {
         auto r_it = used_i.lower_bound(k);
         if (r_it != used_i.end()) {
             r = *r_it;
-            if (r_it != used_i.begin()) {
-                --r_it;
-                auto l_it = r_it - 1;
-                l = *l_it;
-            }
+        }
+        auto l_it = used_i2.lower_bound(-k);
+        if (l_it != used_i2.end()) {
+            l = *l_it;
         }
 
         auto L = r - l - 1;
@@ -850,6 +850,7 @@ void body() {
         ans += n;
 
         used_i.insert(k);
+        used_i2.insert(-k);
     }
 
     cout << ans << endl;
