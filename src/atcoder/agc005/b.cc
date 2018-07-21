@@ -839,6 +839,7 @@ void body() {
         if (r_it != used_i.end()) {
             r = *r_it;
             if (r_it != used_i.begin()) {
+                --r_it;
                 auto l_it = r_it - 1;
                 l = *l_it;
             }
