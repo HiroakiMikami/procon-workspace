@@ -834,8 +834,8 @@ void body() {
          * これは、l+1, i+2, ..., kをスタートとして、k, k+1, ..., r-1が終わりとなる区間の個数を数えれば良いため
          */
         auto k = n2index[i];
-        i64 l = 0;
-        i64 r = N - 1;
+        i64 l = -1;
+        i64 r = N;
         auto r_it = used_i.lower_bound(k);
         if (r_it != used_i.end()) {
             r = *r_it;
@@ -846,7 +846,7 @@ void body() {
         }
 
         auto L = r - l - 1;
-        u64 n = (k - l) * (L - k + l - 1);
+        u64 n = (k - l) * (L - k + l + 1);
         dump(L, l, r, k, n);
         ans += n;
 
