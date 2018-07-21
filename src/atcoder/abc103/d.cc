@@ -810,22 +810,26 @@ int main (int argc, char **argv) {
 }
 
 void body() {
-    auto A1 = read<i64>();
-    auto A2 = read<i64>();
-    auto A3 = read<i64>();
+    auto N = read<i64>();
+    auto M = read<i64>();
+    auto abs = read<i64, i64>(M);
 
-    i64 ans = 1e5;
-    // A1 -> A2 -> A3
-    ans = std::min(ans, std::abs(A2 - A1) + std::abs(A3 - A2));
-    // A1 -> A3 -> A2
-    ans = std::min(ans, std::abs(A3 - A1) + std::abs(A2 - A3));
-    // A2 -> A1 -> A3
-    ans = std::min(ans, std::abs(A1 - A2) + std::abs(A3 - A1));
-    // A2 -> A3 -> A1
-    ans = std::min(ans, std::abs(A3 - A2) + std::abs(A1 - A3));
-    // A3 -> A1 -> A2
-    ans = std::min(ans, std::abs(A1 - A3) + std::abs(A2 - A1));
-    // A3 -> A2 -> A1
-    ans = std::min(ans, std::abs(A2 - A3) + std::abs(A1 - A2));
-    cout << ans << endl;
+    sort(CTR(abs));
+
+    Vector<pair<i64, i64>> ps;
+    EACH (ab, abs) {
+        if (ps.empty()) {
+            ps.push_back(ps);
+        } else {
+            auto &p = ps.back();
+            if (p.second > ab.first) {
+                p.first = std::max(p.first, ab.first);
+                p.second = std::min(p.second, ab.second);
+            } else {
+                ps.push_back(p);
+            }
+        }
+    }
+
+    cout << ps.size() << endl;
 }
