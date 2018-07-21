@@ -842,7 +842,7 @@ void body() {
         }
         auto l_it = used_i2.lower_bound(-k);
         if (l_it != used_i2.end()) {
-            l = *l_it;
+            l = -*l_it;
         }
 
         auto L = r - l - 1;
