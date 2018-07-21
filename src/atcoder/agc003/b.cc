@@ -816,7 +816,7 @@ void body() {
     i64 ans = 0;
     i64 prev = 0;
     EACH (A, As) {
-        auto n = A + pref;
+        auto n = A + prev;
         ans += n / 2;
         prev = n % 2;
     }
