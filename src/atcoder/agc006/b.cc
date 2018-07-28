@@ -842,7 +842,7 @@ void body() {
     EACH (s, reserve) {
         cout << s << endl;
     }
-    EACH (i, N) {
+    REP (i, N) {
         while (r.find(t) != r.end()) {
             t += 1;
         }
