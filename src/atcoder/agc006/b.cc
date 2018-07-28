@@ -818,6 +818,8 @@ void body() {
         return ;
     }
 
+    cout << "Yes" << endl;
+
     Vector<i64> reserve;
     if (x == 2 * N - 2) {
         reserve.push_back(x - 1);
