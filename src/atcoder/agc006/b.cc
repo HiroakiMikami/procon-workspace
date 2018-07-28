@@ -5,9 +5,12 @@ AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 解の構成 場合分け
+FAILURE_TYPE 考察力不足 考察不足 コーナーケース処理 出力フォーマットミス
 NOTES
+・解の構成方法が思いつかなかった
+・Yesの出力が必要なことを見落としていた
+・N=2かつYesのときの場合分けを見落とし
 */
 #include <iostream>
 #include <cstdint>
