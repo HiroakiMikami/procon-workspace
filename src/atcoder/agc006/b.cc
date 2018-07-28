@@ -838,6 +838,7 @@ void body() {
             t += 1;
         }
         cout << t << endl;
+        t += 1;
     }
     EACH (s, reserve) {
         cout << s << endl;
