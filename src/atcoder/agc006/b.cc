@@ -821,16 +821,23 @@ void body() {
     cout << "Yes" << endl;
 
     Vector<i64> reserve;
-    if (x == 2 * N - 2) {
-        reserve.push_back(x - 1);
-        reserve.push_back(x);
-        reserve.push_back(x + 1);
-        reserve.push_back(x - 2);
+    if (N == 2) {
+        cout << 1 << endl;
+        cout << 2 << endl;
+        cout << 3 << endl;
+        return ;
     } else {
-        reserve.push_back(x + 1);
-        reserve.push_back(x);
-        reserve.push_back(x - 1);
-        reserve.push_back(x + 2);
+        if (x == 2 * N - 2) {
+            reserve.push_back(x - 1);
+            reserve.push_back(x);
+            reserve.push_back(x + 1);
+            reserve.push_back(x - 2);
+        } else {
+            reserve.push_back(x + 1);
+            reserve.push_back(x);
+            reserve.push_back(x - 1);
+            reserve.push_back(x + 2);
+        }
     }
 
     HashSet<i64> r(CTR(reserve));
