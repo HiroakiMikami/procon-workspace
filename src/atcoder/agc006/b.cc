@@ -833,7 +833,7 @@ void body() {
 
     HashSet<i64> r(CTR(reserve));
     i64 t = 1;
-    REP (i, N - 1) {
+    REP (i, N - 2) {
         while (r.find(t) != r.end()) {
             t += 1;
         }
@@ -843,7 +843,7 @@ void body() {
     EACH (s, reserve) {
         cout << s << endl;
     }
-    REP (i, N - reserve.size()) {
+    REP (i, N + 1 - reserve.size()) {
         while (r.find(t) != r.end()) {
             t += 1;
         }
