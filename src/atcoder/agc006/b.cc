@@ -828,7 +828,7 @@ void body() {
         reserve.push_back(x + 1);
         reserve.push_back(x);
         reserve.push_back(x - 1);
-        reserve.push_back(x + 1);
+        reserve.push_back(x + 2);
     }
 
     HashSet<i64> r(CTR(reserve));
