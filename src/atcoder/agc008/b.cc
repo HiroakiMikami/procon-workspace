@@ -831,10 +831,8 @@ void body() {
     i64 pmin = pmin_white_K, pmax = pmax_black_K, m = max_black_K;
     FOR (i, 1, N - K + 1) {
         auto t = pmin;
-        dump(i, t);
         t -= std::max(0L, as[i - 1]);
         t += std::max(0L, as[i + K - 1]);
-        dump(i, t, as[i - 1], as[i + K - 1]);
         if (t < pmin_white_K) {
             pmin_white_K = t;
         }
