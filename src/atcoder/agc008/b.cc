@@ -833,6 +833,7 @@ void body() {
         t += std::max(0L, as[i + K - 1]);
         if (t < pmin_white_K) {
             pmin_white_K = t;
+        }
 
         auto s = nmax;
         s -= std::min(0L, as[i - 1]);
