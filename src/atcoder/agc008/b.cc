@@ -824,20 +824,20 @@ void body() {
     i64 max_black_K = 0;
     i64 pmax_black_K = 0;
     REP (i, K) {
-        pmin_white_K += std::max(0, as[i]);
-        pmax_white_K += std::max(0, as[i]);
+        pmin_white_K += std::max(0L, as[i]);
+        pmax_white_K += std::max(0L, as[i]);
         max_black_K += as[i];
     }
     FOR (i, 1, N - K) {
         auto t = pmin_white_K;
-        t -= std::max(0, as[i - 1]);
-        t += std::max(0, as[i + K]);
+        t -= std::max(0L, as[i - 1]);
+        t += std::max(0L, as[i + K]);
         if (t < pmin_white_K) {
             pmin_white_K = t;
         }
         auto s1 = pmax_black_K;
-        s1 -= std::max(0, as[i - 1]);
-        s1 += std::max(0, as[i + K]);
+        s1 -= std::max(0L, as[i - 1]);
+        s1 += std::max(0L, as[i + K]);
 
         auto s2 = max_black_K;
         s2 -= as[i - 1];
@@ -848,7 +848,7 @@ void body() {
         }
     }
 
-    i64 c1 = all_positive_numbers - pmin_white_K;
-    i64 c2 = all_positive_numbers - pmax_black_K + max_black_K;
+    auto c1 = all_positive_numbers - pmin_white_K;
+    auto c2 = all_positive_numbers - pmax_black_K + max_black_K;
     cout << std::max(c1, c2) << endl;
 }
