@@ -823,7 +823,7 @@ void body() {
 
     REP (i, N) {
         as[i] = 20000 * (i + 1);
-        bs[i] = 20000 * (N - (i + 1)) + index2pindex[i];
+        bs[i] = 20000 * (N + 1 - (i + 1)) + index2pindex[i];
     }
 
     REP (i, N) {
