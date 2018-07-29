@@ -828,8 +828,9 @@ void body() {
         pmax_black_K += std::max(0L, as[i]);
         max_black_K += as[i];
     }
+    i64 pmin, pmax, m;
     FOR (i, 1, N - K + 1) {
-        auto t = pmin_white_K;
+        auto t = pmin;
         dump(i, t);
         t -= std::max(0L, as[i - 1]);
         t += std::max(0L, as[i + K - 1]);
@@ -837,17 +838,21 @@ void body() {
         if (t < pmin_white_K) {
             pmin_white_K = t;
         }
-        auto s1 = pmax_black_K;
+        auto s1 = pmax;
         s1 -= std::max(0L, as[i - 1]);
         s1 += std::max(0L, as[i + K - 1]);
 
-        auto s2 = max_black_K;
+        auto s2 = m;
         s2 -= as[i - 1];
         s2 += as[i + K - 1];
         if (s2 > max_black_K) {
             max_black_K = s2;
             pmax_black_K = s1;
         }
+
+        pmin = t;
+        pmax = s1;
+        m = s2;
     }
 
     dump(all_positive_numbers, pmin_white_K, pmax_black_K, max_black_K);
