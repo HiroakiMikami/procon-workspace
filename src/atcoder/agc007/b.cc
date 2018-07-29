@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/agc007/tasks/agc007_b
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 解の構成
+FAILURE_TYPE 考察力不足
 NOTES
+「Nが高々20000だから、隣り合う数の差を20001以上にしておけばNまでの数を好きに足し算ができる」というのが解法のポイントなのだろうと思う。
+が、解答を見ずにそれを気づくにはどうすればよいかはよくわからない
 */
 #include <iostream>
 #include <cstdint>
