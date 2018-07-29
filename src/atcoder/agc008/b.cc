@@ -828,7 +828,7 @@ void body() {
         pmax_black_K += std::max(0L, as[i]);
         max_black_K += as[i];
     }
-    i64 pmin, pmax, m;
+    i64 pmin = pmin_white_K, pmax = pmax_black_K, m = max_black_K;
     FOR (i, 1, N - K + 1) {
         auto t = pmin;
         dump(i, t);
