@@ -822,8 +822,8 @@ void body() {
     Vector<i64> bs(N);
 
     REP (i, N) {
-        as[i] = 20000 * (i + 1);
-        bs[i] = 20000 * (N + 1 - (i + 1)) + index2pindex[i];
+        as[i] = 21000 * (i + 1);
+        bs[i] = 21000 * (N + 1 - (i + 1)) + index2pindex[i];
     }
 
     REP (i, N) {
