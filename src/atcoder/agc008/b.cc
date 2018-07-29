@@ -1,13 +1,16 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/agc008/tasks/agc008_b
+SCORE 400
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 尺取り法 最小化・最大化
+FAILURE_TYPE 考察不足 考察速度不足
 NOTES
+負の数も黒で塗らなければいけない場合の処理を間違えて1WA
+
+上書き系の問題は処理を逆順にして、「未確定のところを確定させる」とすることで上書きを考えずに済むようにすると良い。（解説より）
 */
 #include <iostream>
 #include <cstdint>
