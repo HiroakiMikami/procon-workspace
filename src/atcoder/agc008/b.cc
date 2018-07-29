@@ -821,39 +821,31 @@ void body() {
     }
 
     i64 pmin_white_K = 0;
-    i64 max_black_K = 0;
-    i64 pmax_black_K = 0;
+    i64 nmax_black_K = 0;
     REP (i, K) {
         pmin_white_K += std::max(0L, as[i]);
-        pmax_black_K += std::max(0L, as[i]);
-        max_black_K += as[i];
+        nmax_black_K += std::min(0L, as[i]);
     }
-    i64 pmin = pmin_white_K, pmax = pmax_black_K, m = max_black_K;
+    i64 pmin = pmin_white_K, nmax = nmax_black_K;
     FOR (i, 1, N - K + 1) {
         auto t = pmin;
         t -= std::max(0L, as[i - 1]);
         t += std::max(0L, as[i + K - 1]);
         if (t < pmin_white_K) {
             pmin_white_K = t;
-        }
-        auto s1 = pmax;
-        s1 -= std::max(0L, as[i - 1]);
-        s1 += std::max(0L, as[i + K - 1]);
 
-        auto s2 = m;
-        s2 -= as[i - 1];
-        s2 += as[i + K - 1];
-        if (s2 > max_black_K) {
-            max_black_K = s2;
-            pmax_black_K = s1;
+        auto s = nmax;
+        s -= std::min(0L, as[i - 1]);
+        s += std::min(0L, as[i + K - 1]);
+        if (s > nmax_black_K) {
+            nmax_black_K = s;
         }
 
         pmin = t;
-        pmax = s1;
-        m = s2;
+        nmax = s;
     }
 
     auto c1 = all_positive_numbers - pmin_white_K;
-    auto c2 = all_positive_numbers - pmax_black_K + max_black_K;
+    auto c2 = all_positive_numbers + nmax_black_K;
     cout << std::max(c1, c2) << endl;
 }
