@@ -848,7 +848,6 @@ void body() {
         }
     }
 
-    dump(all_positive_numbers, pmin_white_K, pmax_black_K, max_black_K);
     auto c1 = all_positive_numbers - pmin_white_K;
     auto c2 = all_positive_numbers - pmax_black_K + max_black_K;
     cout << std::max(c1, c2) << endl;
