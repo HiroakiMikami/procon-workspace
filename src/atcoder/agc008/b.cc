@@ -831,17 +831,17 @@ void body() {
     FOR (i, 1, N - K) {
         auto t = pmin_white_K;
         t -= std::max(0L, as[i - 1]);
-        t += std::max(0L, as[i + K]);
+        t += std::max(0L, as[i + K - 1]);
         if (t < pmin_white_K) {
             pmin_white_K = t;
         }
         auto s1 = pmax_black_K;
         s1 -= std::max(0L, as[i - 1]);
-        s1 += std::max(0L, as[i + K]);
+        s1 += std::max(0L, as[i + K - 1]);
 
         auto s2 = max_black_K;
         s2 -= as[i - 1];
-        s2 += as[i + K];
+        s2 += as[i + K - 1];
         if (s2 > max_black_K) {
             max_black_K = s2;
             pmax_black_K = s1;
