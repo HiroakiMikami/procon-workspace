@@ -815,7 +815,7 @@ void body() {
 
     OrderedMap<i64, i64> index2pindex;
     REP (i, N) {
-        index2pindex[ps[i]] = i;
+        index2pindex[ps[i] - 1] = i;
     }
 
     Vector<i64> as(N);
