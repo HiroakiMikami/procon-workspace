@@ -1,8 +1,8 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/agc006/tasks/agc006_b
+SCORE 400
+AC true
+WA true
 TLE false
 MLE false
 TASK_TYPE 解の構成 場合分け
