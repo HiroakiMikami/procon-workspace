@@ -825,7 +825,7 @@ void body() {
     i64 pmax_black_K = 0;
     REP (i, K) {
         pmin_white_K += std::max(0L, as[i]);
-        pmax_white_K += std::max(0L, as[i]);
+        pmax_black_K += std::max(0L, as[i]);
         max_black_K += as[i];
     }
     FOR (i, 1, N - K) {
