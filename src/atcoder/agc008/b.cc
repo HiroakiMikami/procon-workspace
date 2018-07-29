@@ -830,9 +830,10 @@ void body() {
     }
     FOR (i, 1, N - K + 1) {
         auto t = pmin_white_K;
+        dump(i, t);
         t -= std::max(0L, as[i - 1]);
         t += std::max(0L, as[i + K - 1]);
-        dump(i, t, as[i - 1], as[i + K - 1]);
+        dump(i, t, asa[i - 1], as[i + K - 1]);
         if (t < pmin_white_K) {
             pmin_white_K = t;
         }
