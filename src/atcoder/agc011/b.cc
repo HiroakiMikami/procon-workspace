@@ -827,7 +827,7 @@ void body() {
             } else {
                 break;
             }
-            index += a;
+            index += 1;
         }
         if (index == N) {
             ans += 1;
