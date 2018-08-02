@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/cf16-final-open/tasks/codefestival_2016_final_c
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE グラフ 連結判定 UnionFind
 FAILURE_TYPE
 NOTES
 */
