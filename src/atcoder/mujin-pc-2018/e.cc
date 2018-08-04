@@ -883,7 +883,7 @@ void body() {
             auto d = dirint2dir(i);
             auto p2 = make_pair(point.first + d.first, point.second + d.second);
             if (point.first < 0 || point.second < 0) continue;
-            if (point.first >= N || point.second >= M) coitinue;
+            if (point.first >= N || point.second >= M) continue;
             q.emplace(make_pair(p2, t));
         }
     }
