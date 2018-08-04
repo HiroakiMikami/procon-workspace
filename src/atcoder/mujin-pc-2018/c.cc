@@ -820,31 +820,79 @@ void body() {
         }
     }
 
-    auto dp = make_matrix<i64, 2>({N, M}, -1);
-    REP (j, M) {
-        if (ss[N - 1][j]) {
-            dp[N - 1][j] = -1;
-        } else {
-            dp[N - 1][j] = 0;
+    /* 0: UP, 1: RIGHT, 2: DOWN, 3: LEFT*/
+
+    auto dp1 = make_matrix<i64, 3>({N, M, 3}, -1);
+    REP (i, N) {
+        REP (j, M) {
+            REP (k, 4) {
+                dp1[i][j][k] = (ss[i][j] ? -1 : 0);
+            }
         }
     }
+    // UP
+    FOR (i, 1, N) {
+        REP (j, M) {
+            if (!ss[i][j]) {
+                dp1[i][j][0] = dp[i - 1][j] + 1;
+            }
+        }
+    }
+    // RIGHT
+    REP (i, N) {
+        REPR(j, M - 1) {
+            if (!ss[i][j]) {
+                dp1[i][j][1] = dp[i][j + 1][1] + 1;
+            }
+        }
+    }
+    // DOWN
     REPR(i, N - 1) {
         REP (j, M) {
-            if (ss[i][j]) {
-                dp[i][j] = -1;
-            } else {
-                dp[i][j] = dp[i + 1][j] + 1;
+            if (!ss[i][j]) {
+                dp1[i][j][2] = dp[i + 1][j][2] + 1;
+            }
+        }
+    }
+    // LEFT
+    REP (i, N) {
+        FOR(j, 1, M) {
+            if (!ss[i][j]) {
+                dp1[i][j][3] = dp[i][j - 1][3] + 1;
             }
         }
     }
 
-    auto dp2 = make_matrix<i64, 2>({N, M}, 0);
+    auto dp2 = make_matrix<i64, 3>({N, M, 4}, 0);
+    // UP
+    FOR (i, 1, N) {
+        REP (j, M) {
+            if (!ss[i][j]) {
+                dp2[i][j][0] = dp2[i][j - 1][0] + std::max<i64>(0, dp1[i][j - 1][1]);
+            }
+        }
+    }
+    // RIGHT
     REP (i, N) {
-        REP (j, M - 1) {
-            if (ss[i][j]) {
-                dp2[i][j] = 0;
-            } else {
-                dp2[i][j] = dp2[i][j + 1] + std::max<i64>(0, dp[i][j + 1]);
+        REPR (j, M - 1) {
+            if (!ss[i][j]) {
+                dp2[i][j][1] = dp2[i][j + 1][1] + std::max<i64>(0, dp[i][j + 1][2]);
+            }
+        }
+    }
+    // DOWN
+    REPR (i, N - 1) {
+        REP (j, M) {
+            if (!ss[i][j]) {
+                dp2[i][j][2] = dp2[i][j + 1][2] + std::max<i64>(0, dp1[i][j - 1][3]);
+            }
+        }
+    }
+    // LEFT
+    REP (i, N) {
+        FOR (j, 1, M) {
+            if (!ss[i][j]) {
+                dp2[i][j][3] = dp2[i][j - 1][3] + std::max<i64>(0, dp[i][j - 1][0]);
             }
         }
     }
@@ -852,10 +900,12 @@ void body() {
     i64 ans = 0;
     REP (i, N) {
         REP (j, M) {
-            dump(i, j, dp[i][j], dp2[i][j]);
-            ans += dp2[i][j];
+            REP (k, 4) {
+                ans += dp2[i][j][k];
+            }
         }
     }
+
     cout << ans << endl;
 
 
