@@ -842,12 +842,6 @@ void body() {
 
                 auto p = make_pair(std::min(x, y), std::max(x, y));
 
-                if (std::min(n, m) == std::min(s, t) && std::max(n, m) == std::max(s, t)) {
-                    P.insert(p);
-                    ans += 1;
-                    continue;
-                }
-
                 if (x < y) {
                     x = rev(x);
                 } else {
@@ -856,6 +850,12 @@ void body() {
 
                 auto t = std::min(x, y);
                 auto s = std::max(x, y) - t;
+                auto p2 = std::make_pair(std::min(s, t), std::max(s, t));
+                if (P.find(p2) != P.end()) {
+                    P.insert(p);
+                    ans += 1;
+                    continue;
+                }
                 if (std::min(n, m) == std::min(s, t) && std::max(n, m) == std::max(s, t)) {
                     P.insert(p);
                     ans += 1;
