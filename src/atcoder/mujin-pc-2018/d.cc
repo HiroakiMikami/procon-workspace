@@ -846,8 +846,10 @@ void body() {
 
             if (s + t >= n + m) {
                 dump(n, m, x, y, s, t);
+                ans += 1;
             }
         }
     }
     cout << ans << endl;
+    if (ans != 1) throw "foo";
 }
