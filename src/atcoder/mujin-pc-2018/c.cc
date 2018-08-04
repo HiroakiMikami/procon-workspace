@@ -845,6 +845,7 @@ void body() {
     i64 ans = 0;
     REP (i, N) {
         REP (j, M) {
+            dump(i, j, dp[i][j], dp2[i][j]);
             ans += dp2[i][j];
         }
     }
