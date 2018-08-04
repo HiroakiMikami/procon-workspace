@@ -832,7 +832,7 @@ void body() {
 
     i64 ans = 0;
     FOR (n, 1, 1000) {
-        FOR (m, 1, 1000) {
+        FOR (m, n, 1000) {
             auto x = n;
             auto y = m;
             if (x < y) {
@@ -844,9 +844,6 @@ void body() {
             auto t = std::min(x, y);
             auto s = std::max(x, y) - t;
 
-            if (n == 13 && m == 18) {
-                dump(n, m , s, t);
-            }
             if (std::min(n, m) == std::min(s, t) && std::max(n, m) == std::max(s, t)) {
                 dump(n, m, x, y, s, t);
                 ans += 1;
