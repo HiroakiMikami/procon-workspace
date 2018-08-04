@@ -847,7 +847,7 @@ void body() {
             if (n == 13 && m == 18) {
                 dump(n, m , s, t);
             }
-            if (std::min(n, m) == t && std::max(n, m) == s) {
+            if (std::min(n, m) == std::min(s, t) && std::max(n, m) == std::max(s, t)) {
                 dump(n, m, x, y, s, t);
                 ans += 1;
             }
