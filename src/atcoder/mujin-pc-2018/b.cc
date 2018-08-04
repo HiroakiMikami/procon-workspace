@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/mujin-pc-2018/tasks/mujin_pc_2018_b
+SCORE 200
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 基本 シミュレーション
 FAILURE_TYPE
 NOTES
 */

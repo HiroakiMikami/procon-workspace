@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/mujin-pc-2018/tasks/mujin_pc_2018_e
+SCORE 500
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 最短経路 前計算
 FAILURE_TYPE
 NOTES
+Dijkstraと解説には書いてあるが、utilを使ってないだけでやったことは同じはず
 */
 #include <iostream>
 #include <cstdint>

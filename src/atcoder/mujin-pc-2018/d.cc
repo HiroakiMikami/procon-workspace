@@ -1,6 +1,6 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/mujin-pc-2018/tasks/mujin_pc_2018_d
+SCORE 400
 AC false
 WA false
 TLE false
