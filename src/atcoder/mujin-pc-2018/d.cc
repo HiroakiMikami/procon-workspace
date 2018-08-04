@@ -830,6 +830,7 @@ void body() {
         return ans;
     };
 
+    i64 ans = 0;
     FOR (n, 1, N + 1) {
         FOR (m, 1, M + 1) {
             auto x = n;
@@ -844,7 +845,11 @@ void body() {
             auto s = std::max(x, y) - t;
 
             dump(n, m, x, y, s, t);
+            if (s + t >= n + m) {
+                ans += 1;
+            }
         }
     }
+    cout << ans << endl;
     throw "foo";
 }
