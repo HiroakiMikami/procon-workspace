@@ -840,7 +840,6 @@ void body() {
             FOR (m, 1, M + 1) {
                 auto x = n;
                 auto y = m;
-
                 auto p = make_pair(std::min(x, y), std::max(x, y));
 
                 if (x < y) {
@@ -849,8 +848,11 @@ void body() {
                     y = rev(y);
                 }
 
+
+
                 auto t = std::min(x, y);
                 auto s = std::max(x, y) - t;
+                dump(p, p2);
                 auto p2 = std::make_pair(std::min(s, t), std::max(s, t));
                 if (P.find(p2) != P.end()) {
                     P.insert(p);
