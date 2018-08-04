@@ -834,7 +834,7 @@ void body() {
     FOR (i, 1, N) {
         REP (j, M) {
             if (!ss[i][j]) {
-                dp1[i][j][0] = dp[i - 1][j] + 1;
+                dp1[i][j][0] = dp1[i - 1][j] + 1;
             }
         }
     }
@@ -842,7 +842,7 @@ void body() {
     REP (i, N) {
         REPR(j, M - 1) {
             if (!ss[i][j]) {
-                dp1[i][j][1] = dp[i][j + 1][1] + 1;
+                dp1[i][j][1] = dp1[i][j + 1][1] + 1;
             }
         }
     }
@@ -850,7 +850,7 @@ void body() {
     REPR(i, N - 1) {
         REP (j, M) {
             if (!ss[i][j]) {
-                dp1[i][j][2] = dp[i + 1][j][2] + 1;
+                dp1[i][j][2] = dp1[i + 1][j][2] + 1;
             }
         }
     }
@@ -858,7 +858,7 @@ void body() {
     REP (i, N) {
         FOR(j, 1, M) {
             if (!ss[i][j]) {
-                dp1[i][j][3] = dp[i][j - 1][3] + 1;
+                dp1[i][j][3] = dp1[i][j - 1][3] + 1;
             }
         }
     }
