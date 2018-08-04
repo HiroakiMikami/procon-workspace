@@ -868,7 +868,7 @@ void body() {
     FOR (i, 1, N) {
         REP (j, M) {
             if (!ss[i][j]) {
-                dp2[i][j][0] = dp2[i][j - 1][0] + std::max<i64>(0, dp1[i][j - 1][1]);
+                dp2[i][j][0] = dp2[i - 1][j][0] + std::max<i64>(0, dp1[i - 1][j][1]);
             }
         }
     }
@@ -884,7 +884,7 @@ void body() {
     REPR (i, N - 1) {
         REP (j, M) {
             if (!ss[i][j]) {
-                dp2[i][j][2] = dp2[i][j + 1][2] + std::max<i64>(0, dp1[i][j - 1][3]);
+                dp2[i][j][2] = dp2[i + 1][j][2] + std::max<i64>(0, dp1[i + 1][j][3]);
             }
         }
     }
