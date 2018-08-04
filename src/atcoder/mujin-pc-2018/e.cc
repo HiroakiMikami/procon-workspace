@@ -861,7 +861,7 @@ void body() {
         dump(i, dir[i]);
     }
 
-    auto cmp = [](auto lhs, auto rhs) { return lhs.second < rhs.second; };
+    auto cmp = [](auto lhs, auto rhs) { return lhs.second > rhs.second; };
     PriorityQueue<pair<pair<i64, i64>, i64>, decltype(cmp)> q(cmp);
     auto visited = make_matrix<bool, 2>({N, M}, false);
     i64 ans = -1;
