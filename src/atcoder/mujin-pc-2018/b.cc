@@ -814,6 +814,10 @@ void body() {
     auto S = read<string>();
 
     i64 n = A;
+    if (n == 0) {
+        cout << "Yes" << endl;
+        return ;
+    }
     REP (i, S.size()) {
         if (S[i] == '+') {
             n += 1;
