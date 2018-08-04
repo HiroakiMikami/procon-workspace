@@ -862,7 +862,7 @@ void body() {
     PriorityQueue<pair<pair<i64, i64>, i64>, decltype(cmp)> q(cmp);
     auto visited = make_matrix<bool, 2>({N, M}, false);
     i64 ans = -1;
-    q.push({S, 0});
+    q.emplace(S, 0);
     while (!q.empty()) {
         auto elem = q.top();
         auto point = elem.first;
@@ -881,7 +881,7 @@ void body() {
             auto t = time + dir[time % K][i];
             if (t < time) continue;
             auto d = dirint2dir(i);
-            q.push({point.first + d.first, point.second + d.second}, t);
+            q.emplace({point.first + d.first, point.second + d.second}, t);
         }
     }
 
