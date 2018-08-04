@@ -1,13 +1,15 @@
 /*
 URL https://beta.atcoder.jp/contests/mujin-pc-2018/tasks/mujin_pc_2018_d
 SCORE 400
-AC false
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE グラフ 連結判定 整数
+FAILURE_TYPE 考察力不足
 NOTES
+グラフの問題に帰着できるという認識ができず、何らかの性質があるのかと考えていた。
+「無限に〜できる」という場合は遷移をグラフにして、移動してはダメな頂点と連結かどうかを考えるのが一つの手段？
 */
 #include <iostream>
 #include <cstdint>
