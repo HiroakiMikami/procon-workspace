@@ -881,7 +881,7 @@ void body() {
             auto t = time + dir[time % K][i];
             if (t < time) continue;
             auto d = dirint2dir(i);
-            q.emplace(make_pair({point.first + d.first, point.second + d.second}, t));
+            q.emplace(make_pair(make_pair(point.first + d.first, point.second + d.second), t));
         }
     }
 
