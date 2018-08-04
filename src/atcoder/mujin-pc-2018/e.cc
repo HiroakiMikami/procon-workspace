@@ -873,7 +873,7 @@ void body() {
             ans = time;
             break;
         }
-        dump(point);
+
         if (visited[point.first][point.second]) {
             continue ;
         }
@@ -883,8 +883,8 @@ void body() {
             if (t < time) continue;
             auto d = dirint2dir(i);
             auto p2 = make_pair(point.first + d.first, point.second + d.second);
-            if (point.first < 0 || point.second < 0) continue;
-            if (point.first >= N || point.second >= M) continue;
+            if (p2.first < 0 || p2.second < 0) continue;
+            if (p2.first >= N || p2.second >= M) continue;
             q.emplace(make_pair(p2, t));
         }
     }
