@@ -873,6 +873,7 @@ void body() {
             ans = time;
             break;
         }
+        dump(point);
         if (visited[point.first][point.second]) {
             continue ;
         }
