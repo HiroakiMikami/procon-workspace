@@ -848,12 +848,11 @@ void body() {
                     y = rev(y);
                 }
 
-
-
                 auto t = std::min(x, y);
                 auto s = std::max(x, y) - t;
-                dump(p, p2);
                 auto p2 = std::make_pair(std::min(s, t), std::max(s, t));
+
+                dump(p, p2);
                 if (P.find(p2) != P.end()) {
                     P.insert(p);
                     ans += 1;
@@ -867,4 +866,5 @@ void body() {
         }
     }
     cout << ans << endl;
+    throw "hoge";
 }
