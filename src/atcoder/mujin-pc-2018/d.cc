@@ -851,5 +851,4 @@ void body() {
         }
     }
     cout << ans << endl;
-    throw "foo";
 }
