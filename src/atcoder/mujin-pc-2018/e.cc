@@ -888,7 +888,7 @@ void body() {
             if (t < time) continue;
             auto d = dirint2dir(i);
             auto p2 = make_pair(point.first + d.first, point.second + d.second);
-            dump(p2, t, "#cand");
+            dump(p2, t, 0);
             if (p2.first < 0 || p2.second < 0) continue;
             if (p2.first >= N || p2.second >= M) continue;
             q.emplace(make_pair(p2, t));
