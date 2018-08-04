@@ -881,7 +881,7 @@ void body() {
         visited[point.first][point.second] = true;
 
         REP (i, 4) {
-            auto t = time + dir[time % K][i];
+            auto t = time + dir[time % K][i] + 1;
             if (t < time) continue;
             auto d = dirint2dir(i);
             auto p2 = make_pair(point.first + d.first, point.second + d.second);
