@@ -822,7 +822,7 @@ void body() {
 
     /* 0: UP, 1: RIGHT, 2: DOWN, 3: LEFT*/
 
-    auto dp1 = make_matrix<i64, 3>({N, M, 3}, -1);
+    auto dp1 = make_matrix<i64, 3>({N, M, 4}, -1);
     REP (i, N) {
         REP (j, M) {
             REP (k, 4) {
