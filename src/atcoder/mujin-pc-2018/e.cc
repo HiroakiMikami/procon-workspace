@@ -869,7 +869,7 @@ void body() {
         auto time = elem.second;
         q.pop();
 
-        dump(point);
+        dump(point, time);
         if (point == G) {
             ans = time;
             break;
