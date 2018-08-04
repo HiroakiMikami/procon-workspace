@@ -890,6 +890,7 @@ void body() {
             auto p2 = make_pair(point.first + d.first, point.second + d.second);
             if (p2.first < 0 || p2.second < 0) continue;
             if (p2.first >= N || p2.second >= M) continue;
+            if (ss[p2.first][p2.second]) continue;
             q.emplace(make_pair(p2, t));
         }
     }
