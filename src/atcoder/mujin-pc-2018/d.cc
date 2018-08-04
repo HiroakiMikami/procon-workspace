@@ -845,4 +845,5 @@ void body() {
             dump(n, m, x, y, s, t);
         }
     }
+    throw "foo";
 }
