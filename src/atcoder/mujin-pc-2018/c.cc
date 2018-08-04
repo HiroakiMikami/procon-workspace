@@ -834,7 +834,7 @@ void body() {
     FOR (i, 1, N) {
         REP (j, M) {
             if (!ss[i][j]) {
-                dp1[i][j][0] = dp1[i - 1][j] + 1;
+                dp1[i][j][0] = dp1[i - 1][j][0] + 1;
             }
         }
     }
