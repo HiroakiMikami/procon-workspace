@@ -822,7 +822,7 @@ void body() {
             x /= 10;
         }
 
-        xs.reverse();
+        std::reverse(CTR(xs));
         i64 ans = 0;
         REP (i, xs.size()) {
             ans += xs[i] * std::pow(10, i);
