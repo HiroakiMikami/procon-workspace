@@ -849,7 +849,7 @@ void body() {
     REP ($$, 2) {
         REP (i, K) {
             REP (j, 4) {
-                if (ch2dirint(d[j]) == j) {
+                if (ch2dirint(d[i]) == j) {
                     dir[i][j] = 0;
                 } else {
                     dir[i][j] = dir[(i + 1) % K][j] + 1;
