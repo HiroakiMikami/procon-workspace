@@ -852,7 +852,11 @@ void body() {
                 if (ch2dirint(d[i]) == j) {
                     dir[i][j] = 0;
                 } else {
-                    dir[i][j] = dir[(i + 1) % K][j] + 1;
+                    if (dir[(i + 1) % K][j] == -1) {
+                        dir[i][j] = dir[(i + 1) % K][j];
+                    } else {
+                        dir[i][j] = dir[(i + 1) % K][j] + 1;
+                    }
                 }
             }
         }
