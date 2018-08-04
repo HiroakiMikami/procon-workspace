@@ -890,9 +890,9 @@ void body() {
 
         REP (i, 4) {
             auto t = time + dir[time % K][i] + 1;
+            dump(i, dir[time % K][i]);
             if (t < time) continue;
             auto d = dirint2dir(i);
-            dump(d);
             auto p2 = make_pair(point.first + d.first, point.second + d.second);
             if (p2.first < 0 || p2.second < 0) continue;
             if (p2.first >= N || p2.second >= M) continue;
