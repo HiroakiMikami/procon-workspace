@@ -857,6 +857,9 @@ void body() {
             }
         }
     }
+    REP (i, K) {
+        dump(i, dir[i]);
+    }
 
     auto cmp = [](auto lhs, auto rhs) { return lhs.second < rhs.second; };
     PriorityQueue<pair<pair<i64, i64>, i64>, decltype(cmp)> q(cmp);
