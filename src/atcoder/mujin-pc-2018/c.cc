@@ -820,7 +820,14 @@ void body() {
         }
     }
 
-    auto dp = make_matrix<i64, 2>({N, M}, 0);
+    auto dp = make_matrix<i64, 2>({N, M}, -1);
+    REP (j, M) {
+        if (ss[N - 1][j]) {
+            dp[N - 1][j] = -1;
+        } else {
+            dp[N - 1][j] = 0;
+        }
+    }
     REPR(i, N - 1) {
         REP (j, M) {
             if (ss[i][j]) {
