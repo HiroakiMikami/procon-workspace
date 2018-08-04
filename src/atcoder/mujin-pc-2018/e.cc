@@ -869,6 +869,7 @@ void body() {
         auto time = elem.second;
         q.pop();
 
+        dump(point);
         if (point == G) {
             ans = time;
             break;
@@ -877,6 +878,7 @@ void body() {
         if (visited[point.first][point.second]) {
             continue ;
         }
+        visited[point.first][point.second] = true;
 
         REP (i, 4) {
             auto t = time + dir[time % K][i];
