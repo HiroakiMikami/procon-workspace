@@ -834,6 +834,7 @@ void body() {
     i64 prev_ans = -1;
     OrderedSet<pair<i64, i64>> P;
     while (ans != prev_ans) {
+        dump(ans, prev_ans);
         prev_ans = ans;
         FOR (n, 1, N + 1) {
             FOR (m, 1, M + 1) {
