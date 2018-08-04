@@ -844,6 +844,9 @@ void body() {
             auto t = std::min(x, y);
             auto s = std::max(x, y) - t;
 
+            if (n == 13 && m == 18) {
+                dump(n, m , s, t);
+            }
             if (std::min(n, m) == t && std::max(n, m) == s) {
                 dump(n, m, x, y, s, t);
                 ans += 1;
