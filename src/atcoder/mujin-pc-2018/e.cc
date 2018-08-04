@@ -847,8 +847,8 @@ void body() {
 
     auto dir = make_matrix<i64, 2>({K, 4}, -1); // dir[r][d] := 時刻r (mod K）から一番近いdir=dの時刻の差分
     REP ($$, 2) {
-        REP (i, K) {
-            REP (j, 4) {
+        REPR (i, K) {
+            REPR (j, 4) {
                 if (ch2dirint(d[i]) == j) {
                     dir[i][j] = 0;
                 } else {
