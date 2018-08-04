@@ -844,9 +844,8 @@ void body() {
             auto t = std::min(x, y);
             auto s = std::max(x, y) - t;
 
-            dump(n, m, x, y, s, t);
             if (s + t >= n + m) {
-                ans += 1;
+                dump(n, m, x, y, s, t);
             }
         }
     }
