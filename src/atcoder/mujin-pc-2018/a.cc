@@ -811,5 +811,5 @@ int main (int argc, char **argv) {
 
 void body() {
     auto S = read<string>();
-    cout << ((S.substr(0, 5) == 'MUJIN') ? "Yes" : "No") << endl;
+    cout << ((S.substr(0, 5) == "MUJIN") ? "Yes" : "No") << endl;
 }
