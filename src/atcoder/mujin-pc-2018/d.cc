@@ -831,25 +831,37 @@ void body() {
     };
 
     i64 ans = 0;
-    FOR (n, 1, 1000) {
-        FOR (m, n, 1000) {
-            auto x = n;
-            auto y = m;
-            if (x < y) {
-                x = rev(x);
-            } else {
-                y = rev(y);
-            }
+    i64 prev_ans = -1;
+    OrderedSet<pair<i64, i64>> P;
+    while (ans != prev_ans) {
+        prev_ans = ans;
+        FOR (n, 1, N + 1) {
+            FOR (m, 1, M + 1) {
+                auto x = n;
+                auto y = m;
 
-            auto t = std::min(x, y);
-            auto s = std::max(x, y) - t;
+                auto p = make_pair(std::min(x, y), std::max(x, y));
 
-            if (std::min(n, m) == std::min(s, t) && std::max(n, m) == std::max(s, t)) {
-                dump(n, m, s, t);
-                ans += 1;
+                if (std::min(n, m) == std::min(s, t) && std::max(n, m) == std::max(s, t)) {
+                    P.insert(p);
+                    ans += 1;
+                    continue;
+                }
+
+                if (x < y) {
+                    x = rev(x);
+                } else {
+                    y = rev(y);
+                }
+
+                auto t = std::min(x, y);
+                auto s = std::max(x, y) - t;
+                if (std::min(n, m) == std::min(s, t) && std::max(n, m) == std::max(s, t)) {
+                    P.insert(p);
+                    ans += 1;
+                }
             }
         }
     }
     cout << ans << endl;
-    if (ans != 1) throw "foo";
 }
