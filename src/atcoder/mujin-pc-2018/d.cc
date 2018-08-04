@@ -1251,7 +1251,7 @@ void body() {
                 x = x - y;
             }
             auto from = p2n({x, y});
-            g.add_edge(make_tuple(to, from));
+            g.add_edge(make_tuple(from, to));
         }
     }
 
@@ -1270,7 +1270,6 @@ void body() {
         if (visited.find(n) != visited.end()) continue;
         auto p = n2p(n);
         if (p.first > 0 && p.first <= N && p.second > 0 && p.second <= M) {
-            dump(p);
             ans += 1;
         }
 
