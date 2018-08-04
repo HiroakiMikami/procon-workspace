@@ -816,7 +816,7 @@ void body() {
     auto rev = [](i64 x) {
         Vector<int> xs;
         while (x != 0) {
-            xs.push(x % 10);
+            xs.push_back(x % 10);
             x /= 10;
         }
 
