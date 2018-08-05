@@ -832,13 +832,15 @@ void body() {
     auto over_G = [&](i64 n) {
         // 平均が高い方から順々に選ぶ
         i64 t = 0;
+        Vector<bool> used(D, false);
         EACH (c, candidates) {
             auto u = get<2>(c) ? pcs[get<0>(c)].first : 1;
-            if (u <= n) {
+            if (u <= n && !used[get<0>(c)]) {
                 auto num = std::min(pcs[get<0>(c)].first, n);
                 dump(u, n, num, c);
                 t += get<2>(c) ? get<1>(c) : get<1>(c) * num;
                 n -= num;
+                used[get<0>(c)] = true;
             }
         }
         dump(t);
