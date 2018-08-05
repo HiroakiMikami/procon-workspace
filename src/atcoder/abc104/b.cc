@@ -817,19 +817,19 @@ void body() {
     }
 
     i64 n_C = 0;
-    REP (i, S.size()) {
+    FOR (i, 1, S.size()) {
         if (2 <= i && i <= S.size() - 2 && S[i] == 'C') {
             n_C += 1;
         } else {
             if ('a' <= S[i] && S[i] <= 'z') {
 
             } else {
+                dump(i, S[i]);
                 cout << "WA" << endl;
                 return ;
             }
         }
     }
-    dump(n_C);
 
     cout << (n_C == 1 ? "AC" : "WA") << endl;
 }
