@@ -829,6 +829,7 @@ void body() {
             }
         }
     }
+    dump(n_C);
 
     cout << (n_C == 1 ? "AC" : "WA") << endl;
 }
