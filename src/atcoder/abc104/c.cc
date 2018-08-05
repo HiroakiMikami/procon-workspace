@@ -833,6 +833,7 @@ void body() {
                 t += totals[i].second;
                 n -= pcs[totals[i].first].first;
                 used[totals[i].first] = true;
+                dump(x_, totals[i].first, t);
             } else {
                 break ;
             }
@@ -843,6 +844,7 @@ void body() {
             if (used[i]) {
                 continue;
             }
+            dump(x_, i, t);
             auto x = std::min(n, pcs[i].first);
             t += (i + 1) * 100 * x;
             n -= x;
