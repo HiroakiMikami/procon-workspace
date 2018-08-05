@@ -836,12 +836,14 @@ void body() {
         EACH (c, candidates) {
             auto u = get<2>(c) ? pcs[get<0>(c)].first : 1;
             if (u <= n && !used[get<0>(c)]) {
+                dump(c);
                 auto num = std::min(pcs[get<0>(c)].first, n);
                 t += get<2>(c) ? get<1>(c) : get<1>(c) * num;
                 n -= num;
                 used[get<0>(c)] = true;
             }
         }
+        dump("---");
 
         return t >= G;
     };
