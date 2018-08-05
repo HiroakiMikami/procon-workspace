@@ -824,7 +824,6 @@ void body() {
             if ('a' <= S[i] && S[i] <= 'z') {
 
             } else {
-                dump(i, S[i]);
                 cout << "WA" << endl;
                 return ;
             }
