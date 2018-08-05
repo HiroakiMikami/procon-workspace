@@ -814,47 +814,38 @@ void body() {
     auto G = read<i64>();
     auto pcs = read<i64, i64>(D);
 
-    auto totals = Vector<pair<i64, i64>>();
+    // (i, total, contains_complete)
+    auto candidates = Vector<tuple<i64, i64, bool>>();
     REP (i, D) {
-        totals.push_back(make_pair(i, (i + 1) * 100 *  pcs[i].first + pcs[i].second));
+        candidates.push_back(make_tuple(
+            i, (i + 1) * 100 * pcs[i].first + pcs[i].second, true));
+        candidates.push_back(make_tuple(
+            i, (i + 1) * 100, false));
     }
 
-    sort(CTR(totals), [&](auto lhs, auto rhs) {
-        return lhs.second * pcs[rhs.first].first > rhs.second * pcs[lhs.first].first;
+    sort(CTR(candidates), [&](auto lhs, auto rhs) {
+        auto l = get<1>(lhs) * (get<2>(rhs) ? pcs[get<0>(rhs)].first : 1);
+        auto r = get<1>(rhs) * (get<2>(lhs) ? pcs[get<0>(lhs)].first : 1);
+        return l > r;
     });
 
-    REP (i, D) {
-        dump(totals[i]);
+    EACH (c, candidates) {
+        dump(c);
     }
     dump("---");
 
     auto over_G = [&](i64 n) {
         // 平均が高い方から順々に選ぶ
-        auto x_ = n;
         i64 t = 0;
-        Vector<bool> used(D, false);
-        REP (i, D) {
-            if (pcs[totals[i].first].first <= n) {
-                t += totals[i].second;
-                n -= pcs[totals[i].first].first;
-                used[totals[i].first] = true;
-                dump(x_, totals[i].first, t);
-            } else {
-                break ;
+        EACH (c, candidates) {
+            auto u = get<2>(c) ? pcs[get<0>(c)].first : 1;
+            if (u <= n) {
+                auto num = std::min(pcs[get<0>(c)].first, n);
+                t += get<2>(c) ? get<1>(c) : get<1>(c) * num;
+                n -= num;
+                pcs[get<0>(c)].first -= num;
             }
         }
-
-
-        REPR (i, D) {
-            if (used[i]) {
-                continue;
-            }
-            dump(x_, i, t);
-            auto x = std::min(n, pcs[i].first);
-            t += (i + 1) * 100 * x;
-            n -= x;
-        }
-        dump(x_, t);
 
         return t >= G;
     };
