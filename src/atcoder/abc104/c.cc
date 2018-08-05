@@ -822,7 +822,9 @@ void body() {
     sort(CTR(totals), [&](auto lhs, auto rhs) {
         return lhs.second * pcs[rhs.first].first < rhs.second * pcs[lhs.first].first;
     });
-    dump(as_map(totals));
+    REP (i, D) {
+        dump(totals[i]);
+    }
 
     auto over_G = [&](i64 n) {
 
