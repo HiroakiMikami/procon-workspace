@@ -845,6 +845,7 @@ void body() {
                 dump(u, n, c);
                 dump("xxx");
             }
+            if (n == 0) break;
         }
         dump("---");
 
