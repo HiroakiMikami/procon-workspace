@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/code-festival-2016-quala/tasks/codefestival_2016_qualA_c
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 辞書順 貪欲
 FAILURE_TYPE
 NOTES
+解説より：
+今回の解放（「先頭の要素から順に，今見ている要素をできるだけ小さくする，を貪欲に行う」）は典型
 */
 #include <iostream>
 #include <cstdint>
