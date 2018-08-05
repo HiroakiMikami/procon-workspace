@@ -835,17 +835,18 @@ void body() {
     dump("---");
 
     auto over_G = [&](i64 n) {
+        auto pcs_ = pcs;
         // 平均が高い方から順々に選ぶ
         i64 t = 0;
         dump(n);
         EACH (c, candidates) {
-            auto u = get<2>(c) ? pcs[get<0>(c)].first : 1;
+            auto u = get<2>(c) ? pcs_[get<0>(c)].first : 1;
             if (u <= n) {
-                auto num = std::min(pcs[get<0>(c)].first, n);
+                auto num = std::min(pcs_[get<0>(c)].first, n);
                 dump(u, n, num, c);
                 t += get<2>(c) ? get<1>(c) : get<1>(c) * num;
                 n -= num;
-                pcs[get<0>(c)].first -= num;
+                pcs_[get<0>(c)].first -= num;
             }
         }
         dump(t);
