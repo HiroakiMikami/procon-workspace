@@ -841,9 +841,6 @@ void body() {
                 t += get<2>(c) ? get<1>(c) : get<1>(c) * num;
                 n -= num;
                 used[get<0>(c)] = true;
-            } else {
-                dump(u, n, c);
-                dump("xxx");
             }
             if (n == 0) break;
         }
