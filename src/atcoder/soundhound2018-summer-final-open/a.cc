@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/soundhound2018-summer-final-open/tasks/soundhound2018_summer_final_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 全探索 区間
+FAILURE_TYPE 考察不足
 NOTES
+端点の扱いを間違えて一度テストが通らずデバッグした。
 */
 #include <iostream>
 #include <cstdint>
@@ -819,7 +820,6 @@ void body() {
     i64 ans = 0;
     while (min <= D) {
         if (max >= C) {
-            dump(min, max);
             ans += std::min(D, max) - std::max(C, min);
         }
 
