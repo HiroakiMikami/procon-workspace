@@ -837,15 +837,19 @@ void body() {
     auto over_G = [&](i64 n) {
         // 平均が高い方から順々に選ぶ
         i64 t = 0;
+        dump(n);
         EACH (c, candidates) {
             auto u = get<2>(c) ? pcs[get<0>(c)].first : 1;
             if (u <= n) {
+                dump(c);
                 auto num = std::min(pcs[get<0>(c)].first, n);
                 t += get<2>(c) ? get<1>(c) : get<1>(c) * num;
                 n -= num;
                 pcs[get<0>(c)].first -= num;
             }
         }
+        dump(t);
+        dump("---");
 
         return t >= G;
     };
