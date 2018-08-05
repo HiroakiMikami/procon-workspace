@@ -823,6 +823,11 @@ void body() {
         return lhs.second * pcs[rhs.first].first > rhs.second * pcs[lhs.first].first;
     });
 
+    REP (i, D) {
+        dump(totals[i]);
+    }
+    dump("---");
+
     auto over_G = [&](i64 n) {
         // 平均が高い方から順々に選ぶ
         auto x_ = n;
