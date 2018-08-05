@@ -853,7 +853,6 @@ void body() {
     }
 
     i64 n = (lower + upper) / 2;
-    dump(n, lower, upper);
     while (upper - lower > 1) {
         if (over_G(n)) {
             upper = n;
@@ -861,7 +860,6 @@ void body() {
             lower = n;
         }
         n = (upper + lower) / 2;
-        dump(n, lower, upper);
     }
 
     cout << upper << endl;
