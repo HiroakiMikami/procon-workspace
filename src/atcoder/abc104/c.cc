@@ -848,4 +848,24 @@ void body() {
 
         return t >= G;
     };
+
+    i64 lower = 0;
+    i64 upper = 0;
+    REP (i, D) {
+        upper += pcs[i].first;
+    }
+
+    i64 n = (lower + upper) / 2;
+    dump(n);
+    while (upper - lower > 1) {
+        if (over_G(n)) {
+            upper = n;
+        } else {
+            lower = n;
+        }
+        dump(n);
+        n = (upper + lower) / 2;
+    }
+
+    cout << upper << endl;
 }
