@@ -843,7 +843,7 @@ void body() {
                 used[get<0>(c)] = true;
             } else {
                 dump("xxx");
-                dump(c);
+                dump(u, n, c);
                 dump("xxx");
             }
         }
