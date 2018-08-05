@@ -837,33 +837,22 @@ void body() {
             auto u = get<2>(c) ? pcs[get<0>(c)].first : 1;
             if (u <= n && !used[get<0>(c)]) {
                 auto num = std::min(pcs[get<0>(c)].first, n);
-                dump(u, n, num, c);
                 t += get<2>(c) ? get<1>(c) : get<1>(c) * num;
                 n -= num;
                 used[get<0>(c)] = true;
             }
         }
-        dump(t);
-        dump("---");
 
         return t >= G;
     };
 
-    i64 lower = 0;
     i64 upper = 0;
     REP (i, D) {
         upper += pcs[i].first;
     }
-
-    i64 n = (lower + upper) / 2;
-    while (upper - lower > 1) {
-        if (over_G(n)) {
-            upper = n;
-        } else {
-            lower = n;
+    REP (i, upper + 1) {
+        if (over_G(i)) {
+            cout << i << endl;
         }
-        n = (upper + lower) / 2;
     }
-
-    cout << upper << endl;
 }
