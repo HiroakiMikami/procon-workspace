@@ -820,13 +820,32 @@ void body() {
     }
 
     sort(CTR(totals), [&](auto lhs, auto rhs) {
-        return lhs.second * pcs[rhs.first].first < rhs.second * pcs[lhs.first].first;
+        return lhs.second * pcs[rhs.first].first > rhs.second * pcs[lhs.first].first;
     });
-    REP (i, D) {
-        dump(totals[i]);
-    }
 
     auto over_G = [&](i64 n) {
+        // 平均が高い方から順々に選ぶ
+        i64 t = 0;
+        Vector<bool> used(D, false);
+        REP (i, D) {
+            if (pcs[totals[i].first].first <= n) {
+                t += totals[i].second;
+                n -= pcs[totals[i].first].first;
+                used[totals[i].first] = true;
+            } else {
+                break ;
+            }
+        }
 
+        REPR (i, D) {
+            if (used[i]) {
+                continue;
+            }
+            auto x = std::min(n, pcs[i].first);
+            t += (i + 1) * 100 * x;
+            n -= x;
+        }
+
+        return t >= G;
     };
 }
