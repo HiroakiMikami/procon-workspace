@@ -836,10 +836,13 @@ void body() {
             auto u = get<2>(c) ? pcs[get<0>(c)].first : 1;
             if (u <= n) {
                 auto num = std::min(pcs[get<0>(c)].first, n);
+                dump(u, n, num, c);
                 t += get<2>(c) ? get<1>(c) : get<1>(c) * num;
                 n -= num;
             }
         }
+        dump(t);
+        dump("---");
 
         return t >= G;
     };
