@@ -813,7 +813,7 @@ void body() {
     auto s = read<string>();
     auto K = read<i64>();
 
-    REP (i, N) {
+    REP (i, s.size()) {
         auto c = s[i];
         auto num = (c == 'a') ? 0 : 'z' - c + 1;
         if (K >= num) {
