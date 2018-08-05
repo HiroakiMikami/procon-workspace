@@ -818,9 +818,9 @@ void body() {
 
     i64 ans = 0;
     while (min <= D) {
-        if (min >= C) {
+        if (max >= C) {
             dump(min, max);
-            ans += std::min(D, max) - min;
+            ans += std::min(D, max) - std::max(C, min);
         }
 
         min *= 2;
