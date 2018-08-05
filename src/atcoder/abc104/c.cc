@@ -816,7 +816,7 @@ void body() {
 
     auto totals = Vector<pair<i64, i64>>();
     REP (i, D) {
-        totals.push_back(make_pair(i, (i + 1) * pcs[i].first + pcs[i].second));
+        totals.push_back(make_pair(i, (i + 1) * 100 *  pcs[i].first + pcs[i].second));
     }
 
     sort(CTR(totals), [&](auto lhs, auto rhs) {
