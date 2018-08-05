@@ -825,6 +825,7 @@ void body() {
 
     auto over_G = [&](i64 n) {
         // 平均が高い方から順々に選ぶ
+        auto x_ = n;
         i64 t = 0;
         Vector<bool> used(D, false);
         REP (i, D) {
@@ -837,6 +838,7 @@ void body() {
             }
         }
 
+
         REPR (i, D) {
             if (used[i]) {
                 continue;
@@ -845,6 +847,7 @@ void body() {
             t += (i + 1) * 100 * x;
             n -= x;
         }
+        dump(x_, t);
 
         return t >= G;
     };
