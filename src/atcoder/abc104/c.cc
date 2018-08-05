@@ -853,6 +853,7 @@ void body() {
     REP (i, upper + 1) {
         if (over_G(i)) {
             cout << i << endl;
+            break;
         }
     }
 }
