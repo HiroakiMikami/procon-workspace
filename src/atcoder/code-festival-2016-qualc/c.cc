@@ -1096,7 +1096,7 @@ void body() {
         }
     }
 
-    I ans = 0;
+    I ans = 1;
     REP (i, N) {
         dump(cands[i]);
         ans *= std::max<i64>(0, cands[i].second - cands[i].first + 1);
