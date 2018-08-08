@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/code-festival-2016-qualc/tasks/codefestival_2016_qualC_c
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE mod DP
+FAILURE_TYPE 実装ミス
 NOTES
+minとmaxの扱いや初期値1のところを0にするなどしてミスを連発した。
 */
 #include <iostream>
 #include <cstdint>
