@@ -1090,9 +1090,15 @@ void body() {
             cands[i].first = std::max(cands[i].first, As[i]);
             cands[i].second = std::min(cands[i].second, As[i]);
         } else {
-            auto x = (As[i] < cands[i + 1]) ? As[i] : 1;
+            i64 x = (As[i] < cands[i + 1]) ? As[i] : 1;
             cands[i].first = std::max(cands[i].first, x);
             cands[i].second = std::min(cands[i].second, As[i]);
         }
     }
+
+    I ans = 0;
+    REP (i, N) {
+        ans *= std::max<i64>(0, cands[i].second - cands[i].first);
+    }
+    cout << ans.get() << endl;
 }
