@@ -1080,8 +1080,8 @@ void body() {
             cands[i].first = Ts[i];
             cands[i].second = Ts[i];
         } else {
-            cands[i].first = (Ts[i] > cands[i - 1].first) ? Ts[i] : 1;
-            cands[i].second = Ts[i];
+            cands[i].first = (Ts[i] > cands[i - 1].second) ? Ts[i] : 1;
+            cands[i].second = (Ts[i] > cands[i - 1].second) ? Ts[i] : cands[i].first;
         }
     }
 
@@ -1090,9 +1090,10 @@ void body() {
             cands[i].first = std::max(cands[i].first, As[i]);
             cands[i].second = std::min(cands[i].second, As[i]);
         } else {
-            i64 x = (As[i] < cands[i + 1].first) ? As[i] : 1;
+            i64 x = (As[i] > cands[i + 1].second) ? As[i] : 1;
             cands[i].first = std::max(cands[i].first, x);
-            cands[i].second = std::min(cands[i].second, As[i]);
+            i64 y = (As[i] > cands[i + 1].second) ? As[i] : cands[i].first;
+            cands[i].second = std::min(y, As[i]);
         }
     }
 
