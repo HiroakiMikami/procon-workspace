@@ -1085,15 +1085,17 @@ void body() {
         }
     }
 
+    i64 m = 0;
     REPR (i, N) {
         if (i == N - 1) {
             cands[i].first = std::max(cands[i].first, As[i]);
             cands[i].second = std::min(cands[i].second, As[i]);
         } else {
-            i64 x = (As[i] > cands[i + 1].second) ? As[i] : 1;
+            i64 x = (As[i] > m) ? As[i] : 1;
             cands[i].first = std::max(cands[i].first, x);
             cands[i].second = std::min(cands[i].second, As[i]);
         }
+        m = std::max(m, As[i]);
     }
 
     I ans = 1;
