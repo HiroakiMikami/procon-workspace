@@ -955,6 +955,5 @@ void body() {
         ds.push_back(std::abs(xs[i] - X));
     }
 
-    auto gcd = gcd_ctr(ds);
-    cout << cd_ctr(ds) << endl;
+    cout << gcd_ctr(ds) << endl;
 }
