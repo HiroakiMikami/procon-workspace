@@ -946,5 +946,15 @@ void body() {
     auto X = read<i64>();
     auto xs = read<i64>(N);
 
-    auto gcd = gcd_ctr(xs);
+    auto ds = Vector<i64>();
+    ds.reserve(N * 2);
+    REP (i, N - 1) {
+        ds.push_back(std::abs(xs[i + 1] - xs[i]));
+    }
+    REP (i, N) {
+        ds.push_back(std::abs(xs[i] - X));
+    }
+
+    auto gcd = gcd_ctr(ds);
+    cout << cd_ctr(ds) << endl;
 }
