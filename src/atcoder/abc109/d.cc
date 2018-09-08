@@ -820,4 +820,29 @@ void body() {
         }
     }
 
+    Vector<tuple<i64, i64, i64, i64>> ops;
+    ops.reserve(H * W);
+
+    REP (i, H) {
+        REP (j, W - 1) {
+            if (as[i][j] % 2 == 1) {
+                ops.emplace_back(i, j, i, j + 1);
+                as[i][j] -= 1;
+                as[i][j + 1] += 1;
+            }
+        }
+    }
+    REP (i, H - 1) {
+        if (as[i][W - 1] % 2 == 1) {
+            ops.emplace_back(i, W - 1, i + 1, W - 1);
+            as[i][W - 1] -= 1;
+            as[i + 1][W - 1] += 1;
+        }
+    }
+
+
+    cout << ops.size() << endl;
+    EACH (op, ops) {
+        cout << get<0>(op) + 1 << " " << get<1>(op) + 1 << " " << get<2>(op) + 1 << " " << get<3>(op) + 1 << endl;
+    }
 }
