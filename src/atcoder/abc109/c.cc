@@ -944,8 +944,7 @@ static pair<Vector<i64>, Vector<bool>> sieve(i64 n) {
 void body() {
     auto N = read<i64>();
     auto X = read<i64>();
-    auto xs = read<i64>();
-
+    auto xs = read<i64>(N);
 
     auto gcd = gcd_ctr(xs);
 }
