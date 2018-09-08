@@ -829,6 +829,7 @@ void body() {
             return;
         }
         used.insert(W);
+        l = W.back();
     }
     cout << "Yes" << endl;
     return;
