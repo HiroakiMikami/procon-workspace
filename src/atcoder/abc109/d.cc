@@ -826,7 +826,6 @@ void body() {
     REP (i, H) {
         REP (j, W - 1) {
             if (as[i][j] % 2 == 1) {
-                dump(i, j);
                 ops.emplace_back(i, j, i, j + 1);
                 as[i][j] -= 1;
                 as[i][j + 1] += 1;
