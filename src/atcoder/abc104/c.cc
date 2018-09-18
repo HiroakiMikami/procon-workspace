@@ -851,7 +851,7 @@ void body() {
             ans = std::min(ans, n);
         }
 
-        cands.emplace_back(x, s, n);
+        cands.emplace(x, s, n);
     }
 
     /* 2のパターンの全探索 */
