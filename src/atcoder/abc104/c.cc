@@ -814,19 +814,52 @@ void body() {
     auto G = read<i64>();
     auto pcs = read<i64, i64>(D);
 
+    /*
+     * 解いた時の平均点が高いほうから順に解けば良い
+     * コンプリートボーナス分を考慮した平均点と、考慮するしない平均点を考える
+     */
+
     // (i, total, contains_complete)
-    auto candidates = Vector<tuple<i64, i64, bool>>();
+    auto candidates = Vector<pair<i64, bool>>();
     REP (i, D) {
-        candidates.push_back(make_tuple(
-            i, (i + 1) * 100 * pcs[i].first + pcs[i].second, true));
-        candidates.push_back(make_tuple(
-            i, (i + 1) * 100, false));
+        candidates.push_back(make_pair(i, true));
+        candidates.push_back(make_pair(i, false));
     }
 
     sort(CTR(candidates), [&](auto lhs, auto rhs) {
-        auto l = get<1>(lhs) * (get<2>(rhs) ? pcs[get<0>(rhs)].first : 1);
-        auto r = get<1>(rhs) * (get<2>(lhs) ? pcs[get<0>(lhs)].first : 1);
-        return l > r;
+        auto i = lhs.first;
+        auto j = rhs.first;
+        if (lhs.second && rhs.second) {
+            // どちらもコンプリートボーナスを含む
+            /*
+             * lhs: pcs[i]個で(i+1)*100+pcs[i].first+pcs[i].second
+             * rhs: pcs[j]個で(j+1)*100+pcs[j].first+pcs[j].second
+             */
+            auto t_l = (i + 1) * 100 * pcs[i].first + pcs[i].second;
+            t_l *= pcs[j].first;
+            auto t_r = (j + 1) * 100 * pcs[j].first + pcs[j].second;
+            t_r *= pcs[i].first;
+            return t_l > t_r;
+        } else if (!lhs.second & !rhs.second) {
+            // どちらもコンプリートボーナスを含まない
+            return lhs.first > rhs.first;
+        } else if (!lhs.second & rhs.second) {
+            // rhsのみコンプリートボーナスを含む
+            /*
+             * lhs: 1個で(i+1)*100
+             * rhs: pcs[j]個で(j+1)*100+pcs[j].first+pcs[j].second
+             */
+            auto t_l = (i + 1) * 100;
+            t_l *= pcs[j].first;
+            auto t_r = (j + 1) * 100 * pcs[j].first + pcs[j].second;
+            return t_l > t_r;
+        } else {
+            // lhsのみコンプリートボーナスを含む
+            auto t_l = (i + 1) * 100 * pcs[i].first + pcs[i].second;
+            auto t_r = (j + 1) * 100;
+            t_r *= pcs[i].first;
+            return t_l > t_r;
+        }
     });
 
     auto over_G = [&](i64 n) {
