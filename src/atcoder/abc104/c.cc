@@ -1,13 +1,16 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/abc104/tasks/abc104_c
+SCORE 300
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 全探索 最大化・最小化 整数
+FAILURE_TYPE 考察ミス 見落とし
 NOTES
+平均点が高い方から詰めれば良いと思っていたが、
+平均点だけ考えると最後に1問あたりの点数が低い問題しか残らなくなって
+解くべき問題数が増える可能性があった。これに気づかなかった。
 */
 #include <iostream>
 #include <cstdint>
