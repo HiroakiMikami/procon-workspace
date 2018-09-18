@@ -870,7 +870,6 @@ void body() {
             auto i = c.first;
             auto u = c.second ? pcs[i].first : 1;
             if (u <= n && !used[i]) {
-                dump(c);
                 auto num = std::min(pcs[i].first, n);
                 auto with_bonus = (i + 1) * 100 * pcs[i].first + pcs[i].second;
                 t += c.second ? with_bonus : (i + 1) * 100 * num;
@@ -879,7 +878,6 @@ void body() {
             }
             if (n == 0) break;
         }
-        dump("---");
 
         return t >= G;
     };
