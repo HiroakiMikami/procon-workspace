@@ -862,7 +862,9 @@ void body() {
         }
     });
     EACH(c, candidates) {
-        dump(c);
+        auto i = c.first;
+        auto with_bonus = (i + 1) * 100 * pcs[i].first + pcs[i].second;
+        dump(i, (i + 1) * 100, with_bonus * 1.0 / pcs[i].first);
     }
 
     auto over_G = [&](i64 n) {
@@ -884,7 +886,6 @@ void body() {
         }
 
         dump(t);
-        dump("---");
 
         return t >= G;
     };
