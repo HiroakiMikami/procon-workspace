@@ -833,7 +833,7 @@ void body() {
     }
 
     i64 ans = std::numeric_limits<i64>::max();
-    OrderedMap<tuple<std::bitset<10>, pair<i64, i64>>> cands;
+    Vector<tuple<std::bitset<10>, i64, i64>> cands;
 
     /* 1のパターンの全探索 */
     REP (i, 1 << D) {
@@ -851,14 +851,14 @@ void body() {
             ans = std::min(ans, n);
         }
 
-        cands.emplace(x, make_pair(s, n));
+        cands.emplace_back(x, s, n);
     }
 
     /* 2のパターンの全探索 */
     EACH (cand, cands) {
-        auto x = cand.first;
-        auto s = cand.second.first;
-        auto n = cand.second.second;
+        auto x = get<0>(cand);
+        auto s = get<1>(cand);
+        auto n = get<2>(cand);
 
         auto remain = n - G;
         if (remain <= 0) {
