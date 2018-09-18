@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/arc101/tasks/arc101_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 数直線 全探索 最小化・最大化
 FAILURE_TYPE
 NOTES
 */
