@@ -871,7 +871,6 @@ void body() {
         // 平均が高い方から順々に選ぶ
         i64 t = 0;
         Vector<bool> used(D, false);
-        dump(n);
         EACH (c, candidates) {
             auto i = c.first;
             auto u = c.second ? pcs[i].first : 1;
@@ -884,8 +883,6 @@ void body() {
             }
             if (n == 0) break;
         }
-
-        dump(t);
 
         return t >= G;
     };
