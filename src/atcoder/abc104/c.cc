@@ -867,13 +867,15 @@ void body() {
         i64 t = 0;
         Vector<bool> used(D, false);
         EACH (c, candidates) {
-            auto u = get<2>(c) ? pcs[get<0>(c)].first : 1;
-            if (u <= n && !used[get<0>(c)]) {
+            auto i = c.first;
+            auto u = c.second ? pcs[i].first : 1;
+            if (u <= n && !used[i]) {
                 dump(c);
-                auto num = std::min(pcs[get<0>(c)].first, n);
-                t += get<2>(c) ? get<1>(c) : get<1>(c) * num;
+                auto num = std::min(pcs[i].first, n);
+                auto with_bonus = (i + 1) * 100 * pcs[i].first + pcs[i].second;
+                t += c.second ? with_bonus : (i + 1) * 100 * num;
                 n -= num;
-                used[get<0>(c)] = true;
+                used[i] = true;
             }
             if (n == 0) break;
         }
