@@ -826,8 +826,8 @@ void body() {
      * A, Bの決め方から、Aは奇数bitが0で偶数bitが任意、!Bは奇数bitが任意で偶数bitが1なので、
      * 下位bitからA, Bを決められる
      */
-    auto N_ = bitset<64>(N - 1);
-    auto ans = bitset<64>(0);
+    auto N_ = std::bitset<64>(N - 1);
+    auto ans = std::bitset<64>(0);
 
     i64 carry = 0;
     REP (i, 64) {
