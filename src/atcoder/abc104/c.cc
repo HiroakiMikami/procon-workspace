@@ -829,7 +829,7 @@ void body() {
 
     auto with_bonus = Vector<i64>(D);
     REP (i, D) {
-        with_bonus = (i + 1) * 100 * pcs[i].first + pcs[i].second;
+        with_bonus[i] = (i + 1) * 100 * pcs[i].first + pcs[i].second;
     }
 
     i64 ans = std::numeric_limits<i64>::max();
