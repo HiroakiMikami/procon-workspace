@@ -882,6 +882,8 @@ void body() {
             if (n == 0) break;
         }
 
+        dump(n, t);
+
         return t >= G;
     };
 
