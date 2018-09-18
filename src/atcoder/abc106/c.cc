@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc106/tasks/abc106_c
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 数列
 FAILURE_TYPE
 NOTES
+5000兆と非常に大きい数字があって文字列の増え方が指数的だったので最初の文字を選べば大丈夫だろうと判断
 */
 #include <iostream>
 #include <cstdint>
