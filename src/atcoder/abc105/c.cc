@@ -856,6 +856,9 @@ void body() {
             cout << ans[i];
         }
     }
+    if (!started) {
+        cout << 0;
+    }
     cout << endl;
 
 }
