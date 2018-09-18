@@ -848,7 +848,6 @@ void body() {
         }
 
         if (s >= G) {
-            dump(s, n);
             ans = std::min(ans, n);
         }
 
@@ -861,7 +860,7 @@ void body() {
         auto s = get<1>(cand);
         auto n = get<2>(cand);
 
-        auto remain = n - G;
+        auto remain = G - s;
         if (remain <= 0) {
             continue;
         }
