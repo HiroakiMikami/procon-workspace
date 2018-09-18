@@ -848,6 +848,7 @@ void body() {
         }
 
         if (s >= G) {
+            dump(s, n);
             ans = std::min(ans, n);
         }
 
