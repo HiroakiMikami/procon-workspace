@@ -833,8 +833,8 @@ void body() {
     auto k = std::min<i64>(K, pos.size());
     REPR (i, k + 1) {
         // x >= 0からi本、x < 0から K-i本選ぶ
-        auto x_pos = (i - 1 == 0) ? 0 : pos[i - 1];
-        auto x_neg = (K - i - 1 == 0) ? 0 : neg[K - i - 1];
+        auto x_pos = (i - 1 < 0) ? 0 : pos[i - 1];
+        auto x_neg = (K - i - 1 < 0) ? 0 : neg[K - i - 1];
         auto c = std::min(x_neg + x_pos + x_neg, x_neg + x_pos + x_pos);
 
         ans = std::min(ans, c);
