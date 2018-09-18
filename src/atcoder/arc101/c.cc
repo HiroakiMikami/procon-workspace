@@ -832,14 +832,14 @@ void body() {
 
     auto k = std::min<i64>(K, pos.size());
     REPR (i, k + 1) {
+        // x >= 0からi本、x < 0から K-i本選ぶ
         auto n_pos = i;
         auto n_neg = K - i;
 
         if (n_neg > neg.size()) continue;
 
-        // x >= 0からi本、x < 0から K-i本選ぶ
-        auto x_pos = (n_pos - 1 < 0) ? 0 : pos[n_pos - 1];
-        auto x_neg = (n_neg - 1 < 0) ? 0 : neg[n_neg - 1];
+        auto x_pos = std::abs((n_pos - 1 < 0) ? 0 : pos[n_pos - 1]);
+        auto x_neg = std::abs((n_neg - 1 < 0) ? 0 : neg[n_neg - 1]);
         auto c = std::min(x_neg + x_pos + x_neg, x_neg + x_pos + x_pos);
 
         ans = std::min(ans, c);
