@@ -861,8 +861,9 @@ void body() {
             return t_l > t_r;
         }
     });
-
-    dump(as_set(candidates));
+    EACH(c, candidates) {
+        dump(c);
+    }
 
     auto over_G = [&](i64 n) {
         // 平均が高い方から順々に選ぶ
