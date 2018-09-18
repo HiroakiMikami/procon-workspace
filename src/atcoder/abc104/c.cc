@@ -862,6 +862,8 @@ void body() {
         }
     });
 
+    dump(as_map(candidates));
+
     auto over_G = [&](i64 n) {
         // 平均が高い方から順々に選ぶ
         i64 t = 0;
