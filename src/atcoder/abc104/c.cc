@@ -877,8 +877,8 @@ void body() {
             if (u <= n && !used[i]) {
                 auto with_bonus = (i + 1) * 100 * pcs[i].first + pcs[i].second;
                 t += c.second ? with_bonus : (i + 1) * 100 * n;
-                n -= num;
-                used[i] = std::min(pcs[i].first, n);
+                n -= std::min(pcs[i].first, n);
+                used[i] = true;
             }
             if (n == 0) break;
         }
