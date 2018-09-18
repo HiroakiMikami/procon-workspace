@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc105/tasks/abc105_c
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE bit表現 構成
 FAILURE_TYPE
 NOTES
 */
@@ -834,14 +834,12 @@ void body() {
         if (i % 2 == 0) {
             // 偶数bit
             auto b_i = carry + 1;
-            if (N_[i] != b_i) {
-                ans[i] = 1;
-            }
+            ans[i] = N_[i] != (b_i % 2);
             carry = (b_i + ans[i] > 1) ? 1 : 0;
         } else {
             // 奇数bit
             auto b_i = carry;
-            bool B = N_[i] != b_i;
+            bool B = N_[i] != (b_i % 2);
             ans[i] = !B;
             carry = (b_i + !ans[i] > 1) ? 1 : 0;
         }
