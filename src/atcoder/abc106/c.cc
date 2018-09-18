@@ -823,6 +823,7 @@ void body() {
             }
         } else {
             cout << S[i] << endl;
+            return ;
         }
     }
 }
