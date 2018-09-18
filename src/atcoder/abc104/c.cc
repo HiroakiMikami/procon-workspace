@@ -809,91 +809,72 @@ int main (int argc, char **argv) {
     return 0;
 }
 
+#include <bitset>
+
 void body() {
     auto D = read<i64>();
     auto G = read<i64>();
     auto pcs = read<i64, i64>(D);
 
     /*
-     * 解いた時の平均点が高いほうから順に解けば良い
-     * コンプリートボーナス分を考慮した平均点と、考慮するしない平均点を考える
+     * 可能性
+     * 1) 解いた問題全てにコンプリートボーナスがつく
+     * 2) 解いた問題のうち、ある1つの点数だけはコンプリートボーナスなし
+     *
+     * 1)については、D個それぞれについて解く or 解かないで2^10=1024通り
+     * 2)については、1で考えたそれぞれに、コンプリートボーナスなしの点数の選び方10通りで
+     * 10240通り
+     * 十分すくないので全探索できる
      */
 
-    // (i, total, contains_complete)
-    auto candidates = Vector<pair<i64, bool>>();
+    auto with_bonus = Vector<i64>(D);
     REP (i, D) {
-        candidates.push_back(make_pair(i, true));
-        candidates.push_back(make_pair(i, false));
+        with_bonus = (i + 1) * 100 * pcs[i].first + pcs[i].second;
     }
 
-    sort(CTR(candidates), [&](auto lhs, auto rhs) {
-        auto i = lhs.first;
-        auto j = rhs.first;
-        if (lhs.second && rhs.second) {
-            // どちらもコンプリートボーナスを含む
-            /*
-             * lhs: pcs[i]個で(i+1)*100+pcs[i].first+pcs[i].second
-             * rhs: pcs[j]個で(j+1)*100+pcs[j].first+pcs[j].second
-             */
-            auto t_l = (i + 1) * 100 * pcs[i].first + pcs[i].second;
-            t_l *= pcs[j].first;
-            auto t_r = (j + 1) * 100 * pcs[j].first + pcs[j].second;
-            t_r *= pcs[i].first;
-            return t_l > t_r;
-        } else if (!lhs.second & !rhs.second) {
-            // どちらもコンプリートボーナスを含まない
-            return lhs.first > rhs.first;
-        } else if (!lhs.second & rhs.second) {
-            // rhsのみコンプリートボーナスを含む
-            /*
-             * lhs: 1個で(i+1)*100
-             * rhs: pcs[j]個で(j+1)*100+pcs[j].first+pcs[j].second
-             */
-            auto t_l = (i + 1) * 100;
-            t_l *= pcs[j].first;
-            auto t_r = (j + 1) * 100 * pcs[j].first + pcs[j].second;
-            return t_l > t_r;
-        } else {
-            // lhsのみコンプリートボーナスを含む
-            auto t_l = (i + 1) * 100 * pcs[i].first + pcs[i].second;
-            auto t_r = (j + 1) * 100;
-            t_r *= pcs[i].first;
-            return t_l > t_r;
-        }
-    });
-    EACH(c, candidates) {
-        auto i = c.first;
-        auto with_bonus = (i + 1) * 100 * pcs[i].first + pcs[i].second;
-        dump(i, (i + 1) * 100, with_bonus * 1.0 / pcs[i].first);
-    }
+    i64 ans = std::numeric_limits<i64>::max();
+    OrderedSet<tuple<std::bitset<10>, i64, i64>> cands;
 
-    auto over_G = [&](i64 n) {
-        // 平均が高い方から順々に選ぶ
-        i64 t = 0;
-        Vector<bool> used(D, false);
-        EACH (c, candidates) {
-            auto i = c.first;
-            auto u = c.second ? pcs[i].first : 1;
-            if (u <= n && !used[i]) {
-                auto with_bonus = (i + 1) * 100 * pcs[i].first + pcs[i].second;
-                t += c.second ? with_bonus : (i + 1) * 100 * n;
-                n -= std::min(pcs[i].first, n);
-                used[i] = true;
+    /* 1のパターンの全探索 */
+    REP (i, 1 << D) {
+        std::bitset<10> x(i);
+        i64 s = 0;
+        i64 n = 0;
+        REP (i, D) {
+            if (x[i]) {
+                s += with_bonus[i];
+                n += pcs[i].first;
             }
-            if (n == 0) break;
         }
 
-        return t >= G;
-    };
+        if (s >= G) {
+            ans = std::min(ans, n);
+        }
 
-    i64 upper = 0;
-    REP (i, D) {
-        upper += pcs[i].first;
+        cands.emplace_back(x, s, n);
     }
-    REP (i, upper + 1) {
-        if (over_G(i)) {
-            cout << i << endl;
-            break;
+
+    /* 2のパターンの全探索 */
+    EACH (cand, cands) {
+        auto x = get<0>(cand);
+        auto s = get<1>(cand);
+        auto n = get<2>(cand);
+
+        auto remain = n - G;
+        if (remain <= 0) {
+            continue;
+        }
+
+        REP (i, D) {
+            if (x[i]) continue;
+
+            auto p = ((i + 1) * 100);
+            auto m = (remain + p - 1) / p;
+            if (m <= pcs[i].first) {
+                ans = std::min(ans, n + m);
+            }
         }
     }
+
+    cout << ans << endl;
 }
