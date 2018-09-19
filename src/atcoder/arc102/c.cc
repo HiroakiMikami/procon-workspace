@@ -821,7 +821,7 @@ void body() {
         // a, b, cすべてmod KでK/2となる場合も条件を満たす
         auto k = K / 2;
         auto n_k0 = n_K0;
-        if (K % 2 >= k) {
+        if (N % K >= k) {
             n_k0 += 1;
         }
         dump(n_k0);
