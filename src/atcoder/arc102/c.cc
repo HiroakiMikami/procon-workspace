@@ -814,15 +814,14 @@ void body() {
     auto K = read<i64>();
 
     i64 ans = 0;
+    // a, b, cすべてKで割り切れる場合は条件を満たす
+    auto n_K0 = N / K; // Kで割り切れる数の個数
+    ans = n_K0 * n_K0 * n_K0;
     if (K % 2 == 0) {
-        // a, b, cすべてK/2で割り切れる場合は条件を満たす
+        // a, b, cすべてmod KでK/2となる場合も条件を満たす
         auto k = K / 2;
-        auto n_k0 = N / k;
-        ans = n_k0 * n_k0 * n_k0;
-    } else {
-        // a, b, cすべてKで割り切れる場合は条件を満たす
-        auto n_K0 = N / K; // Kで割り切れる数の個数
-        ans = n_K0 * n_K0 * n_K0;
+        auto n_k0 = (N - k) / K;
+        ans += n_k0 * n_k0 * n_k0;
     }
 
     cout << ans << endl;
