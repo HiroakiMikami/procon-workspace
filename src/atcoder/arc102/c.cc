@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/arc102/tasks/arc102_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 数え上げ 場合の数 場合分け
 FAILURE_TYPE
 NOTES
+mod Kをとって考える。数え上げのをちゃんと書くのが一番苦労した。
 */
 #include <iostream>
 #include <cstdint>
@@ -824,7 +825,6 @@ void body() {
         if (N % K >= k) {
             n_k0 += 1;
         }
-        dump(n_k0);
         ans += n_k0 * n_k0 * n_k0;
     }
 
