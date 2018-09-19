@@ -824,6 +824,7 @@ void body() {
         if (K % 2 >= k) {
             n_k0 += 1;
         }
+        dump(n_k0);
         ans += n_k0 * n_k0 * n_k0;
     }
 
