@@ -820,8 +820,10 @@ void body() {
     if (K % 2 == 0) {
         // a, b, cすべてmod KでK/2となる場合も条件を満たす
         auto k = K / 2;
-        auto n_k0 = (N - k + K - 1) / K;
-        dump(N, k, n_k0);
+        auto n_k0 = n_K0;
+        if (K % 2 >= k) {
+            n_k0 += 1;
+        }
         ans += n_k0 * n_k0 * n_k0;
     }
 
