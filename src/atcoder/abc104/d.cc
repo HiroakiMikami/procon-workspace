@@ -1088,17 +1088,17 @@ void body() {
              * ?='A'でBCがABCになった場合 or
              * すでにABCになっている場合（?によらないので3パターン）
              */
-            sum_abc = 3 * sum_abc + sum_bc;
+            sum_abc = sum_abc * 3 + sum_bc;
             /*
              * ?='B'でCがBCになった場合 or
              * すでにBCになっている場合（?によらないので3パターン）
              */
-            sum_bc = 3 * sum_bc + sum_c;
+            sum_bc = sum_bc * 3 + sum_c;
             /*
              * ?='C'でCが作られた場合 or
              * すでにCになっている場合（?によらないので3パターン）
              */
-            sum_c = 3 * sum_c + sum_empty;
+            sum_c = sum_c * 3 + sum_empty;
 
             sum_empty *= 3;
         }
