@@ -833,6 +833,9 @@ void body() {
         }
     }
 
+    dump(as_set(xs));
+    dump(as_set(ys));
+
     EACH (pq, pqs) {
         auto p = pq.first;
         auto q = pq.second;
