@@ -816,8 +816,8 @@ void body() {
     auto LRs = read<i64, i64>(M);
     auto pqs = read<i64, i64>(Q);
 
-    /* xs[i] = 都市iと都市i+1の間を通る列車の本数 */
-    auto xs = Vector<i64>(N + 1);
+    /* xs[i][j] = 都市iと都市i+1の間を通り、都市0から都市jに含まれる列車の本数 */
+    auto xs = make_matrix<i64, 2>({N + 1, N + 1}, 0);
     /* ys[i] = 都市0から都市iに含まれる列車の本数*/
     auto ys = Vector<i64>(N + 1);
 
@@ -826,7 +826,9 @@ void body() {
         auto R = LRs[i].second;
 
         FOR (j, L, R) {
-            xs[j] += 1;
+            FOR (k, R, N + 1) {
+                xs[j][k] += 1;
+            }
         }
         FOR (j, R, N + 1) {
             ys[j] += 1;
@@ -845,7 +847,6 @@ void body() {
          * - 0からp-1に含まれる列車の本数
          * - [p-1, p]を通る列車の本数
          */
-        cout << ys[q] - ys[p - 1] - xs[p - 1] << endl;
-        dump(p, q, ys[q] - ys[p - 1] - xs[p - 1]);
+        cout << ys[q] - ys[p - 1] - xs[p - 1][q] << endl;
     }
 }
