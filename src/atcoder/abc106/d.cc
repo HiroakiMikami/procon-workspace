@@ -846,5 +846,6 @@ void body() {
          * - [p-1, p]を通る列車の本数
          */
         cout << ys[q] - ys[p - 1] - xs[p - 1] << endl;
+        dump(p, q, ys[q] - ys[p - 1] - xs[p - 1]);
     }
 }
