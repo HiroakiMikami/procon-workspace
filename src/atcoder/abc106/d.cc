@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc106/tasks/abc106_d
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE BinaryIndexedTree 累積和 クエリ
 FAILURE_TYPE
 NOTES
 */
