@@ -906,9 +906,9 @@ void body() {
     auto LRs = read<i64, i64>(M);
     auto pqs = read<i64, i64>(Q);
 
-    /* xs[i][j] = 都市iと都市i+1の間を通り、都市0から都市jに含まれる列車の本数 */
-    auto xs = make_matrix<i64, 2>({N + 1, N + 1}, 0);
-    /* ys[i] = 都市0から都市iに含まれる列車の本数*/
+    /* xs[i].sum(j) = 都市iと都市i+1の間を通り、都市0から都市jに含まれる列車の本数 */
+    auto xs = Vector<BinaryIndexedTree<i64>>(N + 1, BinaryIndexedTree<i64>(N + 1));
+    /* ys.sum(i) = 都市0から都市iに含まれる列車の本数 */
     auto ys = BinaryIndexedTree<i64>(N + 1);
 
     REP (i, M) {
@@ -916,9 +916,7 @@ void body() {
         auto R = LRs[i].second;
 
         FOR (j, L, R) {
-            FOR (k, R, N + 1) {
-                xs[j][k] += 1;
-            }
+            xs[j].add(R - 1, 1);
         }
         ys.add(R - 1, 1);
     }
@@ -932,6 +930,6 @@ void body() {
          * - 0からp-1に含まれる列車の本数
          * - [p-1, p]を通る列車の本数
          */
-        cout << ys.sum(q) - ys.sum(p - 1) - xs[p - 1][q] << endl;
+        cout << ys.sum(q) - ys.sum(p - 1) - xs[p - 1].sum(q) << endl;
     }
 }
