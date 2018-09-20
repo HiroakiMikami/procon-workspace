@@ -1082,7 +1082,7 @@ void body() {
         } else if (S[i] == 'B') {
             sum_bc += sum_c;
         } else if (S[i] == 'C') {
-            sum_c += 1;
+            sum_c += sum_empty;
         } else {
             /*
              * ?='A'でBCがABCになった場合 or
