@@ -1071,10 +1071,10 @@ namespace internal {
 void body() {
     auto S = read<string>();
 
-    ModInteger sum_abc = 0;
-    ModInteger sum_bc = 0;
-    ModInteger sum_c = 0;
-    ModInteger sum_empty = 1;
+    ModInteger<> sum_abc = 0;
+    ModInteger<> sum_bc = 0;
+    ModInteger<> sum_c = 0;
+    ModInteger<> sum_empty = 1;
 
     REPR(i, S.size()) {
         if (S[i] == 'A') {
