@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc105/tasks/abc105_d
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 数え上げ 累積和
 FAILURE_TYPE
 NOTES
+累積和を取れそうなことはすぐ気づいたが、尺取り、DPなどを考慮して時間がかかった
 */
 #include <iostream>
 #include <cstdint>
