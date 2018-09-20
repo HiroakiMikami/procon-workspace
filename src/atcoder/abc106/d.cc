@@ -828,7 +828,7 @@ void body() {
         FOR (j, L, R) {
             xs[j] += 1;
         }
-        FOR (j, R, N) {
+        FOR (j, R, N + 1) {
             ys[j] += 1;
         }
     }
