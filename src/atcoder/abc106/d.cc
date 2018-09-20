@@ -932,6 +932,6 @@ void body() {
          * - 0からp-1に含まれる列車の本数
          * - [p-1, p]を通る列車の本数
          */
-        cout << ys.sum(q) - ys.sum(p - 1) - xs[p - 1][q] << endl;
+        cout << ys.sum(q + 1) - ys.sum(p) - xs[p - 1][q] << endl;
     }
 }
