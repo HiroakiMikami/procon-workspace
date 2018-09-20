@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc104/tasks/abc104_d
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE DP 数え上げ
+FAILURE_TYPE 考察不足 考察速度不足
 NOTES
+DPの漸化式を考えるのに時間がかかった & 抜けがあった。
+どれを選ぶか、でDPを考えるのに慣れないといけない
 */
 #include <iostream>
 #include <cstdint>
