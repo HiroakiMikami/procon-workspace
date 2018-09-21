@@ -816,6 +816,6 @@ void body() {
     if (minimum == 0) {
         cout << (maximum >= 2 ? "NO" : "YES") << endl;
     } else {
-        cout << (maximum - minimum > 2 ? "NO" : "YES") << endl;
+        cout << (maximum - minimum >= 2 ? "NO" : "YES") << endl;
     }
 }
