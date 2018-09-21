@@ -812,7 +812,7 @@ void body() {
     REP (i, S.size()) {
         if (S[i] == '(') {
             s.emplace(S.substr((index, i - index)));
-            cout << "("
+            cout << "(";
 
             index = i + 1;
         } else if (S[i] == ')') {
