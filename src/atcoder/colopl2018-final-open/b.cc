@@ -863,7 +863,7 @@ void body() {
             auto as = string_utils::split(args, ",");
             EACH (arg, as) {
                 auto child = p(arg, p);
-                expr.children.emplace(child);
+                expr.children.push_back(child);
             }
             dump(args);
         }
