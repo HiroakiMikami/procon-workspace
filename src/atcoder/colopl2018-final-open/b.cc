@@ -804,6 +804,70 @@ int main (int argc, char **argv) {
     return 0;
 }
 
+struct Tree {
+    string name;
+    Vector<Tree> children;
+};
+
+#include <type_traits>
+
+#ifndef MAIN
+#include "common.cc"
+#endif
+
+namespace string_utils { // TODO rename "string"
+    template <class T>
+    T to(const string &str) {
+    }
+
+    template <>
+    i64 to(const string &str) {
+        return atoll(str.c_str());
+    }
+
+    template <>
+    i32 to(const string &str) {
+        return atoi(str.c_str());
+    }
+
+    Vector<string> split(const string &str, const string &delimiter) {
+        Vector<string> ret;
+        std::remove_const_t<decltype(string::npos)> pos = 0;
+        while (pos != string::npos) {
+            auto p = str.find(delimiter, pos);
+            if (p == string::npos) {
+                ret.push_back(str.substr(pos));
+                break ;
+            } else {
+                ret.push_back(str.substr(pos, p - pos));
+            }
+            pos = p + 1;
+        }
+
+        return ret;
+    }
+}
+#include <regex>
+
 void body() {
-    using Tree = pair<string, Vector<Tree>>;
+
+    auto S = read<string>();
+    auto parse = [](string str) {
+        Tree expr;
+        auto it = str.find('(');
+        if (it == str.end()) {
+            expr.name = str;
+        } else {
+            expr.name = str.substr(str.begin(), it);
+            auto args = str.substr(it + 1, str.end() - 1);
+            auto as = string_utils::split(args, ",");
+            EACH (arg, as) {
+                expr.children.emplace(parse(arg));
+            }
+            dump(args);
+        }
+        return expr;
+    });
+
+    auto expr = parse(S);
 }
