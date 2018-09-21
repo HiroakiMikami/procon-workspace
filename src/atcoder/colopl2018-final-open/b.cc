@@ -816,7 +816,7 @@ void body() {
 
             index = i + 1;
         } else if (S[i] == ')') {
-            cout << "(" << S.substr(index, i - index) << ")";
+            cout << S.substr(index, i - index) << ")";
             s.pop();
 
             index = i + 1;
