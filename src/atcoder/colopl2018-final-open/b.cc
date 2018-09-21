@@ -854,10 +854,10 @@ void body() {
     auto S = read<string>();
     auto parse = [](const string &str, size_t &index, auto p) -> Tree {
         Tree expr;
+        dump(str.substr(index));
         auto i = str.find('(', index);
         if (i == string::npos) {
             auto j = str.find(')', index);
-            dump(index);
             if (j == string::npos) {
                 expr.name = str.substr(index, j);
             } else {
