@@ -850,34 +850,13 @@ namespace string_utils { // TODO rename "string"
 #include <regex>
 
 void body() {
-
     auto S = read<string>();
-    auto parse = [](const string &str, size_t &index, auto p) -> Tree {
-        Tree expr;
-        dump(str.substr(index));
-        auto i = str.find('(', index);
-        if (i == string::npos) {
-            auto j = str.find(')', index);
-            if (j == string::npos) {
-                expr.name = str.substr(index, j);
-            } else {
-                expr.name = str.substr(index, j - index);
-            }
-            index = j;
-        } else {
-            index = i + 1;
-            while (true) {
-                auto child = p(str, index, p);
-                expr.children.push_back(child);
-                if (str[index] != ',') break;
-            }
-            index += 1;
-        }
-        return expr;
-    };
+    Tree root;
 
+    std::stack<Vector<string>> s;
     size_t index = 0;
-    auto expr = parse(S, index, parse);
+    std::regex re(R"[\(\),]");
+
     auto dump = [](const Tree &tree, auto d) -> void {
         if (tree.children.empty()) {
             cout << tree.name;
@@ -892,6 +871,6 @@ void body() {
             cout << ")";
         }
     };
-    dump(expr, dump);
+    dump(root, dump);
     cout << endl;
 }
