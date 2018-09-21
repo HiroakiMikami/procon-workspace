@@ -876,7 +876,7 @@ void body() {
         cout << "(";
         REP (i, tree.children.size()) {
             d(tree.children[i], d);
-            if (i + 1 != tree.children.size()) {
+            if ((i + 1) != tree.children.size()) {
                 cout << tree.name;
             }
         }
