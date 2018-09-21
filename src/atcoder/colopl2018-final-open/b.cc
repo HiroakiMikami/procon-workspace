@@ -872,7 +872,7 @@ void body() {
     };
 
     auto expr = parse(S, parse);
-    auto dump = [](const Tree &tree, auto d) {
+    auto dump = [](const Tree &tree, auto d) -> void {
         cout << "(";
         REP (i, tree.children.size()) {
             d(tree.children[i], d);
