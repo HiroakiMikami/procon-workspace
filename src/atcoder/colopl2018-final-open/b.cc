@@ -853,6 +853,7 @@ void body() {
 
     auto S = read<string>();
     auto parse = [](string str, auto p) -> Tree {
+        dump(str);
         Tree expr;
         auto it = str.find('(');
         if (it == string::npos) {
