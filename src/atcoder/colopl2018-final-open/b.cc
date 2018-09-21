@@ -804,73 +804,29 @@ int main (int argc, char **argv) {
     return 0;
 }
 
-struct Tree {
-    string name;
-    Vector<Tree> children;
-};
-
-#include <type_traits>
-
-#ifndef MAIN
-#include "common.cc"
-#endif
-
-namespace string_utils { // TODO rename "string"
-    template <class T>
-    T to(const string &str) {
-    }
-
-    template <>
-    i64 to(const string &str) {
-        return atoll(str.c_str());
-    }
-
-    template <>
-    i32 to(const string &str) {
-        return atoi(str.c_str());
-    }
-
-    Vector<string> split(const string &str, const string &delimiter) {
-        Vector<string> ret;
-        std::remove_const_t<decltype(string::npos)> pos = 0;
-        while (pos != string::npos) {
-            auto p = str.find(delimiter, pos);
-            if (p == string::npos) {
-                ret.push_back(str.substr(pos));
-                break ;
-            } else {
-                ret.push_back(str.substr(pos, p - pos));
-            }
-            pos = p + 1;
-        }
-
-        return ret;
-    }
-}
-#include <regex>
-
 void body() {
     auto S = read<string>();
-    Tree root;
 
-    std::stack<Vector<string>> s;
+    std::stack<string> s;
     size_t index = 0;
-    std::regex re(R"[\(\),]");
+    REP (i, S.size()) {
+        if (S[i] == '(') {
+            s.emplace(S.substr((index, i - index)));
 
-    auto dump = [](const Tree &tree, auto d) -> void {
-        if (tree.children.empty()) {
-            cout << tree.name;
-        } else {
-            cout << "(";
-            REP (i, tree.children.size()) {
-                d(tree.children[i], d);
-                if ((i + 1) != tree.children.size()) {
-                    cout << tree.name;
-                }
-            }
-            cout << ")";
+            index = i + 1;
+        } else if (S[i] == ')') {
+            cout << "(" << S.substr(index, i - index) << ")";
+            s.pop();
+
+            index = i + 1;
+        } else if (S[i] == ',') {
+            cout << "(" << S.substr(index, i - index) << ")" << s.top();
+
+            index = i + 1;
         }
-    };
-    dump(root, dump);
+    }
+    if (!s.empty()) {
+        cout << s.top();
+    }
     cout << endl;
 }
