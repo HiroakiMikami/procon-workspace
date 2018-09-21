@@ -826,8 +826,8 @@ void body() {
             index = i + 1;
         }
     }
-    if (!s.empty()) {
-        cout << s.top();
+    if (index == 0) {
+        cout << S;
     }
     cout << endl;
 }
