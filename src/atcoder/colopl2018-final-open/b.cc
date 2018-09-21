@@ -866,7 +866,7 @@ void body() {
         } else {
             index = i + 1;
             while (true) {
-                auto child = parse(str, index, p);
+                auto child = p(str, index, p);
                 expr.children.push_back(child);
                 if (str[index] != ',') break;
             }
