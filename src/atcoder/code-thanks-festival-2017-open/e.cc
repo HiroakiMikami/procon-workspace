@@ -1,12 +1,12 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/code-thanks-festival-2017-open/tasks/code_thanks_festival_2017_e
+SCORE 400
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE インタラクティブ n進数
+FAILURE_TYPE フォーマットミス
 NOTES
 */
 #include <iostream>
@@ -950,7 +950,7 @@ void body() {
         }
         cout << "?";
         EACH (Q, qs) {
-            cout << Q;
+            cout << " " << Q;
         }
         cout << endl;
         auto A = read<i64>();
@@ -969,7 +969,7 @@ void body() {
 
     cout << "!";
     EACH (a, ans) {
-        cout << (a % 2 == 0 ? 0 : 1);
+        cout << " " << (a % 2 == 0 ? 0 : 1);
     }
     cout << endl;
 }
