@@ -862,7 +862,8 @@ void body() {
             auto args = str.substr(it + 1, str.size() - 1);
             auto as = string_utils::split(args, ",");
             EACH (arg, as) {
-                expr.children.emplace(p(arg, p));
+                auto child = p(arg, p);
+                expr.children.emplace(child);
             }
             dump(args);
         }
