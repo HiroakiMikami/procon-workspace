@@ -1,13 +1,15 @@
 /*
 URL https://beta.atcoder.jp/contests/colopl2018-final-open/tasks/colopl2018_final_b
 SCORE 400
-AC false
+AC true
 WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE インタプリタ 文字列
+FAILURE_TYPE 実装力不足 コーナーケース処理
 NOTES
+最初はパース→printを分割しようとして無駄に実装が複雑になってめげた。
+その後はコーナーケース処理で1WA。サンプルでわかったものなので全ACかどうかを最後に表示するutilにするべき
 */
 #include <iostream>
 #include <cstdint>
