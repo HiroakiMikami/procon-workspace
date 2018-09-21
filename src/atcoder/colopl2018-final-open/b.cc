@@ -867,7 +867,7 @@ void body() {
             dump(args);
         }
         return expr;
-    });
+    };
 
     auto expr = parse(S, parse);
 }
