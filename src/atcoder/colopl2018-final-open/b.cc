@@ -857,6 +857,7 @@ void body() {
         auto i = str.find('(', index);
         if (i == string::npos) {
             auto j = str.find(')', index);
+            dump(index);
             if (j == string::npos) {
                 expr.name = str.substr(index, j);
             } else {
