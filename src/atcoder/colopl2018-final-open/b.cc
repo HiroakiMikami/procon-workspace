@@ -852,7 +852,7 @@ namespace string_utils { // TODO rename "string"
 void body() {
 
     auto S = read<string>();
-    auto parse = [](string str, auto p) {
+    auto parse = [](string str, auto p) -> Tre {
         Tree expr;
         auto it = str.find('(');
         if (it == string::npos) {
