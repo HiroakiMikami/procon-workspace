@@ -859,7 +859,7 @@ void body() {
             expr.name = str;
         } else {
             expr.name = str.substr(0, it);
-            auto args = str.substr(it + 1, str.size() - 1);
+            auto args = str.substr(it + 1, str.size() - 2);
             auto as = string_utils::split(args, ",");
             EACH (arg, as) {
                 auto child = p(arg, p);
