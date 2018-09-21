@@ -852,22 +852,22 @@ namespace string_utils { // TODO rename "string"
 void body() {
 
     auto S = read<string>();
-    auto parse = [](string str) {
+    auto parse = [](string str, auto p) {
         Tree expr;
         auto it = str.find('(');
-        if (it == str.end()) {
+        if (it == string::npos) {
             expr.name = str;
         } else {
-            expr.name = str.substr(str.begin(), it);
-            auto args = str.substr(it + 1, str.end() - 1);
+            expr.name = str.substr(0, it);
+            auto args = str.substr(it + 1, str.size() - 1);
             auto as = string_utils::split(args, ",");
             EACH (arg, as) {
-                expr.children.emplace(parse(arg));
+                expr.children.emplace(p(arg, p));
             }
             dump(args);
         }
         return expr;
     });
 
-    auto expr = parse(S);
+    auto expr = parse(S, parse);
 }
