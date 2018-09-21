@@ -860,12 +860,13 @@ void body() {
         } else {
             expr.name = str.substr(0, it);
             auto args = str.substr(it + 1, str.size() - 2);
+            dump(expr.name)
+            dump(args);
             auto as = string_utils::split(args, ",");
             EACH (arg, as) {
                 auto child = p(arg, p);
                 expr.children.push_back(child);
             }
-            dump(args);
         }
         return expr;
     };
