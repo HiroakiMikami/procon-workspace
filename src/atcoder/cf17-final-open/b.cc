@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/cf17-final-open/tasks/cf17_final_b
+SCORE 400
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 判定 文字列 回文
 FAILURE_TYPE
 NOTES
 */
@@ -809,6 +809,13 @@ void body() {
     EACH (s, S) {
         ns[s - 'a'] += 1;
     }
+
+    /*
+     * 回文のパターンは、aaとabaの2パターン（より長い回文はこのどちらかを含む）
+     * -> 同じ文字の間には2文字違うのをいれないといけない
+     *    例） a aの間にはbcを入れる
+     * この条件を満たすかどうかを判定すれば良い。
+     */
 
     auto minimum = *min_element(CTR(ns));
     auto maximum = *max_element(CTR(ns));
