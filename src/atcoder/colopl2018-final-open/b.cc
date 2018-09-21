@@ -1,8 +1,8 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/colopl2018-final-open/tasks/colopl2018_final_b
+SCORE 400
 AC false
-WA false
+WA true
 TLE false
 MLE false
 TASK_TYPE
@@ -812,7 +812,6 @@ void body() {
     REP (i, S.size()) {
         if (S[i] == '(') {
             s.emplace(S.substr(index, i - index));
-            dump(i, index);
             cout << "(";
 
             index = i + 1;
