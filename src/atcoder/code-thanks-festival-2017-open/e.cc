@@ -950,7 +950,7 @@ void body() {
         }
         cout << "?";
         EACH (Q, qs) {
-            cout << " " << Q;
+            cout << Q;
         }
         cout << endl;
         auto A = read<i64>();
@@ -969,7 +969,7 @@ void body() {
 
     cout << "!";
     EACH (a, ans) {
-        cout << " " << (a % 2 == 0 ? 0 : 1);
+        cout << (a % 2 == 0 ? 0 : 1);
     }
     cout << endl;
 }
