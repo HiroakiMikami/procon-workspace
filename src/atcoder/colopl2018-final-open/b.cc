@@ -852,25 +852,31 @@ namespace string_utils { // TODO rename "string"
 void body() {
 
     auto S = read<string>();
-    auto parse = [](string str, auto p) -> Tree {
-        dump(str, "test");
+    auto parse = [](const string &str, size_t &index, auto p) -> Tree {
         Tree expr;
-        auto it = str.find('(');
-        if (it == string::npos) {
-            expr.name = str;
-        } else {
-            expr.name = str.substr(0, it);
-            auto args = str.substr(it + 1, str.size() - it - 2);
-            auto as = string_utils::split(args, ",");
-            EACH (arg, as) {
-                auto child = p(arg, p);
-                expr.children.push_back(child);
+        auto i = str.find('(', index);
+        if (i == string::npos) {
+            auto j = str.find(')', index);
+            if (j == string::npos) {
+                expr.name = str.substr(index, j);
+            } else {
+                expr.name = str.substr(index, j - index);
             }
+            index = j;
+        } else {
+            index = i + 1;
+            while (true) {
+                auto child = parse(str, index, p);
+                expr.children.push_back(child);
+                if (str[index] != ',') break;
+            }
+            index += 1;
         }
         return expr;
     };
 
-    auto expr = parse(S, parse);
+    size_t index = 0;
+    auto expr = parse(S, index, parse);
     auto dump = [](const Tree &tree, auto d) -> void {
         if (tree.children.empty()) {
             cout << tree.name;
