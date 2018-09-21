@@ -811,7 +811,7 @@ void body() {
     size_t index = 0;
     REP (i, S.size()) {
         if (S[i] == '(') {
-            s.emplace(S.substr((index, i - index)));
+            s.emplace(S.substr(index, i - index));
             dump(i, index);
             cout << "(";
 
