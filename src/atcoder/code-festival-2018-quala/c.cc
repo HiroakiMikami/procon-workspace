@@ -1086,7 +1086,13 @@ void body() {
             }
             has_zero = true;
         } else {
-            ns[i] = std::ceil(std::log2(As[i])) + 1;
+            i64 tmp = As[i];
+            i64 n = 0;
+            while (tmp != 0) {
+                tmp /= 2;
+                n += 1;
+            }
+            ns[i] = n;
         }
     }
     K = std::min(K, accumulate(CTR(ns), i64(0)));
