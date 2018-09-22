@@ -1087,6 +1087,57 @@ void body() {
 
     ModInteger<> ans = 0;
 
+    REP (i, N) {
+        /*
+         *  i) A_i = 0とする
+         * ii) A_j (j < i)は、もともと0の時何もせず、0でない時は最終的に0でない
+         */
+        auto K_ = K - ns[i];
+        auto dp = make_matrix<ModInteger<>, 2>({N + 1, K_ + 1}, 0); // dp[i][k] = A_0からA_i-1までで残りがk
+        dp[0][K_] = 1;
+        REP (j, N) {
+            // dp[j+1][k]の更新
+            if (j < i) {
+                if (As[j] == 0) {
+                    // 何もしない
+                    REP (k, K_) {
+                        dp[j + 1][k] = dp[j][k];
+                    }
+                } else {
+                    REP (k, K_ + 1) {
+                        dp[j + 1][k] = 0;
+                        REP (n, ns[j]) {
+                            // n回ここへ操作する場合
+                            if (k + n <= K_) {
+                                dp[j + 1][k] += dp[j][k + n];
+                            }
+                        }
+                    }
+                }
+            } else if (i == j) {
+                // 何もしない
+                REP (k, K_ + 1) {
+                    dp[j + 1][k] = dp[j][k];
+                }
+            } else {
+                // 0にできる
+                REP (k, K_ + 1) {
+                    dp[j + 1][k] = 0;
+                    REP (n, ns[j] + 1) {
+                        // n回ここへ操作する場合
+                        if (k + n <= K_) {
+                            dp[j + 1][k] += dp[j][k + n];
+                        }
+                    }
+                }
+            }
+        }
+
+        REP (k, K_ + 1) {
+            ans += dp[N][k].get();
+        }
+    }
+
     dump(K, N);
     auto fact = mod_integer::fact_table<mod_integer::MOD>(K + N - 1);
     dump(fact[K + N - 1].value.get(), K + N - 1);
