@@ -823,5 +823,5 @@ void body() {
         }
     }
 
-    cout << accumulate(CTR(ans), i64(0));
+    cout << accumulate(CTR(ans), i64(0)) << endl;
 }
