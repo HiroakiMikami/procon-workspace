@@ -1088,7 +1088,7 @@ void body() {
 
             if (f >= T) {
                 if (f - dist >= 0) {
-                    dp[i + 1][f - dist] += 2 * dp[i][f]; // 建て替えにかかわらず状態はかわらない
+                    dp[i + 1][f - dist] += dp[i][f] * 2; // 建て替えにかかわらず状態はかわらない
                 }
             } else {
                 if (f - dist >= 0) {
