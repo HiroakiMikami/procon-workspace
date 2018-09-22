@@ -1087,6 +1087,7 @@ void body() {
 
     ModInteger<> ans = 0;
 
+    dump(K, N);
     auto fact = mod_integer::fact_table<mod_integer::MOD>(K + N - 1);
     ans = fact[K + N - 1].value * fact[K].inverse + fact[N - 1].inverse;
 
