@@ -1147,7 +1147,7 @@ void body() {
         dp[0][K] = 1;
         REP (j, N) {
             // dp[j+1][k]の更新
-            REP (k, K_ + 1) {
+            REP (k, K + 1) {
                 dp[j + 1][k] = 0;
                 REP (n, ns[j]) {
                     // n回ここへ操作する場合
@@ -1157,6 +1157,8 @@ void body() {
                 }
             }
         }
+
+        ans += dp[N][0];
     }
 
     cout << ans.get() << endl;
