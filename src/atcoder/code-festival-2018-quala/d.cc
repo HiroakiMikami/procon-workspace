@@ -1094,7 +1094,7 @@ void body() {
                 if (f - dist >= 0) {
                     dp[i + 1][f - dist] += dp[i][f]; // 建て替える場合
                 }
-                dp[i + 1][F - dist] += dp[i][f]; // 建て替えない場合
+                dp[i + 1][F] += dp[i][f]; // 建て替えない場合
             }
         }
     }
