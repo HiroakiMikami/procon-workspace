@@ -814,7 +814,7 @@ void body() {
     auto M = read<i64>();
     auto A = read<i64>();
     auto B = read<i64>();
-    auto LRs = reda<i64, i64>(M);
+    auto LRs = read<i64, i64>(M);
 
     auto ans = Vector<i64>(N, std::max(A, B));
     EACH (LR, LRs) {
