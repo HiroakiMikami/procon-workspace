@@ -1083,18 +1083,12 @@ void body() {
             ns[i] = std::ceil(std::log2(As[i])) + 1;
         }
     }
-    dump(K, accumulate(CTR(ns), i64(0)));
     K = std::min(K, accumulate(CTR(ns), i64(0)));
 
-    auto dp = make_matrix<i64, 2>({N, K + 1}, 1);
-    FOR (i, 1, N) {
-        REP (j, K + 1) {
-            dp[i][j] = 0;
-            FOR (k, j, K + 1) {
-                dp[i][j] += dp[i - 1][k];
-            }
-        }
-    }
+    ModInteger<> ans = 0;
 
-    cout << dp[N - 1][0] << endl;
+    auto fact = mod_integer::fact_table(std::max(K, N) + 1);
+    ans = fact[K + N - 1].value * fact[K].inverse + fact[N - 1].inverse;
+
+    cout << ans.get() << endl;
 }
