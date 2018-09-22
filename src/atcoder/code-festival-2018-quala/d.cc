@@ -1088,7 +1088,7 @@ void body() {
             dump(i, f, dist, n);
             if (f - dist < 0) continue;
 
-            if (f >= T) {
+            if ((f - dist) >= T) {
                 dp[i + 1][f - dist] += n * 2; // 建て替えにかかわらず状態はかわらない
             } else {
                 dp[i + 1][f - dist] += n; // 建て替える場合
