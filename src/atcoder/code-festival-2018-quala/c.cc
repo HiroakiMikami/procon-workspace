@@ -1140,10 +1140,5 @@ void body() {
         dump(ans);
     }
 
-    dump(K, N);
-    auto fact = mod_integer::fact_table<mod_integer::MOD>(K + N - 1);
-    dump(fact[K + N - 1].value.get(), K + N - 1);
-    ans = fact[K + N - 1].value * fact[K].inverse * fact[N - 1].inverse;
-
     cout << ans.get() << endl;
 }
