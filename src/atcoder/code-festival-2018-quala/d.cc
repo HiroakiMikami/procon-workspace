@@ -1085,6 +1085,7 @@ void body() {
             auto f = elem.first;
             auto n = elem.second;
             auto dist = Xs[i] - ((i == 0) ? 0 : Xs[i - 1]);
+            dump(i, f, dist);
             if (f - dist < 0) continue;
 
             if (f >= T) {
