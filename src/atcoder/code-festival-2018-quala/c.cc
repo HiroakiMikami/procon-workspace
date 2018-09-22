@@ -1151,7 +1151,7 @@ void body() {
                 dp[j + 1][k] = 0;
                 REP (n, ns[j]) {
                     // n回ここへ操作する場合
-                    if (k + n <= K_) {
+                    if (k + n <= K) {
                         dp[j + 1][k] += dp[j][k + n];
                     }
                 }
