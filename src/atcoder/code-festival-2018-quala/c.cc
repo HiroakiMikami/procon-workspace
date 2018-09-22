@@ -1077,9 +1077,13 @@ void body() {
 
     auto ns = Vector<i64>(N);
     bool has_zero = false;
+    size_t first_zero = 0;
     REP (i, N) {
         if (As[i] == 0) {
             ns[i] = 0;
+            if (!has_zero) {
+                first_zero = i;
+            }
             has_zero = true;
         } else {
             ns[i] = std::ceil(std::log2(As[i])) + 1;
@@ -1092,10 +1096,14 @@ void body() {
     REP (i, N) {
         /*
          *  i) A_i = 0とする
-         * ii) A_j (j < i)は、もともと0の時何もせず、0でない時は最終的に0でない
+         * ii) A_j (j < i) != 0
          */
         auto K_ = K - ns[i];
         if (K_ < 0) continue; // A_i = 0とできない
+        if (first_zero < i) {
+            // これ以上はiiを満たさない
+            break;
+        }
         auto dp = make_matrix<ModInteger<>, 2>({N + 1, K_ + 1}, 0); // dp[i][k] = A_0からA_i-1までで残りがk
         dp[0][K_] = 1;
         REP (j, N) {
