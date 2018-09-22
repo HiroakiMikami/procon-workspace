@@ -1100,7 +1100,7 @@ void body() {
          */
         auto K_ = K - ns[i];
         if (K_ < 0) continue; // A_i = 0とできない
-        if (first_zero < i) {
+        if (has_zero && first_zero < i) {
             // これ以上はiiを満たさない
             break;
         }
