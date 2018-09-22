@@ -1084,7 +1084,7 @@ void body() {
         EACH (elem, dp[i]) {
             auto f = elem.first;
             auto n = elem.second;
-            auto dist = Xs[i] - (i == 0) ? 0 : Xs[i - 1];
+            auto dist = Xs[i] - ((i == 0) ? 0 : Xs[i - 1]);
 
             if (f >= T) {
                 if (f - dist >= 0) {
