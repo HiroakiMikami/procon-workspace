@@ -1068,10 +1068,24 @@ int main (int argc, char **argv) {
     return 0;
 }
 
+#include <cmath>
+
 void body() {
     auto N = read<i64>();
     auto K = read<i64>();
     auto As = read<i64>(N);
+
+    auto ns = Vector<i64>(N);
+    REP (i, N) {
+        if (As[i] == 0) {
+            ns[i] = 0;
+        } else {
+            ns[i] = std::ceil(std::log2(As[i])) + 1;
+        }
+    }
+
+    K = accumulate(CTR(ns), i64(0));
+    dump(K);
 
     auto dp = make_matrix<i64, 2>({N, K + 1}, 1);
     FOR (i, 1, N) {
