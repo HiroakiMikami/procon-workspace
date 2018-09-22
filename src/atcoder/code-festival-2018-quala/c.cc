@@ -1093,7 +1093,7 @@ void body() {
          * ii) A_j (j < i)は、もともと0の時何もせず、0でない時は最終的に0でない
          */
         auto K_ = K - ns[i];
-        if (K_ < 0) continue;
+        if (K_ < 0) continue; // A_i = 0とんできない
         auto dp = make_matrix<ModInteger<>, 2>({N + 1, K_ + 1}, 0); // dp[i][k] = A_0からA_i-1までで残りがk
         dp[0][K_] = 1;
         REP (j, N) {
@@ -1137,6 +1137,7 @@ void body() {
         REP (k, K_ + 1) {
             ans += dp[N][k].get();
         }
+        dump(ans);
     }
 
     dump(K, N);
