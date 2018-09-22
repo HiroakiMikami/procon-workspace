@@ -1076,9 +1076,11 @@ void body() {
     auto As = read<i64>(N);
 
     auto ns = Vector<i64>(N);
+    bool has_zero = false;
     REP (i, N) {
         if (As[i] == 0) {
             ns[i] = 0;
+            has_zero = true;
         } else {
             ns[i] = std::ceil(std::log2(As[i])) + 1;
         }
@@ -1093,7 +1095,7 @@ void body() {
          * ii) A_j (j < i)は、もともと0の時何もせず、0でない時は最終的に0でない
          */
         auto K_ = K - ns[i];
-        if (K_ < 0) continue; // A_i = 0とんできない
+        if (K_ < 0) continue; // A_i = 0とできない
         auto dp = make_matrix<ModInteger<>, 2>({N + 1, K_ + 1}, 0); // dp[i][k] = A_0からA_i-1までで残りがk
         dp[0][K_] = 1;
         REP (j, N) {
@@ -1137,7 +1139,24 @@ void body() {
         REP (k, K_ + 1) {
             ans += dp[N][k].get();
         }
-        dump(ans);
+    }
+
+    if (!has_zero) {
+        // どれもA_i != 0の場合
+        auto dp = make_matrix<ModInteger<>, 2>({N + 1, K + 1}, 0); // dp[i][k] = A_0からA_i-1までで残りがk
+        dp[0][K] = 1;
+        REP (j, N) {
+            // dp[j+1][k]の更新
+            REP (k, K_ + 1) {
+                dp[j + 1][k] = 0;
+                REP (n, ns[j]) {
+                    // n回ここへ操作する場合
+                    if (k + n <= K_) {
+                        dp[j + 1][k] += dp[j][k + n];
+                    }
+                }
+            }
+        }
     }
 
     cout << ans.get() << endl;
