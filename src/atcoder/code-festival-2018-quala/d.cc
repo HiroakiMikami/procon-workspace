@@ -1085,15 +1085,12 @@ void body() {
             auto f = elem.first;
             auto n = elem.second;
             auto dist = Xs[i] - ((i == 0) ? 0 : Xs[i - 1]);
+            if (f - dist < 0) continue;
 
             if (f >= T) {
-                if (f - dist >= 0) {
-                    dp[i + 1][f - dist] += dp[i][f] * 2; // 建て替えにかかわらず状態はかわらない
-                }
+                dp[i + 1][f - dist] += dp[i][f] * 2; // 建て替えにかかわらず状態はかわらない
             } else {
-                if (f - dist >= 0) {
-                    dp[i + 1][f - dist] += dp[i][f]; // 建て替える場合
-                }
+                dp[i + 1][f - dist] += dp[i][f]; // 建て替える場合
                 dp[i + 1][F] += dp[i][f]; // 建て替えない場合
             }
         }
