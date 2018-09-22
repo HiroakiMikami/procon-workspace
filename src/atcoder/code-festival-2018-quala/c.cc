@@ -1084,7 +1084,7 @@ void body() {
         }
     }
 
-    K = accumulate(CTR(ns), i64(0));
+    K = std::min(K, accumulate(CTR(ns), i64(0)));
     dump(K);
 
     auto dp = make_matrix<i64, 2>({N, K + 1}, 1);
