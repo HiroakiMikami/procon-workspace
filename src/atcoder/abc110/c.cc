@@ -824,7 +824,6 @@ void body() {
                 return ;
             }
         } else {
-            dump(s, t);
             mapping1[s] = t;
         }
 
