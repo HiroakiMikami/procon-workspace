@@ -1075,9 +1075,8 @@ void body() {
     auto tmp = prime_factor(M);
     auto L = 1;
     EACH (x, tmp) {
-        L *= x.second;
+        L += x.second;
     }
-    dump(L, Ds.size());
 
     // dp[i][m] := 長さiで1を含まない数列で積がmとなる数列の場合の数
     auto dp = Vector<OrderedMap<i64, ModInteger<>>>(L + 1);
