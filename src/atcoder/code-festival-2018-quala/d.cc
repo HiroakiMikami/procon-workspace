@@ -1169,6 +1169,7 @@ void body() {
         auto minimum = std::max<i64>(0, j_min[i]);
         auto maximum = j_max[i] + 1;
         if (maximum > minimum) {
+            dump(maximum, minimum);
             dp[i] += sum_dp[maximum + 1] - sum_dp[minimum];
         }
         /*
