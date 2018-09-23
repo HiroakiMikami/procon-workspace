@@ -1163,7 +1163,7 @@ void body() {
          * {j+1, j+2, .., k-1}: 自由に建て替えられる
          * k, k+1, ..., i: X_{i+1}で補給する条件から一意（すべて建て替える必要あり）
          */
-        FOR (j, std::max(i64(0), j_min[i]), std::max(i64(0), j_max[i])) {
+        FOR (j, std::max(i64(0), j_min[i]), j_max[i] + 1) {
             if (F - (Xs[i] - Xs[j]) < 0) continue;
             if (F - (Xs[i] - Xs[j]) >= T) continue;
             dp[i] += dp[j] * S1[j];
