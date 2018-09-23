@@ -1076,11 +1076,10 @@ void body() {
     REP (i, N) {
         Xs.push_back(read<i64>());
     }
-    Xs.push_back(D);
 
-    auto dp = Vector<ModInteger<>>(N + 2, 0); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
+    auto dp = Vector<ModInteger<>>(N + 1, 0); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
     dp[0] = 1; // 初期状態
-    REP (i, N + 1) {
+    REP (i, N) {
         // dp[i + 1]の更新
         /*
          * j: F - (X_i - X_j) < Tを満たす適当な添字 (< i)
@@ -1104,7 +1103,14 @@ void body() {
     ModInteger<> ans = 0;
     REP (i, N + 1) {
         if (D - Xs[i] <= F) {
-            ans += dp[i] * pow(2, N - i + 1);
+            i64 k_ = N + 1;
+            FOR (k, i + 1, N + 1) {
+                if (F - (Xs[k] - Xs[i]) < T) {
+                    k_ = k;
+                    break;
+                }
+            }
+            ans += dp[i] * pow(2, k - i - 1);
         }
     }
     cout << ans.get() << endl;
