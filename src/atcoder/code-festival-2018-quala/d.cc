@@ -1098,9 +1098,12 @@ void body() {
                 }
             }
         }
+
+        if (F - (Xs[k_] - Xs[i]) >= T) {
+            k_ = N + 1;
+        }
         S1[i] = pow(2, k_ - i - 1);
     }
-    dump("---");
 
     auto dp = Vector<ModInteger<>>(N + 1, 0); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
     dp[0] = 1; // 初期状態
