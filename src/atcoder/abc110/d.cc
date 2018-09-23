@@ -1087,5 +1087,12 @@ void body() {
             }
         }
     }
-    //cout << dp[N][M].get() << endl;
+
+    auto fact = mod_integer::fact_table(N + 1);
+    ModInteger<> ans = 0;
+    REP (i, std::min(Ds.size() + 1, N + 1)) {
+        // 長さiの数列に1をN-i個追加する → 重複ありの順列
+        ans += dp[i] * fact[N].value * fact[i].inverse * fact[N - i].inverse;
+    }
+    cout << ans.get() << endl;
 }
