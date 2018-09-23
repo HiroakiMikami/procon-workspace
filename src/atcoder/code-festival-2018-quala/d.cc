@@ -1175,7 +1175,7 @@ void body() {
         }
         FOR (j, std::max(i64(0), j_min[i]), j_max[i] + 1) {
             if (F - (Xs[i] - Xs[j]) >= T) {
-                dump(i, j);
+                dump(i, j, dp[j] * S1[j]);
                 continue;
             }
             dp[i] += dp[j] * S1[j];
