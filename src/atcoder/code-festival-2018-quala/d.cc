@@ -1098,7 +1098,6 @@ void body() {
                 }
             }
         }
-        dump(i, k_);
         S1[i] = pow(2, k_ - i - 1);
     }
     dump("---");
@@ -1124,7 +1123,7 @@ void body() {
                     break;
                 }
             }
-            dump(j, k_);
+            dump(S1[j], pow(2, k_ - j - 1));
             dp[i] += dp[j] * pow(2, k_ - j - 1);
         }
     }
