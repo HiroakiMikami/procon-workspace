@@ -1170,18 +1170,19 @@ void body() {
         auto minimum = std::max<i64>(0, j_min[i]);
         auto maximum = j_max[i];
         if (maximum >= minimum) {
-            dump(i, j_min[i], maximum, minimum);
             dp[i] += sum_dp[maximum + 1] - sum_dp[minimum];
+            /*
             FOR (j, minimum, maximum + 1) {
                 if (F - (Xs[i] - Xs[j]) >= T) {
                     continue;
                 }
-                //dp[i] += dp[j] * S1[j];
+                dp[i] += dp[j] * S1[j];
             }
+             */
         }
 
         sum_dp[i + 1] = sum_dp[i] + dp[i] * S1[i];
-        //dump(dp[i], sum_dp[i + 1]);
+        dump(dp[i], sum_dp[i + 1]);
     }
 
     ModInteger<> ans = 0;
