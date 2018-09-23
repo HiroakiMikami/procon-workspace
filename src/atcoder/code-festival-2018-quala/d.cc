@@ -1078,7 +1078,7 @@ void body() {
     }
     Xs.push_back(D);
 
-    auto dp = Vector<ModInteger<>>(N + 2); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
+    auto dp = Vector<ModInteger<>>(N + 2, 0); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
     dp[0] = 1; // 初期状態
     REP (i, N + 1) {
         // dp[i + 1]の更新
