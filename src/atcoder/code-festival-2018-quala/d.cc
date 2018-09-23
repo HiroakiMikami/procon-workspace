@@ -1085,14 +1085,14 @@ void body() {
     REP (i, N + 1) {
         if (k_ < 0) {
             FOR (k, i + 1, N + 1) {
-                if ((F - Xs[k] - Xs[i]) < T) {
+                if (F - (Xs[k] - Xs[i]) < T) {
                     k_ = k;
                     break;
                 }
             }
         } else {
             FOR(k, k_, N + 1) {
-                if ((F - Xs[k] - Xs[i]) < T) {
+                if (F - (Xs[k] - Xs[i]) < T) {
                     k_ = k;
                     break;
                 }
