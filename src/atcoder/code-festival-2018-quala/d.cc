@@ -1177,7 +1177,7 @@ void body() {
             if (F - (Xs[i] - Xs[j]) >= T) continue;
             dp[i] += dp[j] * S1[j];
         }
-         *\
+         */
 
         sum_dp[i + 1] = sum_dp[i] + dp[i] * S1[i];
     }
