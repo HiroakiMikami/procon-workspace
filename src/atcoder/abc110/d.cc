@@ -1077,7 +1077,7 @@ void body() {
     auto dp = Vector<OrderedMap<i64, ModInteger<>>>(Ds.size() + 1);
 
     dp[0][1] = 1;
-    FOR (i, 1, N + 1) {
+    FOR (i, 1, Ds.size() + 1) {
         // dp[i]の更新
         EACH (m, dp[i - 1]) {
             EACH (D, Ds) {
