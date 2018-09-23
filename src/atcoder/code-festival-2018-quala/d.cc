@@ -1079,8 +1079,8 @@ void body() {
 
     auto dp = Vector<ModInteger<>>(N + 1, 0); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
     dp[0] = 1; // 初期状態
-    REP (i, N) {
-        // dp[i + 1]の更新
+    FOR (i, 1, N + 1) {
+        // dp[i]の更新
         /*
          * j: F - (X_i - X_j) < Tを満たす適当な添字 (< i)
          * k: F - (X_k - X_j) < Tを満たす最小の添字
@@ -1088,17 +1088,17 @@ void body() {
          * {j+1, j+2, .., k-1}: 自由に建て替えられる
          * k, k+1, ..., i: X_{i+1}で補給する条件から一意（すべて建て替える必要あり）
          */
-        REP (j, i + 1) {
-            if (F - (Xs[i + 1] - Xs[j]) >= T) continue;
-            size_t k_ = i + 1;
-            FOR (k, j + 1, i + 1) {
+        REP (j, i) {
+            if (F - (Xs[i] - Xs[j]) >= T) continue;
+            size_t k_ = i;
+            FOR (k, j + 1, i) {
                 if (F - (Xs[k] - Xs[j]) < T) {
                     k_ = k;
                     break;
                 }
             }
-            dump(i + 1, j, dp[j] * pow(2, k_ - j - 1));
-            dp[i + 1] += dp[j] * pow(2, k_ - j - 1);
+            dump(i, j, dp[j] * pow(2, k_ - j - 1));
+            dp[i] += dp[j] * pow(2, k_ - j - 1);
         }
     }
 
