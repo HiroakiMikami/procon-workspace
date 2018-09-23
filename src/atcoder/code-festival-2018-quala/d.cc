@@ -1110,7 +1110,7 @@ void body() {
                     break;
                 }
             }
-            ans += dp[i] * pow(2, k - i - 1);
+            ans += dp[i] * pow(2, k_ - i - 1);
         }
     }
     cout << ans.get() << endl;
