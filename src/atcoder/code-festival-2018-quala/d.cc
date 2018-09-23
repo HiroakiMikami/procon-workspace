@@ -1080,7 +1080,7 @@ void body() {
     /*
      * S1[i] = 2**(k - i - 1) where k: F - (X_k - X_i) < Tを満たす最小の添字
      */
-    auto S1 = Vector<i64>(N + 1);
+    auto S1 = Vector<ModInteger<>>(N + 1);
     i64 k_ = -1;
     REP (i, N + 1) {
         if (k_ < 0) {
