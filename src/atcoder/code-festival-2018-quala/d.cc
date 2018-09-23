@@ -1077,6 +1077,31 @@ void body() {
         Xs.push_back(read<i64>());
     }
 
+    /*
+     * S1[i] = 2**(k - i - 1) where k: F - (X_k - X_i) < Tを満たす最小の添字
+     */
+    auto S1 = Vector<i64>(N + 1);
+    i64 k_ = -1;
+    REP (i, N + 1) {
+        if (k_ < 0) {
+            FOR (k, i + 1, N + 1) {
+                if ((F - Xs[k] - Xs[i]) < T) {
+                    k_ = k;
+                    break;
+                }
+            }
+        } else {
+            FOR(k, k_, N + 1) {
+                if ((F - Xs[k] - Xs[i]) < T) {
+                    k_ = k;
+                    break;
+                }
+            }
+        }
+        S1[i] = pow(2, k_ - i - 1);
+
+    }
+
     auto dp = Vector<ModInteger<>>(N + 1, 0); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
     dp[0] = 1; // 初期状態
     FOR (i, 1, N + 1) {
