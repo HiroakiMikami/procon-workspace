@@ -1070,7 +1070,9 @@ void body() {
     auto N = read<i64>();
     auto M = read<i64>();
     auto Ds = divisor(M);
-    Ds.push_back(M);
+    if (M != 1) {
+        Ds.push_back(M);
+    }
     sort(CTR(Ds));
     auto tmp = prime_factor(M);
     auto L = 1;
@@ -1094,6 +1096,7 @@ void body() {
             }
         }
     }
+    dump(as_set(Ds));
 
     auto fact = mod_integer::fact_table<mod_integer::MOD>(N + 1);
     ModInteger<> ans = 0;
