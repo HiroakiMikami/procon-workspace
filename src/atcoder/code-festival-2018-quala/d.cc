@@ -1105,8 +1105,55 @@ void body() {
         S1[i] = pow(ModInteger<>(2), k_ - i - 1);
     }
 
+    /*
+     * j_min[i] = 0 <= F - (X_i - X_j)を満たす最小の添字j (<i)
+     * j_max[i] = F - (X_i - X_j) < Tを満たす最大の添字j (<i)
+     */
+    auto j_min = Vector<i64>(N + 1, -1);
+    auto j_max = Vector<i64>(N + 1, -1);
+    FOR (i, 1, N + 1) {
+        auto minimum = j_min[i - 1];
+        auto maximum = j_max[i - 1];
+
+        j_min[i] = -1;
+        if (minimum < 0) {
+            REP (j, i) {
+                if (0 <= F - (X[i] - X[j])) {
+                    j_min[i] = j;
+                    break;
+                }
+            }
+        } else {
+            FOR (j, minimum, i) {
+                if (0 <= F - (X[i] - X[j])) {
+                    j_min[i] = j;
+                    break;
+                }
+            }
+        }
+
+        j_max[i] = -1;
+        if (maximum < 0) {
+            REP (j, i) {
+                if (F - (X[i] - X[j]) < T) {
+                    j_max[i] = j;
+                    break;
+                }
+            }
+        } else {
+            FOR (j, maximum, i) {
+                if (F - (X[i] - X[j]) < T) {
+                    j_max[i] = j;
+                    break;
+                }
+            }
+        }
+    }
+
     auto dp = Vector<ModInteger<>>(N + 1, 0); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
     dp[0] = 1; // 初期状態
+    i64 j_min = -1; //
+    i64 j_max = -1; //
     FOR (i, 1, N + 1) {
         // dp[i]の更新
         /*
