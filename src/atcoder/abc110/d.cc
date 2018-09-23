@@ -1082,7 +1082,9 @@ void body() {
         // dp[i]の更新
         EACH (m, dp[i - 1]) {
             EACH (D, Ds) {
-                dp[i][m.first * D] += m.second;
+                if (m.first * D <= M) {
+                    dp[i][m.first * D] += m.second;
+                }
             }
         }
     }
