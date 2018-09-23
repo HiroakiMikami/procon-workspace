@@ -1171,14 +1171,9 @@ void body() {
         auto maximum = j_max[i];
         if (maximum >= minimum) {
             dp[i] += sum_dp[maximum + 1] - sum_dp[minimum];
-            dump(i, sum_dp[maximum + 1], sum_dp[minimum]);
-            FOR (j, minimum, maximum + 1) {
-//                dp[i] += dp[j] * S1[j];
-            }
         }
 
         sum_dp[i + 1] = sum_dp[i] + dp[i] * S1[i];
-        dump(dp[i] * S1[i], sum_dp[i + 1]);
     }
 
     ModInteger<> ans = 0;
