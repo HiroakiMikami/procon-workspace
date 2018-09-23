@@ -1152,8 +1152,11 @@ void body() {
         }
     }
 
-    auto dp = Vector<ModInteger<>>(N + 1, 0); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
-    dp[0] = 1; // 初期状態
+    auto dp = Vector<ModInteger<>>(N + 1, 0); // dp[i] = X_iで給油するようなX_1...X_{i-1}の建て替え方
+    auto sum_dp = Vector<ModInteger<>>(N + 1, 0); // sum_dp[i] = sum dp[j] * S1[j] j < i
+    // 初期状態
+    dp[0] = 1;
+    sum_dp[0] = 0;
     FOR (i, 1, N + 1) {
         // dp[i]の更新
         /*
@@ -1168,6 +1171,8 @@ void body() {
             if (F - (Xs[i] - Xs[j]) >= T) continue;
             dp[i] += dp[j] * S1[j];
         }
+
+        sum_dp[i + 1] = sum_dp[i] + dp[i] * S1[i];
     }
 
     ModInteger<> ans = 0;
