@@ -1095,7 +1095,7 @@ void body() {
 
     auto fact = mod_integer::fact_table<mod_integer::MOD>(N + 1);
     ModInteger<> ans = 0;
-    REP (i, std::min<i64>(Ds.size() + 1, N + 1)) {
+    REP (i, std::min<i64>(L + 1, N + 1)) {
         // 長さiの数列に1をN-i個追加する → 重複ありの順列
         ans += dp[i][M] * fact[N].value * fact[i].inverse * fact[N - i].inverse;
     }
