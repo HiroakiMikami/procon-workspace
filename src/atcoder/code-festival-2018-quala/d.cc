@@ -1171,13 +1171,12 @@ void body() {
         auto maximum = j_max[i];
         if (maximum >= minimum) {
             dump(i, j_min[i], maximum, minimum);
-//            dp[i] += sum_dp[maximum + 1] - sum_dp[minimum];
+            dp[i] += sum_dp[maximum + 1] - sum_dp[minimum];
             FOR (j, minimum, maximum + 1) {
                 if (F - (Xs[i] - Xs[j]) >= T) {
-                    dump(i, j, dp[j] * S1[j]);
                     continue;
                 }
-                dp[i] += dp[j] * S1[j];
+                //dp[i] += dp[j] * S1[j];
             }
         }
 
