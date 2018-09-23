@@ -1072,13 +1072,17 @@ void body() {
     auto _Ds = divisor(M);
     _Ds.push_back(M);
     auto Ds = OrderedSet<i64>(CTR(_Ds));
-    dump(sieve(1e9).first);
+    auto tmp = prime_factor(M);
+    auto L = 1;
+    EACH (x, tmp) {
+        L *= x.second;
+    }
 
     // dp[i][m] := 長さiで1を含まない数列で積がmとなる数列の場合の数
-    auto dp = Vector<OrderedMap<i64, ModInteger<>>>(Ds.size() + 1);
+    auto dp = Vector<OrderedMap<i64, ModInteger<>>>(L + 1);
 
     dp[0][1] = 1;
-    FOR (i, 1, Ds.size() + 1) {
+    FOR (i, 1, L + 1) {
         // dp[i]の更新
         EACH (m, dp[i - 1]) {
             EACH (D, Ds) {
