@@ -1172,9 +1172,6 @@ void body() {
         if (maximum >= minimum) {
             //dp[i] += sum_dp[maximum + 1] - sum_dp[minimum];
             FOR (j, minimum, maximum + 1) {
-                if (F - (Xs[i] - Xs[j]) >= T) {
-                    continue;
-                }
                 dp[i] += dp[j] * S1[j];
             }
         }
