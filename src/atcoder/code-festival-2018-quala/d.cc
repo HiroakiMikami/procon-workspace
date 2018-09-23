@@ -1133,8 +1133,7 @@ void body() {
                     break;
                 }
             }
-            dump(pow(2, k_ - i - 1), S1[i]);
-            ans += dp[i] * pow(2, k_ - i - 1);
+            ans += dp[i] * S1[i];
         }
     }
     cout << ans.get() << endl;
