@@ -1152,8 +1152,6 @@ void body() {
 
     auto dp = Vector<ModInteger<>>(N + 1, 0); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
     dp[0] = 1; // 初期状態
-    i64 j_min = -1; //
-    i64 j_max = -1; //
     FOR (i, 1, N + 1) {
         // dp[i]の更新
         /*
@@ -1163,7 +1161,7 @@ void body() {
          * {j+1, j+2, .., k-1}: 自由に建て替えられる
          * k, k+1, ..., i: X_{i+1}で補給する条件から一意（すべて建て替える必要あり）
          */
-        REP (j, i) {
+        FOR (j, std::max(0, j_min[i]), std::max(0, j_max[i])) {
             if (F - (Xs[i] - Xs[j]) < 0) continue;
             if (F - (Xs[i] - Xs[j]) >= T) continue;
             dp[i] += dp[j] * S1[j];
