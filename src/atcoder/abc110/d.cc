@@ -1073,6 +1073,7 @@ void body() {
     _Ds.push_back(1);
     _Ds.push_back(M);
     auto Ds = OrderedSet<i64>(CTR(_Ds));
+    dump(Ds.size());
 
     // dp[i][m] := 長さiの数列で積がmの物の数
     auto dp = Vector<OrderedMap<i64, ModInteger<>>>(N + 1);
