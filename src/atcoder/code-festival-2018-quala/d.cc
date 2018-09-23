@@ -1072,37 +1072,35 @@ void body() {
     auto F = read<i64>();
     auto T = read<i64>();
     auto N = read<i64>();
-    auto Xs = read<i64>(N);
+    auto Xs = Vector<i64>(1, 0);
+    REP (i, N) {
+        Xs.push_back(read<i64>());
+    }
     Xs.push_back(D);
 
-    // dp[i][f] := X_iに到着時（X_0 = 0, X_N+1=D）、燃料がf残るX_1...X_i-1の建て替え方
-    auto dp = Vector<OrderedMap<i64, ModInteger<>>>(N + 2);
-    dp[0][F] = 1; // 初期状態
-
+    auto dp = Vector<ModInteger<>>(N + 2); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
+    dp[0] = 1; // 初期状態
     REP (i, N + 1) {
         // dp[i + 1]の更新
-        EACH (elem, dp[i]) {
-            auto f = elem.first;
-            auto n = elem.second;
-            auto dist = Xs[i] - ((i == 0) ? 0 : Xs[i - 1]);
-            if (f - dist < 0) continue;
-
-            if (i == N) {
-                dp[i + 1][f - dist] += n; // オフィスなので建て替え関係なし
-            } else {
-                if ((f - dist) >= T) {
-                    dp[i + 1][f - dist] += n * 2; // 建て替えにかかわらず状態はかわらない
-                } else {
-                    dp[i + 1][f - dist] += n; // 建て替える場合
-                    dp[i + 1][F] += n; // 建て替えない場合
+        /*
+         * j: F - (X_i - X_j) < Tを満たす適当な添字 (< i)
+         * k: F - (X_k - X_j) < Tを満たす最小の添字
+         *
+         * {j+1, j+2, .., k-1}: 自由に建て替えられる
+         * k, k+1, ..., i: X_{i+1}で補給する条件から一意（すべて建て替える必要あり）
+         */
+        REP (j, i) {
+            size_t k_ = 0;
+            FOR (k, j + 1, i) {
+                if (F - (Xs[k] - Xs[j]) < T) {
+                    k_ = k;
+                    break;
                 }
             }
+            dp[i + 1] += dp[j] * pow(2, k_ - j - 1);
         }
     }
 
     ModInteger<> ans = 0;
-    EACH (elem, dp[N + 1]) {
-        ans += elem.second;
-    }
     cout << ans.get() << endl;
 }
