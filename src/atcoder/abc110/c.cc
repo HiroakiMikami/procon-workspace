@@ -813,18 +813,28 @@ void body() {
     auto S = read<string>();
     auto T = read<string>();
 
-    auto mapping = OrderedMap<char, char>();
+    auto mapping1 = OrderedMap<char, char>();
+    auto mapping2 = OrderedMap<char, char>();
     REP (i, S.size()) {
         auto s = S[i];
         auto t = T[i];
-        if (mapping.find(s) != mapping.end()) {
-            if (t != mapping[s]) {
+        if (mapping1.find(s) != mapping1.end()) {
+            if (t != mapping1[s]) {
                 cout << "No" << endl;
                 return ;
             }
         } else {
             dump(s, t);
-            mapping[s] = t;
+            mapping1[s] = t;
+        }
+
+        if (mapping2.find(t) != mapping2.end()) {
+            if (s != mapping2[t]) {
+                cout << "No" << endl;
+                return ;
+            }
+        } else {
+            mapping2[t] = s;
         }
     }
     cout << "Yes" << endl;
