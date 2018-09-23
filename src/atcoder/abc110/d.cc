@@ -1069,7 +1069,7 @@ namespace internal {
 void body() {
     auto N = read<i64>();
     auto M = read<i64>();
-    dump(divisor(10**9).size());
+    dump(divisor(1e9).size());
 
     // dp[i][m] := 長さiの数列で積がmの物の数
     auto dp = Vector<OrderedMap<i64, ModInteger<>>>(N + 1);
