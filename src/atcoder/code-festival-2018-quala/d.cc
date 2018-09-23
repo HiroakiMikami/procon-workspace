@@ -1102,9 +1102,9 @@ void body() {
     }
 
     ModInteger<> ans = 0;
-    REP (i, N + 2) {
+    REP (i, N + 1) {
         if (D - Xs[i] <= F) {
-            ans += dp[i];
+            ans += dp[i] * pow(2, N - i + 1);
         }
     }
     cout << ans.get() << endl;
