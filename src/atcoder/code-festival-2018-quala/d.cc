@@ -1102,5 +1102,10 @@ void body() {
     }
 
     ModInteger<> ans = 0;
+    REP (i, N + 1) {
+        if (D - Xs[i] <= F) {
+            ans += dp[i];
+        }
+    }
     cout << ans.get() << endl;
 }
