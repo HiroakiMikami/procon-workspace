@@ -1116,14 +1116,6 @@ void body() {
         REP (j, i) {
             if (F - (Xs[i] - Xs[j]) < 0) continue;
             if (F - (Xs[i] - Xs[j]) >= T) continue;
-            size_t k_ = i;
-            FOR (k, j + 1, i) {
-                if (F - (Xs[k] - Xs[j]) < T) {
-                    k_ = k;
-                    break;
-                }
-            }
-            dump(S1[j], pow(2, k_ - j - 1));
             dp[i] += dp[j] * S1[j];
         }
     }
