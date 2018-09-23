@@ -1102,7 +1102,7 @@ void body() {
         if (k_ < N + 1 && F - (Xs[k_] - Xs[i]) >= T) {
             k_ = N + 1;
         }
-        S1[i] = pow(2, k_ - i - 1);
+        S1[i] = pow(ModInteger<>(2), k_ - i - 1);
     }
 
     auto dp = Vector<ModInteger<>>(N + 1, 0); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
