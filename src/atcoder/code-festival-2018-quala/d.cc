@@ -1179,9 +1179,9 @@ void body() {
             dp[i] += dp[j] * S1[j];
         }
          */
-        dump(dp[i], sum_dp[i + 1]);
 
         sum_dp[i + 1] = sum_dp[i] + dp[i] * S1[i];
+        dump(dp[i], sum_dp[i + 1]);
     }
 
     ModInteger<> ans = 0;
