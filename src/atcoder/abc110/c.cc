@@ -810,8 +810,8 @@ int main (int argc, char **argv) {
 }
 
 void body() {
-    auto S = read<i64>();
-    auto T = read<i64>();
+    auto S = read<string>();
+    auto T = read<string>();
 
     auto mapping = OrderedMap<char, char>();
     REP (i, S.size()) {
