@@ -1099,7 +1099,7 @@ void body() {
             }
         }
 
-        if (F - (Xs[k_] - Xs[i]) >= T) {
+        if (k_ < N + 1 && F - (Xs[k_] - Xs[i]) >= T) {
             k_ = N + 1;
         }
         S1[i] = pow(2, k_ - i - 1);
