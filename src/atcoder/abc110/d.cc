@@ -1069,9 +1069,9 @@ namespace internal {
 void body() {
     auto N = read<i64>();
     auto M = read<i64>();
-    auto _Ds = divisor(M);
-    _Ds.push_back(M);
-    auto Ds = OrderedSet<i64>(CTR(_Ds));
+    auto Ds = divisor(M);
+    Ds.push_back(M);
+    sort(CTR(Ds));
     auto tmp = prime_factor(M);
     auto L = 1;
     EACH (x, tmp) {
@@ -1088,6 +1088,8 @@ void body() {
             EACH (D, Ds) {
                 if (m.first * D <= M) {
                     dp[i][m.first * D] += m.second;
+                } else {
+                    break;
                 }
             }
         }
