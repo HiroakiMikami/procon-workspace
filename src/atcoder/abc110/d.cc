@@ -1069,8 +1069,22 @@ namespace internal {
 void body() {
     auto N = read<i64>();
     auto M = read<i64>();
-    dump(divisor(1e9).size());
+    auto _Ds = divisor(M);
+    _Ds.push_back(1);
+    _Ds.push_back(M);
+    auto Ds = OrderedSet(CTR(_Ds));
 
     // dp[i][m] := 長さiの数列で積がmの物の数
     auto dp = Vector<OrderedMap<i64, ModInteger<>>>(N + 1);
+
+    dp[0][1] = 1;
+    FOR (i, 1, N + 1) {
+        // dp[i]の更新
+        EACH (m, dp[i - 1]) {
+            EACH (D, Ds) {
+                dp[i][m * D] += dp[i - 1][m];
+            }
+        }
+    }
+    cout << dp[N][M].get() << endl;
 }
