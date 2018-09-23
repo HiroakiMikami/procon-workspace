@@ -1146,13 +1146,11 @@ void body() {
                 if (F - (Xs[i] - Xs[j]) < T) {
                     j_max[i] = j;
                 } else {
-                    break ;
+                    break;
                 }
             }
         }
     }
-    dump(as_map(j_min));
-    dump(as_map(j_max));
 
     auto dp = Vector<ModInteger<>>(N + 1, 0); // dp[i] X_iで給油するようなX_1...X_{i-1}の建て替え方
     dp[0] = 1; // 初期状態
