@@ -1170,10 +1170,10 @@ void body() {
         auto minimum = std::max<i64>(0, j_min[i]);
         auto maximum = j_max[i];
         if (maximum >= minimum) {
-            //dp[i] += sum_dp[maximum + 1] - sum_dp[minimum];
+            dp[i] += sum_dp[maximum + 1] - sum_dp[minimum];
             dump(i, sum_dp[maximum + 1], sum_dp[minimum]);
             FOR (j, minimum, maximum + 1) {
-                dp[i] += dp[j] * S1[j];
+//                dp[i] += dp[j] * S1[j];
             }
         }
 
