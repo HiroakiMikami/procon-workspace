@@ -1132,11 +1132,12 @@ void body() {
             }
         }
 
-        j_max[i] = -1;
+        j_max[i] = j_min[i];
         if (maximum < 0) {
             REP (j, i) {
                 if (F - (Xs[i] - Xs[j]) < T) {
                     j_max[i] = j;
+                } else {
                     break;
                 }
             }
@@ -1144,7 +1145,8 @@ void body() {
             FOR (j, maximum, i) {
                 if (F - (Xs[i] - Xs[j]) < T) {
                     j_max[i] = j;
-                    break;
+                } else {
+                    break ;
                 }
             }
         }
