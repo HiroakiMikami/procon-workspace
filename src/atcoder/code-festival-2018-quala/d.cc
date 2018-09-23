@@ -1089,6 +1089,7 @@ void body() {
          * k, k+1, ..., i: X_{i+1}で補給する条件から一意（すべて建て替える必要あり）
          */
         REP (j, i + 1) {
+            if (F - (Xs[i + 1] - Xs[j]) >= T) continue;
             size_t k_ = i + 1;
             FOR (k, j + 1, i + 1) {
                 if (F - (Xs[k] - Xs[j]) < T) {
