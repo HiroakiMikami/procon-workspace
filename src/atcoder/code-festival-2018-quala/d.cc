@@ -1132,7 +1132,7 @@ void body() {
             }
         }
 
-        j_max[i] = j_min[i];
+        j_max[i] = -1;
         if (maximum < 0) {
             REP (j, i) {
                 if (F - (Xs[i] - Xs[j]) < T) {
