@@ -1110,6 +1110,7 @@ void body() {
                     break;
                 }
             }
+            dump(i, dp[i].get(), k_ - i - 1);
             ans += dp[i] * pow(2, k_ - i - 1);
         }
     }
