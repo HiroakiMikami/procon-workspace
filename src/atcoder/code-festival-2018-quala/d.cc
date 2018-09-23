@@ -1118,14 +1118,14 @@ void body() {
         j_min[i] = -1;
         if (minimum < 0) {
             REP (j, i) {
-                if (0 <= F - (X[i] - X[j])) {
+                if (0 <= F - (Xs[i] - Xs[j])) {
                     j_min[i] = j;
                     break;
                 }
             }
         } else {
             FOR (j, minimum, i) {
-                if (0 <= F - (X[i] - X[j])) {
+                if (0 <= F - (Xs[i] - Xs[j])) {
                     j_min[i] = j;
                     break;
                 }
@@ -1135,14 +1135,14 @@ void body() {
         j_max[i] = -1;
         if (maximum < 0) {
             REP (j, i) {
-                if (F - (X[i] - X[j]) < T) {
+                if (F - (Xs[i] - Xs[j]) < T) {
                     j_max[i] = j;
                     break;
                 }
             }
         } else {
             FOR (j, maximum, i) {
-                if (F - (X[i] - X[j]) < T) {
+                if (F - (Xs[i] - Xs[j]) < T) {
                     j_max[i] = j;
                     break;
                 }
