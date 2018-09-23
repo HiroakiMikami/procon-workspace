@@ -1171,7 +1171,7 @@ void body() {
         auto maximum = j_max[i];
         if (maximum >= minimum) {
             //dp[i] += sum_dp[maximum + 1] - sum_dp[minimum];
-            dump(sum_dp[maximum + 1], sum_dp[minimum]);
+            dump(i, sum_dp[maximum + 1], sum_dp[minimum]);
             FOR (j, minimum, maximum + 1) {
                 dp[i] += dp[j] * S1[j];
             }
