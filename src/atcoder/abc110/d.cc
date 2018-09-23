@@ -1081,7 +1081,7 @@ void body() {
     }
 
     // dp[i][m] := 長さiで1を含まない数列で積がmとなる数列の場合の数
-    auto dp = Vector<OrderedMap<i64, ModInteger<>>>(L + 1);
+    auto dp = Vector<HashMap<i64, ModInteger<>>>(L + 1);
 
     dp[0][1] = 1;
     FOR (i, 1, L + 1) {
@@ -1096,7 +1096,6 @@ void body() {
             }
         }
     }
-    dump(as_set(Ds));
 
     auto fact = mod_integer::fact_table<mod_integer::MOD>(N + 1);
     ModInteger<> ans = 0;
