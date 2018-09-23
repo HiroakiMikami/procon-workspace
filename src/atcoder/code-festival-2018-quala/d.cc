@@ -1157,7 +1157,7 @@ void body() {
     // 初期状態
     dp[0] = 1;
     sum_dp[0] = 0;
-    sum_dp[1] = 1;
+    sum_dp[1] = dp[0] * S1[0];
     FOR (i, 1, N + 1) {
         // dp[i]の更新
         /*
