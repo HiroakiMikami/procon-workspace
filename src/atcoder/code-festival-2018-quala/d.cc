@@ -1,13 +1,18 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/code-festival-2018-quala/tasks/code_festival_2018_quala_d
+SCORE 700
+AC true
 WA false
-TLE false
+TLE true
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE mod DP 累積和
+FAILURE_TYPE 考察力不足 計算量見積もりミス 実装力不足
 NOTES
+DPを使えば解けるというところは正しかったが、O(N^2)でTLEした。外側のループを深く考えずO(N)と思ってしまっていた。
+状態として燃料を持たなくても最後に補給した場所だけで良いというのに気付かなかった。
+
+editionalを見てからの実装でACしたが、添字処理ミスによるサンプルでのWA多数。
+愚直なDP -> 累積和で高速化は問題パターンとして結構ありそう
 */
 #include <iostream>
 #include <cstdint>

@@ -1,13 +1,17 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/code-festival-2018-quala/tasks/code_festival_2018_quala_c
+SCORE 500
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 数え上げ DP mod 場合分け
+FAILURE_TYPE 考察不足 考察速度不足
 NOTES
+正しいDPを作れるまでに時間がかかった。
+i) 場合分けの仕方で数え上げに重複があったこと
+ii) あまり切り捨てを深く考えずlog2をとって最大操作回数としたこと
+の2点が問題
 */
 #include <iostream>
 #include <cstdint>

@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/code-festival-2018-quala/tasks/code_festival_2018_quala_b
+SCORE 200
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 最大化・最小化 構成
 FAILURE_TYPE
 NOTES
 */
