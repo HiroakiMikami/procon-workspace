@@ -1097,6 +1097,7 @@ void body() {
                     break;
                 }
             }
+            dump(i + 1, j);
             dp[i + 1] += dp[j] * pow(2, k_ - j - 1);
         }
     }
