@@ -1172,13 +1172,13 @@ void body() {
         if (maximum >= minimum) {
             //dump(i, maximum, minimum);
 //            dp[i] += sum_dp[maximum + 1] - sum_dp[minimum];
-        }
-        FOR (j, minimum, maximum + 1) {
-            if (F - (Xs[i] - Xs[j]) >= T) {
-                dump(i, j, dp[j] * S1[j]);
-                continue;
+            FOR (j, minimum, maximum + 1) {
+                if (F - (Xs[i] - Xs[j]) >= T) {
+                    dump(i, j, dp[j] * S1[j]);
+                    continue;
+                }
+                dp[i] += dp[j] * S1[j];
             }
-            dp[i] += dp[j] * S1[j];
         }
 
         sum_dp[i + 1] = sum_dp[i] + dp[i] * S1[i];
