@@ -1070,6 +1070,21 @@ namespace internal {
 void body() {
     auto N = read<i64>();
     auto M = read<i64>();
+
+    auto Ps = prime_factor(M);
+    i64 m = 0;
+    EACH (P, Ps) {
+        m = std::max(m, P.second);
+    }
+    auto fact = mod_integer::fact_table(m + N);
+
+    ModInteger<> ans = 1;
+    EACH (P, Ps) {
+        n = P.second;
+        ans *= fact[n + N - 1].value * fact[n].inverse * fact[N - 1].inverse;
+    }
+    cout << ans.get() << endl;
+#if 0
     auto Ds = divisor(M);
     if (M != 1) {
         Ds.push_back(M);
@@ -1105,4 +1120,5 @@ void body() {
         ans += dp[i][M] * fact[N].value * fact[i].inverse * fact[N - i].inverse;
     }
     cout << ans.get() << endl;
+#endif
 }
