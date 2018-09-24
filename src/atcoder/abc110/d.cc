@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
-TLE false
+URL https://beta.atcoder.jp/contests/abc110/tasks/abc110_d
+SCORE 400
+AC true
+WA true
+TLE true
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE mod 場合の数 組み合わせ
+FAILURE_TYPE 考察力不足 コーナーケース処理
 NOTES
+DPに固執しすぎて定数倍高速化が必要な解法になってしまった。
 */
 #include <iostream>
 #include <cstdint>
