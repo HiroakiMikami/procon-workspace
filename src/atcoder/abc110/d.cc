@@ -1074,7 +1074,7 @@ void body() {
     auto Ps = prime_factor(M);
     i64 m = 0;
     EACH (P, Ps) {
-        m = std::max(m, P.second);
+        m = std::max<i64>(m, P.second);
     }
     auto fact = mod_integer::fact_table<mod_integer::MOD>(m + N);
 
