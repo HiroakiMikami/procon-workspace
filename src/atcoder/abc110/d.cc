@@ -1076,7 +1076,7 @@ void body() {
     EACH (P, Ps) {
         m = std::max(m, P.second);
     }
-    auto fact = mod_integer::fact_table(m + N);
+    auto fact = mod_integer::fact_table<mod_integer::MOD>(m + N);
 
     ModInteger<> ans = 1;
     EACH (P, Ps) {
