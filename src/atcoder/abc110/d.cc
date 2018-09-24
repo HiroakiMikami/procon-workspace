@@ -1081,44 +1081,8 @@ void body() {
     ModInteger<> ans = 1;
     EACH (P, Ps) {
         auto n = P.second;
+        // P.first^nがMに含まれているので、nをN個に分割する方法を計算する
         ans *= fact[n + N - 1].value * fact[n].inverse * fact[N - 1].inverse;
     }
     cout << ans.get() << endl;
-#if 0
-    auto Ds = divisor(M);
-    if (M != 1) {
-        Ds.push_back(M);
-    }
-    sort(CTR(Ds));
-    auto tmp = prime_factor(M);
-    auto L = 1;
-    EACH (x, tmp) {
-        L += x.second;
-    }
-
-    // dp[i][m] := 長さiで1を含まない数列で積がmとなる数列の場合の数
-    auto dp = Vector<HashMap<i64, ModInteger<>>>(L + 1);
-
-    dp[0][1] = 1;
-    FOR (i, 1, L + 1) {
-        // dp[i]の更新
-        EACH (m, dp[i - 1]) {
-            EACH (D, Ds) {
-                if (m.first * D <= M) {
-                    dp[i][m.first * D] += m.second;
-                } else {
-                    break;
-                }
-            }
-        }
-    }
-
-    auto fact = mod_integer::fact_table<mod_integer::MOD>(N + 1);
-    ModInteger<> ans = 0;
-    REP (i, std::min<i64>(L + 1, N + 1)) {
-        // 長さiの数列に1をN-i個追加する → 重複ありの順列
-        ans += dp[i][M] * fact[N].value * fact[i].inverse * fact[N - i].inverse;
-    }
-    cout << ans.get() << endl;
-#endif
 }
