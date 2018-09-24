@@ -1080,7 +1080,7 @@ void body() {
 
     ModInteger<> ans = 1;
     EACH (P, Ps) {
-        n = P.second;
+        auto n = P.second;
         ans *= fact[n + N - 1].value * fact[n].inverse * fact[N - 1].inverse;
     }
     cout << ans.get() << endl;
