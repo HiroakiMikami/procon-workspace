@@ -964,18 +964,6 @@ void body() {
     auto divs_under_sqrtK = Vector<i64>();
     divs_over_sqrtK.reserve(K);
     divs_under_sqrtK.reserve(K);
-    EACH (d1, divs) {
-        EACH (d2, divs) {
-            if (d1 * d2 % K == 0) {
-                if (d1 != d2) {
-                    ans += num[d1] * num[d2];
-                } else {
-                    ans += num[d1] * (num[d2] - 1);
-                }
-            }
-        }
-    }
-
     EACH (d, divs) {
         if (d >= K / d) {
             divs_over_sqrtK.push_back(d);
