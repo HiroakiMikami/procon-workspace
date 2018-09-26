@@ -964,7 +964,19 @@ void body() {
     auto divs_under_sqrtK = Vector<i64>();
     divs_over_sqrtK.reserve(K);
     divs_under_sqrtK.reserve(K);
-    EACH (d, divs) {
+    EACH    EACH (d1, divs) {
+        EACH (d2, divs) {
+            if (d1 * d2 % K == 0) {
+                if (d1 != d2) {
+                    ans += num[d1] * num[d2];
+                } else {
+                    ans += num[d1] * (num[d2] - 1);
+                }
+            }
+        }
+    }
+
+    (d, divs) {
         if (d >= K / d) {
             divs_over_sqrtK.push_back(d);
         } else {
@@ -978,6 +990,7 @@ void body() {
             if (d2 > d1) continue;
 
             if (d1 * d2 % K == 0) {
+                dump(d1, d2);
                 if (d1 != d2) {
                     ans += nums[d1] * nums[d2];
                 } else {
@@ -987,6 +1000,7 @@ void body() {
         }
         EACH (d2, divs_under_sqrtK) {
             if (d1 * d2 % K == 0) {
+                dump(d1, d2);
                 if (d1 != d2) {
                     ans += nums[d1] * nums[d2];
                 } else {
