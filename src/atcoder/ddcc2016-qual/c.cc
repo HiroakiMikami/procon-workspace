@@ -983,7 +983,7 @@ void body() {
                 if (d1 != d2) {
                     ans += nums[d1] * nums[d2];
                 } else {
-                    ans += nums[d1] * (nums[d2] - 1);
+                    ans += nums[d1] * (nums[d2] - 1) / 2;
                 }
             }
         }
@@ -993,7 +993,7 @@ void body() {
                 if (d1 != d2) {
                     ans += nums[d1] * nums[d2];
                 } else {
-                    ans += nums[d1] * (nums[d2] - 1);
+                    ans += nums[d1] * (nums[d2] - 1) / 2;
                 }
             }
         }
