@@ -945,15 +945,8 @@ void body() {
     auto K = read<i64>();
     auto As = read<i64>(N);
 
-    auto p_K = prime_factor(K);
-
     EACH (A, As) {
-        auto p_A = prime_factor(A);
-        A = 1;
-        EACH (p, p_K) {
-            auto k = std::min<i64>(p_A[p.first], p.second);
-            A *= pow(p.first, k);
-        }
+        A = gcd(A, K);
     }
 
     OrderedMap<i64, i64> num;
