@@ -979,7 +979,6 @@ void body() {
             if (d2 > d1) continue;
 
             if (d1 * d2 % K == 0) {
-                dump(d1, d2);
                 if (d1 != d2) {
                     ans += nums[d1] * nums[d2];
                 } else {
@@ -989,7 +988,6 @@ void body() {
         }
         EACH (d2, divs_under_sqrtK) {
             if (d1 * d2 % K == 0) {
-                dump(d1, d2);
                 if (d1 != d2) {
                     ans += nums[d1] * nums[d2];
                 } else {
