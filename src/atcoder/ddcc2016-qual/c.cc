@@ -964,7 +964,7 @@ void body() {
     auto divs_under_sqrtK = Vector<i64>();
     divs_over_sqrtK.reserve(K);
     divs_under_sqrtK.reserve(K);
-    REP (d, divs) {
+    EACH (d, divs) {
         if (d >= K / d) {
             divs_over_sqrtK.push_back(d);
         } else {
