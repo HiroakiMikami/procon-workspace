@@ -960,8 +960,12 @@ void body() {
         divs.push_back(K);
     }
 
-    auto divs_over_sqrtK = Vector<i64>();
-    auto divs_under_sqrtK = Vector<i64>();
+    /*
+     * Kの約数のうち、sqrt(K)以下の約数の個数とsqrt(K)以上の約数の個数は等しい。
+     * sqrt(K)以下の約数の個数はたかだかsqrt(K)個なので、sqrt(K)以上の約数の個数もたかだかsqrt(K)個
+     */
+    auto divs_over_sqrtK = Vector<i64>(); // sqrt(K)以上の約数
+    auto divs_under_sqrtK = Vector<i64>(); // sqrt(K)未満の約数
     divs_over_sqrtK.reserve(K);
     divs_under_sqrtK.reserve(K);
     EACH (d, divs) {
@@ -971,11 +975,11 @@ void body() {
             divs_under_sqrtK.push_back(d);
         }
     }
-    dump(as_set(As));
 
     i64 ans = 0;
     EACH (d1, divs_over_sqrtK) {
         EACH (d2, divs_over_sqrtK) {
+            // O(sqrt(K))の2重ループなのでO(K)
             if (d2 > d1) continue;
 
             if (d1 * d2 % K == 0) {
@@ -987,6 +991,7 @@ void body() {
             }
         }
         EACH (d2, divs_under_sqrtK) {
+            // O(sqrt(K))の2重ループなのでO(K)
             if (d1 * d2 % K == 0) {
                 if (d1 != d2) {
                     ans += nums[d1] * nums[d2];
