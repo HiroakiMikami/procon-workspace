@@ -960,12 +960,14 @@ void body() {
     EACH (A, As) {
         num[A] += 1;
     }
+    dump(as_map(num));
 
     auto divs = divisor(K);
     divs.push_back(1);
     if (K != 1) {
         divs.push_back(K);
     }
+    dump(as_set(divs));
 
     i64 ans = 0;
     EACH (d, divs) {
