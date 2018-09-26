@@ -1,13 +1,18 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/ddcc2016-qual/tasks/ddcc_2016_qual_c
+SCORE 400
+AC true
 WA false
-TLE false
+TLE true
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE GCD 約数 整数 数え上げ
+FAILURE_TYPE 考察不足 実装力不足
 NOTES
+おおよその方向性は最初の実装から正しかった。
+ただ、
+・約数は十分小さいだろうと思って二重ループを書いてTLE
+・sqrt(K)以上、未満で分けて高速化したが、reserve(K)してRE
+の2回ミスをした。
 */
 #include <iostream>
 #include <cstdint>
@@ -966,8 +971,8 @@ void body() {
      */
     auto divs_over_sqrtK = Vector<i64>(); // sqrt(K)以上の約数
     auto divs_under_sqrtK = Vector<i64>(); // sqrt(K)未満の約数
-    divs_over_sqrtK.reserve(K);
-    divs_under_sqrtK.reserve(K);
+    divs_over_sqrtK.reserve(divs.size());
+    divs_under_sqrtK.reserve(divs.size());
     EACH (d, divs) {
         if (d >= K / d) {
             divs_over_sqrtK.push_back(d);
@@ -978,6 +983,7 @@ void body() {
 
     i64 ans = 0;
     EACH (d1, divs_over_sqrtK) {
+        // d1*d2 >= Kの時、d1かd2のどちらかはsqrt(K)以上のはず
         EACH (d2, divs_over_sqrtK) {
             // O(sqrt(K))の2重ループなのでO(K)
             if (d2 > d1) continue;
