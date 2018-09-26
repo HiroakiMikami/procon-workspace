@@ -960,18 +960,41 @@ void body() {
         divs.push_back(K);
     }
 
+    auto divs_over_sqrtK = Vector<i64>();
+    auto divs_under_sqrtK = Vector<i64>();
+    divs_over_sqrtK.reserve(K);
+    divs_under_sqrtK.reserve(K);
+    REP (d, divs) {
+        if (d >= K / d) {
+            divs_over_sqrtK.push_back(d);
+        } else {
+            divs_under_sqrtK.push_back(d);
+        }
+    }
+
     i64 ans = 0;
-    EACH (d1, divs) {
-        EACH (d2, divs) {
+    EACH (d1, divs_over_sqrtK) {
+        EACH (d2, divs_over_sqrtK) {
+            if (d2 > d1) continue;
+
             if (d1 * d2 % K == 0) {
                 if (d1 != d2) {
-                    ans += num[d1] * num[d2];
+                    ans += nums[d1] * nums[d2];
                 } else {
-                    ans += num[d1] * (num[d2] - 1);
+                    ans += nums[d1] * (nums[d2] - 1);
+                }
+            }
+        }
+        EACH (d2, divs_under_sqrtK) {
+            if (d1 * d2 % K == 0) {
+                if (d1 != d2) {
+                    ans += nums[d1] * nums[d2];
+                } else {
+                    ans += nums[d1] * (nums[d2] - 1);
                 }
             }
         }
     }
 
-    cout << (ans / 2) << endl;
+    cout << ans << endl;
 }
