@@ -971,7 +971,12 @@ void body() {
 
     i64 ans = 0;
     EACH (d, divs) {
-        ans += num[d] * num[K / d];
+        if (d >= std::sqrt(K)) continue;
+        if (d == K / d) {
+            ans += num[d] * (num[K / d] - 1);
+        } else {
+            ans += num[d] * num[K / d];
+        }
     }
 
     cout << ans << endl;
