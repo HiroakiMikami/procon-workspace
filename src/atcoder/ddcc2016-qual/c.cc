@@ -970,14 +970,17 @@ void body() {
     dump(as_set(divs));
 
     i64 ans = 0;
-    EACH (d, divs) {
-        if (K / d > d) continue;
-        if (d == K / d) {
-            ans += num[d] * (num[K / d] - 1) / 2;
-        } else {
-            ans += num[d] * num[K / d];
+    EACH (d1, divs) {
+        EACH (d2, divs) {
+            if (d1 * d2 % K == 0) {
+                if (d1 != d2) {
+                    ans += num[d1] * num[d2];
+                } else {
+                    ans += num[d1] * (num[d2] - 1);
+                }
+            }
         }
     }
 
-    cout << ans << endl;
+    cout << (ans / 2) << endl;
 }
