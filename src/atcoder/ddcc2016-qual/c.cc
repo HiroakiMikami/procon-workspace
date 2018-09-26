@@ -949,9 +949,9 @@ void body() {
         A = gcd(A, K);
     }
 
-    OrderedMap<i64, i64> num;
+    OrderedMap<i64, i64> nums;
     EACH (A, As) {
-        num[A] += 1;
+        nums[A] += 1;
     }
 
     auto divs = divisor(K);
