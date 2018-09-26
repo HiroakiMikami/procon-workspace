@@ -971,6 +971,7 @@ void body() {
             divs_under_sqrtK.push_back(d);
         }
     }
+    dump(as_set(As));
 
     i64 ans = 0;
     EACH (d1, divs_over_sqrtK) {
