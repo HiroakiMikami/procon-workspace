@@ -827,7 +827,7 @@ void body() {
     auto e1 = *std::max_element(CTR(even), [](auto rhs, auto lhs) { return rhs.second > lhs.second; });
 
     odd.erase(o1.first);
-    erase.erase(e1.first);
+    even.erase(e1.first);
 
     if (o1.first != e1.first) {
         cout << (n - o1.second - e1.second) << endl;
