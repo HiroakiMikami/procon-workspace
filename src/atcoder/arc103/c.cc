@@ -1,12 +1,12 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/arc103/tasks/arc103_a
+SCORE 300
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 最大化・最小化 構成
+FAILURE_TYPE 実装ミス 考察不足
 NOTES
 */
 #include <iostream>
