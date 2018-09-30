@@ -823,13 +823,8 @@ void body() {
         }
     }
 
-    i64 max_odd = -1, max_even = -1;
-    EACH (o, odd) {
-        max_odd = std::max(max_odd, o.second);
-    }
-    EACH (e, even) {
-        max_even = std::max(max_even, e.second);
-    }
+    auto o1 = std::max_element(CTR(odd), [](auto rhs, auto lhs) { return rhs.second < lhs.second; });
+    auto e1 = std::max_element(CTR(odd), [](auto rhs, auto lhs) { return rhs.second < lhs.second; });
 
-    cout << (n - max_odd - max_even) << endl;
+    cout << (n - o1.second - e1.second) << endl;
 }
