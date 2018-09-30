@@ -832,8 +832,9 @@ void body() {
     if (o1.first != e1.first) {
         cout << (n - o1.second - e1.second) << endl;
     } else {
-        auto o2 = odd.empty() ? make_pair<const i64, i64>(0, 0) : *std::max_element(CTR(odd), [](auto rhs, auto lhs) { return rhs.second > lhs.second; });
-        auto e2 = even.empty() ? {0, 0} : *std::max_element(CTR(even), [](auto rhs, auto lhs) { return rhs.second > lhs.second; });
+        auto _o2 = std::max_element(CTR(odd), [](auto rhs, auto lhs) { return rhs.second > lhs.second; });
+        auto o2 = _o2 == odd.end() ? {0, 0} : *_o2;
+        auto _e2 = std::max_element(CTR(even), [](auto rhs, auto lhs) { return rhs.second > lhs.second; });
 
         auto c1 = (n - o1.second - e2.second);
         auto c2 = (n - o2.second - e1.second);
