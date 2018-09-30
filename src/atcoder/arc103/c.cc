@@ -825,6 +825,7 @@ void body() {
 
     auto o1 = std::max_element(CTR(odd), [](auto rhs, auto lhs) { return rhs.second > lhs.second; });
     auto e1 = std::max_element(CTR(odd), [](auto rhs, auto lhs) { return rhs.second > lhs.second; });
+    dump(*o1, *e1);
 
     cout << (n - o1->second - e1->second) << endl;
 }
