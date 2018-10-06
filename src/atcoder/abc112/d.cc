@@ -952,11 +952,11 @@ void body() {
      * sum b_i >= Nならば、gcd(b_i)=1となるb_iのとり方がある（b_1を除いて1とすれば良い）
      */
 
-    auto divisor = divisors(M);
-    divisor.push_back(M);
+    auto D = divisor(M);
+    D.push_back(M);
 
     i64 ans = 1;
-    EACH (k, divisor) {
+    EACH (k, D) {
         auto sum_b = M / k;
         if (sum_b >= N) {
             ans = std::max<i64>(ans, k);
