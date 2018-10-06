@@ -813,8 +813,8 @@ void body() {
     auto N = read<i64>();
     auto xyhs = read<i64, i64, i64>(N);
 
-    FOR (Cx, 1, 101) {
-        FOR (Cy, 1, 101) {
+    REP (Cx, 101) {
+        REP (Cy, 101) {
             i64 H = -1;
             bool ans = true;
             EACH (xyh, xyhs) {
