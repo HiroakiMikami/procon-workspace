@@ -835,7 +835,7 @@ void body() {
 
                 auto h_ = std::max<i64>(H - std::abs(X - Cx) - std::abs(Y - Cy), 0);
                 if (h != h_) {
-                    dump(h, h_, X, Y)
+                    dump(h, h_, X, Y);
                     ans = false;
                     break;
                 }
