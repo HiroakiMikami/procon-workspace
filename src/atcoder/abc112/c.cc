@@ -824,7 +824,7 @@ void body() {
 
                 if (H < 0 && h > 0) {
                     // h = max(H - |X-Cx| - |Y-Cy|, 0)より、Hを求めることができる
-                    H = std::abs(X - Cx) + std::abs(Y - Cy);
+                    H = h + std::abs(X - Cx) + std::abs(Y - Cy);
                     break;
                 }
             }
@@ -835,7 +835,6 @@ void body() {
 
                 auto h_ = std::max<i64>(H - std::abs(X - Cx) - std::abs(Y - Cy), 0);
                 if (h != h_) {
-                    dump(h, h_, X, Y);
                     ans = false;
                     break;
                 }
