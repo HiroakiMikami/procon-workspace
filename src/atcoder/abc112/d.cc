@@ -959,7 +959,7 @@ void body() {
     EACH (k, divisor) {
         auto sum_b = M / k;
         if (sum_b >= N) {
-            ans = std::max(ans, k);
+            ans = std::max<i64>(ans, k);
         }
     }
 
