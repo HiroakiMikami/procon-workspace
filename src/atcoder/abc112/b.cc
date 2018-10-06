@@ -814,11 +814,19 @@ void body() {
     auto T = read<i64>();
     auto cts = read<i64, i64>(N);
 
-    i64 ans = std::numeric_limits<i64>::max();
+    i64 ans = -1;
     REP (i, N) {
         if (cts[i].second <= T) {
-            ans = std::min(ans, cts[i].first);
+            if (ans == -1) {
+                ans = cts[i].first;
+            } else {
+                ans = std::min(ans, cts[i].first);
+            }
         }
     }
-    cout << ans << endl;
+    if (ans < 0) {
+        cout << "TLE" << endl;
+    } else {
+        cout << ans << endl;
+    }
 }
