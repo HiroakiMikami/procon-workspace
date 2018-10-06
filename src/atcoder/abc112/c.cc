@@ -818,8 +818,8 @@ void body() {
             i64 H = -1;
             bool ans = false;
             EACH (xys, xyhs) {
-                auto x = get<0>(xyh);
-                auto y = get<1>(xyh);
+                auto X = get<0>(xyh);
+                auto Y = get<1>(xyh);
                 auto h = get<2>(xyh);
 
                 if (H < 0 && h > 0) {
