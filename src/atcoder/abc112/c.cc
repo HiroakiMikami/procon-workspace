@@ -816,7 +816,7 @@ void body() {
     FOR (Cx, 1, 101) {
         FOR (Cy, 1, 101) {
             i64 H = -1;
-            bool ans = false;
+            bool ans = true;
             EACH (xyh, xyhs) {
                 auto X = get<0>(xyh);
                 auto Y = get<1>(xyh);
