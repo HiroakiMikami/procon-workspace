@@ -1323,7 +1323,7 @@ void body() {
             auto Cp = xs.parent(to_int({i, j}));
             dump(to_p(Cp), i, j);
 
-            if (i + j % 2 == 0) {
+            if ((i + j) % 2 == 0) {
                 ns[Cp].first += 1;
             } else {
                 ns[Cp].second += 1;
