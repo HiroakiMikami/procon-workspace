@@ -1312,4 +1312,21 @@ void body() {
             }
         }
     }
+
+
+    OrderedMap<i64, pair<i64, i64>> ns;
+    REP (i, r) {
+        REP (j, c) {
+            auto C = Cs[i][j];
+            if (C1 == '*') continue;
+
+            auto Cp = xs.parent(to_int({i, j}));
+
+            if (i + j % 2 == 0) {
+                ns[Cp].first += 1;
+            } else {
+                ns[Cp].second += 1;
+            }
+        }
+    }
 }
