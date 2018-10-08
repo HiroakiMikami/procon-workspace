@@ -1321,7 +1321,7 @@ void body() {
             if (C == '*') continue;
 
             auto Cp = xs.parent(to_int({i, j}));
-            dump(to_p(Cp), C, {i, j});
+            dump(to_p(Cp), i, j);
 
             if (i + j % 2 == 0) {
                 ns[Cp].first += 1;
