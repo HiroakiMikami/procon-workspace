@@ -1279,10 +1279,10 @@ void body() {
         Cs[i] = read<string>();
     }
 
-    auto to_int = [](const pair<i64, i64> &p) {
+    auto to_int = [&](const pair<i64, i64> &p) {
         return p.first * r + p.second;
     };
-    auto to_p = [](i64 i) -> pair<i64, i64> {
+    auto to_p = [&](i64 i) -> pair<i64, i64> {
         return std::make_pair(i / r, i % r);
     };
 
