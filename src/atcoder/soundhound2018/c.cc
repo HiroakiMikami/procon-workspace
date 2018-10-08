@@ -1318,7 +1318,7 @@ void body() {
     REP (i, r) {
         REP (j, c) {
             auto C = Cs[i][j];
-            if (C1 == '*') continue;
+            if (C == '*') continue;
 
             auto Cp = xs.parent(to_int({i, j}));
 
