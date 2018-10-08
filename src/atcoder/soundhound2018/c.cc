@@ -1287,7 +1287,7 @@ void body() {
     };
 
     /*
-     * 連結成分それぞれについて、最大となる可能性があるのは2通りしかないから、全部調査すれば良い
+     * 連結成分ごとに独立に考えて良いので、まずは分割する
      */
 
     UnionFind xs(r * c);
@@ -1314,6 +1314,9 @@ void body() {
     }
 
 
+    /*
+     * 広告のうち方は各連結成分ごとに2通りなので、それぞれ最大を考える
+     */
     OrderedMap<i64, pair<i64, i64>> ns;
     REP (i, r) {
         REP (j, c) {
@@ -1321,7 +1324,6 @@ void body() {
             if (C == '*') continue;
 
             auto Cp = xs.parent(to_int({i, j}));
-            dump(to_p(Cp), i, j);
 
             if ((i + j) % 2 == 0) {
                 ns[Cp].first += 1;
