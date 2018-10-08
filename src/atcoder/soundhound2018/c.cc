@@ -1280,10 +1280,10 @@ void body() {
     }
 
     auto to_int = [&](const pair<i64, i64> &p) {
-        return p.first * r + p.second;
+        return p.first * c + p.second;
     };
     auto to_p = [&](i64 i) -> pair<i64, i64> {
-        return std::make_pair(i / r, i % r);
+        return std::make_pair(i / c, i % c);
     };
 
     /*
