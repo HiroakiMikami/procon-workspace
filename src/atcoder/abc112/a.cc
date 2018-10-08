@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc112/tasks/abc112_a
+SCORE 100
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 基本
 FAILURE_TYPE
 NOTES
 */
@@ -810,7 +810,6 @@ int main (int argc, char **argv) {
 }
 
 void body() {
-
     auto N = read<i64>();
     if (N == 1) {
         cout << "Hello World" << endl;
