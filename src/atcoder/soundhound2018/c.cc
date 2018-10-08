@@ -1332,7 +1332,7 @@ void body() {
 
     i64 ans = 0;
     EACH (n, ns) {
-        ans = std::max(n.first, n.second);
+        ans += std::max(n.second.first, n.second.second);
     }
     cout << ans << endl;
 }
