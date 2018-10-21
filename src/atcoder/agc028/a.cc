@@ -962,7 +962,7 @@ void body() {
     while (true) {
         auto index_s = k * t;
         auto index_t = k * s;
-        if (index_s >= N || index_t >= M) continue;
+        if (index_s >= N || index_t >= M) break;
         if (S[index_s] != T[index_t]) {
             cout << -1 << endl;
             return;
