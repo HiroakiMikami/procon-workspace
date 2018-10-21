@@ -809,73 +809,6 @@ int main (int argc, char **argv) {
     return 0;
 }
 
-#ifndef MAIN
-#include "common.cc"
-#endif
-
-struct UnionFind {
-    UnionFind() : m_parents(0), m_rank(0) {}
-    UnionFind(size_t N) : m_parents(N), m_rank(N) {
-        REP (i, N) {
-            m_parents[i] = i;
-            m_rank[i] = 0;
-        }
-    }
-
-    size_t size() const {
-        return this->m_rank.size();
-    }
-
-    void merge(size_t t1, size_t t2) {
-        auto p1 = this->parent(t1);
-        auto p2 = this->parent(t2);
-
-        if (p1 == p2) {
-            return ;
-        }
-
-        if (this->m_rank[p1] < this->m_rank[p2]) {
-            this->m_parents[p1] = p2;
-        } else {
-            this->m_parents[p2] = p1;
-            if (this->m_rank[p1] == this->m_rank[p2]) {
-                this->m_rank[p1] += 1;
-            }
-        }
-    }
-    bool is_same(size_t t1, size_t t2) const {
-        return this->parent(t1) == this->parent(t2);
-    }
-
-    size_t parent(size_t t) const {
-        auto p = this->m_parents[t];
-        if (p == t) {
-            return t;
-        } else {
-            auto p2 = this->parent(p);
-            this->m_parents[t] = p2;
-            return p2;
-        }
-    }
-private:
-    mutable vector<size_t> m_parents;
-    vector<u64> m_rank;
-
-};
-
-namespace internal {
-    template <>
-    struct oneline<UnionFind> {
-        std::string operator()(const UnionFind &t) const {
-            OrderedMap<size_t, OrderedSet<size_t>> xs;
-            REP (i, t.size()) {
-                xs[t.parent(i)].insert(i);
-            }
-            return oneline<decltype(xs)>()(xs);
-        }
-    };
-}
-
 #include <vector>
 #include <unordered_map>
 #include <type_traits>
@@ -1271,6 +1204,49 @@ namespace graph {
 }
 #endif
 
+#include <limits>
+#include <experimental/optional>
+
+#ifndef MAIN
+#include "common.cc"
+#include "graph.cc"
+#endif
+
+namespace graph {
+    template <typename EdgeLabel, typename Container, typename Flow = EdgeLabel>
+    Flow ford_fulkerson(const Graph<EdgeLabel, Container> &g, size_t start, size_t goal) { // TODO use traverse
+        auto g_ = g;
+        Vector<bool> used(g.vertices_size(), false);
+        auto dfs_rec = [&](size_t s, size_t e, Flow f, auto dfs) -> Flow {
+            if (s == e) return f;
+            used[s] = true;
+            for (auto edge: g_.outgoings(s)) {
+                auto to = get<1>(edge);
+                auto cap = get<2>(edge);
+                if (!used[to] and cap > 0) {
+                    auto d = dfs(to, e, std::min<Flow>(f, cap), dfs);
+                    if (d > 0) {
+                        // TODO performance
+                        g_.remove_edge(s, to);
+                        g_.remove_edge(to, s);
+                        g_.add_edge(make_tuple(s, to, static_cast<EdgeLabel>(cap - d)));
+                        g_.add_edge(make_tuple(to, s, static_cast<EdgeLabel>(cap + d)));
+                        return d;
+                    }
+                }
+            }
+            return static_cast<Flow>(0);
+        };
+        Flow flow = 0;
+        while (true) {
+            used = Vector<bool>(g.vertices_size(), false);
+            auto f = dfs_rec(start, goal, std::numeric_limits<Flow>::max(), dfs_rec);
+            if (f == 0) return flow;
+            flow += f;
+        }
+    }
+}
+
 void body() {
     auto r = read<i64>();
     auto c = read<i64>();
@@ -1286,57 +1262,37 @@ void body() {
         return std::make_pair(i / c, i % c);
     };
 
-    /*
-     * 連結成分ごとに独立に考えて良いので、まずは分割する
-     */
+    WeightedAdjacencyMatrix g(r * c + 2);
+    auto start = r * c;
+    auto goal = r * c + 1;
 
-    UnionFind xs(r * c);
     REP (i, r) {
         REP (j, c) {
             auto C1 = Cs[i][j];
             if (C1 == '*') continue;
+
+            if ((i + j) % 2 == 0) {
+                g.add_edge(make_tuple(start, to_int(i, j), 1));
+            } else {
+                g.add_edge(make_tuple(to_int(i, j), goal, 1));
+            }
             /*
-             * (i+1, j)と(i, j+1)を調べて、繋がっているならmerge
+             * (i+1, j)と(i, j+1)を調べて、繋がっているならadd_edge
              */
             if (i + 1 < r) {
                 auto C2 = Cs[i + 1][j];
                 if (C2 == '.') {
-                    xs.merge(to_int({i, j}), to_int({i + 1, j}));
+                    g.add_edge(make_tuple(to_int({i, j}), to_int(i + 1, j), 1));
                 }
             }
             if (j + 1 < c) {
                 auto C2 = Cs[i][j + 1];
                 if (C2 == '.') {
-                    xs.merge(to_int({i, j}), to_int({i, j + 1}));
+                    g.add_edge(make_tuple(to_int({i, j}), to_int(i, j + 1), 1));
                 }
             }
         }
     }
 
-
-    /*
-     * 広告のうち方は各連結成分ごとに2通りなので、それぞれ最大を考える
-     */
-    OrderedMap<i64, pair<i64, i64>> ns;
-    REP (i, r) {
-        REP (j, c) {
-            auto C = Cs[i][j];
-            if (C == '*') continue;
-
-            auto Cp = xs.parent(to_int({i, j}));
-            dump(to_p(Cp), i, j, C);
-
-            if ((i + j) % 2 == 0) {
-                ns[Cp].first += 1;
-            } else {
-                ns[Cp].second += 1;
-            }
-        }
-    }
-
-    i64 ans = 0;
-    EACH (n, ns) {
-        ans += std::max(n.second.first, n.second.second);
-    }
-    cout << ans << endl;
+    cout << ford_fulkerson(g, start, goal) << endl;
 }
