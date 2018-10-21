@@ -1272,9 +1272,9 @@ void body() {
             if (C1 == '*') continue;
 
             if ((i + j) % 2 == 0) {
-                g.add_edge(make_tuple(start, to_int(i, j), 1));
+                g.add_edge(make_tuple(start, to_int({i, j}), 1));
             } else {
-                g.add_edge(make_tuple(to_int(i, j), goal, 1));
+                g.add_edge(make_tuple(to_int({i, j}), goal, 1));
             }
             /*
              * (i+1, j)と(i, j+1)を調べて、繋がっているならadd_edge
@@ -1282,17 +1282,21 @@ void body() {
             if (i + 1 < r) {
                 auto C2 = Cs[i + 1][j];
                 if (C2 == '.') {
-                    g.add_edge(make_tuple(to_int({i, j}), to_int(i + 1, j), 1));
+                    g.add_edge(make_tuple(to_int({i, j}), to_int({i + 1, j}), 1));
                 }
             }
             if (j + 1 < c) {
                 auto C2 = Cs[i][j + 1];
                 if (C2 == '.') {
-                    g.add_edge(make_tuple(to_int({i, j}), to_int(i, j + 1), 1));
+                    g.add_edge(make_tuple(to_int({i, j}), to_int({i, j + 1}), 1));
                 }
             }
         }
     }
 
+    /*
+     * 最大独立頂点集合を求める
+     * → 二部グラフなので最大マッチングの数と同じ
+     */
     cout << ford_fulkerson(g, start, goal) << endl;
 }
