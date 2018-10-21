@@ -1270,6 +1270,7 @@ void body() {
     i64 n = 0;
     REP (i, r) {
         REP (j, c) {
+            dump(i, j, to_int({i, j}));
             auto C1 = Cs[i][j];
             if (C1 == '*') continue;
             n += 1;
