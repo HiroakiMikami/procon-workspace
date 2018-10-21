@@ -1309,6 +1309,7 @@ void body() {
      * 最大独立頂点集合を求める
      * → 二部グラフなので最大マッチングを使って求められる
      */
+    graph::show(g);
     auto f = graph::ford_fulkerson(g, start, goal);
     cout << (n - f) << endl;
 }
