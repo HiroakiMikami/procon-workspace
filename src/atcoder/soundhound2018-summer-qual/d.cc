@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/soundhound2018-summer-qual/tasks/soundhound2018_summer_qual_d
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE グラフ dijkstra
 FAILURE_TYPE
 NOTES
 */
