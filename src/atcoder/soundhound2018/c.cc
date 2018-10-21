@@ -1267,10 +1267,12 @@ void body() {
     auto start = r * c;
     auto goal = r * c + 1;
 
+    i64 n = 0;
     REP (i, r) {
         REP (j, c) {
             auto C1 = Cs[i][j];
             if (C1 == '*') continue;
+            n += 1;
 
             if ((i + j) % 2 == 0) {
                 g.add_edge(make_tuple(start, to_int({i, j}), 1));
@@ -1297,7 +1299,12 @@ void body() {
 
     /*
      * 最大独立頂点集合を求める
-     * → 二部グラフなので最大マッチングの数と同じ
+     * → 二部グラフなので最大マッチングを使って求められる
      */
-    cout << graph::ford_fulkerson(g, start, goal) << endl;
+    auto f = graph::ford_fulkerson(g, start, goal);
+    if (n % 2 == 0) {
+        cout << f << endl;
+    } else {
+        cout << (f + 1) << endl;
+    }
 }
