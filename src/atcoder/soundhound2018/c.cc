@@ -1296,6 +1296,7 @@ void body() {
             }
         }
     }
+    g.to_undirected();
 
     /*
      * 最大独立頂点集合を求める
