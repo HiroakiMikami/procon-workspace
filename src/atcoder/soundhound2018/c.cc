@@ -1,13 +1,16 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/soundhound2018/tasks/soundhound2018_c
+SCORE 400
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE グラフ 最大独立集合 二部グラフ マッチング フロー
+FAILURE_TYPE 知識不足 util不足 実装ミス
 NOTES
+以下の2つの知識がなくて解けず + utilの最大フローの実装ミス
+・最大独立集合を求める問題をマッチングに帰着する（二部グラフの場合）
+・二部グラフの場合、マッチングは最大フローを求めることで求まる
 */
 #include <iostream>
 #include <cstdint>
