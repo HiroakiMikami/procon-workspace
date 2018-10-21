@@ -1285,18 +1285,25 @@ void body() {
             if (i + 1 < r) {
                 auto C2 = Cs[i + 1][j];
                 if (C2 == '.') {
-                    g.add_edge(make_tuple(to_int({i, j}), to_int({i + 1, j}), 1));
+                    if ((i + j) % 2 == 0) {
+                        g.add_edge(make_tuple(to_int({i, j}), to_int({i + 1, j}), 1));
+                    } else {
+                        g.add_edge(make_tuple(to_int({i + 1, j}), to_int({i, j}), 1));
+                    }
                 }
             }
             if (j + 1 < c) {
                 auto C2 = Cs[i][j + 1];
                 if (C2 == '.') {
-                    g.add_edge(make_tuple(to_int({i, j}), to_int({i, j + 1}), 1));
+                    if ((i + j) % 2 == 0) {
+                        g.add_edge(make_tuple(to_int({i, j}), to_int({i, j + 1}), 1));
+                    } else {
+                        g.add_edge(make_tuple(to_int({i, j + 1}), to_int({i, j}), 1));
+                    }
                 }
             }
         }
     }
-    g.to_undirected();
 
     /*
      * 最大独立頂点集合を求める
