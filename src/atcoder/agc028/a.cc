@@ -947,7 +947,7 @@ void body() {
     auto S = read<string>();
     auto T = read<string>();
 
-    auto K = lsm(N, M);
+    auto K = lcm(N, M);
     auto s = K / N;
     auto t = K / M;
 
