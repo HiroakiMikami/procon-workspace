@@ -1303,7 +1303,6 @@ void body() {
      * → 二部グラフなので最大マッチングを使って求められる
      */
     auto f = graph::ford_fulkerson(g, start, goal);
-    dump(n, f);
     if (n % 2 == 0) {
         cout << f << endl;
     } else {
