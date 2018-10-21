@@ -1299,5 +1299,6 @@ void body() {
      * 最大独立頂点集合を求める
      * → 二部グラフなので最大マッチングの数と同じ
      */
+    graph::show(g);
     cout << graph::ford_fulkerson(g, start, goal) << endl;
 }
