@@ -1369,9 +1369,9 @@ void body() {
     g_snuke.to_undirected();
 
     // 円でsから各都市へ行くときの最小値段
-    auto start = dijkstra(g_yen, s);
+    auto start = graph::dijkstra(g_yen, s);
     // スヌークで各都市からtへ行くときの最小値段
-    auto goal = dijkstra(g_snuke, t);
+    auto goal = graph::dijkstra(g_snuke, t);
 
     Vector<i64> cost(n); // cost[i] := 都市iで両替をするときの値段
     REP (i, n) {
