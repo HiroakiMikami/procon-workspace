@@ -1229,9 +1229,11 @@ namespace graph {
                     if (d > 0) {
                         // TODO performance
                         g_.remove_edge(s, to);
-                        g_.remove_edge(to, s);
                         g_.add_edge(make_tuple(s, to, static_cast<EdgeLabel>(cap - d)));
-                        g_.add_edge(make_tuple(to, s, static_cast<EdgeLabel>(cap + d)));
+                        auto reverse = g.edges(to, s);
+                        auto rev_cap = (reverse.begin() == reverse.end()) ? 0 : get<2>(*reverse.begin());
+                        g_.remove_edge(to, s);
+                        g_.add_edge(make_tuple(to, s, static_cast<EdgeLabel>(rev_cap + d)));
                         return d;
                     }
                 }
@@ -1270,7 +1272,6 @@ void body() {
     i64 n = 0;
     REP (i, r) {
         REP (j, c) {
-            dump(i, j, to_int({i, j}));
             auto C1 = Cs[i][j];
             if (C1 == '*') continue;
             n += 1;
