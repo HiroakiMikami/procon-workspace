@@ -828,6 +828,5 @@ void body() {
             dp[i + 1] = dp[i] + bs[i];
         }
     }
-    dump(as_set(dp));
     cout << dp.back() << endl;
 }
