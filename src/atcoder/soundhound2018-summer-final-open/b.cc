@@ -820,9 +820,13 @@ void body() {
         // dp[i+1]の更新
         // 1) 直前の最大値にb_{i+1}を足す
         // 2) 直前K個を0にする
-        dp[i + 1] = std::max(
-                dp[i] + bs[i],
-                dp[std::max<i64>(0, i + 1 - K)]);
+        if (i + 1 - K >= 0) {
+            dp[i + 1] = std::max(
+                    dp[i] + bs[i],
+                    dp[i + 1 - K]);
+        } else {
+            dp[i + 1] = dp[i] + bs[i];
+        }
     }
     dump(as_set(dp));
     cout << dp.back() << endl;
