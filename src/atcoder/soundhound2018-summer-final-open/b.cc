@@ -816,14 +816,14 @@ void body() {
 
     auto dp = Vector<i64>(N + 1, 0); // dp[i] := b1...biまででの最大値
 
+    i64 M = 0;
     REP (i, N) {
         // dp[i+1]の更新
         // 1) 直前の最大値にb_{i+1}を足す
-        // 2) 直前K個を0にする
+        // 2) 直前K個を0にする場合（dp[j < i + 1 - K]の最大値から全部0にすれば良い）
         if (i + 1 - K >= 0) {
-            dp[i + 1] = std::max(
-                    dp[i] + bs[i],
-                    dp[i + 1 - K]);
+            M = std::max(M, dp[i + 1 - K]);
+            dp[i + 1] = std::max(dp[i] + bs[i], M);
         } else {
             dp[i + 1] = dp[i] + bs[i];
         }
