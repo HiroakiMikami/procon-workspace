@@ -822,7 +822,7 @@ void body() {
         // 2) 直前K個を0にする
         dp[i + 1] = std::max(
                 dp[i] + bs[i],
-                dp[std::max(0, i + 1 - K)]);
+                dp[std::max<i64>(0, i + 1 - K)]);
     }
     cout << dp.back() << endl;
 }
