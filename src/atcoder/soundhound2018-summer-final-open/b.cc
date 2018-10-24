@@ -1,13 +1,17 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/soundhound2018-summer-final-open/tasks/soundhound2018_summer_final_b
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE DP 連続する領域
+FAILURE_TYPE 考察力不足
 NOTES
+累積和、BITとDPで絞りきれなかった。前に「連続するK個で最大・最小」系の問題でBITが出てきた記憶があり引きづられてしまった。
+
+DPの場合、「最後に0にした場所」をstateにしないといけないのではということでO(KN)になると思っていたが、
+末尾に0が続く場合は値が変わらないので、数列の長さを短くしたのと同じであることに気づけなかった。
 */
 #include <iostream>
 #include <cstdint>
