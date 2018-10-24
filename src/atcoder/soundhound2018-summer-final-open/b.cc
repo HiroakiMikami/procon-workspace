@@ -824,5 +824,6 @@ void body() {
                 dp[i] + bs[i],
                 dp[std::max<i64>(0, i + 1 - K)]);
     }
+    dump(as_set(dp));
     cout << dp.back() << endl;
 }
