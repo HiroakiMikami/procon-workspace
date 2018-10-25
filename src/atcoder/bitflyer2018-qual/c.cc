@@ -863,6 +863,7 @@ void body() {
         n_3 += over_D1[j] * j;
         n_u += over_D1[j] * over_D2[j];
     }
+    dump(U, n_1, n_2, n_3, n_u);
 
     cout << U - n_1 - n_2 - n_3 + n_u << endl;
 }
