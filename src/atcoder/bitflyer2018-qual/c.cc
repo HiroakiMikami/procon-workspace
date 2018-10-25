@@ -1,13 +1,18 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/bitflyer2018-qual/tasks/bitflyer2018_qual_c
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 数え上げ 前計算
+FAILURE_TYPE 考察力不足
 NOTES
+iを決めて条件を満たすj, kを考えようとしたところ、O(N^2)から落ちずにいきづまった。
+ポイントは、
+・全体から当てはまらないものを引く解法への切り替え
+・3つ組を考えるときは、真ん中を固定して両側の個数を考えると計算量が減る場合がある（それぞれの側を独立に扱えるので）
+の2点だと思う。後者は汎用的に計算量を落とす方法として使えそう。
 */
 #include <iostream>
 #include <cstdint>
