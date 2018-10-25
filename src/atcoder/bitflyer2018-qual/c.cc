@@ -838,7 +838,7 @@ void body() {
     i64 n_2 = 0, n_3 = 0, n_u = 0;
 
     auto over_D1 = Vector<i64>(N, 0); // over_D1[i] := Xj - Xi > Dを満たすjの個数
-    i64 m1 =~0; // X_m1 - Xi > Dを満たす最小のm
+    i64 m1 = 0; // X_m1 - Xi > Dを満たす最小のm
     REP (i, N) {
         while (m1 < N && Xs[m1] - Xs[i] <= D) {
             m1 += 1;
