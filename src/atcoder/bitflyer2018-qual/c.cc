@@ -853,6 +853,7 @@ void body() {
     REPR (i, N) {
         while (m2 >= 0 && Xs[i] - Xs[m2] <= D) {
             m2 -= 1;
+            dump(m2);
         }
 
         over_D2[i] = m2 + 1;
