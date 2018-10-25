@@ -814,15 +814,56 @@ void body() {
     auto D = read<i64>();
     auto Xs = read<i64>(N);
 
-    i64 ans = 0;
+    /*
+     * 全 (i, j, k)の組から
+     * 1) Xk - Xi <= D
+     * 2) Xj - Xi > D
+     * 3) Xk - Xj > D
+     * の個数を引き、2と3の共通部分の個数を足せば答えが求まる
+     */
+    auto U = N * (N - 1) * (N - 2); // 全個数
+
+    i64 n_1 = 0; // 1)の個数
+    i64 m = 0; // Xm - Xi > Dを満たす最小のm
     REP (i, N) {
-        FOR (j, i + 1, N) {
-            FOR (k, j + 1, N) {
-                if (Xs[j] - Xs[i] <= D && Xs[k] - Xs[j] <= D && Xs[k] - Xs[i] > D) {
-                    ans += 1;
-                }
-            }
+        while (m < N && Xs[m] - Xs[i] <= D) {
+            m += 1;
         }
+
+        auto x = std::max(0, m - i - 1);
+        // k <= xを満たすkはXk - Xi <= Dであり、jは、i < j < kを満たす中で適当に取ってくれば良い
+        n_1 += x * (x + 1) / 2;
     }
-    cout << ans << endl;
+
+    i64 n_2 = 0, n_3 = 0, n_u = 0;
+
+    auto over_D1 = Vector<i64>(N, 0); // over_D1[i] := Xj - Xi > Dを満たすjの個数
+    auto over_D2 = Vector<i64>(N, 0); // over_D2[i] := Xi - Xj > Dを満たすjの個数
+
+    i64 m1 =~0; // X_m1 - Xi > Dを満たす最小のm
+    REP (i, N) {
+        while (m1 < N && Xs[m1] - Xs[i] <= D) {
+            m1 += 1;
+        }
+
+        over_D1[i] = N - m1;
+    }
+
+    i64 m2 = N - 1; // Xi - X_m2 > Dを満たす最大のm
+    REPR (i, N) {
+        while (m2 >= 0 && Xs[i] - Xs[m2] <= D) {
+            m2 -= 1;
+        }
+
+        over_D2[i] = m2 + 1;
+    }
+
+
+    FOR (j, 1, N - 1) {
+        n_2 += over_D2[j] * (N - j - 1);
+        n_3 += over_D1[j] * j;
+        n_u += over_D1[j] * over_D2[j];
+    }
+
+    cout << U - n_1 - n_2 - n_3 + n_u << endl;
 }
