@@ -838,8 +838,6 @@ void body() {
     i64 n_2 = 0, n_3 = 0, n_u = 0;
 
     auto over_D1 = Vector<i64>(N, 0); // over_D1[i] := Xj - Xi > Dを満たすjの個数
-    auto over_D2 = Vector<i64>(N, 0); // over_D2[i] := Xi - Xj > Dを満たすjの個数
-
     i64 m1 =~0; // X_m1 - Xi > Dを満たす最小のm
     REP (i, N) {
         while (m1 < N && Xs[m1] - Xs[i] <= D) {
@@ -849,11 +847,11 @@ void body() {
         over_D1[i] = N - m1;
     }
 
+    auto over_D2 = Vector<i64>(N, 0); // over_D2[i] := Xi - Xj > Dを満たすjの個数
     i64 m2 = N - 1; // Xi - X_m2 > Dを満たす最大のm
     REPR (i, N) {
         while (m2 >= 0 && Xs[i] - Xs[m2] <= D) {
             m2 -= 1;
-            dump(m2);
         }
 
         over_D2[i] = m2 + 1;
