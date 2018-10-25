@@ -822,7 +822,7 @@ void body() {
 
     EACH (CD, CDs) {
         auto C = CD.first;
-        auto D = D.second;
+        auto D = CD.second;
 
         // Xi < C - Dを満たす最大のi
         auto i1 = std::distance(Xs.begin(), std::lower_bound(CTR(Xs), C - D)) - 1;
@@ -841,7 +841,6 @@ void body() {
         ans += C * (i2 - i1) - (sum[i2 + 1] - sum[i1 + 1]);
         // i3...i4-1: 交通費は|Xi-C|=Xi-C
         ans += - C * (i4 - i3) + (sum[i4] - sum[i3]);
-
 
         cout << ans << endl;
     }
