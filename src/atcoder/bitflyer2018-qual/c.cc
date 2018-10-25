@@ -833,7 +833,7 @@ void body() {
         auto x = std::max<i64>(0, m - i - 1);
         dump(i, x, m);
         // k <= xを満たすkはXk - Xi <= Dであり、jは、i < j < kを満たす中で適当に取ってくれば良い
-        n_1 += x * (x + 1) / 2;
+        n_1 += x * (x - 1) / 2;
     }
 
     i64 n_2 = 0, n_3 = 0, n_u = 0;
