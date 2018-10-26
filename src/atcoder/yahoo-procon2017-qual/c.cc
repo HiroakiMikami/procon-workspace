@@ -840,7 +840,7 @@ void body() {
         dump(as_map(hit));
 
         if (f) {
-            cout << prefix_cand.substr(0, i) << endl;
+            cout << prefix_cand.substr(0, i + 1) << endl;
             return;
         }
     }
