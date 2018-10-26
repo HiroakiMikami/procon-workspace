@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/yahoo-procon2017-final-open/tasks/yahoo_procon2017_final_a
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE DP 編集距離
+FAILURE_TYPE 考察詰め不足
 NOTES
+yahooがループすることを考慮せずに未初期化の領域を参照してDPを更新して失敗したが、それを除けば問題なし。
+編集距離に似たタスクだったのでDPはすぐに思いついた。
 */
 #include <iostream>
 #include <cstdint>
@@ -849,10 +851,6 @@ void body() {
 
     i64 ans = S.size(); // 全部削除して空文字にする場合
     ans = std::min(ans, dp[S.size()][4]);
-
-    REP (i, S.size() + 1) {
-        dump(as_map(dp[i]));
-    }
 
     cout << ans << endl;
 }
