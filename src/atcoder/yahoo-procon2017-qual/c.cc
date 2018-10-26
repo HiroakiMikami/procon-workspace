@@ -821,10 +821,9 @@ void body() {
         return ;
     }
 
-    auto prefix_cand = Ss[As.front()];
-
     auto A_ = OrderedSet<i64>(CTR(As));
 
+    auto prefix_cand = Ss[As.front()];
     Vector<bool> hit(N, true);
     REP (i, prefix_cand.size()) {
         bool f = true;
@@ -841,7 +840,6 @@ void body() {
                 }
             }
         }
-        dump(as_map(hit));
 
         if (f) {
             cout << prefix_cand.substr(0, i + 1) << endl;
