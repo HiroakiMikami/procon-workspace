@@ -839,7 +839,7 @@ void body() {
             auto j = elem.first;
             const auto &S = elem.second;
             hit[j] = hit[j] && S.size() > i && S[i] == prefix_cand[i];
-            if (S.size() > i) {
+            if (S.size() <= i) {
                 to_be_deleted.emplace_back(i, S);
             }
             if (A_.find(j) == A_.end()) {
