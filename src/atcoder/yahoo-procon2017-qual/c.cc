@@ -813,6 +813,7 @@ void body() {
     auto N = read<i64>();
     auto K = read<i64>();
     auto As = read<i64>(K);
+    EACH (A, As) A -= 1;
     auto Ss = read<string>(N);
 
     auto prefix_cand = Ss[As.front()];
