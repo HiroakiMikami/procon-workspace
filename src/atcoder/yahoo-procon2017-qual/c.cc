@@ -859,7 +859,7 @@ void body() {
     REP (i, prefix.size()) {
         d.clear();
         EACH (S, exclude) {
-            if (S.size() >= i) {
+            if (S.size() <= i) {
                 d.push_back(S);
                 continue;
             }
