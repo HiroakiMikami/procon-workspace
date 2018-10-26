@@ -819,7 +819,6 @@ void body() {
 
     auto A_ = OrderedSet<i64>(CTR(As));
 
-    i64 ans = 0;
     Vector<bool> hit(N, true);
 
     REP (i, prefix_cand.size()) {
@@ -837,6 +836,7 @@ void body() {
                 }
             }
         }
+        dump(as_map(hit));
 
         if (f) {
             cout << prefix_cand.substr(0, i) << endl;
