@@ -839,7 +839,7 @@ void body() {
 
     string prefix = "";
     REP (i, min_length) {
-        auto c = hit.front[i];
+        auto c = hit.front()[i];
         bool f = true;
         FOR (j, 1, hit.size()) {
             if (hit[j][i] != c) {
