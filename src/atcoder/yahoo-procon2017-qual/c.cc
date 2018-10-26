@@ -816,12 +816,16 @@ void body() {
     EACH (A, As) A -= 1;
     auto Ss = read<string>(N);
 
+    if (N == K) {
+        cout << "" << endl;
+        return ;
+    }
+
     auto prefix_cand = Ss[As.front()];
 
     auto A_ = OrderedSet<i64>(CTR(As));
 
     Vector<bool> hit(N, true);
-
     REP (i, prefix_cand.size()) {
         bool f = true;
         // 検索ワードにprefix_cand[i]を追加する
