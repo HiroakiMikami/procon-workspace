@@ -832,12 +832,14 @@ void body() {
     REP (i, prefix_cand.size()) {
         bool f = true;
         // 検索ワードにprefix_cand[i]を追加する
+        vector<pair<size_t, string>> to_be_deleted;
+        to_be_deleted.reserve(S_.size());
         EACH (elem, S_) {
             auto j = elem.first;
             const auto &S = elem.second;
             hit[j] = hit[j] && S.size() > i && S[i] == prefix_cand[i];
             if (S.size() > i) {
-                S_.erase({i, S});
+                to_be_deleted.emplace_back(i, S);
             }
             if (A_.find(j) == A_.end()) {
                 if (hit[j]) {
@@ -849,6 +851,9 @@ void body() {
                     break;
                 }
             }
+        }
+        EACH (d, to_be_deleted) {
+            S_.erase(d);
         }
 
         if (f) {
