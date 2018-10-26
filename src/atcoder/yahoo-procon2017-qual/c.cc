@@ -822,14 +822,23 @@ void body() {
     }
 
     auto A_ = OrderedSet<i64>(CTR(As));
+    auto S_ = OrderedSet<std::pair<size_t, string>>();
+    REP (i, N) {
+        S.emplace(i, Ss[i]);
+    }
 
     auto prefix_cand = Ss[As.front()];
     Vector<bool> hit(N, true);
     REP (i, prefix_cand.size()) {
         bool f = true;
         // 検索ワードにprefix_cand[i]を追加する
-        REP (j, N) {
-            hit[j] = hit[j] && Ss[j].size() > i && Ss[j][i] == prefix_cand[i];
+        EACH (elem, S_) {
+            auto j = elem.first;
+            const auto &S = elem.second;
+            hit[j] = hit[j] && S.size() > i && Ss[i] == prefix_cand[i];
+            if (S.size() > i) {
+                S_.erase({i, S});
+            }
             if (A_.find(j) == A_.end()) {
                 if (hit[j]) {
                     f = false;
@@ -837,6 +846,7 @@ void body() {
             } else {
                 if (!hit[j]) {
                     f = false;
+                    break;
                 }
             }
         }
