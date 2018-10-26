@@ -821,52 +821,63 @@ void body() {
         return ;
     }
 
+    auto hit = Vector<string>();
+    auto exclude = HashSet<string>();
     auto A_ = OrderedSet<i64>(CTR(As));
-    auto S_ = OrderedSet<std::pair<size_t, string>>();
     REP (i, N) {
-        S_.emplace(i, Ss[i]);
+        if (A_.find(i) == A_.end()) {
+            exclude.insert(Ss[i]);
+        } else {
+            hit.push_back(Ss[i]);
+        }
     }
 
-    auto prefix_cand = Ss[As.front()];
-    Vector<bool> hit(N, true);
-    REP (i, prefix_cand.size()) {
+    auto min_length = hit.front().size();
+    FOR (i, 1, hit.size()) {
+        min_length = std::min(min_length, hit[i].size());
+    }
+
+    string prefix = "";
+    REP (i, min_length) {
+        auto c = hit.front[i];
         bool f = true;
-        bool f2 = false;
-        // 検索ワードにprefix_cand[i]を追加する
-        vector<pair<size_t, string>> to_be_deleted;
-        to_be_deleted.reserve(S_.size());
-        EACH (elem, S_) {
-            auto j = elem.first;
-            const auto &S = elem.second;
-            hit[j] = hit[j] && S.size() > i && S[i] == prefix_cand[i];
-            if (S.size() <= i) {
-                to_be_deleted.emplace_back(i, S);
+        FOR (j, 1, hit.size()) {
+            if (hit[j][i] != c) {
+                f = false;
+                break;
             }
-            if (A_.find(j) == A_.end()) {
-                if (hit[j]) {
-                    f = false;
-                } else {
-                    to_be_deleted.emplace_back(i, S);
-                }
-            } else {
-                if (!hit[j]) {
-                    f = false;
-                    f2 = true;
-                    break;
-                }
-            }
-        }
-        if (f2) {
-            break ;
-        }
-        EACH (d, to_be_deleted) {
-            S_.erase(d);
         }
 
-        if (f) {
-            cout << prefix_cand.substr(0, i + 1) << endl;
-            return;
+        if (!f) {
+            break;
+        }
+        prefix += c;
+    }
+
+    Vector<string> d;
+    d.reserve(exclude.size());
+    REP (i, prefix.size()) {
+        d.clear();
+        EACH (S, exclude) {
+            if (S.size() >= i) {
+                d.push_back(S);
+                continue;
+            }
+            if (S[i] != prefix[i]) {
+                d.push_back(S);
+                continue;
+            }
+        }
+
+        EACH (S, d) {
+            exclude.erase(S);
+        }
+
+        if (exclude.empty()) {
+            cout << prefix.substr(0, i + 1) << endl;
+            return ;
         }
     }
+
     cout << -1 << endl;
 }
