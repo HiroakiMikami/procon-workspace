@@ -832,7 +832,6 @@ void body() {
         vector<pair<size_t, string>> to_be_deleted;
         to_be_deleted.reserve(S_.size());
         REP (j, N) {
-            auto j = elem.first;
             const auto &S = Ss[j];
             hit[j] = hit[j] && S.size() > i && S[i] == prefix_cand[i];
             if (A_.find(j) == A_.end()) {
