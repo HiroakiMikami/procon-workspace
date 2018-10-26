@@ -835,7 +835,7 @@ void body() {
         EACH (elem, S_) {
             auto j = elem.first;
             const auto &S = elem.second;
-            hit[j] = hit[j] && S.size() > i && Ss[i] == prefix_cand[i];
+            hit[j] = hit[j] && S.size() > i && S[i] == prefix_cand[i];
             if (S.size() > i) {
                 S_.erase({i, S});
             }
