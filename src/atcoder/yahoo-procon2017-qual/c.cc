@@ -1,13 +1,17 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
-TLE false
+URL https://beta.atcoder.jp/contests/yahoo-procon2017-qual/tasks/yahoo_procon2017_qual_c
+SCORE 400
+AC true
+WA true
+TLE true
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 文字列 prefix 接頭辞
+FAILURE_TYPE 考察不足
 NOTES
+1文字ずつ検索ワードの長さを増やしながら条件を満たすか判定したら、O(sum |Si|)で終わると
+考えていたが、長いテストケースでTLEした。
+おそらく、検索ワードより短い文字列に対するループにより、O(max(|Si|)N)みたいな計算量になったためと思われる。
+出したいサイトの共通接頭辞を最初に求めたところ、除くべきサイトだけを考えてループを回せるようになり高速化できてAC
 */
 #include <iostream>
 #include <cstdint>
