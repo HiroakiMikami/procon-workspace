@@ -845,5 +845,7 @@ void body() {
     i64 ans = S.size(); // 全部削除して空文字にする場合
     ans = std::min(ans, dp[S.size()][4]);
 
+    dump(as_map(dp));
+
     cout << ans << endl;
 }
