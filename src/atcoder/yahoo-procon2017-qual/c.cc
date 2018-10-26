@@ -824,7 +824,7 @@ void body() {
     auto A_ = OrderedSet<i64>(CTR(As));
     auto S_ = OrderedSet<std::pair<size_t, string>>();
     REP (i, N) {
-        S.emplace(i, Ss[i]);
+        S_.emplace(i, Ss[i]);
     }
 
     auto prefix_cand = Ss[As.front()];
