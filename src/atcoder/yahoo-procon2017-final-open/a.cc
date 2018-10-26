@@ -813,31 +813,36 @@ void body() {
     auto S = read<string>();
 
     // dp[i][j] := i文字目までを使い、(yahoo)*"yahoo"[0..j]を作るための最小操作回数
-    auto dp = make_matrix<i64, 2>({S.size() + 1, 5}, 0);
+    auto dp = make_matrix<i64, 2>({S.size() + 1, 5}, -1);
     REP (j, 5) {
         dp[0][j] = (j + 1) % 5;
     }
     auto yahoo = "yahoo";
 
     FOR (i, 1, S.size() + 1) {
-        REP (j, 5) {
-            // dp[i][j]の更新
-            /*
-             * 可能性
-             * s = "yahoo"[j-1], t = "yahoo"][j]とする
-             * 1) i文字目まででtで、i+1文字目は削除して条件を満たす
-             * 2) i+1文字目まででsで、tを追加して条件を満たす
-             * 3) i文字目まででsで、i+1文字目をtとreplace or そのまま追加して条件を満たす
-             */
-            auto j2 = (j == 0) ? 4 : j - 1;
-            dp[i][j] = dp[i - 1][j] + 1;
-            dp[i][j] = std::min(dp[i][j], dp[i][j2] + 1);
-            if (S[i - 1] == yahoo[j]) {
-                // そのままで良い
-                dp[i][j] = std::min(dp[i][j], dp[i - 1][j2]);
-            } else {
-                // replaceが必要
-                dp[i][j] = std::min(dp[i][j], dp[i - 1][j2] + 1);
+        REP (_, 2) {
+            // yとoが繋がっているので2週して収束させる
+            REP (j, 5) {
+                // dp[i][j]の更新
+                /*
+                 * 可能性
+                 * s = "yahoo"[j-1], t = "yahoo"][j]とする
+                 * 1) i文字目まででtで、i+1文字目は削除して条件を満たす
+                 * 2) i+1文字目まででsで、tを追加して条件を満たす
+                 * 3) i文字目まででsで、i+1文字目をtとreplace or そのまま追加して条件を満たす
+                 */
+                auto j2 = (j == 0) ? 4 : j - 1;
+                dp[i][j] = dp[i - 1][j] + 1;
+                if (dp[i][j2] >= 0) {
+                    dp[i][j] = std::min(dp[i][j], dp[i][j2] + 1);
+                    if (S[i - 1] == yahoo[j]) {
+                        // そのままで良い
+                        dp[i][j] = std::min(dp[i][j], dp[i - 1][j2]);
+                    } else {
+                        // replaceが必要
+                        dp[i][j] = std::min(dp[i][j], dp[i - 1][j2] + 1);
+                    }
+                }
             }
         }
     }
