@@ -831,6 +831,7 @@ void body() {
     Vector<bool> hit(N, true);
     REP (i, prefix_cand.size()) {
         bool f = true;
+        bool f2 = false;
         // 検索ワードにprefix_cand[i]を追加する
         vector<pair<size_t, string>> to_be_deleted;
         to_be_deleted.reserve(S_.size());
@@ -848,9 +849,13 @@ void body() {
             } else {
                 if (!hit[j]) {
                     f = false;
+                    f2 = true;
                     break;
                 }
             }
+        }
+        if (f2) {
+            break ;
         }
         EACH (d, to_be_deleted) {
             S_.erase(d);
