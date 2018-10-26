@@ -815,7 +815,7 @@ void body() {
     // dp[i][j] := i文字目までを使い、(yahoo)*"yahoo"[0..j]を作るための最小操作回数
     auto dp = make_matrix<i64, 2>({S.size() + 1, 5}, 0);
     REP (j, 5) {
-        dp[0][j] = j + 1 % 5;
+        dp[0][j] = (j + 1) % 5;
     }
     auto yahoo = "yahoo";
 
