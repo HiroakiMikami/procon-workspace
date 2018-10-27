@@ -816,10 +816,11 @@ void body() {
     sort(CTR(As));
     auto A = std::deque<i64>(CTR(As));
 
-    auto ans = std::deque<i64>();
+    auto ans = std::deque<pair<bool, i64>>();
 
     REP (i, N) {
         auto x = (i % 2 == 0) ? A.front() : A.back();
+        bool flag = i % 2 == 0;
         if (i % 2 == 0) {
             A.pop_front();
         } else {
@@ -827,12 +828,20 @@ void body() {
         }
 
         if (ans.empty()) {
-            ans.push_front(x);
+            ans.push_front({flag, x});
         } else {
-            if (std::abs(ans.front() - x) >= std::abs(ans.back() - x)) {
-                ans.push_front(x);
+            if (ans.front().first == flag) {
+                ans.push_back({flag, x});
+                continue ;
+            }
+            if (ans.back().first == flag) {
+                ans.push_front({flag, x});
+                continue;
+            }
+            if (std::abs(ans.front().second - x) > std::abs(ans.back().second - x)) {
+                ans.push_front({flag, x});
             } else {
-                ans.push_back(x);
+                ans.push_back({flag, x});
             }
         }
     }
