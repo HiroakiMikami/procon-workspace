@@ -880,7 +880,6 @@ void body() {
             t[i].first += 1;
         }
     }
-    dump(as_map(t));
 
     i64 ans = std::numeric_limits<i64>::max();
     REP (i, S.size()) {
