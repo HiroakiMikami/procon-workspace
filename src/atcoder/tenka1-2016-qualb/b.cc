@@ -863,6 +863,8 @@ void body() {
                 }
             }
         }
+        dump(i);
+        dump(as_map(dp[i]));
     }
 
     auto t = Vector<i64>(S.size() + 1, 0); // t[i] := S[i...]で対応が取れていない")"の数
