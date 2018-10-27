@@ -1,6 +1,6 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/tenka1-2016-qualb/tasks/tenka1_2016_qualB_b
+SCORE 400
 AC false
 WA false
 TLE false
@@ -8,6 +8,7 @@ MLE false
 TASK_TYPE
 FAILURE_TYPE
 NOTES
+Notes(2018/10/27):utilの問題でサンプルの取得ができなかった。
 */
 #include <iostream>
 #include <cstdint>
