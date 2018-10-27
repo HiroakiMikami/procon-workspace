@@ -817,7 +817,6 @@ void body() {
     auto A = std::deque<i64>(CTR(As));
 
     auto ans = std::deque<i64>();
-    ans.reserve(N);
 
     REP (i, N) {
         auto x = (i % 2 == 0) ? A.front() : A.back();
