@@ -836,7 +836,7 @@ void body() {
             }
         }
     }
-    auto x = Vector(CTR(ans));
+    auto x = Vector<i64>(CTR(ans));
     dump(as_map(x));
 
     i64 a = 0;
