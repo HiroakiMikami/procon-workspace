@@ -1,13 +1,17 @@
 /*
 URL https://beta.atcoder.jp/contests/tenka1-2016-qualb/tasks/tenka1_2016_qualB_b
 SCORE 400
-AC false
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE DP 累積和
 FAILURE_TYPE
 NOTES
+括弧が対応付できれば大丈夫かどうか確証はなかった（証明はしていない）が、それ以外は比較的単純だった。
+|S|=100だし、O(|S|^2)かO(|S|^3)のDPだろうという予測通り。
+最後の答えを出す部分で若干苦労したが、その程度。
+
 Notes(2018/10/27):utilの問題でサンプルの取得ができなかった。
 */
 #include <iostream>
