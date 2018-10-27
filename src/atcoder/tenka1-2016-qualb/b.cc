@@ -867,20 +867,26 @@ void body() {
         dump(as_map(dp[i]));
     }
 
-    auto t = Vector<i64>(S.size() + 1, 0); // t[i] := S[i...]で対応が取れていない")"の数
+    auto t = Vector<pair<i64, i64>>(S.size() + 1); // t[i] := S[i...]で対応が取れていない")"の数, "("の数
     REPR (i, S.size()) {
+        t[i] = t[i + 1];
         if (S[i] == '(') {
-            t[i] = std::max<i64>(0, t[i + 1] - 1);
+            if (t[i].first > 0) {
+                t[i].first -= 1;
+            } else {
+                t[i].second += 1;
+            }
         } else {
-            t[i] = t[i + 1] + 1;
+            t[i].first += 1;
         }
     }
     dump(as_map(t));
 
     i64 ans = std::numeric_limits<i64>::max();
     REP (i, S.size()) {
-        if (t[i + 1] >= 0 && t[i + 1] < S.size() && dp[i][t[i + 1]] >= 0) {
-            ans = std::min(ans, dp[i][t[i + 1]]);
+        if (t[i + 1].second != 0) continue;
+        if (t[i + 1].first >= 0 && t[i + 1].first < S.size() && dp[i][t[i + 1].first] >= 0) {
+            ans = std::min(ans, dp[i][t[i + 1].first]);
         }
     }
     cout << ans << endl;
