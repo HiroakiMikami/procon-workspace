@@ -868,7 +868,7 @@ void body() {
     auto t = Vector<i64>(S.size() + 1, 0); // t[i] := S[i...]で対応が取れていない")"の数
     REPR (i, S.size()) {
         if (S[i] == '(') {
-            t[i] = t[i + 1] - 1;
+            t[i] = std::max<i64>(0, t[i + 1] - 1);
         } else {
             t[i] = t[i + 1] + 1;
         }
