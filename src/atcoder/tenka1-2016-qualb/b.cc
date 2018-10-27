@@ -863,8 +863,6 @@ void body() {
                 }
             }
         }
-        dump(i);
-        dump(as_map(dp[i]));
     }
 
     auto t = Vector<pair<i64, i64>>(S.size() + 1); // t[i] := S[i...]で対応が取れていない")"の数, "("の数
