@@ -850,9 +850,9 @@ void body() {
 
     i64 a = 0;
     REP (i, N - 1) {
-        auto x1 = ans.front();
+        auto x1 = ans.front().second;
         ans.pop_front();
-        auto x2 = ans.front();
+        auto x2 = ans.front().second;
         a += std::abs(x1 - x2);
     }
     cout << a << endl;
