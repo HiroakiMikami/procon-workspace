@@ -879,8 +879,8 @@ void body() {
 
     i64 ans = std::numeric_limits<i64>::max();
     REP (i, S.size()) {
-        if (t[i] >= 0 && t[i] < S.size() && dp[i][t[i]] >= 0) {
-            ans = std::min(ans, dp[i][t[i]]);
+        if (t[i + 1] >= 0 && t[i + 1] < S.size() && dp[i][t[i + 1]] >= 0) {
+            ans = std::min(ans, dp[i][t[i + 1]]);
         }
     }
     cout << ans << endl;
