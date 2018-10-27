@@ -845,8 +845,7 @@ void body() {
             }
         }
     }
-    auto x = Vector<i64>(CTR(ans));
-    dump(as_map(x));
+
 
     i64 a = 0;
     REP (i, N - 1) {
