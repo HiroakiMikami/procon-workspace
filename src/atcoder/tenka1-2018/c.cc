@@ -829,7 +829,7 @@ void body() {
         if (ans.empty()) {
             ans.push_front(x);
         } else {
-            if (std::abs(ans.front() - x) > std::abs(ans.back() - x)) {
+            if (std::abs(ans.front() - x) >= std::abs(ans.back() - x)) {
                 ans.push_front(x);
             } else {
                 ans.push_back(x);
