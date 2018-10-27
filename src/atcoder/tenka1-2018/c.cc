@@ -830,14 +830,6 @@ void body() {
         if (ans.empty()) {
             ans.push_front({flag, x});
         } else {
-            if (ans.front().first == flag) {
-                ans.push_back({flag, x});
-                continue ;
-            }
-            if (ans.back().first == flag) {
-                ans.push_front({flag, x});
-                continue;
-            }
             if (std::abs(ans.front().second - x) > std::abs(ans.back().second - x)) {
                 ans.push_front({flag, x});
             } else {
