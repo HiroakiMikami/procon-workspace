@@ -829,6 +829,7 @@ void body() {
         auto a = A[i].second;
         i64 r = 4 - a;
         while (r > 0) {
+            dump(i, r);
             bool flag = false;
             REPR (j, r + 1) {
                 // 同時に案内することができるか確認
