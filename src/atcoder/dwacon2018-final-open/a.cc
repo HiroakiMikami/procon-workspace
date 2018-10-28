@@ -836,7 +836,7 @@ void body() {
      * 6M+S/10 [degree]
      *
      * ・秒針の位置
-     * 6S[degree] ※ ここが嘘なので、min_1, max_1がおかしい
+     * 6S[degree]
      */
 
     /* 分針と秒針について考える。
@@ -858,6 +858,7 @@ void body() {
      */
     i64 min_1, max_1;
     auto X = 60*M - 50*S;
+    dump(X);
     if (X < 0) {
         X += 3600;
     }
