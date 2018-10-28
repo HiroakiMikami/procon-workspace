@@ -921,6 +921,9 @@ void body() {
         }
     }
 
+    dump(min_1, max_1);
+    dump(min_2, max_2);
+
     auto m1 = std::max(min_1, min_2);
     auto m2 = std::min(max_1, max_2);
     if (m1 > m2) {
