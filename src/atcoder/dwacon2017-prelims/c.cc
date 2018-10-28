@@ -841,11 +841,12 @@ void body() {
                     A[x].first = false;
                     flag = true;
                     dump(i, j, As[x]);
+                    break;
                 }
             }
 
             if (!flag) {
-                continue;
+                break ;
             }
         }
         ans += 1;
