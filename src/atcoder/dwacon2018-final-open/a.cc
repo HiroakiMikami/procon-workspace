@@ -861,8 +861,6 @@ void body() {
     if (X < 0) {
         X += 3600;
     }
-    dump(X);
-    dump(X/3599.0);
     if (C1 == 0) {
         min_1 = 0;
         if (X % 59 == 0) {
@@ -925,9 +923,6 @@ void body() {
             max_2 = x / 11;
         }
     }
-
-    dump(min_1, max_1);
-    dump(min_2, max_2);
 
     auto m1 = std::max(min_1, min_2);
     auto m2 = std::min(max_1, max_2);
