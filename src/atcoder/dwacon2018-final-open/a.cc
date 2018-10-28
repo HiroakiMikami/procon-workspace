@@ -861,6 +861,7 @@ void body() {
     if (X < 0) {
         X += 3600;
     }
+    dump(X);
     dump(X/3599.0);
     if (C1 == 0) {
         min_1 = 0;
