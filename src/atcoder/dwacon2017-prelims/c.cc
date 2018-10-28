@@ -5,9 +5,12 @@ AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 最大化・最小化
 FAILURE_TYPE
 NOTES
+考察した結果として、詰められるだけ詰めておけばOKそうだったのでそのとおり実装したら通った。
+詰めるときには大きいグループから詰めていくと後ろで空きが発生しにくい。
+同じ人数のグループ間の順序を無視して詰めても最小になることの証明はできていない。
 */
 #include <iostream>
 #include <cstdint>
@@ -829,7 +832,6 @@ void body() {
         auto a = A[i].second;
         i64 r = 4 - a;
         while (r > 0) {
-            dump(i, r);
             bool flag = false;
             REPR (j, r + 1) {
                 // 同時に案内することができるか確認
@@ -840,7 +842,6 @@ void body() {
                     occur[j].pop();
                     A[x].first = false;
                     flag = true;
-                    dump(i, j, As[x]);
                     break;
                 }
             }
