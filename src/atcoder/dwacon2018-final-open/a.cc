@@ -858,10 +858,10 @@ void body() {
      */
     i64 min_1, max_1;
     auto X = 60*M - 50*S;
-    dump(X);
     if (X < 0) {
         X += 3600;
     }
+    dump(X/3599.0);
     if (C1 == 0) {
         min_1 = 0;
         if (X % 3599 == 0) {
