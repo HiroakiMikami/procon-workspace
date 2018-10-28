@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/dwacon2018-final-open/tasks/dwacon2018_final_a
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 場合分け
+FAILURE_TYPE 考察不足
 NOTES
+ただただ実装が面倒だったし、秒針の挙動を間違って実装ミスったりといろいろあったが、問題としてはやるだけだった。
 */
 #include <iostream>
 #include <cstdint>
