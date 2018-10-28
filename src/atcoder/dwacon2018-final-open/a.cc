@@ -921,11 +921,11 @@ void body() {
         }
     }
 
-    auto m = std::max(min_1, min_2);
-    auto M = std::min(max_1, max_2);
-    if (m > M) {
+    auto m1 = std::max(min_1, min_2);
+    auto m2 = std::min(max_1, max_2);
+    if (m1 > m2) {
         cout << "-1" << endl;
     } else {
-        cout << m << " " << M << endl;
+        cout << m1 << " " << m2 << endl;
     }
 }
