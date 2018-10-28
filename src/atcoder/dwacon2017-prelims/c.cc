@@ -826,8 +826,8 @@ void body() {
         A[i].first = false;
         occur[A[i].second].pop();
 
-        auto A = A[i].second;
-        i64 r = 4 - A;
+        auto a = A[i].second;
+        i64 r = 4 - a;
         while (r > 0) {
             bool flag = false;
             REPR (j, r + 1) {
