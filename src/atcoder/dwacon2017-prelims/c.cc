@@ -833,6 +833,7 @@ void body() {
             REPR (j, r + 1) {
                 // 同時に案内することができるか確認
                 if (!occur[j].empty()) {
+                    dump(i, j);
                     // できる
                     r -= j;
                     auto x = occur[j].front();
