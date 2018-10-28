@@ -824,7 +824,7 @@ void body() {
             continue ;
         }
         A[i].first = false;
-        occur[A[i]].pop();
+        occur[A[i].second].pop();
 
         auto A = A[i].second;
         i64 r = 4 - A;
