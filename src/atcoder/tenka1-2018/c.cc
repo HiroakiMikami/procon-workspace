@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/tenka1-2018/tasks/tenka1_2018_c
+SCORE 400
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 最大化・最小化 数列 構成
+FAILURE_TYPE 考察力不足
 NOTES
+なんかそれっぽい解法を書いたら通ってしまった感じがある。数列の構成方法を作ることにこだらわず、絶対値を外した式に変えていれば
+もう少し確証をもって解けたかも。
 */
 #include <iostream>
 #include <cstdint>

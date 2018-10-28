@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/tenka1-2018/tasks/tenka1_2018_d
+SCORE 500
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 組み合わせ
 FAILURE_TYPE
 NOTES
+条件の考察がすごいスムーズにできた。
 */
 #include <iostream>
 #include <cstdint>
@@ -812,6 +813,7 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
 
+    // N = 1の時、若干特殊な気がするので場合分け
     if (N == 1) {
         cout << "Yes" << "\n"
              << 2 << "\n"
@@ -820,6 +822,18 @@ void body() {
         return;
     }
 
+    /*
+     * a = Si \intersect Sj = Sp \intersect Sq (i != j, p != q, (i, j) != (p, q))
+     * の時、aがSi, Sj, Sp, Sqに含まれるので、少なくとも3つ含まれてしまい、条件を満たさない。
+     * すなわち、Si \intersect Sj != Sp \intersect Sq
+     *
+     * ここで、kをSiの数とすると、共通部分のとり方はkC2通りあり、これらすべてが違う値になる必要があるので、kC2 <= N
+     * また、kC2 < Nの時、kC2個の数字は2個ずつ含むことができるが、
+     * その他の数字（どの共通部分にも現れない数字）は1つしか登場しないので、条件を見たさない。
+     * したがって、kC2 = N
+     *
+     * kの値が決まれば、各共通部分に別々の数字を割り振ってそこから各Siを求めれば良い。
+     */
     // Siの数kは、kC2 = Nを満たす必要がある
     // k <= Nより全探索しても間に合う
     i64 k = -1;
