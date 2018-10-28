@@ -833,13 +833,13 @@ void body() {
             REPR (j, r + 1) {
                 // 同時に案内することができるか確認
                 if (!occur[j].empty()) {
-                    dump(i, j);
                     // できる
                     r -= j;
                     auto x = occur[j].front();
                     occur[j].pop();
                     A[x].first = false;
                     flag = true;
+                    dump(i, j, As[x]);
                 }
             }
 
