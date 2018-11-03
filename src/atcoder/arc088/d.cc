@@ -820,7 +820,7 @@ void body() {
      */
 
     i64 ans = 0;
-    FOR (i, 1, S.size()) {
+    FOR (i, 1, S.size() + 1) {
         auto begin = S.size() - i;
         auto end = i - 1;
         if (begin > end) {
