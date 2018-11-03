@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/arc088/tasks/arc088_b
+SCORE 500
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 構成 最大化・最小化
+FAILURE_TYPE 考察速度不足 コーナーケース処理
 NOTES
+答えが|S|の場合を考えていたはずなのに、forの条件を間違えた
 */
 #include <iostream>
 #include <cstdint>
