@@ -817,7 +817,7 @@ void body() {
     Vector<Vector<pair<i64, i64>>> t(N);
     REP (i, M) {
         auto PY = PYs[i];
-        t[PY.first].emplace(PY.second, i);
+        t[PY.first].push_back(make_pair(PY.second, i));
     }
     REP (i, N) {
         sort(CTR(t[i]));
