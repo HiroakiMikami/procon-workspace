@@ -1,12 +1,12 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc113/tasks/abc113_d
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE mod 数え上げ DP bit操作
+FAILURE_TYPE 実装力不足
 NOTES
 */
 #include <iostream>

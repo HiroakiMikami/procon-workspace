@@ -1,12 +1,12 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc113/tasks/abc113_c
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE ソート
+FAILURE_TYPE C++知識
 NOTES
 */
 #include <iostream>
