@@ -1103,6 +1103,7 @@ void body() {
     REP (i, 1 << (W - 1)) {
         if (is_valid(i)) {
             valids.push_back(i);
+            dump(i);
         }
     }
 
