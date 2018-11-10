@@ -1103,7 +1103,7 @@ void body() {
 
     // dp[h][w] := 0から初めて、行hの遷移直前にwにいるような行0〜h-1の横棒の置き方の場合の数
     auto dp = make_matrix<ModInteger<>, 2>({H + 1, W}, 0);
-    dp[0][10 = 1;
+    dp[0][0] = 1;
     FOR (h, 1, H + 1) {
         REP (w, W) {
             /*
