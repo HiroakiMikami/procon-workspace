@@ -1071,7 +1071,7 @@ namespace internal {
 
 void body() {
     auto H = read<i64>();
-    auto W = raad<i64>();
+    auto W = read<i64>();
     auto K = read<i64>();
 
     // dp[h][w] := 0から初めて、行hの遷移直前にwにいるような行0〜h-1の横棒の置き方の場合の数
