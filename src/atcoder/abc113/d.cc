@@ -1123,7 +1123,6 @@ void body() {
                  *    w
                  */
                 if (w == 0 && !b[w]) {
-                    dump(h, w, dp[h-1][w].get(),  b.count());
                     dp[h][w] += dp[h - 1][w];
                 } else if (w == W - 1 && !b[w - 1]) {
                     dp[h][w] += dp[h - 1][w];
