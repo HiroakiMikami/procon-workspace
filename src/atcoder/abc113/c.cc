@@ -817,7 +817,7 @@ void body() {
     Vector<Vector<pair<i64, i64>>> t(N);
     REP (i, M) {
         auto PY = PYs[i];
-        t[PY.first].push_back(make_pair(PY.second, i));
+        t[PY.first - 1].push_back(make_pair(PY.second - 1, i));
     }
     REP (i, N) {
         sort(CTR(t[i]));
@@ -831,7 +831,7 @@ void body() {
     }
 
     REP (i, M) {
-        cout << std::setfill('0') << std::right << std::setw(6) << ans[i].first
-             << std::setfill('0') << std::right << std::setw(6) << ans[i].second << endl;
+        cout << std::setfill('0') << std::right << std::setw(6) << (ans[i].first + 1)
+             << std::setfill('0') << std::right << std::setw(6) << (ans[i].second + 1) << endl;
     }
 }
