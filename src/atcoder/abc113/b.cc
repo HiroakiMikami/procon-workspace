@@ -828,5 +828,5 @@ void body() {
            ans = i;
        }
     }
-    cout << i << endl;
+    cout << ans << endl;
 }
