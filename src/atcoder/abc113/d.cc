@@ -1075,7 +1075,7 @@ void body() {
     auto K = read<i64>();
 
     // dp[h][w] := 0から初めて、行hの遷移直前にwにいるような行0〜h-1の横棒の置き方の場合の数
-    auto dp = make_matrix<ModInteger, 2>({H, W}, ModInteger(0));
+    auto dp = make_matrix<ModInteger, 2>({H, W}, 0);
     dp[0][1] = 1;
 
     auto is_valid = [&](const std::bitset<8> &e) {
@@ -1106,7 +1106,7 @@ void body() {
         }
     }
 
-    FOR (h, i, H) {
+    FOR (h, 1, H) {
         REP (w, W) {
             /*
              * 行hの遷移直前にwにいるためには、
