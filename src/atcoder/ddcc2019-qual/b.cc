@@ -826,11 +826,11 @@ void body() {
         auto x = 1.5;
         while (x <= N / 2.0) {
             auto y = -x + N / 2.0;
-            ans += y;
+            ans += y * 4;
 
             x += 1;
         }
-        cout << 4 * ans << endl;
+        cout << ans << endl;
     }
 
 
