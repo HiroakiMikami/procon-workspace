@@ -821,7 +821,9 @@ void body() {
         cout << 4 * ans << endl;
     } else {
         i64 ans = 0;
-        auto x = 0.5;
+        auto t = (N - 1) / 2;
+        ans += 4 * t - 1;
+        auto x = 1.5;
         while (x <= N / 2.0) {
             auto y = -x + N / 2.0;
             ans += y;
