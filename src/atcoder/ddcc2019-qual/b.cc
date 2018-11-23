@@ -822,6 +822,7 @@ void body() {
     } else {
         i64 ans = 0;
         auto t = (N - 1) / 2;
+        dump(t);
         ans += 4 * t - 1;
         auto x = 1.5;
         while (x <= N / 2.0) {
