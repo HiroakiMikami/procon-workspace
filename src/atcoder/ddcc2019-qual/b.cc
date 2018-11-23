@@ -823,7 +823,7 @@ void body() {
         i64 ans = 0;
         auto x = 0.5;
         while (x <= N / 2.0) {
-            auto y = -x + N;
+            auto y = -x + N / 2;
             ans += y;
 
             x += 1;
