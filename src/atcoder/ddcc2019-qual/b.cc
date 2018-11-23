@@ -825,7 +825,7 @@ void body() {
         ans += 4 * t - 1;
         auto x = 1.5;
         while (x <= N / 2.0) {
-            auto y = -x + N / 2.0;
+            i64 y = -x + N / 2.0;
             dump(x, y);
             if (y == 0) {
                 ans += int(y) * 4 - 2;
