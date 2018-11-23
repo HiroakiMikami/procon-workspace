@@ -827,7 +827,7 @@ void body() {
         while (x <= N / 2.0) {
             i64 y = -x + N / 2.0;
             dump(x, y);
-            if (y == 0) {
+            if (y != 0) {
                 ans += int(y) * 4 - 2;
             }
 
