@@ -821,12 +821,12 @@ void body() {
         cout << 4 * ans << endl;
     } else {
         i64 ans = 0;
-        auto x = 1;
-        while (x <= N) {
-            auto y = -2 * x + N;
-            ans += (y / 2);
+        auto x = 0.5;
+        while (x <= N / 2.0) {
+            auto y = -x + N;
+            ans += y;
 
-            x += 2;
+            x += 1;
         }
         cout << 4 * ans << endl;
     }
