@@ -827,7 +827,9 @@ void body() {
         while (x <= N / 2.0) {
             auto y = -x + N / 2.0;
             dump(x, y);
-            ans += int(y) * 4 - 2;
+            if (y == 0) {
+                ans += int(y) * 4 - 2;
+            }
 
             x += 1;
         }
