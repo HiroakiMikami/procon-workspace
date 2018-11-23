@@ -944,7 +944,7 @@ static pair<Vector<i64>, Vector<bool>> sieve(i64 n) {
 void body() {
     auto as = read<i64>(30);
     Vector<int> x(30);
-    FOR (i, 30) {
+    REP (i, 30) {
         x[i] = i + 1;
     }
     dump(lcm_ctr(CTR(x)));
