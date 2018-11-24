@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/ddcc2019-qual/tasks/ddcc2018_qual_d
+SCORE 700
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 整数 中国剰余定理
+FAILURE_TYPE 知識不足 考察力不足
 NOTES
+NのP進数での桁の和がa => N = a (mod P-1)に気づけなかったし、そこから中国剰余定理も知らなかった。
 */
 #include <iostream>
 #include <cstdint>

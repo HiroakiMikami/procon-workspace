@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/ddcc2019-qual/tasks/ddcc2018_qual_c
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 全探索 mod 数え上げ
 FAILURE_TYPE
 NOTES
+P_max*Q_maxだけ考えれば良いことに気づけばあとはやるだけで終わった
 */
 #include <iostream>
 #include <cstdint>

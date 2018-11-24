@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/ddcc2019-qual/tasks/ddcc2018_qual_b
+SCORE 200
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 基本
+FAILURE_TYPE 実装速度不足
 NOTES
+小数点使わないようにしようとしてミスったり、しょうもないミスを連発した。
 */
 #include <iostream>
 #include <cstdint>
@@ -826,7 +827,6 @@ void body() {
         auto x = 1.5;
         while (x <= N / 2.0) {
             i64 y = -x + N / 2.0;
-            dump(x, y);
             if (y != 0) {
                 ans += int(y) * 4 - 2;
             }
