@@ -813,6 +813,10 @@ int main (int argc, char **argv) {
 #include "common.cc"
 #endif
 
+static i64 mod(i64 a, i64 m) {
+    return (a % m + m) % m;
+}
+
 /*
  * n^r
  */
@@ -851,6 +855,27 @@ static i64 gcd_ctr(const Iterator &begin, const Iterator &end) {
 
 static i64 gcd_ctr(const Vector<i64> &xs) {
     return gcd_ctr(xs.begin(), xs.end());
+}
+
+
+
+/*
+ * a * get<0>(r) + b * get<1>(r) = get<2>(r), get<2>(r) = gcd(a, b)
+ */
+static tuple<i64, i64, i64> ext_gcd(i64 a, i64 b) {
+    auto ext_gcd_ = [](i64 a, i64 b, i64& p, i64 &q, auto f) -> i64 {
+        if (b == 0) {
+            p = 1;
+            q = 0;
+            return a;
+        }
+        i64 d = f(b, a % b, q, p, f);
+        q -= a / b * p;
+        return d;
+    };
+    i64 p = 0, q = 0;
+    auto d = ext_gcd_(a, b, p, q, ext_gcd_);
+    return make_tuple(p, q, d);
 }
 
 static i64 lcm(i64 a, i64 b) {
@@ -940,12 +965,66 @@ static pair<Vector<i64>, Vector<bool>> sieve(i64 n) {
     return {prime, is_prime_};
 }
 
+/*
+ * x = b1 (mod m1)
+ * x = b2 (mod m2)
+ * => x = r.first (mod r.second) (r is a return value)
+ */
+static std::experimental::optional<pair<i64, i64>> chinese_rem(i64 b1, i64 m1, i64 b2, i64 m2) {
+    auto elem = ext_gcd(m1, m2);
+    auto p = get<0>(elem);
+    auto d = get<2>(elem);
+    if ((b2 - b1) % d != 0) return {};
+
+    i64 m = m1 * (m2 / d); //< lcm(m1, m2)
+    i64 r = mod(b1 + m1 * ((b2 - b1) / d * p % (m2 / d)), m);
+    return make_optional(std::make_pair(r, m));
+
+}
+template <typename Iterator1, typename Iterator2>
+static std::experimental::optional<pair<i64, i64>> chinese_rem_ctr(Iterator1 b_begin, Iterator1 b_end, Iterator2 m_begin, Iterator2 m_end) {
+    i64 r = 0, M = 1;
+    auto b = b_begin;
+    auto m = m_begin;
+    for (; b != b_end && m != m_end; ++b, ++m) {
+        auto elem = ext_gcd(M, *m);
+        auto p = get<0>(elem);
+        auto d = get<2>(elem);
+
+        if ((*b - r) % d != 0) return {};
+        r += M * ((*b - r) / d * p % (*m / d));
+        M *= *m / d;
+    }
+    return make_optional(std::make_pair(mod(r, M), M));
+}
+static std::experimental::optional<pair<i64, i64>> chinese_rem_ctr(const Vector<i64> &b, const Vector<i64> &m) {
+    return chinese_rem_ctr<decltype(b.begin()), decltype(m.begin())>(CTR(b), CTR(m));
+}
+
 
 void body() {
-    auto as = read<i64>(30);
-    Vector<i64> x(30);
-    REP (i, 30) {
-        x[i] = i + 1;
+    auto as = read<i64>(29);
+
+    /*
+     * a_i = p => N mod (p - 1) = a_i mod (p - 1)
+     */
+    Vector<i64> b;
+    Vector<i64> m;
+    REP (i, as.size()) {
+        b.push_back(as[i] % (i + 1));
+        m.push_back(i + 1);
     }
-    dump(lcm_ctr(CTR(x)));
+    auto result = chinese_rem_ctr(b, m);
+    if (!result) {
+        cout << "invalid" << endl;
+    } else {
+        auto r = result.value();
+        i64 N = r.first;
+        // TODO
+        if (N > 1e12) {
+            cout << "invalid" << endl;
+        } else {
+            cout << N << endl;
+        }
+    }
 }
