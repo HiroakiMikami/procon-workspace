@@ -1014,12 +1014,35 @@ void body() {
         b.push_back(as[i] % (i + 1));
         m.push_back(i + 1);
     }
-    auto result = chinese_rem_ctr(b, m);
+    auto result = chinese_rem_ctr(b, m); // N = a_i (mod p-1)を満たす候補を見つける
     if (!result) {
         cout << "invalid" << endl;
     } else {
         auto r = result.value();
         i64 N = r.first;
+        while (N <= 1e12) {
+            /* 条件を満たすか確認 */
+            i64 flag = true;
+            REP (i, as.size()) {
+                auto x = i + 2;
+                auto a_ref = 0;
+                auto n = N;
+                while (n != 0) {
+                    a_ref += n % x;
+                    n = n / x;
+                }
+                if (as[i] != a_ref) {
+                    flag = false;
+                    break;
+                }
+            }
+
+            if (flag) {
+                break ;
+            }
+
+            N += r.second;
+        }
         // TODO
         if (N > 1e12) {
             cout << "invalid" << endl;
