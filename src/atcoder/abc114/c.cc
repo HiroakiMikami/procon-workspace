@@ -1016,7 +1016,7 @@ void body() {
         // d桁でrequiredをすべて含む個数（3,5,7からなる）
         auto n = required.size();
         auto c = (d == 3) ? 3 : (d == 2) ? 1 : 0;
-        return pow(n, d) - n * pow(2, d) + c;
+        return std::max<i64>(0, pow(n, d) - n * pow(2, d) + c);
     };
 
     i64 ans = 0;
@@ -1028,7 +1028,6 @@ void body() {
     auto a = [&](int i, auto required, auto ans_) -> i64 {
         dump(xs[i]);
         // [digit+1....i+1]までは最大値をとっている場合の、[i...0]での条件に当てはまる個数
-        i64 retval = 0;
         if (xs[i] == 3) {
             if (i == 0) {
                 // 最後の桁を3にすれば条件を満たす
