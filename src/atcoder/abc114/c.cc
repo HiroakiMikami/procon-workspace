@@ -1025,7 +1025,7 @@ void body() {
         ans += n(i, HashSet<i64>({3, 5, 7}));
     }
 
-    auto a = [&](int i, auto required, auto ans_) {
+    auto a = [&](int i, auto required, auto ans_) -> i64 {
         // [digit+1....i+1]までは最大値をとっている場合の、[i...0]での条件に当てはまる個数
         i64 retval = 0;
         if (xs[i] == 3) {
