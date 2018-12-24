@@ -1022,7 +1022,7 @@ void body() {
     i64 ans = 0;
     /* 最後の桁まで埋まってなければ数え上げるだけ */
     FOR (i, 3, digit + 1) {
-        ans += n(i, UnorderedSet({3, 5, 7}));
+        ans += n(i, UnorderedSet<i64>({3, 5, 7}));
     }
 
     auto a = [&](int i, auto required, auto ans_) {
