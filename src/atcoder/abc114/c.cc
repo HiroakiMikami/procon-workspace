@@ -1001,6 +1001,7 @@ static std::experimental::optional<pair<i64, i64>> chinese_rem_ctr(const Vector<
     return chinese_rem_ctr<decltype(b.begin()), decltype(m.begin())>(CTR(b), CTR(m));
 }
 
+#include <cmath>
 
 void body() {
     auto N = read<i64>();
