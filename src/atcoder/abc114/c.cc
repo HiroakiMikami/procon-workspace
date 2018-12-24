@@ -1078,22 +1078,15 @@ void body() {
 
             }
         } else if (xs[i] > 7){
-            // iに5は必ず置ける
-            if (i == 0) {
-                if (required.empty() || (required.size() == 1 && required.find(7) != required.end())) {
-                    retval += 1;
-                }
-            } else {
-                auto r = required;
-                r.erase(7);
-                retval += n(i, r);
-            }
+            // iに7は必ず置ける
+            auto r = required;
+            r.erase(7);
+            retval += n(i, r);
         }
 
 
         return retval;
     };
-    dump(xs);
     /* 最後の桁が埋まっている場合を検討 */
     HashSet<i64> r({3, 5, 7});
     ans += a(digit, r, a);
