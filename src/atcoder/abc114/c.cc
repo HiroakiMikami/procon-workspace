@@ -1030,7 +1030,6 @@ void body() {
         // [digit+1....i+1]までは最大値をとっている場合の、[i...0]での条件に当てはまる個数
         i64 retval = 0;
         if (xs[i] == 3) {
-            return 0; // iに0, 1, 2しか置けないので終わり
             if (i == 0) {
                 // 最後の桁を3にすれば条件を満たす
                 if (required.empty() || (required.size() == 1 && required.find(3) != required.end())) {
