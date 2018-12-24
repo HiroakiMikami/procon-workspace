@@ -1050,7 +1050,7 @@ void body() {
             } else {
                 auto r = required;
                 r.erase(3);
-                retval += n(i - 1, r);
+                retval += n(i, r);
             }
         }
 
@@ -1075,7 +1075,7 @@ void body() {
             } else {
                 auto r = required;
                 r.erase(5);
-                retval += n(i - 1, r);
+                retval += n(i, r);
             }
         }
         if (xs[i] == 7){
@@ -1099,7 +1099,7 @@ void body() {
             } else {
                 auto r = required;
                 r.erase(7);
-                retval += n(i - 1, r);
+                retval += n(i, r);
             }
         }
 
