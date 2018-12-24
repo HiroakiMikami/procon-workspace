@@ -1106,7 +1106,7 @@ void body() {
 
         return retval;
     };
-
+    dump(xs);
     /* 最後の桁が埋まっている場合を検討 */
     HashSet<i64> r({3, 5, 7});
     ans += a(digit, r, a);
