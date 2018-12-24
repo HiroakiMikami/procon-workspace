@@ -1045,6 +1045,8 @@ void body() {
             // iに3は必ず置ける
             auto r = required;
             r.erase(3);
+            dump(i);
+            dump(as_set(r));
             retval += n(i, r);
         }
 
