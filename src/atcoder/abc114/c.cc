@@ -1006,11 +1006,51 @@ static std::experimental::optional<pair<i64, i64>> chinese_rem_ctr(const Vector<
 void body() {
     auto N = read<i64>();
     i64 digit = std::log10(N);
-    dump(digit);
+    Vector xs;
+    while (N != 0) {
+        xs.push_back(N % 10);
+        N /= 10;
+    }
+
+    auto n = [&](i64 d, auto required) {
+        // d桁でrequiredをすべて含む個数（3,5,7からなる）
+        auto n = required.size();
+        auto c = (d == 3) ? 3 : (d == 2) ? 1 : 0;
+        return pow(n, d) - n * pow(2, d) + c;
+    };
 
     i64 ans = 0;
+    /* 最後の桁まで埋まってなければ数え上げるだけ */
     FOR (i, 3, digit + 1) {
-        ans += pow(3, i) + 3 - 3 * pow(2, i);
+        ans += n(i, UnorderedSet({3, 5, 7}));
+    }
+
+    auto ans = [&](int i, auto required, auto ans_) {
+        // [digit+1....i+1]までは最大値をとっている場合の、[i...0]での条件に当てはまる個数
+        i64 retval = 0;
+        if (xs[i] == 3) {
+
+        } else {
+
+        }
+
+        return retval;
+    };
+
+    /* 最後の桁が埋まっている場合 */
+    if (xs.back() > 3) {
+        /* 3 ... は何でもOK*/
+        ans += pow(3, digit) - 2 * pow(2, digit) + 1; // (3, 7)あるいは(3, 5)のみで下の桁が埋まっているのはだめ
+    } else if (xs.back() == 3) {
+
+    }
+    if (xs.back() > 5) {
+        /* 5 ... は何でもOK*/
+        ans += pow(3, digit) - 2 * pow(2, digit) + 1; // (3, 7)あるいは(3, 5)のみで下の桁が埋まっているのはだめ
+    }
+    if (xs.back() > 7) {
+        /* 5 ... は何でもOK*/
+        ans += pow(3, digit) - 2 * pow(2, digit) + 1; // (3, 7)あるいは(3, 5)のみで下の桁が埋まっているのはだめ
     }
 
     cout << ans << endl;
