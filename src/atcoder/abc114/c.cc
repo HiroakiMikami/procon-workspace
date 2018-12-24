@@ -1010,7 +1010,7 @@ void body() {
 
     i64 ans = 0;
     FOR (i, 3, digit + 1) {
-        ans += pow(3, i) - 3 - 3 * pow(2, i);
+        ans += pow(3, i) + 3 - 3 * pow(2, i);
     }
 
     cout << ans << endl;
