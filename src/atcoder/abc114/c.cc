@@ -1016,7 +1016,7 @@ void body() {
         // d桁でrequiredをすべて含む個数（3,5,7からなる）
         auto n = required.size();
         auto c = (n == 3) ? 3 : (n == 2) ? 1 : 0;
-        return std::max<i64>(0, pow(n, d) - n * pow(2, d) + c);
+        return std::max<i64>(0, pow(3, d) - n * pow(2, d) + c);
     };
 
     i64 ans = 0;
