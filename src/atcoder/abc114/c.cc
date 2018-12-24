@@ -1006,7 +1006,7 @@ static std::experimental::optional<pair<i64, i64>> chinese_rem_ctr(const Vector<
 void body() {
     auto N = read<i64>();
     i64 digit = std::log10(N);
-    Vector xs;
+    Vector<i64> xs;
     while (N != 0) {
         xs.push_back(N % 10);
         N /= 10;
