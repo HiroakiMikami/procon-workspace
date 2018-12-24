@@ -1025,33 +1025,91 @@ void body() {
         ans += n(i, UnorderedSet({3, 5, 7}));
     }
 
-    auto ans = [&](int i, auto required, auto ans_) {
+    auto a = [&](int i, auto required, auto ans_) {
         // [digit+1....i+1]までは最大値をとっている場合の、[i...0]での条件に当てはまる個数
         i64 retval = 0;
         if (xs[i] == 3) {
-
-        } else {
-
+            return 0; // iに0, 1, 2しか置けないので終わり
+            if (i == 0) {
+                // 最後の桁を3にすれば条件を満たす
+                if (required.empty() || (required.size() == 1 && required.find(3) != required.end())) {
+                    retval += 1;
+                }
+            } else {
+                // [i] = 3だが、この場合はi-1以下に制限がかかる
+                auto r = required;
+                r.erase(3);
+                retval += ans(i - 1, r, ans_);
+            }
+        } else if (xs[i] > 3) {
+            // iに3は必ず置ける
+            if (i == 0) {
+                if (required.empty() || (required.size() == 1 && required.find(3) != required.end())) {
+                    retval += 1;
+                }
+            } else {
+                auto r = required;
+                r.erase(3);
+                retval += n(i - 1, r);
+            }
         }
+
+        if (xs[i] == 5){
+            // 最後の桁を5にできるが、この場合はi-1以下に制限がかかる
+            if (i == 0) {
+                if (required.empty() || (required.size() == 1 && required.find(5) != required.end())) {
+                    retval += 1;
+                }
+            } else {
+                auto r = required;
+                r.erase(5);
+                retval += ans(i - 1, r, ans_);
+
+            }
+        } else if (xs[i] > 5){
+            // iに5は必ず置ける
+            if (i == 0) {
+                if (required.empty() || (required.size() == 1 && required.find(5) != required.end())) {
+                    retval += 1;
+                }
+            } else {
+                auto r = required;
+                r.erase(5);
+                retval += n(i - 1, r);
+            }
+        }
+        if (xs[i] == 7){
+            // 最後の桁を7にできるが、この場合はi-1以下に制限がかかる
+            if (i == 0) {
+                if (required.empty() || (required.size() == 1 && required.find(7) != required.end())) {
+                    retval += 1;
+                }
+            } else {
+                auto r = required;
+                r.erase(7);
+                retval += ans(i - 1, r, ans_);
+
+            }
+        } else if (xs[i] > 7){
+            // iに5は必ず置ける
+            if (i == 0) {
+                if (required.empty() || (required.size() == 1 && required.find(7) != required.end())) {
+                    retval += 1;
+                }
+            } else {
+                auto r = required;
+                r.erase(7);
+                retval += n(i - 1, r);
+            }
+        }
+
 
         return retval;
     };
 
-    /* 最後の桁が埋まっている場合 */
-    if (xs.back() > 3) {
-        /* 3 ... は何でもOK*/
-        ans += pow(3, digit) - 2 * pow(2, digit) + 1; // (3, 7)あるいは(3, 5)のみで下の桁が埋まっているのはだめ
-    } else if (xs.back() == 3) {
-
-    }
-    if (xs.back() > 5) {
-        /* 5 ... は何でもOK*/
-        ans += pow(3, digit) - 2 * pow(2, digit) + 1; // (3, 7)あるいは(3, 5)のみで下の桁が埋まっているのはだめ
-    }
-    if (xs.back() > 7) {
-        /* 5 ... は何でもOK*/
-        ans += pow(3, digit) - 2 * pow(2, digit) + 1; // (3, 7)あるいは(3, 5)のみで下の桁が埋まっているのはだめ
-    }
+    /* 最後の桁が埋まっている場合を検討 */
+    UnorderedSet<i64> r({3, 5, 7});
+    ans += a(digit, r, a);
 
     cout << ans << endl;
 }
