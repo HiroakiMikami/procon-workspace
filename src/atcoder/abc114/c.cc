@@ -1043,15 +1043,9 @@ void body() {
             }
         } else if (xs[i] > 3) {
             // iに3は必ず置ける
-            if (i == 0) {
-                if (required.empty() || (required.size() == 1 && required.find(3) != required.end())) {
-                    retval += 1;
-                }
-            } else {
-                auto r = required;
-                r.erase(3);
-                retval += n(i, r);
-            }
+            auto r = required;
+            r.erase(3);
+            retval += n(i, r);
         }
 
         if (xs[i] == 5){
