@@ -1026,7 +1026,6 @@ void body() {
     }
 
     auto a = [&](int i, auto required, auto ans_) -> i64 {
-        dump(xs[i]);
         i64 retval = 0;
         // [digit+1....i+1]までは最大値をとっている場合の、[i...0]での条件に当てはまる個数
         if (xs[i] == 3) {
@@ -1045,9 +1044,6 @@ void body() {
             // iに3は必ず置ける
             auto r = required;
             r.erase(3);
-            dump(i);
-            dump(as_set(r));
-            dump(n(i, r));
             retval += n(i, r);
         }
 
@@ -1065,16 +1061,9 @@ void body() {
             }
         } else if (xs[i] > 5){
             // iに5は必ず置ける
-            if (i == 0) {
-                if (required.empty() || (required.size() == 1 && required.find(5) != required.end())) {
-                    retval += 1;
-                }
-            } else {
-                auto r = required;
-                r.erase(5);
-                retval += n(i, r);
-            }
-
+            auto r = required;
+            r.erase(5);
+            retval += n(i, r);
         }
         if (xs[i] == 7){
             // 最後の桁を7にできるが、この場合はi-1以下に制限がかかる
