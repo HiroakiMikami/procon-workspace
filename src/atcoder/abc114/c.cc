@@ -1076,7 +1076,10 @@ void body() {
                 auto r = required;
                 r.erase(5);
                 retval += n(i, r);
+                dump(retval);
+
             }
+
         }
         if (xs[i] == 7){
             // 最後の桁を7にできるが、この場合はi-1以下に制限がかかる
