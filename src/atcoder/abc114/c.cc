@@ -1039,7 +1039,7 @@ void body() {
                 // [i] = 3だが、この場合はi-1以下に制限がかかる
                 auto r = required;
                 r.erase(3);
-                retval += ans(i - 1, r, ans_);
+                retval += ans_(i - 1, r, ans_);
             }
         } else if (xs[i] > 3) {
             // iに3は必ず置ける
@@ -1063,7 +1063,7 @@ void body() {
             } else {
                 auto r = required;
                 r.erase(5);
-                retval += ans(i - 1, r, ans_);
+                retval += ans_(i - 1, r, ans_);
 
             }
         } else if (xs[i] > 5){
@@ -1087,7 +1087,7 @@ void body() {
             } else {
                 auto r = required;
                 r.erase(7);
-                retval += ans(i - 1, r, ans_);
+                retval += ans_(i - 1, r, ans_);
 
             }
         } else if (xs[i] > 7){
