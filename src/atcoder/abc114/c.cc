@@ -1027,6 +1027,7 @@ void body() {
 
     auto a = [&](int i, auto required, auto ans_) -> i64 {
         dump(xs[i]);
+        i64 retval = 0;
         // [digit+1....i+1]までは最大値をとっている場合の、[i...0]での条件に当てはまる個数
         if (xs[i] == 3) {
             if (i == 0) {
