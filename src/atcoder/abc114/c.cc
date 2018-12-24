@@ -1047,6 +1047,7 @@ void body() {
             r.erase(3);
             dump(i);
             dump(as_set(r));
+            dump(n(i, r));
             retval += n(i, r);
         }
 
