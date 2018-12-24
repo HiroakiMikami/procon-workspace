@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc114/tasks/abc114_c
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 数え上げ DP
+FAILURE_TYPE 実装力不足
 NOTES
+ただの10進数の数え上げなのだが、大きい側を扱うのに苦労した。
+単純に練習不足なだけだと思う。
 */
 #include <iostream>
 #include <cstdint>
