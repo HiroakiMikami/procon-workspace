@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/caddi2018/tasks/caddi2018_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 素因数分解 最大化・最小化
 FAILURE_TYPE
 NOTES
 */
