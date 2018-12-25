@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/agc029/tasks/agc029_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE シミュレーション
 FAILURE_TYPE
 NOTES
+操作の性質を検討することで解けたが、問題のジャンルがよくわからない
 */
 #include <iostream>
 #include <cstdint>
@@ -817,7 +818,7 @@ void body() {
     i64 j = N - 1;
     REPR (i, N) {
         if (S[i] == 'B') {
-            ans += (j - i );
+            ans += (j - i);
             j -= 1;
         }
     }
