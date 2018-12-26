@@ -1022,11 +1022,11 @@ void body() {
     auto RMs = Vector<double>();
     REP (i, M) {
         FOR (j, 1, rs[i] + 1) {
-            dump(j);
             RMs.push_back(1.0 * M * j);
         }
     }
     sort(CTR(RMs));
+    dump(RMs[0]);
     double p = 1.0;
 
     i64 i_n = 0;
