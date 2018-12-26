@@ -1026,7 +1026,6 @@ void body() {
         }
     }
     sort(CTR(RMs));
-    dump(RMs.back());
     double p = 1.0;
 
     i64 i_n = 0;
@@ -1042,6 +1041,7 @@ void body() {
             i_n += 1;
             continue ;
         }
+        dump(p);
 
         if (p > 1.0) {
             p /= RMs[i_rm];
