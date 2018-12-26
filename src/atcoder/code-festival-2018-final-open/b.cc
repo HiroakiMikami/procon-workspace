@@ -1023,11 +1023,11 @@ void body() {
      *   = (N!/(r1!*(N-r1)!) * ((N-r1)!/(r2!*(N-r1-r2)!) ... ) * (1/M)^N
      *   = N!/(r1!*r2!*....) * (1/M)^N
      */
-    p *= fact(N);
     dump(p);
     REP (i, M) {
         p /= fact(rs[i]);
     }
+    p *= fact(N);
     p *= pow(1.0 / M, N);
 
     cout << i64(std::ceil(-std::log10(p))) << endl;
