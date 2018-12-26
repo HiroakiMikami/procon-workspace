@@ -1026,7 +1026,7 @@ void body() {
         }
     }
     sort(CTR(RMs));
-    dump(RMs[0]);
+    dump(RMs.back());
     double p = 1.0;
 
     i64 i_n = 0;
