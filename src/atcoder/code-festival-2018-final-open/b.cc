@@ -1007,21 +1007,48 @@ void body() {
     auto N = read<i64>();
     auto M = read<i64>();
     auto rs = read<i64>(M);
-    double p = 1.0;
     /*
      * p = (combination(N, r1) * (1/M)^r1) * (combination(N-r1, r2) * (1/M)^r2)....
      *   = (combination(N, r1) * combination(N-r1, r2) ... ) * (1/M)^N)
      *   = (N!/(r1!*(N-r1)!) * ((N-r1)!/(r2!*(N-r1-r2)!) ... ) * (1/M)^N
      *   = N!/(r1!*r2!*....) * (1/M)^N
      *
-     *   N!、(r1!*r2!*...), (1/M)^Nでそれぞれ計算回数はN回と揃っているので、計算を先に行うことでoverflowを回避できる
+     * あとはオーバーフローを起こさないように計算する
      */
-    i64 n = 1;
+    auto Ns = Vector<double>(N);
+    REP (i, N) {
+        Ns[i] = i + 1;
+    }
+    auto RMs = Vector<double>();
     REP (i, M) {
         FOR (j, 1, rs[i] + 1) {
-            p *= 1.0 * n / (1.0 * M * j);
-            n += 1;
+            RMs.push_back(1.0 * M * j);
         }
+    }
+    sort(CTR(RMs));
+    double p = 1.0;
+
+    i64 i_n = 0;
+    i64 i_rm = 0;
+    while (i_n == N && i_rm == N) {
+        if (i_n == N) {
+            p /= RMs[i_rm];
+            i_rm += 1;
+            continue ;
+        }
+        if (i_rm == N) {
+            p *= Ns[i_n];
+            i_n += 1;
+            continue ;
+        }
+
+        if (p > 1.0) {
+            p /= RMs[i_rm];
+            i_rm += 1;
+        } else {
+            p *= Ns[i_n];
+            i_n += 1;
+
     }
 
     cout << i64(std::ceil(-std::log10(p))) << endl;
