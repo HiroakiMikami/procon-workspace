@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/code-festival-2018-final-open/tasks/code_festival_2018_final_b
+SCORE 300
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE 確率 数値計算
+FAILURE_TYPE 浮動小数点数の扱い
 NOTES
+確率計算自体は正しかったが、オーバーフロー/0まるめへの対処をまちがって3WA。
+log10をとるならさっさと足し算にしたほうがオーバーフロー/0まるめのリスクが小さくなる
 */
 #include <iostream>
 #include <cstdint>
