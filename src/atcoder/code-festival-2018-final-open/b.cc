@@ -1029,6 +1029,5 @@ void body() {
     }
     p *= pow(1.0 / M, N);
 
-    dump(p);
     cout << i64(std::ceil(-std::log10(p))) << endl;
 }
