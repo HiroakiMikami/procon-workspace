@@ -1016,5 +1016,5 @@ void body() {
     }
 
     dump(p);
-    cout << std::ceil(-std::log10(p)) << endl;
+    cout << i64(std::ceil(-std::log10(p))) << endl;
 }
