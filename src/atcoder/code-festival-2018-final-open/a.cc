@@ -839,11 +839,11 @@ void body() {
 
         /* A -> Bと移動する場合の条件を満たすCを探す */
         const auto & C1 = ls[{B, 2540 - L}];
-        ans += std::distance(std::upper_bound(CTR(C1, A)), C1.end());
+        ans += std::distance(std::upper_bound(CTR(C1), A), C1.end());
 
         /* B -> Aと移動する場合の条件を満たすCを探す */
         const auto & C2 = ls[{A, 2540 - L}];
-        ans += std::distance(std::upper_bound(CTR(C2, B)), C2.end());
+        ans += std::distance(std::upper_bound(CTR(C2), B), C2.end());
     }
     cout << ans << endl;
 }
