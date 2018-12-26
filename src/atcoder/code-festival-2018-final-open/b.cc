@@ -1010,6 +1010,7 @@ void body() {
     double p = 1.0;
     i64 n = N;
     REP (i, M) {
+        dump(combination(n, rs[i]));
         p *= combination(n, rs[i]) * pow(1.0 / M, rs[i]);
 
         n -= rs[i];
