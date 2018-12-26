@@ -1003,6 +1003,14 @@ int main (int argc, char **argv) {
 }
 #include <cmath>
 
+double fact(i64 x) {
+    if (x == 1) {
+        return 1;
+    } else {
+        return x * fact(x - 1);
+    }
+}
+
 void body() {
     auto N = read<i64>();
     auto M = read<i64>();
@@ -1015,13 +1023,6 @@ void body() {
      *   = (N!/(r1!*(N-r1)!) * ((N-r1)!/(r2!*(N-r1-r2)!) ... ) * (1/M)^N
      *   = N!/(r1!*r2!*....) * (1/M)^N
      */
-    double fact(i64 x) {
-        if (x == 1) {
-            return 1;
-        } else {
-            return x * fact(x - 1);
-        }
-    }
     p *= fact(N);
     REP (i, M) {
         p /= fact(rs[i]);
