@@ -1013,44 +1013,23 @@ void body() {
      *   = (N!/(r1!*(N-r1)!) * ((N-r1)!/(r2!*(N-r1-r2)!) ... ) * (1/M)^N
      *   = N!/(r1!*r2!*....) * (1/M)^N
      *
-     * あとはオーバーフローを起こさないように計算する
+     * このまま計算すると、オーバーフローや0丸めが起きる
+     * 先にlog10をとると、
+     * log10(p) = log10(N!/(r1!*r2!*....) * (1/M)^N
+     *          = log10(N!) - log10(r1!*r2!*....) - log10(M^n)
+     *          = sum_{i=1}^{N} log10(i) - sum_{i=1}^{M} log10(ri!) - N * log10(M)
      */
-    auto Ns = Vector<double>(N);
-    REP (i, N) {
-        Ns[i] = i + 1;
+    auto p_log10 = 0.0;
+    FOR (i, 1, N + 1) {
+        p_log10 += std::log10(i);
     }
-    auto RMs = Vector<double>();
     REP (i, M) {
         FOR (j, 1, rs[i] + 1) {
-            RMs.push_back(1.0 * M * j);
+            p_log10 -= std::log10(j);
         }
     }
-    sort(CTR(RMs));
-    double p = 1.0;
+    p_log10 -= N * std::log10(M);
 
-    i64 i_n = 0;
-    i64 i_rm = 0;
-    while (i_n != N || i_rm != N) {
-        dump(p);
-        if (i_n == N) {
-            p /= RMs[i_rm];
-            i_rm += 1;
-            continue ;
-        }
-        if (i_rm == N) {
-            p *= Ns[i_n];
-            i_n += 1;
-            continue ;
-        }
 
-        if (p > 1.0) {
-            p /= RMs[i_rm];
-            i_rm += 1;
-        } else {
-            p *= Ns[i_n];
-            i_n += 1;
-        }
-    }
-
-    cout << i64(std::ceil(-std::log10(p))) << endl;
+    cout << i64(std::ceil(-p_log10)) << endl;
 }
