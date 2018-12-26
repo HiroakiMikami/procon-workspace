@@ -1030,7 +1030,7 @@ void body() {
 
     i64 i_n = 0;
     i64 i_rm = 0;
-    while (i_n == N && i_rm == N) {
+    while (i_n != N || i_rm != N) {
         if (i_n == N) {
             p /= RMs[i_rm];
             i_rm += 1;
