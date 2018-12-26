@@ -1024,6 +1024,7 @@ void body() {
      *   = N!/(r1!*r2!*....) * (1/M)^N
      */
     p *= fact(N);
+    dump(p);
     REP (i, M) {
         p /= fact(rs[i]);
     }
