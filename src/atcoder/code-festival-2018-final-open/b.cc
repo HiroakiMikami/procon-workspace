@@ -1009,12 +1009,24 @@ void body() {
     auto rs = read<i64>(M);
     double p = 1.0;
     i64 n = N;
-    REP (i, M) {
-        dump(combination(n, rs[i]));
-        p *= combination(n, rs[i]) * pow(1.0 / M, rs[i]);
-
-        n -= rs[i];
+    /*
+     * p = (combination(N, r1) * (1/M)^r1) * (combination(N-r1, r2) * (1/M)^r2)....
+     *   = (combination(N, r1) * combination(N-r1, r2) ... ) * (1/M)^N)
+     *   = (N!/(r1!*(N-r1)!) * ((N-r1)!/(r2!*(N-r1-r2)!) ... ) * (1/M)^N
+     *   = N!/(r1!*r2!*....) * (1/M)^N
+     */
+    double fact(i64 x) {
+        if (x == 1) {
+            return 1;
+        } else {
+            return x * fact(x - 1);
+        }
     }
+    p *= fact(N);
+    REP (i, M) {
+        p /= fact(rs[i]);
+    }
+    p *= pow(1.0 / M, N);
 
     dump(p);
     cout << i64(std::ceil(-std::log10(p))) << endl;
