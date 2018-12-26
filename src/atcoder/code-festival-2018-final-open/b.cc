@@ -1019,7 +1019,6 @@ void body() {
     i64 n = 1;
     REP (i, M) {
         FOR (j, 1, rs[i] + 1) {
-            dump(n, j, M);
             p *= 1.0 * n / (1.0 * M * j);
             n += 1;
         }
