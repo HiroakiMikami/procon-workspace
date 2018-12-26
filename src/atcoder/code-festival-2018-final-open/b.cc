@@ -1003,32 +1003,26 @@ int main (int argc, char **argv) {
 }
 #include <cmath>
 
-double fact(i64 x) {
-    if (x == 1) {
-        return 1;
-    } else {
-        return x * fact(x - 1);
-    }
-}
-
 void body() {
     auto N = read<i64>();
     auto M = read<i64>();
     auto rs = read<i64>(M);
     double p = 1.0;
-    i64 n = N;
     /*
      * p = (combination(N, r1) * (1/M)^r1) * (combination(N-r1, r2) * (1/M)^r2)....
      *   = (combination(N, r1) * combination(N-r1, r2) ... ) * (1/M)^N)
      *   = (N!/(r1!*(N-r1)!) * ((N-r1)!/(r2!*(N-r1-r2)!) ... ) * (1/M)^N
      *   = N!/(r1!*r2!*....) * (1/M)^N
+     *
+     *   N!、(r1!*r2!*...), (1/M)^Nでそれぞれ計算回数はN回と揃っているので、計算を先に行うことでoverflowを回避できる
      */
-    dump(p);
+    i64 n = N;
     REP (i, M) {
-        p /= fact(rs[i]);
+        FOR (j, 1, rs[i] + 1) {
+            p *= 1.0 * n / M * j;
+            n -= 1;
+        }
     }
-    p *= fact(N);
-    p *= pow(1.0 / M, N);
 
     cout << i64(std::ceil(-std::log10(p))) << endl;
 }
