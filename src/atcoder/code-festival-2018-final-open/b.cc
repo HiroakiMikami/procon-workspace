@@ -1048,7 +1048,7 @@ void body() {
         } else {
             p *= Ns[i_n];
             i_n += 1;
-
+        }
     }
 
     cout << i64(std::ceil(-std::log10(p))) << endl;
