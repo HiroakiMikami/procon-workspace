@@ -1031,6 +1031,7 @@ void body() {
     i64 i_n = 0;
     i64 i_rm = 0;
     while (i_n != N || i_rm != N) {
+        dump(p);
         if (i_n == N) {
             p /= RMs[i_rm];
             i_rm += 1;
@@ -1041,7 +1042,6 @@ void body() {
             i_n += 1;
             continue ;
         }
-        dump(p);
 
         if (p > 1.0) {
             p /= RMs[i_rm];
