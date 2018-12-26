@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/code-festival-2018-final-open/tasks/code_festival_2018_final_a
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 数え上げ ソート 二分探索
 FAILURE_TYPE
 NOTES
 */
