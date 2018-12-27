@@ -829,9 +829,9 @@ void body() {
 
     REP (i, N) {
         if (i == 0) {
-            C = C - (N - i) * x[i];
+            C = C - (N - i) * xs[i];
         } else {
-            C = C - (N - i) * (x[i] - x[i - 1]);
+            C = C - (N - i) * (xs[i] - xs[i - 1]);
         }
         ans += C;
     }
