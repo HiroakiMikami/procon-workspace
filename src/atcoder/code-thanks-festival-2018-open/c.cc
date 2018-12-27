@@ -835,4 +835,5 @@ void body() {
         }
         ans += C;
     }
+    cout << ans << endl;
 }
