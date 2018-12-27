@@ -39,7 +39,7 @@ using std::flush;
 // basic types
 using std::experimental::optional;
 using std::pair;
-using std::tuple;
+using std::tuple;yay
 using std::string;
 
 // function for basic types
