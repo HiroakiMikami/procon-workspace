@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/code-thanks-festival-2018-open/tasks/code_thanks_festival_2018_d
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE DP 最大化・最小化 文字列
 FAILURE_TYPE
 NOTES
 */
