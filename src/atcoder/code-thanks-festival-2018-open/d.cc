@@ -818,17 +818,15 @@ void body() {
                 if (c < j) {
                     // c < jのとき、dp[i][j]の条件を満たすような分割はできな
                     dp[i][j] = MAX;
-                    continue ;
-                }
-
-                dp[i][j] = std::min(dp[i][j], dp[i - 1][j]); // 末尾に追加する場合
-                if (c == j) {
-                    // 自分を追加する場合
+                } else if (c == j) {
+                    // 新しい分割をする場合
                     i64 m = MAX;
                     REP (k, 26) {
                         m = std::min(dp[i - 1][k], m);
                     }
                     dp[i][j] = std::min(dp[i][j], m + 1);
+                } else {
+                    dp[i][j] = std::min(dp[i][j], dp[i - 1][j]); // 末尾に追加する場合
                 }
             }
         }
