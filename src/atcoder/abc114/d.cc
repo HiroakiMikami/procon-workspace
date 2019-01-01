@@ -944,7 +944,6 @@ void body() {
             primes[elem.first] += elem.second;
         }
     }
-    dump(as_map(primes));
 
     /*
      * x = \prod pi^{ni}
