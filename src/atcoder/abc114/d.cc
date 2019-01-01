@@ -982,11 +982,13 @@ void body() {
         traverse(24, used, [&](auto x) { ans += 1; });
     });
     // (2, 4, 4)
+    i64 x = 0;
     traverse(2, {}, [&](auto used) {
         traverse(4, used, [&](auto used2) {
-            traverse(4, used2, [&](auto x) { ans += 1; });
+            traverse(4, used2, [&](auto x) { x += 1; });
         });
     });
+    ans += x/ 2;
 
     cout << ans << endl;
 }
