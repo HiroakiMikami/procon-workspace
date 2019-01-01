@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc114/tasks/abc114_d
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 数え上げ 素因数分解
 FAILURE_TYPE
 NOTES
 */
@@ -954,7 +954,7 @@ void body() {
      * (2, 24)
      * (4, 14)
      * (74)
-     * の4パターン。
+     * の4パターン。素数は100個以下しか登場しないので、普通に探索してもO(N^3)で間に合う
      */
     auto traverse = [&](i64 n, HashMap<i64, bool> used, auto f) {
         /* n個の素数をとってくる */
@@ -981,6 +981,7 @@ void body() {
         traverse(24, used, [&](auto x) { ans += 1; });
     });
     // (2, 4, 4)
+    //// 4, 4が逆になる可能性があるので/2する
     i64 x = 0;
     traverse(2, {}, [&](auto used) {
         traverse(4, used, [&](auto used2) {
