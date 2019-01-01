@@ -984,7 +984,7 @@ void body() {
     // (2, 4, 4)
     traverse(2, {}, [&](auto used) {
         traverse(4, used, [&](auto used2) {
-            traverse(4, used, [&](auto x) { ans += 1; });
+            traverse(4, used2, [&](auto x) { ans += 1; });
         });
     });
 
