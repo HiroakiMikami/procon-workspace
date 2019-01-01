@@ -960,7 +960,7 @@ void body() {
         /* n個の素数をとってくる */
         EACH (elem, primes) {
             auto pi = elem.first;
-            auto ni = elsm.second;
+            auto ni = elem.second;
             if (ni >= n && !used[pi]) {
                 auto u = used;
                 u[pi] = true;
