@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
+URL https://beta.atcoder.jp/contests/abc115/tasks/abc115_d
+SCORE 400
 AC false
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 場合分け
 FAILURE_TYPE
 NOTES
 */
