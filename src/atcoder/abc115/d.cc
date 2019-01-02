@@ -859,6 +859,7 @@ void body() {
             }
             Y = (lower + higher) / 2;
         }
+        dump(lower, higher);
 
         ans += Bs[Nt - higher] + 1;
 
