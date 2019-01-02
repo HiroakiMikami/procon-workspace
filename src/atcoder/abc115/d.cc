@@ -850,6 +850,7 @@ void body() {
         // (lower, higher]
         i64 Y = (lower + higher) / 2;
         while ((higher - lower) > 1) {
+            dump(lower, higher);
             if (Xt >= (Y + 1) + Hs[Nt - Y]) {
                 // YはOK
                 higher = Y;
