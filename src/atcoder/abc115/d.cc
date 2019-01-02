@@ -831,7 +831,7 @@ void body() {
             return ;
         }
 
-        if (Xt < (Nt + 1) + Nt[Nt - Nt]) {
+        if (Xt < (Nt + 1) + Hs[Nt - Nt]) {
             auto l = Xt - Nt;
             if (l <= 0) {
                 // バンズで止まっている
