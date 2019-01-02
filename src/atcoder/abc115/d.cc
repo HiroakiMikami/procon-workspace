@@ -818,7 +818,6 @@ void body() {
 
     i64 ans = 0;
     auto solve = [&](i64 Nt, i64 Xt, auto _solve) {
-        dump(Nt, Xt);
         if (Xt == Hs[Nt]) {
             // 丁度レベルNtバーガーを食べられる
             ans += Bs[Nt];
@@ -850,7 +849,6 @@ void body() {
         // (lower, higher]
         i64 Y = (lower + higher) / 2;
         while ((higher - lower) > 1) {
-            dump(lower, higher);
             if (Xt >= (Y + 1) + Hs[Nt - Y]) {
                 // YはOK
                 higher = Y;
