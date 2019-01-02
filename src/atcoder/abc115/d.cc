@@ -805,7 +805,7 @@ int main (int argc, char **argv) {
 
 void body() {
     auto N = read<i64>();
-    auto X = read<i65>();
+    auto X = read<i64>();
 
     auto Hs = Vector<i64>(N + 1);
     auto Bs = Vector<i64>(N + 1);
