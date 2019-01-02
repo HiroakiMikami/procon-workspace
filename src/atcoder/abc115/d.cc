@@ -846,7 +846,7 @@ void body() {
 
         /* (Y + 1) + Hs[Nt - Y] <= Xtを満たす最小のYを求める */
         i64 lower = 0;
-        i64 higher = N;
+        i64 higher = Nt;
         // (lower, higher]
         i64 Y = (lower + higher) / 2;
         while ((higher - lower) > 1) {
