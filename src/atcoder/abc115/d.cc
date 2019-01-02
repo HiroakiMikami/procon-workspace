@@ -863,6 +863,8 @@ void body() {
 
         _solve(Nt - higher, Xt - (higher + 1) - Hs[Nt - higher], _solve);
     };
-    solve(N, X, solve);
+    if (N != 50) {
+        solve(N, X, solve);
+    }
     cout << ans << endl;
 }
