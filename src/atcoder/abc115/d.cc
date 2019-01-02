@@ -839,7 +839,7 @@ void body() {
             _solve(Nt - 1, Xt - 2 - Hs[Nt - 1], _solve);
             return ;
         }
-        if (Xt == 3 + 2 * Hs[Nt - 1]) {
+        if (Xt >= 3 + 2 * Hs[Nt - 1]) {
             ans += 1 + 2 * Bs[Nt - 1];
             return ;
         }
