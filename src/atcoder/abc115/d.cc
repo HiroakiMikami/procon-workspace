@@ -860,7 +860,7 @@ void body() {
 
         ans += Bs[Nt - higher] + 1;
 
-        _solver(Nt - higher, Xt - (higher + 1) - Hs[Nt - higher], _solve);
+        _solve(Nt - higher, Xt - (higher + 1) - Hs[Nt - higher], _solve);
     };
     solve(N, X, solve);
     cout << ans << endl;
