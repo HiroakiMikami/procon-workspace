@@ -860,6 +860,7 @@ void body() {
         }
 
         ans += Bs[Nt - higher] + 1;
+        dump(lower, higher);
 
         _solve(Nt - higher, Xt - (higher + 1) - Hs[Nt - higher], _solve);
     };
