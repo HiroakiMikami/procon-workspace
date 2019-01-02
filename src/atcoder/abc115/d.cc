@@ -818,6 +818,11 @@ void body() {
 
     i64 ans = 0;
     auto solve = [&](i64 Nt, i64 Xt, auto _solve) {
+        if (Nt == 0 && Xt != 0) {
+            ans += 1;
+            return ;
+        }
+
         if (Xt <= 1) {
             return ;
         }
