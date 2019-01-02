@@ -818,6 +818,7 @@ void body() {
 
     i64 ans = 0;
     auto solve = [&](i64 Nt, i64 Xt, auto _solve) {
+        dump(Nt, Xt);
         if (Xt == Hs[Nt]) {
             // 丁度レベルNtバーガーを食べられる
             ans += Bs[Nt];
