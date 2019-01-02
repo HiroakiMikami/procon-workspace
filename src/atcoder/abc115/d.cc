@@ -812,7 +812,7 @@ void body() {
     Hs[0] = 1;
     Bs[0] = 1;
     FOR (i, 1, N + 1) {
-        Hs[i] = 3 + 2 + Hs[i - 1];
+        Hs[i] = 3 + 2 * Hs[i - 1];
         Bs[i] = 1 + 2 * Bs[i - 1];
     }
 
