@@ -850,6 +850,7 @@ void body() {
         // (lower, higher]
         i64 Y = (lower + higher) / 2;
         while ((higher - lower) > 1) {
+            dump(lower, higher, Y);
             if (Xt >= (Y + 1) + Hs[Nt - Y]) {
                 // YはOK
                 higher = Y;
@@ -860,7 +861,6 @@ void body() {
         }
 
         ans += Bs[Nt - higher] + 1;
-        dump(lower, higher);
 
         _solve(Nt - higher, Xt - (higher + 1) - Hs[Nt - higher], _solve);
     };
