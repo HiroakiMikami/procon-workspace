@@ -818,49 +818,26 @@ void body() {
 
     i64 ans = 0;
     auto solve = [&](i64 Nt, i64 Xt, auto _solve) {
-        if (Xt == Hs[Nt]) {
-            // 丁度レベルNtバーガーを食べられる
-            ans += Bs[Nt];
+        if (Xt <= 1) {
             return ;
         }
-
-        if (Xt >= 1 + Hs[Nt]) {
-            // Ntとパンズが全て入る
-            ans += Bs[Nt] + 1;
-            _solve(Nt, Xt - 1 - Hs[Nt], _solve);
+        if (Xt <= 1 + Hs[Nt - 1]) {
+            _solve(Nt - 1, Xt - 1, _solve);
             return ;
         }
-
-        if (Xt < (Nt + 1) + Hs[Nt - Nt]) {
-            auto l = Xt - Nt;
-            if (l <= 0) {
-                // バンズで止まっている
-                return ;
-            } else {
-                // レベル0バーガーまでは食べられる
-                ans += 1;
-                return ;
-            }
+        if (Xt == 2 + Hs[Nt - 1]) {
+            ans += 1 + Bs[Nt - 1];
+            return ;
         }
-
-        /* (Y + 1) + Hs[Nt - Y] <= Xtを満たす最小のYを求める */
-        i64 lower = 0;
-        i64 higher = Nt;
-        // (lower, higher]
-        i64 Y = (lower + higher) / 2;
-        while ((higher - lower) > 1) {
-            if (Xt >= (Y + 1) + Hs[Nt - Y]) {
-                // YはOK
-                higher = Y;
-            } else {
-                lower = Y;
-            }
-            Y = (lower + higher) / 2;
+        if (Xt <= 2 + 2 * Hs[Nt - 1]) {
+            ans += 1 + Bs[Nt - 1];
+            _solve(Nt - 1, Xt - 2 - Hs[Nt - 1], _solve);
+            return ;
         }
-
-        ans += Bs[Nt - higher] + 1;
-
-        _solve(Nt - higher, Xt - (higher + 1) - Hs[Nt - higher], _solve);
+        if (Xt == 3 + 2 * Hs[Nt - 1]) {
+            ans += 1 + 2 * Bs[Nt - 1];
+            return ;
+        }
     };
     solve(N, X, solve);
     cout << ans << endl;
