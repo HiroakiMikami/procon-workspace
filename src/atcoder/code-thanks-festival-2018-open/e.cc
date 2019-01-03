@@ -1182,7 +1182,7 @@ void body() {
                 }
                 dp2[i] += dp[i - 1].at(1); // iが2個あって、操作してi+1にする場合
             } else {
-                auto b = j - s[i];
+                auto b = j - as[i];
                 auto e = j + 1;
                 // iが2y個あって、i+1がj-y個ある場合の合計を計算する
                 dp[i].add(j / 2, dp[i - 1].sum(b, e));
