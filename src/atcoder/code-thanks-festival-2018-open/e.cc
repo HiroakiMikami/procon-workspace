@@ -1072,9 +1072,9 @@ void body() {
         dp[0][i] = 1;
     }
     REP (i, T) {
+        dump(1);
         dp[i][0] = 1; // 何も書かなければ0になる
     }
-    dump(T);
 
     FOR (i, 1, T) {
         FOR (j, 1, 301) {
