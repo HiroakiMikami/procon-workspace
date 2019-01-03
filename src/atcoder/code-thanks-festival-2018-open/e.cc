@@ -1084,7 +1084,7 @@ void body() {
 
 
             // dp[i][j]の更新
-            if (j <= as[i]) {
+            if (i < T && j <= as[i]) {
                 // i+1をj+1個書く場合
                 dp[i][j] += 1;
             }
@@ -1094,7 +1094,7 @@ void body() {
                 // k個を下から作り、r=j-k個を書く場合
                 if (2 * k > 300) continue;
 
-                if (r > as[i]) continue;
+                if (i >= T || r > as[i]) continue;
                 dp[i][j] += dp[i - 1][2 * k];
             }
         }
