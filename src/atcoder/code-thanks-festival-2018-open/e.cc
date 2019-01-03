@@ -1191,6 +1191,7 @@ void body() {
         }
     }
 
+    dump(as_map(dp2));
     ModInteger<> ans = 0;
     REP (i, T) {
         ans += dp2[i];
