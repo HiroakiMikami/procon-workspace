@@ -1108,7 +1108,7 @@ void body() {
     REP (i, 9) {
         auto x = 1 << i;
         if (x < 301) {
-            ans += dp[i][x];
+            //ans += dp[i][x];
         }
     }
     cout << ans.get() << endl;
