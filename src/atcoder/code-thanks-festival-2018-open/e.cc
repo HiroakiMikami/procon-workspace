@@ -1066,7 +1066,7 @@ void body() {
     auto as = read<i64>(T);
 
     // dp[i][j] := 整数i+1をj個だけにできる場合の数
-    auto dp = make_matrix<ModInteger<>, 2>({T, 301}, ModInteger<>(0));
+    auto dp = make_matrix<ModInteger<>, 2>({T * 2, 301}, ModInteger<>(0));
 
     FOR (i, 1, as[0] + 1) {
         dp[0][i] = 1;
@@ -1075,7 +1075,7 @@ void body() {
         dp[i][0] = 1; // 何も書かなければ0になる
     }
 
-    FOR (i, 1, T) {
+    FOR (i, 1, T * 2) {
         FOR (j, 1, 301) {
             if (j != 1 && j % 2 == 1) {
                 // 1以外の奇数を考える必要なし
