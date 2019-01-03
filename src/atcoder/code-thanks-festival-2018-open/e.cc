@@ -1102,6 +1102,7 @@ void body() {
 
     ModInteger<> ans = 0;
     REP (i, T) {
+        dump(dp[i][1]);
         ans += dp[i][1];
     }
     cout << ans.get() << endl;
