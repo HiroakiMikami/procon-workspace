@@ -1182,8 +1182,9 @@ void body() {
                 }
                 dp2[i] += dp[i - 1].at(1); // iが2個あって、操作してi+1にする場合
             } else {
-                auto b = j - as[i];
-                auto e = j + 1;
+                auto b = std::max<i64>(0, j - as[i]);
+                auto e = std::min<i64>(j + 1, 300 * 300 + 1);
+
                 dump(b, e);
                 // iが2y個あって、i+1がj-y個ある場合の合計を計算する
                 dp[i].add(j / 2, dp[i - 1].sum(b, e));
