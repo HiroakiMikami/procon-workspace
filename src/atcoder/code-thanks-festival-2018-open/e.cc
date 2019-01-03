@@ -1101,8 +1101,7 @@ void body() {
     }
 
     ModInteger<> ans = 0;
-    REP (i, T) {
-        dump(dp[i][1]);
+    REP (i, T * 2) {
         ans += dp[i][1];
     }
     cout << ans.get() << endl;
