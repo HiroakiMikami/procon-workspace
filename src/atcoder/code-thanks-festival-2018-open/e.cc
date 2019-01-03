@@ -1198,6 +1198,7 @@ void body() {
         auto x = 1 << i;
         if (x >= 300 * 300 + 1) continue;
         if (x == 1) continue;
+        dump(x);
         ans += dp[T - 1].at(x);
     }
     cout << ans.get() << endl;
