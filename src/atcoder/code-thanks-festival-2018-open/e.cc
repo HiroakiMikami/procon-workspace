@@ -1195,7 +1195,7 @@ void body() {
         ans += dp2[i];
     }
     REP (i, 32) {
-        auto x = 1 << i;
+        auto x = 1L << i;
         if (x >= 300 * 300 + 1) continue;
         if (x == 1) continue;
         dump(x);
