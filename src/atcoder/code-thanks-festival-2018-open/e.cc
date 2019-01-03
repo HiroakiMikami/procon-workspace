@@ -1184,6 +1184,7 @@ void body() {
             } else {
                 auto b = j - as[i];
                 auto e = j + 1;
+                dump(b, e);
                 // iが2y個あって、i+1がj-y個ある場合の合計を計算する
                 dp[i].add(j / 2, dp[i - 1].sum(b, e));
             }
@@ -1198,7 +1199,6 @@ void body() {
         auto x = 1L << i;
         if (x >= 300 * 300 + 1) continue;
         if (x == 1) continue;
-        dump(x);
         ans += dp[T - 1].at(x);
     }
     cout << ans.get() << endl;
