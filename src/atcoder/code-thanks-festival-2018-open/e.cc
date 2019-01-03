@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/code-thanks-festival-2018-open/tasks/code_thanks_festival_2018_e
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE DP BIT
+FAILURE_TYPE 考察不足
 NOTES
+最初はある数字が個数が300以上になること、最後に残る数字がTを超える可能性があること、に気づかずsampleが通せなかった。
+高速化のためにBITを用いることに気づくまで少々時間がかかった。
 */
 #include <iostream>
 #include <cstdint>
