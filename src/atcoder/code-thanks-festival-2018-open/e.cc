@@ -1089,7 +1089,7 @@ void body() {
                 dp[i][j] += 1;
             }
 
-            REP (k, 301) {
+            FOR (k, 1, 301) {
                 auto r = j - k;
                 // k個を下から作り、r=j-k個を書く場合
                 if (2 * k > 300) continue;
