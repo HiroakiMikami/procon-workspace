@@ -1066,7 +1066,7 @@ void body() {
     auto as = read<i64>(T);
 
     // dp[i][j] := 整数i+1をj個だけにできる場合の数
-    auto dp = make_matrix<ModInteger<>, 2>({T * 2, 301}, ModInteger<>(0));
+    auto dp = make_matrix<ModInteger<>, 2>({T, 301}, ModInteger<>(0));
 
     FOR (i, 1, as[0] + 1) {
         dp[0][i] = 1;
@@ -1075,7 +1075,7 @@ void body() {
         dp[i][0] = 1; // 何も書かなければ0になる
     }
 
-    FOR (i, 1, T * 2) {
+    FOR (i, 1, T) {
         FOR (j, 1, 301) {
             if (j != 1 && j % 2 == 1) {
                 // 1以外の奇数を考える必要なし
@@ -1084,7 +1084,7 @@ void body() {
 
 
             // dp[i][j]の更新
-            if (i < T && j <= as[i]) {
+            if (j <= as[i]) {
                 // i+1をj+1個書く場合
                 dp[i][j] += 1;
             }
@@ -1094,15 +1094,21 @@ void body() {
                 // k個を下から作り、r=j-k個を書く場合
                 if (2 * k > 300) continue;
 
-                if (i >= T || r > as[i]) continue;
+                if (r > as[i]) continue;
                 dp[i][j] += dp[i - 1][2 * k];
             }
         }
     }
 
     ModInteger<> ans = 0;
-    REP (i, T * 2) {
+    REP (i, T - 1) {
         ans += dp[i][1];
+    }
+    REP (i, 9) {
+        auto x = 1 << i;
+        if (x < 301) {
+            ans += dp[i][x];
+        }
     }
     cout << ans.get() << endl;
 }
