@@ -1102,7 +1102,7 @@ void body() {
     }
 
     ModInteger<> ans = 0;
-    REP (i, T) {
+    REP (i, T - 1) {
         ans += dp[i][1];
     }
     REP (i, 9) {
