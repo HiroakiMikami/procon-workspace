@@ -1075,6 +1075,7 @@ void body() {
         dump(1);
         dp[i][0] = 1; // 何も書かなければ0になる
     }
+    dump("debug");
 
     FOR (i, 1, T) {
         FOR (j, 1, 301) {
