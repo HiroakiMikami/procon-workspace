@@ -1072,10 +1072,8 @@ void body() {
         dp[0][i] = 1;
     }
     REP (i, T) {
-        dump(1);
         dp[i][0] = 1; // 何も書かなければ0になる
     }
-    dump("debug");
 
     FOR (i, 1, T) {
         FOR (j, 1, 301) {
@@ -1095,6 +1093,7 @@ void body() {
                 auto r = j - k;
                 // k個を下から作り、r=j-k個を書く場合
                 if (2 * k > 300) continue;
+                if (r < 0) continue;
 
                 if (r > as[i]) continue;
                 dp[i][j] += dp[i - 1][2 * k];
