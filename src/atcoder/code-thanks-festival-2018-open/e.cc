@@ -1061,56 +1061,144 @@ namespace internal {
     };
 }
 
+#ifndef MAIN
+#include "common.cc"
+#endif
+
+template <class T>
+struct BinaryIndexedTree {
+    BinaryIndexedTree() : m_bit(0, 0) {}
+    BinaryIndexedTree(const size_t size) : m_bit(size, 0) {}
+    BinaryIndexedTree(const vector<T> &vector) : m_bit(vector) {
+        REP (i, this->m_bit.size()) {
+            auto j = i + lsb(i + 1);
+            if (j < this->m_bit.size()) {
+                this->m_bit[j] += this->m_bit[i];
+            }
+        }
+    }
+    template <class Iterator>
+    BinaryIndexedTree(const Iterator &begin, const Iterator &end) : m_bit(distance(begin, end), 0) {
+        auto it = begin;
+        REP (i, this->m_bit.size()) {
+            this->m_bit[i] = *it;
+            auto j = i + lsb(i + 1);
+            if (j < this->m_bit.size()) {
+                this->m_bit[j] += this->m_bit[i];
+            }
+
+            ++it;
+        }
+    }
+
+    void add(size_t index, const T& delta) {
+        while (index < this->size()) {
+            this->m_bit[index] += delta;
+            index += lsb(index + 1);
+        }
+    }
+    auto sum(size_t length) const {
+        size_t index = length;
+        auto retval = T();
+        while (index != 0) {
+            retval += this->m_bit[index - 1];
+            index -= lsb(index);
+        }
+        return retval;
+    }
+    auto sum(size_t begin, size_t end) const {
+        // sum between begin ... end-1
+        return this->sum(end) - this->sum(begin);
+    }
+    auto at(size_t index) const {
+        return this->sum(index, index + 1);
+    }
+
+    size_t size() const {
+        return this->m_bit.size();
+    }
+
+    auto begin() const {
+        return this->m_bit.cbegin();
+    }
+    auto cbegin() const {
+        return this->m_bit.cbegin();
+    }
+    auto end() const {
+        return this->m_bit.cend();
+    }
+    auto cend() const {
+        return this->m_bit.cend();
+    }
+private:
+    static auto lsb(size_t i) {
+        return i & -i;
+    }
+    vector<T> m_bit;
+};
+
+namespace internal {
+    template <typename T>
+    struct oneline<BinaryIndexedTree<T>> {
+        std::string operator()(const BinaryIndexedTree<T> &t) const {
+            Vector<T> xs;
+            REP (i, t.size()) {
+                xs.push_back(t.at(i));
+            }
+            return oneline<decltype(xs)>()(xs);
+        }
+    };
+}
+
+
 void body() {
     auto T = read<i64>();
     auto as = read<i64>(T);
 
-    // dp[i][j] := 整数i+1をj個だけにできる場合の数
-    auto dp = make_matrix<ModInteger<>, 2>({T, 301}, ModInteger<>(0));
-
+    // dp[i][j] := 整数i+1を2*j個だけにできる場合の数
+    auto dp = Vector<BinaryIndexedTree<ModInteger<>>>(T, BinaryIndexedTree<ModInteger<>>(300 * 300 + 1));
+    auto dp2 = Vector<ModInteger<>>(T, 0);
     FOR (i, 1, as[0] + 1) {
-        dp[0][i] = 1;
+        if (i == 1) {
+            dp2[0] = 1;
+        } else if (i % 2 == 0) {
+            dp[0].add(i / 2, 1);
+        }
     }
     REP (i, T) {
-        dp[i][0] = 1; // 何も書かなければ0になる
+        dp[i].add(0, 1); // 何も書かなければ0になる
     }
 
     FOR (i, 1, T) {
-        FOR (j, 1, 301) {
+        FOR (j, 1, 300 * 300 + 1) {
             if (j != 1 && j % 2 == 1) {
                 // 1以外の奇数を考える必要なし
                 continue ;
             }
 
-
-            // dp[i][j]の更新
-            if (j <= as[i]) {
-                // i+1をj+1個書く場合
-                dp[i][j] += 1;
-            }
-
-            FOR (k, 1, 301) {
-                auto r = j - k;
-                // k個を下から作り、r=j-k個を書く場合
-                if (2 * k > 300) continue;
-                if (r < 0) continue;
-
-                if (r > as[i]) continue;
-                dp[i][j] += dp[i - 1][2 * k];
+            if (j == 1) {
+                if (as[i] >= 1) {
+                    dp2[i] += 1; // i+1を1個かく場合
+                }
+                dp2[i] += dp[i - 1].at(1); // iが2個あって、操作してi+1にする場合
+            } else {
+                auto b = j - s[i];
+                auto e = j + 1;
+                // iが2y個あって、i+1がj-y個ある場合の合計を計算する
+                dp[i].add(j / 2, dp[i - 1].sum(b, e));
             }
         }
     }
 
     ModInteger<> ans = 0;
-    REP (i, T - 1) {
-        ans += dp[i][1];
+    REP (i, T) {
+        ans += dp2[i];
     }
-    REP (i, 9) {
+    REP (i, 32) {
         auto x = 1 << i;
-        if (x < 301) {
-            dump(x);
-            ans += dp[T - 1][x];
-        }
+        if (x >= 300 * 300 + 1) continue;
+        if (x == 1) continue;
+        ans += dp[T - 1].at(x);
     }
     cout << ans.get() << endl;
 }
