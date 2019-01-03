@@ -1200,7 +1200,7 @@ void body() {
         auto x = 1L << i;
         if (x >= 300 * 300 + 1) continue;
         if (x == 1) continue;
-        ans += dp[T - 1].at(x);
+        ans += dp[T - 1].at(x / 2);
     }
     cout << ans.get() << endl;
 }
