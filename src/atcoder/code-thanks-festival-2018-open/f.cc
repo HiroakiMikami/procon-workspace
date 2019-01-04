@@ -880,7 +880,6 @@ void body() {
         }
         return retval;
     };
-    dump("foo");
 
     Vector<i64> v;
     v.reserve(M);
@@ -940,6 +939,7 @@ void body() {
         }
     }
 
+    dump(v.size());
     REP (i, M) {
         cout << (v[i] + 1);
         if (i != M - 1) {
