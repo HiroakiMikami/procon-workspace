@@ -816,7 +816,9 @@ void body() {
         if (ps[i] == -1) {
             root = i;
         }
-        children[ps[i]].push_back(i);
+        if (ps[i] != -1) {
+            children[ps[i]].push_back(i);
+        }
     }
 
     Vector<i64> cost(N); // cost[i] := コインをiにおくのに必要な操作回数
@@ -833,7 +835,6 @@ void body() {
         }
         used[x] = true;
         if (x != root) {
-            dump(ps[x]);
             cost[x] = cost[ps[x]] + 1;
         }
         EACH (child, children[x]) {
