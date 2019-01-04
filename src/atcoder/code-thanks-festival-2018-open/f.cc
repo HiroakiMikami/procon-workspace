@@ -933,8 +933,6 @@ void body() {
     // 最後は丁度K回にしないといけない
     auto C = cands(v);
     REP (i, N) {
-        dump(C[i]);
-        dump(cost[i], K);
         if (C[i] && cost[i] == K) {
             v.push_back(i);
             break;
