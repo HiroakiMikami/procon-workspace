@@ -909,7 +909,7 @@ void body() {
             i64 sum_min = 0;
             i64 cnt_min = 0;
             REPR(i, N) {
-                auto n = node_with_cost[i]
+                auto n = node_with_cost[i];
                 auto k = n.first;
                 auto c = n.second;
                 if (!C2[k]) continue;
