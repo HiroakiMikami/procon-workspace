@@ -883,6 +883,7 @@ void body() {
 
     Vector<i64> v;
     v.reserve(M);
+    auto m = M;
     REP (i, M - 1) {
         dump(as_map(v));
         auto C = cands(v);
@@ -902,13 +903,13 @@ void body() {
                 if (!C2[k]) continue;
                 cnt += 1;
                 sum += c;
-                if (cnt == M - 1) {
+                if (cnt == m - 1) {
                     break;
                 }
             }
 
             // 操作回数が多い方からM-1個選んで、合計回数がK-cost[j]以上ならOK
-            if (cnt == M - 1 && sum >= K - cost[j]) {
+            if (cnt == m - 1 && sum >= K - cost[j]) {
                 X[j] = true;
             }
         }
@@ -918,7 +919,7 @@ void body() {
                 // jを加える
                 v.push_back(j);
                 K -= cost[j];
-                M -= 1;
+                m -= 1;
             }
         }
     }
