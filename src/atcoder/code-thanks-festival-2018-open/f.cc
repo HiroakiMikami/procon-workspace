@@ -884,6 +884,7 @@ void body() {
     Vector<i64> v;
     v.reserve(M);
     REP (i, M - 1) {
+        dump(as_map(v));
         auto C = cands(v);
         auto X = Vector<bool>(N, false);
         REP (j, N) {
