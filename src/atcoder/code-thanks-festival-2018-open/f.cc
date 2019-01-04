@@ -914,13 +914,19 @@ void body() {
             }
         }
 
+        bool f = false;
         REP (j, N) {
             if (X[j]) {
+                f = true;
                 // jを加える
                 v.push_back(j);
                 K -= cost[j];
                 m -= 1;
             }
+        }
+        if (!f) {
+            cout << -1 << endl;
+            return ;
         }
     }
 
