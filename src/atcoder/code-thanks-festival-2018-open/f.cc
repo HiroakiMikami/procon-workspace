@@ -934,7 +934,7 @@ void body() {
     }
 
     REP (i, M) {
-        cout << v[i];
+        cout << (v[i] + 1);
         if (i != M - 1) {
             cout << " ";
         }
