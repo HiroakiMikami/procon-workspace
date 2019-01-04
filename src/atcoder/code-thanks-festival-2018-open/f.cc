@@ -938,8 +938,8 @@ void body() {
             break;
         }
     }
+    EACH (x, v) dump(x);
 
-    dump(v.size());
     REP (i, M) {
         cout << (v[i] + 1);
         if (i != M - 1) {
