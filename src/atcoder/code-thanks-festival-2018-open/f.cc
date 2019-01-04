@@ -846,6 +846,7 @@ void body() {
         node_with_cost.push_back({i, cost[i]});
     }
     sort(CTR(node_with_cost), [](auto lhs, auto rhs) { return lhs.second < rhs.second; }); // コストが高い方を先頭にソート
+    dump(as_set(node_with_cost));
 
 
     auto cands = [&](const Vector<i64> _v) {
