@@ -833,6 +833,7 @@ void body() {
         }
         used[x] = true;
         if (x != root) {
+            dump(ps[x]);
             cost[x] = cost[ps[x]] + 1;
         }
         EACH (child, children[x]) {
