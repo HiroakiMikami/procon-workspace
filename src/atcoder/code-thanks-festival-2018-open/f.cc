@@ -895,7 +895,7 @@ void body() {
             auto C2 = cands(v2);
 
             i64 sum_max = 0;
-            i64 cnt_min = 0;
+            i64 cnt_max = 0;
             EACH (n, node_with_cost) {
                 auto k = n.first;
                 auto c = n.second;
