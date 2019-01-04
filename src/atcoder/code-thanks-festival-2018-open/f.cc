@@ -885,7 +885,6 @@ void body() {
     v.reserve(M);
     auto m = M;
     REP (i, M - 1) {
-        dump(as_map(v));
         auto C = cands(v);
         auto X = Vector<bool>(N, false);
         REP (j, N) {
