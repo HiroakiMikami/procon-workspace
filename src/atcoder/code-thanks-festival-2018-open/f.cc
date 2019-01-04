@@ -1,13 +1,15 @@
 /*
-URL https://
-SCORE 0
-AC false
-WA false
+URL https://beta.atcoder.jp/contests/code-thanks-festival-2018-open/tasks/code_thanks_festival_2018_f
+SCORE 400
+AC true
+WA true
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE ソート 全探索 辞書順
+FAILURE_TYPE 考察不足 break忘れ
 NOTES
+先頭から順に考えれば良いこと、i番目について、vi=jとしても平気か？を判定していけばよいこと、まではあっていた。
+判定のロジックにミスがあったり、breakを忘れていたりして3WA
 */
 #include <iostream>
 #include <cstdint>
