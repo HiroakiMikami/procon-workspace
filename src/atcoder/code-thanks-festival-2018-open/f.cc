@@ -894,21 +894,36 @@ void body() {
             v2.push_back(j);
             auto C2 = cands(v2);
 
-            i64 sum = 0;
-            i64 cnt = 0;
+            i64 sum_max = 0;
+            i64 cnt_min = 0;
             EACH (n, node_with_cost) {
                 auto k = n.first;
                 auto c = n.second;
                 if (!C2[k]) continue;
-                cnt += 1;
-                sum += c;
-                if (cnt == m - 1) {
+                cnt_max += 1;
+                sum_max += c;
+                if (cnt_max == m - 1) {
+                    break;
+                }
+            }
+            i64 sum_min = 0;
+            i64 cnt_min = 0;
+            REPR(i, N) {
+                auto n = node_with_cost[i]
+                auto k = n.first;
+                auto c = n.second;
+                if (!C2[k]) continue;
+                cnt_min += 1;
+                sum_min += c;
+                if (cnt_min == m - 1) {
                     break;
                 }
             }
 
-            // 操作回数が多い方からM-1個選んで、合計回数がK-cost[j]以上ならOK
-            if (cnt == m - 1 && sum >= K - cost[j]) {
+            // 操作回数が多い方からM-1個選んで、合計回数がK-cost[j]以上、かつ
+            // 操作回数の小さい方からM-1個選んで、合計回数がK-cost[j]以下ならjを入れても大丈夫
+            if ((cnt_max == m - 1 && sum_max >= K - cost[j]) &&
+                    (cnt_min == m -1 && sum_min <= K - cost[j])) {
                 X[j] = true;
             }
         }
