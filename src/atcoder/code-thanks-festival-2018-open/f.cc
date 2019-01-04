@@ -921,6 +921,7 @@ void body() {
                 v.push_back(j);
                 K -= cost[j];
                 m -= 1;
+                break ;
             }
         }
         if (!f) {
