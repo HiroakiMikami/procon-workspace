@@ -849,7 +849,7 @@ void body() {
 
 
     auto cands = [&](const Vector<i64> _v) {
-        OrderedSet v(CTR(_v));
+        OrderedSet<i64> v(CTR(_v));
         if (v.find(root) != v.end()) {
             return Vector<bool>(N, false);
         }
