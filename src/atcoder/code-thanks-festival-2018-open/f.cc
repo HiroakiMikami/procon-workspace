@@ -924,7 +924,7 @@ void body() {
                 break ;
             }
         }
-        if (!f) {
+        if (!f || K <= 0) {
             cout << -1 << endl;
             return ;
         }
@@ -940,7 +940,10 @@ void body() {
             break;
         }
     }
-    EACH (x, v) dump(x);
+    if (v.size() != M) {
+        cout << -1 << endl;
+        return ;
+    }
 
     REP (i, M) {
         cout << (v[i] + 1);
