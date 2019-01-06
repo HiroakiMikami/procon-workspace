@@ -834,10 +834,10 @@ void body() {
             }
             n += S[j][i];
         }
-        dump(i, n);
 
         if (n >= K) {
             // うまく選ぶとibit目をたてることができる
+            dump(1 << i);
             ans |= (1 << i);
             REP (j, S.size()) {
                 if (!S[j][i]) {
