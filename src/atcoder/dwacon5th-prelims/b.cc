@@ -810,13 +810,13 @@ void body() {
     auto K = read<i64>();
     auto as = read<i64>(N);
 
-    Vector<std::bitset<64>> S; // S[i] := i番目の部分列の美しさ
-    S.reserve(N * (N + 1) / 2);
-
     Vector<i64> sum(N + 1, 0); // sum[i] := 1..i番目までの和
     REP (i, N) {
         sum[i + 1] = sum[i] + as[i];
     }
+
+    Vector<std::bitset<64>> S; // S[i] := i番目の部分列の美しさ
+    S.reserve(N * (N + 1) / 2);
     REP (i, N + 1) {
         FOR (j, i + 1, N + 1) {
             S.push_back(sum[j] - sum[i]);
@@ -828,12 +828,15 @@ void body() {
     REPR(i, 64) {
         // 上の桁から順に決める
         i64 n = 0;
+        i64 cnt = 0;
         REP (j, S.size()) {
             if (!cands[j]) {
                 continue ;
             }
             n += S[j][i] ? 1 : 0;
+            cnt += 1;
         }
+        dump(cnt);
 
         if (n >= K) {
             // うまく選ぶとibit目をたてることができる
