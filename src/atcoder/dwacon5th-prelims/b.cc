@@ -823,7 +823,7 @@ void body() {
         }
     }
 
-    Vector<bool> cands(N * (N + 1) / 2, true);
+    Vector<bool> cands(S.size(), true);
     i64 ans = 0;
     REPR(i, 60) {
         // 上の桁から順に決める
