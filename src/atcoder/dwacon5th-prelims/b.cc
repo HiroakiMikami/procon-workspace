@@ -828,15 +828,12 @@ void body() {
     REPR(i, 64) {
         // 上の桁から順に決める
         i64 n = 0;
-        i64 cnt = 0;
         REP (j, S.size()) {
             if (!cands[j]) {
                 continue ;
             }
             n += S[j][i] ? 1 : 0;
-            cnt += 1;
         }
-        dump(cnt);
 
         if (n >= K) {
             // うまく選ぶとibit目をたてることができる
