@@ -833,7 +833,6 @@ void body() {
                 continue ;
             }
             n += S[j][i];
-            dump(S[j]);
         }
 
         if (n >= K) {
