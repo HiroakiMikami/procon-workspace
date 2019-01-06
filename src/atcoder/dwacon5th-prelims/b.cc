@@ -832,12 +832,12 @@ void body() {
             if (!cands[j]) {
                 continue ;
             }
+            dump(int(S[j]));
             n += S[j][i];
         }
 
         if (n >= K) {
             // うまく選ぶとibit目をたてることができる
-            dump(1 << i);
             ans |= (1 << i);
             REP (j, S.size()) {
                 if (!S[j][i]) {
