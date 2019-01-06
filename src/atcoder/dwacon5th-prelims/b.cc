@@ -832,7 +832,7 @@ void body() {
             if (!cands[j]) {
                 continue ;
             }
-            n += S[j][i];
+            n += S[j][i] ? 1 : 0;
         }
 
         if (n >= K) {
