@@ -832,8 +832,8 @@ void body() {
             if (!cands[j]) {
                 continue ;
             }
-            dump(int(S[j]));
             n += S[j][i];
+            dump(S[j]);
         }
 
         if (n >= K) {
