@@ -819,6 +819,7 @@ void body() {
     }
     REP (i, N + 1) {
         FOR (j, i + 1, N + 1) {
+            dump(sum[j] - sum[i]);
             S.push_back(sum[j] - sum[i]);
         }
     }
