@@ -819,7 +819,6 @@ void body() {
     }
     REP (i, N + 1) {
         FOR (j, i + 1, N + 1) {
-            dump(sum[j] - sum[i]);
             S.push_back(sum[j] - sum[i]);
         }
     }
@@ -835,6 +834,7 @@ void body() {
             }
             n += S[j][i];
         }
+        dump(i, n);
 
         if (n >= K) {
             // うまく選ぶとibit目をたてることができる
