@@ -807,8 +807,13 @@ void body() {
     auto N = read<i64>();
     auto K = read<i64>();
     auto As = read<i64>(N);
-
-    auto B = std::log2(K) + 1; // KはB bit目までOK
+    i64 B = 0;
+    if (K != 0) {
+        B = std::log2(K) + 1; // KはB bit目までOK
+    }
+    EACH (A, As) {
+        B = std::max(B, std::log2(A) + 1);
+    }
     auto ones = Vector<i64>(B, 0); // ones[i] := Asのibit目の1の個数
     REP (i, B) {
         EACH (A, As) {
