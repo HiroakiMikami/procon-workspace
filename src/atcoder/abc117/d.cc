@@ -812,7 +812,7 @@ void body() {
         B = std::log2(K) + 1; // KはB bit目までOK
     }
     EACH (A, As) {
-        B = std::max(B, std::log2(A) + 1);
+        B = std::max(B, i64(std::log2(A) + 1)); // Aは
     }
     auto ones = Vector<i64>(B, 0); // ones[i] := Asのibit目の1の個数
     REP (i, B) {
