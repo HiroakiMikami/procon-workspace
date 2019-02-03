@@ -808,6 +808,11 @@ void body() {
     auto M = read<i64>();
     auto Xs = read<i64>(M);
 
+    if (N >= M) {
+        cout << 0 << endl;
+        return ;
+    }
+
     sort(CTR(Xs));
 
     auto dist = Vector<i64>(M - 1);
