@@ -791,7 +791,7 @@ namespace std {
 }
 #define MAIN
 void body();
-
+#include <cmath>
 // main function (DO NOT EDIT)
 int main (int argc, char **argv) {
     cin.tie(0);
