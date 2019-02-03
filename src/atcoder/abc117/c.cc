@@ -810,11 +810,11 @@ void body() {
 
     sort(CTR(Xs));
 
-    auto sum = std::accumulate(CTR(Xs), i64(0));
     auto dist = Vector<i64>(M - 1);
     FOR (i, 1, M) {
         dist[i - 1] = Xs[i] - Xs[i - 1];
     }
+    auto sum = std::accumulate(CTR(dist), i64(0));
     sort(CTR(dist), std::greater<i64>());
 
     dump(as_map(dist));
