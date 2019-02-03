@@ -817,7 +817,7 @@ void body() {
     auto ones = Vector<i64>(B, 0); // ones[i] := Asのibit目の1の個数
     REP (i, B) {
         EACH (A, As) {
-            if (A & (1 << i)) {
+            if (A & (1L << i)) {
                 ones[i] += 1;
             }
         }
@@ -831,14 +831,14 @@ void body() {
         auto zeros = N - ones[i];
         if (zeros > ones[i]) {
             // 0の個数が多い => i bit目をたてたい
-            auto k_tmp = k | (1 << i);
+            auto k_tmp = k | (1L << i);
             if (k_tmp <= K) {
                 // たてられる
                 k = k_tmp;
-                ans += (1 << i) * zeros;
+                ans += (1L << i) * zeros;
             } else {
                 // たてられない
-                ans += (1 << i) * ones[i];
+                ans += (1L << i) * ones[i];
             }
         } else {
             // 1の個数が多い => i bit目はたてなくてよい
