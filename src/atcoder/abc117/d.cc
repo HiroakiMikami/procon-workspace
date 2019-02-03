@@ -833,11 +833,11 @@ void body() {
                 ans += (1 << i) * zeros;
             } else {
                 // たてられない
-                ans += (1 << i) * ones;
+                ans += (1 << i) * ones[i];
             }
         } else {
             // 1の個数が多い => i bit目はたてなくてよい
-            ans += (1 << i) * ones;
+            ans += (1 << i) * ones[i];
         }
     }
     cout << ans << endl;
