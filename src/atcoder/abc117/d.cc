@@ -827,6 +827,7 @@ void body() {
     i64 k = 0;
     i64 ans = 0;
     REPR (i, B) {
+        dump(i, ans, k);
         // ibit目を決める
         auto zeros = N - ones[i];
         if (zeros > ones[i]) {
