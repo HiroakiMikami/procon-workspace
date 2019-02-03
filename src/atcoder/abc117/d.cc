@@ -843,7 +843,7 @@ void body() {
             }
         } else {
             // 1の個数が多い => i bit目はたてなくてよい
-            ans += (1 << i) * ones[i];
+            ans += (1L << i) * ones[i];
         }
     }
     cout << ans << endl;
