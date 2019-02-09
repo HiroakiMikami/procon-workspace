@@ -842,11 +842,11 @@ void body() {
     i64 tmp = 0;
     REPR (i, L) {
         auto A = As[i];
-        //dp1[i] += tmp;
-        //dp2[i] += tmp;
-        //dp3[i] += tmp;
-
         tmp += A;
+
+        dp1[i] += tmp;
+        dp2[i] += tmp;
+        dp3[i] += tmp;
     }
     i64 ans = S;
     REP (i, L + 1) {
