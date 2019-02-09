@@ -813,6 +813,11 @@ void body() {
         cout << K + 1 << endl;
         return ;
     } else {
+        if (K < A - 1) {
+            // 叩いてA枚にできない
+            cout << K + 1 << endl;
+            return ;
+        }
         i64 ans = 1;
         // 1 -> Aに増やす (A-1回の操作)
         ans = A;
