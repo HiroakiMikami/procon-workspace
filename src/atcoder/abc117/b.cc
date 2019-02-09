@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc117/tasks/abc117_b
+SCORE 200
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 条件判定 基本
 FAILURE_TYPE
 NOTES
 */
@@ -810,7 +810,6 @@ void body() {
 
     auto l = Ls.back();
     auto o = std::accumulate(CTR(Ls), i64(0)) - l;
-    dump(l, o);
     if (l < o) {
         cout << "Yes" << endl;
     } else {

@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc117/tasks/abc117_c
+SCORE 300
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 最大化・最小化 1次元座標 ソート
 FAILURE_TYPE
 NOTES
 */
@@ -822,7 +822,6 @@ void body() {
     auto sum = std::accumulate(CTR(dist), i64(0));
     sort(CTR(dist), std::greater<i64>());
 
-    dump(as_map(dist));
     REP (i, N - 1) {
         sum -= dist[i];
     }

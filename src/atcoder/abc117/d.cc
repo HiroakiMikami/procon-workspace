@@ -1,13 +1,14 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/abc117/tasks/abc117_d
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
-FAILURE_TYPE
+TASK_TYPE bitDP
+FAILURE_TYPE 考察不足
 NOTES
+テストケースは通ったが、以下の貪欲法による解法は嘘解法であるらしい。
 */
 #include <iostream>
 #include <cstdint>
