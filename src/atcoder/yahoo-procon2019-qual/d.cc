@@ -806,14 +806,14 @@ int main (int argc, char **argv) {
 void body() {
     auto L = read<i64>();
     auto As = read<i64>(L);
-    auto S = std::accumulate(CTR(As), i64(0));
+    i64 S = 0;
 
     // dp1[i] := 散歩で行く最大の座標がi, 奇数個の石が入った耳があり、[i-1:i]に偶数個の石が入っている場合の最小値
-    auto dp1 = Vector<i64>(L + 1, S);
+    auto dp1 = Vector<i64>(L + 1, 0);
     // dp2[i] := 散歩で行く最大の座標がiで、奇数個の石が入った耳があり、[i-1:i]に奇数個の石が入っている場合の最小値
-    auto dp2 = Vector<i64>(L + 1, S);
+    auto dp2 = Vector<i64>(L + 1, 0);
     // dp3[i] := 散歩で行く最大の座標がiで、奇数個の石が入った耳がない場合の最小値
-    auto dp3 = Vector<i64>(L + 1, S);
+    auto dp3 = Vector<i64>(L + 1, 0);
     FOR (i, 1, L + 1) {
         auto A = As[i - 1];
         /* dp1の更新 */
@@ -825,7 +825,7 @@ void body() {
         /* dp2の更新 */
         // 1) [i-1:i]の区間だけ奇数回通る場合
         auto x = std::abs((A / 2) * 2 + 1 - A);
-        dp2[i] = S - A + x;
+        dp2[i] = S + x;
         // 2) dp2[i - 1]の散歩に追加して、i-1:iに奇数回の通過を行う場合
         dp2[i] = std::min(dp2[i], dp2[i - 1] + x);
         // 3) dp3[i - 1]の散歩に追加して、i-1:iに奇数回の通過を行う場合
@@ -833,9 +833,10 @@ void body() {
 
         /* dp3の更新 */
         // 1) [i-1:i]の区間だけ着数回通る場合
-        dp3[i] = S - (A / 2) * 2;
+        dp3[i] = S - (A - (A / 2) * 2);
         // 2) dp3[i-1]の散歩に追加して、i-1:iに奇数回の通過を行う場合
         dp3[i] = std::min(dp3[i], dp3[i - 1] + (A - (A / 2) * 2));
+        S += A;
     }
 
     i64 ans = S;
