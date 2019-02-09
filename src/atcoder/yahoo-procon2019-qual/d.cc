@@ -839,6 +839,15 @@ void body() {
         S += A;
     }
 
+    i64 tmp = 0;
+    REPR(i, L + 1) {
+        auto A = As[i - 1];
+        dp1[i] += tmp;
+        dp2[i] += tmp;
+        dp3[i] += tmp;
+
+        tmp += A;
+    }
     i64 ans = S;
     REP (i, L + 1) {
         dump(i, dp1[i], dp2[i], dp3[i]);
