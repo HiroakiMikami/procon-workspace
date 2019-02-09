@@ -814,7 +814,7 @@ void body() {
     auto dp2 = Vector<i64>(L + 1, S);
     // dp3[i] := 散歩で行く最大の座標がiで、奇数個の石が入った耳がない場合の最小値
     auto dp3 = Vector<i64>(L + 1, S);
-    FOR (i, i, L + 1) {
+    FOR (i, 1, L + 1) {
         auto A = As[i - 1];
         /* dp1の更新 */
         // 1) dp1[i - 1]の散歩に追加して、[i-1:i]に偶数個の通過を行う場合
