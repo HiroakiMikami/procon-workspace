@@ -806,7 +806,7 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto K = read<i64>();
-    if (N >= 2 * K + 1) {
+    if (N >= 2 * K - 1) {
         cout << "YES" << endl;
     } else {
         cout << "NO" << endl;
