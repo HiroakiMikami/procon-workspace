@@ -810,7 +810,7 @@ void body() {
 
     if (B - A <= 2) {
         // 叩き続けるのが最大になる
-        cout << K + 1 << ednl;
+        cout << K + 1 << endl;
         return ;
     } else {
         i64 ans = 1;
