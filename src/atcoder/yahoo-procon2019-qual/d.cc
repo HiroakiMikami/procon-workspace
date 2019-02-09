@@ -806,7 +806,7 @@ int main (int argc, char **argv) {
 void body() {
     auto L = read<i64>();
     auto As = read<i64>(L);
-    auto S = std::accumulate((CTR(As)), i64(0));
+    auto S = std::accumulate(CTR(As), i64(0));
 
     // dp1[i] := 散歩で行く最大の座標がi, 奇数個の石が入った耳があり、[i-1:i]に偶数個の石が入っている場合の最小値
     auto dp1 = Vector<i64>(L + 1, S);
