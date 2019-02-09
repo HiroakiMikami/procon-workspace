@@ -858,7 +858,6 @@ void body() {
     }
     i64 ans = S;
     REP (i, L + 1) {
-        dump(i, dp1[i], dp2[i], dp3[i]);
         ans = std::min(ans, dp1[i]);
         ans = std::min(ans, dp2[i]);
         ans = std::min(ans, dp3[i]);
