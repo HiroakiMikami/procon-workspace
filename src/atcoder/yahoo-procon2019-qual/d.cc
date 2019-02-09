@@ -816,26 +816,34 @@ void body() {
     auto dp3 = Vector<i64>(L + 1, 0);
     FOR (i, 1, L + 1) {
         auto A = As[i - 1];
+        auto e = 0;
+        auto o = 0;
+        if (A == 0) {
+            e = 2;
+            o = 1;
+        } else {
+            e = A - (A / 2) * 2;
+            o = std::abs((A / 2) * 2 + 1 - A);;
+        }
         /* dp1の更新 */
         // 1) dp1[i - 1]の散歩に追加して、[i-1:i]に偶数個の通過を行う場合
-        dp1[i] = dp1[i - 1] + (A - (A / 2) * 2);
+        dp1[i] = dp1[i - 1] + e;
         // 2) dp2[i - 1]の散歩に追加して、[i-1:i]に偶数個の通過を行う場合
-        dp1[i] = std::min(dp1[i], dp2[i - 1] + (A - (A / 2) * 2));
+        dp1[i] = std::min(dp1[i], dp2[i - 1] + e);
 
         /* dp2の更新 */
         // 1) [i-1:i]の区間だけ奇数回通る場合
-        auto x = std::abs((A / 2) * 2 + 1 - A);
-        dp2[i] = S + x;
+        dp2[i] = S + o;
         // 2) dp2[i - 1]の散歩に追加して、i-1:iに奇数回の通過を行う場合
-        dp2[i] = std::min(dp2[i], dp2[i - 1] + x);
+        dp2[i] = std::min(dp2[i], dp2[i - 1] + o);
         // 3) dp3[i - 1]の散歩に追加して、i-1:iに奇数回の通過を行う場合
-        dp2[i] = std::min(dp2[i], dp3[i - 1] + x);
+        dp2[i] = std::min(dp2[i], dp3[i - 1] + o);
 
         /* dp3の更新 */
         // 1) [i-1:i]の区間だけ着数回通る場合
-        dp3[i] = S + (A - (A / 2) * 2);
+        dp3[i] = S + e;
         // 2) dp3[i-1]の散歩に追加して、i-1:iに奇数回の通過を行う場合
-        dp3[i] = std::min(dp3[i], dp3[i - 1] + (A - (A / 2) * 2));
+        dp3[i] = std::min(dp3[i], dp3[i - 1] + e);
         S += A;
     }
 
