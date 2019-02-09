@@ -806,7 +806,7 @@ int main (int argc, char **argv) {
 void body() {
     auto abs = read<i64, i64>(3);
 
-    OrderedMap<i64, i64> occurs(4);
+    OrderedMap<i64, i64> occurs;
     EACH (ab, abs) {
         occurs[ab.first - 1] += 1;
         occurs[ab.second - 1] += 1;
