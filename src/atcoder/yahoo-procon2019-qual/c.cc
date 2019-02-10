@@ -1,11 +1,11 @@
 /*
-URL https://
-SCORE 0
-AC false
+URL https://beta.atcoder.jp/contests/yahoo-procon2019-qual/tasks/yahoo_procon2019_qual_c
+SCORE 400
+AC true
 WA false
 TLE false
 MLE false
-TASK_TYPE
+TASK_TYPE 場合分け 最大化・最小化
 FAILURE_TYPE
 NOTES
 */
