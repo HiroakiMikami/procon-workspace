@@ -10,4 +10,4 @@ for x in [A, B, C]:
 
 ans = five == 2 and seven == 1
 
-print("YES" if ans else "NO")
+#print("YES" if ans else "NO")
