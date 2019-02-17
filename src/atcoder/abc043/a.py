@@ -1,4 +1,3 @@
-
 N = int(input())
 
 from operator import add
