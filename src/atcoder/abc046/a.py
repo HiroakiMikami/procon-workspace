@@ -1,6 +1,4 @@
-a = int(input())
-b = int(input())
-c = int(input())
+a, b, c = [int(x) for x in input().split()]
 
 X = set()
 for x in [a, b, c]:
