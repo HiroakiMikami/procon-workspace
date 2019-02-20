@@ -1,4 +1,4 @@
-A, B = [ x for x in input().split() ]
+A, B = [ int(x) for x in input().split() ]
 
 if A == B:
     ans = "Draw"
