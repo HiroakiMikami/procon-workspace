@@ -1,4 +1,4 @@
-A, B = [ int(x) for x in inupt().split() ]
+A, B = [ int(x) for x in input().split() ]
 
 ans = (A + B) % 24
 
