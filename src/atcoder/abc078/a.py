@@ -2,7 +2,7 @@ X, Y = [x for x in input().split() ]
 
 if X == Y:
     ans = "="
-elif (X[0] - 'a') > (Y[0] - 'a'):
+elif chr(X[0]) > chr(Y[0]):
     ans = ">"
 else:
     ans = "<"
