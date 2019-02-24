@@ -2,7 +2,7 @@ X, Y = [x for x in input().split() ]
 
 if X == Y:
     ans = "="
-elif chr(X[0]) > chr(Y[0]):
+elif ord(X[0]) > ord(Y[0]):
     ans = ">"
 else:
     ans = "<"
