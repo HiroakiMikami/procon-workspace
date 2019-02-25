@@ -1,7 +1,6 @@
 S = input()
 
-ans = S
-ans[3] = "8"
+ans = S[0:3] + "8" + S[3:]
 
 print(ans)
 print()
