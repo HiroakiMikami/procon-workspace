@@ -1,6 +1,6 @@
 a, b = [ int(x) for x in input().split() ]
 
-if a < b:
+if a <= b:
     ans = a
 else:
     ans = a - 1
