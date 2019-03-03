@@ -884,37 +884,36 @@ void body() {
 
 
     auto ans = Vector<i64>(M); // ans[i] := iが崩落したときの不便さ
-    ans.back() = (N * (N - 1)) / 2; // 最後はすべての島が行き来できない
 
     OrderedMap<i64, i64> nums; // nums[i] := parent=iである連結成分の個数
     REP (i, N) {
         nums[i] = 1;
     }
     UnionFind u(N);
-    i64 cnt = 0;
-    REPR(i, M - 1) {
-        // ans[cnt]の更新
+    REPR(i, M) {
+        // ans[i]の更新
         auto A = ABs[i].first - 1;
         auto B = ABs[i].second - 1;
+        if (i == M - 1) {
+            ans[i] = (N * (N - 1)) / 2; // 最後はすべての島が行き来できない
+            continue ;
+        }
 
         if (u.is_same(A, B)) {
             // すでにつながっている
-            ans[cnt] = ans[cnt + 1];
-            cnt += 1;
+            ans[i] = ans[i + 1];
             continue;
         }
-        dump(i);
         auto x = nums[u.parent(A)];
         nums[u.parent(A)] = 0;
         auto y = nums[u.parent(B)];
         nums[u.parent(B)] = 0;
 
         // x個とy個をつなげたので、x * y個の組が復活する
-        ans[cnt] = ans[cnt + 1] -= x * y;
+        ans[i] = ans[i + 1] -= x * y;
 
         u.merge(A, B);
         nums[u.parent(A)] = x + y;
-        cnt += 1;
     }
 
 
