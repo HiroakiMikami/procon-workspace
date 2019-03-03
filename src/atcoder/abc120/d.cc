@@ -915,7 +915,7 @@ void body() {
 
 
     REP (i, M) {
-        cout << ans[i] << endl;
+        cout << ans[i] << " #dummy" << endl;
     }
     cout << endl;
 }
