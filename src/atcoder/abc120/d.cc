@@ -891,7 +891,7 @@ void body() {
     }
     UnionFind u(N);
     REPR(i, M) {
-        // ans[i]の更新 (橋i+1を復活させる）
+        /* ans[i]の更新 (橋i+1を復活させる） */
         if (i == M - 1) {
             ans[i] = (N * (N - 1)) / 2; // 最後はすべての島が行き来できない
             continue ;
@@ -918,7 +918,7 @@ void body() {
 
 
     REP (i, M) {
-        cout << ans[i] << " #dummy" << endl;
+        cout << ans[i] << endl;
     }
     cout << endl;
 }
