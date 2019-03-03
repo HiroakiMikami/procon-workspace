@@ -840,5 +840,5 @@ void body() {
     }
     dump(ans);
 
-    cout << ans ;
+    cout << ans << endl;
 }
