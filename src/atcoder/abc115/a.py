@@ -11,5 +11,3 @@ else:
 
 print(ans)
 print()
-
-    
