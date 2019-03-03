@@ -891,13 +891,13 @@ void body() {
     }
     UnionFind u(N);
     REPR(i, M) {
-        // ans[i]の更新
-        auto A = ABs[i].first - 1;
-        auto B = ABs[i].second - 1;
+        // ans[i]の更新 (橋i+1を復活させる）
         if (i == M - 1) {
             ans[i] = (N * (N - 1)) / 2; // 最後はすべての島が行き来できない
             continue ;
         }
+        auto A = ABs[i + 1].first - 1;
+        auto B = ABs[i + 1].second - 1;
 
         if (u.is_same(A, B)) {
             // すでにつながっている
