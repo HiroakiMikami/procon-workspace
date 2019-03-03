@@ -818,7 +818,6 @@ void body() {
     i64 ans = 0;
     REP (i, S.size()) {
         // dp[i + 1]の更新
-        dump(i, dp[i][0], dp[i][1]);
         if (S[i] == '1') {
             if (dp[i][0] > 0) {
                 ans += 2;
