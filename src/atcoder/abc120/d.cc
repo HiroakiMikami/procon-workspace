@@ -891,15 +891,16 @@ void body() {
         nums[i] = 1;
     }
     UnionFind u(N);
+    i64 cnt = 0;
     REPR(i, M - 1) {
-        // ans[i]の更新
+        // ans[cnt]の更新
         auto A = ABs[i].first - 1;
         auto B = ABs[i].second - 1;
-        dump(i);
 
         if (u.is_same(A, B)) {
             // すでにつながっている
-            ans[i] = ans[i + 1];
+            ans[cnt] = ans[cnt + 1];
+            cnt += 1;
             continue;
         }
         auto x = nums[u.parent(A)];
@@ -908,10 +909,11 @@ void body() {
         nums[u.parent(B)] = 0;
 
         // x個とy個をつなげたので、x * y個の組が復活する
-        ans[i] = ans[i + 1] -= x * y;
+        ans[cnt] = ans[cnt + 1] -= x * y;
 
         u.merge(A, B);
         nums[u.parent(A)] = x + y;
+        cnt += 1;
     }
 
 
