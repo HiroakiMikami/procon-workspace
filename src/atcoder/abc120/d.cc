@@ -895,6 +895,7 @@ void body() {
         auto A = ABs[i].first - 1;
         auto B = ABs[i].second - 1;
         if (i == M - 1) {
+            dump(i);
             ans[i] = (N * (N - 1)) / 2; // 最後はすべての島が行き来できない
             continue ;
         }
