@@ -895,7 +895,6 @@ void body() {
         auto A = ABs[i].first - 1;
         auto B = ABs[i].second - 1;
         if (i == M - 1) {
-            dump(i);
             ans[i] = (N * (N - 1)) / 2; // 最後はすべての島が行き来できない
             continue ;
         }
@@ -911,7 +910,7 @@ void body() {
         nums[u.parent(B)] = 0;
 
         // x個とy個をつなげたので、x * y個の組が復活する
-        ans[i] = ans[i + 1] -= x * y;
+        ans[i] = ans[i + 1] - x * y;
 
         u.merge(A, B);
         nums[u.parent(A)] = x + y;
