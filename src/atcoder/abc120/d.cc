@@ -885,7 +885,6 @@ void body() {
 
     auto ans = Vector<i64>(M); // ans[i] := iが崩落したときの不便さ
     ans.back() = (N * (N - 1)) / 2; // 最後はすべての島が行き来できない
-    dump(ans.back());
 
     OrderedMap<i64, i64> nums; // nums[i] := parent=iである連結成分の個数
     REP (i, N) {
@@ -896,6 +895,7 @@ void body() {
         // ans[i]の更新
         auto A = ABs[i].first - 1;
         auto B = ABs[i].second - 1;
+        dump(i);
 
         if (u.is_same(A, B)) {
             // すでにつながっている
