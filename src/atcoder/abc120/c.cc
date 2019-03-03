@@ -813,7 +813,7 @@ void body() {
     auto S = read<string>();
 
     // dp[i][j] := S[0..i]まででのjの登場回数（違う文字が来たら打ち消す）
-    auto dp = make_matrix<2, i64>({S.size() + 1, 2}, 0);
+    auto dp = make_matrix<i64, 2>({S.size() + 1, 2}, 0);
 
     i64 ans = 0;
     REP (i, S.size()) {
