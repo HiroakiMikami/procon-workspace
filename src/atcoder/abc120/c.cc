@@ -838,7 +838,6 @@ void body() {
             }
         }
     }
-    dump(ans);
 
     cout << ans << endl << endl;
 }
