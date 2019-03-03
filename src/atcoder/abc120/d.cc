@@ -903,7 +903,7 @@ void body() {
             cnt += 1;
             continue;
         }
-        dump("test");
+        dump(i);
         auto x = nums[u.parent(A)];
         nums[u.parent(A)] = 0;
         auto y = nums[u.parent(B)];
