@@ -1,4 +1,4 @@
-H, W = [ int(x) for input().split() ]
+H, W = [ int(x) for x in input().split() ]
 Ss = [ input().split() for _ in range(H) ]
 
 for i in range(H):
