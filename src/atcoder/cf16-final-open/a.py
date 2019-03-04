@@ -4,7 +4,7 @@ Ss = [ input().split() for _ in range(H) ]
 for i in range(H):
     for j in range(W):
         if Ss[i][j] == "snuke":
-            ans = "{}{}".format(chr(j + 'A'), i + 1)
+            ans = "{}{}".format(chr(j + ord('A')), i + 1)
 
 print(ans)
 print()
