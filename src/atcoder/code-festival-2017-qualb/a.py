@@ -1,5 +1,5 @@
 S = input()
 
-ans = S[-len("FESTIVAL")]
+ans = S[:-len("FESTIVAL")]
 
 print(ans)
