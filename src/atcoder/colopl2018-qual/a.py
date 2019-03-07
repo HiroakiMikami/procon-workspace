@@ -1,5 +1,5 @@
 A, B = [ int(x) for x in input().split() ]
-S = int(input())
+S = input()
 
 ans = len(S) >= A and len(S) <= B
 
