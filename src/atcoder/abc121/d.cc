@@ -835,16 +835,16 @@ void body() {
         /*
          * [A + fst, A + fst + 1, A + fst + 2, ...., B]
          * (A + fst = !a)
-         * 1<<iごとに数字が入れ替わる
+         * x = 1<<iごとに数字が入れ替わる
          */
         auto dist = (B - A - fst + 1);
         i64 r2 = 0;
         auto n_one = dist / 2 / x;
         auto d = dist - x * 2 * n_one;
         if (d >= x) {
-            if (a == 1) n_one += x;
+            if (a == 0) n_one += x;
         } else {
-            if (a == 1) n_one += d;
+            if (a == 0) n_one += d;
         }
         r2 = n_one % 2 == 0 ? 0 : 1;
 
