@@ -827,7 +827,12 @@ void body() {
         /*
          * [A, A + 1, .... A + fst - 1] := xで固定
          */
-        auto r1 = (fst % 2) == 0 ? 0 : 1;
+        auto r1 = 0;
+        if (fst == 0) {
+            r1 = (a == 0) ? 0 : 1;
+        } else {
+            r1 = (fst % 2) == 0 ? 0 : 1;
+        }
 
         /*
          * [A + fst, A + fst + 1, A + fst + 2, ...., B]
