@@ -855,7 +855,6 @@ void body() {
         }
         r2 = n_one % 2 == 0 ? 0 : 1;
 
-        dump(r1, r2, n_one, d, fst, dist);
         ans |= x * (r1 ^ r2);
 
         // fstの更新
