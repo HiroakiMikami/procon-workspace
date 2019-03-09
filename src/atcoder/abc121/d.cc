@@ -818,7 +818,7 @@ void body() {
 
     auto M = i64(std::log2(B)) + 1;
     i64 ans = 0;
-    i64 fst = 0; // A + fst := 初めてその桁の数字が上がる場所
+    i64 fst = 1; // A + fst := 初めてその桁の数字が上がる場所
     REP (i, M) {
         auto x = 1 << i;
         // i桁目を決める
@@ -839,7 +839,7 @@ void body() {
          */
         auto dist = (B - A - fst + 1);
         i64 r2 = 0;
-        if (x % 2 !=  0) {
+        if (x % 2 != 0) {
             // 1桁目だけ特別
             // B - A - fst + 1個の数字が0 1 0 1 ... と並ぶ
             r2 = dist % 2 == 0 ? 0 : 1;
@@ -855,7 +855,7 @@ void body() {
 
         // fstの更新
         if (a == 0) {
-            // A + fst + xで繰り上がる
+            // A + fstでは、桁が1になる -> A + fst + xで繰り上がる
             fst = fst + x;
         } // a != 0のときはA + fstで繰り上がる => fstは変えなくて良い
     }
