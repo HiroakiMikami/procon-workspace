@@ -815,7 +815,7 @@ void body() {
 
     i64 ans = 0;
     i64 fst = 1; // A + fst := 初めてその桁の数字が上がる場所
-    FOR (i, 64) {
+    REP (i, 65) {
         auto x = 1 << i;
         // i桁目を決める
         auto a = A & x; // i桁目
