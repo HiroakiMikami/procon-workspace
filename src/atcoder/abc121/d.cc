@@ -852,7 +852,7 @@ void body() {
             r2 = (dist % x) % 2 == 0 ? 0 : 1;
         }
 
-        dump(r1, r2, fst, dist);
+        dump(r1, r2, r1^ r2, fst, dist);
         ans |= x * (r1 ^ r2);
 
         // fstの更新
