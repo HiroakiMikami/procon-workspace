@@ -849,6 +849,7 @@ void body() {
         auto d = dist - x * 2 * n_grp;
         if (d >= x) {
             if (a == 0) n_one += x;
+            else n_one += (d - x);
         } else {
             if (a == 0) n_one += d;
         }
