@@ -817,7 +817,7 @@ void body() {
     auto M = i64(std::log2(B)) + 1;
     i64 ans = 0;
     i64 fst = 1; // A + fst := 初めてその桁の数字が上がる場所
-    REP (i, M) {
+    REP (i, M + 1) {
         auto x = 1 << i;
         // i桁目を決める
         auto a = A & x; // i桁目
