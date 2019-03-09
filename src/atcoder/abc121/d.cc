@@ -847,14 +847,14 @@ void body() {
             r2 = (dist % x) % 2 == 0 ? 0 : 1;
         }
 
-        dump(r1, r2, fst);
+        dump(r1, r2, fst, dist);
         ans |= x * (r1 ^ r2);
 
         // fstの更新
         if (a == 0) {
             // A + fst + xで繰り上がる
             fst = fst + x;
-        } // a == 1のときはA + fstで繰り上がる => fstは変えなくて良い
+        } // a != 0のときはA + fstで繰り上がる => fstは変えなくて良い
     }
 
     cout << ans << endl;
