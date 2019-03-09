@@ -842,7 +842,11 @@ void body() {
         if (x % 2 != 0) {
             // 1桁目だけ特別
             // B - A - fst + 1個の数字が0 1 0 1 ... と並ぶ
-            r2 = dist % 2 == 0 ? 0 : 1;
+            auto n_one = dist / 2;
+            if (dist % 2 == 0 && a == 1) {
+                n_one += 1;
+            }
+            r2 = n_one % 2 == 0 ? 0 : 1;
         } else {
             // i桁目
             // A + fst, A + fst + 1, ... A + fst + x - 1はx個（偶数）あるので、常に0になる
