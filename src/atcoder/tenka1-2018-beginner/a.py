@@ -1,7 +1,7 @@
 S = input()
 
 if len(S) == 3:
-    ans = reversed(S)
+    ans = "".join(reversed(S))
 else:
     ans = S
 
