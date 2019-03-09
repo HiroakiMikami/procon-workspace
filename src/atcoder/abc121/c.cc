@@ -812,7 +812,7 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto M = read<i64>();
-    auto ABs = read<i64, i64>();
+    auto ABs = read<i64, i64>(N);
 
     sort(CTR(ABs), [](auto rhs, auto lhs) { return rhs.first < lhs.first});
 
