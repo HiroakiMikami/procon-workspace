@@ -814,7 +814,7 @@ void body() {
     auto B = read<i64>();
 
     i64 x = A;
-    i = 1;
+    auto i = 1;
     while (true) {
         x = x ^ (A + i);
         if (x == 0) {
