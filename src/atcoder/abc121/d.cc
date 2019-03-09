@@ -822,15 +822,13 @@ void body() {
     REP (i, M) {
         auto x = 1 << i;
         // i桁目を決める
-        auto a = A & x; // i桁目
+        auto a = (A & x) == 0 ? 0 : 1; // i桁目
 
         /*
-         * [A, A + 1, .... A + fst - 1] := xで固定
+         * [A, A + 1, .... A + fst - 1] := aで固定
          */
         auto r1 = 0;
-        if (fst == 1) {
-            r1 = (a == 0) ? 0 : 1;
-        } else {
+        if (a != 0) {
             r1 = (fst % 2) == 0 ? 0 : 1;
         }
 
