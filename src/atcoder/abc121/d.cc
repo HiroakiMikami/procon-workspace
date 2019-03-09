@@ -844,7 +844,7 @@ void body() {
          */
         auto dist = (B - A - fst + 1);
         i64 r2 = 0;
-        auto n_one = dist / 2 / x;
+        auto n_one = (dist / 2 / x) * x;
         auto d = dist - x * 2 * n_one;
         if (d >= x) {
             if (a == 0) n_one += x;
