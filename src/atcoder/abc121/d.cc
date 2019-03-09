@@ -849,9 +849,17 @@ void body() {
             r2 = n_one % 2 == 0 ? 0 : 1;
         } else {
             // i桁目
+            auto n_one = dist / 2 / x;
+            auto d = dist - x * 2 * n_one;
+            if (d >= x) {
+                if (a == 1) n_one += x;
+                d -= x;
+            } else {
+                if (a == 1) n_one += d;
+            }
             // A + fst, A + fst + 1, ... A + fst + x - 1はx個（偶数）あるので、常に0になる
             // dist % xによって決まる
-            r2 = (dist % x) % 2 == 0 ? 0 : 1;
+            r2 = n_one % 2 == 0 ? 0 : 1;
         }
 
         dump(r1, r2, r1 ^ r2, fst, dist);
