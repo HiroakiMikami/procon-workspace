@@ -851,7 +851,7 @@ void body() {
         ans |= x * (r1 ^ r2);
 
         // fstの更新
-        if (a != 1) {
+        if (a == 0) {
             // A + fst + xで繰り上がる
             fst = fst + x;
         } // a == 1のときはA + fstで繰り上がる => fstは変えなくて良い
