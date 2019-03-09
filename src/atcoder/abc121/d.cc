@@ -809,6 +809,8 @@ int main (int argc, char **argv) {
     return 0;
 }
 
+#include <cmath>
+
 void body() {
     auto A = read<i64>();
     auto B = read<i64>();
