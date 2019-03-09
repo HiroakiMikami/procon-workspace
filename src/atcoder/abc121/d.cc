@@ -813,6 +813,11 @@ void body() {
     auto A = read<i64>();
     auto B = read<i64>();
 
+    if (A == B) {
+        cout << A << endl;
+        return ;
+    }
+
     i64 x = A;
     auto i = 1;
     while (true) {
