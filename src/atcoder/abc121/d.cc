@@ -813,32 +813,45 @@ void body() {
     auto A = read<i64>();
     auto B = read<i64>();
 
-    if (A == B) {
-        cout << A << endl;
-        return ;
-    }
-
-    i64 x = A;
-    auto i = 1;
-    while (true) {
-        x = x ^ (A + i);
-        if (x == 0) {
-            break ;
-        }
-        if (A + i == B) {
-            cout << x << endl;
-            return ;
-        }
-
-        i += 1;
-    }
-
-    auto tmp = (B - A - i) / 3;
-    auto C = A + i + 3 * tmp;
     i64 ans = 0;
-    FOR (i, C + 1, B + 1) {
-        ans = ans ^ i;
+    i64 fst = 1; // A + fst := 初めてその桁の数字が上がる場所
+    FOR (i, 64) {
+        auto x = 1 << i;
+        // i桁目を決める
+        auto a = A & x; // i桁目
+
+        /*
+         * [A, A + 1, .... A + fst - 1] := xで固定
+         */
+        auto r1 = (fst - 1) % 2 == 0 ? 0 : 1;
+
+        /*
+         * [A + fst, A + fst + 1, A + fst + 2, ...., B]
+         * (A + fst = !a)
+         * 1<<iごとに数字が入れ替わる
+         */
+        auto dist = (B - A - fst + 1);
+        i64 r2 = 0;
+        if (x % 2 == 0) {
+            // 1桁目だけ特別
+            // B - A - fst + 1個の数字が0 1 0 1 ... と並ぶ
+            r2 = dist % 2 == 0 ? 0 : 1;
+        } else {
+            // i桁目
+            // A + fst, A + fst + 1, ... A + fst + x - 1はx個（偶数）あるので、常に0になる
+            // dist % xによって決まる
+            r2 = (dist % x) % 2 == 0 ? 0 : 1;
+        }
+
+        ans |= x * (r1 ^ r2);
+
+        // fstの更新
+        if (a != 1) {
+            // A + fst + xで繰り上がる
+            fst = fst + x;
+        } // a == 1のときはA + fstで繰り上がる => fstは変えなくて良い
     }
 
     cout << ans << endl;
+
 }
