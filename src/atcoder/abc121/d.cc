@@ -815,6 +815,11 @@ void body() {
     auto A = read<i64>();
     auto B = read<i64>();
 
+    if (A == B) {
+        cout << A << endl;
+        return ;
+    }
+
 
     auto M = i64(std::log2(B)) + 1;
     i64 ans = 0;
