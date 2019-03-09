@@ -839,28 +839,14 @@ void body() {
          */
         auto dist = (B - A - fst + 1);
         i64 r2 = 0;
-        if (x % 2 != 0) {
-            // 1桁目だけ特別
-            // B - A - fst + 1個の数字が0 1 0 1 ... と並ぶ
-            auto n_one = dist / 2;
-            if (dist % 2 == 0 && a == 1) {
-                n_one += 1;
-            }
-            r2 = n_one % 2 == 0 ? 0 : 1;
+        auto n_one = dist / 2 / x;
+        auto d = dist - x * 2 * n_one;
+        if (d >= x) {
+            if (a == 1) n_one += x;
         } else {
-            // i桁目
-            auto n_one = dist / 2 / x;
-            auto d = dist - x * 2 * n_one;
-            if (d >= x) {
-                if (a == 1) n_one += x;
-                d -= x;
-            } else {
-                if (a == 1) n_one += d;
-            }
-            // A + fst, A + fst + 1, ... A + fst + x - 1はx個（偶数）あるので、常に0になる
-            // dist % xによって決まる
-            r2 = n_one % 2 == 0 ? 0 : 1;
+            if (a == 1) n_one += d;
         }
+        r2 = n_one % 2 == 0 ? 0 : 1;
 
         dump(r1, r2, r1 ^ r2, fst, dist);
         ans |= x * (r1 ^ r2);
