@@ -823,7 +823,6 @@ void body() {
         auto x = 1 << i;
         // i桁目を決める
         auto a = A & x; // i桁目
-        dump(a);
 
         /*
          * [A, A + 1, .... A + fst - 1] := xで固定
@@ -848,6 +847,7 @@ void body() {
             r2 = (dist % x) % 2 == 0 ? 0 : 1;
         }
 
+        dump(r1, r2);
         ans |= x * (r1 ^ r2);
 
         // fstの更新
