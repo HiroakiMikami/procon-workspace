@@ -820,50 +820,15 @@ void body() {
         return ;
     }
 
-
-    auto M = i64(std::log2(B)) + 1;
+    // f(A, B) = f(0, B)が成り立つので、Bだけ考えれば良い。
+    auto x = 0;
+    if (B >= 4) {
+        x = (B / 4) * 4 - 1; // f(0, 4X+3) = 0が成り立つ
+    }
     i64 ans = 0;
-    i64 fst = 1; // A + fst := 初めてその桁の数字が上がる場所
-    REP (i, M) {
-        auto x = 1 << i;
-        // i桁目を決める
-        auto a = (A & x) == 0 ? 0 : 1; // i桁目
-
-        /*
-         * [A, A + 1, .... A + fst - 1] := aで固定
-         */
-        auto r1 = 0;
-        if (a != 0) {
-            r1 = (fst % 2) == 0 ? 0 : 1;
-        }
-
-        /*
-         * [A + fst, A + fst + 1, A + fst + 2, ...., B]
-         * (A + fst = !a)
-         * x = 1<<iごとに数字が入れ替わる
-         */
-        auto dist = (B - A - fst + 1);
-        i64 r2 = 0;
-        i64 n_grp = dist / 2 / x;
-        auto n_one = n_grp * x;
-        auto d = dist - x * 2 * n_grp;
-        if (d >= x) {
-            if (a == 0) n_one += x;
-            else n_one += (d - x);
-        } else {
-            if (a == 0) n_one += d;
-        }
-        r2 = n_one % 2 == 0 ? 0 : 1;
-
-        ans |= x * (r1 ^ r2);
-
-        // fstの更新
-        if (a == 0) {
-            // A + fstでは、桁が1になる -> A + fst + xで繰り上がる
-            fst = fst + x;
-        } // a != 0のときはA + fstで繰り上がる => fstは変えなくて良い
+    FOR (i, x + 1, B + 1) {
+        ans = ans ^ i;
     }
 
     cout << ans << endl;
-
 }
