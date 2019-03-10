@@ -825,6 +825,7 @@ void body() {
     if (B >= 4) {
         x = (B / 4) * 4 - 1; // f(0, 4X+3) = 0が成り立つ
     }
+    dump(x);
     i64 ans = 0;
     FOR (i, x + 1, B + 1) {
         ans = ans ^ i;
