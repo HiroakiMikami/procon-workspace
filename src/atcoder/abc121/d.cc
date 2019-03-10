@@ -820,16 +820,19 @@ void body() {
         return ;
     }
 
-    // f(A, B) = f(0, B)が成り立つので、Bだけ考えれば良い。
-    auto x = 0;
-    if (B >= 4) {
-        x = (B / 4) * 4 - 1; // f(0, 4X+3) = 0が成り立つ
-    }
-    dump(x);
-    i64 ans = 0;
-    FOR (i, x + 1, B + 1) {
-        ans = ans ^ i;
-    }
+    // f(A, B) = f(0, A) ^ f(0, B)が成り立つので、f(0, X)だけ考える
+    auto f = [](auto X) { ;
+        auto x = 0;
+        if (X >= 4) {
+            x = (X / 4) * 4 - 1; // f(0, 4X+3) = 0が成り立つ
+        }
+        i64 ans = 0;
+        FOR (i, x + 1, X + 1) {
+            ans = ans ^ i;
+        }
+        return ans;
+    };
+    i64 ans = f(A - 1) ^ f(B);
 
     cout << ans << endl;
 }
