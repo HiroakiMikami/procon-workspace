@@ -827,6 +827,7 @@ void body() {
             x = (X / 4) * 4 - 1; // f(0, 4X+3) = 0が成り立つ
         }
         i64 ans = 0;
+        dump(x, X);
         FOR (i, x + 1, X + 1) {
             ans = ans ^ i;
         }
