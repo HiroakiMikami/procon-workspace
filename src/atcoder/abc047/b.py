@@ -1,5 +1,5 @@
 W, H, N = [ int(x) for x in input().split() ]
-xyas = [ input().split() for _ in range(N) ]
+xyas = [ [ int(x) for x in input().split() ] for _ in range(N) ]
 
 area = [ [ 0 for _ in range(W) ] for _ in range(H) ]
 for xya in xyas:
