@@ -6,19 +6,19 @@ for xya in xyas:
     x, y, a = xya
     if a == 1:
         for i in range(x):
-            for j in rnage(H):
+            for j in range(H):
                 area[j][i] = 1
     elif a == 2:
         for i in range(x, W):
-            for j in rnage(H):
+            for j in range(H):
                 area[j][i] = 1
     elif a == 3:
         for i in range(W):
-            for j in rnage(y):
+            for j in range(y):
                 area[j][i] = 1
     else:
         for i in range(W):
-            for j in rnage(y, H):
+            for j in range(y, H):
                 area[j][i] = 1
 ans = 0
 for s in area:
