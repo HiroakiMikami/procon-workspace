@@ -10,6 +10,6 @@ while True:
         break
     ch = Ss[p][0]
     Ss[p] = Ss[p][1:]
-    p = ch.toupper()
+    p = ch.upper()
 
 print(ans)
