@@ -9,4 +9,4 @@ for PX in PXs:
     P, X = PX
     ans.append(s - Ts[P - 1] + X)
 
-print("\n".join(ans))
+print("\n".join(map(ans, str)))
