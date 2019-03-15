@@ -1,5 +1,5 @@
 H, W = [ int(x) for x in input().split() ]
-Cs = [ input() for _In range(H) ]
+Cs = [ input() for _ in range(H) ]
 
 ans = ""
 for i in range(2 * H):
