@@ -5,6 +5,7 @@ ans = ""
 for i in range(2 * H):
     for j in range(W):
         ans += Cs[i//2][j]
-    ans += "\n"
+    if i != 2 * H - 1:
+        ans += "\n"
 
 print(ans)
