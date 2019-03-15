@@ -10,4 +10,3 @@ for s in S:
 ans = max(xs)
 
 print(ans)
-
