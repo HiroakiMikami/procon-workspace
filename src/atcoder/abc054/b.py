@@ -9,8 +9,8 @@ def contain(i, j):
     return True
 
 ans = False
-for i in range(N):
-    for j in range(N):
+for i in range(N - M):
+    for j in range(N - M):
         if contain(i, j):
             ans = True
 
