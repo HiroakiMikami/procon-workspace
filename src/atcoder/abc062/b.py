@@ -7,7 +7,7 @@ for i in range(W + 2):
 ans += "\n"
 for a in a_s:
     ans += "#" + a + "#"
-ans += "\n"
+    ans += "\n"
 for i in range(W + 2):
     ans += "#"
 
