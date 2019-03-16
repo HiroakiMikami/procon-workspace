@@ -8,8 +8,8 @@ def contain(i, j):
             return False
     return True
 ans = False
-for i in range(N - M):
-    for j in range(N - M):
+for i in range(N - M + 1):
+    for j in range(N - M + 1):
         if contain(i, j):
             ans = True
 
