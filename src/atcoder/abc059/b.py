@@ -1,4 +1,5 @@
-A, B = [ int(x) for x in input().split() ]
+A = int(input())
+B = int(input())
 
 if A > B:
     ans = "GREATER"
