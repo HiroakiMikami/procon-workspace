@@ -15,4 +15,5 @@ for i in range(N):
             d_min = distance
     ans.append(r)
 
+print(ans)
 print("\n".join(map(str, ans)))
