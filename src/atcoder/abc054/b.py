@@ -7,7 +7,6 @@ def contain(i, j):
         if As[i + p][j:j+M] != Bs[p]:
             return False
     return True
-
 ans = False
 for i in range(N - M):
     for j in range(N - M):
