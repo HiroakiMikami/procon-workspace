@@ -13,7 +13,6 @@ for i in range(N):
         if d_min < 0 or d_min > distance:
             r = j
             d_min = distance
-    ans.append(r)
+    ans.append(r + 1)
 
-print(ans)
 print("\n".join(map(str, ans)))
