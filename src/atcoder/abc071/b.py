@@ -8,4 +8,3 @@ for i in range(26):
         break
 
 print("None" if ans is None else ans)
-
