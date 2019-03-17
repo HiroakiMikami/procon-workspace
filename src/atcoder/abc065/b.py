@@ -3,7 +3,7 @@ a_s = [ int(input()) for _ in range(N) ]
 
 b = 1
 ans = None
-for i in range(N):
+for i in range(N + 1):
     b = a_s[b - 1]
     if b == 2:
         ans = i + 1
