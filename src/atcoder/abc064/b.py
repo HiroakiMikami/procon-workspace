@@ -1,10 +1,6 @@
-S = input()
+N = int(input())
+a_s = [ int(x) for x in input().split() ]
 
-o = set()
-ans = True
-for s in S:
-    if s in o:
-        ans = False
-    o.add(s)
+ans = max(a_s) - min(a_s)
 
-print("yes" if ans else "no")
+print(ans)
