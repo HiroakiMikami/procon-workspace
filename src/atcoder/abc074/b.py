@@ -1,9 +1,9 @@
 N = int(input())
-lrs = [ [ int(x) for x in input().split()] for _ in range(N) ]
+K = int(input())
+xs = [ int(x) for x in input().split() ]
 
 ans = 0
-for lr in lrs:
-    print(lr)
-    #ans += (r - l + 1)
+for x in xs:
+    ans += min(abs(x - 0), abs(x - K))
 
 print(ans)
