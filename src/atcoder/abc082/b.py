@@ -3,9 +3,10 @@ t = input()
 
 def histgram(s):
     h = {}
+    for i in range(26):
+        ch = chr(i + ord('a'))
+        h[ch] = 0
     for ch in s:
-        if not ch in h:
-            h[ch] = 0
         h[ch] += 1
     return h
 h_s = histgram(s)
