@@ -13,6 +13,6 @@ for y in range(H):
             if x2 < 0 or x2 >= W or y2 < 0 or y2 >= H:
                 continue
             n += 1 if Ss[y2][x2] == "#" else 0
-        ans[y] = ans[y][:x] + str(n) ans[y][x+1:]
+        ans[y] = ans[y][:x] + str(n) + ans[y][x+1:]
 
 print("\n".join(ans))
