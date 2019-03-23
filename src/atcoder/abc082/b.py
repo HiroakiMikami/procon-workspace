@@ -17,7 +17,7 @@ for i in range(26):
     for j in range(h_s[ch]):
         s_ += ch
 t_ = ""
-for i in range(26, 0, -1):
+for i in range(25, -1, -1):
     ch = chr(i + ord('a'))
     print(ch)
     #for j in range(h_t[ch]):
