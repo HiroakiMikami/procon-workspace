@@ -20,8 +20,8 @@ t_ = ""
 for i in range(26, 0, -1):
     ch = chr(i + ord('a'))
     print(ch)
-    for j in range(h_t[ch]):
-        t_ += ch
+    #for j in range(h_t[ch]):
+    #    t_ += ch
 ans = s_ < t_
 
 print("Yes" if ans else "No")
