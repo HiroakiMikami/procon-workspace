@@ -8,6 +8,6 @@ for i in range(1, N + 1):
         s += n % 10
         n //= 10
     if A <= s <= B:
-        ans += 1
+        ans += i
 
 print(ans)
