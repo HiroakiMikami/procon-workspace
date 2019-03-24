@@ -7,7 +7,7 @@ for i in range(A, B + 1):
     while x > 0:
         xs.append(x % 10)
         x //= 10
-    if xs == list(xs.reversed()):
+    if xs == list(reversed(xs)):
         ans += 1
 
 print(ans)
