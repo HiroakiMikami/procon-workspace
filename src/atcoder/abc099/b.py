@@ -1,4 +1,4 @@
-a, b = [ int(x) for input().split() ]
+a, b = [ int(x) for x in input().split() ]
 
 x = b - a
 ans = 0
