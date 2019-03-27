@@ -1,7 +1,7 @@
 X = int(input())
 
 from math import sqrt
-for i in range(1, int(sqrt(X)) + 1):
+for i in range(1, X):
     if i == 1:
         ans = i
     print(int(sqrt(i)) + 1, i)
