@@ -6,10 +6,8 @@ for i in range(1, int(sqrt(X)) + 1):
         ans = i
     for b in range(2, int(sqrt(i)) + 1):
         tmp = b * b
-        while tmp < i:
+        while tmp <= i:
             tmp *= b
-        if i == 961:
-            print(b, tmp)
         if tmp == i:
             ans = i
 
