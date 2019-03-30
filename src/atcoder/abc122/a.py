@@ -1,12 +1,12 @@
 b = input()
 
 if b == "A":
-    ans = "A"
-elif b == "C":
     ans = "T"
-elif b == "G":
-    ans = "C"
-else:
+elif b == "C":
     ans = "G"
+elif b == "G":
+    ans = "A"
+else:
+    ans = "C"
 
 print(ans)
