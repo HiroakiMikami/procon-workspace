@@ -5,8 +5,8 @@ if b == "A":
 elif b == "C":
     ans = "G"
 elif b == "G":
-    ans = "A"
+    ans = "T"
 else:
-    ans = "C"
+    ans = "A"
 
 print(ans)
