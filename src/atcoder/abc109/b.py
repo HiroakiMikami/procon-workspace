@@ -4,11 +4,9 @@ Ws = [input() for _ in range(N)]
 ans = True
 w = set(Ws[0])
 for i in range(1, N):
-    if Ws[i - 1][-1] != Ws[i]:
-        print(Ws[i])
+    if Ws[i - 1][-1] != Ws[i][0]:
         ans = False
     if Ws[i] in w:
-        print(Ws[i])
         ans = False
     w.add(Ws[i])
 
