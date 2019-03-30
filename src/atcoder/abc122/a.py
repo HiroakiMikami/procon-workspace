@@ -5,7 +5,7 @@ if b == "A":
 elif b == "C":
     ans = "G"
 elif b == "G":
-    ans = "T"
+    ans = "C"
 else:
     ans = "A"
 
