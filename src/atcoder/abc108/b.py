@@ -6,4 +6,4 @@ x3, y3 = [x2 + v_rot[0], y2 + v_rot[1]]
 x4, y4 = [x1 + v_rot[0], y1 + v_rot[1]]
 ans = [x3, y3, x4, y4]
 
-print(" ".join(ans))
+print(" ".join(map(str, ans)))
