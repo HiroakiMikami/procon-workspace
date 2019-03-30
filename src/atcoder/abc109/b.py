@@ -9,7 +9,7 @@ for i in range(1, N):
         ans = False
         break
     if Ws[i] in w:
-        print(Ws[i])
+        print(Ws[i], w)
         ans = False
         break
     w.add(Ws[i])
