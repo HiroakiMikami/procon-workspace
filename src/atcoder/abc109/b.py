@@ -1,0 +1,13 @@
+N = int(input())
+Ws = [input() for _ in range(N)]
+
+ans = True
+w = set(Ws[0])
+for i in range(1, N):
+    if Ws[i - 1][-1] != Ws[i]:
+        ans = False
+    if Ws[i] in w:
+        ans = False
+    w.add(Ws[i])
+
+print("Yes" if ans else "No")
