@@ -12,7 +12,7 @@ for i in range(W):
         if r[i] == "#":
             comp = False
     if not comp:
-        for a, r in zip(ans, rs):
-            a += r[i]
+        for j, r in enumerate(rs):
+            ans[j] += r[i]
 
 print("\n".join(ans))
