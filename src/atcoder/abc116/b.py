@@ -7,7 +7,7 @@ def f(n):
         return 3 * n + 1
 a_s = [s]
 A = set([s])
-for m in range(1, 1000000 + 1):
+for m in range(1, 1000000):
     a_m = f(a_s[-1])
     if a_m in A:
         ans = m + 1
