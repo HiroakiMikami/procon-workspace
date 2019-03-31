@@ -7,7 +7,7 @@ for i in range(1, M + 1):
 for KA in KAs:
     As = KA[1:]
     for i in range(1, M + 1):
-        if not i in As:
+        if not i in As and i in s:
             s.remove(i)
 ans = len(s)
 
