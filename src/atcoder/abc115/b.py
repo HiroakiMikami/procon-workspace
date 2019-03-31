@@ -1,7 +1,7 @@
 N = int(input())
 ps = [int(input()) for _ in range(N)]
 
-ps = ps.sort()
+ps.sort()
 ps[-1] /= 2
 ans = sum(ps)
 
