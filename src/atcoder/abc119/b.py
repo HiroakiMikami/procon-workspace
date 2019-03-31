@@ -6,6 +6,6 @@ for x, u in xus:
     if u == "JPY":
         ans += int(x)
     else:
-        ans *= 380000.0 * float(x)
+        ans += 380000.0 * float(x)
 
 print(ans)
