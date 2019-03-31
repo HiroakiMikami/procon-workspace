@@ -5,7 +5,7 @@ s = set()
 for i in range(1, M + 1):
     s.add(i)
 for KA in KAs:
-    K, As = KA
+    As = KA[1:]
     for i in range(1, M + 1):
         if not i in As:
             s.remove(i)
