@@ -8,5 +8,6 @@ for i in range(N, 1000):
         n //= 10
     if len(xs) == 1:
         ans = i
+        break
 
 print(ans)
