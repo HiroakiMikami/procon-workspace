@@ -816,7 +816,7 @@ void body() {
     }
 
     Vector<std::bitset<64>> S; // S[i] := i個目// の部分列の美しさ
-    S.reserve(N * (N + 1) / 2);
+    S.reserve((N * (N + 1)) / 2);
     REP (i, N + 1) {
         FOR (j, i + 1, N + 1) {
             S.push_back(sum[j] - sum[i]);
@@ -837,7 +837,6 @@ void body() {
 
         if (n >= K) {
             // うまく選ぶとibit目をたてることができる
-            dump(i, n, K);
             ans |= (1 << i);
             REP (j, S.size()) {
                 if (!S[j][i]) {
