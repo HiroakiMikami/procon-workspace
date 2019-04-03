@@ -837,6 +837,7 @@ void body() {
 
         if (n >= K) {
             // うまく選ぶとibit目をたてることができる
+            dump(i);
             ans |= (1 << i);
             REP (j, S.size()) {
                 if (!S[j][i]) {
