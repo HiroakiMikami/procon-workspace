@@ -818,8 +818,8 @@ void body() {
     Vector<i64> S; // S[i] := i個目// の部分列の美しさ
     S.reserve((N * (N + 1)) / 2);
     REP (i, N + 1) {
-        FOR (j, i + 1, N + 1) {
-            S.push_back(sum[j] - sum[i]);
+        REP (j, i) {
+            S.push_back(sum[i] - sum[j]);
         }
     }
 
