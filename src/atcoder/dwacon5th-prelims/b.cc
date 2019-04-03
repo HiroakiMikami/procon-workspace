@@ -815,23 +815,17 @@ void body() {
         sum[i + 1] = sum[i] + as[i];
     }
 
-    Vector<std::bitset<64>> S; // S[i] := i番目の部分列の美しさ
-    Vector<i64> S2; // S[i] := i番目の部分列の美しさ
+    Vector<std::bitset<64>> S; // S[i] := i個目// の部分列の美しさ
     S.reserve(N * (N + 1) / 2);
     REP (i, N + 1) {
         FOR (j, i + 1, N + 1) {
             S.push_back(sum[j] - sum[i]);
-            S2.push_back(sum[j] - sum[i]);
         }
     }
-    EACH (x, S) {
-        dump(x);
-    }
-    dump(S2);
 
     Vector<bool> cands(S.size(), true);
     i64 ans = 0;
-    REPR(i, 60) {
+    REPR(i, 64) {
         // 上の桁から順に決める
         i64 n = 0;
         REP (j, S.size()) {
