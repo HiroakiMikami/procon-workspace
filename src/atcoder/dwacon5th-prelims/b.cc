@@ -827,7 +827,7 @@ void body() {
     REPR(i, 40) {
         // 上の桁から順に決める
         i64 n = 0;
-        auto t = ans + (1 << i);
+        i64 t = ans + (1 << i);
         REP (j, S.size()) {
             if ((t & S[j]) == t) {
                 n += 1;
@@ -836,7 +836,7 @@ void body() {
 
         if (n >= K) {
             // うまく選ぶとibit目をたてることができる
-            ans = t;
+            ans += (1 << i);
         }
     }
     cout << ans << endl;
