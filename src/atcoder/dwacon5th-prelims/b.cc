@@ -827,16 +827,16 @@ void body() {
     REPR(i, 64) {
         // 上の桁から順に決める
         i64 n = 0;
-        i64 t = ans + (1 << i);
-        REP (j, S.size()) {
-            if ((t & S[j]) == t) {
+        i64 t = ans + (1LL << i);
+        EACH (s, S) {
+            if ((t & s) == t) {
                 n += 1;
             }
         }
 
         if (n >= K) {
             // うまく選ぶとibit目をたてることができる
-            ans += (1 << i);
+            ans = t;
         }
     }
     cout << ans << endl;
