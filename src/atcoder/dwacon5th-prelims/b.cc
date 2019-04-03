@@ -836,7 +836,7 @@ void body() {
 
         if (n >= K) {
             // うまく選ぶとibit目をたてることができる
-            ans += (1 << i);
+            ans = t;
         }
     }
     cout << ans << endl;
