@@ -823,26 +823,20 @@ void body() {
         }
     }
 
-    Vector<bool> cands(S.size(), true);
     i64 ans = 0;
     REPR(i, 64) {
         // 上の桁から順に決める
         i64 n = 0;
+        auto t = ans + (1 << i);
         REP (j, S.size()) {
-            if (!cands[j]) {
-                continue ;
+            if ((t & S[j]) == t) {
+                n += 1;
             }
-            n += S[j][i] ? 1 : 0;
         }
 
         if (n >= K) {
             // うまく選ぶとibit目をたてることができる
             ans |= (1 << i);
-            REP (j, S.size()) {
-                if (!S[j][i]) {
-                    cands[j] = false;
-                }
-            }
         }
     }
     cout << ans << endl;
