@@ -824,7 +824,7 @@ void body() {
     }
 
     i64 ans = 0;
-    REPR(i, 40) {
+    REPR(i, 64) {
         // 上の桁から順に決める
         i64 n = 0;
         i64 t = ans + (1 << i);
