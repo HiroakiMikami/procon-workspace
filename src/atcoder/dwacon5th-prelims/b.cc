@@ -822,6 +822,7 @@ void body() {
             S.push_back(sum[j] - sum[i]);
         }
     }
+    dump(S);
 
     Vector<bool> cands(S.size(), true);
     i64 ans = 0;
