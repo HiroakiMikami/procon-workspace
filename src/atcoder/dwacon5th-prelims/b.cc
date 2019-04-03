@@ -6,8 +6,9 @@ WA false
 TLE false
 MLE false
 TASK_TYPE
-FAILURE_TYPE
+FAILURE_TYPE オーバーフロー
 NOTES
+1 << iが32bit intであることを見逃していた
 */
 #include <iostream>
 #include <cstdint>
