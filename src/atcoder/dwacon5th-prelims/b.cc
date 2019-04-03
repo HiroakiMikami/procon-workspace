@@ -816,13 +816,15 @@ void body() {
     }
 
     Vector<std::bitset<64>> S; // S[i] := i番目の部分列の美しさ
+    Vector<i64> S2; // S[i] := i番目の部分列の美しさ
     S.reserve(N * (N + 1) / 2);
     REP (i, N + 1) {
         FOR (j, i + 1, N + 1) {
             S.push_back(sum[j] - sum[i]);
+            S2.push_back(sum[j] - sum[i]);
         }
     }
-    dump(S);
+    dump(S2);
 
     Vector<bool> cands(S.size(), true);
     i64 ans = 0;
