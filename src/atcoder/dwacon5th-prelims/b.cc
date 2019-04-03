@@ -815,7 +815,7 @@ void body() {
         sum[i + 1] = sum[i] + as[i];
     }
 
-    Vector<std::bitset<64>> S; // S[i] := i個目// の部分列の美しさ
+    Vector<i64> S; // S[i] := i個目// の部分列の美しさ
     S.reserve((N * (N + 1)) / 2);
     REP (i, N + 1) {
         FOR (j, i + 1, N + 1) {
