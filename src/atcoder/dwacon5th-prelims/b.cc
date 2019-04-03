@@ -824,6 +824,9 @@ void body() {
             S2.push_back(sum[j] - sum[i]);
         }
     }
+    EACH (x, S) {
+        dump(x);
+    }
     dump(S2);
 
     Vector<bool> cands(S.size(), true);
