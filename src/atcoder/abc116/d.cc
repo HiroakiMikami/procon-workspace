@@ -818,7 +818,7 @@ void body() {
     /*
      * q1: the set of sushi that I plan to eat
      */
-    auto q1 = PriorityQueue<pair<i64, i64>();
+    auto q1 = PriorityQueue<pair<i64, i64>>();
     /*
      * q2: the set of sushi that I do not plan to eat
      */
