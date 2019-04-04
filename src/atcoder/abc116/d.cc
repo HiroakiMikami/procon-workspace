@@ -862,6 +862,7 @@ void body() {
         pair<i64, i64> to_delete = {-1, -1};
         while (!q1.empty()) {
             auto q = q1.top();
+            dump(q);
             q1.pop();
             if (occurrence[q.first] >= 2) {
                 to_delete = q;
