@@ -818,7 +818,8 @@ void body() {
     /*
      * q1: the set of sushi that I plan to eat
      */
-    auto q1 = PriorityQueue<pair<i64, i64>, std::greater<pair<i64, i64>>>();
+    auto cmp_q1 = [](auto rhs, auto lhs) { return rhs.second < lhs.second;};
+    auto q1 = PriorityQueue<pair<i64, i64>, decltype(cmp_q1)>(cmp_q1);
     /*
      * q2: the set of sushi that I do not plan to eat
      */
@@ -843,8 +844,7 @@ void body() {
         if (occurrence[t] == 0) {
             x += 1;
         }
-        dump(d, t);
-        q1.emplace(d, t); // sort by d
+        q1.emplace(t, d);
         occurrence[t] += 1;
     }
     point += x * x;
@@ -862,13 +862,13 @@ void body() {
         while (!q1.empty()) {
             auto q = q1.top();
             q1.pop();
-            if (occurrence[q.second] >= 2) {
+            if (occurrence[q.first] >= 2) {
                 to_delete = q;
                 break ;
             }
         }
 
-        if (to_delete.second <= 0) {
+        if (to_delete.first <= 0) {
             return ;
         }
 
@@ -887,10 +887,10 @@ void body() {
         }
 
         // swap 2 sushi
-        occurrence[to_delete.second] -= 1;
+        occurrence[to_delete.first] -= 1;
         occurrence[to_insert.second] += 1;
         point -= to_delete.second;
-        point += to_insert.second;
+        point += to_insert.first;
         point -= x * x;
         x += 1;
         point += x * x;
