@@ -844,6 +844,7 @@ void body() {
         if (occurrence[t] == 0) {
             x += 1;
         }
+        dump(d);
         q1.emplace(t, d);
         occurrence[t] += 1;
     }
