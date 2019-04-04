@@ -852,9 +852,11 @@ void body() {
         auto d = tds[i].second;
         q2.emplace(d, t); // sort by d
     }
+    dump(point);
 
     i64 ans = point;
     auto next = [&](auto _next) {
+        dump(point);
         pair<i64, i64> to_delete = {-1, -1};
         while (!q1.empty()) {
             auto q = q1.top();
