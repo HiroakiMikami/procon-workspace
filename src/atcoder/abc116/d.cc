@@ -862,7 +862,6 @@ void body() {
         pair<i64, i64> to_delete = {-1, -1};
         while (!q1.empty()) {
             auto q = q1.top();
-            dump(q);
             q1.pop();
             if (occurrence[q.first] >= 2) {
                 to_delete = q;
@@ -896,7 +895,6 @@ void body() {
         point -= x * x;
         x += 1;
         point += x * x;
-        dump(to_delete, to_insert);
 
         ans = std::max(ans, point);
 
