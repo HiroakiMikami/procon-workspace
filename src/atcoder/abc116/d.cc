@@ -893,6 +893,7 @@ void body() {
         point -= x * x;
         x += 1;
         point += x * x;
+        dump(to_delete, to_insert);
 
         ans = std::max(ans, point);
 
