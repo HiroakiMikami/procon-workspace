@@ -818,7 +818,7 @@ void body() {
     /*
      * q1: the set of sushi that I plan to eat
      */
-    auto cmp_q1 = [](auto rhs, auto lhs) { return rhs.second < lhs.second;};
+    auto cmp_q1 = [](auto rhs, auto lhs) { return rhs.second > lhs.second;};
     auto q1 = PriorityQueue<pair<i64, i64>, decltype(cmp_q1)>(cmp_q1);
     /*
      * q2: the set of sushi that I do not plan to eat
