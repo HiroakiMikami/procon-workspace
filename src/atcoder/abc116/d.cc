@@ -847,7 +847,7 @@ void body() {
         occurrence[t] += 1;
     }
     point += x * x;
-    REP (i, K, N) {
+    FOR (i, K, N) {
         auto t = tds[i].first;
         auto d = tds[i].second;
         q2.emplace(d, t); // sort by d
