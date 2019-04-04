@@ -822,7 +822,7 @@ void body() {
     /*
      * q2: the set of sushi that I do not plan to eat
      */
-    auto q2 = PriorityQueue<pair<i64, i64>, std::greater<pair<i64, i64>>();
+    auto q2 = PriorityQueue<pair<i64, i64>, std::greater<pair<i64, i64>>>();
     /*
      * occurrence[i] := occurrence of "t_i"
      */
