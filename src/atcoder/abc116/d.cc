@@ -823,7 +823,8 @@ void body() {
     /*
      * q2: the set of sushi that I do not plan to eat
      */
-    auto q2 = PriorityQueue<pair<i64, i64>>();
+    auto cmp_q2 = [](auto rhs, auto lhs) { return rhs.second < lhs.second;};
+    auto q2 = PriorityQueue<pair<i64, i64>, decltype(cmp_q2)>(cmp_q2);
     /*
      * occurrence[i] := occurrence of "t_i"
      */
@@ -844,7 +845,6 @@ void body() {
         if (occurrence[t] == 0) {
             x += 1;
         }
-        dump(d);
         q1.emplace(t, d);
         occurrence[t] += 1;
     }
@@ -852,7 +852,7 @@ void body() {
     FOR (i, K, N) {
         auto t = tds[i].first;
         auto d = tds[i].second;
-        q2.emplace(d, t); // sort by d
+        q2.emplace(t, d);
     }
     dump(point);
 
@@ -877,21 +877,21 @@ void body() {
         while (!q2.empty()) {
             auto q = q2.top();
             q2.pop();
-            if (occurrence[q.second] == 0) {
+            if (occurrence[q.first] == 0) {
                 to_insert = q;
                 break;
             }
         }
 
-        if (to_insert.second <= 0) {
+        if (to_insert.first <= 0) {
             return ;
         }
 
         // swap 2 sushi
         occurrence[to_delete.first] -= 1;
-        occurrence[to_insert.second] += 1;
+        occurrence[to_insert.first] += 1;
         point -= to_delete.second;
-        point += to_insert.first;
+        point += to_insert.second;
         point -= x * x;
         x += 1;
         point += x * x;
