@@ -843,6 +843,7 @@ void body() {
         if (occurrence[t] == 0) {
             x += 1;
         }
+        dump(d, t);
         q1.emplace(d, t); // sort by d
         occurrence[t] += 1;
     }
