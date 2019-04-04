@@ -854,7 +854,6 @@ void body() {
         auto d = tds[i].second;
         q2.emplace(t, d);
     }
-    dump(point);
 
     i64 ans = point;
     auto next = [&](auto _next) {
