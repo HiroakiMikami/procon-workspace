@@ -836,16 +836,18 @@ void body() {
 
     // Create the number (which digit is dp(N))
     std::string ans = "";
+    i64 n = N;
     REP (i, dp[N]) {
         // Decide (dp[N]-i)-th digit
         i64 x = 0;
         EACH (A, As) {
-            if (i - num[A] < 0) continue;
-            if (dp[i - num[A]] == dp[N] - i - 1) {
+            if (n - num[A] < 0) continue;
+            if (dp[n - num[A]] == dp[N] - i - 1) {
                 x = std::max(x, A);
             }
         }
         ans += str[x];
+        n -= num[x];
     }
 
     std::cout << ans << std::endl;
