@@ -830,7 +830,7 @@ void body() {
         EACH (A, As) {
             if (i - num[A] < 0) continue;
             // Case of A <dp[i - num[A]]
-            dp[i] = std::max(dp[i], dp(i - num[A]) + 1);
+            dp[i] = std::max(dp[i], dp[i - num[A]] + 1);
         }
     }
 
