@@ -849,12 +849,11 @@ void body() {
         }
     }
 
-    dump(digit);
-
     std::string ans = "";
     REP (i, digit) {
         auto s = dp[i][N];
         if (s) {
+            dump(ans.value());
             ans = std::max(s.value(), ans);
         }
     }
