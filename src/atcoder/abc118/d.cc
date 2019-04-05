@@ -853,7 +853,6 @@ void body() {
     REP (i, digit) {
         auto s = dp[i][N];
         if (s) {
-            dump(s.value());
             auto x = s.value();
             if (ans.size() < x.size()) {
                 ans = x;
