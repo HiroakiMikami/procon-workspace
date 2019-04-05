@@ -810,7 +810,7 @@ int main (int argc, char **argv) {
 }
 
 void body() {
-    auto N = read<i64>();
+    auto N = read<size_t>();
     auto M = read<i64>();
     auto As = read<i64>(M);
     Vector<i64> num = {0, 2, 5, 5, 4, 5, 6, 3, 7, 6};
