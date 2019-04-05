@@ -827,13 +827,13 @@ void body() {
         // update dp[i][_]
         REP (j, N + 1) {
             // update dp[i][j]
-            std::string ans = "";
+            std::experimental::optional<std::string> ans;
             EACH (A, As) {
                 if (j - num[A] < 0) continue;
                 auto x = dp[i - 1][j - num[A]];
                 if (!x) continue;
                 auto t = x.value() + str[A];
-                if (ans < t) {
+                if (!ans || ans.value() < t) {
                     ans = t;
                 }
             }
