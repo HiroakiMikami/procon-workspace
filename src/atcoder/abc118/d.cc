@@ -824,7 +824,8 @@ void body() {
     /*
      * dp[i] := the maximum digit when using i matches
      */
-    Vector<i64> dp(N + 1, 0);
+    Vector<i64> dp(N + 1, -1);
+    dp[0] = 0;
     FOR (i, 1, N + 1) {
         // update dp[i]
         EACH (A, As) {
