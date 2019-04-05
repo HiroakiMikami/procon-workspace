@@ -857,7 +857,7 @@ void body() {
             if (ans.size() < x.size()) {
                 ans = x;
             } else if (ans.size() == x.size()) {
-                ans = std::max(s.value(), ans);
+                ans = std::max(x, ans);
             }
         }
     }
