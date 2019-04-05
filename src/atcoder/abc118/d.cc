@@ -838,6 +838,9 @@ void body() {
                 }
             }
             dp[i][j] = ans;
+            if (ans) {
+                dump(ans.value());
+            }
         }
     }
 
