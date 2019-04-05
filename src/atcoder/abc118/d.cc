@@ -853,7 +853,7 @@ void body() {
     REP (i, digit) {
         auto s = dp[i][N];
         if (s) {
-            dump(ans.value());
+            dump(s.value());
             ans = std::max(s.value(), ans);
         }
     }
