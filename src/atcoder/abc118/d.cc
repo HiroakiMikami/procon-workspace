@@ -837,8 +837,6 @@ void body() {
                     ans = t;
                 }
             }
-            dump(i, j);
-            dump(ans);
             dp[i][j] = ans;
         }
     }
