@@ -831,7 +831,7 @@ void body() {
                 if (j - A < 0) continue;
                 auto x = dp[i - 1][j - A];
                 if (!x) continue;
-                x = x + std::string('0' + A);
+                x = x + '0' + A;
                 if (ans < x) {
                     ans = x;
                 }
