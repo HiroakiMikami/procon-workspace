@@ -845,6 +845,7 @@ void body() {
 
         if (!is_updated) {
             digit = i - 1;
+            break ;
         }
     }
 
