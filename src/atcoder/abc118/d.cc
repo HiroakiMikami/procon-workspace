@@ -825,7 +825,7 @@ void body() {
     dp[0][0] = "";
     FOR (i, 1, N + 1) {
         // update dp[i][_]
-        REP (j, N + 1) {
+        FOR (j, 1, N + 1) {
             // update dp[i][j]
             std::experimental::optional<std::string> ans;
             EACH (A, As) {
@@ -834,8 +834,6 @@ void body() {
                 if (!x) continue;
                 auto t = x.value() + str[A];
                 if (!ans || ans.value() < t) {
-                    if (ans)
-                        dump(ans.value(), t);
                     ans = t;
                 }
             }
