@@ -820,7 +820,7 @@ void body() {
      *               1) its digit is i
      *               2) use j match
      */
-    auto dp = make_matrix<std::optional<std::string>, 2>({N + 1, N + 1}, std::optional<std::string>());
+    auto dp = make_matrix<std::experimental::optional<std::string>, 2>({N + 1, N + 1}, std::experimental::optional<std::string>());
     dp[0][0] = "";
     FOR (i, 1, N + 1) {
         // update dp[i][_]
