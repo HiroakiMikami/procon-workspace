@@ -813,7 +813,7 @@ void body() {
     auto N = read<i64>();
     auto M = read<i64>();
     auto As = read<i64>(M);
-    Vector<i64> num = {0, 2, 5, 5, 5, 6, 3, 7, 6};
+    Vector<i64> num = {0, 2, 5, 5, 4, 5, 6, 3, 7, 6};
     Vector<std::string> str = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
     /*
