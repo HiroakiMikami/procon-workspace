@@ -836,8 +836,8 @@ void body() {
 
     // Create the number (which digit is dp(N))
     std::string ans = "";
-    REP (i, dp(N)) {
-        // Decide (dp(N)-i)-th digit
+    REP (i, dp[N]) {
+        // Decide (dp[N]-i)-th digit
         i64 x = 0;
         EACH (A, As) {
             if (i - num[A] < 0) continue;
