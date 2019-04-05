@@ -854,7 +854,12 @@ void body() {
         auto s = dp[i][N];
         if (s) {
             dump(s.value());
-            ans = std::max(s.value(), ans);
+            auto x = s.value();
+            if (ans.size() < x.size()) {
+                ans = x;
+            } else if (ans.size() == x.size()) {
+                ans = std::max(s.value(), ans);
+            }
         }
     }
 
