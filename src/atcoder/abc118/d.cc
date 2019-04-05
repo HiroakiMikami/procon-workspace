@@ -847,7 +847,6 @@ void body() {
                 x = std::max(x, A);
             }
         }
-        dump(n, x);
         ans += str[x];
         n -= num[x];
     }
