@@ -832,7 +832,7 @@ void body() {
                 if (j - A < 0) continue;
                 auto x = dp[i - 1][j - num[A]];
                 if (!x) continue;
-                auto t = x + str[A];
+                auto t = x.value() + str[A];
                 if (ans < t) {
                     ans = t;
                 }
