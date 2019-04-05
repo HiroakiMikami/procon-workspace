@@ -814,6 +814,7 @@ void body() {
     auto M = read<i64>();
     auto As = read<i64>(M);
     Vector<i64> x = {0, 2, 5, 5, 5, 6, 3, 7, 6};
+    Vector<std::string> str = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
     /*
      * dp[i][j] = the maximum number which
@@ -831,7 +832,7 @@ void body() {
                 if (j - A < 0) continue;
                 auto x = dp[i - 1][j - A];
                 if (!x) continue;
-                auto t = x + ('0' + A);
+                auto t = x + str[A];
                 if (ans < t) {
                     ans = t;
                 }
