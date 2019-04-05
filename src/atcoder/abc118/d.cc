@@ -823,8 +823,10 @@ void body() {
      */
     auto dp = make_matrix<std::experimental::optional<std::string>, 2>({N + 1, N + 1}, std::experimental::optional<std::string>());
     dp[0][0] = "";
+    i64 digit = 0;
     FOR (i, 1, N + 1) {
-        // update dp[i][_]
+        // update dp[i][_]]
+        bool is_updated = false;
         FOR (j, 1, N + 1) {
             // update dp[i][j]
             std::experimental::optional<std::string> ans;
@@ -834,14 +836,24 @@ void body() {
                 if (!x) continue;
                 auto t = x.value() + str[A];
                 if (!ans || ans.value() < t) {
+                    is_updated = true;
                     ans = t;
                 }
             }
             dp[i][j] = ans;
-            if(ans) {
-                dump(ans.value());
-            }
+        }
+
+        if (!is_updated) {
+            digit = i - 1;
         }
     }
 
+    std::string ans = "";
+    EACH (s, dp[digit]) {
+        if (s) {
+            ans = std::max(s.value(), ans);
+        }
+    }
+
+    std::cout << ans << std::endl;
 }
