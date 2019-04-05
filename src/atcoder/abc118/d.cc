@@ -831,9 +831,9 @@ void body() {
                 if (j - A < 0) continue;
                 auto x = dp[i - 1][j - A];
                 if (!x) continue;
-                x = x + ('0' + A);
-                if (ans < x) {
-                    ans = x;
+                auto t = x + ('0' + A);
+                if (ans < t) {
+                    ans = t;
                 }
             }
             dp[i][j] = ans;
