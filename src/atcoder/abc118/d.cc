@@ -821,26 +821,27 @@ void body() {
      *               1) its digit is i
      *               2) use j match
      */
-    auto dp = make_matrix<std::experimental::optional<std::string>, 2>({N + 1, N + 1}, std::experimental::optional<std::string>());
-    dp[0][0] = make_optional<std::string>("");
+    OrderedMap<i64, OrderedMap<i64, std::string>> dp;
+    dp[0][0] = "";
     i64 digit = 0;
     FOR (i, 1, N + 1) {
         // update dp[i][_]]
         bool is_updated = false;
-        FOR (j, 1, N + 1) {
+        FOR (j, 2 * i, 7 * i + 1) {
             // update dp[i][j]
             std::experimental::optional<std::string> ans;
             EACH (A, As) {
                 if (j - num[A] < 0) continue;
-                auto x = dp[i - 1][j - num[A]];
-                if (!x) continue;
-                auto t = x.value() + str[A];
+                if (dp[i - 1].find(j - num[A]) == dp[i - 1].end()) continue;
+                auto t = dp[i - 1][j - num[A]] + str[A];
                 if (!ans || ans.value() < t) {
                     is_updated = true;
                     ans = t;
                 }
             }
-            dp[i][j] = ans;
+            if (ans) {
+                dp[i][j] = ans.value();
+            }
         }
 
         if (!is_updated) {
@@ -851,9 +852,8 @@ void body() {
 
     std::string ans = "";
     REP (i, digit) {
-        auto s = dp[i][N];
-        if (s) {
-            auto x = s.value();
+        if (dp[i].find(N) != dp[i].end()) {
+            auto x = dp[i][N];
             if (ans.size() < x.size()) {
                 ans = x;
             } else if (ans.size() == x.size()) {
