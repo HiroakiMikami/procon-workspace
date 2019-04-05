@@ -830,7 +830,7 @@ void body() {
             std::string ans = "";
             EACH (A, As) {
                 if (j - A < 0) continue;
-                auto x = dp[i - 1][j - A];
+                auto x = dp[i - 1][j - x[A]];
                 if (!x) continue;
                 auto t = x + str[A];
                 if (ans < t) {
