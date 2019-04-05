@@ -827,7 +827,7 @@ void body() {
     FOR (i, 1, N + 1) {
         // update dp[i][_]]
         bool is_updated = false;
-        FOR (j, 2 * i, 7 * i + 1) {
+        FOR (j, 2 * i, std::min(N + 1, 7 * i + 1)) {
             // update dp[i][j]
             std::experimental::optional<std::string> ans;
             EACH (A, As) {
