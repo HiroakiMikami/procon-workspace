@@ -844,7 +844,7 @@ void body() {
         }
 
         if (!is_updated) {
-            digit = i - 1;
+            digit = i;
             break ;
         }
     }
@@ -852,7 +852,8 @@ void body() {
     dump(digit);
 
     std::string ans = "";
-    EACH (s, dp[digit]) {
+    REP (i, digit) {
+        auto s = dp[i][N];
         if (s) {
             ans = std::max(s.value(), ans);
         }
