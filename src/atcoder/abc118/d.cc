@@ -830,6 +830,7 @@ void body() {
             std::experimental::optional<std::string> ans;
             EACH (A, As) {
                 if (j - num[A] < 0) continue;
+                dump(i, j);
                 auto x = dp[i - 1][j - num[A]];
                 if (!x) continue;
                 auto t = x.value() + str[A];
