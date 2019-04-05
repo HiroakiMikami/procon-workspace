@@ -828,9 +828,9 @@ void body() {
         FOR (j, 1, N + 1) {
             // update dp[i][j]
             std::experimental::optional<std::string> ans;
+            dump(i, j);
             EACH (A, As) {
                 if (j - num[A] < 0) continue;
-                dump(i, j);
                 auto x = dp[i - 1][j - num[A]];
                 if (!x) continue;
                 auto t = x.value() + str[A];
