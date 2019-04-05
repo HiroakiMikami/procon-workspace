@@ -821,45 +821,31 @@ void body() {
      *               1) its digit is i
      *               2) use j match
      */
-    OrderedMap<i64, OrderedMap<i64, std::string>> dp;
-    dp[0][0] = "";
-    i64 digit = 0;
+    /*
+     * dp[i] := the maximum digit when using i matches
+     */
+    Vector<i64> dp(N + 1, 0);
     FOR (i, 1, N + 1) {
-        // update dp[i][_]]
-        bool is_updated = false;
-        FOR (j, 2 * i, std::min<i64>(N + 1, 7 * i + 1)) {
-            // update dp[i][j]
-            std::experimental::optional<std::string> ans;
-            EACH (A, As) {
-                if (j - num[A] < 0) continue;
-                if (dp[i - 1].find(j - num[A]) == dp[i - 1].end()) continue;
-                auto t = dp[i - 1][j - num[A]] + str[A];
-                if (!ans || ans.value() < t) {
-                    is_updated = true;
-                    ans = t;
-                }
-            }
-            if (ans) {
-                dp[i][j] = ans.value();
-            }
-        }
-
-        if (!is_updated) {
-            digit = i;
-            break ;
+        // update dp[i]
+        EACH (A, As) {
+            if (i - num[A] < 0) continue;
+            // Case of A <dp(i - num[A]>
+            dp[i] = std::max(dp[i], dp(i - num[A]) + 1);
         }
     }
 
+    // Create the number (which digit is dp(N))
     std::string ans = "";
-    REP (i, digit) {
-        if (dp[i].find(N) != dp[i].end()) {
-            auto x = dp[i][N];
-            if (ans.size() < x.size()) {
-                ans = x;
-            } else if (ans.size() == x.size()) {
-                ans = std::max(x, ans);
+    REP (i, dp(N)) {
+        // Decide (dp(N)-i)-th digit
+        std::string x = 0;
+        EACH (A, As) {
+            if (i - num[A] < 0) continue;
+            if (dp[i - num[A]] == dp(N) - i - 1) {
+                x = std::max(x, A);
             }
         }
+        ans += str[x];
     }
 
     std::cout << ans << std::endl;
