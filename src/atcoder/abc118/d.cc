@@ -848,6 +848,8 @@ void body() {
         }
     }
 
+    dump(digit);
+
     std::string ans = "";
     EACH (s, dp[digit]) {
         if (s) {
