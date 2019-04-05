@@ -829,7 +829,7 @@ void body() {
             // update dp[i][j]
             std::string ans = "";
             EACH (A, As) {
-                if (j - A < 0) continue;
+                if (j - num[A] < 0) continue;
                 auto x = dp[i - 1][j - num[A]];
                 if (!x) continue;
                 auto t = x.value() + str[A];
