@@ -5,7 +5,7 @@ pos = [0, 0]
 num = 0
 while True:
     if pos == [H - 1, W - 1]:
-        total = sum(map(lambda A: count(A, "#"), A_s))
+        total = sum(map(lambda A: A.count("#"), A_s))
         ans = total == num
         break
     h, w = pos
