@@ -1,4 +1,4 @@
-a, b = [int(x) in input().split()]
+a, b = [int(x) for x in input().split()]
 
 if a * b <= 0:
     ans = "Zero"
