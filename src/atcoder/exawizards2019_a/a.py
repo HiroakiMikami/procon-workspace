@@ -1,4 +1,4 @@
-A, B, C = [int(x) for x in input.split()]
+A, B, C = [int(x) for x in input().split()]
 
 ans = A == B and B == C
 
