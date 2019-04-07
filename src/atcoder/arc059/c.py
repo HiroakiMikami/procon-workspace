@@ -1,5 +1,5 @@
 N = int(input())
-a_s = [int(x) for x in input.split()]
+a_s = [int(x) for x in input().split()]
 
 average = sum(a_s)
 average /= len(a_s) * 1.0
