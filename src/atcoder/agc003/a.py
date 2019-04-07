@@ -1,5 +1,6 @@
 S = input()
 
-ans = len(set(S)) == 4
+s = set(S[:])
+ans = s == set(["N", "W", "S", "E"]) or s == set(["N", "S"]) or s == set(["W", "E"])
 
 print("Yes" if ans else "No")
