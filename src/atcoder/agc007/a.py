@@ -2,11 +2,10 @@ H, W = [int(x) for x in input().split()]
 A_s = [input() for _ in range(H)]
 
 pos = [0, 0]
-num = 0
+num = 1
 while True:
     if pos == [H - 1, W - 1]:
         total = sum(map(lambda A: A.count("#"), A_s))
-        print(total, num)
         ans = total == num
         break
     h, w = pos
