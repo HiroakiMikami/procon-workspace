@@ -13,5 +13,6 @@ for i, a in enumerate(a_s):
             ans += (i - start) // 2
             color = a
             start = i
+ans += (N - start) // 2
 
 print(ans)
