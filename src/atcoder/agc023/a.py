@@ -9,9 +9,9 @@ for A in As[1:]:
     if not S in nums:
         nums[S] = 0
     nums[S] += 1
+print(nums)
 ans = 0
 for n in nums.values():
     ans +=  (n * (n - 1)) // 2
 
 print(ans)
-
