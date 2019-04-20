@@ -6,7 +6,7 @@ def combination(n, r):
     for i in range(n, n - r, -1):
         ans *= i
     for i in range(r):
-        ans /= (i + 1)
+        ans //= (i + 1)
     return ans
 n_e = len(list(filter(lambda x: x % 2 == 0, As)))
 n_o = N - n_e
