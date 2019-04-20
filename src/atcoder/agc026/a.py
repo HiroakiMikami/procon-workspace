@@ -9,6 +9,7 @@ for i, a in enumerate(a_s):
         color = a
     else:
         if color != a:
+            print(start, i)
             ans += (i - start) // 2
             color = a
             start = i
