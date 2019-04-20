@@ -8,7 +8,7 @@ def combination(n, r):
     for i in range(r):
         ans /= (i + 1)
     return ans
-n_e = list(filter(lambda x: x % 2 == 0, As)).count()
+n_e = len(filter(lambda x: x % 2 == 0, As))
 n_o = N - n_e
 
 ans = 0
