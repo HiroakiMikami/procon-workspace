@@ -9,7 +9,7 @@ for s in S:
 ans = 1
 for s in S:
     ans *= (nums[s] + 1)
-    ans %= 1e9 + 7
-ans = (ans + 1e9 + 7 - 1) % (1e9 + 7)
+    ans %= int(1e9 + 7)
+ans = (ans + int(1e9 + 7 - 1)) % int(1e9 + 7)
 
 print(ans)
