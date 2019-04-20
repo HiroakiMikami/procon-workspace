@@ -7,9 +7,8 @@ for s in S:
         nums[s] = 0
     nums[s] += 1
 ans = 1
-for s in S:
-    print(s, nums[s])
-    ans *= (nums[s] + 1)
+for n in nums.values():
+    ans *= (n + 1)
     ans %= int(1e9 + 7)
 ans = (ans + int(1e9 + 7 - 1)) % int(1e9 + 7)
 
