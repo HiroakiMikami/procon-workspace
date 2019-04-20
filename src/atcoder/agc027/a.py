@@ -10,8 +10,7 @@ for a in a_s[:-1]:
         ans += 1
     else:
         break
-print(a_s, X, x)
-if a_s[-1] == X - x:
+if a_s[-1] == x - X:
     ans += 1
 
 print(ans)
