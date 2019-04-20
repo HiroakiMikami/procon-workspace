@@ -13,6 +13,6 @@ n_o = N - n_e
 
 ans = 0
 for i in range((1 if P == 1 else 0), n_o + 1, 2):
-    ans += pow(2, n_e) * combination(n_o, i)
+    ans += int(pow(2, n_e)) * combination(n_o, i)
 
 print(ans)
