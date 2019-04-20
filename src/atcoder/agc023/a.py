@@ -1,11 +1,9 @@
 N = int(input())
 As = [int(x) for x in input().split()]
 
-Ss = [As[0]]
-nums = {}
-nums[As[0]] += 1
-nums[0] += 1
-for A in As[1:]:
+Ss = [0]
+nums = {0: 1}
+for A in As:
     S = Ss[-1] + A
     Ss.append(S)
     if not S in nums:
