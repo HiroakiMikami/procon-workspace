@@ -14,8 +14,7 @@ for T in Ts:
         NT[T] = 0
     NT[T] += 1
 
-print(ND)
-print(NT)
+
 ans = True
 for T in NT.keys():
     if not T in ND:
