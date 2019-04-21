@@ -15,4 +15,4 @@ for ch in S:
 
     num_passed += 1 if ans[-1] else 0
 
-print("\n".join(lambda x: "Yes" if x else "No"), ans)
+print("\n".join(map(lambda x: "Yes" if x else "No"), ans))
