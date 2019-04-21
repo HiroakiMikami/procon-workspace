@@ -9,6 +9,6 @@ Xs = sorted(Xs, key = lambda x: x % 10)
 ans = 0
 for X in Xs[:-1]:
     ans += (X + 9) // 10 * 10
-ans += X[-1]
+ans += Xs[-1]
 
 print(ans)
