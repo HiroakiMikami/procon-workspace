@@ -14,7 +14,8 @@ for T in Ts:
         NT[T] = 0
     NT[T] += 0
 
-print(ND, NT)
+print(ND)
+print(NT)
 ans = True
 for T in NT.keys():
     if not T in ND:
