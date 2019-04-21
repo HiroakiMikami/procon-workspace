@@ -12,7 +12,7 @@ NT = {}
 for T in Ts:
     if not T in NT:
         NT[T] = 0
-    NT[T] += 0
+    NT[T] += 1
 
 print(ND)
 print(NT)
