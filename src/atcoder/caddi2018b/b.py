@@ -1,4 +1,4 @@
-N, H, W = [int(x) for x in inpout().split()]
+N, H, W = [int(x) for x in input().split()]
 ABs = [[int(x) for x in input().split()] for _ in range(N)]
 
 ans = 0
