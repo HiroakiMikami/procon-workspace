@@ -1,6 +1,6 @@
 S = input()
 
-for i in range(len(S)):
+for i in range(len(S) + 1):
     former = S[:i]
     former = str(reversed(former))
     S_ = S[i:]
