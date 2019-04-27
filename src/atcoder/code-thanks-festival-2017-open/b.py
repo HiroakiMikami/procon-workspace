@@ -2,7 +2,7 @@ S = input()
 
 for i in range(len(S)):
     former = S[:i]
-    former = reversed(former)
+    former = str(reversed(former))
     S_ = S[i:]
     if former.startWith(S_):
         ans = 2 * i - len(S)
