@@ -1,6 +1,7 @@
 S = input()
 
-for i in range(len(S) + 1):
+ans = len(S) - 1
+for i in range(len(S)):
     former = S[:i]
     former = "".join(list(reversed(former)))
     S_ = S[i:]
