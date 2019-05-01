@@ -6,7 +6,7 @@ def length(i):
     x = i * 2.0 * R / N
     r = abs(R  - x)
     from math import sqrt
-    return sqrt(R * R - r * r)
+    return 2 * sqrt(R * R - r * r)
 
 ans = 0
 for i in range(1, N + M):
