@@ -10,7 +10,6 @@ def length(i):
 
 ans = 0
 for i in range(1, N + M):
-    print(max(length(i), length(i - M)))
     ans += max(length(i), length(i - M))
 
 print(ans)
