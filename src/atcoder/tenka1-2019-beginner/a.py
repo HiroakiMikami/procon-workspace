@@ -1,5 +1,5 @@
 A, B, C = [int(x) for x in input().split()]
 
-ans = min(A, C) < B < max(A, C)
+ans = min(A, B) < C < max(A, B)
 
 print("Yes" if ans else "No")
