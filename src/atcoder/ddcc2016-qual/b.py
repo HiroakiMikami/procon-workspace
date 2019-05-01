@@ -1,6 +1,8 @@
 R, N, M = [int(x) for x in input().split()]
 
 def length(i):
+    if i > N:
+        return 0
     x = i * 2.0 * R / N
     r = abs(R  - x)
     from math import sqrt
