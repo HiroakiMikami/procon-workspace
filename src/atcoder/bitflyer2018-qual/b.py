@@ -13,4 +13,4 @@ for x in X:
             B = max(B - 1, 0)
 ans = (A, B)
 
-print(" ".join(map(str, ans)))
+print("\n".join(map(str, ans)))
