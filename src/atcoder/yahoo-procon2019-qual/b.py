@@ -1,6 +1,6 @@
 abs = [[int(x) for x in input().split()] for _ in range(3)]
 
-ns = {}
+ns = {1: 0, 2: 0, 3: 0, 4: 0}
 for a, b in abs:
     ns[a] += 1
     ns[b] += 1
