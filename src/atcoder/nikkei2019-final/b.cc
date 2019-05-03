@@ -816,19 +816,24 @@ void body() {
     auto As = read<u64>(N);
     auto Bs = read<u64>(M);
 
-    u64 X = 0, Y = 0;
-    EACH (A, As) {
-        X = X * K + A;
+    if (N < M) {
+        cout << "X" << endl;
+        return ;
     }
-    EACH (B, Bs) {
-        Y = Y * K + B;
+    if (N > M) {
+        cout << "Y" << endl;
+        return ;
     }
 
-    if (X < Y) {
-        cout << "X" << endl;
-    } else if (X > Y) {
-        cout << "Y" << endl;
-    } else {
-        cout << "Same" << endl;
+    REP (i, N) {
+        if (As[i] < Bs[i]) {
+            cout << "X" << endl;
+            return ;
+        }
+        if (As[i] > Bs[i]) {
+            cout << "Y" << endl;
+            return ;
+        }
     }
+    cout << "Same" << endl;
 }
