@@ -814,7 +814,7 @@ void body() {
     auto M = read<i64>();
     auto K = read<i64>();
     auto As = read<i64>(N);
-    auto Bs = read<i64>(B);
+    auto Bs = read<i64>(M);
 
     u64 X = 0, Y = 0;
     EACH (A, As) {
