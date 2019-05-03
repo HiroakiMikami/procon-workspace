@@ -812,9 +812,9 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto M = read<i64>();
-    auto K = read<i64>();
-    auto As = read<i64>(N);
-    auto Bs = read<i64>(M);
+    auto K = read<u64>();
+    auto As = read<u64>(N);
+    auto Bs = read<u64>(M);
 
     u64 X = 0, Y = 0;
     EACH (A, As) {
