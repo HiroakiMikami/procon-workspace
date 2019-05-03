@@ -5,7 +5,7 @@ C = input()
 
 ans = 0
 for a, b, c in zip(A, B, C):
-    xs = set([a, b, c])
+    xs = set(a, b, c)
     if len(xs) == 1:
         ans += 2
     elif len(xs) == 2:
