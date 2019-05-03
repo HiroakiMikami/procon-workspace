@@ -11,7 +11,7 @@ def pow(i, j):
         t = pow(i, j // 2)
         return t * t
     else:
-        return t * pow(i, j - 1)
+        return i * pow(i, j - 1)
 
 X = sum(map(lambda x: x[1] * pow(K, N - x[0] - 1), enumerate(As)))
 Y = sum(map(lambda x: x[1] * pow(K, M - x[0] - 1), enumerate(Bs)))
