@@ -3,11 +3,11 @@ As = [int(x) for x in input().split()]
 Bs = [int(x) for x in input().split()]
 
 X = 0
-for i, A in enumerate(As):
+for A in As:
     X *= K
     X += A
 Y = 0
-for i, B in enumerate(Bs):
+for B in Bs:
     Y *= K
     Y += B
 ans = "X" if X < Y else "Y" if X > Y else "Same"
