@@ -822,7 +822,7 @@ void body() {
         dump(Hs);
         REP (j, N) {
             auto h = std::min(Hs[j] + x, hs[j]);
-            dump(h);
+            dump(Hs[j], hs[j], x);
             x = std::min(x, h - Hs[j]);
             Hs[j] = h;
         }
