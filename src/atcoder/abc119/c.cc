@@ -818,7 +818,6 @@ void body() {
 
     i64 ans = 1e9;
     do {
-        dump(ls);
         FOR (i, 1, N) {
             FOR (j, i, N) {
                 /*
@@ -848,6 +847,10 @@ void body() {
                     cost_c = std::min(cost_a, 10 * (k - j) + std::abs(C - l));
                 }
 
+                if (cost_a + cost_b + cost_c == 4) {
+                    dump(ls);
+                    dump(i, j);
+                }
                 ans = std::min(ans, cost_a + cost_b + cost_c);
             }
         }
