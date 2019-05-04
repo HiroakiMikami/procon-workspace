@@ -828,8 +828,6 @@ void body() {
         }
     }
 
-    dump(lrs);
-
     EACH (lr, lrs) {
         auto l = lr.first;
         auto r = lr.second;
@@ -838,8 +836,6 @@ void body() {
         if (l >= 2 && S[l - 2] == 'A' && S[l - 1] == 'C') {
             ans -= 1;
         }
-
-        dump(ans);
 
         cout << ans << endl;
     }
