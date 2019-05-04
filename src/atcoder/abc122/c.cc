@@ -835,7 +835,7 @@ void body() {
         auto r = lr.second;
 
         auto ans = num[r] - num[l - 1];
-        if (S[l - 2] == 'A' && S[l - 1] == 'C') {
+        if (l >= 2 && S[l - 2] == 'A' && S[l - 1] == 'C') {
             ans -= 1;
         }
 
