@@ -813,7 +813,7 @@ void body() {
     auto N = read<i64>();
     auto Q = read<i64>();
     auto S = read<string>();
-    auto lrs = read<i64, i64>(N);
+    auto lrs = read<i64, i64>(Q);
 
     Vector<i64> num(N + 1, 0); // num[i] = S[:i]にふくまれるACの数
     // num[0] = 0 (S[:0] == ""なので)
