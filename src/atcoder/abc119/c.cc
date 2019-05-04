@@ -819,7 +819,7 @@ void body() {
     i64 ans = 1e9;
     do {
         FOR (i, 1, N) {
-            FOR (j, i, N) {
+            FOR (j, i + 1, N) {
                 /*
                  * ls[0:i]を前から順番に使ってAを
                  * ls[i:j]を前から順番に使ってBを
