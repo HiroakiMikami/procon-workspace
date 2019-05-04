@@ -818,6 +818,7 @@ void body() {
 
     i64 ans = 1e9;
     do {
+        dump(ls);
         FOR (i, 1, N) {
             FOR (j, i, N) {
                 /*
