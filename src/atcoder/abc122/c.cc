@@ -839,6 +839,8 @@ void body() {
             ans -= 1;
         }
 
+        dump(ans);
+
         cout << ans << endl;
     }
 }
