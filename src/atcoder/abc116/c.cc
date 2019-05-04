@@ -818,8 +818,6 @@ void body() {
     REP (i, N) {
         i64 x = hs[i] - Hs[i];
         ans += x;
-        dump(x);
-        dump(Hs);
         FOR (j, i, N) {
             auto h = std::min(Hs[j] + x, hs[j]);
             x = std::min(x, h - Hs[j]);
