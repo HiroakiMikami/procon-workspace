@@ -820,9 +820,8 @@ void body() {
         ans += x;
         dump(x);
         dump(Hs);
-        REP (j, N) {
+        FOR (j, i, N) {
             auto h = std::min(Hs[j] + x, hs[j]);
-            dump(Hs[j], hs[j], x);
             x = std::min(x, h - Hs[j]);
             Hs[j] = h;
         }
