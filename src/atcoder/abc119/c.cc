@@ -847,10 +847,6 @@ void body() {
                     cost_c = std::min(cost_c, 10 * (k - j) + std::abs(C - l));
                 }
 
-                if (cost_a + cost_b + cost_c == 4) {
-                    dump(ls);
-                    dump(i, j);
-                }
                 ans = std::min(ans, cost_a + cost_b + cost_c);
             }
         }
