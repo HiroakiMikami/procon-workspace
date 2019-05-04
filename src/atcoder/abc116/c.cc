@@ -819,8 +819,8 @@ void body() {
         ans += hs[i] - Hs[i];
         i64 x = hs[i];
         REP (j, N) {
-            auto h = min(Hs[j] + x, hs[j]);
-            x = min(x, h - Hs[j]);
+            auto h = std::min(Hs[j] + x, hs[j]);
+            x = std::min(x, h - Hs[j]);
             Hs[j] = h;
         }
     }
