@@ -817,6 +817,7 @@ void body() {
     auto Hs = Vector<i64>(N, 0);
     REP (i, N) {
         ans += hs[i] - Hs[i];
+        dump(hs[i] - Hs[i]);
         i64 x = hs[i];
         REP (j, N) {
             auto h = std::min(Hs[j] + x, hs[j]);
