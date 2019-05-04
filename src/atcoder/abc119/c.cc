@@ -837,14 +837,14 @@ void body() {
                 l = 0;
                 FOR (k, i, j) {
                     l += ls[k];
-                    cost_b = std::min(cost_a, 10 * (k - i) + std::abs(B - l));
+                    cost_b = std::min(cost_b, 10 * (k - i) + std::abs(B - l));
                 }
                 /* Cを作る */
                 i64 cost_c = 1e9;
                 l = 0;
                 FOR (k, j, N) {
                     l += ls[k];
-                    cost_c = std::min(cost_a, 10 * (k - j) + std::abs(C - l));
+                    cost_c = std::min(cost_c, 10 * (k - j) + std::abs(C - l));
                 }
 
                 if (cost_a + cost_b + cost_c == 4) {
