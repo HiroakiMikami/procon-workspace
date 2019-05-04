@@ -828,6 +828,8 @@ void body() {
         }
     }
 
+    dump(lrs);
+
     EACH (lr, lrs) {
         auto l = lr.first;
         auto r = lr.second;
