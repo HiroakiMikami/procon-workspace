@@ -815,6 +815,7 @@ void body() {
     auto B = read<i64>();
     auto C = read<i64>();
     auto ls = read<i64>(N);
+    sort(CTR(ls));
 
     i64 ans = 1e9;
     do {
