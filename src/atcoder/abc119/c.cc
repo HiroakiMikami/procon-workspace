@@ -851,4 +851,6 @@ void body() {
             }
         }
     } while (std::next_permutation(CTR(ls)));
+
+    cout << ans << endl;
 }
