@@ -823,7 +823,7 @@ void body() {
     auto c2 = 0;
     REP (i, S.size()) {
         auto ch = (i % 2) == 0 ? '1' : '0';
-        c1 += (ch != S[i]) ? 1 : 0;
+        c2 += (ch != S[i]) ? 1 : 0;
     }
 
     cout << std::min(c1, c2) << endl;
