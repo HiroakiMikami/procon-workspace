@@ -894,22 +894,22 @@ void body() {
         REP (j, W) {
             if (i != 0) {
                 if (Ss[i - 1][j] != Ss[i][j]) {
-                    uf.merge(to_index({i - 1, j}, {i, j}));
+                    uf.merge(to_index({i - 1, j}), to_index({i, j}));
                 }
             }
             if (i != H - 1) {
                 if (Ss[i + 1][j] != Ss[i][j]) {
-                    uf.merge(to_index({i + 1, j}, {i, j}));
+                    uf.merge(to_index({i + 1, j}), to_index({i, j}));
                 }
             }
             if (j != 0) {
                 if (Ss[i][j - 1] != Ss[i][j]) {
-                    uf.merge(to_index({i, j - 1}, {i, j}));
+                    uf.merge(to_index({i, j - 1}), to_index({i, j}));
                 }
             }
             if (j != W - 1) {
                 if (Ss[i][j + 1] != Ss[i][j]) {
-                    uf.merge(to_index({i, j + 1}, {i, j}));
+                    uf.merge(to_index({i, j + 1}), to_index({i, j}));
                 }
             }
         }
