@@ -824,6 +824,8 @@ void body() {
 
         p2.first = std::min(H - 1, std::max(0, p2.first));
         p2.second = std::min(W - 1, std::max(0, p2.second));
+
+        return p2;
     };
 
 
