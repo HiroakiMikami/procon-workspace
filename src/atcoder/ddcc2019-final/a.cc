@@ -815,6 +815,7 @@ void body() {
 
     i64 n_snow;
     PriorityQueue<i64, std::greater<i64>> n_ice;
+    n_ice.push(0);
 
     i64 n = 0;
     REP (i, N) {
@@ -830,21 +831,16 @@ void body() {
     }
 
     double ans = n_snow - 1;
-    if (n_ice.empty()) {
-        ans += 1;
-    } else {
+    auto t = n_ice.top();
+    n_ice.pop();
+    REP (i, t + 1) {
+        ans += 1.0 / (i + 2);
+    }
+    while (!n_ice.empty()) {
         auto t = n_ice.top();
         n_ice.pop();
-        REP (i, t + 1) {
+        REP (i, t) {
             ans += 1.0 / (i + 2);
-        }
-
-        while (!n_ice.empty()) {
-            auto t = n_ice.top();
-            n_ice.pop();
-            REP (i, t) {
-                ans += 1.0 / (i + 2);
-            }
         }
     }
 
