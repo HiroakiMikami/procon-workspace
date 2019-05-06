@@ -820,7 +820,7 @@ void body() {
     auto delta = [H, W](auto p, auto d) {
         auto p2 = p;
         p2.first += d[0];
-        p2.second += d[0];
+        p2.second += d[1];
 
         p2.first = std::min(H - 1, std::max(0L, p2.first));
         p2.second = std::min(W - 1, std::max(0L, p2.second));
