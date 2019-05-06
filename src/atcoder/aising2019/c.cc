@@ -920,7 +920,7 @@ void body() {
         auto parent = uf.parent(index);
         auto p = to_point(p);
 
-        if (Ss[p.first][p.second] == "#") {
+        if (Ss[p.first][p.second] == '#') {
             groups[parent].first += 1;
         } else {
             groups[parent].second += 1;
