@@ -918,7 +918,7 @@ void body() {
     OrderedMap<size_t, pair<i64, i64>> groups;
     REP (index, H * W) {
         auto parent = uf.parent(index);
-        auto p = to_point(p);
+        auto p = to_point(index);
 
         if (Ss[p.first][p.second] == '#') {
             groups[parent].first += 1;
