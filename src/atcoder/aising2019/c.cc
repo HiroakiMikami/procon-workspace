@@ -882,7 +882,7 @@ void body() {
     auto W = read<i64>();
     auto Ss = read<string>(H);
 
-    auto to_index = [W](auto p) {
+    auto to_index = [W](pair<i64, i64> p) {
         return p.first * W + p.second;
     };
     auto to_point = [W](auto i) -> pair<i64, i64> {
