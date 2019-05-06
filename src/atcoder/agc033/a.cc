@@ -857,6 +857,7 @@ void body() {
 
         EACH (d, deltas) {
             auto p2 = delta(p, d);
+            dump(p2);
             if (p == p2) continue;
             if (As[p2.first][p2.second] == '.') {
                 q.push({p2, elem.second + 1});
