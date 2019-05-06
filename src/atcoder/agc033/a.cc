@@ -851,7 +851,6 @@ void body() {
             continue ;
         }
         ans = std::max(ans, elem.second);
-        dump(elem);
 
         visited[i][j] = true;
 
