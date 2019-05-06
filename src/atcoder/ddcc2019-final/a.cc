@@ -818,7 +818,7 @@ void body() {
 
     i64 n = 0;
     REP (i, N) {
-        if (S[i] == "-") {
+        if (S[i] == '-') {
             if (n != 0) {
                 n_ice.push(n);
                 n = 0;
