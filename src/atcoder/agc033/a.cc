@@ -848,6 +848,7 @@ void body() {
         auto i = p.first;
         auto j = p.second;
         ans = std::max(ans, elem.second);
+        dump(elem);
 
         if (visited[i][j]) {
             continue ;
