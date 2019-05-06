@@ -811,7 +811,7 @@ int main (int argc, char **argv) {
 
 void body() {
     auto N = read<i64>();
-    auto S = read<i64>();
+    auto S = read<string>();
 
     i64 n_snow;
     PriorityQueue<i64, std::greater<i64>> n_ice;
