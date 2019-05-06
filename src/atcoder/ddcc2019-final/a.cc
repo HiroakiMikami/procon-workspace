@@ -814,7 +814,7 @@ void body() {
     auto S = read<string>();
 
     i64 n_snow;
-    PriorityQueue<i64, std::greater<i64>> n_ice;
+    PriorityQueue<i64, std::less<i64>> n_ice;
     n_ice.push(0);
 
     i64 n = 0;
