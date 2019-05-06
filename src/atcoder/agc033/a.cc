@@ -847,12 +847,12 @@ void body() {
         auto p = elem.first;
         auto i = p.first;
         auto j = p.second;
-        ans = std::max(ans, elem.second);
-        dump(elem);
-
         if (visited[i][j]) {
             continue ;
         }
+        ans = std::max(ans, elem.second);
+        dump(elem);
+
         visited[i][j] = true;
 
         EACH (d, deltas) {
