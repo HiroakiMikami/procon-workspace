@@ -840,7 +840,7 @@ void body() {
     auto visited = make_matrix<bool, 2>({H, W}, false);
     i64 ans = 0;
     while (!q.empty()) {
-        auto elem = q.top();
+        auto elem = q.front();
         q.pop();
         auto p = elem.first;
         auto i = p.first;
