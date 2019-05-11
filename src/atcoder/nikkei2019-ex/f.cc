@@ -809,6 +809,17 @@ int main (int argc, char **argv) {
     return 0;
 }
 
+i64 f(i64 X) {
+    if (X <= 1) {
+        return 0;
+    }
+    if (X % 2 == 0) {
+        return f(X / 2) + 1;
+    } else {
+        return f(3 * X + 1) + 1;
+    }
+}
+
 void body() {
     auto P = read<i64>();
 
@@ -827,6 +838,7 @@ void body() {
         }
         x.insert(ans);
     }
+    dump(f(ans));
 
     cout << ans << endl;
 }
