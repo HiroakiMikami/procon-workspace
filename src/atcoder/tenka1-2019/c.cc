@@ -829,7 +829,6 @@ void body() {
     REP (i, N + 1) {
         // S[:i]までを白、S[i:]を黒にする
         auto n = n_black[i] + (n_white.back() - n_white[i]);
-        dump(i, n);
         ans = std::min(n, ans);
     }
 
