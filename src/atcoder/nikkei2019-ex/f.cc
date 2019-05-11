@@ -815,7 +815,9 @@ void body() {
     OrderedSet<i64> x;
     i64 ans = 1;
     REP (i, P) {
-        if ((ans - 1) % 3 == 0 && (x.find((ans - 1) / 3) == x.end())) {
+        if ((ans - 1) % 3 == 0 &&
+            (x.find((ans - 1) / 3) == x.end()) &&
+            (ans - 1) / 3 == 0) {
             ans = (ans - 1) / 3;
             x.insert(ans);
         } else {
