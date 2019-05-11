@@ -821,10 +821,10 @@ void body() {
             (x.find((ans - 1) / 3) == x.end()) &&
             (ans - 1) / 3 != 0) {
             ans = (ans - 1) / 3;
-            x.insert(ans);
         } else {
             ans *= 2;
         }
+        x.insert(ans);
     }
 
     cout << ans << endl;
