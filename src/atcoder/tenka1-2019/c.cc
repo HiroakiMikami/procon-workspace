@@ -821,7 +821,7 @@ void body() {
         } else {
             n_black[i + 1] = n_black[i] + 1;
         }
-        dump(n_white);
+        dump(n_white, i + 1);
     }
 
     i64 ans = N;
