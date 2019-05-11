@@ -821,9 +821,8 @@ void body() {
         } else {
             n_black[i + 1] = n_black[i] + 1;
         }
+        dump(n_white);
     }
-    dump(n_white);
-    dump(n_black);
 
     i64 ans = N;
     REP (i, N + 1) {
