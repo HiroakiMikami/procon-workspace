@@ -828,7 +828,6 @@ void body() {
     x.insert(1);
     i64 ans = 1;
     REP (i, P) {
-        dump(ans);
         if ((ans - 1) % 3 == 0 &&
             ((ans - 1) / 3) % 3 != 0 &&
             (x.find((ans - 1) / 3) == x.end())) {
