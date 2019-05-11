@@ -813,13 +813,12 @@ void body() {
     auto P = read<i64>();
 
     OrderedSet<i64> x;
+    x.insert(0);
+    x.insert(1);
     i64 ans = 1;
     REP (i, P) {
-        dump(ans);
-        dump(x);
         if ((ans - 1) % 3 == 0 &&
-            (x.find((ans - 1) / 3) == x.end()) &&
-            (ans - 1) / 3 != 0) {
+            (x.find((ans - 1) / 3) == x.end())) {
             ans = (ans - 1) / 3;
         } else {
             ans *= 2;
