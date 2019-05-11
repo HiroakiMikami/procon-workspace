@@ -818,10 +818,11 @@ void body() {
     REP (i, N) {
         if (S[i] == '.') {
             n_white[i + 1] = n_white[i] + 1;
+            n_black[i + 1] = n_black[i];
         } else {
+            n_white[i + 1] = n_white[i];
             n_black[i + 1] = n_black[i] + 1;
         }
-        dump(n_white, i + 1);
     }
 
     i64 ans = N;
