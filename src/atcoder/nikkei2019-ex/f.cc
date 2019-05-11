@@ -831,7 +831,6 @@ void body() {
             ans = 3 * ans + 1;
         }
     }
-    dump(f(ans));
 
     cout << ans << endl;
 }
