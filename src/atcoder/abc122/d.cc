@@ -1164,7 +1164,9 @@ void body() {
     FOR (i, 4, N + 1) {
         EACH (x, dp[i - 1]) {
             auto suffix = x.first;
+            auto s = suffix.substr(1, suffix.size());
             // A?G => Cの追加は不可能
+            dump(suffix);
             if (suffix[0] == 'A' && suffix[2] == 'G') {
                 EACH (ch, chs) {
                     if (ch == 'C') continue;
