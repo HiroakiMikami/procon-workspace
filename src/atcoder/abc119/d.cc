@@ -828,18 +828,19 @@ void body() {
         if (s1 != ss.end() && t1 != ts.end()) {
             ans = std::min(ans, std::min(std::abs(*s1 - x), std::abs(*t1 - x)));
         }
+        dump(ans);
         // s2, t1
         if (s2 != ss.end() && t1 != ts.end()) {
             ans = std::min(ans,
                     std::abs(*s2 - x) + std::abs(*t1 - x) + std::min(std::abs(*s2 - x), std::abs(*t1 - x)));
         }
+        dump(ans);
         // s1, t2
         if (s1 != ss.end() && t2 != ts.end()) {
-            dump(*s1, *t2);
-
             ans = std::min(ans,
                            std::abs(*s1 - x) + std::abs(*t2 - x) + std::min(std::abs(*s1 - x), std::abs(*t2 - x)));
         }
+        dump(ans);
         // s2, t2
         if (s2 != ss.end() && t2 != ts.end()) {
             ans = std::min(ans, std::min(std::abs(*s2 - x), std::abs(*t2 - x)));
