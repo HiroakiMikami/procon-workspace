@@ -837,6 +837,7 @@ void body() {
     auto n = 0;
     REP (i, H) {
         n += hist_H[i];
+        dump(n);
         if (n > H / 2) {
             med_H = i;
             break;
