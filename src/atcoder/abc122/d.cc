@@ -1170,7 +1170,7 @@ void body() {
             if (suffix[0] == 'A' && suffix[2] == 'G') {
                 EACH (ch, chs) {
                     if (ch == 'C') continue;
-                    dp[i][suffix + ch] += x.second;
+                    dp[i][s + ch] += x.second;
                 }
                 continue ;
             }
@@ -1186,7 +1186,7 @@ void body() {
             if (suffix[1] == 'A' && suffix[2] == 'C') {
                 EACH (ch, chs) {
                     if (ch == 'G') continue;
-                    dp[i][suffix + ch] += x.second;
+                    dp[i][s + ch] += x.second;
                 }
                 continue ;
             }
@@ -1194,7 +1194,7 @@ void body() {
             if (suffix[1] == 'A' && suffix[2] == 'G') {
                 EACH (ch, chs) {
                     if (ch == 'C') continue;
-                    dp[i][suffix + ch] += x.second;
+                    dp[i][s + ch] += x.second;
                 }
                 continue ;
             }
@@ -1202,13 +1202,13 @@ void body() {
             if (suffix[0] == 'A' && suffix[1] == 'C') {
                 EACH (ch, chs) {
                     if (ch == 'G') continue;
-                    dp[i][suffix + ch] += x.second;
+                    dp[i][s + ch] += x.second;
                 }
                 continue ;
             }
             // その他の場合: すべての文字が追加可能
             EACH (ch, chs) {
-                dp[i][suffix + ch] += x.second;
+                dp[i][s + ch] += x.second;
             }
         }
     }
