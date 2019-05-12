@@ -831,6 +831,7 @@ void body() {
         hist_H[RC.first] -= 1;
         hist_W[RC.second] -= 1;
     }
+    auto N = H * W - K;
 
     i64 med_H = 0;
     i64 med_W = 0;
@@ -838,7 +839,7 @@ void body() {
     REP (i, H) {
         n += hist_H[i];
         dump(n);
-        if (n > H / 2) {
+        if (n > N / 2) {
             med_H = i;
             break;
         }
@@ -846,7 +847,7 @@ void body() {
     n = 0;
     REP (i, W) {
         n += hist_W[i];
-        if (n > W / 2) {
+        if (n > N / 2) {
             med_W = i;
             break;
         }
