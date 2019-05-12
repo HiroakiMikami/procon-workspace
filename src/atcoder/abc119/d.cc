@@ -845,6 +845,8 @@ void body() {
         if (s2 != ss.end() && t2 != ts.end()) {
             ans = std::min(ans, std::min(std::abs(*s2 - x), std::abs(*t2 - x)));
         }
+        dump(ans);
+
 
         cout << ans << endl;
     }
