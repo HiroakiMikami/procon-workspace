@@ -1166,7 +1166,6 @@ void body() {
             auto suffix = x.first;
             auto s = suffix.substr(1);
             // A?G => Cの追加は不可能
-            dump(suffix, s);
             if (suffix[0] == 'A' && suffix[2] == 'G') {
                 EACH (ch, chs) {
                     if (ch == 'C') continue;
@@ -1215,6 +1214,7 @@ void body() {
 
     ModInteger<> ans = 0;
     EACH (x, dp.back()) {
+        dump(x.first, x.second);
         ans += x.second;
     }
 
