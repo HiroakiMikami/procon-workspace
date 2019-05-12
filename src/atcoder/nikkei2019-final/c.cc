@@ -850,6 +850,7 @@ void body() {
             break;
         }
     }
+    dump(med_H, med_W);
 
     i64 ans = 0;
     REP (i, H) {
