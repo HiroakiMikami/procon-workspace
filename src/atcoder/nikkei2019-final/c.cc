@@ -835,7 +835,7 @@ void body() {
 
     i64 med_H = 0;
     i64 med_W = 0;
-    auto n = 0;
+    i64 n = 0;
     REP (i, H) {
         n += hist_H[i];
         if (n > N / 2) {
