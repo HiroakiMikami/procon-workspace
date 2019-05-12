@@ -826,7 +826,6 @@ void body() {
         i64 ans = std::numeric_limits<i64>::max();
         // s1, t1
         if (s1 != ss.end() && t1 != ts.end()) {
-            dump(*s1, *t1);
             ans = std::min(ans, std::min(std::abs(*s1 - x), std::abs(*t1 - x)));
         }
         // s2, t1
@@ -836,6 +835,8 @@ void body() {
         }
         // s1, t2
         if (s1 != ss.end() && t2 != ts.end()) {
+            dump(*s1, *t2);
+
             ans = std::min(ans,
                            std::abs(*s1 - x) + std::abs(*t2 - x) + std::min(std::abs(*s1 - x), std::abs(*t2 - x)));
         }
