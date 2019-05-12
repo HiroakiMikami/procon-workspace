@@ -843,7 +843,6 @@ void body() {
             ans = std::min(ans, std::max(std::abs(*s2 - x), std::abs(*t2 - x)));
         }
 
-
         cout << ans << endl;
     }
 }
