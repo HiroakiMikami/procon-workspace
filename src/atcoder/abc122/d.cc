@@ -1197,10 +1197,10 @@ void body() {
                 }
                 continue ;
             }
-            // AC? => Gの追加は不可能
-            if (suffix[0] == 'A' && suffix[1] == 'C') {
+            // ACG => Cの追加は不可能
+            if (suffix[0] == 'A' && suffix[1] == 'G') {
                 EACH (ch, chs) {
-                    if (ch == 'G') continue;
+                    if (ch == 'C') continue;
                     dp[i][s + ch] += x.second;
                 }
                 continue ;
@@ -1214,7 +1214,6 @@ void body() {
 
     ModInteger<> ans = 0;
     EACH (x, dp.back()) {
-        dump(x.first, x.second);
         ans += x.second;
     }
 
