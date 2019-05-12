@@ -1132,7 +1132,7 @@ namespace internal {
 void body() {
     auto N = read<i64>();
     // dp[i][j] := 長さiの条件を満たす文字列で、末尾3文字がjで表せるもの
-    Vector<OrderedMap<string, i64>> dp(N + 1);
+    Vector<OrderedMap<string, ModInteger<>>> dp(N + 1);
 
     dp[0][""] = 1; // 長さ0は1通り
 
