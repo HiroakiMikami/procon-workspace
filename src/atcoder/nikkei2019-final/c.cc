@@ -851,8 +851,6 @@ void body() {
             break;
         }
     }
-    dump(hist_H);
-    dump(med_H, med_W);
 
     i64 ans = 0;
     REP (i, H) {
