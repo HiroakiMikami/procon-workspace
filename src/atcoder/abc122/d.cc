@@ -1164,9 +1164,9 @@ void body() {
     FOR (i, 4, N + 1) {
         EACH (x, dp[i - 1]) {
             auto suffix = x.first;
-            auto s = suffix.substr(1, suffix.size());
+            auto s = suffix.substr(1);
             // A?G => Cの追加は不可能
-            dump(suffix);
+            dump(suffix, s);
             if (suffix[0] == 'A' && suffix[2] == 'G') {
                 EACH (ch, chs) {
                     if (ch == 'C') continue;
@@ -1178,7 +1178,7 @@ void body() {
             if (suffix[1] == 'G' && suffix[2] == 'A') {
                 EACH (ch, chs) {
                     if (ch == 'C') continue;
-                    dp[i][suffix + ch] += x.second;
+                    dp[i][s + ch] += x.second;
                 }
                 continue ;
             }
