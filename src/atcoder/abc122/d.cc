@@ -1131,5 +1131,90 @@ namespace internal {
 
 void body() {
     auto N = read<i64>();
-    auto dp = make_matrix<ModInteger<>, 2>({N + 1, 64}, 0);
+    // dp[i][j] := 長さiの条件を満たす文字列で、末尾3文字がjで表せるもの
+    Vector<OrderedMap<string, i64>> dp(N + 1);
+
+    dp[0][""] = 1; // 長さ0は1通り
+
+    // 長さ1
+    auto chs = Vector<char>({'A', 'G', 'C', 'T'});
+    EACH (ch, chs) {
+        dp[1][std::string({ch})] = 1;
+    }
+    // 長さ2
+    EACH (ch, chs) {
+        EACH (x, dp[1]) {
+            dp[2][x.first + ch] = 1;
+        }
+    }
+
+    // 長さ3
+    EACH (ch, chs) {
+        EACH (x, dp[2]) {
+            if (x.first + ch == "AGC" ||
+                x.first + ch == "ACG" ||
+                x.first + ch == "GAC") {
+                continue;
+            }
+
+            dp[3][x.first + ch] = 1;
+        }
+    }
+
+    FOR (i, 4, N + 1) {
+        EACH (x, dp[i - 1]) {
+            auto suffix = x.first;
+            // A?G => Cの追加は不可能
+            if (suffix[0] == 'A' && suffix[2] == 'G') {
+                EACH (ch, chs) {
+                    if (ch == 'C') continue;
+                    dp[i][suffix + ch] += x.second;
+                }
+                continue ;
+            }
+            // ?GA => Cの追加は不可能
+            if (suffix[1] == 'G' && suffix[2] == 'A') {
+                EACH (ch, chs) {
+                    if (ch == 'C') continue;
+                    dp[i][suffix + ch] += x.second;
+                }
+                continue ;
+            }
+            // ?AC => Gの追加は不可能
+            if (suffix[1] == 'A' && suffix[2] == 'C') {
+                EACH (ch, chs) {
+                    if (ch == 'G') continue;
+                    dp[i][suffix + ch] += x.second;
+                }
+                continue ;
+            }
+            // ?AG => Cの追加は不可能
+            if (suffix[1] == 'A' && suffix[2] == 'G') {
+                EACH (ch, chs) {
+                    if (ch == 'C') continue;
+                    dp[i][suffix + ch] += x.second;
+                }
+                continue ;
+            }
+            // AC? => Gの追加は不可能
+            if (suffix[0] == 'A' && suffix[1] == 'C') {
+                EACH (ch, chs) {
+                    if (ch == 'G') continue;
+                    dp[i][suffix + ch] += x.second;
+                }
+                continue ;
+            }
+            // その他の場合: すべての文字が追加可能
+            EACH (ch, chs) {
+                dp[i][suffix + ch] += x.second;
+            }
+        }
+    }
+
+    ModInteger<> ans = 0;
+    EACH (x, dp.back()) {
+        ans += x.second;
+    }
+
+    cout << ans.get() << endl;
 }
