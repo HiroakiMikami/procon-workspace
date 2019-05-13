@@ -818,37 +818,16 @@ void body() {
     auto Bs = read<i64>(Y);
     auto Cs = read<i64>(Z);
 
-    PriorityQueue<i64, std::less<i64>> A, B, C;
-    EACH (a, As) A.push(a);
-    EACH (b, Bs) B.push(b);
-    EACH (c, Cs) C.push(c);
-
-
-    i64 a = A.top();
-    i64 b = B.top();
-    i64 c = C.top();
-
-    A.pop();
-    B.pop();
-    C.pop();
-
-    REP (i, K) {
-        dump(a, b, c);
-        cout << a + b + c << endl;
-        auto da = A.empty() ? std::numeric_limits<i64>::max() : a - A.top();
-        auto db = B.empty() ? std::numeric_limits<i64>::max() : b - B.top();
-        auto dc = C.empty() ? std::numeric_limits<i64>::max() : c - C.top();
-
-        if (da < db && da < dc) {
-            a = A.top();
-            A.pop();
-        } else if (db < da && db < dc) {
-            b = B.top();
-            B.pop();
-        } else if (!C.empty()){
-            c = C.top();
-            C.pop();
+    auto ABs = Vector<i64>();
+    EACH (A, As) {
+        EACH (B, Bs) {
+            ABs.push_back(A + B);
         }
-
     }
+    sort(CTR(ABs));
+
+    dump(ABs);
+
+    auto C_in = Vector<i64>(Z);
 }
+
