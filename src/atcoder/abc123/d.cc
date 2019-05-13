@@ -824,10 +824,11 @@ void body() {
             ABs.push_back(A + B);
         }
     }
-    sort(CTR(ABs));
+    sort(CTR(ABs), std::less<i64>());
 
     dump(ABs);
 
+    sort (CTR(Cs));
     auto C_in = Vector<i64>(Z);
 }
 
