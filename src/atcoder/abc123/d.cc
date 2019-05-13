@@ -834,9 +834,9 @@ void body() {
 
     REP (i, K) {
         cout << a + b + c << endl;
-        auto da = A.empty() ? std::numeric_limits<i64>::max() ? a - A.top();
-        auto db = B.empty() ? std::numeric_limits<i64>::max() ? b - B.top();
-        auto dc = C.empty() ? std::numeric_limits<i64>::max() ? c - C.top();
+        auto da = A.empty() ? std::numeric_limits<i64>::max() : a - A.top();
+        auto db = B.empty() ? std::numeric_limits<i64>::max() : b - B.top();
+        auto dc = C.empty() ? std::numeric_limits<i64>::max() : c - C.top();
 
         if (da < db && da < dc) {
             a = A.top();
