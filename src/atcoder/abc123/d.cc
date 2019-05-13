@@ -842,7 +842,7 @@ void body() {
 
         if (da < db && da < dc) {
             a = A.top();
-            B.pop();
+            A.pop();
         } else if (db < da && db < dc) {
             b = B.top();
             B.pop();
