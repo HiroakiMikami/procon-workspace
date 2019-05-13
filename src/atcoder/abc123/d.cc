@@ -824,7 +824,7 @@ void body() {
             ABs.push_back(A + B);
         }
     }
-    sort(CTR(ABs), std::less<i64>());
+    sort(CTR(ABs), std::greater<i64>());
 
     dump(ABs);
 
