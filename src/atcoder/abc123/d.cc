@@ -826,9 +826,22 @@ void body() {
     }
     sort(CTR(ABs), std::greater<i64>());
 
-    dump(ABs);
-
-    sort (CTR(Cs));
+    sort (CTR(Cs), std::greater<i64>());
     auto C_in = Vector<i64>(Z);
+
+    REP ($, K) {
+        i64 ans_in = -1;
+        i64 ans = 0;
+        REP (i, Z) {
+            auto x = Cs[i] + ABs[C_in[i]];
+            if (x > ans) {
+                ans = x;
+                ans_in = i;
+            }
+        }
+
+        C_in[ans_in] += 1;
+        cout << ans << endl;
+    }
 }
 
