@@ -833,6 +833,7 @@ void body() {
         i64 ans_in = -1;
         i64 ans = 0;
         REP (i, Z) {
+            if (C_in[i] >= ABs.size()) continue ;
             auto x = Cs[i] + ABs[C_in[i]];
             if (x > ans) {
                 ans = x;
