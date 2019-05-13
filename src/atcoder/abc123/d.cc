@@ -838,15 +838,13 @@ void body() {
         auto db = B.empty() ? std::numeric_limits<i64>::max() : b - B.top();
         auto dc = C.empty() ? std::numeric_limits<i64>::max() : c - C.top();
 
-        dump(da, db, dc);
-
         if (da < db && da < dc) {
             a = A.top();
             A.pop();
         } else if (db < da && db < dc) {
             b = B.top();
             B.pop();
-        } else {
+        } else if (!C.empty()){
             c = C.top();
             C.pop();
         }
