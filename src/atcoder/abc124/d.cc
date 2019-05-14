@@ -828,23 +828,17 @@ void body() {
         x += 1;
     }
 
+    Vector<i64> sum(xs.size() + 1, 0);
+    REP (i, xs.size()) {
+        sum[i + 1] = sum[i] + xs[i];
+    }
+
     i64 ans = 0;
     for (int i = 0; i < xs.size(); i += 2) {
-        i64 a = ans;
         // xs[i:i + 2K + 1]の和が候補
         size_t m = i + 2 * K + 1;
         m = std::min(m, xs.size());
-        if (i == 0) {
-            REP (j, m) {
-                a += xs[j];
-            }
-        } else {
-            a -= xs[i - 1] + xs[i - 2];
-            FOR (j, i + 2 * K + 1, m) {
-                a += xs[j];
-            }
-        }
-        ans = std::max(ans, a);
+        ans = std::max(ans, sum[m] - sum[i]);
     }
 
     cout << ans << endl;
