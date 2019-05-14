@@ -814,23 +814,36 @@ void body() {
     auto K = read<i64>();
     auto S = read<string>();
 
-    PriorityQueue<i64> n;
-    i64 ans = 0;
-    i64 x = 0;
-    EACH (ch, S) {
-        if (ch == '1') {
-            n.push(x);
-            x = 0;
-            ans += 1;
-        } else {
-            x += 1;
-        }
+    Vector<i64> xs; // xs[0]は常に左端の1の数
+    if (S.front() == '0') {
+        xs.push_back(0);
     }
-    n.push(x);
+    i64 x = 0;
+    REP (i, N) {
+        auto ch = S[i];
+        if (i != 0 && ch != S[i - 1]) {
+            xs.push_back(x);
+            x = 0;
+        }
+        x += 1;
+    }
 
-    REP($, K) {
-        ans += n.top();
-        n.pop();
+    i64 ans = 0;
+    for (int i = 0; i < xs.size(); i += 2) {
+        // xs[i:i + 2K + 1]の和が候補
+        size_t m = i + 2 * K + 1;
+        m = std::min(m, xs.size());
+        if (i == 0) {
+            REP (j, m) {
+                ans += xs[j];
+            }
+        } else {
+            ans -= xs[i - 1] + xs[i - 2];
+            FOR (j, i + 2 * K + 1, m) {
+                ans += xs[j];
+            }
+        }
+        
     }
 
     cout << ans << endl;
