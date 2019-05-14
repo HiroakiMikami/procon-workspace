@@ -830,20 +830,21 @@ void body() {
 
     i64 ans = 0;
     for (int i = 0; i < xs.size(); i += 2) {
+        i64 a = ans;
         // xs[i:i + 2K + 1]の和が候補
         size_t m = i + 2 * K + 1;
         m = std::min(m, xs.size());
         if (i == 0) {
             REP (j, m) {
-                ans += xs[j];
+                a += xs[j];
             }
         } else {
-            ans -= xs[i - 1] + xs[i - 2];
+            a -= xs[i - 1] + xs[i - 2];
             FOR (j, i + 2 * K + 1, m) {
-                ans += xs[j];
+                a += xs[j];
             }
         }
-        
+        ans = std::max(ans, a);
     }
 
     cout << ans << endl;
