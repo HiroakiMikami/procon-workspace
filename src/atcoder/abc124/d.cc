@@ -832,6 +832,7 @@ void body() {
     REP (i, xs.size()) {
         sum[i + 1] = sum[i] + xs[i];
     }
+    dump(xs);
 
     i64 ans = 0;
     for (int i = 0; i < xs.size(); i += 2) {
