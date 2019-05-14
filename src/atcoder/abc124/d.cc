@@ -827,6 +827,7 @@ void body() {
         }
         x += 1;
     }
+    xs.push_back(x);
 
     Vector<i64> sum(xs.size() + 1, 0);
     REP (i, xs.size()) {
