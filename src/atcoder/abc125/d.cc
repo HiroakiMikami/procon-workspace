@@ -832,6 +832,5 @@ void body() {
         dp[i][1] = std::max(c1, c2);
     }
 
-    cout << std::max(dp[N - 1][0], dp[N - 1][1]);
-
+    cout << std::max(dp[N - 1][0], dp[N - 1][1]) << endl;
 }
