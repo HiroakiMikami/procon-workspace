@@ -841,7 +841,11 @@ void body() {
         }
     }
 
-    EACH (a, ans) {
-        std::cout << a << std::endl;
+    if (ans.size() == N) {
+        EACH (a, ans) {
+            std::cout << a << std::endl;
+        }
+    } else {
+        cout << -1 << endl;
     }
 }
