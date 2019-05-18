@@ -838,6 +838,7 @@ void body() {
         }
     }
 
+    dump(ans);
     EACH (a, ans) {
         std::cout << a << std::endl;
     }
