@@ -818,7 +818,7 @@ void body() {
     auto ns = Vector<i64>();
     ns.reserve(N);
     REP (i, N) {
-        auto X = Bs[i] - As[i];
+        auto X = As[i] - Bs[i];
         if (X > 0) {
             ps.push_back(X);
         } else if (X < 0) {
