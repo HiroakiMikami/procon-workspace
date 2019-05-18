@@ -830,10 +830,11 @@ void body() {
             s.pop();
             continue ;
         } else if (s.top() < b){
-            FOR (j, s.top() + 1, b) {
+            FOR (j, s.top() + 1, b + 1) {
                 s.push(j);
                 ans.push_back(j);
             }
+            s.pop();
         } else {
             cout << -1 << endl;
             return ;
