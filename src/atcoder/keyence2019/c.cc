@@ -832,11 +832,11 @@ void body() {
     auto total = - std::accumulate(CTR(ns), i64(0));
     i64 ans = ns.size();
     REP (i, ps.size()) {
-        total -= ps[i];
-        ans += 1;
         if (total <= 0) {
             break ;
         }
+        total -= ps[i];
+        ans += 1;
     }
 
     if (total <= 0) {
