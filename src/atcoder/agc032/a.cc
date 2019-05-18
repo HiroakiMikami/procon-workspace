@@ -818,7 +818,6 @@ void body() {
     ans.reserve(N);
     REPR(i, N) {
         auto b = bs[i];
-        dump(ans);
         if (s.empty()) {
             FOR (j, 1, b + 1) {
                 s.push(j);
