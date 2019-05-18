@@ -827,14 +827,13 @@ void body() {
     }
 
     sort(CTR(ps));
-    dump(ps);
-    dump(ns);
     auto total = - std::accumulate(CTR(ns), i64(0));
     i64 ans = ns.size();
     REP (i, ps.size()) {
         if (total <= 0) {
             break ;
         }
+        dump(ps[i]);
         total -= ps[i];
         ans += 1;
     }
