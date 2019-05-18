@@ -822,7 +822,7 @@ void body() {
         if (X > 0) {
             ps.push_back(X);
         } else if (X < 0) {
-            ps.push_back(X);
+            ns.push_back(X);
         }
     }
 
