@@ -832,6 +832,7 @@ void body() {
         } else if (s.top() < b){
             FOR (j, s.top() + 1, b) {
                 s.push(j);
+                ans.push_back(j);
             }
         } else {
             cout << -1 << endl;
