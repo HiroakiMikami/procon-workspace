@@ -818,7 +818,7 @@ void body() {
 
     FOR (i, 1, N + 1) {
         auto n = std::ceil(std::log2(K * 1.0 / i));
-        ans += 1.0 / N * std::pow(2, n);
+        ans += (1.0 / N) / std::pow(2, n);
     }
 
     cout << ans << endl;
