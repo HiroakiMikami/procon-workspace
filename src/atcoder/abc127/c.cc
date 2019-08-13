@@ -821,7 +821,6 @@ void body() {
         max = std::min(max, LR.second);
     }
 
-    dump(max, min);
 
     cout << std::max(i64(0), max - min + 1) << endl;
 }
