@@ -814,8 +814,8 @@ void body() {
     auto M = read<i64>();
     auto LRs = read<i64, i64>(M);
 
-    i64 min = N + 1;
-    i64 max = 0;
+    i64 min = 0;
+    i64 max = N + 1;
     EACH (LR, LRs) {
         min = std::max(min, LR.first);
         max = std::min(max, LR.second);
