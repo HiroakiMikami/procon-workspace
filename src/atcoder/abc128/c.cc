@@ -1031,6 +1031,7 @@ void body() {
                 sw += 1;
             }
         }
+        dump(i, sw);
         if (sw == M) {
             ans += 1;
         }
