@@ -1024,19 +1024,13 @@ void body() {
             // スイッチjを確認
             i64 num = 0;
             EACH (s, ss[j]) {
-                dump(s);
                 num += state[s - 1] ? 1 : 0;
             }
-
-            dump(j, num);
 
             if (num % 2 == ps[j]) {
                 sw += 1;
             }
         }
-        dump("---");
-        dump(i, sw);
-        dump("---");
         if (sw == M) {
             ans += 1;
         }
