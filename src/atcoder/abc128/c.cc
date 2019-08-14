@@ -1017,7 +1017,7 @@ void body() {
 
     /* スイッチの全状態を列挙(N <= 10よりたかだか2^10=1024通り） */
     i64 ans = 0;
-    REP (i, pow(2, N) + 1) {
+    REP (i, pow(2, N)) {
         std::bitset<10> state(i);
         i64 sw = 0;
         REP (j, M) {
@@ -1027,10 +1027,13 @@ void body() {
                 num += state[s] ? 1 : 0;
             }
 
+            dump(j, num);
+
             if (num % 2 == ps[j]) {
                 sw += 1;
             }
         }
+        dump("---");
         dump(i, sw);
         if (sw == M) {
             ans += 1;
