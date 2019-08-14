@@ -1024,6 +1024,7 @@ void body() {
             // スイッチjを確認
             i64 num = 0;
             EACH (s, ss[j]) {
+                dump(s);
                 num += state[s] ? 1 : 0;
             }
 
@@ -1035,6 +1036,7 @@ void body() {
         }
         dump("---");
         dump(i, sw);
+        dump("---");
         if (sw == M) {
             ans += 1;
         }
