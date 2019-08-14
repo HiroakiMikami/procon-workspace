@@ -1025,7 +1025,7 @@ void body() {
             i64 num = 0;
             EACH (s, ss[j]) {
                 dump(s);
-                num += state[s] ? 1 : 0;
+                num += state[s - 1] ? 1 : 0;
             }
 
             dump(j, num);
