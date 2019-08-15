@@ -1143,9 +1143,9 @@ void body() {
             dp[i] = 0;
             a += 1;
         } else {
-            dp[i] = dp[i - 1];
+            dp[i] = dp[i - 1]; // 1つ下の段からiへ登る
             if (i > 1) {
-                dp += dp[i - 2];
+                dp[i] += dp[i - 2]; // 2つ下の段からiへ登る
             }
         }
     }
