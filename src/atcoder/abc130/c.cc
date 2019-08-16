@@ -825,5 +825,5 @@ void body() {
      */
 
     cout << W * H / 2.0 << endl;
-    cout << ((W / 2.0 == x) && (H / 2.0 == y)) ? 1 : 0) << endl;
+    cout << ((W / 2.0 == x) && (H / 2.0 == y) ? 1 : 0) << endl;
 }
