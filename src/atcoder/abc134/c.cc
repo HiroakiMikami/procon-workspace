@@ -811,7 +811,7 @@ int main (int argc, char **argv) {
 
 void body() {
     auto N = read<i64>();
-    auto As = read<i64>();
+    auto As = read<i64>(N);
     auto first = std::max_element(CTR(As));
     auto second = std::nth_element(CTR(As), 2);
 
