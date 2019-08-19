@@ -820,5 +820,11 @@ void body() {
         }
         second = std::max(second, As[i]);
     }
-    dump(*first, second);
+    REP (i, N) {
+        if ((first - As.begin()) == i) {
+            cout << second << endl;
+        } else {
+            cout << *first << endl;
+        }
+    }
 }
