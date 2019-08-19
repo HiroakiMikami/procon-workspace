@@ -821,6 +821,7 @@ void body() {
             continue ;
         } else {
             cout << "No" << endl;
+            return;
         }
     }
     cout << "Yes" << endl;
