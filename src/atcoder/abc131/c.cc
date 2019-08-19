@@ -825,5 +825,4 @@ void body() {
 
     cout << (B - A + 1) - n(B) - n(A) << endl;
 
-    auto n_C =
 }
