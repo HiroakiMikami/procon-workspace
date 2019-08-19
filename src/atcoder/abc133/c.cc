@@ -815,7 +815,7 @@ void body() {
 
     Vector<i64> Ms;
     Ms.reserve(2019);
-    FOR (i, L, min(R + 1, L + 2020)) {
+    FOR (i, L, std::min(R + 1, L + 2020)) {
         Ms.push_back(i % 2019);
     }
 
