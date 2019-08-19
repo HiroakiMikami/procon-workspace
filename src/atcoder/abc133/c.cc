@@ -822,7 +822,7 @@ void body() {
     i64 ans = 2019;
     EACH(i, Ms) {
         EACH(j, Ms) {
-            ans = std::min(ans, (i * j) % 2019L);
+            ans = std::min(ans, i64((i * j) % 2019));
         }
     }
 
