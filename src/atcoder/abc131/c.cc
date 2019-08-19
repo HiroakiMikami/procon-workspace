@@ -1011,7 +1011,7 @@ void body() {
     auto n = [&](auto x) {
         auto n_C = x / C;
         auto n_D = x / D;
-        auto n_CD = x / lcd(C, D);
+        auto n_CD = x / lcm(C, D);
 
         return n_C + n_D - n_CD;
     };
