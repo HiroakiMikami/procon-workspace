@@ -823,6 +823,8 @@ void body() {
     i64 ans = 2019;
     EACH(i, Ms) {
         EACH(j, Ms) {
+            if (i == j)
+                continue;
             ans = std::min(ans, i64((i * j) % 2019));
         }
     }
