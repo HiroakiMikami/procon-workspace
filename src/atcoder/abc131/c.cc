@@ -823,7 +823,5 @@ void body() {
         return n_C + n_D - n_CD;
     };
 
-    dump(B - A + 1, n(B), n(A));
-
-    cout << (B - A + 1) - n(B) - n(A) << endl;
+    cout << (B - A + 1) - (n(B) - n(A)) << endl;
 }
