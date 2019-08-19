@@ -822,11 +822,12 @@ void body() {
             As[i] -= n;
             Bs[i] -= n;
         }
-
-        auto n = std::min(As[i], Bs[i - 1]);
-        ans += n;
-        As[i] -= n;
-        Bs[i - 1] -= n;
+        if (i > 0) {
+            auto n = std::min(As[i], Bs[i - 1]);
+            ans += n;
+            As[i] -= n;
+            Bs[i - 1] -= n;
+        }
     }
 
     cout << ans << endl;
