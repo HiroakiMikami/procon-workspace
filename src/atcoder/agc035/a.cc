@@ -894,6 +894,7 @@ void body() {
                 return ;
             }
         } else if (xs.size() == 1) {
+            i64 t = 0;
             EACH (x, xs) {
                 t ^= x.first;
                 t ^= x.first;
