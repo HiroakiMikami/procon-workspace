@@ -1240,7 +1240,6 @@ void body() {
         ans[e.first] = e.second;
 
         EACH_V(x, g.outgoings(e.first)) {
-            dump(x);
             if (std::get<2>(x) % 2 == 0) {
                 s.emplace(std::get<1>(x), e.second);
             } else {
