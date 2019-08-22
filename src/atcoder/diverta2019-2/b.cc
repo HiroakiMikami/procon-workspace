@@ -1283,8 +1283,6 @@ void body() {
             auto p = xys[j].first - xys[i].first;
             auto q = xys[j].second - xys[i].second;
 
-            if (p == 0 || q == 0) continue;
-
             // (x_s, y_s) = (x_t+p, y_t+p)を見たすs, tの間にのみedgeのあるgraphを考える
             // そのgraphにおける連結なサブグラフはコスト0で回収可能なので、連結なサブグラフの個数を数えれば良い
             UnionFind uf(N);
