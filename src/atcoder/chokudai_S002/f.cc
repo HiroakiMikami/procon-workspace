@@ -813,7 +813,7 @@ void body() {
     auto N = read<i64>();
     auto ABs = read<i64, i64>(N);
 
-    auto x = OrderedMap<pair<i64, i64>>();
+    auto x = OrderedSet<pair<i64, i64>>();
     EACH (AB, ABs) {
         x.emplace(std::min(AB.first, AB.second), std::max(AB.first, AB.second));
     }
