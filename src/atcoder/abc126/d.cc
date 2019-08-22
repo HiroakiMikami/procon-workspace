@@ -1217,8 +1217,7 @@ void body() {
         auto v = std::get<1>(uvw) - 1;
         auto w = std::get<2>(uvw);
 
-        if (w % 2 == 0) {
-            dump(u, v);
+        if (w % 2 == 1) {
             g.add_edge(make_tuple(u, v));
             g.add_edge(make_tuple(v, u));
         }
