@@ -1208,7 +1208,7 @@ namespace graph {
 
 void body() {
     auto N = read<i64>();
-    auto uvws = read<i64, i64, i64>(N);
+    auto uvws = read<i64, i64, i64>(N - 1);
 
     // 長さが奇数の辺のみからなるグラフを作る
     SimpleAdjacencyList g(N);
@@ -1217,7 +1217,6 @@ void body() {
         auto v = std::get<1>(uvw) - 1;
         auto w = std::get<2>(uvw);
 
-        dump(u, v, w);
         if (w % 2 == 0) {
             g.add_edge(make_tuple(u, v));
             g.add_edge(make_tuple(v, u));
