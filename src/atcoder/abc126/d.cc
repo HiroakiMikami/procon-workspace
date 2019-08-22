@@ -1218,8 +1218,8 @@ void body() {
         auto w = std::get<2>(uvw);
 
         if (w % 2 == 0) {
-            g.add_edge(({u, v}));
-            g.add_edge(({v, u}));
+            g.add_edge(make_tuple(u, v));
+            g.add_edge(make_tuple(v, u));
         }
     }
 
