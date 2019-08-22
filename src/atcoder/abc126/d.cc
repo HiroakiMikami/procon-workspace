@@ -1211,24 +1211,20 @@ void body() {
     auto uvws = read<i64, i64, i64>(N - 1);
 
     // 長さが奇数の辺のみからなるグラフを作る
-    SimpleAdjacencyList g(N);
+    WeightedAdjacencyList g(N);
     EACH (uvw, uvws) {
         auto u = std::get<0>(uvw) - 1;
         auto v = std::get<1>(uvw) - 1;
         auto w = std::get<2>(uvw);
 
-        if (w % 2 == 1) {
-            g.add_edge(make_tuple(u, v));
-            g.add_edge(make_tuple(v, u));
-        }
+        g.add_edge(make_tuple(u, v, w));
     }
 
-    // gは二部グラフになっているはずなので、片方を黒、片方を白で塗る
+    // rootを適当に選んで白とする
+    // 長さが偶数の辺でつながっている限り同じ色で塗るようにする
     std::stack<std::pair<i64, int>> s;
     Vector<int> ans(N);
-    REP (i, N) {
-        s.push({i, 0}); // 何も条件がないときは白で塗ることにする
-    }
+    s.push({0, 0})
 
     Vector<bool> used(N, false);
     while (!s.empty()) {
@@ -1243,7 +1239,11 @@ void body() {
         ans[e.first] = e.second;
 
         EACH_V(x, g.outgoings(e.first)) {
-            s.emplace(std::get<1>(x), (e.second == 0) ? 1 : 0);
+            if (std::get<2>(x) % 2 == 0) {
+                s.emplace(std::get<1>(x), e.second);
+            } else {
+                s.emplace(std::get<1>(x), (e.second == 0) ? 1 : 0);
+            }
         }
     }
 
