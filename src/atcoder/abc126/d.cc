@@ -1224,7 +1224,7 @@ void body() {
     // 長さが偶数の辺でつながっている限り同じ色で塗るようにする
     std::stack<std::pair<i64, int>> s;
     Vector<int> ans(N);
-    s.push({0, 0})
+    s.push({0, 0});
 
     Vector<bool> used(N, false);
     while (!s.empty()) {
