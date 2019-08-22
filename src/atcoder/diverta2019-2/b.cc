@@ -1279,7 +1279,7 @@ void body() {
 
     i64 ans = N; // p=q=infとすると、すべてコスト1かかるのでNかかる。これが最大のパターン
     REP (i, N) {
-        FOR (j, i + 1, N + 1) {
+        FOR (j, i + 1, N) {
             auto p = xys[j].first - xys[i].first;
             auto q = xys[j].second - xys[i].second;
 
