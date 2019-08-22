@@ -1219,6 +1219,7 @@ void body() {
 
         g.add_edge(make_tuple(u, v, w));
     }
+    g.to_undirected();
 
     // rootを適当に選んで白とする
     // 長さが偶数の辺でつながっている限り同じ色で塗るようにする
