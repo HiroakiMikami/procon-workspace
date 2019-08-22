@@ -1243,6 +1243,7 @@ void body() {
         ans[e.first] = e.second;
 
         EACH_V(x, g.outgoings(e.first)) {
+            dump(x);
             s.emplace(std::get<1>(x), (e.second == 0) ? 1 : 0);
         }
     }
