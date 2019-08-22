@@ -1213,9 +1213,9 @@ void body() {
     // 長さが奇数の辺のみからなるグラフを作る
     SimpleAdjacencyList g(N);
     EACH (uvw, uvws) {
-        auto u = std::get<0>(uvws) - 1;
-        auto v = std::get<1>(uvws) - 1;
-        auto w = std::get<2>(uvws);
+        auto u = std::get<0>(uvw) - 1;
+        auto v = std::get<1>(uvw) - 1;
+        auto w = std::get<2>(uvw);
 
         if (w % 2 == 0) {
             g.add_edge(({u, v}));
