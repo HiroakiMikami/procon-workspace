@@ -813,15 +813,15 @@ void body() {
     auto N = read<i64>();
     auto ss = read<string>(N);
 
+    OrderedMap<string, i64> n;
     EACH (s, ss) {
         sort(CTR(s));
+        n[s] += 1;
     }
 
     i64 ans = 0;
-    REP (i, N) {
-        FOR (j, i + 1, N) {
-            ans += (ss[i] == ss[j]) ? 1 : 0;
-        }
+    EACH (elem, n) {
+        ans += (elem.second * (elem.second - 1)) / 2;
     }
     cout << ans << endl;
 }
