@@ -803,6 +803,7 @@ int main (int argc, char **argv) {
     cin.tie(0);
     std::ios_base::sync_with_stdio(false);
 
+    cout << std::setprecision(12);
     cout << std::fixed;
     body();
 
