@@ -819,7 +819,6 @@ void body() {
         curr += S[i];
         if (prev != curr) {
             ans += 1;
-            dump(curr);
             prev = curr;
             curr = "";
         }
