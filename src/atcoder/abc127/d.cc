@@ -818,6 +818,21 @@ void body() {
     sort(CTR(As), [](auto A1, auto A2) { return A1 > A2; });
     sort(CTR(BCs), [](auto BC1, auto BC2) { return BC1.second > BC2.second; });
 
-    dump(As);
-    dump(BCs);
+    Vector<i64> result(N, 0);
+    /*
+     * すべてのカードを置き換える場合の最大値を考える
+     * 数値の大きい方からじゅんじゅんに使っていけば良い。
+     */
+    size_t offset = 0;
+    EACH (BC, BCs) {
+        auto B = BC.first;
+        auto C = BC.second;
+        auto n = std::min<size_t>(C, N - offset);
+        REP (i, n) {
+            result[i + offset] = B;
+        }
+        offset += n;
+    }
+
+    dump(result);
 }
