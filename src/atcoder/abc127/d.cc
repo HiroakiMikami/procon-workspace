@@ -834,5 +834,21 @@ void body() {
         offset += n;
     }
 
-    dump(result);
+    /*
+     * 残すカードを考える。
+     * A1...ANのうち、大きい方をresultの小さい方と入れ替えて（その部分は残して）行けば良い
+     */
+    i64 index = N - 1;
+    EACH (A, As) {
+        if (index < 0) break;
+        if (result[index] < A) {
+            result[index] = A;
+            index -= 1;
+        } else {
+            // resultの最小値とAの最大値で前者のほうが大きいのでもう置き換える必要はない
+            break;
+        }
+    }
+
+    cout << std::accumulate(CTR(result), i64(0)) << endl;
 }
