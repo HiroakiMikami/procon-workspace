@@ -827,9 +827,9 @@ void body() {
     EACH (BC, BCs) {
         auto B = BC.first;
         auto C = BC.second;
-        auto n = std::min<size_t>(C, N - offset);
+        auto n = std::min<size_t>(B, N - offset);
         REP (i, n) {
-            result[i + offset] = B;
+            result[i + offset] = C;
         }
         offset += n;
     }
