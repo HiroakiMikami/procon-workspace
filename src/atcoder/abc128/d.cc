@@ -849,6 +849,8 @@ void body() {
                     // 詰められない
                     continue ;
                 }
+                dump(vs);
+                dump(z);
 
                 auto a = std::accumulate(vs.begin() + z, vs.end(), i64(0));
                 if (ans) {
