@@ -843,7 +843,7 @@ void body() {
             sort(CTR(vs));
 
             // K - x - y回まで宝石を価値が小さい順に戻すことができる
-            REP (z, K - x - y + 1);
+            REP (z, K - x - y + 1) {
                 if (z > x + y || z < 0) {
                     // 詰められない
                     continue ;
