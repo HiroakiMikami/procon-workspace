@@ -845,12 +845,10 @@ void body() {
             REP (n, (x + y) / 2) {
                 // 2n回操作A-Cを繰り返して回数調整したのち、K-x-y-2n個の宝石を価値が小さい順に詰める
                 auto z = K - x - y - 2 * n;
-                if (z > x + y) {
+                if (z > x + y || z < 0) {
                     // 詰められない
                     continue ;
                 }
-                dump(vs);
-                dump(z);
 
                 auto a = std::accumulate(vs.begin() + z, vs.end(), i64(0));
                 if (ans) {
