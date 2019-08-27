@@ -842,9 +842,8 @@ void body() {
             }
             sort(CTR(vs));
 
-            REP (n, (x + y) / 2) {
-                // 2n回操作A-Cを繰り返して回数調整したのち、K-x-y-2n個の宝石を価値が小さい順に詰める
-                auto z = K - x - y - 2 * n;
+            // K - x - y回まで宝石を価値が小さい順に戻すことができる
+            REP (z, K - x - y + 1);
                 if (z > x + y || z < 0) {
                     // 詰められない
                     continue ;
@@ -860,5 +859,5 @@ void body() {
         }
     }
 
-    cout <<ans.value() << endl;
+    cout << ans.value() << endl;
 }
