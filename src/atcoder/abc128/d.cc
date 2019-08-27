@@ -828,6 +828,9 @@ void body() {
                 // 何も取らないで終わりはできない
                 continue ;
             }
+            if (x + y > N) {
+                continue ;
+            }
 
             Vector<i64> vs;
             vs.reserve(x + y);
