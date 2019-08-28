@@ -879,8 +879,8 @@ void body() {
                 continue;
             }
 
-            i64 a = us[i][j] + ds[i][j] + ls[i][j] + rs[i][j] - 3;
-            ans = max(ans, a);
+            auto a = us[i][j] + ds[i][j] + ls[i][j] + rs[i][j] - 3;
+            ans = std::max(ans, a);
         }
     }
 
