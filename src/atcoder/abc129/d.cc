@@ -862,12 +862,12 @@ void body() {
 
     // dsの更新
     REP (j, W) {
-        us[H - 1][j] = 1;
+        ds[H - 1][j] = 1;
         REPR (i, H - 1) {
             if (Ss[i][j] == '#') {
-                us[i][j] = 0;
+                ds[i][j] = 0;
             } else {
-                us[i][j] = us[i + 1][j] + 1;
+                ds[i][j] = ds[i + 1][j] + 1;
             }
         }
     }
