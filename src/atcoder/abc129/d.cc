@@ -878,8 +878,8 @@ void body() {
             if (Ss[i][j] == '#') {
                 continue;
             }
-
             auto a = us[i][j] + ds[i][j] + ls[i][j] + rs[i][j] - 3;
+            dump(i, j , a);
             ans = std::max(ans, a);
         }
     }
