@@ -872,8 +872,6 @@ void body() {
         }
     }
 
-    dump(us);
-
     i64 ans = 0;
     REP (i, H) {
         REP (j, W) {
