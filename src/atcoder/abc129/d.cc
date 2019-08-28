@@ -879,7 +879,7 @@ void body() {
                 continue;
             }
 
-            auto a = us[i][j] + ds[i][j] + ls[i][j] + rs[i][j] - 3;
+            i64 a = us[i][j] + ds[i][j] + ls[i][j] + rs[i][j] - 3;
             ans = max(ans, a);
         }
     }
