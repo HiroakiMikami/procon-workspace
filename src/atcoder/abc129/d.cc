@@ -822,11 +822,11 @@ void body() {
     auto us = make_matrix<i64, 2>({H, W}, 0);
     auto ds = make_matrix<i64, 2>({H, W}, 0);
 
-    // lsの更新 l[:, 0]は1 (グリッドの端とする)
+    // lsの更新 l[:, 0]は障害物なら0、そうでないなら1 (グリッドの端とする)
     // 障害物があるなら、l[i, j] = 0 (自分自身)
     // 障害物がないなら、l[i, j] = l[i, j - 1] + 1
     REP (i, H) {
-        ls[i][0] = 1;
+        ls[i][0] = (Ss[i][0] == '#') ? 0 : 1;
         FOR (j, 1, W) {
             if (Ss[i][j] == '#') {
                 ls[i][j] = 0;
@@ -838,7 +838,7 @@ void body() {
 
     // rsの更新
     REP (i, H) {
-        rs[i][W - 1] = 1;
+        rs[i][W - 1] = (Ss[i][W - 1] == '#') ? 0 : 1;
         REPR (j, W - 1) {
             if (Ss[i][j] == '#') {
                 rs[i][j] = 0;
@@ -850,7 +850,7 @@ void body() {
 
     // usの更新
     REP (j, W) {
-        us[0][j] = 1;
+        us[0][j] = (Ss[0][j] == '#') ? 0 : 1;
         FOR (i, 1, H) {
             if (Ss[i][j] == '#') {
                 us[i][j] = 0;
@@ -862,7 +862,7 @@ void body() {
 
     // dsの更新
     REP (j, W) {
-        ds[H - 1][j] = 1;
+        ds[H - 1][j] = (Ss[H - 1][j] == '#') ? 0 : 1;
         REPR (i, H - 1) {
             if (Ss[i][j] == '#') {
                 ds[i][j] = 0;
