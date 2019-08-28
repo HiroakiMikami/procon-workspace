@@ -872,6 +872,8 @@ void body() {
         }
     }
 
+    dump(us);
+
     i64 ans = 0;
     REP (i, H) {
         REP (j, W) {
@@ -879,7 +881,6 @@ void body() {
                 continue;
             }
             auto a = us[i][j] + ds[i][j] + ls[i][j] + rs[i][j] - 3;
-            dump(i, j , a);
             ans = std::max(ans, a);
         }
     }
