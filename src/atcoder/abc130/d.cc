@@ -828,7 +828,7 @@ void body() {
         }
         if (m != N + 1) {
             // as[m:]は条件を満たす
-            ans += (m - i);
+            ans += (N +  1 - m);
         }
     }
 
