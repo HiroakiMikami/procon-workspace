@@ -826,7 +826,7 @@ void body() {
         while (m < N + 1 && sum[m] - sum[i] < K) {
             m += 1;
         }
-        if (sum[m] - sum[i] >= K) {
+        if (m != N + 1) {
             // as[m:]は条件を満たす
             ans += (m - i);
         }
