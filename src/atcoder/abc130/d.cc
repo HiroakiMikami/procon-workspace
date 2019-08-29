@@ -826,8 +826,10 @@ void body() {
         while (m < N + 1 && sum[m] - sum[i] < K) {
             m += 1;
         }
-        // as[m:]は条件を満たす
-        ans += (m - i);
+        if (sum[m] - sum[i] >= K) {
+            // as[m:]は条件を満たす
+            ans += (m - i);
+        }
     }
 
     cout << ans << endl;
