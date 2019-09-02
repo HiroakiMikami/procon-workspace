@@ -1132,11 +1132,13 @@ void body() {
     auto N = read<i64>();
     auto K = read<i64>();
 
+    auto f = mod_integer::fact(N + 1);
     auto comb = make_matrix<ModInteger<>, 2>({N + 2, N + 2}, 1); // comb[N][r] = (N r) mod 1e7+9
     REP (i, N + 2) {
         REP (j, N + 2) {
-            if (i == 0 || j == 0) continue;
-            comb[i][j] = (ModInteger<>(i) * comb[i - 1][j - 1]) / ModInteger<>(j);
+            if (i == 0 || j == 0 || i < j) continue;
+            comb[i][j] = f[i].value * f[i - j].inverse * f[j].inverse;
+            //comb[i][j] = (ModInteger<>(i) * comb[i - 1][j - 1]) / ModInteger<>(j);
         }
     }
 
