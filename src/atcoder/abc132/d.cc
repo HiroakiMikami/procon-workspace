@@ -1135,6 +1135,7 @@ void body() {
     auto comb = make_matrix<ModInteger<>, 2>({N + 2, N + 2}, 0); // comb[N][r] = (N r) mod 1e7+9
     REP (i, N + 2) {
         REP (j, N + 2) {
+            if (i == 0 || j == 0) continue;
             comb[i][j] = (ModInteger<>(i) * comb[i - 1][j - 1]) / ModInteger<>(j);
         }
     }
