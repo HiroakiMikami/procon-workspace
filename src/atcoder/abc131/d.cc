@@ -816,4 +816,16 @@ void body() {
     sort(CTR(ABs), [](auto lhs, auto rhs) { return lhs.second < rhs.second; });
 
     dump(ABs);
+
+    i64 t = 0;
+    EACH (AB, ABs) {
+        auto A = AB.first;
+        auto B = AB.second;
+        if (t + A > B) {
+            cout << "No" << endl;
+            return ;
+        }
+        t += A;
+    }
+    cout << "Yes" << endl;
 }
