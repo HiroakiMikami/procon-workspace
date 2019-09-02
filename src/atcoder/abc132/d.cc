@@ -1132,7 +1132,7 @@ void body() {
     auto N = read<i64>();
     auto K = read<i64>();
 
-    auto f = mod_integer::fact(N + 1);
+    auto f = mod_integer::fact<mod_integer::MOD>(N + 1);
     auto comb = make_matrix<ModInteger<>, 2>({N + 2, N + 2}, 1); // comb[N][r] = (N r) mod 1e7+9
     REP (i, N + 2) {
         REP (j, N + 2) {
