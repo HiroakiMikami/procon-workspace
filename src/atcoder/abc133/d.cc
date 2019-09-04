@@ -829,7 +829,7 @@ void body() {
         if (n == 1) {
             return { s };
         }
-        dump(n);
+        dump(n, s, As[n-1]);
         dump(As);
 
         auto ans = _solve(n - 2, s - As[n - 1], _solve);
