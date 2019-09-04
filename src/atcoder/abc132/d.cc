@@ -1136,13 +1136,19 @@ void body() {
     auto comb = make_matrix<ModInteger<>, 2>({N + 2, N + 2}, 1); // comb[N][r] = (N r) mod 1e7+9
     REP (i, N + 2) {
         REP (j, N + 2) {
-            if (i == 0 || j == 0 || i < j) continue;
+            if (i < j) {
+                comb[i][j] = 0;
+                continue ;
+            }
+            if (i == 0 || j == 0) {
+                comb[i][j] = 1;
+                continue;
+            }
             comb[i][j] = f[i].value * f[i - j].inverse * f[j].inverse;
-            //comb[i][j] = (ModInteger<>(i) * comb[i - 1][j - 1]) / ModInteger<>(j);
         }
     }
 
     FOR (i, 1, K + 1) {
-        cout << (comb[K - 1][i - 1] * comb[N - K + 1][i]).get() << endl;
+        cout << (comb[K-1][i-1] * (comb[N-K-1][i] + 2 * comb[N-K-1][i-1] + comb[N-K-1][i-2])).get() << endl;
     }
 }
