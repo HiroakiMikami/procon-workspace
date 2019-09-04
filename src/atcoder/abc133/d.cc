@@ -832,10 +832,10 @@ void body() {
         dump(n, s, As[n-1]);
         dump(As);
 
-        auto ans = _solve(n - 2, s - As[n - 1], _solve);
+        auto ans = _solve(n - 2, s - As[n - 2], _solve);
         dump(ans);
+        ans.push_back(As[n - 3] - ans[n - 3]);
         ans.push_back(As[n - 2] - ans[n - 2]);
-        ans.push_back(As[n - 1] - ans[n - 1]);
         return ans;
     };
 
