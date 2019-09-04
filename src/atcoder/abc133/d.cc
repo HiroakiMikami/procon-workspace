@@ -830,9 +830,9 @@ void body() {
             return { s };
         }
 
-        auto ans = _solve(n - 2, s - A[n - 1], _solve);
-        ans.push_back(A[n - 2] - ans[n - 2]);
-        ans.push_back(A[n - 1] - ans[n - 1]);
+        auto ans = _solve(n - 2, s - As[n - 1], _solve);
+        ans.push_back(As[n - 2] - ans[n - 2]);
+        ans.push_back(As[n - 1] - ans[n - 1]);
         return ans;
     };
 
