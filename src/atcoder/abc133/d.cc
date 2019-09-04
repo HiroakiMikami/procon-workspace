@@ -839,8 +839,11 @@ void body() {
     auto s = std::accumulate(CTR(As), i64(0)) / 2;
     auto xs = solve(N, s, solve);
 
-    EACH (x, xs) {
-        cout << 2 * x << " ";
+    REP (i, xs.size()) {
+        cout << 2 * xs[i];
+        if (i != xs.size() - 1) {
+            cout << " ";
+        }
     }
     cout << endl;
 
