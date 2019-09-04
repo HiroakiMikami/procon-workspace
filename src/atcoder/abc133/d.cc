@@ -830,6 +830,7 @@ void body() {
             return { s };
         }
         dump(n);
+        dump(As);
 
         auto ans = _solve(n - 2, s - As[n - 1], _solve);
         ans.push_back(As[n - 2] - ans[n - 2]);
