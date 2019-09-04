@@ -837,7 +837,7 @@ void body() {
     };
 
     auto s = std::accumulate(CTR(As), i64(0)) / 2;
-    auto x = solve(N, s, solve);
+    auto xs = solve(N, s, solve);
 
     EACH (x, xs) {
         cout << 2 * x << endl;
