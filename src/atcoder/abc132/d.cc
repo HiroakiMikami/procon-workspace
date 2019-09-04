@@ -1149,6 +1149,6 @@ void body() {
     }
 
     FOR (i, 1, K + 1) {
-        cout << (comb[K-1][i-1] * (comb[N-K-1][i] + ModInteger<>(2) * comb[N-K-1][i-1] + comb[N-K-1][i-2])).get() << endl;
+        cout << (comb[K-1][i-1] * (comb[N-K-1][i] + ModInteger<>(2) * comb[N-K-1][i-1] + (i > 2) ? comb[N-K-1][i-2] : ModInteger<>(0))).get() << endl;
     }
 }
