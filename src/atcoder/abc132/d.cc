@@ -1153,6 +1153,7 @@ void body() {
                 comb[K-1][i-1] * (
                         comb[N-K-1][i] +
                         ModInteger<>(2) * comb[N-K-1][i-1] +
-                        ((i > 2) ? comb[N-K-1][i-2] : ModInteger<>(0)))).get() << endl;
+                        ((i > 2) ? comb[N-K-1][i-2] : ModInteger<>(0))
+                        )).get() << endl;
     }
 }
