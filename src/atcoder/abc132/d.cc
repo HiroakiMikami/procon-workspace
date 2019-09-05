@@ -1149,12 +1149,16 @@ void body() {
     }
 
     FOR (i, 1, K + 1) {
-        auto ans =
-                comb[K-1][i-1] * (
-                        comb[N-K-1][i] +
-                        ModInteger<>(2) * comb[N-K-1][i-1] +
-                        ((i >= 2) ? comb[N-K-1][i-2] : ModInteger<>(0))
-                        );
-        cout << ans.get() << endl;
+        if (N == K) {
+            cout << ((i == 1) ? 1 : 0) << endl;
+        } else {
+            auto ans =
+                    comb[K - 1][i - 1] * (
+                            comb[N - K - 1][i] +
+                            ModInteger<>(2) * comb[N - K - 1][i - 1] +
+                            ((i >= 2) ? comb[N - K - 1][i - 2] : ModInteger<>(0))
+                    );
+            cout << ans.get() << endl;
+        }
     }
 }
