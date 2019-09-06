@@ -1167,8 +1167,6 @@ void body() {
         Y += Ys[i];
     }
 
-    dump(Xs, Ys);
-
     auto ans = X * ModInteger<>(K) * ModInteger<>(K - 1) / 2 + ModInteger<>(K) * Y;
 
     cout << ans.get() << endl;
