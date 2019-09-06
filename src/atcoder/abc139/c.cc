@@ -815,7 +815,7 @@ void body() {
 
     auto dp = Vector<i64>(N, 0);
     REPR(i, N - 1) {
-        if (Hs[i] > Hs[i + 1]) {
+        if (Hs[i] >= Hs[i + 1]) {
             dp[i] = dp[i + 1] + 1;
         } else {
             dp[i] = 0;
