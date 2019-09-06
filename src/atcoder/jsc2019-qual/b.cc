@@ -1134,7 +1134,7 @@ void body() {
     auto As = read<i64>(N);
 
     auto Xs = Vector<ModInteger<>>(N); // Xs[i] := |{a in As | a > As[i]}|
-    auto Ys = Vector<ModInteger<>>(N); // Ys[i] := |{j | As[j] > As[i] and i < j}|
+    auto Ys = Vector<ModInteger<>>(N); // Ys[i] := |{j | As[j] > As[i] and i > j}|
 
     REP (i, N) {
         ModInteger<> X, Y;
@@ -1143,7 +1143,7 @@ void body() {
 
             if (As[j] > As[i]) {
                 X += 1;
-                if (i < j) {
+                if (i > j) {
                     Y += 1;
                 }
             }
