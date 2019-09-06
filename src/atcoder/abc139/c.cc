@@ -822,5 +822,6 @@ void body() {
         }
     }
 
+    dump(dp);
     cout << *std::max_element(CTR(dp)) << endl;
 }
