@@ -834,7 +834,7 @@ void body() {
     REP (i, N) {
         if (xs[i] == 1) {
             M += 1;
-            bs.push?back(i + 1);
+            bs.push_back(i + 1);
         }
     }
 
