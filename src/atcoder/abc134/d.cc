@@ -838,8 +838,6 @@ void body() {
         }
     }
 
-    dump(M);
-    dump(bs);
     cout << M << "\n";
     REP (i, M) {
         cout << bs[i];
@@ -847,5 +845,7 @@ void body() {
             cout << " ";
         }
     }
-    cout << endl;
+    if (M != 0) {
+        cout << endl;
+    }
 }
