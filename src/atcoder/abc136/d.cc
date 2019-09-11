@@ -850,6 +850,7 @@ void body() {
                 ans[i] += 1;
             }
         }
+        dump(ans);
     }
 
     REP (i, S.size()) {
