@@ -832,25 +832,22 @@ void body() {
         auto i = std::get<1>(x);
         auto j = std::get<2>(x);
 
-        auto l = j - i;
-        if (mode == 'R') {
-            if (l % 2 == 0) {
-                ans[j-1] += l - 1;
-                ans[j] += 1;
+        FOR (x, i, j) {
+            if (mode == 'R') {
+                if ((j - x) % 2 == 0) {
+                    ans[j] += 1;
+                } else {
+                    ans[j-1] += 1;
+                }
             } else {
-                ans[j-1] += 1;
-                ans[j] += l - 1;
+                if ((x - i - 1) % 2 == 0) {
+                    ans[i - 1] += 1;
+                } else {
+                    ans[i] += 1;
+                }
             }
-        } else {
-            if (l % 2 == 0) {
-                ans[i-1] += 1;
-                ans[i] += l - 1;
-            } else {
-                ans[i-1] += l - 1;
-                ans[i] += 1;
-            }
+
         }
-        dump(ans);
     }
 
     REP (i, S.size()) {
