@@ -824,7 +824,6 @@ void body() {
         }
     }
     xs.emplace_back(mode, i, S.size());
-    dump(xs);
 
     Vector<i64> ans(S.size(), 0);
     EACH (x, xs) {
