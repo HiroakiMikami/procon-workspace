@@ -879,7 +879,6 @@ struct SegmentTree {
     void update(size_t index, const V1 &value) {
         // 葉を表す要素へ
         auto k = index + (this->m_tree.size() + 1) / 2 - 1;
-        dump(k);
         this->m_tree[k] = this->m_acc(value);
         while (k > 0) {
             k = (k - 1) / 2;
@@ -1035,7 +1034,6 @@ void body() {
         Bs_with_indexes[i] = make_pair(i, ABs[i].second);
     }
     SegmentTree<std::pair<size_t, i64>, std::pair<size_t, i64>, Accumulator> q(Bs_with_indexes);
-    dump(ABs);
 
     i64 ans = 0;
     REPR(i, M + 1) {
@@ -1045,11 +1043,9 @@ void body() {
         auto it = std::upper_bound(CTR(As), M - i);
         // ABs[:r]であれば間に合う
         auto r = it - As.begin();
-        dump(i,  M - i, r);
 
         if (r == 0) continue ;
         auto w = q.query(0, r);
-        dump(w);
         ans += w.second;
 
         // もうこの仕事はできないので報酬を0にする
