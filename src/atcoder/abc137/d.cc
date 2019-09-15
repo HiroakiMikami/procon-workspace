@@ -1032,7 +1032,7 @@ void body() {
     auto Bs_with_indexes = Vector<std::pair<size_t, i64>>(N);
     REP (i, N) {
         As[i] = ABs[i].first;
-        Bs_with_indexes[i] = make_tuple(i, ABs[i].second);
+        Bs_with_indexes[i] = make_pair(i, ABs[i].second);
     }
     SegmentTree<std::pair<size_t, i64>, std::pair<size_t, i64>, Accumulator> q(Bs_with_indexes);
 
