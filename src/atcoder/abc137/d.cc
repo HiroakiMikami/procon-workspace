@@ -1034,7 +1034,7 @@ void body() {
         As[i] = ABs[i].first;
         Bs_with_indexes[i] = make_tuple(i, ABs[i].second);
     }
-    SegmentTree<std::pair<size_t, i64>, std::pair<size_t, i64>, Accumulator> q(Bs);
+    SegmentTree<std::pair<size_t, i64>, std::pair<size_t, i64>, Accumulator> q(Bs_with_indexes);
 
     i64 ans = 0;
     FORR(i, 1, M + 1) {
