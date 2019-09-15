@@ -1044,6 +1044,7 @@ void body() {
         auto it = std::upper_bound(CTR(As), M - i);
         // ABs[:r]であれば間に合う
         auto r = it - As.begin();
+        dump(i,  M - i, r);
 
         auto w = q.query(0, r);
         ans += w.second;
