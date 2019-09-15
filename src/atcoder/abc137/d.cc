@@ -1009,10 +1009,10 @@ int main (int argc, char **argv) {
 }
 
 struct Accumulator {
-    std::pair<size_t, i64> operator()(const std::pair<size_t, i64> &elem) {
+    std::pair<size_t, i64> operator()(const std::pair<size_t, i64> &elem) const {
         return elem;
     }
-    std::pair<size_t, i64> operator()(const std::pair<size_t, i64> &lhs, const std::pair<size_t, i64> &rhs) {
+    std::pair<size_t, i64> operator()(const std::pair<size_t, i64> &lhs, const std::pair<size_t, i64> &rhs) const {
         if (lhs.second > rhs.second) {
             return lhs;
         } else {
@@ -1034,7 +1034,7 @@ void body() {
         As[i] = ABs[i].first;
         Bs_with_indexes[i] = make_pair(i, ABs[i].second);
     }
-    SegmentTree<std::pair<size_t, i64>, std::pair<size_t, i64>, Accumulator> q(Bs_with_indexes, Accumulator());
+    SegmentTree<std::pair<size_t, i64>, std::pair<size_t, i64>, Accumulator> q(Bs_with_indexes);
 
     i64 ans = 0;
     FORR(i, 1, M + 1) {
