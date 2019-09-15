@@ -1046,6 +1046,7 @@ void body() {
         auto r = it - As.begin();
         dump(i,  M - i, r);
 
+        if (r == 0) continue ;
         auto w = q.query(0, r);
         ans += w.second;
 
