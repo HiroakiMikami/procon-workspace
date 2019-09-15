@@ -952,7 +952,6 @@ private:
      * @return Accumulate(xs[begin], xs[begin+1], ... xs[end-1])
      */
     std::experimental::optional<V2> query(size_t begin, size_t end, size_t k, size_t l, size_t r) const {
-        dump(begin, end, k, l, r);
         if (r <= begin || end <= l) {
             // query対象と扱うrangeが交差しない
             return {};
@@ -1035,6 +1034,7 @@ void body() {
         Bs_with_indexes[i] = make_pair(i, ABs[i].second);
     }
     SegmentTree<std::pair<size_t, i64>, std::pair<size_t, i64>, Accumulator> q(Bs_with_indexes);
+    dump(ABs);
 
     i64 ans = 0;
     FORR(i, 1, M + 1) {
