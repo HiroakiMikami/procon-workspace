@@ -879,6 +879,7 @@ struct SegmentTree {
     void update(size_t index, const V1 &value) {
         // 葉を表す要素へ
         auto k = index + this->size() - 1;
+        dump(k);
         this->m_tree[k] = this->m_acc(value);
         while (k > 0) {
             k = (k - 1) / 2;
