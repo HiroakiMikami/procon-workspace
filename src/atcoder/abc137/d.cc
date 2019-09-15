@@ -1049,7 +1049,7 @@ void body() {
         ans += w.second;
 
         // もうこの仕事はできないので報酬を0にする
-        q.update(w.first, 0);
+        q.update(w.first, make_pair(w.first, 0));
     }
 
     cout << ans << endl;
