@@ -1048,6 +1048,7 @@ void body() {
 
         if (r == 0) continue ;
         auto w = q.query(0, r);
+        dump(w);
         ans += w.second;
 
         // もうこの仕事はできないので報酬を0にする
