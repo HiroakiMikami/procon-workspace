@@ -1037,7 +1037,7 @@ void body() {
     dump(ABs);
 
     i64 ans = 0;
-    FORR(i, 1, M + 1) {
+    REPR(i, M + 1) {
         // i日目の仕事を決める
         // 間にあう仕事のを見つける
         // i + Ax <= M より Ax <= M - iを見つければ良い
