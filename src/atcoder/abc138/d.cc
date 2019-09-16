@@ -1218,7 +1218,7 @@ void body() {
         px.first -= 1;
     }
 
-    AdjacencyList g(N);
+    AdjacencyList<> g(N);
     EACH (ab, abs) {
         g.add_edge(make_tuple(ab.first, ab.second));
     }
