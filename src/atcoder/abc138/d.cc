@@ -1219,6 +1219,7 @@ void body() {
     }
 
     SimpleAdjacencyList g(N);
+    EACH (ab, abs) {
         g.add_edge(make_tuple(ab.first, ab.second));
     }
     g.to_undirected();
