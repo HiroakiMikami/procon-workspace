@@ -1226,7 +1226,7 @@ void body() {
 
     auto Nps = Vector<i64>(N, -1);
     auto parents = Vector<i64>(N, -1);
-    auto num_children = [&g](size_t p, auto num_children_) {
+    auto num_children = [&](size_t p, auto num_children_) {
         if (Nps[p] >= 0) {
             return Nps[p];
         }
