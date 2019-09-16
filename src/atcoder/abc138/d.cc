@@ -1223,28 +1223,32 @@ void body() {
     }
     g.to_undirected();
 
-    auto Nps = Vector<i64>(N, -1);
+    auto Xs = Vector<i64>(N, 0);
+    EACH (px, pxs) {
+        Xs[px.first] += px.second;
+    }
+
+    auto ans = Vector<i64>(N, -1);
     auto parents = Vector<i64>(N, -1);
-    auto num_children = [&](size_t p, auto num_children_) {
-        if (Nps[p] >= 0) {
-            return Nps[p];
+    auto get_ans = [&](size_t p, auto get_ans_) {
+        if (ans[p] >= 0) {
+            return ans[p];
         }
-        Nps[p] = 1;
+        ans[p] = Xs[p] + get_ans_(parents[p], get_ans_);
         EACH_V(e, g.outgoings(p)) {
             auto c = std::get<1>(e);
             parents[c] = p; // 親を保存しておく
-            Nps[p] += num_children_(c, num_children_); // 再帰的に子頂点の数を調べる
+            get_ans_(c, get_ans_); // 子ノードの結果を計算する
         }
-        return Nps[p];
+        return ans[p];
     };
-    num_children(0, num_children); // 根から子頂点の数を調べれば全長店について調べられる
+    get_ans(0, get_ans);
 
-
-    i64 ans = 0;
-    EACH (px, pxs) {
-        auto p = px.first;
-        auto x = px.second;
-        ans += x * Nps[p];
+    REP (i, N) {
+        cout << ans[i];
+        if (i != N - 1) {
+            cout << " ";
+        }
     }
-    cout << ans << endl;
+    cout << endl;
 }
