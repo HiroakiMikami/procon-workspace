@@ -1235,7 +1235,11 @@ void body() {
         if (ans[p] >= 0) {
             return ans[p];
         }
-        ans[p] = Xs[p] + get_ans_(parents[p], get_ans_);
+        if (p == 0) {
+            ans[p] = Xs[p];
+        } else {
+            ans[p] = Xs[p] + get_ans_(parents[p], get_ans_);
+        }
         EACH_V(e, g.outgoings(p)) {
             auto c = std::get<1>(e);
             parents[c] = p; // 親を保存しておく
