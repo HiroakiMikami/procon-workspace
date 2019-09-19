@@ -815,7 +815,7 @@ void body() {
 
     Vector<i64> ans;
     ans.reserve(N);
-    while (!bs.empty())
+    while (!bs.empty()) {
         REPR (i, bs.size()) {
             if ((i + 1) == bs[i]) {
                 bs.erase(bs.begin() + i);
