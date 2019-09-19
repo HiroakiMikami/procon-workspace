@@ -813,38 +813,23 @@ void body() {
     auto N = read<i64>();
     auto bs = read<i64>(N);
 
-    stack<i64> s;
     Vector<i64> ans;
     ans.reserve(N);
-    REPR(i, N) {
-        auto b = bs[i];
-        if (s.empty()) {
-            FOR (j, 1, b + 1) {
-                s.push(j);
-                ans.push_back(j);
+    while (true) {
+        REPR (i, bs.size()) {
+            if ((i + 1) == bs[i]) {
+                bs.erase(bs.begin() + i);
+                ans.push_back(bs[i]);
+                break ;
             }
         }
-
-        if (s.top() == b) {
-            s.pop();
-            continue ;
-        } else if (s.top() < b){
-            FOR (j, s.top() + 1, b + 1) {
-                s.push(j);
-                ans.push_back(j);
-            }
-            s.pop();
-        } else {
-            cout << -1 << endl;
-            return ;
-        }
-    }
-
-    if (ans.size() == N) {
-        EACH (a, ans) {
-            std::cout << a << std::endl;
-        }
-    } else {
         cout << -1 << endl;
     }
+
+    reverse(CTR(ans));
+
+    EACH (a, ans) {
+        cout << a << "\n";
+    }
+    cout << flush;
 }
