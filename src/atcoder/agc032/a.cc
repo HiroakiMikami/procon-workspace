@@ -816,6 +816,7 @@ void body() {
     Vector<i64> ans;
     ans.reserve(N);
     REP (j, N) {
+        dump(bs);
         REPR (i, bs.size()) {
             if ((i + 1) == bs[i]) {
                 bs.erase(bs.begin() + i);
