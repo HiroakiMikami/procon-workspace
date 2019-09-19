@@ -815,7 +815,7 @@ void body() {
 
     Vector<i64> ans;
     ans.reserve(N);
-    REP (j, N) {
+    while (!bs.empty())
         dump(bs);
         REPR (i, bs.size()) {
             if ((i + 1) == bs[i]) {
