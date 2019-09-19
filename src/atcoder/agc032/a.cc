@@ -815,16 +815,18 @@ void body() {
 
     Vector<i64> ans;
     ans.reserve(N);
-    while (!bs.empty()) {
-        dump(bs);
+    REP (j, N) {
         REPR (i, bs.size()) {
             if ((i + 1) == bs[i]) {
-                bs.erase(bs.begin() + i);
                 ans.push_back(bs[i]);
+                bs.erase(bs.begin() + i);
                 break ;
             }
         }
+    }
+    if (!bs.empty()) {
         cout << -1 << endl;
+        return ;
     }
 
     reverse(CTR(ans));
