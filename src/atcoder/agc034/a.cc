@@ -857,6 +857,7 @@ void body() {
 
     // A B D Cで追い抜く必要がある
     FOR (i, B, D - 1) {
+        dump(i, i + 1, i + 2);
         if (S[i] == '.' && S[i + 1] == '.' && S[i + 2] == '.') {
             cout << "Yes" << endl;
             return ;
