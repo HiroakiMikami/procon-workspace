@@ -824,6 +824,7 @@ void body() {
             dump(x);
             // s -> xまでいけるかどうか
             if (ans[x - s]) {
+                dump("tmp");
                 return ans[x - s].value();
             }
             if (x + 1 == s) {
