@@ -829,8 +829,7 @@ void body() {
             if (x + 1 == s) {
                 ans[x - s] = (S[x - 1] == '.') && _f(x - 1, _f);
             } else {
-                dump("foo");
-                ans[x - s] = ((S[x - 1] == '.') && _f(x - 1, _f)) && ((S[x - 2] == '.') && _f(x - 2, _f));
+                ans[x - s] = ((S[x - 1] == '.') && _f(x - 1, _f)) || ((S[x - 2] == '.') && _f(x - 2, _f));
             }
             return ans[x - s].value();
         };
