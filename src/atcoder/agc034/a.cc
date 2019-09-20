@@ -818,7 +818,7 @@ void body() {
     auto S = read<string>();
 
     auto solve = [&](i64 s, i64 e) -> bool {
-        auto ans = Vector<std::experimental::optional<bool>>(N - s, {}); // ans[i] = i + sへsからいけるかどうか
+        auto ans = Vector<std::experimental::optional<bool>>(N - s); // ans[i] = i + sへsからいけるかどうか
         ans[0] = true;
         auto f = [&](i64 x, auto _f) -> bool {
             // s -> xまでいけるかどうか
