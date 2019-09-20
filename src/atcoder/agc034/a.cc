@@ -830,7 +830,7 @@ void body() {
             } else {
                 ans[x - s] = ((S[x - 1] == '.') && _f(x - 1, _f)) && ((S[x - 2] == '.') && _f(x - 2, _f));
             }
-            return ans[x - i].value();
+            return ans[x - s].value();
         };
         // 障害物のみを考えたとき、 s -> eへ行けるか
         return f(e, f);
