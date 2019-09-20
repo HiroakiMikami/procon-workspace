@@ -830,6 +830,7 @@ void body() {
             } else {
                 ans[x - s] = ((S[x - 1] == '.') && _f(x - 1, _f)) && ((S[x - 2] == '.') && _f(x - 2, _f));
             }
+            dump(x);
             return ans[x - s].value();
         };
         // 障害物のみを考えたとき、 s -> eへ行けるか
@@ -837,7 +838,7 @@ void body() {
     };
 
     dump(solve(A, C));
-    dump(solve(B, D));
+    dump("---");
     if (!(solve(A, C) && solve(B, D))) {
         // A -> C, B -> Dがそもそも不可能
         cout << "No" << endl;
