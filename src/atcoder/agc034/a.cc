@@ -856,8 +856,8 @@ void body() {
     }
 
     // A B D Cで追い抜く必要がある
-    FOR (i, B, D - 1) {
-        dump(B, i, i + 1, i + 2, D);
+    FOR (i, B - 1, D) {
+        // B - 1 ... Dの間で.が3つ連続していればそこで追い抜ける
         if (S[i] == '.' && S[i + 1] == '.' && S[i + 2] == '.') {
             cout << "Yes" << endl;
             return ;
