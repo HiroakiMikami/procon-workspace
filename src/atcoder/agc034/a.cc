@@ -821,7 +821,6 @@ void body() {
         auto ans = Vector<std::experimental::optional<bool>>(N - s); // ans[i] = i + sへsからいけるかどうか
         ans[0] = true;
         auto f = [&](i64 x, auto _f) -> bool {
-            dump(x);
             // s -> xまでいけるかどうか
             if (ans[x - s]) {
                 return ans[x - s].value();
