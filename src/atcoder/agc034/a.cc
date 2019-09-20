@@ -836,6 +836,8 @@ void body() {
         return f(e, f);
     };
 
+    dump(solve(A, C));
+    dump(solve(B, D));
     if (!(solve(A, C) && solve(B, D))) {
         // A -> C, B -> Dがそもそも不可能
         cout << "No" << endl;
