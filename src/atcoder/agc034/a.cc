@@ -826,9 +826,9 @@ void body() {
                 return ans[x - i].value();
             }
             if (x + 1 == s) {
-                ans[x - i] = (S[x - 1] == '.') && _f(x - 1);
+                ans[x - i] = (S[x - 1] == '.') && _f(x - 1, _f);
             } else {
-                ans[x - i] = ((S[x - 1] == '.') && _f(x - 1)) && ((S[x - 2] == '.') && _f(x - 2));
+                ans[x - i] = ((S[x - 1] == '.') && _f(x - 1, _f)) && ((S[x - 2] == '.') && _f(x - 2, _f));
             }
             return ans[x - i].value();
         };
