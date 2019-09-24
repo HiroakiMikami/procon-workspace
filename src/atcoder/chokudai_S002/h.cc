@@ -811,7 +811,7 @@ int main (int argc, char **argv) {
 
 void body() {
     auto N = read<i64>();
-    auto ABs = read<i64>(N);
+    auto ABs = read<i64, i64>(N);
     EACH (AB, ABs) {
         auto ans = std::abs(AB.first - AB.second);
         cout << (ans == 0 ? -1 : ans) << endl;
