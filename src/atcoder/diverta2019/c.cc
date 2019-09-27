@@ -837,7 +837,7 @@ void body() {
     if (n_ab == 0) {
         ans += std::min(n_a, n_b);
     } else {
-        ans += std::min(n_a, n_b) - 1;
+        ans += std::max(0L, std::min(n_a, n_b) - 1);
         ans += (n_ab - 1) + std::min(1L, n_a) + std::min(1L, n_b);
     }
 
