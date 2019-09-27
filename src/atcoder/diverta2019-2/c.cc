@@ -825,7 +825,7 @@ void body() {
             n_a += 1;
         }
         REP (i, s.size() - 1) {
-            if (s[i] == 'A' && n[i + 1] == 'B') {
+            if (s[i] == 'A' && s[i + 1] == 'B') {
                 ans += 1;
             }
         }
