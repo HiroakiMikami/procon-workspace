@@ -826,6 +826,7 @@ void body() {
         }
         REP (i, s.size() - 1) {
             if (s[i] == 'A' && s[i + 1] == 'B') {
+                dump(s);
                 ans += 1;
             }
         }
