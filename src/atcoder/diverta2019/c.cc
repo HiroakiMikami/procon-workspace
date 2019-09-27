@@ -831,6 +831,8 @@ void body() {
         }
     }
 
+
+    dump(ans, n_a, n_b, n_ab);
     if (n_ab == 0) {
         ans += std::min(n_a, n_b);
     } else {
