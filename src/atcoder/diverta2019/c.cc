@@ -826,14 +826,11 @@ void body() {
         }
         REP (i, s.size() - 1) {
             if (s[i] == 'A' && s[i + 1] == 'B') {
-                dump(s);
                 ans += 1;
             }
         }
     }
 
-
-    dump(ans, n_a, n_b, n_ab);
     if (n_ab == 0) {
         ans += std::min(n_a, n_b);
     } else {
