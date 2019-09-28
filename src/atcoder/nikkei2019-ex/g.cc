@@ -818,7 +818,6 @@ void body() {
     i64 length = 0;
     EACH (n, ns) {
         auto x = (n / 2) * 2;
-        dump(x);
         n -= x;
         length += n;
     }
@@ -831,7 +830,7 @@ void body() {
     }
     i64 ans = length * length;
     EACH (n, ns) {
-        ans = n * n;
+        ans += n * n;
     }
     cout << ans << endl;
 }
