@@ -813,7 +813,7 @@ void body() {
     auto S = read<string>();
     Vector<i64> ns(26, 0);
     EACH (s, S) {
-        s[s - 'a'] += 1;
+        ns[s - 'a'] += 1;
     }
     i64 length = 0;
     EACH (n, ns) {
