@@ -819,7 +819,7 @@ void body() {
     EACH (n, ns) {
         auto x = (n / 2) * 2;
         n -= x;
-        length += n;
+        length += x;
     }
     EACH (n, ns) {
         if (n != 0) {
