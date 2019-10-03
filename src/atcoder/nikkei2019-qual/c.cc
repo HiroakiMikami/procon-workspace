@@ -813,7 +813,16 @@ void body() {
     auto N = read<i64>();
     auto ABs = read<i64, i64>(N);
 
-    sort(CTR(ABs), [](auto lhs, auto rhs) { return lhs.first + lhs.second < rhs.first + lhs.second; });
+    sort(CTR(ABs), [](auto lhs, auto rhs) { return lhs.first + lhs.second > rhs.first + lhs.second; });
 
-    dump(ABs);
+    i64 ans = 0;
+    REP (i, N) {
+        if (i % 2 == 0) {
+            ans += ABs[i].first;
+        } else {
+            ans -= ABs[i].second;
+        }
+    }
+
+    cout << ans << endl;
 }
