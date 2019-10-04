@@ -813,7 +813,7 @@ void body() {
     auto N = read<i64>();
     auto ABs = read<i64, i64>(N);
 
-    sort(CTR(ABs), [](auto lhs, auto rhs) { return lhs.first + lhs.second > rhs.first + lhs.second; });
+    sort(CTR(ABs), [](auto lhs, auto rhs) { return lhs.first + lhs.second > rhs.first + rhs.second; });
 
     i64 ans = 0;
     REP (i, N) {
