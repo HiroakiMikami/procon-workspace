@@ -816,7 +816,7 @@ void body() {
     REP (i, N) {
         xs[i] = { i + 1, As[i]};
     }
-    sort(CTR(xs), [](auto lhs, auto rhs) { return lhs.seecond < rhs.second; });
+    std::sort(CTR(xs), [](auto lhs, auto rhs) { return lhs.seecond < rhs.second; });
 
     REP (i, N) {
         cout << xs[i].first;
