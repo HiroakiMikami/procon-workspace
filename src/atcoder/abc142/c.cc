@@ -814,9 +814,9 @@ void body() {
     auto As = read<i64>(N);
     auto xs = Vector<pair<i64, i64>>(N);
     REP (i, N) {
-        xs[i] = { i + 1, As[i]};
+        xs[i] = { i + 1, As[i] };
     }
-    std::sort(CTR(xs), [](auto lhs, auto rhs) { return lhs.seecond < rhs.second; });
+    std::sort(CTR(xs), [](auto lhs, auto rhs) { return lhs.second < rhs.second; });
 
     REP (i, N) {
         cout << xs[i].first;
