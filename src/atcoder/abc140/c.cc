@@ -813,7 +813,7 @@ void body() {
     auto N = read<i64>();
     auto Bs = read<i64>(N - 1);
     i64 ans = Bs.front() + Bs.back();
-    FOR (i, 1, N - 1) {
+    REP (i, N - 2) {
         ans += std::min(Bs[i], Bs[i + 1]);
     }
     cout << ans << endl;
