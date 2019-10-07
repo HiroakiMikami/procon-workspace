@@ -816,7 +816,7 @@ void body() {
     auto As = read<i64>(Q);
 
     auto ns = Vector<i64>(N, 0);
-    EACh (A, As) {
+    EACH (A, As) {
         ns[A - 1] += 1;
     }
 
