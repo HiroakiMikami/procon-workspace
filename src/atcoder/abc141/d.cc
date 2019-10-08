@@ -812,7 +812,7 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto M = read<i64>();
-    auto As = read<i64>();
+    auto As = read<i64>(N);
 
     auto q = PriorityQueue<double>();
     EACH (A, As) {
