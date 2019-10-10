@@ -1135,8 +1135,8 @@ void body() {
     auto K = read<i64>();
 
     ModInteger<> ans = 0;
-    auto fact = mod_integer::fact_table<mod_integer::MOD>(N * M);
 
+    auto fact = mod_integer::fact_table<mod_integer::MOD>(N * M);
     FOR (d, 1, N) {
         auto tmp = ModInteger<>(d * (M - d) * N * N);
         ans += tmp * fact[N * M - 2].value * fact[K - 2].inverse * fact[N * M - 2 - (K - 2)].inverse;
