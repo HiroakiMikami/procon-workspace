@@ -1137,11 +1137,11 @@ void body() {
     ModInteger<> ans = 0;
 
     auto fact = mod_integer::fact_table<mod_integer::MOD>(N * M);
-    FOR (d, 1, N) {
+    FOR (d, 1, M) {
         auto tmp = ModInteger<>(d * (M - d) * N * N);
         ans += tmp * fact[N * M - 2].value * fact[K - 2].inverse * fact[N * M - 2 - (K - 2)].inverse;
     }
-    FOR (d, 1, M) {
+    FOR (d, 1, N) {
         auto tmp = ModInteger<>(d * (N - d) * M * M);
         ans += tmp * fact[N * M - 2].value * fact[K - 2].inverse * fact[N * M - 2 - (K - 2)].inverse;
     }
