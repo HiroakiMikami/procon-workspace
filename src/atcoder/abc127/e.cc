@@ -1137,11 +1137,11 @@ void body() {
     ModInteger<> ans = 0;
     auto fact = mod_integer::fact_table(std::max(N, M) + 1);
 
-    FOR (d, N) {
+    FOR (d, 1, N) {
         auto tmp = ModInteger<>(d * (M - d) * N * N);
         ans += tmp * fact[N * M - 2] / fact[K - 2] / fact[N * M - 2 - (K - 2)];
     }
-    FOR (d, M) {
+    FOR (d, 1, M) {
         auto tmp = ModInteger<>(d * (N - d) * M * M);
         ans += tmp * fact[N * M - 2] / fact[K - 2] / fact[N * M - 2 - (K - 2)];
     }
