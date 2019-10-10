@@ -1135,7 +1135,7 @@ void body() {
     auto K = read<i64>();
 
     ModInteger<> ans = 0;
-    auto fact = mod_integer::fact_table(std::max(N, M) + 1);
+    auto fact = mod_integer::fact_table(size_t(std::max(N, M) + 1));
 
     FOR (d, 1, N) {
         auto tmp = ModInteger<>(d * (M - d) * N * N);
