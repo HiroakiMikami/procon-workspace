@@ -820,14 +820,14 @@ void body() {
             if (changed) {
                 changed = !changed;
             } else {
-                if (S_[i - 1] == S[i]) {
+                if (S[i - 1] == S[i]) {
                     n += 1;
                     changed = true;
                 }
             }
         }
 
-        if (!changed && S.back() == S.first()) {
+        if (!changed && S.back() == S.front()) {
             return make_pair(n, true);
         } else {
             return make_pair(n, false);
