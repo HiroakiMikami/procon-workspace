@@ -842,7 +842,7 @@ void body() {
                 cout << *Xs.begin() << endl;
             }
             i = i + 1;
-            if (i > Q) {
+            if (i >= Q) {
                 return ;
             }
         }
