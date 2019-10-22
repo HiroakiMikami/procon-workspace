@@ -846,5 +846,5 @@ void body() {
         return ;
     }
 
-    cout << (K / 2) * (case1.first + case2.second) + (K % 2) * case1.first << endl;
+    cout << (K / 2) * (case1.first + case2.first) + (K % 2) * case1.first << endl;
 }
