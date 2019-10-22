@@ -830,6 +830,7 @@ void body() {
     }
 
     sort(CTR(Es));
+    dump(Es);
 
     i64 i = 0;
     OrderedSet<i64> Xs;
@@ -852,7 +853,6 @@ void body() {
         }
     }
 
-    dump(Xs);
     FOR (x, i, Q) {
         cout << -1 << endl;
     }
