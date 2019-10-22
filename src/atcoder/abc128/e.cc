@@ -853,6 +853,7 @@ void body() {
     }
 
     FOR (x, i, Q) {
+        dump("foo");
         cout << -1 << endl;
     }
 }
