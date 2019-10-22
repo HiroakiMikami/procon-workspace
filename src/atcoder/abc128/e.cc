@@ -832,4 +832,26 @@ void body() {
 
     sort(CTR(Es));
     dump(Es);
+
+    i64 i = 0;
+    OrderedSet<i64> Xs;
+    EACH (E, Es) {
+        if (Ds[i] > get<0>(E)) {
+            if (Xs.empty()) {
+                cout << -1 << endl;
+            } else {
+                cout << Xs.front() << endl;
+            }
+            i = i + 1;
+        }
+        if (get<2>(E)) {
+            Xs.emplace(get<1>(E));
+        } else {
+            Xs.erase(get<1>(E));
+        }
+    }
+
+    FOR (x, i, Q) {
+        cout << -1 << endl;
+    }
 }
