@@ -835,7 +835,7 @@ void body() {
     i64 i = 0;
     OrderedSet<i64> Xs;
     EACH (E, Es) {
-        if (Ds[i] > get<0>(E)) {
+        if (Ds[i] <= get<0>(E)) {
             dump(Ds[i], get<0>(E));
             dump(Xs);
             if (Xs.empty()) {
