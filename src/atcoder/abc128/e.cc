@@ -830,14 +830,11 @@ void body() {
     }
 
     sort(CTR(Es));
-    dump(Es);
 
     i64 i = 0;
     OrderedSet<i64> Xs;
     EACH (E, Es) {
         if (Ds[i] < get<0>(E)) {
-            dump(Ds[i], get<0>(E));
-            dump(Xs);
             if (Xs.empty()) {
                 cout << -1 << endl;
             } else {
@@ -845,7 +842,7 @@ void body() {
             }
             i = i + 1;
             if (i >= Q) {
-                return ;
+                break ;
             }
         }
         if (get<2>(E)) {
