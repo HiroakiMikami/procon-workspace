@@ -842,6 +842,9 @@ void body() {
                 cout << *Xs.begin() << endl;
             }
             i = i + 1;
+            if (i > Q) {
+                return ;
+            }
         }
         if (get<2>(E)) {
             Xs.emplace(get<1>(E));
