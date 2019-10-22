@@ -818,13 +818,13 @@ void body() {
     auto Es = Vector<tuple<i64, i64, bool>>();
     EACH (STX, STXs) {
         Es.emplace_back(
-                get<0>(STX) - get<1>(STX),
-                get<1>(STX),
+                get<0>(STX) - get<2>(STX),
+                get<2>(STX),
                 true
         );
         Es.emplace_back(
-                get<2>(STX) - get<1>(STX),
-                get<1>(STX),
+                get<1>(STX) - get<2>(STX),
+                get<2>(STX),
                 false
         );
     }
