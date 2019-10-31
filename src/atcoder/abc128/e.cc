@@ -815,49 +815,38 @@ void body() {
     auto STXs = read<i64, i64, i64>(N);
     auto Ds = read<i64>(Q);
 
-    auto Es = Vector<tuple<i64, bool, i64>>();
+    auto Es = Vector<tuple < i64, i64, i64>>
+    ();
     EACH (STX, STXs) {
         Es.emplace_back(
                 get<0>(STX) - get<2>(STX),
-                true,
+                1,
                 get<2>(STX)
         );
         Es.emplace_back(
                 get<1>(STX) - get<2>(STX),
-                false,
+                -1,
                 get<2>(STX)
         );
+    }
+    EACH (D, Ds) {
+        Es.emplace_back(D, 2, -1);
     }
 
     sort(CTR(Es));
 
-    i64 i = 0;
     OrderedSet<i64> Xs;
     EACH (E, Es) {
-        dump(E);
-        if (Ds[i] < get<0>(E)) {
+        if (get<1>(E) == 1) {
+            Xs.emplace(get<2>(E));
+        } else if (get<1>(E) == 2) {
             if (Xs.empty()) {
                 cout << -1 << endl;
             } else {
                 cout << *Xs.begin() << endl;
             }
-            i = i + 1;
-            if (i >= Q) {
-                break ;
-            }
-        }
-        if (get<1>(E)) {
-            Xs.emplace(get<2>(E));
         } else {
             Xs.erase(get<2>(E));
-        }
-    }
-
-    FOR (x, i, Q) {
-        if (Xs.empty()) {
-            cout << -1 << endl;
-        } else {
-            cout << *Xs.begin() << endl;
         }
     }
 }
