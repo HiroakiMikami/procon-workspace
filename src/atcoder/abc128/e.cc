@@ -830,7 +830,6 @@ void body() {
     }
 
     sort(CTR(Es));
-    dump(Es);
 
     i64 i = 0;
     OrderedSet<i64> Xs;
@@ -839,6 +838,7 @@ void body() {
             if (Xs.empty()) {
                 cout << -1 << endl;
             } else {
+                dump(Xs);
                 cout << *Xs.begin() << endl;
             }
             i = i + 1;
