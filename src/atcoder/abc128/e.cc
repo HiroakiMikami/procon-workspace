@@ -838,7 +838,7 @@ void body() {
             if (Xs.empty()) {
                 cout << -1 << endl;
             } else {
-                cout << Xs.begin() << endl;
+                cout << *Xs.begin() << endl;
             }
             i = i + 1;
             if (i >= Q) {
