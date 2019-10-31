@@ -853,6 +853,10 @@ void body() {
     }
 
     FOR (x, i, Q) {
-        cout << -1 << endl;
+        if (Xs.empty()) {
+            cout << -1 << endl;
+        } else {
+            cout << *Xs.begin() << endl;
+        }
     }
 }
