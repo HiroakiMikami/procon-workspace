@@ -819,13 +819,13 @@ void body() {
     EACH (STX, STXs) {
         Es.emplace_back(
                 get<0>(STX) - get<2>(STX),
-                get<2>(STX),
-                true
+                true,
+                get<2>(STX)
         );
         Es.emplace_back(
                 get<1>(STX) - get<2>(STX),
-                get<2>(STX),
-                false
+                false,
+                get<2>(STX)
         );
     }
 
@@ -845,10 +845,10 @@ void body() {
                 break ;
             }
         }
-        if (get<2>(E)) {
-            Xs.emplace(get<1>(E));
+        if (get<1>(E)) {
+            Xs.emplace(get<2>(E));
         } else {
-            Xs.erase(get<1>(E));
+            Xs.erase(get<2>(E));
         }
     }
 
