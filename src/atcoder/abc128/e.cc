@@ -815,7 +815,7 @@ void body() {
     auto STXs = read<i64, i64, i64>(N);
     auto Ds = read<i64>(Q);
 
-    auto Es = Vector<tuple<i64, i64, bool>>();
+    auto Es = Vector<tuple<i64, bool, i64>>();
     EACH (STX, STXs) {
         Es.emplace_back(
                 get<0>(STX) - get<2>(STX),
