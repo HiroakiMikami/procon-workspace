@@ -838,7 +838,7 @@ void body() {
             if (Xs.empty()) {
                 cout << -1 << endl;
             } else {
-                cout << *std::min_element(CTR(Xs)) << endl;
+                cout << Xs.begin() << endl;
             }
             i = i + 1;
             if (i >= Q) {
