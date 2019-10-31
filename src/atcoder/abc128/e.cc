@@ -834,7 +834,7 @@ void body() {
     i64 i = 0;
     OrderedSet<i64> Xs;
     EACH (E, Es) {
-        if (Ds[i] < get<0>(E)) {
+        if (Ds[i] <= get<0>(E)) {
             if (Xs.empty()) {
                 cout << -1 << endl;
             } else {
