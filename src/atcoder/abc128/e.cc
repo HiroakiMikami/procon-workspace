@@ -852,6 +852,7 @@ void body() {
         }
     }
 
+    dump(i, Q);
     FOR (x, i, Q) {
         cout << -1 << endl;
     }
