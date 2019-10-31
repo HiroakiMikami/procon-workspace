@@ -835,8 +835,8 @@ void body() {
     OrderedSet<i64> Xs;
     EACH (E, Es) {
         dump(Ds[i], get<0>(E));
-        dump(Xs);
         if (Ds[i] < get<0>(E)) {
+            duump(Xs);
             if (Xs.empty()) {
                 cout << -1 << endl;
             } else {
