@@ -836,7 +836,7 @@ void body() {
     EACH (E, Es) {
         dump(Ds[i], get<0>(E));
         if (Ds[i] < get<0>(E)) {
-            duump(Xs);
+            dump(Xs);
             if (Xs.empty()) {
                 cout << -1 << endl;
             } else {
