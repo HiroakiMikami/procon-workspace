@@ -1170,7 +1170,7 @@ void body() {
             return _calc_f(begin + 1, end, _calc_f);
         } else {
             auto find_first_one = begin + 1;
-            while (find_first_one != x.end()) {
+            while (find_first_one != end) {
                 if (*find_first_one) {
                     break;
                 }
