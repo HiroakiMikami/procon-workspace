@@ -1149,20 +1149,27 @@ void body() {
     };
 
     auto f = OrderedMap<Vector<bool>, ModInteger<>>(); // f[X] := a+b <= X and a^b = a+b
-    auto calc_f = [&](auto x, auto _calc_f) -> ModInteger<> {
+    auto calc_f_1 = [&](auto N) -> ModInteger<> {
+        if (f.find(x) != f.end()) {
+            return f[x];
+        }
+        // X = 2^N - 1
+        ModInteger<> ans = 0;
+        REP (i, N + 1) {
+            ans += pow_table[i] * combination(N, i);
+        }
+        return ans;
+    };
+    auto calc_f = [&](auto begin, auto end, auto _calc_f) -> ModInteger<> {
         if (f.find(x) != f.end()) {
             return f[x];
         }
 
         auto N = x.size();
-        if (std::all_of(CTR(x), [](auto v) { return v; })) {
+        if (std::all_of(begin, end, [](auto v) { return v; })) {
             // X = 2^N - 1 (N = x.size())
-            ModInteger<> ans = 0;
-            REP (i, N + 1) {
-                ans += pow_table[i] * combination(N, i);
-            }
-            return ans;
-        } else if (x.empty() || x.size() == 1 && !x[0]) {
+            return calc_f_1(N);
+        } else if (begin == end || (end - begin) == 1 1 && !(*begin)) {
             // x = 0
             return ModInteger<>(1);
         } else {
@@ -1174,15 +1181,12 @@ void body() {
                 ++find_first_one;
             }
             Vector<bool> x2(find_first_one, x.end());
-            ModInteger<> ans = 0;
-            REP (i, N) {
-                ans += pow_table[i] * combination(N - 1, i);
-            }
-            ans += _calc_f(x2, _calc_f) * 2;
+            ModInteger<> ans = _calc_f_1(N - 1);
+            ans += _calc_f(find_first_one, end, _calc_f) * 2;
             return ans;
         }
     };
 
-    cout << calc_f(L, calc_f).get() << endl;
+    cout << calc_f(CTR(L), calc_f).get() << endl;
 
 }
