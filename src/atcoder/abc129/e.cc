@@ -1176,7 +1176,6 @@ void body() {
                 }
                 ++find_first_one;
             }
-            Vector<bool> x2(find_first_one, x.end());
             ModInteger<> ans = calc_f_1(N - 1);
             auto tmp = _calc_f(find_first_one, end, _calc_f);
             ans += tmp * 2;
