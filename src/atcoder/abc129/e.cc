@@ -1163,7 +1163,7 @@ void body() {
         if (std::all_of(begin, end, [](auto v) { return v; })) {
             // X = 2^N - 1 (N = x.size())
             return calc_f_1(N);
-        } else if (begin == end || (end - begin) == 1 1 && !(*begin)) {
+        } else if (begin == end || (end - begin) == 1 && !(*begin)) {
             // x = 0
             return ModInteger<>(1);
         } else if (!(*begin)) {
