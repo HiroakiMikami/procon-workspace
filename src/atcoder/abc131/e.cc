@@ -821,7 +821,7 @@ void body() {
     }
 
     auto n = ((N - 1) * (N - 2)) / 2;
-    if (n > K) {
+    if (n < K) {
         cout << -1 << endl;
         return ;
     }
