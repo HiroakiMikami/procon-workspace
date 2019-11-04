@@ -1158,7 +1158,7 @@ void body() {
         return ans;
     };
     auto calc_f = [&](auto begin, auto end, auto _calc_f) -> ModInteger<> {
-        auto N = x.size();
+        auto N = end - begin;
         if (std::all_of(begin, end, [](auto v) { return v; })) {
             // X = 2^N - 1 (N = x.size())
             return calc_f_1(N);
