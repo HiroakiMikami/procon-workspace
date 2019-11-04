@@ -1133,7 +1133,7 @@ void body() {
     auto _L = read<string>();
     auto L = Vector<bool>(_L.size());
     REP(i, _L.size()) {
-        L[L.size() - i - 1] = (_L[i] == '1') ? true : false;
+        L[i] = (_L[i] == '1') ? true : false;
     }
 
     auto pow_table = Vector<ModInteger<>>(L.size() + 1); // pow_table[i] = 2^i
