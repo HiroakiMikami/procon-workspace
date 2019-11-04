@@ -1176,6 +1176,7 @@ void body() {
             Vector<bool> x2(find_first_one, x.end());
             ModInteger<> ans = 0;
             REP (i, N) {
+                dump(i);
                 ans += pow_table[i] * combination(N, i);
             }
             dump(ans);
