@@ -1166,6 +1166,7 @@ void body() {
             // x = 0
             return ModInteger<>(1);
         } else {
+            dump(x);
             Vector<bool> x2(x.begin() + 1, x.end());
             ModInteger<> ans = 0;
             REP (i, N + 1) {
