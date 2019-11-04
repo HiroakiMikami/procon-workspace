@@ -1171,7 +1171,7 @@ void body() {
             dump(x2);
             dump("---");
             ModInteger<> ans = 0;
-            REP (i, N + 1) {
+            REP (i, N) {
                 ans += pow_table[i] * combination(N, i);
             }
             ans += _calc_f(x2, _calc_f) * 2;
