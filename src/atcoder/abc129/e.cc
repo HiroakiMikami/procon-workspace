@@ -1136,7 +1136,7 @@ void body() {
         L[L.size() - i - 1] = (_L[i] == '1') ? true : false;
     }
 
-    auto pow_table = Vector<ModInteger<>>(N + 1); // pow_table[i] = 2^i
+    auto pow_table = Vector<ModInteger<>>(L.size() + 1); // pow_table[i] = 2^i
     REP (i, N + 1) {
         pow_table[i] = pow(ModInteger<>(2), i);
     }
