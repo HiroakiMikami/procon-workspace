@@ -1163,11 +1163,18 @@ void body() {
                 ans += pow_table[i] * combination(N, i);
             }
             return ans;
-        } else if (x.size() == 1 && !x[0]){
+        } else if (x.size() == 1 && !x[0]) {
             // x = 0
             return ModInteger<>(1);
         } else {
-            Vector<bool> x2(x.begin() + 1, x.end());
+            auto find_first_one = x.begin() + 1;
+            while (find_first_one != x.end()) {
+                if (*find_first_one) {
+                    break;
+                }
+                ++find_first_one;
+            }
+            Vector<bool> x2(find_first_one, x.end());
             dump(x2);
             dump("---");
             ModInteger<> ans = 0;
