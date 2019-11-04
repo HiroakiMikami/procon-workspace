@@ -1155,7 +1155,6 @@ void body() {
         }
 
         auto N = x.size();
-        dump(x);
         if (std::all_of(CTR(x), [](auto v) { return v; })) {
             // X = 2^N - 1 (N = x.size())
             ModInteger<> ans = 0;
@@ -1175,8 +1174,6 @@ void body() {
                 ++find_first_one;
             }
             Vector<bool> x2(find_first_one, x.end());
-            dump(N);
-            dump("---");
             ModInteger<> ans = 0;
             REP (i, N) {
                 ans += pow_table[i] * combination(N, i);
