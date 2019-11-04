@@ -1163,7 +1163,7 @@ void body() {
                 ans += pow_table[i] * combination(N, i);
             }
             return ans;
-        } else if (x.size() == 1 && !x[0]) {
+        } else if (x.empty() || x.size() == 1 && !x[0]) {
             // x = 0
             return ModInteger<>(1);
         } else {
