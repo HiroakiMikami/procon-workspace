@@ -1168,7 +1168,8 @@ void body() {
             return ModInteger<>(1);
         } else {
             Vector<bool> x2(x.begin() + 1, x.end());
-            dump(x2, "x2");
+            dump(x2);
+            dump("---");
             ModInteger<> ans = 0;
             REP (i, N + 1) {
                 ans += pow_table[i] * combination(N, i);
