@@ -1150,9 +1150,6 @@ void body() {
 
     auto f = OrderedMap<Vector<bool>, ModInteger<>>(); // f[X] := a+b <= X and a^b = a+b
     auto calc_f_1 = [&](auto N) -> ModInteger<> {
-        if (f.find(x) != f.end()) {
-            return f[x];
-        }
         // X = 2^N - 1
         ModInteger<> ans = 0;
         REP (i, N + 1) {
@@ -1161,10 +1158,6 @@ void body() {
         return ans;
     };
     auto calc_f = [&](auto begin, auto end, auto _calc_f) -> ModInteger<> {
-        if (f.find(x) != f.end()) {
-            return f[x];
-        }
-
         auto N = x.size();
         if (std::all_of(begin, end, [](auto v) { return v; })) {
             // X = 2^N - 1 (N = x.size())
@@ -1182,7 +1175,8 @@ void body() {
             }
             Vector<bool> x2(find_first_one, x.end());
             ModInteger<> ans = calc_f_1(N - 1);
-            ans += _calc_f(find_first_one, end, _calc_f) * 2;
+            auto tmp = _calc_f(find_first_one, end, _calc_f);
+            ans += tmp * 2;
             return ans;
         }
     };
