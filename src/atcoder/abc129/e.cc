@@ -1149,7 +1149,7 @@ void body() {
     };
 
     auto f = OrderedMap<Vector<bool>, ModInteger<>>(); // f[X] := a+b <= X and a^b = a+b
-    auto calc_f = [&](auto x, auto _calc_f) -> ModInteger<f> {
+    auto calc_f = [&](auto x, auto _calc_f) -> ModInteger<> {
         if (f.find(x) != f.end()) {
             return f[x];
         }
