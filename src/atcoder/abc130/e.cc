@@ -1200,7 +1200,7 @@ void body() {
     auto Ss = read<i64>(N);
     auto Ts = read<i64>(M);
 
-    auto dp = make_matrix<ModInteger<>, 2>({N + 1, M + 1}); // dp[i][j] := common subsequence of S[:i] and T[:j]
+    auto dp = make_matrix<ModInteger<>, 2>({{N + 1, M + 1}}); // dp[i][j] := common subsequence of S[:i] and T[:j]
     REP (i, N + 1) {
         dp[i][0] = 1;
     }
