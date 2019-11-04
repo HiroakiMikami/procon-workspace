@@ -1175,7 +1175,7 @@ void body() {
                 ++find_first_one;
             }
             Vector<bool> x2(find_first_one, x.end());
-            dump(x2);
+            dump(N);
             dump("---");
             ModInteger<> ans = 0;
             REP (i, N) {
