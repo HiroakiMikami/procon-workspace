@@ -1167,7 +1167,7 @@ void body() {
             // x = 0
             return ModInteger<>(1);
         } else if (!(*begin)) {
-            return _calc_f(begin + 1, end);
+            return _calc_f(begin + 1, end, _calc_f);
         } else {
             auto find_first_one = begin + 1;
             while (find_first_one != x.end()) {
