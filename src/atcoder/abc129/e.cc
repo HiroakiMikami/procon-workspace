@@ -1158,6 +1158,7 @@ void body() {
         return ans;
     };
     auto calc_f = [&](auto begin, auto end, auto _calc_f) -> ModInteger<> {
+        // x = begin:end
         auto N = end - begin;
         if (std::all_of(begin, end, [](auto v) { return v; })) {
             // X = 2^N - 1 (N = x.size())
@@ -1166,7 +1167,7 @@ void body() {
             // x = 0
             return ModInteger<>(1);
         } else {
-            auto find_first_one = x.begin() + 1;
+            auto find_first_one = begin + 1;
             while (find_first_one != x.end()) {
                 if (*find_first_one) {
                     break;
