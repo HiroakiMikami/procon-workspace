@@ -1140,7 +1140,7 @@ void body() {
     REP (i, L.size() + 1) {
         pow_table[i] = pow(ModInteger<>(2), i);
     }
-    auto fact_table = mod_integer::fact_table<mod_integer::MOD>(N + 1);
+    auto fact_table = mod_integer::fact_table<mod_integer::MOD>(L.size() + 1);
     auto combination = [&](auto n, auto r) -> ModInteger<> {
         if (n < r) {
             return 0;
