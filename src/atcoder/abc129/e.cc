@@ -1155,6 +1155,7 @@ void body() {
         }
 
         auto N = x.size();
+        dump(x);
         if (std::all_of(CTR(x), [](auto v) { return v; })) {
             // X = 2^N - 1 (N = x.size())
             ModInteger<> ans = 0;
@@ -1166,7 +1167,6 @@ void body() {
             // x = 0
             return ModInteger<>(1);
         } else {
-            dump(x);
             Vector<bool> x2(x.begin() + 1, x.end());
             ModInteger<> ans = 0;
             REP (i, N + 1) {
