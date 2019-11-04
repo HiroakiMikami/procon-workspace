@@ -1171,7 +1171,7 @@ void body() {
             REP (i, N + 1) {
                 ans += pow_table[i] * combination(N, i);
             }
-            ans += 2 * _calc_f(x2);
+            ans += 2 * _calc_f(x2, _calc_f);
             return ans;
         }
     };
