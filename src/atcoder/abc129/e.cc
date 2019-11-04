@@ -1137,7 +1137,7 @@ void body() {
     }
 
     auto pow_table = Vector<ModInteger<>>(L.size() + 1); // pow_table[i] = 2^i
-    REP (i, N + 1) {
+    REP (i, L.size() + 1) {
         pow_table[i] = pow(ModInteger<>(2), i);
     }
     auto fact_table = mod_integer::fact_table<mod_integer::MOD>(N + 1);
