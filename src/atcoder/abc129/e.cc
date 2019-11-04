@@ -1181,6 +1181,8 @@ void body() {
             REP (i, N) {
                 ans += pow_table[i] * combination(N, i);
             }
+            dump(ans);
+            dump(_calc_f(x2, _calc_f));
             ans += _calc_f(x2, _calc_f) * 2;
             return ans;
         }
