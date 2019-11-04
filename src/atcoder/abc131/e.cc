@@ -813,7 +813,7 @@ void body() {
     auto N = read<i64>();
     auto K = read<i64>();
 
-    auto vs = Vector<pair<i64, i64>();
+    auto vs = Vector<pair<i64, i64>>();
     vs.reserve(N * N);
 
     FOR (i, 2, N + 1) {
