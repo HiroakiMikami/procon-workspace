@@ -1134,12 +1134,11 @@ void body() {
     auto K = read<i64>();
     auto abs = read<i64, i64>(N - 1);
 
-    Vector<i64> g(N);
+    Vector<Vector<i64>> g(N);
     EACH (ab, abs) {
         g[ab.first - 1].push_back(ab.second - 1);
         g[ab.second - 1].push_back(ab.first - 1);
     }
-
 
     ModInteger<> ans = 1;
     Vector<bool> visited(N, false);
