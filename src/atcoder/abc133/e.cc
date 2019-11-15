@@ -1129,7 +1129,7 @@ namespace internal {
     };
 }
 
-void visit(auto &ans, auto &visited, i64 v, i64 n_1, i64 n_2) {
+void visit(auto K, auto &ans, auto &visited, i64 v, i64 n_1, i64 n_2) {
     ans *= (K - n_1 - n_2);
     auto i = 0;
     EACH (u, g[v]) {
@@ -1137,7 +1137,7 @@ void visit(auto &ans, auto &visited, i64 v, i64 n_1, i64 n_2) {
             continue;
         }
         visited[u] = true;
-        visit(ans, visited, u, 1, n_1 + i);
+        visit(K, ans, visited, u, 1, n_1 + i);
         i += 1;
     }
 };
@@ -1154,6 +1154,6 @@ void body() {
 
     ModInteger<> ans = 1;
     Vector<bool> visited(N, false);
-    visit(ans, visited, 0, 0, 0);
+    visit(K, ans, visited, 0, 0, 0);
     cout << ans.get() << endl;
 }
