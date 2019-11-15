@@ -1151,7 +1151,7 @@ void body() {
                 continue;
             }
             visited[u] = true;
-            _visit(u, 1, n_1 + i);
+            _visit(u, 1, n_1 + i, _visit);
             i += 1;
         }
     };
