@@ -1155,6 +1155,6 @@ void body() {
             i += 1;
         }
     };
-    visit(0, 0, 0, _visit);
+    visit(0, 0, 0, visit);
     cout << ans.get() << endl;
 }
