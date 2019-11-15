@@ -1133,11 +1133,11 @@ void visit(auto K, auto &g, auto &ans, auto &visited, i64 v, i64 n_1, i64 n_2) {
     if (visited[v]) {
         return ;
     }
+    visited[v] = true;
     dump(v, n_1, n_2);
     ans *= (K - n_1 - n_2);
     auto i = 0;
     EACH (u, g[v]) {
-        visited[u] = true;
         visit(K, g, ans, visited, u, 1, n_1 + i);
         i += 1;
     }
