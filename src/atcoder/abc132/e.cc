@@ -1370,6 +1370,6 @@ void body() {
     if (ans == std::numeric_limits<i64>::max()) {
         cout << -1 << endl;
     } else {
-        cout << ans / 3<< endl;
+        cout << ans / 3 << endl;
     }
 }
