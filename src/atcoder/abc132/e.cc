@@ -1355,13 +1355,13 @@ void body() {
     auto S = read<i64>();
     auto T = read<i64>();
 
-    SimpleAdjacencyList g(N * 3); // node i = (i / 3, i % 3)
+    WeightedAdjacencyList g(N * 3); // node i = (i / 3, i % 3)
     EACH(uv, uvs) {
         auto u = uv.first - 1;
         auto v = uv.second - 1;
         REP (i, 3) {
             auto j = (i + 1) % 3;
-            g.add_edge(std::tuple<i64, i64>(3 * u + i, 3 * v + j));
+            g.add_edge(std::tuple<i64, i64, i64>(3 * u + i, 3 * v + j, 1));
         }
     }
 
