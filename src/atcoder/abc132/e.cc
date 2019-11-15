@@ -1365,5 +1365,5 @@ void body() {
         }
     }
 
-    cout << graph::dijkstra(g, 3 * S)[3 * t].cost << endl;
+    cout << graph::dijkstra(g, 3 * S)[3 * T].cost << endl;
 }
