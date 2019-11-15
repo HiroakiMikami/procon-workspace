@@ -1357,8 +1357,8 @@ void body() {
 
     SimpleAdjacencyList g(N * 3); // node i = (i / 3, i % 3)
     EACH(uv, uvs) {
-        auto u = u.first - 1;
-        auto v = u.second - 1;
+        auto u = uv.first - 1;
+        auto v = uv.second - 1;
         REP (i, 3) {
             auto j = (i + 1) % 3;
             g.add_edge(std::tuple<i64, i64>(3 * u + i, 3 * v + j));
