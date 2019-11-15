@@ -1366,7 +1366,6 @@ void body() {
     }
 
     auto ans = graph::dijkstra(g, 3 * (S - 1))[3 * (T - 1)].cost;
-    dump(ans);
     if (ans == std::numeric_limits<i64>::max()) {
         cout << -1 << endl;
     } else {
