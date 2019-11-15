@@ -1142,7 +1142,7 @@ void body() {
 
     ModInteger<> ans = 1;
     Vector<bool> visited(N, false);
-    auto visit = [&](auto v, auto n_1, auto n_2, auto _visit) {
+    auto visit = [&](auto v, i64 n_1, i64 n_2, auto _visit) {
         ans *= (K - n_1 - n_2);
         auto i = 0;
         EACH (u, g[v]) {
