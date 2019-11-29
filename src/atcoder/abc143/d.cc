@@ -821,7 +821,7 @@ void body() {
                 continue;
             }
             auto a = Ls[i];
-            auto b = Ls[i];
+            auto b = Ls[j];
 
             // max(a, b) <= c < a + bを満たすcの数を調べる
             auto B = std::upper_bound(CTR(Ls), std::max(a, b)) - Ls.begin();
