@@ -811,7 +811,7 @@ int main (int argc, char **argv) {
 
 void body() {
     auto N = read<i64>();
-    auto Ls = read<i64(N);
+    auto Ls = read<i64>(N);
     std::sort(CTR(Ls));
 
     i64 ans = 0;
