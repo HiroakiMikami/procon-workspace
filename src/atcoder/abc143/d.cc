@@ -816,27 +816,17 @@ void body() {
 
     i64 ans = 0;
     REP (i, N) {
-        REP (j, N) {
-            if (i == j) {
-                continue;
-            }
+        FOR (j, i + 1, N) {
             auto a = Ls[i];
             auto b = Ls[j];
 
             // max(a, b) <= c < a + bを満たすcの数を調べる
-            auto B = std::upper_bound(CTR(Ls), std::max(a, b)) - Ls.begin();
-            auto E = std::lower_bound(CTR(Ls), a + b) - Ls.begin();
-            dump(a, b, B, E);
+            auto B = std::upper_bound(Ls.begin() + j + 1, std::max(a, b));
+            auto E = std::lower_bound(Ls.begin() + j + 1, a + b);
             if (B >= E) {
                 continue ;
             }
             auto n = E - B;
-            if (B <= i && i < E) {
-                n -= 1;
-            }
-            if (B <= j && j < E) {
-                n -= 1;
-            }
             ans += n;
         }
     }
