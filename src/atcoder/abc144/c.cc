@@ -1005,7 +1005,7 @@ static std::experimental::optional<pair<i64, i64>> chinese_rem_ctr(const Vector<
 void body() {
     auto N  = read<i64>();
     auto ds = divisor(N);
-    i64 ans = N;
+    i64 ans = N - 1;
     EACH (d, ds) {
         if (d * d > N) {
             continue ;
