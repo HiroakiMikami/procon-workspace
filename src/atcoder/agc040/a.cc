@@ -825,7 +825,6 @@ void body() {
         }
     }
     elems.emplace_back(p, n);
-    dump(elems);
 
     i64 ans = 0;
     i64 last = 0;
@@ -833,7 +832,6 @@ void body() {
         if (elem.first == '<') {
             // 0, 1, ...と並べる
             REP (i, elem.second + 1) {
-                dump(i);
                 ans += i;
             }
             last = elem.second;
@@ -846,7 +844,6 @@ void body() {
 
             // n - 1, ... 1, 0と並べる
             REPR (i, elem.second) {
-                dump(i);
                 ans += i;
             }
             last = 0;
