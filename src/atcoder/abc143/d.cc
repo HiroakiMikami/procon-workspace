@@ -831,10 +831,10 @@ void body() {
                 continue ;
             }
             auto n = E - B;
-            if (B <= a && a < E) {
+            if (B <= i && i < E) {
                 n -= 1;
             }
-            if (B <= b && b < E) {
+            if (B <= j && j < E) {
                 n -= 1;
             }
             ans += n;
