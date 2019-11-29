@@ -808,7 +808,7 @@ int main (int argc, char **argv) {
 
     return 0;
 }
-
+#include <cmath>
 void body() {
     auto N = read<i64>();
     auto xys = read<i64, i64>(N);
