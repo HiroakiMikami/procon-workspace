@@ -833,7 +833,7 @@ void body() {
         n += 1;
         double x = 0;
         REP (i, N - 1) {
-            x += dist[path[i], path[i + 1]];
+            x += dist[path[i]][path[i + 1]];
         }
         ans += x;
     } while (std::next_permutation(CTR(path)));
