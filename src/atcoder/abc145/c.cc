@@ -836,7 +836,7 @@ void body() {
             x += dist[path[i], path[i + 1]];
         }
         ans += x;
-    } while (std::next_permutation(CTR(path));
+    } while (std::next_permutation(CTR(path)));
 
     cout << ans / n << endl;
 }
