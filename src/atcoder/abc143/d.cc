@@ -826,6 +826,7 @@ void body() {
             // max(a, b) <= c < a + bを満たすcの数を調べる
             auto B = std::upper_bound(CTR(Ls), std::max(a, b)) - Ls.begin();
             auto E = std::lower_bound(CTR(Ls), a + b) - Ls.begin();
+            dump(a, b, B, E);
             if (B >= E) {
                 continue ;
             }
