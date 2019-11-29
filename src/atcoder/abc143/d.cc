@@ -821,12 +821,11 @@ void body() {
             auto b = Ls[j];
 
             // max(a, b) <= c < a + bを満たすcの数を調べる
-            auto B = std::upper_bound(Ls.begin() + j + 1, Ls.end(), std::max(a, b));
             auto E = std::lower_bound(Ls.begin() + j + 1, Ls.end(), a + b);
-            if (B >= E) {
+            if (E == Ls.end()) {
                 continue ;
             }
-            auto n = E - B;
+            auto n = E - (Ls.begin() + j + 1);
             ans += n;
         }
     }
