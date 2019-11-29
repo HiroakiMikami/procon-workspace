@@ -1149,7 +1149,6 @@ void body() {
         }
         cout << ans.get() << endl;
     }  else {
-        dump("FAIL");
         // 1からの距離が0なのは1だけ
         cout << 0 << endl;
     }
