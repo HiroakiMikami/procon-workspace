@@ -1142,7 +1142,7 @@ void body() {
         M = std::max(M, D);
     }
 
-    if (Ns[0] == 1 && Ds[0] == 1) {
+    if (Ns[0] == 1 && Ds[0] == 0) {
         FOR (i, 1, M + 1) {
             ModInteger<998244353> n = Ns[i - 1];
             ans *= pow(n, Ns[i]);
