@@ -833,6 +833,7 @@ void body() {
         if (elem.first == '<') {
             // 0, 1, ...と並べる
             REP (i, elem.second + 1) {
+                dump(i);
                 ans += i;
             }
             last = elem.second;
@@ -845,7 +846,8 @@ void body() {
 
             // n - 1, ... 1, 0と並べる
             REPR (i, elem.second) {
-                ans += 1;
+                dump(i);
+                ans += i;
             }
             last = 0;
         }
