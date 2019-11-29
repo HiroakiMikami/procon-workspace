@@ -825,6 +825,8 @@ void body() {
             if (E == Ls.end()) {
                 continue ;
             }
+            dump(a, b);
+            dump(E - Ls.begin());
             auto n = E - (Ls.begin() + j + 1);
             ans += n;
         }
