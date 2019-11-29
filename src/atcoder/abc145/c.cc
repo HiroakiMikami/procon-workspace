@@ -817,8 +817,8 @@ void body() {
         FOR (j, i + 1, N) {
             auto x = xys[i].first - xys[j].first;
             auto y = xys[i].second - xys[j].second;
-            dist[i, j] = std::sqrt(x * x + y * y);
-            dist[j, i] = dist[i, j];
+            dist[i][j] = std::sqrt(x * x + y * y);
+            dist[j][i] = dist[i][j];
         }
     }
 
