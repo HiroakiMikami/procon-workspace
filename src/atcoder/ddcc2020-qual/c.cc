@@ -836,7 +836,6 @@ void body() {
         auto j = S[n].second;
         auto start = 0;
         auto end = W;
-        dump(n, start, end);
         REP (k, W) {
             if (ans[i][k] < n + 1 && ans[i][k] >= 0) {
                 start = k;
@@ -846,6 +845,7 @@ void body() {
                 break;
             }
         }
+        dump(n, start, end);
 
         auto h_ = h;
         FOR (p, h, H) {
