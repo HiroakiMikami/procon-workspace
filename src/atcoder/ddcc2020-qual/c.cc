@@ -836,8 +836,12 @@ void body() {
         auto j = S[n].second;
         auto start = 0;
         auto end = W;
+        auto is_start = false;
         REP (k, W) {
-            if (start == 0 && (ans[i][k] < 0 || ans[i][k] == n + 1)) {
+            if (ans[i][k] == n + 1) {
+                is_start = true;
+            }
+            if (!is_start && start == 0 && (ans[i][k] < 0 || ans[i][k] == n + 1)) {
                 start = k;
             }
             if (ans[i][k] > n + 1) {
