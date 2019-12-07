@@ -821,7 +821,7 @@ void body() {
         edges[b].emplace_bach(a, i);
     }
 
-    auto K = 0;
+    size_t K = 0;
     EACH (edge, edges) {
         K = std::max(K, edge.size());
     }
