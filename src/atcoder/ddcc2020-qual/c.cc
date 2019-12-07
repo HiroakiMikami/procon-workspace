@@ -821,7 +821,7 @@ void body() {
     auto ans = make_matrix<i64, 2>({H, W}, -1);
     REP (i, H) {
         REP (j, W) {
-            if (s[i][j] == '#') {
+            if (ss[i][j] == '#') {
                 S.emplace_back(i, j);
                 ans[i][j] = n;
                 n += 1;
