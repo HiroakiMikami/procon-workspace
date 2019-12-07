@@ -846,6 +846,7 @@ void body() {
             }
         }
 
+        dump(n, h);
         auto h_ = h;
         FOR (p, h, H) {
             auto f = true;
