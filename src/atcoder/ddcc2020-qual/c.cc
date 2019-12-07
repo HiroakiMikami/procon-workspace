@@ -849,8 +849,7 @@ void body() {
         }
         dump(n, start, end, h);
 
-        auto h_ = h;
-        FOR (p, h, H) {
+        FOR (p, 0, H) {
             auto f = true;
             FOR (q, start, end) {
                 if (ans[p][q] > n + 1) {
@@ -858,9 +857,6 @@ void body() {
                 }
             }
             if (f) {
-                if (end == W) {
-                    h_ = p + 1;
-                }
                 FOR (q, start, end) {
                     ans[p][q] = n + 1;
                 }
@@ -868,7 +864,6 @@ void body() {
                 break ;
             }
         }
-        h = h_;
     }
 
     REP (i, H) {
