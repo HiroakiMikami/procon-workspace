@@ -864,4 +864,14 @@ void body() {
         }
         h = h_;
     }
+
+    REP (i, H) {
+        REP (j, W) {
+            cout << ans[i][j];
+            if (j != W - 1) {
+                cout << " ";
+            }
+        }
+        cout << endl;
+    }
 }
