@@ -845,7 +845,7 @@ void body() {
             if (ans[i][k] == n + 1) {
                 is_start = true;
             }
-            if (is_start && ans[i][k] != n + 1) {
+            if (is_start && (ans[i][k] != n + 1 && ans[j][k] > 0)) {
                 end = k;
                 break;
             }
