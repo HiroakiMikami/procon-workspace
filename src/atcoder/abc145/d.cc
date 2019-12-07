@@ -1153,7 +1153,7 @@ void body() {
      EACH (cand, cands) {
          auto n = cand.first;
          auto m = cand.second;
-         ans += fact[n + m]  fact[n] / fact[m];
+         ans += fact[n + m] / fact[n] / fact[m];
      }
      cout << ans.get() << endl;
 }
