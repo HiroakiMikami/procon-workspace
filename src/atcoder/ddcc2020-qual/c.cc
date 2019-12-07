@@ -843,6 +843,7 @@ void body() {
                 start = k;
                 is_start = true;
             } else if (is_start && (ans[i][k] != n + 1 && ans[j][k] > 0)) {
+                dump(n, ans[j][k], j, k);
                 end = k;
                 break;
             }
