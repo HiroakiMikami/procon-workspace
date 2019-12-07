@@ -849,6 +849,7 @@ void body() {
             }
             ans[index] = c;
             s.emplace(c, next);
+            c += 1;
         }
     }
 
