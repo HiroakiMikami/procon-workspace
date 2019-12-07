@@ -860,8 +860,6 @@ void body() {
                 FOR (q, start, end) {
                     ans[p][q] = n + 1;
                 }
-            } else {
-                break ;
             }
         }
     }
