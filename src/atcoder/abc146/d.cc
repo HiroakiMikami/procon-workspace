@@ -817,8 +817,8 @@ void body() {
     REP (i, N - 1) {
         auto a = abs[i].first;
         auto b = abs[i].second;
-        edges[a].emplace_bach(b, i);
-        edges[b].emplace_bach(a, i);
+        edges[a].emplace_back(b, i);
+        edges[b].emplace_back(a, i);
     }
 
     size_t K = 0;
