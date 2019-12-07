@@ -1137,7 +1137,7 @@ void body() {
         if (i == 0) {
             fact[i] = 1;
         } else {
-            fact[i] = i * fact[i - 1];
+            fact[i] = fact[i - 1] * i;
         }
     }
 
