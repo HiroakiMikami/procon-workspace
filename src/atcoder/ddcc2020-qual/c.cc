@@ -834,14 +834,14 @@ void body() {
     REP (n, K) {
         auto i = S[n].first;
         auto j = S[n].second;
-        auto start = 0;
+        auto start = -1;
         auto end = W;
         auto is_start = false;
         REP (k, W) {
             if (ans[i][k] == n + 1) {
                 is_start = true;
             }
-            if (!is_start && start == 0 && (ans[i][k] < 0 || ans[i][k] == n + 1)) {
+            if (!is_start && start < 0 && (ans[i][k] < 0 || ans[i][k] == n + 1)) {
                 start = k;
             }
             if (ans[i][k] > n + 1) {
