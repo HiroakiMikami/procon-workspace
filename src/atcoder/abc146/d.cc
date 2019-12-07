@@ -852,7 +852,7 @@ void body() {
         }
     }
 
-    cout << K << ednl;
+    cout << K << endl;
     EACH (a, ans) {
         cout << a << endl;
     }
