@@ -833,8 +833,8 @@ void body() {
     while (!s.empty()) {
         auto elem = s.top();
         s.pop();
-        auto used_color = s.first;
-        auto n = s.second;
+        auto used_color = elem.first;
+        auto n = elem.second;
 
         auto c = 1;
         EACH_V (edge, edges[n]) {
