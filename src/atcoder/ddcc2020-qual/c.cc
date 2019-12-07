@@ -837,7 +837,6 @@ void body() {
         auto start = -1;
         auto end = W;
         auto is_start = false;
-        dump(ans);
         REP (k, W) {
             if (!is_start && (ans[i][k] < 0 || ans[i][k] == n + 1)) {
                 start = k;
