@@ -857,7 +857,7 @@ void body() {
             }
             if (f) {
                 if (end == W) {
-                    h_ = p;
+                    h_ = p + 1;
                 }
                 FOR (q, start, end) {
                     ans[p][q] = n + 1;
@@ -867,7 +867,7 @@ void body() {
             }
         }
         dump(ans);
-        h = h_ + 1;
+        h = h_;
     }
 
     REP (i, H) {
