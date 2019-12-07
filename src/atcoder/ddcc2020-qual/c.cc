@@ -845,13 +845,13 @@ void body() {
                 break;
             }
         }
-        dump(n, start, end);
 
         auto h_ = h;
         FOR (p, h, H) {
             auto f = true;
             FOR (q, start, end) {
                 if (ans[p][q] > n + 1) {
+                    dump(n, p, q);
                     f = false;
                 }
             }
