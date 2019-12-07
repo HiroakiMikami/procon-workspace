@@ -856,7 +856,9 @@ void body() {
                 }
             }
             if (f) {
-                h_ = p;
+                if (end == W) {
+                    h_ = p;
+                }
                 FOR (q, start, end) {
                     ans[p][q] = n + 1;
                 }
