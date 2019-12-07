@@ -858,6 +858,7 @@ void body() {
             if (f) {
                 h_ = p;
                 FOR (q, start, end) {
+                    dump(n, p, q);
                     ans[p][q] = n + 1;
                 }
             } else {
