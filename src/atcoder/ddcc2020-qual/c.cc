@@ -852,7 +852,7 @@ void body() {
         FOR (p, 0, H) {
             auto f = true;
             FOR (q, start, end) {
-                if (ans[p][q] > n + 1) {
+                if (ans[p][q] != n + 1 && ans[p][q] > 0) {
                     f = false;
                 }
             }
