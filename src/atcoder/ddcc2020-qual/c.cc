@@ -837,9 +837,8 @@ void body() {
         auto start = 0;
         auto end = W;
         REP (k, W) {
-            if (ans[i][k] < n + 1 && ans[i][k] >= 0) {
-                dump(n, i, k, ans[i][k]);
-                start = k + 1;
+            if (start == 0 && (ans[i][k] < 0 || ans[i][k] == n + 1)) {
+                start = k;
             }
             if (ans[i][k] > n + 1) {
                 end = k;
