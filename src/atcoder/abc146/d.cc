@@ -815,8 +815,8 @@ void body() {
 
     auto edges = Vector<Vector<pair<size_t, size_t>>>(N, Vector<pair<size_t, size_t>>());
     REP (i, N - 1) {
-        auto a = abs[i].first;
-        auto b = abs[i].second;
+        auto a = abs[i].first - 1;
+        auto b = abs[i].second - 1;
         edges[a].emplace_back(b, i);
         edges[b].emplace_back(a, i);
     }
