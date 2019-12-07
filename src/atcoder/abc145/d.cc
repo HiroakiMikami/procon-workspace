@@ -1145,7 +1145,7 @@ void body() {
      REP (n, X + Y + 1) {
          auto m = Y - 2 * n;
          if (n + 2 * m == X && m >= 0) {
-             cands.emplace_back(n, m);
+             cands.emplace(n, m);
          }
      }
 
