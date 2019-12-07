@@ -847,7 +847,7 @@ void body() {
                 break;
             }
         }
-        dump(n, start, end);
+        dump(n, start, end, h);
 
         auto h_ = h;
         FOR (p, h, H) {
