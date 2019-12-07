@@ -847,17 +847,23 @@ void body() {
             }
         }
 
+        is_start = false;
         FOR (p, 0, H) {
             auto f = true;
             FOR (q, start, end) {
                 if (ans[p][q] != n + 1 && ans[p][q] > 0) {
                     f = false;
                 }
+                if (ans[p][q] == n + 1) {
+                    is_start = true;
+                }
             }
             if (f) {
                 FOR (q, start, end) {
                     ans[p][q] = n + 1;
                 }
+            } else if (is_start) {
+                break ;
             }
         }
     }
