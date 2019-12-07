@@ -847,18 +847,17 @@ void body() {
         }
 
         auto h_ = h;
+        dump(n, h);
         FOR (p, h, H) {
             auto f = true;
             FOR (q, start, end) {
                 if (ans[p][q] > n + 1) {
-                    dump(n, p, q);
                     f = false;
                 }
             }
             if (f) {
                 h_ = p;
                 FOR (q, start, end) {
-                    dump(n, p, q);
                     ans[p][q] = n + 1;
                 }
             } else {
