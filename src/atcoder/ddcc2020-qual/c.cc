@@ -837,12 +837,10 @@ void body() {
         auto start = -1;
         auto end = W;
         auto is_start = false;
+        dump(ans);
         REP (k, W) {
             if (!is_start && start < 0 && (ans[i][k] < 0 || ans[i][k] == n + 1)) {
                 start = k;
-                is_start = true;
-            }
-            if (ans[i][k] == n + 1) {
                 is_start = true;
             }
             if (is_start && (ans[i][k] != n + 1 && ans[j][k] > 0)) {
