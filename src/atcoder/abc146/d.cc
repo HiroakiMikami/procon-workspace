@@ -813,7 +813,7 @@ void body() {
     auto N = read<i64>();
     auto abs = read<i64, i64>(N - 1);
 
-    auto edges = Vector<Vector<pair<size_t, size_t>>(N, Vector<pair<size_t, size_t>());
+    auto edges = Vector<Vector<pair<size_t, size_t>>>(N, Vector<pair<size_t, size_t>());
     REP (i, N - 1) {
         auto a = abs[i].first;
         auto b = abs[i].second;
