@@ -828,6 +828,7 @@ void body() {
             }
         }
     }
+    dump(ans);
 
     auto h = 0;
     REP (n, K) {
