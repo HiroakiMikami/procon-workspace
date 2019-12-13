@@ -860,6 +860,7 @@ void body() {
             t_ = Qt.front();
             Qt.pop();
         }
+        dump(s_, t_);
 
         if (std::abs(s_) == K && std::abs(t_) == K) {
             s += s_;
