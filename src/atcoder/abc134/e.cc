@@ -821,7 +821,7 @@ void body() {
             if (mC->first >= A) {
                 colors[A] = colors.size();
             } else {
-                auto mC = *(colors.end() - 1);
+                auto mC = *colors.rbegin();)
                 colors.erase(mC->first);
                 colors[A] = mC->second;
             }
