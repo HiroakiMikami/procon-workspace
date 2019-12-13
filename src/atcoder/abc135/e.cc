@@ -887,6 +887,11 @@ void body() {
             Qs.push(-K);
         }
 
+        if (s % 2 != t % 2) {
+            cout << -1 << endl;
+            return ;
+        }
+
         ans.emplace_back((s + t) / 2, (t - s) / 2);
     }
 
