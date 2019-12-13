@@ -887,6 +887,7 @@ void body() {
             Qs.push(-K);
         }
 
+        dump(s, t);
         if (s % 2 != t % 2) {
             cout << -1 << endl;
             return ;
