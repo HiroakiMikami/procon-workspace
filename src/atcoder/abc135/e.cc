@@ -886,9 +886,10 @@ void body() {
             Qs.push(-K);
         }
 
-        ans.emplace_back((t - s) / 2, (s + t) / 2);
+        ans.emplace_back((s + t) / 2, (t - s) / 2);
     }
 
+    dump(ans);
     cout << ans.size() << endl;
     EACH (a, ans) {
         cout << a.first << " " << a.second << endl;
