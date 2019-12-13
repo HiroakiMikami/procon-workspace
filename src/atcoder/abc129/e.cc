@@ -1157,7 +1157,7 @@ void body() {
         }
         return ans;
     };
-    is_all_true = Vector<bool>(L.size()); // is_all_true[i] = all_of(begin + i, end)
+    auto is_all_true = Vector<bool>(L.size()); // is_all_true[i] = all_of(begin + i, end)
     REPR (i, L.size()) {
         is_all_true[i] = L[i];
         if (i + 1 != L.size()) {
