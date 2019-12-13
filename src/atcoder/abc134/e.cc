@@ -818,7 +818,7 @@ void body() {
             colors[A] = colors.size();
         } else {
             auto mC = *colors.begin();
-            if (mC.first >= A) {
+            if (mC.first > A) {
                 colors[A] = colors.size();
             } else {
                 auto mC = *colors.rbegin();
