@@ -1157,10 +1157,17 @@ void body() {
         }
         return ans;
     };
+    is_all_true = Vector<bool>(L.size()); // is_all_true[i] = all_of(begin + i, end)
+    REPR (i, L.size()) {
+        is_all_true[i] = L[i];
+        if (i + 1 != L.size()) {
+            is_all_true[i] &&= is_all_true[i + 1];
+        }
+    }
     auto calc_f = [&](auto begin, auto end, auto _calc_f) -> ModInteger<> {
         // x = begin:end
         auto N = end - begin;
-        if (std::all_of(begin, end, [](auto v) { return v; })) {
+        if (is_all_true[begin - L.begin()]) {
             // X = 2^N - 1 (N = x.size())
             return calc_f_1(N);
         } else if (begin == end || (end - begin) == 1 && !(*begin)) {
