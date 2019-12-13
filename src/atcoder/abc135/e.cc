@@ -887,7 +887,7 @@ void body() {
         }
 
         dump(s, t);
-        if (s % 2 != t % 2) {
+        if (std::abs(s) % 2 != std::abs(t) % 2) {
             cout << -1 << endl;
             return ;
         }
