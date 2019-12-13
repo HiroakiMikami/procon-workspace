@@ -891,6 +891,6 @@ void body() {
 
     cout << ans.size() << endl;
     EACH (a, ans) {
-        cout << a.first << " " << a.sceond << endl;
+        cout << a.first << " " << a.second << endl;
     }
 }
