@@ -1167,7 +1167,7 @@ void body() {
     auto calc_f = [&](auto begin, auto end, auto _calc_f) -> ModInteger<> {
         // x = begin:end
         auto N = end - begin;
-        if (is_all_true[begin - L.begin()]) {
+        if (N == 0 || is_all_true[begin - L.begin()]) {
             // X = 2^N - 1 (N = x.size())
             return calc_f_1(N);
         } else if (begin == end || (end - begin) == 1 && !(*begin)) {
