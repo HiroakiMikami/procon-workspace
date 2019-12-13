@@ -814,7 +814,7 @@ void body() {
     auto As = read<i64>(N);
     auto colors = OrderedMap<i64, i64>();
     EACH (A, As) {
-        if (As.empty()) {
+        if (colors.empty()) {
             colors[A] = colors.size();
         } else {
             auto mC = *colors.begin();
