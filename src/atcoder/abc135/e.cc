@@ -852,12 +852,12 @@ void body() {
     while (!(Qs.empty() && Qt.empty())) {
         auto s_ = 0L;
         if (!Qs.empty()) {
-            s_ = Qs.top();
+            s_ = Qs.front();
             Qs.pop();
         }
         auto t_ = 0L;
         if (!Qt.empty()) {
-            t_ = Qt.top();
+            t_ = Qt.front();
             Qt.pop();
         }
 
