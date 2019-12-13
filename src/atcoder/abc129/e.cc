@@ -1161,7 +1161,7 @@ void body() {
     REPR (i, L.size()) {
         is_all_true[i] = L[i];
         if (i + 1 != L.size()) {
-            is_all_true[i] &&= is_all_true[i + 1];
+            is_all_true[i] = is_all_true[i] && is_all_true[i + 1];
         }
     }
     auto calc_f = [&](auto begin, auto end, auto _calc_f) -> ModInteger<> {
