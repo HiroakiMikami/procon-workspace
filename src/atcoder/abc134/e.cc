@@ -812,26 +812,25 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto As = read<i64>(N);
-    auto colors = OrderedMap<i64, i64>(); // -Last A -> ColorID
+    auto colors = OrderedMap<i64, OrderedSet<i64>>(); // -Last A -> ColorID
     EACH (A, As) {
         dump(colors);
         dump(A);
         if (colors.empty() || colors.rbegin()->first <= -A) {
-            dump("add");
-            colors[-A] = colors.size();
+            colors[-A].emplace(colors.size());
         } else {
             auto it = colors.upper_bound(-A);
             auto A_ = A;
             auto id = colors.size();
             if (it == colors.end()) {
                 A_ = colors.begin()->first;
-                id = colors.begin()->second;
+                id = colors.begin()->second.front();
             } else {
                 A_ = it->first;
                 id = it->second;
             }
-            colors.erase(A_);
-            colors[A] = id;
+            colors[A_].erase(id);
+            colors[-A].emplace(id);
         }
     }
 
