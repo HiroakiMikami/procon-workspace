@@ -814,14 +814,12 @@ void body() {
     auto As = read<i64>(N);
     auto colors = OrderedMap<i64, i64>(); // -Last A -> ColorID
     EACH (A, As) {
-        dump(colors);
-        if (colors.empty() || colors.rbegin()->first >= A) {
+        if (colors.empty() || colors.rbegin()->first <= -A) {
             colors[-A] = colors.size();
         } else {
             auto it = colors.upper_bound(-A);
             auto A_ = A;
             auto id = colors.size();
-            dump(colors);
             if (it == colors.end()) {
                 A_ = colors.begin()->first;
                 id = colors.begin()->second;
