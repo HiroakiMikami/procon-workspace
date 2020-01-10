@@ -812,13 +812,12 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto As = read<i64>(N);
-    auto colors = OrderedMap<i64, i64>();
+    auto colors = OrderedMap<i64, i64>(); // Last A -> ColorID
     EACH (A, As) {
         if (colors.empty()) {
             colors[A] = colors.size();
         } else {
             auto mC = *colors.begin();
-            dump(mC, A);
             if (mC.first >= A) {
                 colors[A] = colors.size();
             } else {
