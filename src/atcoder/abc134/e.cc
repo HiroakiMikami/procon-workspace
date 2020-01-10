@@ -825,8 +825,8 @@ void body() {
                 A_ = colors.begin()->first;
                 id = colors.begin()->second;
             } else {
-                A_ = (it - 1)->first;
-                id = (it - 1)->first;
+                A_ = it->first;
+                id = it->second;
             }
             colors.erase(A_);
             colors[A] = id;
