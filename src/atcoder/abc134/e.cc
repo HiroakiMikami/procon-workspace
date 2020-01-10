@@ -826,6 +826,7 @@ void body() {
                 A_ = colors.begin()->first;
                 id = *(colors.begin()->second.begin());
             } else {
+                dump("foo");
                 A_ = it->first;
                 id = *(it->second.begin());
             }
