@@ -821,6 +821,7 @@ void body() {
             if (mC.first >= A) {
                 colors[A] = colors.size();
             } else {
+                dump(*colors.lower_bound(A));
                 auto mC = *colors.rbegin();
                 colors.erase(mC.first);
                 colors[A] = mC.second;
