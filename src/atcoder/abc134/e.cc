@@ -813,11 +813,13 @@ void body() {
     auto N = read<i64>();
     auto As = read<i64>(N);
     auto colors = OrderedMap<i64, OrderedSet<i64>>(); // -Last A -> ColorID
+    auto X = 0;
     EACH (A, As) {
         dump(colors);
         dump(A);
         if (colors.empty() || colors.rbegin()->first <= -A) {
-            colors[-A].emplace(colors.size());
+            colors[-A].emplace(X);
+            X += 1;
         } else {
             auto it = colors.upper_bound(-A);
             auto A_ = A;
@@ -826,8 +828,6 @@ void body() {
                 A_ = colors.begin()->first;
                 id = *(colors.begin()->second.begin());
             } else {
-                dump("foo");
-                dump(it->first);
                 A_ = it->first;
                 id = *(it->second.begin());
             }
