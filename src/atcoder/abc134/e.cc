@@ -814,6 +814,8 @@ void body() {
     auto As = read<i64>(N);
     auto colors = OrderedMap<i64, i64>(); // -Last A -> ColorID
     EACH (A, As) {
+        dump(colors);
+        dump(A);
         if (colors.empty() || colors.rbegin()->first <= -A) {
             colors[-A] = colors.size();
         } else {
