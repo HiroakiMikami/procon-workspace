@@ -824,7 +824,7 @@ void body() {
             auto id = colors.size();
             if (it == colors.end()) {
                 A_ = colors.begin()->first;
-                id = colors.begin()->second.front();
+                id = *(colors.begin()->second.begin());
             } else {
                 A_ = it->first;
                 id = it->second;
