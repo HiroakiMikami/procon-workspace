@@ -822,7 +822,7 @@ void body() {
             auto A_ = A;
             auto id = colors.size();
             dump(colors);
-            if (it != colors.end()) {
+            if (it == colors.end()) {
                 A_ = colors.begin()->first;
                 id = colors.begin()->second;
             } else {
