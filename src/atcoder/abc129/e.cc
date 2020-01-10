@@ -1,4 +1,4 @@
-/*
+ /*
 URL https://
 SCORE 0
 AC false
@@ -1149,6 +1149,10 @@ void body() {
     };
 
     auto f = OrderedMap<Vector<bool>, ModInteger<>>(); // f[X] := a+b <= X and a^b = a+b
+    auto calc_f_1 = [&](auto N) -> ModInteger<> {
+        // X = 2^N - 1
+        return pow(ModInteger<3>, N);
+    };
     auto is_all_true = Vector<bool>(L.size()); // is_all_true[i] = all_of(begin + i, end)
     REPR (i, L.size()) {
         is_all_true[i] = L[i];
@@ -1161,7 +1165,7 @@ void body() {
         auto N = end - begin;
         if (N == 0 || is_all_true[begin - L.begin()]) {
             // X = 2^N - 1 (N = x.size())
-            return pow(ModInteger<>(3), N);
+            return calc_f_1(N);
         } else if (begin == end || (end - begin) == 1 && !(*begin)) {
             // x = 0
             return ModInteger<>(1);
