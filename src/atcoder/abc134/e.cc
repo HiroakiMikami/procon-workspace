@@ -817,6 +817,7 @@ void body() {
         dump(colors);
         dump(A);
         if (colors.empty() || colors.rbegin()->first <= -A) {
+            dump("add");
             colors[-A] = colors.size();
         } else {
             auto it = colors.upper_bound(-A);
