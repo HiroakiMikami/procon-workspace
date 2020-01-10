@@ -819,7 +819,7 @@ void body() {
         } else {
             auto mC = *colors.begin();
             if (mC.first >= A) {
-                dump(A, "add");
+                dump(A, A);
                 colors[A] = colors.size();
             } else {
                 auto it = colors.upper_bound(A);
