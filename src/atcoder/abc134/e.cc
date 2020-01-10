@@ -840,6 +840,7 @@ void body() {
     }
 
     i64 ans = 0;
+    dump(colors);
     EACH (c, colors) {
         ans += c.second.size();
     }
