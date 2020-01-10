@@ -817,17 +817,19 @@ void body() {
         if (colors.empty() || colors.begin()->first >= A) {
             colors[A] = colors.size();
         } else {
-            auto it = colors.upper_bound(A);
+            auto it = colors.lower_bound(A);
+            auto A_ = A;
+            auto id = colors.size();
             dump(colors);
             if (it != colors.end()) {
-                it = colors.rbegin();
-                dump(*it, A);
+                A_ = colors.rbegin()->first;
+                id = colors.rbegin()->second;
             } else {
-                dump(A);
+                A_ = (it - 1)->first;
+                id = (it - 1)->first;
             }
-            auto mC = *colors.rbegin();
-            colors.erase(mC.first);
-            colors[A] = mC.second;
+            colors.erase(A_);
+            colors[A] = id;
         }
     }
 
