@@ -827,10 +827,10 @@ void body() {
                 id = *(colors.begin()->second.begin());
             } else {
                 dump("foo");
+                dump(it->first);
                 A_ = it->first;
                 id = *(it->second.begin());
             }
-            dump(A_, id);
             colors[A_].erase(id);
             colors[-A].emplace(id);
         }
