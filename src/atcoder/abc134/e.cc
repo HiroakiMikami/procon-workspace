@@ -821,9 +821,11 @@ void body() {
             if (mC.first >= A) {
                 colors[A] = colors.size();
             } else {
-                auto it = colors.lower_bound(A);
+                auto it = colors.upper_bound(A);
                 if (it != colors.end()) {
                     dump(*it, A);
+                } else {
+                    dump(A);
                 }
                 auto mC = *colors.rbegin();
                 colors.erase(mC.first);
