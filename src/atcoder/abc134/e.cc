@@ -832,6 +832,9 @@ void body() {
                 id = *(it->second.begin());
             }
             colors[A_].erase(id);
+            if (colors[A_].empty()) {
+                colors.erase(A_);
+            }
             colors[-A].emplace(id);
         }
     }
