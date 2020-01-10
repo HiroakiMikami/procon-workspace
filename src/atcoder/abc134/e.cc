@@ -820,6 +820,7 @@ void body() {
             auto it = colors.upper_bound(A);
             dump(colors);
             if (it != colors.end()) {
+                it = colors.rbegin();
                 dump(*it, A);
             } else {
                 dump(A);
