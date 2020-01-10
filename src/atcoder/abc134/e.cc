@@ -813,7 +813,7 @@ void body() {
     auto N = read<i64>();
     auto As = read<i64>(N);
     auto colors = OrderedMap<i64, OrderedSet<i64>>(); // -Last A -> ColorID
-    auto X = 0;
+    auto X = 0L;
     EACH (A, As) {
         dump(colors);
         dump(A);
@@ -839,5 +839,9 @@ void body() {
         }
     }
 
+    i64 ans = 0;
+    EACH (c, colors) {
+        ans += c.second.size();
+    }
     cout << colors.size() << endl;
 }
