@@ -1151,7 +1151,7 @@ void body() {
     auto f = OrderedMap<Vector<bool>, ModInteger<>>(); // f[X] := a+b <= X and a^b = a+b
     auto calc_f_1 = [&](auto N) -> ModInteger<> {
         // X = 2^N - 1
-        return pow(ModInteger<3>, N);
+        return pow(ModInteger<>(3), N);
     };
     auto is_all_true = Vector<bool>(L.size()); // is_all_true[i] = all_of(begin + i, end)
     REPR (i, L.size()) {
