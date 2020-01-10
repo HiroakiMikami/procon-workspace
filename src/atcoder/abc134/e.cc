@@ -815,8 +815,6 @@ void body() {
     auto colors = OrderedMap<i64, OrderedSet<i64>>(); // -Last A -> ColorID
     auto X = 0L;
     EACH (A, As) {
-        dump(colors);
-        dump(A);
         if (colors.empty() || colors.rbegin()->first <= -A) {
             colors[-A].emplace(X);
             X += 1;
@@ -844,5 +842,5 @@ void body() {
     EACH (c, colors) {
         ans += c.second.size();
     }
-    cout << colors.size() << endl;
+    cout << ans << endl;
 }
