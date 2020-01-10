@@ -827,7 +827,7 @@ void body() {
                 id = *(colors.begin()->second.begin());
             } else {
                 A_ = it->first;
-                id = it->second;
+                id = *(it->second.begin());
             }
             colors[A_].erase(id);
             colors[-A].emplace(id);
