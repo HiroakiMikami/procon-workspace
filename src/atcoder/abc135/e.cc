@@ -886,7 +886,6 @@ void body() {
             Qs.push(-K);
         }
 
-        dump(s, t);
         if (std::abs(s) % 2 != std::abs(t) % 2) {
             cout << -1 << endl;
             return ;
@@ -895,7 +894,6 @@ void body() {
         ans.emplace_back((s + t) / 2, (t - s) / 2);
     }
 
-    dump(ans);
     cout << ans.size() << endl;
     EACH (a, ans) {
         cout << a.first << " " << a.second << endl;
