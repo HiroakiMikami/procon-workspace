@@ -1007,7 +1007,7 @@ static std::experimental::optional<pair<i64, i64>> chinese_rem_ctr(const Vector<
 void body() {
     auto N = read<i64>();
     auto As = Vector<i64>();
-    auto xyss = Vector<Vector<i64>>();
+    auto xyss = Vector<Vector<pair<i64, i64>>>();
     REP (i, N) {
         auto A = read<i64>();
         As.push_back(A);
