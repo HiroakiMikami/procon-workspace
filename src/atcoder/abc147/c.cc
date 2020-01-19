@@ -1050,6 +1050,7 @@ void body() {
         }
 
         if (!fail) {
+            print(p);
             i64 s = 0;
             REP (i, N) {
                 if (c[i]) {
