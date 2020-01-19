@@ -1011,7 +1011,7 @@ void body() {
     REP (i, N) {
         auto A = read<i64>();
         As.push_back(A);
-        xys = read<i64, i64>(A);
+        auto xys = read<i64, i64>(A);
         EACH (xy, xys) {
             xy.first -= 1;
         }
