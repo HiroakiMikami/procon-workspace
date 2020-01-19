@@ -1011,7 +1011,11 @@ void body() {
     REP (i, N) {
         auto A = read<i64>();
         As.push_back(A);
-        xyss.push_back(read<i64, i64>(A));
+        xys = read<i64, i64>(A);
+        EACH (xy, xys) {
+            xy.first -= 1;
+        }
+        xyss.push_back(xys);
     }
 
     auto M = pow(2, N);
