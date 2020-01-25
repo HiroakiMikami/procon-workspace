@@ -1023,25 +1023,12 @@ void body() {
     REP (m, M) {
         std::bitset<15> c(m);
         bool fail = false;
-        auto results = Vector<int>(N, -1);
-        auto set_value = [&](auto i, auto v) -> bool {
-            if (results[i] == -1) {
-                results[i] = v;
-                return true;
-            } else if (results[i] != v) {
-                return false;
-            }
-            return true;
-        };
-        
         REP (i, N) {
             if (c[i]) {
-                if (!set_value(i, int(c[i]))) {
-                    fail = true;
-                    break;
-                }
                 EACH (xy, xyss[i]) {
-                    if (!set_value(xy.first, xy.second)) {
+                    auto x = xy.first;
+                    auto y = xy.second;
+                    if (c[x] != y) {
                         fail = true;
                         break ;
                     }
@@ -1050,7 +1037,6 @@ void body() {
         }
 
         if (!fail) {
-            dump(m);
             i64 s = 0;
             REP (i, N) {
                 if (c[i]) {
