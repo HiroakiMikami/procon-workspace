@@ -1138,7 +1138,7 @@ void body() {
 
     ModInteger<> ans = 0;
     REP (i, N) {
-        ans += as[i] * b[N - i - 1];
+        ans += b[N - i - 1] * as[i];
     }
     cout << ans.get() << endl;
 }
