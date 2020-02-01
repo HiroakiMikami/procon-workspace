@@ -821,6 +821,6 @@ void body() {
     if (std::abs(A - B) % 2 == 0) {
         cout << std::abs(A - B) / 2 << endl;
     } else {
-        cout << std::min(A + B - 1, 2 * N - A - B - 1) / 2 << endl;
+        cout << std::min(A + B - 1, 2 * N - A - B + 1) / 2 << endl;
     }
 }
