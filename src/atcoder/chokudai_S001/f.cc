@@ -900,26 +900,12 @@ namespace internal {
 void body() {
     auto N = read<i64>();
     auto as = read<i64>(N);
-    BinaryIndexedTree<i64> sum_bs(N);
 
-    auto sorted = as;
-    sort(CTR(sorted));
-    auto f = OrderedMap<i64, size_t>();
-    REP (i, N) {
-        auto a = sorted[i];
-        if (f.find(a) == f.end()) {
-            f[a] = i;
-        }
-    }
-
+    i64 m = -1e9;
     i64 ans = 0;
-    REP (i, N) {
-        auto a = as[i];
-        auto t_ = sum_bs.sum(f[a] + 1);
-        auto t = i - t_;
-        sum_bs.add(f[a], 1);
-
-        ans += t;
+    EACH (a, as) {
+        ans += m < a ? 1 : 0;
+        m = std::max(m, a);
     }
     cout << ans << endl;
 }
