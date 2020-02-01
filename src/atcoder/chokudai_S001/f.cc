@@ -915,7 +915,7 @@ void body() {
     i64 ans = 0;
     REP (i, N) {
         auto a = as[i];
-        auto t_ = sum_bs.sum(f[a]);
+        auto t_ = sum_bs.sum(f[a] + 1);
         auto t = i - t_;
         sum_bs.add(f[a], 1);
 
