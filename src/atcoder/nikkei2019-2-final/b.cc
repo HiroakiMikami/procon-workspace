@@ -823,7 +823,7 @@ void body() {
                 auto S4 = S.substr(k, k + l1);
                 auto S6 = S.substr(N - l2, N);
                 dump(S2, S3, S4, S6);
-                if (S2 == S3 && S3 == S6) {
+                if (S2 == S3 && S4 == S6) {
                     ans += 1;
                 }
 
