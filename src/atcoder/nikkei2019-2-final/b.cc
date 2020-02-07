@@ -813,7 +813,7 @@ void body() {
     auto S = read<string>();
     auto N = S.size();
     i64 ans = 0;
-    REP (i, N) {
+    FOR (i, 1, N) {
         FOR (j, i + 1, N) {
             FOR (k, j + 1, N) {
                 auto l1 = j - i;
@@ -821,6 +821,9 @@ void body() {
                 auto S2 = S.substr(i, l1);
                 auto S3 = S.substr(j, l2);
                 auto S4 = S.substr(k, l2);
+                if (k + l2 == N - l1) {
+                    continue ;
+                }
                 auto S6 = S.substr(N - l1, l1);
                 if (S == "nikkei") {
                     dump(S2, S3, S4, S6);
