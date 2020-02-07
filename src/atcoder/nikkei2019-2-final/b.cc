@@ -816,6 +816,9 @@ void body() {
     REP (i, N) {
         FOR (j, i + 1, N) {
             FOR (k, j + 1, N) {
+                if (i == 1 && j == 2) {
+                    dump("foo");
+                }
                 auto S2 = S.substr(i, j);
                 auto S3 = S.substr(j, k);
                 auto l1 = j - i;
