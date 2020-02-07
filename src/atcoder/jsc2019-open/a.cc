@@ -822,7 +822,7 @@ void body() {
                 candidates.insert({A + B, {A, B}});
             } else {
                 auto elem = candidates[A + B];
-                cout << elem.first << " " << elem.second << " " << A << " " << B << endll;
+                cout << elem.first << " " << elem.second << " " << A << " " << B << endl;
             }
         }
     }
