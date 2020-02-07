@@ -822,7 +822,7 @@ void body() {
                 auto S3 = S.substr(j, l2);
                 auto S4 = S.substr(k, l2);
                 auto S6 = S.substr(N - l1, l1);
-                if (k + l2 == N - l1) {
+                if (k + l2 >= N - l1) {
                     continue ;
                 }
                 if (S2 == S6 && S3 == S4) {
