@@ -819,6 +819,7 @@ void body() {
             cout << 1 << endl;
             return ;
         }
+        n += 1;
     }
     cout << 0 << endl;
 }
