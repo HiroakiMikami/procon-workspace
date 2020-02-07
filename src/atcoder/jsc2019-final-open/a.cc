@@ -825,6 +825,7 @@ void body() {
             } else {
                 auto elem = candidates[A + B];
                 cout << elem.first << " " << elem.second << " " << i << " " << j << endl;
+                return ;
             }
         }
     }
