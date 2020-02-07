@@ -822,7 +822,9 @@ void body() {
                 auto l2 = k - j;
                 auto S4 = S.substr(k, k + l2);
                 auto S6 = S.substr(N - l1, N);
-                dump(S2, S3, S4, S6);
+                if (S == "nikkei") {
+                    dump(S2, S3, S4, S6);
+                }
                 if (S2 == S6 && S3 == S4) {
                     ans += 1;
                 }
