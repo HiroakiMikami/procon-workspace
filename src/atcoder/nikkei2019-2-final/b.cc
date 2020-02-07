@@ -819,12 +819,12 @@ void body() {
                 if (i == 1 && j == 2) {
                     dump("foo");
                 }
-                auto S2 = S.substr(i, j);
-                auto S3 = S.substr(j, k);
                 auto l1 = j - i;
                 auto l2 = k - j;
-                auto S4 = S.substr(k, k + l2);
-                auto S6 = S.substr(N - l1, N);
+                auto S2 = S.substr(i, l1);
+                auto S3 = S.substr(j, l2);
+                auto S4 = S.substr(k, l2);
+                auto S6 = S.substr(N - l1, l1);
                 if (S == "nikkei") {
                     dump(S2, S3, S4, S6);
                 }
