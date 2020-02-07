@@ -1128,17 +1128,16 @@ namespace internal {
 
 void body() {
     auto N = read<i64>();
-    auto as = read<i64>(N);
+    auto as = read<string>(N);
 
-    auto b = Vector<ModInteger<>>(N); // b[i] = 10^i;
-    b[0] = 1;
-    FOR (i, 1, N) {
-        b[i] = b[i - 1] * 10;
-    }
-
+    auto basis = ModInteger<>(1);
     ModInteger<> ans = 0;
-    REP (i, N) {
-        ans += b[N - i - 1] * as[i];
+    REPR (i, N) {
+        REPR (j, as[i].size()) {
+            auto c = as[i][j] - '0';
+            ans += basis * c;
+            basis *= 10;
+        }
     }
     cout << ans.get() << endl;
 }
