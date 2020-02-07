@@ -816,14 +816,17 @@ void body() {
     auto Bs = read<i64>(M);
 
     auto candidates = OrderedMap<i64, pair<i64, i64>>();
-    EACH (A, As) {
-        EACH (B, Bs) {
+    REP (i, N) {
+        REP (j, M) {
+            auto A = As[i];
+            auto B = Bs[j];
             if (candidates.find(A + B) == candidates.end()) {
-                candidates.insert({A + B, {A, B}});
+                candidates.insert({A + B, {i, j}});
             } else {
                 auto elem = candidates[A + B];
-                cout << elem.first << " " << elem.second << " " << A << " " << B << endl;
+                cout << elem.first << " " << elem.second << " " << i << " " << j << endl;
             }
         }
     }
+    cout << -1 << endl;
 }
