@@ -815,19 +815,21 @@ void body() {
     i64 ans = 0;
     FOR (i, 1, N) {
         FOR (j, i + 1, N) {
-            FOR (k, j + 1, N) {
-                auto l1 = j - i;
-                auto l2 = k - j;
-                auto S2 = S.substr(i, l1);
-                auto S3 = S.substr(j, l2);
-                auto S4 = S.substr(k, l2);
-                auto S6 = S.substr(N - l1, l1);
-                if (k + l2 >= N - l1) {
-                    continue ;
-                }
-                if (S2 == S6 && S3 == S4) {
-                    ans += 1;
-                }
+            auto l1 = j - i;
+            auto S2 = S.substr(i, l1);
+
+            auto q = N - l1;
+            auto l2 = q - j;
+            if (l2 % 2 != 1) {
+                continue ;
+            }
+            l2 /= 2;
+            auto p = j + l2;
+            auto S3 = S.substr(j, l2);
+            auto S4 = S.substr(p, l2);
+            auto S5 = S.substr(N - l1, l1);
+            if (S2 == S5 && S3 == S4) {
+                ans += 1;
             }
         }
     }
