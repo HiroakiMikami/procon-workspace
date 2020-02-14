@@ -826,7 +826,7 @@ void body() {
             if (l2 % 2 != 1) {
                 continue ;
             }
-            if (l2 < 0) {
+            if (l2 <= 0) {
                 continue ;
             }
             l2 /= 2;
