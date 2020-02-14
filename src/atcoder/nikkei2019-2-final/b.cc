@@ -834,6 +834,7 @@ void body() {
             auto S3 = S.substr(j, l2);
             auto S4 = S.substr(p, l2);
             auto S5 = S.substr(q, l1);
+            dump(l1, l2);
             dump(S2, S3, S4, S5);
             if (S2 == S5 && S3 == S4) {
                 ans += 1;
