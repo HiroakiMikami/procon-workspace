@@ -832,8 +832,11 @@ void body() {
             l2 /= 2;
             auto p = j + l2;
             auto S3 = S.substr(j, l2);
+            dump(S2, S3);
             auto S4 = S.substr(p, l2);
+            dump(S2, S3, S4);
             auto S5 = S.substr(N - l1, l1);
+            dump(S2, S3, S4, S5);
             if (S2 == S5 && S3 == S4) {
                 ans += 1;
             }
