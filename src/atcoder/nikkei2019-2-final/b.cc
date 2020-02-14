@@ -819,7 +819,7 @@ void body() {
             auto S2 = S.substr(i, l1);
 
             auto q = N - l1;
-            if (q < 0) {
+            if (q < j) {
                 continue ;
             }
             auto l2 = q - j;
