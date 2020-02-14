@@ -823,6 +823,9 @@ void body() {
             if (l2 % 2 != 1) {
                 continue ;
             }
+            if (l2 < 0) {
+                continue ;
+            }
             l2 /= 2;
             auto p = j + l2;
             auto S3 = S.substr(j, l2);
