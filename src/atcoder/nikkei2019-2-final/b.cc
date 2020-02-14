@@ -817,6 +817,7 @@ void body() {
         FOR (j, i + 1, N) {
             auto l1 = j - i;
             auto S2 = S.substr(i, l1);
+            dump(S2);
 
             auto q = N - l1;
             if (q < j) {
