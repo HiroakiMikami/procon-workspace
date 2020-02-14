@@ -833,6 +833,7 @@ void body() {
             auto p = j + l2;
             auto S3 = S.substr(j, l2);
             dump(S2, S3);
+            dump(q, j);
             dump(p, l2);
             auto S4 = S.substr(p, l2);
             dump(S2, S3, S4);
