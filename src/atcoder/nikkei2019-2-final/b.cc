@@ -823,7 +823,7 @@ void body() {
                 continue ;
             }
             auto l2 = q - j;
-            if (l2 % 2 != 1) {
+            if (l2 % 2 == 1) {
                 continue ;
             }
             if (l2 <= 0) {
