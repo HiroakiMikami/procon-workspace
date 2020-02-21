@@ -826,6 +826,7 @@ void body() {
             }
         }
     }
+    dump(same);
 
     i64 ans = 0;
     FOR (i, 1, N) {
