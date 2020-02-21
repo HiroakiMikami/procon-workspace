@@ -822,6 +822,7 @@ void body() {
             auto S0 = S.substr(i, l);
             auto S1 = S.substr(i + l, l);
             if (S0 == S1) {
+                dump(i, j);
                 same.emplace(i, j);
             }
         }
