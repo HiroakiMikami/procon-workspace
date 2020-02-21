@@ -812,32 +812,40 @@ int main (int argc, char **argv) {
 void body() {
     auto S = read<string>();
     auto N = S.size();
+    auto same = OrderedSet<std::pair<i64, i64>>();
+    FOR (i, 2, N) {
+        FOR (j, j + 2, N) {
+            if ((j - i) % 2 != 0) {
+                continue ;
+            }
+            auto l = (j - i) / 2;
+            auto S0 = S.substr(i, l);
+            auto S1 = S.substr(i + l, l);
+            if (S0 == S1) {
+                same.emplace(i, j);
+            }
+        }
+    }
+
     i64 ans = 0;
     FOR (i, 1, N) {
         FOR (j, i + 1, N) {
-            auto l1 = j - i;
-            auto S2 = S.substr(i, l1);
-            dump(S2);
+            auto l0 = j - i;
+            if (S[j] != S[N - l0]) {
+                break ;
+            }
+            FOR (k, j + 1, N) {
+                auto l1 = k - j;
+                auto p = j + 2 * l1;
+                auto q = N - l0;
 
-            auto q = N - l1;
-            if (q < j) {
-                continue ;
-            }
-            auto l2 = q - j;
-            if (l2 % 2 == 1) {
-                continue ;
-            }
-            if (l2 <= 0) {
-                continue ;
-            }
-            l2 /= 2;
-            auto p = j + l2;
-            auto S3 = S.substr(j, l2);
-            auto S4 = S.substr(p, l2);
-            auto S5 = S.substr(q, l1);
-            dump(S2, S3, S4, S5);
-            if (S2 == S5 && S3 == S4) {
-                ans += 1;
+                if (p >= q) {
+                    continue ;
+                }
+
+                if (same.find({j, p}) != same.end()) {
+                    ans += 1;
+                }
             }
         }
     }
