@@ -833,7 +833,7 @@ void body() {
         FOR (j, i + 1, N) {
             auto l0 = j - i;
             if (S[j] != S[N - l0]) {
-                dump(j);
+                dump(i, j);
                 break ;
             }
             FOR (k, j + 1, N) {
