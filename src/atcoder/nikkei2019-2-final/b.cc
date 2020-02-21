@@ -833,8 +833,6 @@ void body() {
         FOR (j, i + 1, N) {
             auto l0 = j - i;
             if (S[j - 1] != S[N - l0]) {
-                dump(i, j);
-                dump(S[j - 1], S[N - l0]);
                 break ;
             }
             FOR (k, j + 1, N) {
@@ -847,7 +845,6 @@ void body() {
                 }
 
                 if (same.find({j, p}) != same.end()) {
-                    dump(i, j, k, p, q);
                     ans += 1;
                 }
             }
