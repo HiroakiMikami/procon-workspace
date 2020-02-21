@@ -814,7 +814,7 @@ void body() {
     auto N = S.size();
     auto same = OrderedSet<std::pair<i64, i64>>();
     FOR (i, 2, N) {
-        FOR (j, j + 2, N) {
+        FOR (j, i + 2, N) {
             if ((j - i) % 2 != 0) {
                 continue ;
             }
@@ -822,7 +822,6 @@ void body() {
             auto S0 = S.substr(i, l);
             auto S1 = S.substr(i + l, l);
             if (S0 == S1) {
-                dump(i, j);
                 same.emplace(i, j);
             }
         }
