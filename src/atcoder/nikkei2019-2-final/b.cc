@@ -845,7 +845,6 @@ void body() {
                 }
 
                 if (same.find({j, p}) != same.end()) {
-                    dump(i, j, k, p, q);
                     ans += 1;
                 }
             }
