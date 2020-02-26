@@ -821,4 +821,5 @@ void body() {
         }
         m = std::min(m, P);
     }
+    cout << ans << endl;
 }
