@@ -817,7 +817,6 @@ void body() {
     i64 ans = 0;
     EACH (a, as) {
         if (a != next) {
-            dump(a, next);
             ans += 1;
         } else {
             next += 1;
