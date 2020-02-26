@@ -820,7 +820,7 @@ void body() {
             dump(a, next);
             ans += 1;
         } else {
-            next = 1;
+            next += 1;
         }
     }
 
