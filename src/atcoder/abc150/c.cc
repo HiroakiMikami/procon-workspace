@@ -830,7 +830,7 @@ void body() {
             b = i;
         }
         i += 1;
-    } while (std::next_permutation(CTR(Xs)))
+    } while (std::next_permutation(CTR(Xs)));
 
     cout << b - a << endl;
 }
