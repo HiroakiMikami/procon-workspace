@@ -832,5 +832,5 @@ void body() {
         i += 1;
     } while (std::next_permutation(CTR(Xs)));
 
-    cout << b - a << endl;
+    cout << std::abs(b - a) << endl;
 }
