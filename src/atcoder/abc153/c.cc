@@ -812,7 +812,7 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto K = read<i64>();
-    auto Hs = read<i64>();
+    auto Hs = read<i64>(N);
     std::sort(CTR(Hs));
     i64 ans = 0;
     REP (i, N - K) {
