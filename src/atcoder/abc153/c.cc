@@ -813,7 +813,7 @@ void body() {
     auto N = read<i64>();
     auto K = read<i64>();
     auto Hs = read<i64>();
-    sort(CTR(Hs));
+    std::sort(CTR(Hs));
     i64 ans = 0;
     REP (i, N - K) {
         ans += Hs[i];
