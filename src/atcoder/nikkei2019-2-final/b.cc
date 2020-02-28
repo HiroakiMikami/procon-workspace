@@ -831,8 +831,8 @@ void body() {
     FOR (i, 1, N) {
         FOR (j, i + 1, N) {
             auto l0 = j - i;
-            if (S[j - 1] != S[N - l0]) {
-                break ;
+            if (S.substr(i, l0) != S.substr(N - l0, l0)) {
+                continue ;
             }
             FOR (k, j + 1, N) {
                 auto l1 = k - j;
