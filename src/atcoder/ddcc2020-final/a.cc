@@ -1012,7 +1012,7 @@ void body() {
         EACH (p, pf) {
             s += p.second;
         }
-        as.push_back(p);
+        as.push_back(s);
     }
 
     i64 ans = -1;
