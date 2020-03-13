@@ -1006,7 +1006,7 @@ void body() {
     auto as = read<i64>(N);
     i64 p = -1;
     auto As = Vector<i64>();
-    EACh (a, as) {
+    EACH (a, as) {
         a /= 2;
         auto i = prime_factor(a)[2];
         if (p < 0) {
