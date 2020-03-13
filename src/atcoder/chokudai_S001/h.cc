@@ -824,6 +824,7 @@ void body() {
         A.insert({as[i], i});
     }
 
+    dump(n);
     auto dp = Vector<i64>(N, 1);
     REPR(i, N) {
         if (n[i] >= 0) {
