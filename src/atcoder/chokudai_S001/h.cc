@@ -816,12 +816,12 @@ void body() {
     auto n = Vector<i64>(N, -1);
     REPR (i, N) {
         if (i != N -1) {
-            auto it = A.upper_bound({as[i], N});
+            auto it = A.upper_bound({N, as[i]});
             if (it != A.end()) {
-                n[i] = it->second;
+                n[i] = it->first;
             }
         }
-        A.insert({as[i], i});
+        A.insert({i, as[i]});
     }
 
     dump(n);
