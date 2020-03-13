@@ -828,6 +828,9 @@ void body() {
                 s.pop();
                 auto y = p.first;
                 auto x = p.second;
+                if (Ss[y][x] == '#') {
+                    continue ;
+                }
                 if (visited[y][x]) {
                     continue ;
                 }
