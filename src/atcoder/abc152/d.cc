@@ -824,7 +824,7 @@ void body() {
     i64 ans = 0;
     FOR (p, 1, 10) {
         FOR (q, 1, 10) {
-            ans += N[{p, q}] * N[{q, p}];
+            ans += N[make_pair<i64, i64>(p, q)] * N[make_pair<i64, i64>(q, p)];
         }
     }
     cout << ans << endl;
