@@ -817,6 +817,7 @@ void body() {
         while (n != 0) {
             digits.push_back(n % 10);
             n /= 10;
+            dump(n);
         }
         Ns[{digits.front(), digits.back()}] += 1;
     }
