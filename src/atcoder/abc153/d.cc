@@ -815,7 +815,7 @@ void body() {
         if (x == 1) {
             return 1;
         }
-        auto n = N_(x / 2);
+        auto n = N_(x / 2, N_);
         return 2 * n + 1;
     };
     cout << N(H, N) << endl;
