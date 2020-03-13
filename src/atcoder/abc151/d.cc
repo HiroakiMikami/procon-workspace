@@ -818,7 +818,7 @@ void body() {
     REP (i, H) {
         REP (j, W) {
             // (i, j)を出発点として最大の移動距離を求める
-            Matrix<bool, 2> visited({{H, W}}, false);
+            Matrix<bool, 2> visited({H, W}, false);
             auto s = std::queue<pair<pair<i64, i64>, i64>>();
             s.push({{i, j}, 0});
             while (!s.empty()) {
