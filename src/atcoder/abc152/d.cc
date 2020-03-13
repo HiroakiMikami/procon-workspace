@@ -820,6 +820,7 @@ void body() {
         }
         Ns[{digits.front(), digits.back()}] += 1;
     }
+    dump(N);
 
     i64 ans = 0;
     FOR (p, 1, 10) {
