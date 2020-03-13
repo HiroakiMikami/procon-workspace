@@ -814,6 +814,7 @@ void body() {
     auto Ns = OrderedMap<pair<i64, i64>, i64>();
     FOR (n, 1, N + 1) {
         auto digits = Vector<i64>();
+        dump(n, "foo");
         while (n != 0) {
             digits.push_back(n % 10);
             n /= 10;
@@ -821,7 +822,6 @@ void body() {
         }
         Ns[{digits.front(), digits.back()}] += 1;
     }
-    dump(N);
 
     i64 ans = 0;
     FOR (p, 1, 10) {
