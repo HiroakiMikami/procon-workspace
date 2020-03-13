@@ -831,6 +831,7 @@ void body() {
                 if (visited[y][x]) {
                     continue ;
                 }
+                visited[y][x] = true;
 
                 ans = std::max(ans, d);
                 if (y >= 1) {
