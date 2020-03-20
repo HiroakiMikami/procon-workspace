@@ -821,4 +821,13 @@ void body() {
     FOR (i, K, N) {
         ans[i] = (S == 1) ? S + 1 : S - 1;
     }
+
+    REP (i, N) {
+        cout << ans[i];
+        if (i != N - 1) {
+            cout << " ";
+        } else {
+            cout << endl;
+        }
+    }
 }
