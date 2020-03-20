@@ -917,7 +917,7 @@ void body() {
     BinaryIndexedTree<i64> b(N);
     REP (i, N) {
         auto t_ = b.sum(o[i]);
-        auto t = j - t;
+        auto t = i - t;
         b.add(o[i], 1);
         ans += t;
     }
