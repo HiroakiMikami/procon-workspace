@@ -817,7 +817,6 @@ void body() {
     i64 i = 0;
     i64 j = 1;
     while (i != N) {
-        dump(i, j, sum);
         if (sum < N && j != N) {
             sum += as[j];
             j += 1;
