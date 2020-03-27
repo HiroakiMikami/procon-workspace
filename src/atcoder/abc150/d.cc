@@ -1010,9 +1010,8 @@ void body() {
     EACH (a, as) {
         a /= 2;
         i64 i = 0;
-        auto a_ = a;
-        while (a_ % 2 == 0) {
-            a_ /= 2;
+        while (a % 2 == 0) {
+            a /= 2;
             i += 1;
         }
         if (p < 0) {
