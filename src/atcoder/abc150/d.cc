@@ -1005,7 +1005,6 @@ void body() {
     auto M = read<i64>();
     auto as = read<i64>(N);
     i64 p = -1;
-    i64 p_power = 0;
     auto As = Vector<i64>();
     EACH (a, as) {
         a /= 2;
@@ -1017,7 +1016,6 @@ void body() {
         }
         if (p < 0) {
             p = i;
-            p_power = pow(i64(2), i);
         }
         if (p != i) {
             cout << 0 << endl;
@@ -1027,11 +1025,10 @@ void body() {
     }
 
     auto Y = lcm_ctr(CTR(As));
-    if (M < p_power * Y) {
+    if (M < Y) {
         cout << 0 << endl;
         return ;
     }
-    dump(p_power, Y, M);
-    auto ans = (M - p_power * Y) / (2 * p_power * Y) + 1;
+    auto ans = (M - Y) / (2 * Y) + 1;
     cout << ans << endl;
 }
