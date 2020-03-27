@@ -1007,7 +1007,7 @@ void body() {
     auto As = Vector<i64>();
     EACH (a, as) {
         a /= 2;
-        As.append(a);
+        As.push_back(a);
     }
     auto Y = lcm_ctr(CTR(As));
     i64 p = -1;
