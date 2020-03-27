@@ -1030,6 +1030,7 @@ void body() {
         cout << 0 << endl;
         return ;
     }
-    auto ans = (M / Y + 1) / 2;
+    // auto ans = (M / Y + 1) / 2;
+    auto ans = (M - Y) / (2 * Y) + 1;
     cout << ans << endl;
 }
