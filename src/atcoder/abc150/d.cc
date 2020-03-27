@@ -1012,7 +1012,11 @@ void body() {
     auto Y = lcm_ctr(CTR(As));
     i64 p = -1;
     EACH (A, As) {
-        auto i = prime_factor(A)[2];
+        i64 i = 0;
+        while (A % 2 == 0) {
+            A /= 2;
+            i += 1;
+        }
         if (p < 0) {
             p = i;
         }
