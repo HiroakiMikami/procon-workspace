@@ -1016,7 +1016,7 @@ void body() {
         }
         if (p < 0) {
             p = i;
-            p_power = pow(2, i);
+            p_power = pow(i64(2), i);
         }
         if (p != i) {
             cout << 0 << endl;
