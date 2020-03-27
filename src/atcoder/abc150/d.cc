@@ -1030,6 +1030,7 @@ void body() {
         cout << 0 << endl;
         return ;
     }
+    dump(p_power, Y, M);
     auto ans = (M - p_power * Y) / (2 * p_power * Y) + 1;
     cout << ans << endl;
 }
