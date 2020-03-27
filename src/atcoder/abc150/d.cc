@@ -1004,16 +1004,15 @@ void body() {
     auto N = read<i64>();
     auto M = read<i64>();
     auto as = read<i64>(N);
-    i64 p = -1;
     auto As = Vector<i64>();
     EACH (a, as) {
         a /= 2;
-        i64 i = 0;
-        auto a_ = a;
-        while (a_ % 2 == 0) {
-            a_ /= 2;
-            i += 1;
-        }
+        As.append(a);
+    }
+    auto Y = lcm_ctr(CTR(As));
+    i64 p = -1;
+    EACH (A, As) {
+        auto i = prime_factor(A)[2];
         if (p < 0) {
             p = i;
         }
@@ -1021,14 +1020,12 @@ void body() {
             cout << 0 << endl;
             return ;
         }
-        As.push_back(a);
     }
 
-    auto Y = lcm_ctr(CTR(As));
     if (M < Y) {
         cout << 0 << endl;
         return ;
     }
-    auto ans = (M - Y) / (2 * Y) + 1;
+    auto ans = (M / Y + 1) / 2;
     cout << ans << endl;
 }
