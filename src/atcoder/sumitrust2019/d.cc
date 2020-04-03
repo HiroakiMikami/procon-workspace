@@ -812,7 +812,7 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto S = read<string>();
-    auto dp = make_matrix<OrderedSet<Vector<u8>>, 2>(N, 3);
+    auto dp = make_matrix<OrderedSet<Vector<u8>>, 2>({N, 3});
     REP (i, N) {
         auto s = S[i] - '0';
         if (i > 0) {
