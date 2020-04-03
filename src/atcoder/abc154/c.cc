@@ -815,10 +815,10 @@ void body() {
     auto X = HashSet<i64>();
     EACH (A, As) {
         if (X.find(A) != X.end()) {
-            cout << "No" << endl;
+            cout << "NO" << endl;
             return ;
         }
         X.insert(A);
     }
-    cout << "Yes" << endl;
+    cout << "YES" << endl;
 }
