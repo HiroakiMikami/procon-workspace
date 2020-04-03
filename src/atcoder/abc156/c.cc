@@ -811,7 +811,7 @@ int main (int argc, char **argv) {
 
 void body() {
     auto N = read<i64>();
-    auto Xs = read<i64>();
+    auto Xs = read<i64>(N);
     auto sum = std::accumulate(CTR(Xs), i64(0));
     Vector<i64> candidates{sum / N, sum / N + 1} ;
     Vector<i64> As(2);
