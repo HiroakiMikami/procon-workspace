@@ -813,12 +813,12 @@ void body() {
     auto N = read<i64>();
     auto As = read<i64>(N);
     auto X = HashSet<i64>();
-    EACH (A, As) [ 
+    EACH (A, As) {
         if (X.find(A) != X.end()) {
             cout << "No" << endl;
             return ;
         }
         X.insert(A);
     ]
-    cout << "No" << endl;
+    cout << "Yes" << endl;
 }
