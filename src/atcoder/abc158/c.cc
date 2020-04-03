@@ -813,7 +813,7 @@ void body() {
     auto A = read<i64>();
     auto B = read<i64>();
     REP (x, 101) {
-        if (A == i64(1.08 * x) && B == i64(1.1 * x)) {
+        if (A == i64(0.08 * x) && B == i64(0.1 * x)) {
             cout << x << endl;
             return ;
         }
