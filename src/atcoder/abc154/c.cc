@@ -819,6 +819,6 @@ void body() {
             return ;
         }
         X.insert(A);
-    ]
+    }
     cout << "Yes" << endl;
 }
