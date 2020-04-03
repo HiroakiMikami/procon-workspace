@@ -819,10 +819,9 @@ void body() {
     }
     auto ans = tmp;
     FOR (i, K, N) {
-        tmp -= p[i - K];
-        tmp += p[i];
+        tmp -= ps[i - K];
+        tmp += ps[i];
         ans = std::max(ans, tmp);
     }
     cout << (ans + K) / 2.0 << endl;
-    
 }
