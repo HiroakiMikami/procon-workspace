@@ -1032,4 +1032,5 @@ void body() {
             return ;
         }
     }
+    cout << -1 << endl;
 }
