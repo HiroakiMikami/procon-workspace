@@ -818,6 +818,7 @@ void body() {
         if (i > 0) {
             dp[i][0] = dp[i - 1][0];
         }
+        dump(s);
         dp[i][0].insert({s});
     }
 
