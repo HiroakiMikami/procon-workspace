@@ -818,7 +818,7 @@ void body() {
         if (i > 0) {
             dp[i][0] = dp[i - 1][0];
         }
-        dp[i][0].emplace({s});
+        dp[i][0].insert({s});
     }
 
     FOR (i, 1, N) {
