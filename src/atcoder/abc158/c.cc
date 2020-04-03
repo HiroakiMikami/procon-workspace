@@ -812,7 +812,7 @@ int main (int argc, char **argv) {
 void body() {
     auto A = read<i64>();
     auto B = read<i64>();
-    EACH (x, 101) {
+    REP (x, 101) {
         if (A == i64(1.08 * x) && B == i64(1.1 * x)) {
             cout << x << endl;
             return ;
