@@ -824,6 +824,9 @@ void body() {
     FOR (i, 1, N) {
         auto s = S[i] - '0';
         FOR (j, 1, 3) {
+            EACH (x, dp[i - 1][j]) {
+                dp[i][j].insert(x);
+            }
             EACH (x, dp[i - 1][j - 1]) {
                 auto x_ = x;
                 x_.push_back(s);
