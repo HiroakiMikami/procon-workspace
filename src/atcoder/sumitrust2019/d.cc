@@ -827,7 +827,7 @@ void body() {
             EACH (x, dp[i - 1][j - 1]) {
                 auto x_ = x;
                 x_.push_back(s);
-                dp[i][j].push(x_);
+                dp[i][j].insert(x_);
             }
         }
     }
