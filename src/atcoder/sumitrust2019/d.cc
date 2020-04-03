@@ -833,7 +833,7 @@ void body() {
     }
     REP (i, N) {
         REP (j, 3) {
-            dump(i, j, dp[i][j];)
+            dump(i, j, dp[i][j]);
         }
     }
     cout << dp[N - 1][2].size() << endl;
