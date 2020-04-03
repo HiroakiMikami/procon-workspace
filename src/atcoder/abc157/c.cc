@@ -1014,6 +1014,9 @@ void body() {
     FOR (c, begin, end) {
         Vector<u8> digit;
         auto c_ = c;
+        if (c_ == 0) {
+            digit.push_back(0);
+        }
         while (c_ != 0) {
             digit.push_back(c_ % 10);
             c_ /= 10;
