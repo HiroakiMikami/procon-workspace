@@ -812,13 +812,12 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto S = read<string>();
-    auto dp = make_matrix<OrderedSet<Vector<u8>>, 2>({N, 3});
+    auto dp = make_matrix<OrderedSet<Vector<int>>, 2>({N, 3});
     REP (i, N) {
         auto s = S[i] - '0';
         if (i > 0) {
             dp[i][0] = dp[i - 1][0];
         }
-        dump(s);
         dp[i][0].insert({s});
     }
 
