@@ -1306,7 +1306,7 @@ void body() {
     REP (i, N) {
         auto X = reachable[r.parent(i)];
         i64 ans = 0;
-        REP (x, X) {
+        EACH (x, X) {
             if (x != i && E[i].find(x) != E[i].end()) {
                 ans += 1;
             }
