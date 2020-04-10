@@ -1296,6 +1296,7 @@ void body() {
 
     auto E = Vector<HashSet<i64>>(N);
     EACH (AB, ABs) {
+        dump(AB);
         E[AB.first].insert(AB.second);
         E[AB.second].insert(AB.first);
     }
