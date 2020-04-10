@@ -1142,6 +1142,7 @@ void body() {
     }
     dump(nCa);
     ans -= nCa;
+    dump(ans);
     auto nCb = 1;
     REP (i, b) {
         nCb *= (n - i);
