@@ -1132,21 +1132,9 @@ void body() {
     auto b = read<i64>();
     auto ans = pow(ModInteger<>(2), n) - 1;
 
-    auto nCa = ModInteger<>(1);
-    REP (i, a) {
-        nCa *= (n - i);
-    }
-    REP (i, a) {
-        nCa / (i + 1);
-    }
+    auto nCa = combination(ModInteger<n>, a);
+    auto nCb = combination(ModInteger<n>, b);
     ans -= nCa;
-    auto nCb = ModInteger<>(1);
-    REP (i, b) {
-        nCb *= (n - i);
-    }
-    REP (i, b) {
-        nCb /= (i + 1);
-    }
     ans -= nCb;
 
     cout << ans.get() << endl;
