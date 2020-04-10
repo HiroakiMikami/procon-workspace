@@ -1274,7 +1274,8 @@ void body() {
     auto N = read<i64>();
     auto M = read<i64>();
     auto K = read<i64>();
-    auto ABs = read<i64, i64>(N);
+    auto ABs = read<i64, i64>(M
+    g.to_undirected(););
     auto CDs = read<i64, i64>(K);
     EACH (AB, ABs) {
         AB.first -= 1;
@@ -1296,7 +1297,6 @@ void body() {
 
     auto E = Vector<HashSet<i64>>(N);
     EACH (AB, ABs) {
-        dump(AB);
         E[AB.first].insert(AB.second);
         E[AB.second].insert(AB.first);
     }
