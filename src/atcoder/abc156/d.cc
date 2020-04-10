@@ -1140,6 +1140,7 @@ void body() {
     REP (i, a) {
         nCa / (i + 1);
     }
+    dump(nCa);
     ans -= nCa;
     auto nCb = 1;
     REP (i, b) {
