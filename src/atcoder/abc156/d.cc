@@ -1132,7 +1132,7 @@ void body() {
     auto b = read<i64>();
     auto ans = pow(ModInteger<>(2), n) - 1;
 
-    auto nCa = 1;
+    auto nCa = ModInteger<>(1);
     REP (i, a) {
         nCa *= (n - i);
     }
@@ -1140,7 +1140,7 @@ void body() {
         nCa / (i + 1);
     }
     ans -= nCa;
-    auto nCb = 1;
+    auto nCb = ModInteger<>(1);
     REP (i, b) {
         nCb *= (n - i);
     }
