@@ -812,27 +812,25 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto S = read<string>();
-    auto dp = make_matrix<OrderedSet<Vector<u8>>, 2>({N, 3});
-    REP (i, N) {
-        auto s = S[i] - '0';
-        if (i > 0) {
-            dp[i][0] = dp[i - 1][0];
-        }
-        dp[i][0].insert({s});
-    }
+    i64 ans = 0;
+    REP (i, 1000) {
+        auto vs = Vector<int>(3);
+        vs[0] = (i / 100) % 10;
+        vs[1] = (i / 10) % 10;
+        vs[2] = (i / 1) % 10;
 
-    FOR (i, 1, N) {
-        auto s = S[i] - '0';
-        FOR (j, 1, 3) {
-            EACH (x, dp[i - 1][j]) {
-                dp[i][j].insert(x);
+        auto k = 0;
+        REP (j, N) {
+            if (vs[k] == (S[j] - '0')) {
+                k += 1;
             }
-            EACH (x, dp[i - 1][j - 1]) {
-                auto x_ = x;
-                x_.push_back(s);
-                dp[i][j].insert(x_);
+            if (k == 3) {
+                break;
             }
         }
+        if (k == 3) {
+            ans += 1;
+        }
     }
-    cout << dp[N - 1][2].size() << endl;
+    cout << ans << endl;
 }
