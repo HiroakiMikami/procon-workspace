@@ -1303,7 +1303,6 @@ void body() {
         E[CD.first].insert(CD.second);
         E[CD.second].insert(CD.first);
     }
-    g.to_undirected();
     REP (i, N) {
         auto X = reachable[r.parent(i)];
         i64 ans = 0;
