@@ -1147,7 +1147,6 @@ void body() {
     REP (i, b) {
         nCb /= (i + 1);
     }
-    dump(nCa, nCb);
     ans -= nCb;
 
     cout << ans.get() << endl;
