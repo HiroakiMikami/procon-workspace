@@ -1148,7 +1148,7 @@ void body() {
         nCb *= (n - i);
     }
     REP (i, b) {
-        nCb / (i + 1);
+        nCb /= (i + 1);
     }
     dump(nCb);
     ans -= nCb;
