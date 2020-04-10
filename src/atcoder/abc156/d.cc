@@ -1132,6 +1132,7 @@ void body() {
     auto b = read<i64>();
     dump(n, a, b);
     auto ans = pow(ModInteger<>(2), n) - 1;
+    dump(ans);
     auto nCa = 1;
     REP (i, a) {
         nCa *= (n - i);
