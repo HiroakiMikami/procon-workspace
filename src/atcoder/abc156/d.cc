@@ -1132,8 +1132,8 @@ void body() {
     auto b = read<i64>();
     auto ans = pow(ModInteger<>(2), n) - 1;
 
-    auto nCa = combination(ModInteger<n>, a);
-    auto nCb = combination(ModInteger<n>, b);
+    auto nCa = combination(ModInteger<>(n), a);
+    auto nCb = combination(ModInteger<>(n), b);
     ans -= nCa;
     ans -= nCb;
 
