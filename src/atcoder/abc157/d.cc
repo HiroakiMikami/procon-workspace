@@ -1305,9 +1305,6 @@ void body() {
     }
     REP (i, N) {
         auto X = reachable[r.parent(i)];
-        dump(i);
-        dump(X);
-        dump(E[i]);
         i64 ans = 0;
         EACH (x, X) {
             if (x != i && E[i].find(x) == E[i].end()) {
