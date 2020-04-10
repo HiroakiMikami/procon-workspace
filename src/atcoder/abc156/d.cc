@@ -1144,13 +1144,13 @@ void body() {
     ans -= nCa;
     dump(ans);
     auto nCb = 1;
-    dump(nCb);
     REP (i, b) {
         nCb *= (n - i);
     }
     REP (i, b) {
         nCb / (i + 1);
     }
+    dump(nCb);
     ans -= nCb;
 
     cout << ans.get() << endl;
