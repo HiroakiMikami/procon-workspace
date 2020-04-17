@@ -820,7 +820,7 @@ void body() {
     auto convert_index = [&](auto i) -> std::pair<i64, i64> {
         if (i < as[0]) {
             return {0L, i};
-        } else if (i < as[1]) {
+        } else if (i < (as[0] + as[1])) {
             return {1L, i - as[0]};
         } else {
             return {2L, i - as[0] - as[1]};
