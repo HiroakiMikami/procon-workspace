@@ -840,10 +840,15 @@ void body() {
         bool f = true;
         REP (i, N) {
             auto pos = convert_index(i);
+            if (N == 4) {
+                dump(i, pos);
+            }
             if (pos.first >= 1) {
                 auto j = convert_pos(pos.first - 1, pos.second);
                 if (xs[i] <= xs[j]) {
-                    dump(xs, i, j);
+                    if (N == 4) {
+                        dump(xs, i, j);
+                    }
                     f = false;
                     break;
                 }
@@ -851,7 +856,9 @@ void body() {
             if (pos.second >= 1) {
                 auto j = convert_pos(pos.first, pos.second - 1);
                 if (xs[i] <= xs[j]) {
-                    dump(xs, i, j);
+                    if (N == 4) {
+                        dump(xs, i, j);
+                    }
                     f = false;
                     break;
                 }
