@@ -843,6 +843,7 @@ void body() {
             if (pos.first >= 1) {
                 auto j = convert_pos(pos.first - 1, pos.second);
                 if (xs[i] <= xs[j]) {
+                    dump(xs, i);
                     f = false;
                     break;
                 }
@@ -850,13 +851,14 @@ void body() {
             if (pos.second >= 1) {
                 auto j = convert_pos(pos.first, pos.second - 1);
                 if (xs[i] <= xs[j]) {
+                    dump(xs, i);
                     f = false;
                     break;
                 }
             }
         }
         if (f) {
-            dump(xs);
+            
             ans += 1;
         }
     } while (std::next_permutation(CTR(xs)));
