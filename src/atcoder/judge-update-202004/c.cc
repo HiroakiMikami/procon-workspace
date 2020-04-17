@@ -838,8 +838,8 @@ void body() {
     i64 ans = 0;
     do {
         bool f = true;
-        REP (x, N) {
-            auto pos = convert_index(x);
+        REP (i, N) {
+            auto pos = convert_index(i);
             if (pos.first >= 1) {
                 auto j = convert_pos(pos.first - 1, pos.second);
                 if (xs[i] <= xs[j]) {
