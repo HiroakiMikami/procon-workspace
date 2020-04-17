@@ -1294,21 +1294,22 @@ void body() {
         reachable[r.parent(i)].push_back(i);
     }
 
-    auto E = Vector<HashSet<i64>>(N);
+    auto E_f = Vector<HashSet<i64>>(N);
+    auto E_b = Vector<HashSet<i64>>(N);
     EACH (AB, ABs) {
-        E[AB.first].insert(AB.second);
-        E[AB.second].insert(AB.first);
+        E_f[AB.first].insert(AB.second);
+        E_f[AB.second].insert(AB.first);
     }
     EACH (CD, CDs) {
-        E[CD.first].insert(CD.second);
-        E[CD.second].insert(CD.first);
+        E_b[CD.first].insert(CD.second);
+        E_b[CD.second].insert(CD.first);
     }
     REP (i, N) {
-        auto X = reachable[r.parent(i)];
-        i64 ans = 0;
-        EACH (x, X) {
-            if (x != i && E[i].find(x) == E[i].end()) {
-                ans += 1;
+        auto &X = reachable[r.parent(i)];
+        i64 ans = X.size() - E_f[i].size() - 1; // 既に友達な分と自分
+        EACH (j, E_b[i]) {
+            if (X.find(j) != X.end()) {
+                ans -= 1;
             }
         }
         cout << ans;
