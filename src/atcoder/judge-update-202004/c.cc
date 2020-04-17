@@ -856,6 +856,7 @@ void body() {
             }
         }
         if (f) {
+            dump(xs);
             ans += 1;
         }
     } while (std::next_permutation(CTR(xs)));
