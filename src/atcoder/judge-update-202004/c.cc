@@ -834,7 +834,7 @@ void body() {
         } else {
             return j + as[0] + as[1];
         }
-    }
+    };
     i64 ans = 0;
     do {
         bool f = true;
