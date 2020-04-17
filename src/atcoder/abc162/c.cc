@@ -44,7 +44,6 @@ using std::tuple;
 using std::string;
 
 // function for basic types
-using std::experimental::make_optional;
 using std::make_pair;
 using std::make_tuple;
 using std::get;
@@ -977,7 +976,7 @@ static std::experimental::optional<pair<i64, i64>> chinese_rem(i64 b1, i64 m1, i
 
     i64 m = m1 * (m2 / d); //< lcm(m1, m2)
     i64 r = mod(b1 + m1 * ((b2 - b1) / d * p % (m2 / d)), m);
-    return make_optional(std::make_pair(r, m));
+    return std::experimental::make_optional(std::make_pair(r, m));
 
 }
 template <typename Iterator1, typename Iterator2>
@@ -994,7 +993,7 @@ static std::experimental::optional<pair<i64, i64>> chinese_rem_ctr(Iterator1 b_b
         r += M * ((*b - r) / d * p % (*m / d));
         M *= *m / d;
     }
-    return make_optional(std::make_pair(mod(r, M), M));
+    return std::experimental::make_optional(std::make_pair(mod(r, M), M));
 }
 static std::experimental::optional<pair<i64, i64>> chinese_rem_ctr(const Vector<i64> &b, const Vector<i64> &m) {
     return chinese_rem_ctr<decltype(b.begin()), decltype(m.begin())>(CTR(b), CTR(m));
