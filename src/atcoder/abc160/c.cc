@@ -816,7 +816,12 @@ void body() {
 
     i64 ans = K;
     REP (i, N) {
-        auto l = std::abs(As[(i + 1) % N] - As[i]);
+        i64 l = 0;
+        if (i + 1 == N) {
+            l = K - (As[i] - As[0]);
+        } else {
+            l = As[i + 1] - As[i];
+        }
         ans = std::min(ans, K - l);
     }
     cout << ans << endl;
