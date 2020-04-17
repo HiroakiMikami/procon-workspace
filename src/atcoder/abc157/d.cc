@@ -1289,9 +1289,9 @@ void body() {
     EACH (AB, ABs) {
         r.merge(AB.first, AB.second);
     }
-    auto reachable = HashMap<i64, Vector<i64>>();
+    auto reachable = HashMap<i64, HashSet<i64>>();
     REP (i, N) {
-        reachable[r.parent(i)].push_back(i);
+        reachable[r.parent(i)].insert(i);
     }
 
     auto E_f = Vector<HashSet<i64>>(N);
