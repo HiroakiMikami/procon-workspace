@@ -843,7 +843,7 @@ void body() {
             if (pos.first >= 1) {
                 auto j = convert_pos(pos.first - 1, pos.second);
                 if (xs[i] <= xs[j]) {
-                    dump(xs, i);
+                    dump(xs, i, j);
                     f = false;
                     break;
                 }
@@ -851,7 +851,7 @@ void body() {
             if (pos.second >= 1) {
                 auto j = convert_pos(pos.first, pos.second - 1);
                 if (xs[i] <= xs[j]) {
-                    dump(xs, i);
+                    dump(xs, i, j);
                     f = false;
                     break;
                 }
