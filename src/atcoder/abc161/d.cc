@@ -823,7 +823,7 @@ void body() {
     while (dp2.back() < K) {
         // dp1の更新
         dp1.push_back({});
-        dp2.push_back(0);
+        dp2.push_back(dp2.back());
         REP (i, 10) {
             i64 tmp = 0;
             FOR (j, std::max<i64>(0, i - 1), std::min<i64>(9, i + 1) + 1) {
