@@ -821,9 +821,9 @@ void body() {
     q.push({0, 0});
     while (!q.empty()) {
         auto p = q.front();
+        q.pop();
         auto h = p.first;
         auto w = p.second;
-        q.pop();
         if (visited[h][w]) {
             continue;
         }
@@ -847,6 +847,7 @@ void body() {
             q.push({h, w + 1});
         }
     }
+    dump(dp);
 
     cout << dp[H - 1][W - 1] << endl;
 }
