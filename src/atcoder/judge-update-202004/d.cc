@@ -1014,6 +1014,7 @@ void body() {
         auto last = gcd(S, Xs[N - 1]);
         if (last != -1) {
             dump(last);
+            dump("last");
             cout << last << endl;
             continue;
         }
