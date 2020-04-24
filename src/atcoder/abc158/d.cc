@@ -841,7 +841,8 @@ void body() {
     std::string ans;
     if (reversed) {
         REPR (i, s.size()) {
-            ans += s.pop_back();
+            ans += s.back();
+            s.pop_back();
         }
     } else {
         EACH (x, s) {
