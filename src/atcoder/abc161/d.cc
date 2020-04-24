@@ -815,12 +815,10 @@ void body() {
     auto dp2 = Vector<i64>(); // dp[2][i] := i桁以下のルンルン数の個数
 
     dp1.push_back({});
-    dump(dp1);
     REP (i, 10) {
         dp1[0].push_back(1);
     }
     dp2.push_back(9);
-    dump(dp1);
 
     while (dp2.back() < K) {
         // dp1の更新
@@ -837,6 +835,8 @@ void body() {
             dp2.back() += dp1.back()[i];
         }
     }
+    dump(dp1);
+    dump(dp2);
 
     // dp2[i] >= Kより、i桁以内にK番目のルンルン数がある
     std::string ans = "";
