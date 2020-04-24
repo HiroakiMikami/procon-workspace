@@ -828,7 +828,6 @@ void body() {
             continue;
         }
         visited[h][w] = true;
-        dump(h, w, dp[h][w]);
         dp[h][w] = (ss[h][w] == '.') ? 0 : 1;
         i64 n = h * w;
         if (h - 1 >= 0) {
