@@ -819,6 +819,7 @@ void body() {
         dp1[0][i] = 1;
     }
     dp2.push_back(9);
+    dump(dp1);
 
     while (dp2.back() < K) {
         // dp1の更新
