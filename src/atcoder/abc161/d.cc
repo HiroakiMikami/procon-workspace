@@ -826,7 +826,7 @@ void body() {
         dp2.push_back(0);
         REP (i, 10) {
             i64 tmp = 0;
-            FOR (j, std::max(0, i - 1), std::min(9, i + 1) + 1) {
+            FOR (j, std::max<i64>(0, i - 1), std::min<i64>(9, i + 1) + 1) {
                 tmp += dp1[dp1.size() - 2][j];
             }
             dp1.back().push_back(tmp);
