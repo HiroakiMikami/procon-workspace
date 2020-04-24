@@ -848,6 +848,7 @@ void body() {
                 expected.insert(k);
             }
         }
+        dump(i);
         dump(r, expected);
         if (r != expected) {
             cout << -1 << endl;
