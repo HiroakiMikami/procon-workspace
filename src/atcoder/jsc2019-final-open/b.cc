@@ -830,7 +830,6 @@ void body() {
     }
 
     // チェック
-    dump(ans);
     REP (i, N) {
         auto r = HashSet<i64>();
         REP (j, N) {
@@ -849,8 +848,6 @@ void body() {
                 expected.insert(k);
             }
         }
-        dump(i);
-        dump(r, expected);
         if (r != expected) {
             cout << -1 << endl;
             return ;
