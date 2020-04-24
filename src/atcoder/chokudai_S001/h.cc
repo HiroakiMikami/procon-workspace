@@ -818,6 +818,7 @@ void body() {
     i64 length = 1;
     FOR (i, 1, N) {
         dump(dp);
+        dump(dp[length - 1], as[i]);
         if (dp[length - 1] < as[i]) {
             dp[length] = as[i];
             length += 1;
