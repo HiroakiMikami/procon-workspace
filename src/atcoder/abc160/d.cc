@@ -1377,5 +1377,4 @@ void body() {
     FOR (k, 1, N) {
         cout << ns[k] << endl;
     }
-    dijkstra()
 }
