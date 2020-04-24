@@ -825,7 +825,7 @@ void body() {
 
         ws = n;
     }
-    EACh (w, ws) {
+    EACH (w, ws) {
         cout << w << endl;
     }
 }
