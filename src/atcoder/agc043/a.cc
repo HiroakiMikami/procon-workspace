@@ -820,7 +820,7 @@ void body() {
     auto q = std::queue<pair<i64, i64>>();
     q.push({0, 0});
     while (!q.empty()) {
-        auto p = q.top();
+        auto p = q.front();
         auto h = p.first;
         auto w = p.second;
         q.pop();
@@ -841,10 +841,10 @@ void body() {
         }
 
         if (h + 1 < H) {
-            q.push_back({h + 1, w});
+            q.push({h + 1, w});
         }
         if (w + 1 < W) {
-            q.push_back({h, w + 1});
+            q.push({h, w + 1});
         }
     }
 
