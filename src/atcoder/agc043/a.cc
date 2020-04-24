@@ -829,7 +829,7 @@ void body() {
         }
         visited[h][w] = true;
         dp[h][w] = (ss[h][w] == '.') ? 0 : 1;
-        i64 n = h * w;
+        i64 n = H * W;
         if (h - 1 >= 0) {
             dump(h, w, n);
             dump("h-1");
@@ -840,7 +840,7 @@ void body() {
             dump("w-1");
             n = std::min(n, dp[h][w - 1]);
         }   
-        if (n != h * w) {
+        if (n != H * W) {
             dump(h, w, n);
             dp[h][w] += n;
         }
