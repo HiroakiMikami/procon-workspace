@@ -815,8 +815,9 @@ void body() {
     auto dp2 = Vector<i64>(); // dp[2][i] := i桁以下のルンルン数の個数
 
     dp1.push_back({});
+    dump(dp1);
     REP (i, 10) {
-        dp1[0][i] = 1;
+        dp1[0].push_back(1);
     }
     dp2.push_back(9);
     dump(dp1);
