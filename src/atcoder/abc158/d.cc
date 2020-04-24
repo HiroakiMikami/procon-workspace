@@ -819,7 +819,7 @@ void body() {
         s.push_back(x);
     }
     bool reversed = false;
-    REQ(i, Q) {
+    REP (i, Q) {
         auto T = read<i64>();
         if (T == 1) {
             reversed = !reversed;
