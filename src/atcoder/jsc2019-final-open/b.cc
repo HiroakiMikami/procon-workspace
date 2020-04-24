@@ -811,8 +811,8 @@ int main (int argc, char **argv) {
 
 void body() {
     auto N = read<i64>();
-    auto As = read<i64>(N - 1);
-    auto Bs = read<i64>(N - 1);
+    auto As = read<string>(N - 1);
+    auto Bs = read<string>(N - 1);
 
     // 候補を作る
     auto ans = make_matrix<i64, 2>({N, N}, 1);
