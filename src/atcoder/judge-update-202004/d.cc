@@ -1016,6 +1016,10 @@ void body() {
             cout << last << endl;
             continue;
         }
+        if (gcd(S, Xs[0]) == 1) {
+            cout << 1 << endl;
+            continue;
+        }
         i64 lower = 0;
         i64 upper = N - 1;
         auto t = (lower + upper) / 2;
