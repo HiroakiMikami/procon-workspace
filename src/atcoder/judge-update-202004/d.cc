@@ -1010,7 +1010,7 @@ void body() {
     FOR (i, 1, N) {
         Xs[i] = gcd(Xs[i - 1], Xs[i]);
     }
-    REP (S, Ss) {
+    EACH (S, Ss) {
         auto last = gcd(S, Xs[N - 1]);
         if (last != -1) {
             cout << last << endl;
