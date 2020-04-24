@@ -821,10 +821,10 @@ void body() {
                 n.push_back(w + c);
             }
         }
-        sort(CTR(n));
 
         ws = n;
     }
+    sort(CTR(ws));
     EACH (w, ws) {
         cout << w << endl;
     }
