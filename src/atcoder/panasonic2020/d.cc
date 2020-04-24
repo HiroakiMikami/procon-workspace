@@ -817,7 +817,7 @@ void body() {
     FOR (i, 1, N) {
         auto n = Vector<string>();
         REP (j, i + 1) {
-            auto c = std::string(j + 'a');
+            auto c = std::string(int(j) + 'a');
             EACH (w, ws) {
                 n.push_back(w + c);
             }
