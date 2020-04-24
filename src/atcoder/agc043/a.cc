@@ -831,11 +831,13 @@ void body() {
         dp[h][w] = (ss[h][w] == '.') ? 0 : 1;
         i64 n = h * w;
         if (h - 1 >= 0) {
-            dump(h, w, n, "h-1");
+            dump(h, w, n);
+            dump("h-1");
             n = std::min(n, dp[h - 1][w]);
         }
         if (w - 1 >= 0) {
-            dump(h, w, n, "w-1");
+            dump(h, w, n);
+            dump("w-1");
             n = std::min(n, dp[h][w - 1]);
         }   
         if (n != h * w) {
