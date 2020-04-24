@@ -1027,6 +1027,7 @@ void body() {
             }
             t = (lower + upper) / 2;
         }
+        dump(t);
         cout << t + 2 << endl;
     }
 }
