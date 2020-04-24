@@ -818,7 +818,7 @@ void body() {
         auto n = Vector<string>();
         REP (j, i + 1) {
             auto c = std::string(j + 'a');
-            REP (w, ws) {
+            EACH (w, ws) {
                 n.push_back(w + c);
             }
         }
