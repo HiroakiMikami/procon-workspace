@@ -837,7 +837,6 @@ void body() {
             n = std::min(n, dp[h][w - 1]);
         }   
         if (n != H * W) {
-            dump(h, w, n);
             dp[h][w] += n;
         }
 
