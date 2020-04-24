@@ -812,6 +812,21 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto as = read<i64>(N);
+    
+    auto dp = Vector<i64>(N, N); // 長さn - 1の単調増加列を作る際の末尾の最小値
+    dp[0] = as[0];
+    i64 length = 1;
+    FOR (i, 1, N) {
+        if (dp[length - 1] < as[i]) {
+            dp[length] = as[i];
+            length += 1;
+        } else {
+            auto j = std::distance(std::lower_bound(CTR(dp), as[i]), dp.end());
+            dp[j] = as[i];
+        }
+    }
+    cout << length << endl;
+    /*
     auto A = OrderedSet<pair<i64, i64>>();
     auto n = Vector<i64>(N, -1);
     REPR (i, N) {
@@ -837,4 +852,5 @@ void body() {
         ans = std::max(ans, x);
     }
     cout << ans << endl;
+    */
 }
