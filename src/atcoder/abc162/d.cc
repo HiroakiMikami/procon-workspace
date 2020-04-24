@@ -819,7 +819,7 @@ void body() {
 
     i64 ans = 0;
     FOR (j, 1, N - 1) {
-        FOR (i, j) {
+        REP (i, j) {
             auto s_i = S[i];
             auto s_j = S[j];
             if (s_i == s_j) {
