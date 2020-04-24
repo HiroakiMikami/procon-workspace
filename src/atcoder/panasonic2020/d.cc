@@ -813,7 +813,6 @@ void body() {
     auto N = read<i64>();
 
     auto ws = Vector<string>({"a"});
-    cout << "a" << endl;
     FOR (i, 1, N) {
         auto n = Vector<string>();
         REP (j, i + 1) {
@@ -823,10 +822,10 @@ void body() {
             }
         }
         sort(CTR(n));
-        EACH (w, n) {
-            cout << w << endl;
-        }
 
         ws = n;
+    }
+    EACh (w, ws) {
+        cout << w << endl;
     }
 }
