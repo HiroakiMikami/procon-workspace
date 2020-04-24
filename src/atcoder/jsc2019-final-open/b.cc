@@ -830,6 +830,7 @@ void body() {
     }
 
     // チェック
+    dump(ans);
     REP (i, N) {
         auto r = HashSet<i64>();
         REP (j, N) {
