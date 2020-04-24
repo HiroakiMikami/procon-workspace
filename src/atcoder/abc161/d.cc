@@ -842,7 +842,7 @@ void body() {
     std::string ans = "";
     i64 target = -1;
     REPR (i, dp2.size()) {
-        i64 tmp = 0;
+        i64 tmp = (i != 0) ? dp2[i - 1] : 0;
         auto minimum = (i == dp2.size() - 1) ? 1 : std::max<i64>(target - 1, 0);
         auto maximum = (i == dp2.size() - 1) ? 9 : std::max<i64>(target + 1, 9);
         FOR (j, minimum, maximum + 1) {
