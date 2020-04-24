@@ -1012,7 +1012,7 @@ void body() {
     }
     EACH (S, Ss) {
         auto last = gcd(S, Xs[N - 1]);
-        if (last != -1) {
+        if (last != 1) {
             dump(last);
             dump("last");
             cout << last << endl;
