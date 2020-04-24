@@ -824,6 +824,7 @@ void body() {
             length += 1;
         } else {
             auto j = std::distance(std::lower_bound(CTR(dp), as[i]), dp.end());
+            dump(j);
             dp[j] = as[i];
         }
     }
