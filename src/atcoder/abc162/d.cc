@@ -835,7 +835,7 @@ void body() {
 
             auto it = std::lower_bound(CTR(indexes[s_k]), j);
             auto n = std::distance(it, indexes[s_k].end());
-            if (S.at(j + j - i) == s_k) {
+            if ((j + j - i) < S.size() && S.at(j + j - i) == s_k) {
                 n -= 1;
             }
             ans += n;
