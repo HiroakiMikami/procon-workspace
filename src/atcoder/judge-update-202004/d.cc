@@ -1013,6 +1013,7 @@ void body() {
     EACH (S, Ss) {
         auto last = gcd(S, Xs[N - 1]);
         if (last != -1) {
+            dump(last);
             cout << last << endl;
             continue;
         }
@@ -1027,7 +1028,6 @@ void body() {
             }
             t = (lower + upper) / 2;
         }
-        dump(t);
         cout << t + 2 << endl;
     }
 }
