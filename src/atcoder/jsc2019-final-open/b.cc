@@ -818,11 +818,11 @@ void body() {
     auto ans = make_matrix<i64, 2>({N, N}, 1);
     REP (i, N) {
         REP (j, N) {
-            if (As[j][i] != '1') {
+            if (As[i][j] != '1') {
                 continue;
             }
             REP (k, N) {
-                if (Bs[j][k] != '1') {
+                if (Bs[i][k] != '1') {
                     ans[j][k] = 0;
                 }
             }
