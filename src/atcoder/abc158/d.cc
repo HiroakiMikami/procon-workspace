@@ -831,9 +831,9 @@ void body() {
                 F = (F == 1) ? 2: 1;
             }
             if (F == 1) {
-                s.push_front(c);
+                s.push_front(C);
             } else {
-                s.push_back(c);
+                s.push_back(C);
             }
         }
     }
