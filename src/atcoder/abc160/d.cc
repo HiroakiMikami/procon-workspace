@@ -1362,7 +1362,7 @@ void body() {
 
     auto length = make_matrix<i64, 2>({N, N}, 0);
     REP (i, N) {
-        auto path = dijkstra(G, i);
+        auto path = graph::dijkstra(G, i);
         REP (j, N) {
             length[i][j] = path[j].cost;
         }
