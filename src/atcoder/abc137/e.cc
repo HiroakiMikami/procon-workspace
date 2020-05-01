@@ -1364,6 +1364,6 @@ void body() {
     if (!retval) {
         cout << -1 << endl;
     } else {
-        cout << -(retval->cost) << endl;
+        cout << std::max<i64>(0, -(retval->cost)) << endl;
     }
 }
