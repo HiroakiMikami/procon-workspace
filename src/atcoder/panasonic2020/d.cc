@@ -812,7 +812,7 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
 
-    auto dp = Vector<Vector<HashSet<string>>>(N, HashSet<string>()); // dp[i][x] := i + 1文字でmax(S) = x - 'a'な標準形S
+    auto dp = Vector<Vector<HashSet<string>>>(N, Vector<HashSet<string>>()); // dp[i][x] := i + 1文字でmax(S) = x - 'a'な標準形S
     dp[0][0] = HashSet<string>({"a"});
     FOR (i, 1, N) {
         REP (x, 26) {
