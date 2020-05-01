@@ -1013,6 +1013,7 @@ void body() {
 
     REPR (i, Xs.size()) {
         auto X = Xs[i];
+        dump(X);
         auto ks = Vector<i64>(N);
         REP (i, N) {
             auto A = As[i];
