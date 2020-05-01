@@ -812,17 +812,30 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
 
-    auto ws = Vector<string>({"a"});
+    auto dp = Vector<Vector<HashSet<string>>>(N, {}); // dp[i][x] := i + 1文字でmax(S) = x - 'a'な標準形S
+    dp[0][0] = HashSet<string>({"a"});
     FOR (i, 1, N) {
-        auto n = Vector<string>();
-        REP (j, i + 1) {
-            auto c = std::string{char(j) + 'a'};
-            EACH (w, ws) {
-                n.push_back(w + c);
+        REP (x, 26) {
+            auto c = std::string{x + 'a'};
+            dp[i][x] = HashSet<string>({});
+            if (x != 0) {
+                EACH (s, dp[i - 1][x - 1]) {
+                    dp[i][x].insert(s + c);
+                }
+            }
+            EACH (s, dp[i - 1][x]) {
+                REP (y, x + 1) {
+                    auto c2 = std::string{y + 'a'};
+                    dp[i][x].insert(s + c2);
+                }
             }
         }
-
-        ws = n;
+    }
+    auto ws = Vector<string>();
+    EACH (ss, dp.back()) {
+        EACH (s, ss) {
+            ws.push_back(s);
+        }
     }
     sort(CTR(ws));
     EACH (w, ws) {
