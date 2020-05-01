@@ -1357,13 +1357,13 @@ void body() {
         auto A = std::get<0>(ABC);
         auto B = std::get<1>(ABC);
         auto C = std::get<2>(ABC);
-        g.add_edge({A - 1, B - 1, C});
+        g.add_edge({A - 1, B - 1, -C + P});
     }
 
     auto retval = graph::bellman_ford(g, 0)[N  -1];
     if (!retval) {
         cout << -1 << endl;
     } else {
-        cout << retval->cost << endl;
+        cout << -(retval->cost) << endl;
     }
 }
