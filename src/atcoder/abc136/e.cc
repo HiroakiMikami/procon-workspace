@@ -1041,6 +1041,8 @@ void body() {
         REP (i, N - n) {
             ops += xs[i];
         }
+        dump(n);
+        dump(ops);
         if (ops <= K) {
             cout << X << endl;
             return ;
