@@ -1028,6 +1028,8 @@ void body() {
             }
             xs[i] = (k + 1) * X - A;
         }
+        dump(ks);
+        dump(xs);
 
         auto S = accumulate(CTR(xs), i64(0));
         if (S % X != 0) {
