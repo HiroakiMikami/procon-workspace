@@ -1353,7 +1353,7 @@ void body() {
     auto ABCs = read<i64, i64, i64>(M);
 
     WeightedAdjacencyList g(N);
-    EACH (ABC, ABC) {
+    EACH (ABC, ABCs) {
         auto A = std::get<0>(ABC);
         auto B = std::get<1>(ABC);
         auto C = std::get<2>(ABC);
