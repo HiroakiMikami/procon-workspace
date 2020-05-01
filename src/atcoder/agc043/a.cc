@@ -854,6 +854,7 @@ void body() {
             q.push({h, w + 1});
         }
     }
+    dump(dp);
 
     auto ans = dp[H - 1][W - 1];
     if (ss[0][0] == '#') {
