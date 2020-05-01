@@ -1013,7 +1013,6 @@ void body() {
 
     REPR (i, Xs.size()) {
         auto X = Xs[i];
-        dump(X);
         auto ks = Vector<i64>(N);
         REP (i, N) {
             auto A = As[i];
@@ -1028,8 +1027,6 @@ void body() {
             }
             xs[i] = (k + 1) * X - A;
         }
-        dump(ks);
-        dump(xs);
 
         auto S = accumulate(CTR(xs), i64(0));
         if (S % X != 0) {
@@ -1041,8 +1038,6 @@ void body() {
         REP (i, N - n) {
             ops += xs[i];
         }
-        dump(n);
-        dump(ops);
         if (ops <= K) {
             cout << X << endl;
             return ;
