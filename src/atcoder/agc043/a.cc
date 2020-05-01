@@ -815,7 +815,6 @@ void body() {
     auto ss = read<string>(H);
 
     auto dp = make_matrix<i64, 2>({H, W}, 0);
-    dp[0][0] = (ss[0][0] == '.') ? 0 : 1;
     auto visited = make_matrix<bool, 2>({H, W}, false);
     auto q = std::queue<pair<i64, i64>>();
     q.push({0, 0});
@@ -828,17 +827,25 @@ void body() {
             continue;
         }
         visited[h][w] = true;
-        dp[h][w] = (ss[h][w] == '.') ? 0 : 1;
+        auto c = ss[h][w];
         i64 n = H * W;
         if (h - 1 >= 0) {
-            n = std::min(n, dp[h - 1][w]);
+            auto c2 = ss[h - 1][w];
+            if (c != c2) {
+                n = std::min(n, dp[h - 1][w] + 1);
+            } else {
+                n = std::min(n, dp[h - 1][w]);
+            }
         }
-        if (w - 1 >= 0) {
-            n = std::min(n, dp[h][w - 1]);
-        }   
-        if (n != H * W) {
-            dp[h][w] += n;
+        if (w -1 >= 0) {
+            auto c2 = ss[h][w - 1];
+            if (c != c2) {
+                n = std::min(n, dp[h][w - 1] + 1);
+            } else {
+                n = std::min(n, dp[h][w - 1]);
+            }
         }
+        dp[h][w] = n;
 
         if (h + 1 < H) {
             q.push({h + 1, w});
@@ -848,5 +855,14 @@ void body() {
         }
     }
 
-    cout << dp[H - 1][W - 1] << endl;
+    auto ans = dp[H - 1][W - 1];
+    if (ss[0][0] == '#') {
+        ans += 1;
+    }
+    if (ss[H - 1][W - 1] == '#') {
+        ans += 1;
+    }
+    ans /= 2;
+
+    cout << ans << endl;
 }
