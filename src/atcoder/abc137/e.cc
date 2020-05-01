@@ -1360,7 +1360,7 @@ void body() {
         g.add_edge(Edge<i64>(A - 1, B - 1, -C + P));
     }
 
-    auto retval = graph::bellman_ford(g, 0)[N  -1];
+    auto retval = graph::bellman_ford(g, 0)[N  - 1];
     if (!retval) {
         cout << -1 << endl;
     } else {
