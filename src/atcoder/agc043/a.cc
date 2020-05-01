@@ -845,7 +845,9 @@ void body() {
                 n = std::min(n, dp[h][w - 1]);
             }
         }
-        dp[h][w] = n;
+        if (n != H * W) {
+            dp[h][w] = n;
+        }
 
         if (h + 1 < H) {
             q.push({h + 1, w});
