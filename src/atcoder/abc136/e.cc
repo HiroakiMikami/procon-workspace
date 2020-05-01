@@ -1036,7 +1036,7 @@ void body() {
             continue ;
         }
         auto n = S / X;
-        sort(CTR(Xs));
+        sort(CTR(xs));
         i64 ops = 0;
         REP (i, N - n) {
             ops += xs[i];
