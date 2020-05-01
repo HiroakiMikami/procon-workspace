@@ -1003,7 +1003,7 @@ static std::experimental::optional<pair<i64, i64>> chinese_rem_ctr(const Vector<
 void body() {
     auto N = read<i64>();
     auto K = read<i64>();
-    auto As = read<i64>();
+    auto As = read<i64>(N);
 
     auto sum_A = accumulate(CTR(As), i64(0));
     auto Xs = divisor(sum_A);
@@ -1042,6 +1042,5 @@ void body() {
             cout << X << endl;
             return ;
         }
-
     }
 }
