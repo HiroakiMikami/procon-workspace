@@ -1364,6 +1364,6 @@ void body() {
     if (!retval) {
         cout << -1 << endl;
     } else {
-        cout << retval->value << endl;
+        cout << retval->cost << endl;
     }
 }
