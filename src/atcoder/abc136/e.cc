@@ -1033,7 +1033,7 @@ void body() {
             continue ;
         }
         auto n = S / X;
-        xs.sort();
+        sort(CTR(Xs));
         i64 ops = 0;
         REP (i, N - n) {
             ops += xs[i];
