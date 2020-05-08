@@ -838,22 +838,19 @@ void body() {
         auto M = K;
         auto is_x_answer = [&](auto x) {
             auto n_it = neg.begin();
-            auto p_it = pos.end() - 1;
+            auto p_it = pos.begin();
             
             i64 num = 0;
             while (n_it != neg.end()) {
-                if (*p_it * *n_it > x) {
-                    // 全てでp * n > xの場合。 
-                    // nを大きくするとp * nは大きくなるので、p * n <= xとなることはない
-                    dump(num, x);
-                    dump("ans");
-                    return num <= M;
-                }
-                while (*p_it * *n_it <= x) {
-                    if (p_it == pos.begin()) {
-                        break;
+                while (*p_it * *n_it > x) {
+                    if (p_it == pos.end()) {
+                        // 全てでp * n > xの場合。 
+                        // nを大きくするとp * nは大きくなるので、p * n <= xとなることはない
+                        dump(num, x);
+                        dump("ans");
+                        return num <= M;
                     }
-                    p_it -= 1;
+                    p_it += 1;
                 }
                 dump(*n_it, std::distance(pos.begin(), p_it));
                 num += std::distance(pos.begin(), p_it) + 1;
