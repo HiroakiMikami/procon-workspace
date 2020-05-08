@@ -866,6 +866,7 @@ void body() {
             }
             x = (lower + upper) / 2;
         }
+        dump(lower, upper, x);
         cout << lower << endl;
     } else if (K <= n_prod_neg + n_prod_zero) {
         // K番目は0
