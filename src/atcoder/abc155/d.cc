@@ -837,24 +837,28 @@ void body() {
         // K番目は負の数
         auto M = K;
         auto is_x_answer = [&](auto x) {
-            auto n_it = neg.begin();
-            auto p_it = pos.begin();
-            
-            i64 num = 0;
-            while (n_it != neg.end()) {
-                while (*p_it * *n_it > x) {
-                    p_it += 1;
-                    if (p_it == pos.end()) {
-                        // 全てでp * n > xの場合。 
-                        // nを大きくするとp * nは大きくなるので、p * n <= xとなることはない
-                        dump(num, x);
-                        dump("ans");
-                        return num <= M;
+            auto calc_num = [&]() {
+                auto n_it = neg.begin();
+                auto p_it = pos.begin();
+                
+                i64 num = 0;
+                while (n_it != neg.end()) {
+                    while (*p_it * *n_it > x) {
+                        p_it += 1;
+                        if (p_it == pos.end()) {
+                            // 全てでp * n > xの場合。 
+                            // nを大きくするとp * nは大きくなるので、p * n <= xとなることはない
+                            dump(num, x);
+                            dump("ans");
+                            return num;
+                        }
                     }
+                    num += pos.size() - std::distance(pos.begin(), p_it);
+                    n_it += 1;
                 }
-                num += pos.size() - std::distance(pos.begin(), p_it);
-                n_it += 1;
-            }
+                return num;
+            };
+            auto num = calc_num();
             return num <= M;
         };
         i64 lower = neg.front() * pos.back();
