@@ -851,7 +851,7 @@ void body() {
                     }
                 }
                 num += std::distance(pos.begin(), p_it);
-                n += 1;
+                n_it += 1;
             }
             return num <= M;
         };
