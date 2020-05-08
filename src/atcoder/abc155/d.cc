@@ -855,7 +855,7 @@ void body() {
                     }
                     p_it -= 1;
                 }
-                dump(*n_it, *p_it);
+                dump(*n_it, std::distance(pos.begin(), p_it));
                 num += std::distance(pos.begin(), p_it) + 1;
                 n_it += 1;
             }
