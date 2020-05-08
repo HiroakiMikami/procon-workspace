@@ -847,6 +847,7 @@ void body() {
                     continue;
                 }
                 while (*p_it * *n_it <= x) {
+                    dump(*p_it);
                     if (p_it == pos.begin()) {
                         break;
                     }
