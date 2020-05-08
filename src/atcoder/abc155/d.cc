@@ -844,7 +844,8 @@ void body() {
             while (n_it != neg.end()) {
                 if (*p_it * *n_it > x) {
                     // 全てでp * n > xの場合。 
-                    continue;
+                    // nを大きくするとp * nは大きくなるので、p * n <= xとなることはない
+                    return num <= M;
                 }
                 while (*p_it * *n_it <= x) {
                     dump(*p_it);
