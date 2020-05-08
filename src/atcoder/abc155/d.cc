@@ -856,8 +856,8 @@ void body() {
                 }
                 return num;
             };
-            dump(num);
             auto num = calc_num();
+            dump(num);
             return num <= M;
         };
         i64 lower = neg.front() * pos.back();
