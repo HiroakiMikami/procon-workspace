@@ -871,7 +871,7 @@ void body() {
         // K番目は0
         cout << 0 << endl;
     } else {
-        auto P = M - n_prod_neg - n_prod_zero;
+        auto M = K - n_prod_neg - n_prod_zero;
         // K番目は正の数
     }
 }
