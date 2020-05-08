@@ -848,7 +848,6 @@ void body() {
                     return num <= M;
                 }
                 while (*p_it * *n_it <= x) {
-                    dump(*p_it);
                     if (p_it == pos.begin()) {
                         break;
                     }
@@ -859,6 +858,7 @@ void body() {
                 n_it += 1;
             }
             dump(num, x);
+            dump("ans");
             return num <= M;
         };
         i64 lower = neg.front() * pos.back();
