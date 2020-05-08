@@ -848,8 +848,6 @@ void body() {
                         if (p_it == pos.end()) {
                             // 全てでp * n > xの場合。 
                             // nを大きくするとp * nは大きくなるので、p * n <= xとなることはない
-                            dump(num, x);
-                            dump("ans");
                             return num;
                         }
                     }
@@ -858,6 +856,7 @@ void body() {
                 }
                 return num;
             };
+            dump(num);
             auto num = calc_num();
             return num <= M;
         };
