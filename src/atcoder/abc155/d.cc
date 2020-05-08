@@ -887,7 +887,7 @@ void body() {
             n *= -1;
         }
         sort(CTR(neg_));
-        auto is_x_answer = [&](auto x) {
+        auto is_x_answer = [&](auto x) -> bool {
             auto calc_num = [&](auto xs) {
                 auto p0_it = xs.begin();
                 auto p1_it = xs.begin();
