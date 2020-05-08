@@ -852,23 +852,17 @@ void body() {
                         return num <= M;
                     }
                 }
-                dump(*n_it, *p_it, std::distance(pos.begin(), p_it));
-                dump("dist");
                 num += pos.size() - std::distance(pos.begin(), p_it);
                 n_it += 1;
             }
-            dump(num, x);
-            dump("ans");
             return num <= M;
         };
         i64 lower = neg.front() * pos.back();
         i64 upper = neg.back() * pos.front();
-        //if (is_x_answer(upper)) {
-            //cout << upper << endl;
-            //return ;
-        //}
-        dump(lower, upper);
-        dump("---");
+        if (is_x_answer(upper)) {
+            cout << upper << endl;
+            return ;
+        }
         auto x = (lower + upper) / 2;
         while (upper - lower > 1) {
             if (is_x_answer(x)) {
@@ -878,7 +872,6 @@ void body() {
             }
             x = (lower + upper) / 2;
         }
-        dump(lower, upper, x);
         cout << lower << endl;
     } else if (K <= n_prod_neg + n_prod_zero) {
         // K番目は0
@@ -886,5 +879,52 @@ void body() {
     } else {
         auto M = K - n_prod_neg - n_prod_zero;
         // K番目は正の数
+        auto neg_ = neg;
+        EACH (n, neg_) {
+            n *= -1;
+        }
+        sort(CTR(neg_));
+        auto is_x_answer = [&](auto x) {
+            auto calc_num = [&](auto xs) {
+                auto p0_it = xs.begin();
+                auto p1_it = xs.begin();
+                i64 num = 0;
+                while (p0_it != neg.end()) {
+                    while (*p0_it * *p1_it > x) {
+                        p1_it += 1;
+                        if (p1_it == pos.end()) {
+                            // 全てでp * n > xの場合。 
+                            // nを大きくするとp * nは大きくなるので、p * n <= xとなることはない
+                            return num;
+                        }
+                    }
+                    if (p0_it <= p1_it) {
+                        num += pos.size() - std::distance(xs.begin(), p1_it) - 1;
+                    } else {
+                        num += pos.size() - std::distance(xs.begin(), p1_it);
+                    }
+                    p0_it += 1;
+                }
+                return num;
+            };
+            auto num = calc_num(pos) + calc_num(neg_);
+            return num <= M;
+        };
+        i64 lower = std::min(pos.front() * pos.front(), neg_.front() * neg_.front());
+        i64 upper = std::min(pos.back() * pos.back(), neg_.back() * neg_.back());
+        if (is_x_answer(upper)) {
+            cout << upper << endl;
+            return ;
+        }
+        auto x = (lower + upper) / 2;
+        while (upper - lower > 1) {
+            if (is_x_answer(x)) {
+                lower = x;
+            } else {
+                upper = x;
+            }
+            x = (lower + upper) / 2;
+        }
+        cout << lower << endl;
     }
 }
