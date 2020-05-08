@@ -836,7 +836,7 @@ void body() {
     if (K <= n_prod_neg) {
         // K番目は負の数
         auto M = K;
-        auto is_x_answer = [&](auto x) {
+        auto is_x_answer = [&](auto x) -> bool {
             auto calc_num = [&]() {
                 auto n_it = neg.begin();
                 auto p_it = pos.begin();
