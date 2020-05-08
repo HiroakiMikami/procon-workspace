@@ -841,7 +841,7 @@ void body() {
             auto p_it = pos.begin();
             
             i64 num = 0;
-            while (n_it == neg.end()) {
+            while (n_it != neg.end()) {
                 while (*p_it * *n_it > x) {
                     p_it += 1;
                     if (p_it == pos.end()) {
