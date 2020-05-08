@@ -859,7 +859,8 @@ void body() {
         };
         i64 lower = neg.front() * pos.back();
         i64 upper = neg.back() * pos.front();
-        dump(lower, upper, "init");
+        dump(lower, upper);
+        dump("---");
         auto x = (lower + upper) / 2;
         while (upper - lower > 1) {
             if (is_x_answer(x)) {
