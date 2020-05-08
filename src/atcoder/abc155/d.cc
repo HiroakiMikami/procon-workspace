@@ -842,7 +842,7 @@ void body() {
             
             i64 num = 0;
             while (n_it != neg.end()) {
-                while (*p_it * *n_it <= x) {
+                while (*p_it * *n_it > x) {
                     p_it += 1;
                     if (p_it == pos.end()) {
                         // 全てでp * n > xの場合。 
