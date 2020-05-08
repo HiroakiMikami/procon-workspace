@@ -845,8 +845,8 @@ void body() {
                 if (*p_it * *n_it > x) {
                     // 全てでp * n > xの場合。 
                     // nを大きくするとp * nは大きくなるので、p * n <= xとなることはない
-            dump(num, x);
-            dump("ans");
+                    dump(num, x);
+                    dump("ans");
                     return num <= M;
                 }
                 while (*p_it * *n_it <= x) {
@@ -865,6 +865,10 @@ void body() {
         };
         i64 lower = neg.front() * pos.back();
         i64 upper = neg.back() * pos.front();
+        if (is_x_answer(upper)) {
+            cout << upper << endl;
+            return ;
+        }
         dump(lower, upper);
         dump("---");
         auto x = (lower + upper) / 2;
