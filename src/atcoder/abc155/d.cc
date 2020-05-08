@@ -832,7 +832,6 @@ void body() {
     auto n_prod_neg = n_neg * n_pos;
     auto n_prod_zero = n_zero * (n_neg + n_pos);
     auto n_prod_pos = (n_neg * (n_neg - 1)) / 2 + (n_pos * (n_pos - 1)) / 2;
-    dump(n_prod_neg, n_prod_zero, K);
 
     if (K <= n_prod_neg) {
         // K番目は負の数
@@ -848,12 +847,14 @@ void body() {
                     if (p_it == pos.end()) {
                         // 全てでp * n > xの場合。 
                         // nを大きくするとp * nも大きくなるなるので、p * nがx以下になることはない
+                        dump(num, x);
                         return num <= M;
                     }
                 }
                 num += std::distance(pos.begin(), p_it);
                 n_it += 1;
             }
+            dump(num, x);
             return num <= M;
         };
         i64 lower = neg.front() * pos.back();
