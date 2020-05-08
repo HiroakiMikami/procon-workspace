@@ -866,8 +866,8 @@ void body() {
         i64 lower = neg.front() * pos.back();
         i64 upper = neg.back() * pos.front();
         if (is_x_answer(upper)) {
-            cout << upper << endl;
-            return ;
+            //cout << upper << endl;
+            //return ;
         }
         dump(lower, upper);
         dump("---");
