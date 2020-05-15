@@ -812,6 +812,6 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto Ss = read<string>(N);
-    auto S = HashSet(CTR(Ss));
+    auto S = HashSet<string>(CTR(Ss));
     cout << S.size() << endl;
 }
