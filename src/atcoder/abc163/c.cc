@@ -813,6 +813,9 @@ void body() {
     auto N = read<i64>();
     auto As = read<i64>(N);
     HashMap<i64, i64> ans;
+    REP (i, N) {
+        ans[i] = 0;
+    }
     EACH (A, As) {
         ans[A - 1] += 1;
     }
