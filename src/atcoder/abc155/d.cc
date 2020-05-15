@@ -862,7 +862,7 @@ void body() {
         while (upper - lower > 1) {
             auto n = num(x);
             dump(x, n, K);
-            if (K <= n_neg) {
+            if (K <= x) {
                 upper = x;
             } else {
                 lower = x;
