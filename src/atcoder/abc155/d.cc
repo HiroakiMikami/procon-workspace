@@ -850,7 +850,7 @@ void body() {
                         break;
                     }
                 }
-                n += std::max(0, n_pos - b_i - 1);
+                n += std::max(i64(0), n_pos - b_i - 1);
             }
             return n;
         };
