@@ -814,7 +814,7 @@ void body() {
     auto M = read<i64>();
     auto X = read<i64>();
     auto Cs = Vector<i64>();
-    auto As = Vector<Vector<i64>();
+    auto As = Vector<Vector<i64>>();
     REP (i, N) {
         Cs.push_back(read<i64>());
         As.push_back(read<i64>(M));
