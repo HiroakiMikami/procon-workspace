@@ -813,11 +813,9 @@ void body() {
     auto N = read<i64>();
     auto As = read<i64>(N);
     HashMap<i64, i64> ans;
-    REP (i, N) {
-        //ans[i]
-    }
     EACH (A, As) {
         ans[A - 1] += 1;
+
     }
     REP (i, N) {
         cout << ans[i] << endl;
