@@ -847,7 +847,7 @@ void body() {
                 while (neg[a_i] * pos[b_i] <= x) {
                     b_i += 1;
                     if (b_i == pos.size()) {
-                        break;
+                        return n;
                     }
                 }
                 n += std::max(i64(0), n_pos - b_i - 1);
