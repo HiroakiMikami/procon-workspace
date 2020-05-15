@@ -857,6 +857,7 @@ void body() {
         i64 lower = -1e20;
         i64 upper = 0;
         auto x = (lower + upper) / 2;
+        dump(upper -  lower);
         while (upper - lower > 1) {
             auto n = num(x);
             dump(x, n);
@@ -867,7 +868,6 @@ void body() {
             }
             x = (lower + upper) / 2;
         }
-        dump("upper");
         cout << upper << endl;
     } else if (K <= n_prod_neg + n_prod_zero) {
         // K番目は0
