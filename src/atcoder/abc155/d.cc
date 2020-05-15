@@ -836,7 +836,6 @@ void body() {
     sort(CTR(pos));
 
     if (K <= n_prod_neg) {
-        dump("neg");
         // K番目は負の数
         auto M = K;
         auto num = [&](auto x) {
@@ -868,6 +867,7 @@ void body() {
             }
             x = (lower + upper) / 2;
         }
+        dump("upper");
         cout << upper << endl;
     } else if (K <= n_prod_neg + n_prod_zero) {
         // K番目は0
