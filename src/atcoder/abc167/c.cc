@@ -828,7 +828,7 @@ void body() {
     i64 ans = 1e10;
     REP (a_, A) {
         auto a = std::bitset<12>(a_);
-        auto C = 0;
+        i64 C = 0;
         REP (i, N) {
             if (a.get(i)) {
                 C += Cs[i];
