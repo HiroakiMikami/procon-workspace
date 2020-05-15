@@ -843,13 +843,14 @@ void body() {
             auto b_i = n_pos - 1;
             i64 n = 0;
             while (a_i < neg.size()) {
-                while (neg[a_i] * pos[b_i] <= x) {
-                    b_i -= 1;
-                    if (b_i == -1) {
-                        break ;
+                if (b_i >= 0) {
+                    while (neg[a_i] * pos[b_i] <= x) {
+                        b_i -= 1;
+                        if (b_i == -1) {
+                            break ;
+                        }
                     }
                 }
-                //dump(x, neg[a_i], pos[b_i], n_pos - b_i - 1, K);
                 n += std::max(i64(0), n_pos - b_i - 1);
                 a_i += 1;
             }
