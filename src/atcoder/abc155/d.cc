@@ -837,7 +837,6 @@ void body() {
 
     if (K <= n_prod_neg) {
         // K番目は負の数
-        auto M = K;
         auto num = [&](auto x) {
             // a*b <= xとなるペアの個数を計算する
             auto a_i = 0;
@@ -850,6 +849,7 @@ void body() {
                         return n;
                     }
                 }
+                dump(neg[a_i], pos[b_i], n_pos - b_i - 1, K);
                 n += std::max(i64(0), n_pos - b_i - 1);
                 a_i += 1;
             }
