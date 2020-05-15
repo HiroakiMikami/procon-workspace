@@ -832,14 +832,14 @@ void body() {
         auto a = std::bitset<12>(a_);
         i64 C = 0;
         REP (i, N) {
-            if (a.get(i)) {
+            if (a[i]) {
                 C += Cs[i];
             }
         }
 
         auto us = Vector<i64>(M, 0);
         REP (i, N) {
-            if (!a.get(i)) {
+            if (!a[i]) {
                 continue ;
             }
             REP (j, M) {
