@@ -854,7 +854,7 @@ void body() {
             }
             return n;
         };
-        i64 lower = -1e20;
+        i64 lower = -1e18-1;
         i64 upper = 0;
         auto x = (lower + upper) / 2;
         dump(-lower);
