@@ -851,13 +851,13 @@ void body() {
                     }
                 }
                 n += std::max(i64(0), n_pos - b_i - 1);
+                a_i += 1;
             }
             return n;
         };
         i64 lower = -1e18-1;
         i64 upper = 0;
         auto x = (lower + upper) / 2;
-        dump(-lower);
         while (upper - lower > 1) {
             auto n = num(x);
             dump(x, n);
