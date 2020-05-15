@@ -840,12 +840,12 @@ void body() {
         auto num = [&](auto x) {
             // a*b <= xとなるペアの個数を計算する
             auto a_i = 0;
-            auto b_i = 0;
+            auto b_i = n_pos - 1;
             i64 n = 0;
             while (a_i < neg.size()) {
                 while (neg[a_i] * pos[b_i] <= x) {
-                    b_i += 1;
-                    if (b_i == pos.size()) {
+                    b_i -= 1;
+                    if (b_i == -1) {
                         return n;
                     }
                 }
