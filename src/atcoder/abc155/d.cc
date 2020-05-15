@@ -832,50 +832,41 @@ void body() {
     auto n_prod_neg = n_neg * n_pos;
     auto n_prod_zero = n_zero * (n_neg + n_pos);
     auto n_prod_pos = (n_neg * (n_neg - 1)) / 2 + (n_pos * (n_pos - 1)) / 2;
+    sort(CTR(neg));
+    sort(CTR(pos));
 
     if (K <= n_prod_neg) {
         // K番目は負の数
         auto M = K;
-        auto is_x_answer = [&](auto x) -> bool {
-            auto calc_num = [&]() {
-                auto n_it = neg.begin();
-                auto p_it = pos.begin();
-                
-                i64 num = 0;
-                while (n_it != neg.end()) {
-                    while (*p_it * *n_it > x) {
-                        p_it += 1;
-                        if (p_it == pos.end()) {
-                            // 全てでp * n > xの場合。 
-                            // nを大きくするとp * nは大きくなるので、p * n <= xとなることはない
-                            return num;
-                        }
+        auto num = [&](auto x) {
+            // a*b <= xとなるペアの個数を計算する
+            auto a_i = 0;
+            auto b_i = 0;
+            i64 n = 0;
+            while (a_i < neg.size()) {
+                while (neg[a_i] * pos[b_i] <= x) {
+                    b_i += 1;
+                    if (b_i == pos.size()) {
+                        break;
                     }
-                    num += pos.size() - std::distance(pos.begin(), p_it);
-                    n_it += 1;
                 }
-                return num;
-            };
-            auto num = calc_num();
-            dump(num, x);
-            return num <= M;
-        };
-        i64 lower = neg.front() * pos.back();
-        i64 upper = neg.back() * pos.front();
-        if (is_x_answer(upper)) {
-            cout << upper << endl;
-            return ;
+                n += std::max(0, n_pos - b_i - 1);
+            }
+            return n;
         }
+        i64 lower = -1e20;
+        i64 upper = 0;
         auto x = (lower + upper) / 2;
         while (upper - lower > 1) {
-            if (is_x_answer(x)) {
-                lower = x;
-            } else {
+            auto n = num(x);
+            if (K <= n_neg) {
                 upper = x;
+            } else {
+                lower = x;
             }
             x = (lower + upper) / 2;
         }
-        cout << lower << endl;
+        cout << upper << endl;
     } else if (K <= n_prod_neg + n_prod_zero) {
         // K番目は0
         cout << 0 << endl;
