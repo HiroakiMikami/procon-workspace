@@ -819,8 +819,8 @@ void body() {
     EACH (AB, ABs) {
         auto A = AB.first;
         auto B = AB.second;
-        C[A - 1] = std:::max(C[A - 1], Hs[B - 1]);
-        C[B - 1] = std:::max(C[B - 1], Hs[A - 1]);
+        C[A - 1] = std::max(C[A - 1], Hs[B - 1]);
+        C[B - 1] = std::max(C[B - 1], Hs[A - 1]);
     }
 
     i64 ans = 0;
