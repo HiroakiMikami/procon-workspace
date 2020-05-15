@@ -836,6 +836,7 @@ void body() {
     sort(CTR(pos));
 
     if (K <= n_prod_neg) {
+        dump("neg");
         // K番目は負の数
         auto M = K;
         auto num = [&](auto x) {
