@@ -853,7 +853,7 @@ void body() {
                 n += std::max(0, n_pos - b_i - 1);
             }
             return n;
-        }
+        };
         i64 lower = -1e20;
         i64 upper = 0;
         auto x = (lower + upper) / 2;
