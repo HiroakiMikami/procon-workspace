@@ -857,5 +857,8 @@ void body() {
             ans = std::min(ans, C);
         }
     }
+    if (ans == i64(1e10)) {
+        ans = -1;
+    }
     cout << ans << endl;
 }
