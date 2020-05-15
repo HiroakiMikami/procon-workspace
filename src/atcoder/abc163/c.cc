@@ -26,7 +26,7 @@ NOTES
 #include <iomanip>
 #include <type_traits>
 #include <functional>
-#include <optional>
+#include <experimental/optional>
 
 /* import STL */
 // stream
@@ -38,13 +38,13 @@ using std::flush;
 
 // basic types
 using std::nullptr_t;
-using std::optional;
+using std::experimental::optional;
 using std::pair;
 using std::tuple;
 using std::string;
 
 // function for basic types
-using std::make_optional;
+using std::experimental::make_optional;
 using std::make_pair;
 using std::make_tuple;
 using std::get;
@@ -814,7 +814,7 @@ void body() {
     auto As = read<i64>(N);
     HashMap<i64, i64> ans;
     REP (i, N) {
-        ans[i] = 0;
+        //ans[i]
     }
     EACH (A, As) {
         ans[A - 1] += 1;
