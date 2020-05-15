@@ -860,7 +860,7 @@ void body() {
         auto x = (lower + upper) / 2;
         while (upper - lower > 1) {
             auto n = num(x);
-            dump(x, n);
+            dump(x, n, K);
             if (K <= n_neg) {
                 upper = x;
             } else {
