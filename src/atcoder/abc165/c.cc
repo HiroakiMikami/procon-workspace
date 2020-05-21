@@ -818,7 +818,7 @@ void body() {
     auto score = [&](const Vector<bool> &xs) -> i64 {
         auto As = Vector<i64>();
         i64 A = 1;
-        EACH (x, xs) {
+        EACH_V (x, xs) {
             if (x) {
                 As.push_back(A);
             } else {
