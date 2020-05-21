@@ -814,114 +814,75 @@ void body() {
     auto K = read<i64>();
     auto As = read<i64>(N);
     sort(CTR(As));
-    Vector<i64> neg;
-    Vector<i64> pos;
-    i64 n_zero = 0;
-    EACH (A, As) {
-        if (A < 0) {
-            neg.push_back(A);
-        } else if (A == 0) {
-            n_zero += 1; 
-        } else if (A > 0) {
-            pos.push_back(A);
-        }
-    }
-    i64 n_neg = neg.size();
-    i64 n_pos = pos.size();
-
-    auto n_prod_neg = n_neg * n_pos;
-    auto n_prod_zero = n_zero * (n_neg + n_pos);
-    auto n_prod_pos = (n_neg * (n_neg - 1)) / 2 + (n_pos * (n_pos - 1)) / 2;
-    sort(CTR(neg));
-    sort(CTR(pos));
-
-    if (K <= n_prod_neg) {
-        // K番目は負の数
-        auto num = [&](auto x) {
-            // a*b <= xとなるペアの個数を計算する
-            auto a_i = 0;
-            auto b_i = n_pos - 1;
-            i64 n = 0;
-            while (a_i < neg.size()) {
-                if (b_i >= 0) {
-                    while (neg[a_i] * pos[b_i] <= x) {
-                        b_i -= 1;
-                        if (b_i == -1) {
-                            break ;
+    auto INF = i64(1e18) + 1;
+    auto num = [&](i64 x) -> i64 {
+        // a * b < xを満たす(a, b)のペアの個数
+        i64 ans = 0;
+        i64 exclude = 0;
+        EACH (a, As) {
+            // aを固定
+            if (a >= 0) {
+                // a * b < x => b < x / aより、ある範囲より小さいbを見つける
+                if (a * As[0] >= x) {
+                    continue ; // a * b < xとなるbはない
+                } else if (a * As.back() < x) {
+                    ans += N; // 全部そう
+                } else {
+                    i64 lower = 0;
+                    i64 upper = N - 1;
+                    auto t = (upper + lower) / 2;
+                    while (upper - lower > 1) {
+                        if (a * As[t] < x) {
+                            lower = t;
+                        } else {
+                            upper = t;
                         }
+                        t = (lower + upper) / 2;
                     }
+                    ans += upper;
                 }
-                n += std::max(i64(0), n_pos - b_i - 1);
-                a_i += 1;
-            }
-            return n;
-        };
-        i64 lower = -1e18-1;
-        i64 upper = 0;
-        auto x = (lower + upper) / 2;
-        while (upper - lower > 1) {
-            auto n = num(x);
-            dump(x, n, K);
-            if (K <= n) {
-                upper = x;
             } else {
-                lower = x;
-            }
-            x = (lower + upper) / 2;
-        }
-        cout << upper << endl;
-    } else if (K <= n_prod_neg + n_prod_zero) {
-        // K番目は0
-        cout << 0 << endl;
-    } else {
-        auto M = K - n_prod_neg - n_prod_zero;
-        // K番目は正の数
-        auto neg_ = neg;
-        EACH (n, neg_) {
-            n *= -1;
-        }
-        sort(CTR(neg_));
-        auto is_x_answer = [&](auto x) -> bool {
-            auto calc_num = [&](auto xs) {
-                auto p0_it = xs.begin();
-                auto p1_it = xs.begin();
-                i64 num = 0;
-                while (p0_it != neg.end()) {
-                    while (*p0_it * *p1_it > x) {
-                        p1_it += 1;
-                        if (p1_it == pos.end()) {
-                            // 全てでp * n > xの場合。 
-                            // nを大きくするとp * nは大きくなるので、p * n <= xとなることはない
-                            return num;
+                // a * b < x => b > x / aより、ある範囲より大きいbを見つける
+                if (a * As[0] < x) {
+                    ans += N; // 全部そう
+                } else if (a * As.back() >= x) {
+                    continue ; // a * b < xとなるbはない
+                } else {
+                    i64 lower = 0;
+                    i64 upper = N - 1;
+                    auto t = (upper + lower) / 2;
+                    while (upper - lower > 1) {
+                        if (a * As[t] < x) {
+                            upper = t;
+                        } else {
+                            lower = t;
                         }
+                        t = (lower + upper) / 2;
                     }
-                    if (p0_it <= p1_it) {
-                        num += pos.size() - std::distance(xs.begin(), p1_it) - 1;
-                    } else {
-                        num += pos.size() - std::distance(xs.begin(), p1_it);
-                    }
-                    p0_it += 1;
+                    ans += (N - upper);
                 }
-                return num;
-            };
-            auto num = calc_num(pos) + calc_num(neg_);
-            return num <= M;
-        };
-        i64 lower = std::min(pos.front() * pos.front(), neg_.front() * neg_.front());
-        i64 upper = std::min(pos.back() * pos.back(), neg_.back() * neg_.back());
-        if (is_x_answer(upper)) {
-            cout << upper << endl;
-            return ;
-        }
-        auto x = (lower + upper) / 2;
-        while (upper - lower > 1) {
-            if (is_x_answer(x)) {
-                lower = x;
-            } else {
-                upper = x;
             }
-            x = (lower + upper) / 2;
+
+            if (a * a < x) {
+                // 自分同士とペアになって条件を満たす場合は含めてはいけない
+                exclude += 1;
+            }
         }
-        cout << lower << endl;
+        // (a, b)と(b, a)を重複して数えているので弾く
+        return (ans - exclude) / 2;
+    };
+
+
+    i64 lower = -INF;
+    i64 upper = INF;
+    auto t = (lower + upper) / 2;
+    while (upper -lower > 1) {
+        if (num(t) < K) {
+            lower = t;
+        } else {
+            upper = t;
+        }
+        t = (lower + upper) / 2;
     }
+    cout << lower << endl;
 }
