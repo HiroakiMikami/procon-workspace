@@ -905,6 +905,7 @@ void body() {
             a.second *= -1;
         }
     }
+    dump(ans);
     EACH (a, ans) {
         cout << a.first << " " << a.second << endl;
     }
