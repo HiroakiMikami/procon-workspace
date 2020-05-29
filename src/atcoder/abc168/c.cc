@@ -817,6 +817,6 @@ void body() {
     auto H = read<i64>();
     auto M = read<i64>();
 
-    auto d = (60 * H - 71 * M) / 72.0 /30.0;
+    auto d = (60 * H - 71 * M) / 72.0 / 30.0 * M_PI;
     cout << std::sqrt(A * A + B * B - 2 * A * B * std::cos(d)) << endl;
 }
