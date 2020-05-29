@@ -833,7 +833,6 @@ void body() {
         if (n * K < X + Y) {
             continue ;
         }
-        dump(n, n * K - X - Y);
         if ((n * K - X - Y) % 2 == 0) {
             if (n == 1 && K != X + Y) {
                 /*
@@ -909,6 +908,7 @@ void body() {
             a.second *= -1;
         }
     }
+    dump(ans);
     EACH (a, ans) {
         cout << a.first << " " << a.second << endl;
     }
