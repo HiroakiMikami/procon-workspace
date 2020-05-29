@@ -822,7 +822,7 @@ void body() {
         auto x_str = oss.str();
         if (x_str.size() > S.size()) {
             // 探すものの方が長いのでもうない
-            // Sの制約から高々100回でこのループは終わる
+            // Sの制約から高々100回でこのループは終わる => 制約読み違えていた
             break ;
         }
         dump(x_str.size(), S.size());
