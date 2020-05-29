@@ -905,7 +905,7 @@ void body() {
             a.second *= -1;
         }
     }
-    REP (a, ans) {
+    EACH (a, ans) {
         cout << a.first << " " << a.second << endl;
     }
 }
