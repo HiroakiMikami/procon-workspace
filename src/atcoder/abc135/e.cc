@@ -830,6 +830,9 @@ void body() {
     auto n_ = (X + Y) / K;
     REP (n, n_ + 4) {
         // n回の移動でたどり着くことを目指す
+        if (n * K < X + Y) {
+            continue ;
+        }
         dump(n, n * K - X - Y);
         if ((n * K - X - Y) % 2 == 0) {
             if (n == 1 && K != X + Y) {
