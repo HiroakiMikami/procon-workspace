@@ -828,7 +828,7 @@ void body() {
 
     auto ans = Vector<pair<i64, i64>>();
     auto n_ = (X + Y) / K;
-    REP (n, n_ + 3) {
+    REP (n, n_ + 4) {
         // n回の移動でたどり着くことを目指す
         dump(n, n * K - X - Y);
         if ((n * K - X - Y) % 2 == 0) {
