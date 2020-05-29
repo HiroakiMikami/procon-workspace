@@ -909,6 +909,7 @@ void body() {
         }
     }
     dump(ans);
+    cout << ans.size() << endl;
     EACH (a, ans) {
         cout << a.first << " " << a.second << endl;
     }
