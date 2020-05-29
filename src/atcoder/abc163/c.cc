@@ -811,10 +811,9 @@ int main (int argc, char **argv) {
 
 void body() {
     auto N = read<i64>();
-    auto As = read<i64>(N);
+    auto As = read<i64>(N - 1);
     HashMap<i64, i64> ans;
     EACH (A, As) {
-        dump(A, A - 1);
         ans[A - 1] += 1;
 
     }
