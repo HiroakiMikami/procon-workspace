@@ -825,6 +825,7 @@ void body() {
             // Sの制約から高々100回でこのループは終わる
             break ;
         }
+        dump(x_str);
         i64 pos = 0;
         while (true) {
             auto x = S.find(x_str, pos);
