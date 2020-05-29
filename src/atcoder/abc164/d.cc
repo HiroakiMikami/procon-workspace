@@ -831,8 +831,7 @@ void body() {
             if (x == string::npos) {
                 break ;
             }
-            dump(x, x_str);
-            pos = pos + 1;
+            pos = x + 1;
             ans += 1;
         }
 
