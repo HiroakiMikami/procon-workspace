@@ -816,8 +816,8 @@ void body() {
 
     auto x_neg = X < 0;
     auto y_neg = Y < 0;
-    auto X = std::abs(X);
-    auto Y = std::abs(Y);
+    X = std::abs(X);
+    Y = std::abs(Y);
     auto trans = X < Y;
     if (trans) std::swap(X, Y);
 
