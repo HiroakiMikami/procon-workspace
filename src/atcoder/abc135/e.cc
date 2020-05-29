@@ -895,12 +895,12 @@ void body() {
             std::swap(a.first, a.second);
         }        
     }
-    if (neg_x) {
+    if (x_neg) {
         EACH (a, ans) {
             a.first *= -1;
         }
     }
-    if (neg_y) {
+    if (y_neg) {
         EACH (a, ans) {
             a.second *= -1;
         }
