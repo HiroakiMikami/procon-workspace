@@ -827,8 +827,8 @@ void body() {
         }
         i64 pos = 0;
         while (true) {
-            auto i = S.find(x_str, pos);
-            if (i == string::npos) {
+            auto x = S.find(x_str, pos);
+            if (x == string::npos) {
                 break ;
             }
             pos = pos + 1;
