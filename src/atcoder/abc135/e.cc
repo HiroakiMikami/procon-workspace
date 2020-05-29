@@ -814,88 +814,98 @@ void body() {
     auto X = read<i64>();
     auto Y = read<i64>();
 
-    auto a = X - Y;
-    auto b = X + Y;
-    auto n = std::abs(a) / K;
-    auto m = std::abs(a) % K;
-    auto p = std::abs(b) / K;
-    auto q = std::abs(b) % K;
+    auto x_neg = X < 0;
+    auto y_neg = Y < 0;
+    auto X = std::abs(X);
+    auto Y = std::abs(Y);
+    auto trans = X < Y;
+    if (trans) std::swap(X, Y);
 
-    auto s = 0L, t = 0L;
-    auto Qs = std::queue<i64>();
-    auto Qt = std::queue<i64>();
-
-    auto sign = [](auto x) {
-        return (x > 0) ? 1 : -1;
-    };
-
-    REP (i, n) {
-        Qs.push(sign(a) * K);
-    }
-    if (K % 2 == 1 && K % 2 == 0) {
-        Qs.push(sign(a));
-        Qs.push(sign(a) * (m - 1));
-    }else {
-        Qs.push(sign(a) * m);
-    }
-    REP (i, p) {
-        Qt.push(sign(b) * K);
-    }
-    if (K % 2 == 1 && K % 2 == 0) {
-        Qt.push(sign(b));
-        Qt.push(sign(b) * (q - 1));
-    } else {
-        Qt.push(sign(b) * q);
+    if (K % 2 == 0 && (X + Y) % 2 == 1) {
+        cout << -1 << endl;
+        return ;
     }
 
-    Vector<pair<i64, i64>> ans;
-    while (!(Qs.empty() && Qt.empty())) {
-        auto s_ = 0L;
-        if (!Qs.empty()) {
-            s_ = Qs.front();
-            Qs.pop();
-        }
-        auto t_ = 0L;
-        if (!Qt.empty()) {
-            t_ = Qt.front();
-            Qt.pop();
-        }
-
-        if (std::abs(s_) == K && std::abs(t_) == K) {
-            s += s_;
-            t += t_;
-        } else if (std::abs(s_) == K) {
-            s += s_;
-            t += t_;
-        } else if (std::abs(t_) == K) {
-            s += s_;
-            t += t_;
-        } else if (std::abs(s_) != 0) {
-            s += s_;
-            t += K;
-            if (t_ != 0) {
-                Qt.push(t_);
+    auto ans = Vector<pair<i64, i64>>();
+    auto n_ = (X + Y) / K;
+    REP (n, n_ + 3) {
+        // n回の移動でたどり着くことを目指す
+        if ((n * K - X - Y) % 2 == 0) {
+            if (n == 1 && K != X + Y) {
+                /*
+                +--+
+                |  |
+                |
+                のパターン => 1回の移動は不適切
+                 */
+                continue;
             }
-            Qt.push(-K);
-        } else {
-            s += K;
-            t += t_;
-            if (s_ != 0) {
-                Qs.push(s_);
+            // nKが総移動距離の場合
+            if (n == 3 && X < K) {
+                /*
+                +----+
+                |    |
+                |
+                +-
+                のパターン
+                 */
+                ans.emplace_back(-K + Y, Y);
+                auto l = (K + X - Y) / 2;
+                auto m = K - l;
+                ans.emplace_back((X + Y - K) / 2, Y + m);
+                ans.emplace_back(X, Y);
+                break;
+            } else {
+                /*
+                +--+
+                |  |
+                |
+                のパターン => 1回の移動は不適切
+                 */
+                auto maxY = (n * K - X - Y) / 2 + Y;
+                i64 x = 0, y = 0;
+                auto phase = 0;
+                REP (_, n) {
+                    if (phase == 0) {
+                        y += K;
+                        if (maxY <= y) {
+                            phase = 1;
+                            x += (y - maxY);
+                            y = maxY;
+                        }
+                    } else if (phase == 1) {
+                        x += K;
+                        if (X <= x) {
+                            phase = 2;
+                            y -= (x - X);
+                            x = X;
+                        }
+                    } else {
+                        y -= K;
+                    }
+                    ans.emplace_back(x, y);
+                }
+                break;
             }
-            Qs.push(-K);
         }
-
-        if (std::abs(s) % 2 != std::abs(t) % 2) {
-            cout << -1 << endl;
-            return ;
-        }
-
-        ans.emplace_back((s + t) / 2, (t - s) / 2);
     }
 
-    cout << ans.size() << endl;
-    EACH (a, ans) {
+    if (trans) {
+        EACH (a, ans) {
+            std::swap(a.first, a.second);
+        }        
+    }
+    if (neg_x) {
+        EACH (a, ans) {
+            a.first *= -1;
+        }
+    }
+    if (neg_y) {
+        EACH (a, ans) {
+            a.second *= -1;
+        }
+    }
+    REP (a, ans) {
         cout << a.first << " " << a.second << endl;
     }
 }
