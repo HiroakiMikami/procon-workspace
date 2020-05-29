@@ -817,6 +817,7 @@ void body() {
         ans[A - 1] += 1;
 
     }
+    dump(ans);
     REP (i, N) {
         cout << ans[i] << endl;
     }
