@@ -814,6 +814,7 @@ void body() {
     auto As = read<i64>(N);
     HashMap<i64, i64> ans;
     EACH (A, As) {
+        dump(A - 1);
         ans[A - 1] += 1;
 
     }
