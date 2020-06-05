@@ -826,6 +826,7 @@ void body() {
     REP (i, as.size()) {
         Ss[i + 1] = (Ss[i] + as[i]) % 2019;
     }
+    dump(Ss);
 
     auto ns = HashMap<i64, i64>();
     EACH (s, Ss) {
