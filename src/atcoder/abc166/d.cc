@@ -1033,8 +1033,7 @@ void body() {
     }
 
     // A^5 - B^5 = Xの場合
-    i64 A = 1;
-    while (true) {
+    REP (A, 200) {
         if (pow(A, 5) - pow(A - 1, 5) > X) {
             throw "???";
         }
@@ -1045,6 +1044,5 @@ void body() {
             cout << A << " " << B << endl;
             return ;
         }
-        A += 1;
     }
 }
