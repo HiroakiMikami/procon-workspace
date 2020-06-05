@@ -1012,7 +1012,7 @@ void body() {
         auto t = (lower + upper) / 2;
         while (upper - lower > 1) {
             if (pow(t, 5) <= x) {
-                lower = t
+                lower = t;
             } else {
                 upper = t;
             }
@@ -1022,9 +1022,9 @@ void body() {
     };
 
     // A^5 + B^5 = Xの場合
-    REP (A, get_root_5(X) + 2) {
+    REP (A, find_root_5(X) + 2) {
         auto x = X - pow(A, 5);
-        auto B = get_root_5(x);
+        auto B = find_root_5(x);
         if (pow(B, 5) == x) {
             cout << A << " " << B << endl;
             return ;
