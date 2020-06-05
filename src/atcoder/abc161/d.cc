@@ -820,6 +820,7 @@ void body() {
     FOR (i, 1, 10) {
         prev.push_back(i);
     }
+    K -= 1;
     while (true) {
         K -= prev.size();
         auto n = Vector<i64>();
