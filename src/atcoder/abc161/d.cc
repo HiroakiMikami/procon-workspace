@@ -811,50 +811,29 @@ int main (int argc, char **argv) {
 
 void body() {
     auto K = read<i64>();
-    auto dp1 = Vector<Vector<i64>>(); // dp1[i][j] := i桁目がjでi桁以下のルンルン数の個数
-    auto dp2 = Vector<i64>(); // dp[2][i] := i桁以下のルンルン数の個数
 
-    dp1.push_back({});
-    REP (i, 10) {
-        dp1[0].push_back(1);
+    if (K <= 9) {
+        cout << K << endl;
     }
-    dp2.push_back(9);
-
-    while (dp2.back() < K) {
-        // dp1の更新
-        dp1.push_back({});
-        dp2.push_back(dp2.back());
-        REP (i, 10) {
-            i64 tmp = 0;
-            FOR (j, std::max<i64>(0, i - 1), std::min<i64>(9, i + 1) + 1) {
-                tmp += dp1[dp1.size() - 2][j];
-            }
-            dp1.back().push_back(tmp);
-        }
-        FOR (i, 1, 10) {
-            dp2.back() += dp1.back()[i];
-        }
+        
+    auto prev = Vector<i64>();
+    FOR (i, 1, 10) {
+        prev.push_back(i);
     }
-    dump(dp1);
-    dump(dp2);
-
-    // dp2[i] >= Kより、i桁以内にK番目のルンルン数がある
-    std::string ans = "";
-    i64 target = -1;
-    REPR (i, dp2.size()) {
-        i64 tmp = (i != 0) ? dp2[i - 1] : 0;
-        auto minimum = (i == dp2.size() - 1) ? 1 : std::max<i64>(target - 1, 0);
-        auto maximum = (i == dp2.size() - 1) ? 9 : std::max<i64>(target + 1, 9);
-        FOR (j, minimum, maximum + 1) {
-            tmp += dp1[i][j];
-            if (tmp >= K) {
-                target = j;
-                break;
+    while (true) {
+        K -= prev.size();
+        auto n = Vector<i64>();
+        EACH (p, prev) {
+            FOR (q, p % 10 - 1, p % 10 + 2) {
+                if (q < 0 || q >= 10) continue ;
+                n.psuh_back(10 * p + q);
             }
         }
-        ans += (target + '0');
-        K -= (tmp - dp1[i][target]);
+        if (n.size() >= k) {
+            cout << n[k] << endl;
+            return ;
+        }
+        prev = n;
     }
-    cout << ans << endl;
 
 }
