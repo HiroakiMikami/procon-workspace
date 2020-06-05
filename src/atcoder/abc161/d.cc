@@ -824,6 +824,7 @@ void body() {
     while (true) {
         K -= prev.size();
         auto n = Vector<i64>();
+        dump(std::min<i64>(K, 3 * prev.size()));
         n.reserve(std::min<i64>(K, 3 * prev.size()));
         EACH (p, prev) {
             FOR (q, p % 10 - 1, p % 10 + 2) {
