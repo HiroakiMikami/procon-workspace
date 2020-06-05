@@ -1009,7 +1009,7 @@ void body() {
 
         i64 lower = 0;
         i64 upper = x;
-        auto t = (lower + upper) / 2
+        auto t = (lower + upper) / 2;
         while (upper - lower > 1) {
             if (pow(t, 5) <= x) {
                 lower = t
