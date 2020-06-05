@@ -814,6 +814,7 @@ void body() {
 
     if (K <= 9) {
         cout << K << endl;
+        return ;
     }
         
     auto prev = Vector<i64>();
