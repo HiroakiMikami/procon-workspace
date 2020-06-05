@@ -820,7 +820,8 @@ void body() {
         base *= 10;
         base %= 2019;
     }
-    auto Ss =Vector<i64>(S.size() + 1);
+    dump(as);
+    auto Ss = Vector<i64>(S.size() + 1);
     Ss[0] = 0;
     REP (i, as.size()) {
         Ss[i + 1] = (Ss[i] + as[i]) % 2019;
