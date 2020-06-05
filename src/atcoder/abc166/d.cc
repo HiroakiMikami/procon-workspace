@@ -1034,9 +1034,6 @@ void body() {
 
     // A^5 - B^5 = Xの場合
     REP (A, 200) {
-        if (pow(A, 5) - pow(A - 1, 5) > X) {
-            throw "???";
-        }
         auto x = pow(A, 5) - X;
         if (x < 0) continue ;
         auto B = find_root_5(x);
