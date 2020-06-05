@@ -816,7 +816,7 @@ void body() {
     auto base = 1;
     REPR (i, S.size()) {
         auto s = S[i] - '0';
-        as[S.size() - i] = (s * base) % 2019;
+        as[S.size() - i - 1] = (s * base) % 2019;
         base *= 10;
         base %= 2019;
     }
