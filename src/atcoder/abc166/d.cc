@@ -1016,7 +1016,7 @@ void body() {
             } else {
                 upper = t;
             }
-            t = (lower + upper) / 2
+            t = (lower + upper) / 2;
         }
         return lower;
     };
