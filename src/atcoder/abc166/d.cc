@@ -1042,6 +1042,7 @@ void body() {
         auto B = find_root_5(x);
         if (pow(B, 5) == x) {
             cout << A << " " << -B << endl;
+            return ;
         }
     }
 }
