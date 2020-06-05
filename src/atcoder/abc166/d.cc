@@ -1022,6 +1022,7 @@ void body() {
     };
 
     // A^5 - (-B)^5 = Xの場合
+    dump(find_root_5(X) + 2);
     REP (A, find_root_5(X) + 2) {
         auto x = X - pow(A, 5);
         if (x < 0) continue ;
