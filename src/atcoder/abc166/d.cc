@@ -1011,7 +1011,6 @@ void body() {
         i64 upper = x;
         auto t = (lower + upper) / 2;
         while (upper - lower > 1) {
-            dump(t, x,pow(t, 5) );
             if (pow(t, 5) <= x) {
                 lower = t;
             } else {
@@ -1019,17 +1018,11 @@ void body() {
             }
             t = (lower + upper) / 2;
         }
-        dump("lower:");
-        dump(lower);
         return lower;
     };
 
     // A^5 - (-B)^5 = Xの場合
-    dump(find_root_5(X));
-    if (X > 1000) {
-        throw "???";
-    }
-    REP (A, find_root_5(X) + 2) {
+    REP (A, 100) {
         auto x = X - pow(A, 5);
         if (x < 0) continue ;
         auto B = find_root_5(x);
