@@ -1011,7 +1011,7 @@ void body() {
         i64 upper = x;
         auto t = (lower + upper) / 2;
         while (upper - lower > 1) {
-            dump(t, x);
+            dump(t, x,pow(t, 5) );
             if (pow(t, 5) <= x) {
                 lower = t;
             } else {
