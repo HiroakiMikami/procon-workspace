@@ -829,8 +829,8 @@ void body() {
                 n.psuh_back(10 * p + q);
             }
         }
-        if (n.size() >= k) {
-            cout << n[k] << endl;
+        if (n.size() >= K) {
+            cout << n[K] << endl;
             return ;
         }
         prev = n;
