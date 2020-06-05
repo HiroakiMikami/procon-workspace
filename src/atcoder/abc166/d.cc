@@ -1021,12 +1021,12 @@ void body() {
         return lower;
     };
 
-    // A^5 + B^5 = Xの場合
+    // A^5 - (-B)^5 = Xの場合
     REP (A, find_root_5(X) + 2) {
         auto x = X - pow(A, 5);
         auto B = find_root_5(x);
         if (pow(B, 5) == x) {
-            cout << A << " " << B << endl;
+            cout << A << " " << - B << endl;
             return ;
         }
     }
@@ -1041,7 +1041,7 @@ void body() {
         if (x < 0) continue ;
         auto B = find_root_5(x);
         if (pow(B, 5) == x) {
-            cout << A << " " << -B << endl;
+            cout << A << " " << B << endl;
             return ;
         }
     }
