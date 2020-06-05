@@ -820,7 +820,6 @@ void body() {
         base *= 10;
         base %= 2019;
     }
-    dump(as);
     auto Ss = Vector<i64>(S.size() + 1);
     Ss[0] = 0;
     REP (i, as.size()) {
