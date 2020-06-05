@@ -826,7 +826,7 @@ void body() {
         EACH (p, prev) {
             FOR (q, p % 10 - 1, p % 10 + 2) {
                 if (q < 0 || q >= 10) continue ;
-                n.psuh_back(10 * p + q);
+                n.push_back(10 * p + q);
             }
         }
         if (n.size() >= K) {
