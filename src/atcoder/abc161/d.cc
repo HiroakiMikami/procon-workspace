@@ -830,13 +830,11 @@ void body() {
                 n.push_back(10 * p + q);
             }
         }
-        dump(n, K);
         if (n.size() >= K) {
             cout << n[K] << endl;
             return ;
         }
         prev = n;
-        break ;
     }
 
 }
