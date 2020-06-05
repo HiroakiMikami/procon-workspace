@@ -1018,6 +1018,8 @@ void body() {
             }
             t = (lower + upper) / 2;
         }
+        dump("lower:");
+        dump(lower);
         return lower;
     };
 
