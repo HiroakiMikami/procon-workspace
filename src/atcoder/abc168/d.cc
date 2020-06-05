@@ -1351,7 +1351,7 @@ namespace graph {
 void body() {
     auto N = read<i64>();
     auto M = read<i64>();
-    auto ABs = read<i64, i64>();
+    auto ABs = read<i64, i64>(M);
     EACH (AB, ABs) {
         AB.first -= 1;
         AB.second -= 1;
