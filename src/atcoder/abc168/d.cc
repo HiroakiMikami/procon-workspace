@@ -1364,7 +1364,7 @@ void body() {
 
     auto results = graph::dijkstra(g, 0);
     cout << "Yes" << endl;
-    FOR (i, N) {
+    FOR (i, 1, N) {
         cout << results[i].previous_vertex.value() + 1 << endl;
     }
 }
