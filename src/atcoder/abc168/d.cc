@@ -1356,9 +1356,9 @@ void body() {
         AB.first -= 1;
         AB.second -= 1;
     }
-    auto g = SimpleAdjacencyList(N);
+    auto g = WeightedAdjacencyList(N);
     EACH (AB, ABs) {
-        g.add_edge(std::tuple<i64, i64>(AB.first, AB.second));
+        g.add_edge(std::tuple<size_t, size_t, i64>(AB.first, AB.second, 1));
     }
     g.to_undirected();
 
