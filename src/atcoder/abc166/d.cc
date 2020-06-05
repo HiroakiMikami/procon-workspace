@@ -1032,7 +1032,7 @@ void body() {
     }
 
     // A^5 - B^5 = Xの場合
-    i64 A = 0;
+    i64 A = 1;
     while (true) {
         if (pow(A, 5) - pow(A - 1, 5) > X) {
             throw "???";
