@@ -826,7 +826,6 @@ void body() {
     REP (i, as.size()) {
         Ss[i + 1] = (Ss[i] + as[i]) % 2019;
     }
-    dump(Ss);
 
     auto ns = HashMap<i64, i64>();
     EACH (s, Ss) {
@@ -835,7 +834,7 @@ void body() {
 
     i64 ans = 0;
     EACH (n, ns) {
-        ans += (n.second * n.second - 1) / 2;
+        ans += (n.second * (n.second - 1)) / 2;
     }
     cout << ans << endl;
 }
