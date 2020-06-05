@@ -1044,5 +1044,6 @@ void body() {
             cout << A << " " << B << endl;
             return ;
         }
+        A += 1;
     }
 }
