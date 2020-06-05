@@ -812,31 +812,28 @@ int main (int argc, char **argv) {
 void body() {
     auto S = read<string>();
 
-    // 遅い気がするがとりあえず全探索してみる
-    i64 i = 1;
-    i64 ans = 0;
-    while (true) {
-        auto x = 2019 * i;
-        std::ostringstream oss;
-        oss << x;
-        auto x_str = oss.str();
-        if (x_str.size() > S.size()) {
-            // 探すものの方が長いのでもうない
-            // Sの制約から高々100回でこのループは終わる => 制約読み違えていた
-            break ;
-        }
-        dump(x_str.size(), S.size());
-        i64 pos = 0;
-        while (true) {
-            auto x = S.find(x_str, pos);
-            if (x == string::npos) {
-                break ;
-            }
-            pos = x + 1;
-            ans += 1;
-        }
+    auto as = Vector<i64>(S.size());
+    auto base = 1;
+    REPR (i, S.size() {
+        auto s = S[i] - '0';
+        as[S.size() - i] = (s * base) % 2019;
+        base *= 10;
+        base %= 2019;
+    }
+    auto Ss =Vector<i64>(S.size() + 1);
+    Ss[0] = 0;
+    REP (i, as.size()) {
+        Ss[i + 1] = (Ss[i] + as[i]) % 2019;
+    }
 
-        i += 1;
+    auto ns = HashMap<i64, i64>();
+    EACH (s, Ss) {
+        ns[s] += 1;
+    }
+
+    i64 ans = 0;
+    EACH (n, ns) {
+        ans += (n.second * n.second - 1) / 2;
     }
     cout << ans << endl;
 }
