@@ -831,7 +831,7 @@ void body() {
                 n.push_back(10 * p + q);
             }
             if (n.size() >= K) {
-                dump(n.size(), n[K];)
+                dump(n.size(), n[K]);
                 cout << n[K] << endl;
                 return ;
             }
