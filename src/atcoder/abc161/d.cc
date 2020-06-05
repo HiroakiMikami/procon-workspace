@@ -824,7 +824,7 @@ void body() {
     while (true) {
         K -= prev.size();
         auto n = Vector<i64>();
-        n.reserve(min(K, 3 * prev.size()));
+        n.reserve(min<i64>(K, 3 * prev.size()));
         EACH (p, prev) {
             FOR (q, p % 10 - 1, p % 10 + 2) {
                 if (q < 0 || q >= 10) continue ;
