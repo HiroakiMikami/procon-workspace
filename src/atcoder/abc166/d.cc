@@ -1026,6 +1026,7 @@ void body() {
         auto x = X - pow(A, 5);
         auto B = find_root_5(x);
         if (pow(B, 5) == x) {
+            dump(-B);
             cout << A << " " << - B << endl;
             return ;
         }
@@ -1041,7 +1042,6 @@ void body() {
         if (x < 0) continue ;
         auto B = find_root_5(x);
         if (pow(B, 5) == x) {
-            dump(B, x);
             cout << A << " " << B << endl;
             return ;
         }
