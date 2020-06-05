@@ -814,7 +814,7 @@ void body() {
 
     auto as = Vector<i64>(S.size());
     auto base = 1;
-    REPR (i, S.size() {
+    REPR (i, S.size()) {
         auto s = S[i] - '0';
         as[S.size() - i] = (s * base) % 2019;
         base *= 10;
