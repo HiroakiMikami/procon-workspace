@@ -1020,11 +1020,13 @@ void body() {
         }
         return lower;
     };
-    dump(X - pow<i64>(50, 5) - pow<i64>(40, 5));
 
     // A^5 - (-B)^5 = Xの場合
     REP (A, 100) {
         auto x = X - pow<i64>(A, 5);
+        if (A == 40) {
+            dump(x);
+        }
         if (x < 0) continue ;
         auto B = find_root_5(x);
         if (pow(B, 5) == x) {
