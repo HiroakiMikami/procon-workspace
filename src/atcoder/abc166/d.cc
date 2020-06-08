@@ -1020,6 +1020,7 @@ void body() {
         }
         return lower;
     };
+    dump(X - pow<i64>(50, 5) - pow<i64>(40, 5));
 
     // A^5 - (-B)^5 = Xの場合
     REP (A, 100) {
