@@ -1024,14 +1024,8 @@ void body() {
     // A^5 - (-B)^5 = Xの場合
     REP (A, 100) {
         auto x = X - pow<i64>(A, 5);
-        if (A == 40) {
-            dump(x);
-        }
         if (x < 0) continue ;
         auto B = find_root_5(x);
-        if (A == 40) {
-            dump(B);
-        }
         if (pow(B, 5) == x) {
             cout << A << " " << - B << endl;
             return ;
