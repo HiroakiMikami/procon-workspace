@@ -1042,4 +1042,5 @@ void body() {
             return ;
         }
     }
+    throw "INVALID";
 }
