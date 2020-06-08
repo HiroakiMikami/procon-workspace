@@ -1008,7 +1008,7 @@ void body() {
         }
 
         i64 lower = 0;
-        i64 upper = x;
+        i64 upper = 100; // x < 10^9から100程度あれば問題ない
         auto t = (lower + upper) / 2;
         while (upper - lower > 1) {
             if (pow<i64>(t, 5) <= x) {
