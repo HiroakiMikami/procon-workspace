@@ -819,7 +819,7 @@ void body() {
     while (i_t < t.size()) {
         auto ch = t[i_t];
         dump(i_s, I[ch], ch);
-        auto it_j = std::lower_bound(I[ch].begin(), I[ch].end(), i_s);
+        auto it_j = std::upper_bound(I[ch].begin(), I[ch].end(), i_s);
         if (it_j == I[ch].end() && i_s == 0) {
             cout << -1 << endl;
             return ;
