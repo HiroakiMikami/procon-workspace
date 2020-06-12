@@ -821,18 +821,18 @@ void body() {
     size_t i_s = 0, i_t = 0;
     while (i_t < t.size()) {
         auto ch = t[i_t];
-        auto j = std::lower_bound(I[ch].begin(), I[ch].end(), i_s);
-        if (j == I[ch].end() && i_s == 0) {
+        auto it_j = std::lower_bound(I[ch].begin(), I[ch].end(), i_s);
+        if (it_j == I[ch].end() && i_s == 0) {
             cout << -1 << endl;
             return ;
         }
-        if (j == I[ch].end()) {
+        if (it_j == I[ch].end()) {
             i_s = 0;
             continue ;
         }
+        auto j = *it_j;
         dump(I[ch]);
-        dump(std::distance(I[ch].begin(), j), i_s);
-        ans += (std::distance(I[ch].begin(), j) - i_s);
+        ans += (j - i_s);
         i_t += 1;
     }
     cout << ans << endl;
