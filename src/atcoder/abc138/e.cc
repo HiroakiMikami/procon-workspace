@@ -827,6 +827,7 @@ void body() {
             return ;
         }
         if (it_j == I[ch].end()) {
+            ans += (s.size() - i_s);
             i_s = 0;
             continue ;
         }
