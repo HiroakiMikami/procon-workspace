@@ -814,7 +814,7 @@ void body() {
     auto t = read<string>();
     OrderedMap<char, Vector<i64>> I;
     REP (i, s.size()) {
-        I[s[i]].push_back(i);
+        I[s[i]].push_back(i + 1);
     }
 
     i64 ans = 0;
