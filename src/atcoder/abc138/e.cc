@@ -834,7 +834,7 @@ void body() {
         auto j = *it_j;
         dump(I[ch], i_s);
         ans += (j - i_s);
-        i_s = j + 1;
+        i_s = j;
         i_t += 1;
     }
     cout << ans << endl;
