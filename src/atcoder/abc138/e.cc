@@ -26,7 +26,6 @@ NOTES
 #include <iomanip>
 #include <type_traits>
 #include <functional>
-#include <optional>
 
 /* import STL */
 // stream
@@ -38,13 +37,11 @@ using std::flush;
 
 // basic types
 using std::nullptr_t;
-using std::optional;
 using std::pair;
 using std::tuple;
 using std::string;
 
 // function for basic types
-using std::make_optional;
 using std::make_pair;
 using std::make_tuple;
 using std::get;
