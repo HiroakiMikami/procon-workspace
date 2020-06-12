@@ -832,7 +832,7 @@ void body() {
             continue ;
         }
         auto j = *it_j;
-        dump(I[ch]);
+        dump(I[ch], i_s);
         ans += (j - i_s);
         i_t += 1;
     }
