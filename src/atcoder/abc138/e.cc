@@ -830,7 +830,7 @@ void body() {
             i_s = 0;
             continue ;
         }
-        ans += (j - i_s);
+        ans += (std::distance(I[ch].begin(), j) - i_s);
         i_t += 1;
     }
     cout << ans << endl;
