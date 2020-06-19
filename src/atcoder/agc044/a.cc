@@ -825,6 +825,9 @@ void body() {
                 if (x / d == 0) {
                     return std::numeric_limits<i64>::max();
                 }
+                if (x == 2 && d == 2) {
+                    return f(x / d, f) + std::abs(d * (X / d) - x) * D + X;
+                }
                 return std::min(
                     f(x / d, f) + std::abs(d * (X / d) - x) * D + X,
                     f(x / d + 1, f) + std::abs(d * (X / d + 1) - x) * D + X
@@ -838,7 +841,6 @@ void body() {
             cost[x] = c;
             return c;
         };
-        dump(N);
         cout << _cost_to_0(N, _cost_to_0) << endl;
     }
 }
