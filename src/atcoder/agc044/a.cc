@@ -838,11 +838,9 @@ void body() {
             }
             auto c = std::min(std::min<i64>(_cost(2, A), _cost(3, B)), std::min(_cost(5, C), D * x));
             cost[x] = c;
-            if (c < 0) {
-                dump(x, c);
-            }
             return c;
         };
+        dump(N);
         cout << _cost_to_0(N, _cost_to_0) << endl;
     }
 }
