@@ -837,6 +837,7 @@ void body() {
             cost[x] = c;
             return c;
         };
+        dump(N);
         cout << _cost_to_0(N, _cost_to_0) << endl;
     }
 }
