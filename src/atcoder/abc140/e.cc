@@ -832,9 +832,9 @@ void body() {
         auto j0 = *it;
         it++;
         auto j1 = (it == fin.end()) ? N : *it;
-        if (it != fin.begin()) it2--;
+        if (it2 != fin.begin()) it2--;
         auto k1 = *it2;
-        if (it != fin.begin()) it2--;
+        if (it2 != fin.begin()) it2--;
         auto k0 = *it2;
 
         /*
