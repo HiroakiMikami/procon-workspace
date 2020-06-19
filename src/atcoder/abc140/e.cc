@@ -811,7 +811,7 @@ int main (int argc, char **argv) {
 
 void body() {
     auto N = read<i64>();
-    auto Ps_ = read<i64>();
+    auto Ps_ = read<i64>(N);
     auto Ps = Vector<pair<i64, i64>>(N);
     REP (i, N) {
         Ps[i] = {i, Ps_[i]};
