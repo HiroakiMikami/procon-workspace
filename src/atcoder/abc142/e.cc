@@ -1037,7 +1037,7 @@ void body() {
             if (prev == i) {
                 continue ;
             }
-            f(prev);
+            f(prev, f);
             dp[i] = std::min(dp[i], dp[prev] + as[j]);
         }
         filled[i] = true;
