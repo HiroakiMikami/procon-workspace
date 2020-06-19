@@ -844,4 +844,5 @@ void body() {
         ans += (i - k1) * (j1 - j0);
         fin.insert(i);
     }
+    cout << ans << endl;
 }
