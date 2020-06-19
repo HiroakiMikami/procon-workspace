@@ -831,11 +831,11 @@ void body() {
         auto it2 = it;
         auto j0 = *it;
         it++;
-        auto j1 = *it;
+        auto j1 = (it == fin.end() ? N : *it;
         it2--;
-        auto k1 = *it2;
+        auto k1 = (it < fin.begin()) ? -1 : *it2;
         it2--;
-        auto k0 = *it2;
+        auto k0 = (it < fin.begin()) ? -1 : *it2;
 
         /*
          * k0 ... k1 ... i ... j0 ... j1
