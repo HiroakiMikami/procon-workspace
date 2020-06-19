@@ -1362,5 +1362,30 @@ void body() {
     }
     G.to_undirected();
 
-    graph::warshall_floyd(G);
+    auto cost = graph::warshall_floyd(G);
+    EACH (st, sts) {
+        auto s = st.first;
+        auto t = st.second;
+
+        // dp[i] := sからiまで移動してiで補給するときの最小回数。ただしdp[s] = 0
+        auto dp = Vector<i64>(N, 2 * N);
+        dp[s] = 0;
+        auto visited = Vector<i64>(N, false);
+        auto solve = [&](auto i, auto f) -> i64 {
+            if (visited[i]) {
+                return dp[i];
+            }
+
+            visited[i] = true;
+            REP (j, N) {
+                if (cost[i][j].cost <= L) {
+                    dp[i] = std::min(dp[i], f(j) + 1);
+                }
+            }
+
+            return dp[i];
+        };
+
+        auto ans = solve(t);
+    }
 }
