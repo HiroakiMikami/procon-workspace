@@ -829,8 +829,8 @@ void body() {
                     return f(x / d, f) + std::abs(d * (X / d) - x) * D + X;
                 }
                 return std::min(
-                    f(x / d, f) + std::abs(d * (X / d) - x) * D + X,
-                    f(x / d + 1, f) + std::abs(d * (X / d + 1) - x) * D + X
+                    f(x / d, f) + std::abs(d * (x / d) - x) * D + X,
+                    f(x / d + 1, f) + std::abs(d * (x / d + 1) - x) * D + X
                 );
             };
             if (cost.find(x) != cost.end()) {
