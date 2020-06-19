@@ -817,7 +817,6 @@ void body() {
         Ps[i] = {i, Ps_[i]};
     }
     sort(CTR(Ps), [](auto rhs, auto lhs) { return rhs.second > lhs.second; });
-    dump(Ps);
 
     auto fin = OrderedSet<i64>();
     fin.insert(-1);
