@@ -836,7 +836,12 @@ void body() {
             if (cost.find(x) != cost.end()) {
                 return cost[x];
             }
-            auto c = std::min(std::min<i64>(_cost(2, A), _cost(3, B)), std::min(_cost(5, C), D * x));
+            auto tmp = D * x;
+            if (tmp <= 0) {
+                // オーバーフローの恐れあり
+                tmp = std::numeric_limits<i64>::max();
+            }
+            auto c = std::min(std::min<i64>(_cost(2, A), _cost(3, B)), std::min(_cost(5, C), tmp));
             if (c < 0) {
                 if (D * x < 0) {
                     dump(D, x, u64(D) * u64(x));
