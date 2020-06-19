@@ -1000,6 +1000,8 @@ static std::optional<pair<i64, i64>> chinese_rem_ctr(const Vector<i64> &b, const
     return chinese_rem_ctr<decltype(b.begin()), decltype(m.begin())>(CTR(b), CTR(m));
 }
 
+#include <bitset>
+
 void body() {
     auto N = read<i64>();
     auto M = read<i64>();
