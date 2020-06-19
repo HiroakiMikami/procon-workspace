@@ -841,7 +841,5 @@ void body() {
             return c;
         };
         cout << _cost_to_0(N, _cost_to_0) << endl;
-        dump(cost);
-        break ;
     }
 }
