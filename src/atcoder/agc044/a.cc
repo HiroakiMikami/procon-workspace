@@ -820,8 +820,8 @@ void body() {
         auto C = std::get<3>(NABCD);
         auto D = std::get<4>(NABCD);
 
-        auto _cost_to_0 = [&](i64 x, auto f) {
-            auto cost = [&](i64 d, i64 X) {
+        auto _cost_to_0 = [&](i64 x, auto f) -> i64 {
+            auto cost = [&](i64 d, i64 X) -> i64 {
                 if (x / d == 0) {
                     return std::numeric::limits<i64>::max();
                 }
