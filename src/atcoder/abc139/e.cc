@@ -1448,7 +1448,7 @@ void body() {
             EACH_V (w, G.outgoings(v)) {
                 n_wait[w] -= 1;
                 if (n_wait[w] == 0) {
-                    next.insert(w);
+                    next.insert(get<1>(w));
                 }
             } 
         }
