@@ -1430,7 +1430,7 @@ void body() {
     REP (i, N) {
         FOR (j, i + 1, N) {
             auto x = to_index[pair<i64, i64>(i, j)];
-            n_wait[x] = Grev[x].size();
+            n_wait[x] = Grev.container[x].size();
         }
     }
 
