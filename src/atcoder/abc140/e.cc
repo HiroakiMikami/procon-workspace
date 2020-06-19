@@ -827,6 +827,8 @@ void body() {
         auto i = elem.first;
         auto P = elem.second;
         auto it = fin.lower_bound(i); // index >= iを満たす最小のindex
+        dump(fin);
+        dump(it == fin.end());
         auto it2 = it;
         auto j0 = *it;
         it++;
