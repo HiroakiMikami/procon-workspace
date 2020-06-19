@@ -1399,6 +1399,7 @@ void body() {
         }
     };
     auto to_index = [&](auto x) -> i64 {
+        dump(x);
         dump(N * x.first + x.second, N);
         return N * x.first + x.second;
     };
