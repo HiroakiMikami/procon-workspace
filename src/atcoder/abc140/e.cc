@@ -840,7 +840,7 @@ void body() {
          */
         ans += (k1 - k0) * (j0 - i);
         ans += (i - k1) * (j1 - j0);
-        dump(ans);
+        dump(ans, i);
         fin.insert(i);
     }
     cout << ans << endl;
