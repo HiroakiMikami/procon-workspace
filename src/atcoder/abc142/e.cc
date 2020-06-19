@@ -1023,13 +1023,11 @@ void body() {
     }
 
     // dp[i] = bitset(i)を含む宝箱を開ける最小コスト
-    auto dp = Vector<i64>(pow(2, N) - 1, inf + 1);
+    auto dp = Vector<i64>(pow(2, N), inf + 1);
     dp[0] = 0;
-    auto filled = Vector<i64>(pow(2, N) - 1, false);
+    auto filled = Vector<i64>(pow(2, N), false);
 
     auto solve = [&](i64 i, auto f) -> i64 {
-        dump(i);
-        dump(filled);
         if (filled[i]) {
             return dp[i];
         }
