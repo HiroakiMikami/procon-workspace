@@ -1424,6 +1424,9 @@ void body() {
 
     // ゲーム開始の前提条件となる試合数の計算
     auto n_wait = OrderedMap<size_t, i64>();
+    REP (i, N * (N - 1) / 2) {
+        n_wait[i] = 0;
+    }
     REP (i, N) {
         FOR (j, i + 1, N) {
             auto x = to_index[pair<i64, i64>(i, j)];
