@@ -1028,6 +1028,7 @@ void body() {
     auto filled = Vector<i64>(pow(2, N) - 1, false);
 
     auto solve = [&](i64 i, auto f) -> i64 {
+        dump(i);
         if (filled[i]) {
             return dp[i];
         }
