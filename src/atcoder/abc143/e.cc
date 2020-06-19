@@ -1357,7 +1357,7 @@ void body() {
     auto G = WeightedAdjacencyList(N);
     EACH (ABC, ABCs) {
         get<0>(ABC) -= 1;
-        get<0>(ABC) -= 1;
+        get<1>(ABC) -= 1;
         G.add_edge(ABC);
     }
     G.to_undirected();
