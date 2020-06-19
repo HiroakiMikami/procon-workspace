@@ -823,7 +823,7 @@ void body() {
         auto _cost_to_0 = [&](i64 x, auto f) -> i64 {
             auto _cost = [&](i64 d, i64 X) -> i64 {
                 if (x / d == 0) {
-                    return std::numeric::limits<i64>::max();
+                    return std::numeric_limits<i64>::max();
                 }
                 return std::min(
                     f(x / d, f) + std::abs(d * (X / d) - x) * D + X,
