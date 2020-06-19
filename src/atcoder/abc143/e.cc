@@ -1387,5 +1387,6 @@ void body() {
         };
 
         auto ans = solve(t, solve);
+        cout << ans << endl;
     }
 }
