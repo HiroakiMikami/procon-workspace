@@ -1417,9 +1417,11 @@ void body() {
     }
 
     // 閉路があるなら無理
-    if (graph::cycle(G, 0)) {
-        cout << -1 << endl;
-        return;
+    REP (i, N * (N - 1) / 2) {
+        if (graph::cycle(G, i)) {
+            cout << -1 << endl;
+            return;
+        }
     }
 
     // ゲーム開始の前提条件となる試合数の計算
