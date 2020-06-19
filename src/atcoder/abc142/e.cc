@@ -1008,14 +1008,14 @@ void body() {
     auto as = Vector<i64>();
     auto bs = Vector<i64>();
     auto cs = Vector<Vector<i64>>();
-    auto cs_ = Vector<bitset<20>>();
+    auto cs_ = Vector<std::bitset<20>>();
     i64 inf = 0;
     REP (i, M) {
         as.push_back(read<i64>());
         inf += as.back();
         bs.push_back(read<i64>());
         cs.push_back(read<i64>(bs.back()));
-        bitset<20> b;
+        std::bitset<20> b;
         EACH (c, cs.back()) {
             b[c - 1] = true;
         }
