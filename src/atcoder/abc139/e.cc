@@ -1440,6 +1440,7 @@ void body() {
             ready.insert(elem.first);
         }
     }
+    dump(ready);
 
     i64 ans = 0;
     while (!ready.empty()) {
