@@ -833,7 +833,7 @@ void body() {
             if (cost.find(x) != cost.end()) {
                 return cost[x];
             }
-            auto c = std::min(std::min<i64>(_cost(2, A), _cost(3, B)), std::min(_cost(5, C), D * x)));
+            auto c = std::min(std::min<i64>(_cost(2, A), _cost(3, B)), std::min(_cost(5, C), D * x));
             cost[x] = c;
             return c;
         };
