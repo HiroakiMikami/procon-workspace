@@ -1416,8 +1416,28 @@ void body() {
         }
     }
 
+    // 閉路があるなら無理
     if (graph::cycle(G, 0)) {
         cout << -1 << endl;
         return;
+    }
+
+    // ゲーム開始の前提条件となる試合数の計算
+    auto n_wait = OrderedMap<size_t, i64>();
+    REP (i, N) {
+        FOR (j, i + 1, N) {
+            auto x = to_index[pair<i64, i64>(i, j)];
+            EACH_V(_, Grev.outgoings(x)) {
+                n_wait[x] += 1;
+            }
+        }
+    }
+
+    // 最初に実施できるものの初期化
+    auto ready = OrderedSet<size_t>();
+    EACH (elem, n_wait) {
+        if (elem.second == 0) {
+            ready.insert(elem.first);
+        }
     }
 }
