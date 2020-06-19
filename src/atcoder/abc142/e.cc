@@ -1029,6 +1029,7 @@ void body() {
 
     auto solve = [&](i64 i, auto f) -> i64 {
         dump(i);
+        dump(filled)
         if (filled[i]) {
             return dp[i];
         }
