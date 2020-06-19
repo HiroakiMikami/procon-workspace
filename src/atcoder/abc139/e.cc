@@ -1398,11 +1398,12 @@ void body() {
             return pair<i64, i64>(y, x);
         }
     };
-    auto to_index = [&](auto x) -> i64 {
-        dump(x);
-        dump(N * x.first + x.second, N);
-        return N * x.first + x.second;
-    };
+    auto to_index = OrderedMap<pair<i64, i64>, size_t>();
+    REP (i, N) {
+        FOR (j, i + 1, N) {
+            to_index[pair<i64, i64>(i, j)] = to_index.size();
+        }
+    }
 
     auto G = SimpleAdjacencyList(N * (N - 1) / 2);
     auto Grev = SimpleAdjacencyList(N * (N - 1) / 2);
@@ -1410,8 +1411,8 @@ void body() {
         REP (j, N - 2) {
             auto v = p(i, As[i][j] - 1);
             auto w = p(i, As[i][j + 1] - 1);
-            G.add_edge(make_tuple(to_index(v), to_index(w)));
-            Grev.add_edge(make_tuple(to_index(w), to_index(v)));
+            G.add_edge(make_tuple(to_index[v], to_index[w]));
+            Grev.add_edge(make_tuple(to_index[w], to_index[v]);
         }
     }
 
