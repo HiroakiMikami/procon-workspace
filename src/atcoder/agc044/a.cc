@@ -826,7 +826,7 @@ void body() {
                     return std::numeric_limits<i64>::max();
                 }
                 if (x == 2 && d == 2) {
-                    return f(x / d, f) + std::abs(d * (X / d) - x) * D + X;
+                    return f(x / d, f) + std::abs(d * (x / d) - x) * D + X;
                 }
                 return std::min(
                     f(x / d, f) + std::abs(d * (x / d) - x) * D + X,
