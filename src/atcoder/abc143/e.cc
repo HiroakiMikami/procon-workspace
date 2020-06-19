@@ -1363,6 +1363,17 @@ void body() {
     G.to_undirected();
 
     auto cost = graph::warshall_floyd(G);
+    auto candidates = Vector<Vector<i64>>(N);
+    REP (i, N) {
+        REP (j, N) {
+            if (i == j) {
+                continue;
+            }
+            if (cost[i][j].cost <= L) {
+                candidates[i].push_back(j);
+            }
+        }
+    }
     EACH (st, sts) {
         auto s = st.first - 1;
         auto t = st.second - 1;
@@ -1377,10 +1388,8 @@ void body() {
             }
 
             visited[i] = true;
-            REP (j, N) {
-                if (cost[i][j].cost <= L) {
-                    dp[i] = std::min(dp[i], f(j, f) + 1);
-                }
+            EACH (j, candidates[i]);
+                dp[i] = std::min(dp[i], f(j, f) + 1);
             }
 
             return dp[i];
