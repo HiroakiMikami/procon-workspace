@@ -1387,6 +1387,11 @@ void body() {
         };
 
         auto ans = solve(t, solve);
+        if (ans == 2 * N) {
+            ans = -1;
+        } else {
+            ans -= 1;
+        }
         cout << ans << endl;
     }
 }
