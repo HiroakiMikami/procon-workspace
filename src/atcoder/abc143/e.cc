@@ -1354,7 +1354,7 @@ void body() {
     auto Q = read<i64>();
     auto sts = read<i64, i64>(Q);
 
-    auto G = WeightedAdjacencyList<i64>(N);
+    auto G = WeightedAdjacencyList(N);
     EACH (ABC, ABC) {
         get<0>(ABC) -= 1;
         get<01(ABC) -= 1;
