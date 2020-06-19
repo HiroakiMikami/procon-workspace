@@ -823,5 +823,11 @@ void body() {
     EACH (elem, Ps) {
         auto i = elem.first;
         auto P = elem.second;
+        auto it = fin.lower_bound(i); // index >= iを満たす最小のindex
+        if (it == fin.end()) {
+
+        } else {
+            it - 1;
+        }
     }
 }
