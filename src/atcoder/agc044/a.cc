@@ -821,6 +821,9 @@ void body() {
         auto D = std::get<4>(NABCD);
 
         auto _cost_to_0 = [&](i64 x, auto f) -> i64 {
+            if (x < 0) {
+                dump("foo");
+            }
             auto _cost = [&](i64 d, i64 X) -> i64 {
                 if (x / d == 0) {
                     return std::numeric_limits<i64>::max();
@@ -838,7 +841,7 @@ void body() {
             }
             auto c = std::min(std::min<i64>(_cost(2, A), _cost(3, B)), std::min(_cost(5, C), D * x));
             if (c < 0) {
-            dump(_cost(2, A), _cost(3, B), _cost(5, C), D * x);
+                //dump(_cost(2, A), _cost(3, B), _cost(5, C), D * x);
             }
             cost[x] = c;
             return c;
