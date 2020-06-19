@@ -1388,7 +1388,7 @@ void body() {
             }
 
             visited[i] = true;
-            EACH (j, candidates[i]);
+            EACH (j, candidates[i]) {
                 dp[i] = std::min(dp[i], f(j, f) + 1);
             }
 
