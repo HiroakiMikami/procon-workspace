@@ -1446,9 +1446,10 @@ void body() {
         auto next = OrderedSet<size_t>();
         EACH (v, ready) {
             EACH_V (w, G.outgoings(v)) {
-                n_wait[w] -= 1;
-                if (n_wait[w] == 0) {
-                    next.insert(get<1>(w));
+                auto t = get<1>(w);
+                n_wait[t] -= 1;
+                if (n_wait[t] == 0) {
+                    next.insert(t);
                 }
             } 
         }
