@@ -838,8 +838,8 @@ void body() {
         /*
          * k0 ... k1 ... i ... j0 ... j1
          */
-        ans += (k1 - k0) * (j0 - i);
-        ans += (i - k1) * (j1 - j0);
+        ans += (k1 - k0) * (j0 - i) * P;
+        ans += (i - k1) * (j1 - j0) * P;
         dump(ans, i);
         dump(fin);
         fin.insert(i);
