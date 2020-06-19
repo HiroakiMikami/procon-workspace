@@ -816,7 +816,7 @@ void body() {
     REP (i, N) {
         Ps[i] = {i, Ps_[i]};
     }
-    sort(CTR(Ps), [](auto rhs, auto lhs) { return rhs.second < lhs.second; });
+    sort(CTR(Ps), [](auto rhs, auto lhs) { return rhs.second > lhs.second; });
     dump(Ps);
 
     auto fin = OrderedSet<i64>();
