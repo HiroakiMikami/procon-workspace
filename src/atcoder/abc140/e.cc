@@ -827,7 +827,7 @@ void body() {
         if (it == fin.end()) {
 
         } else {
-            it - 1;
+            it--;
         }
     }
 }
