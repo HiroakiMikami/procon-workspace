@@ -815,7 +815,7 @@ void body() {
 
     auto satisfy = [&](auto l) -> bool {
         REP (s, N - l) {
-            auto s1  S.substr(s, l);
+            auto s1 = S.substr(s, l);
             if (S.find(s1, s + l) != -1) {
                 return true;
             }
