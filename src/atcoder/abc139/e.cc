@@ -1285,7 +1285,7 @@ void body() {
         }
     }
 
-    if (cgraph::ycle(G, 0)) {
+    if (graph::cycle(G, 0)) {
         cout << -1 << endl;
         return;
     }
