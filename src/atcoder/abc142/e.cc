@@ -1044,5 +1044,9 @@ void body() {
         return dp[i];
     };
 
-    cout << solve(pow(2, N) - 1, solve) << endl;
+    auto ans = solve(pow(2, N) - 1, solve);
+    if (ans == inf + 1) {
+        ans = -1;
+    }
+    cout << ans << endl;
 }
