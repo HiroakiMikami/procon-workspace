@@ -1379,13 +1379,13 @@ void body() {
             visited[i] = true;
             REP (j, N) {
                 if (cost[i][j].cost <= L) {
-                    dp[i] = std::min(dp[i], f(j) + 1);
+                    dp[i] = std::min(dp[i], f(j, f) + 1);
                 }
             }
 
             return dp[i];
         };
 
-        auto ans = solve(t);
+        auto ans = solve(t, solve);
     }
 }
