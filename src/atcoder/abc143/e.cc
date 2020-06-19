@@ -1364,8 +1364,8 @@ void body() {
 
     auto cost = graph::warshall_floyd(G);
     EACH (st, sts) {
-        auto s = st.first;
-        auto t = st.second;
+        auto s = st.first - 1;
+        auto t = st.second - 1;
 
         // dp[i] := sからiまで移動してiで補給するときの最小回数。ただしdp[s] = 0
         auto dp = Vector<i64>(N, 2 * N);
