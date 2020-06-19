@@ -820,14 +820,27 @@ void body() {
     dump(Ps);
 
     auto fin = OrderedSet<i64>();
+    fin.insert(-1);
+    fin.insert(N);
+    i64 ans = 0;
     EACH (elem, Ps) {
         auto i = elem.first;
         auto P = elem.second;
         auto it = fin.lower_bound(i); // index >= iを満たす最小のindex
-        if (it == fin.end()) {
+        auto it2 = it;
+        auto j0 = *it;
+        it++;
+        auto j1 = *it;
+        it2--;
+        auto k1 = *it2;
+        it2--;
+        auto k0 = *it2;
 
-        } else {
-            it--;
-        }
+        /*
+         * k0 ... k1 ... i ... j0 ... j1
+         */
+        ans += (k1 - k0) * (j0 - i);
+        ans += (i - k1) * (j1 - j0);
+        fin.insert(i);
     }
 }
