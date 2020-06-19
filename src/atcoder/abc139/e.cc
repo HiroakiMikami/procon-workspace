@@ -1412,7 +1412,7 @@ void body() {
             auto v = p(i, As[i][j] - 1);
             auto w = p(i, As[i][j + 1] - 1);
             G.add_edge(make_tuple(to_index[v], to_index[w]));
-            Grev.add_edge(make_tuple(to_index[w], to_index[v]);
+            Grev.add_edge(make_tuple(to_index[w], to_index[v]));
         }
     }
 
