@@ -839,7 +839,7 @@ void body() {
             auto c = std::min(std::min<i64>(_cost(2, A), _cost(3, B)), std::min(_cost(5, C), D * x));
             if (c < 0) {
                 if (D * x < 0) {
-                    dump(D, x);
+                    dump(D, x, u64(D) * u64(x));
                 }
                 //dump(_cost(2, A), _cost(3, B), _cost(5, C), D * x);
             }
