@@ -1355,9 +1355,9 @@ void body() {
     auto sts = read<i64, i64>(Q);
 
     auto G = WeightedAdjacencyList(N);
-    EACH (ABC, ABC) {
+    EACH (ABC, ABCs) {
         get<0>(ABC) -= 1;
-        get<01(ABC) -= 1;
+        get<0>(ABC) -= 1;
         G.add_edge(ABC);
     }
     G.to_undirected();
