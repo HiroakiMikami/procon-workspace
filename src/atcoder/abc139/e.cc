@@ -1272,7 +1272,7 @@ void body() {
     };
     auto to_index = [&](auto x) -> i64 {
         return N * x.first + x.second;
-    }
+    };
 
     auto G = SimpleAdjacencyList(N * (N - 1) / 2);
     auto Grev = SimpleAdjacencyList(N * (N - 1) / 2);
