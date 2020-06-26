@@ -816,5 +816,29 @@ void body() {
     auto Fs = read<i64>(N);
 
     sort(CTR(As));
-    dump(As);
+    auto possible = [&](auto x) {
+        auto as = Vector<i64>(N);
+        REP (i, N) {
+            as[i] = x / Fs[i];
+        }
+        sort(CTR(as));
+        i64 cost = 0;
+        REP (i, N) {
+            cost += std::max(0, As[i] - as[i]);
+        }
+        return cost <= K;
+    };
+
+    i64 lower = 0;
+    i64 upper = std::max_element(CTR(As)) * std::max_element(CTR(Fs)) + 1;
+    auto t = (upper + lower) / 2;
+    while (upper - lower > 1) {
+        if (possible(t)) {
+            lower = t;
+        } else {
+            upper = t;
+        }
+        t = (upper + lower) / 2;
+    }
+    cout << lower << endl;
 }
