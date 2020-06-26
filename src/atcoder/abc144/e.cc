@@ -824,7 +824,7 @@ void body() {
         sort(CTR(as));
         i64 cost = 0;
         REP (i, N) {
-            cost += std::max(0, As[i] - as[i]);
+            cost += std::max<i64>(0, As[i] - as[i]);
         }
         return cost <= K;
     };
