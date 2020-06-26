@@ -1380,6 +1380,7 @@ void body() {
         dp[i][i] = 0;
     }
     auto solve = [&](auto x, auto f) -> void {
+        dump(x);
         REP (y, N) {
             if (dp[x][y] != std::numeric_limits<i64>::max())
                 continue;
@@ -1398,7 +1399,6 @@ void body() {
         } 
     };
     EACH (st, sts) {
-        dump(st);
         auto s = st.first - 1;
         auto t = st.second - 1;
         solve(s, solve);
