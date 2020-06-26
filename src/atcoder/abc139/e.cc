@@ -1496,6 +1496,7 @@ void body() {
             cout << -1 << endl;
             return ;
         }
+        finished.insert(uf.parent(i));
     }
 
     // ゲーム開始の前提条件となる試合数の計算
