@@ -1387,7 +1387,9 @@ void body() {
             if (visited[x][y]) continue ;
             EACH_V (edge, G.outgoings(x)) {
                 auto n = get<1>(edge);
+                visited[x][n] = true;
                 if (!visited[x][n]) {
+                    dp[x][n] = 0;
                     f(n, f);
                 }
             }
