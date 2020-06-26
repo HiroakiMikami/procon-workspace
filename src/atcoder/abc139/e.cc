@@ -1492,7 +1492,7 @@ void body() {
     auto finished = OrderedSet<i64>();
     REP (i, N * (N - 1) / 2) {
         if (finished.find(uf.parent(i)) != finished.end()) continue;
-        if (cycle(G, i)) {
+        if (graph::cycle(G, i)) {
             cout << -1 << endl;
             return ;
         }
