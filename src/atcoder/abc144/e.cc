@@ -833,7 +833,7 @@ void body() {
     i64 upper = (*std::max_element(CTR(As))) * (*std::max_element(CTR(Fs))) + 1;
     auto t = (upper + lower) / 2;
     while (upper - lower > 1) {
-        dump(lower, upper, t);
+        dump(lower, upper, t, possible(t));
         if (possible(t)) {
             lower = t;
         } else {
