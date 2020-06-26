@@ -1383,6 +1383,73 @@ namespace graph {
     }
 }
 
+#ifndef MAIN
+#include "common.cc"
+#endif
+
+struct UnionFind {
+    UnionFind() : m_parents(0), m_rank(0) {}
+    UnionFind(size_t N) : m_parents(N), m_rank(N) {
+        REP (i, N) {
+            m_parents[i] = i;
+            m_rank[i] = 0;
+        }
+    }
+
+    size_t size() const {
+        return this->m_rank.size();
+    }
+
+    void merge(size_t t1, size_t t2) {
+        auto p1 = this->parent(t1);
+        auto p2 = this->parent(t2);
+
+        if (p1 == p2) {
+            return ;
+        }
+
+        if (this->m_rank[p1] < this->m_rank[p2]) {
+            this->m_parents[p1] = p2;
+        } else {
+            this->m_parents[p2] = p1;
+            if (this->m_rank[p1] == this->m_rank[p2]) {
+                this->m_rank[p1] += 1;
+            }
+        }
+    }
+    bool is_same(size_t t1, size_t t2) const {
+        return this->parent(t1) == this->parent(t2);
+    }
+
+    size_t parent(size_t t) const {
+        auto p = this->m_parents[t];
+        if (p == t) {
+            return t;
+        } else {
+            auto p2 = this->parent(p);
+            this->m_parents[t] = p2;
+            return p2;
+        }
+    }
+private:
+    mutable vector<size_t> m_parents;
+    vector<u64> m_rank;
+
+};
+
+namespace internal {
+    template <>
+    struct oneline<UnionFind> {
+        std::string operator()(const UnionFind &t) const {
+            OrderedMap<size_t, OrderedSet<size_t>> xs;
+            REP (i, t.size()) {
+                xs[t.parent(i)].insert(i);
+            }
+            return oneline<decltype(xs)>()(xs);
+        }
+    };
+}
+
 
 void body() {
     auto N = read<i64>();
@@ -1418,23 +1485,16 @@ void body() {
 
     // 閉路があるなら無理
     auto visited = Vector<bool>(N * (N - 1) / 2, false);
+    UnionFind uf(N * (N - 1) / 2);
+    EACH_V(edge, G.edges()) {
+        uf.merge(get<0>(edge), get<1>(edge));
+    }
+    auto finished = OrderedSet<i64>();
     REP (i, N * (N - 1) / 2) {
-        if (visited[i]) {
-            continue ;
-        }
-        auto s = std::stack<i64>();
-        s.push(i);
-        while (!s.empty()) {
-            auto x = s.top();
-            s.pop();
-            if (visited[x]) {
-                cout << -1 << endl;
-                return ;
-            }
-            visited[x] = true;
-            EACH_V(e, G.outgoings(x)) {
-                s.push(get<1>(e));
-            }
+        if (finished.find(uf.parent(i)) != finished.end()) continue;
+        if (has_cycle(G, i)) {
+            cout << -1 << endl;
+            return ;
         }
     }
 
