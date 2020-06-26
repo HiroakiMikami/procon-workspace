@@ -826,7 +826,7 @@ void body() {
         REP (i, N) {
             cost += std::max<i64>(0, As[i] - as[i]);
         }
-        dump(x, K);
+        dump(x, cost, K);
         return cost <= K;
     };
 
