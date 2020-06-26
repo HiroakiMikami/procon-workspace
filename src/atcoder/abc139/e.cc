@@ -1433,9 +1433,7 @@ void body() {
             }
             visited[x] = true;
             EACH_V(e, G.outgoings(x)) {
-                if (!visited[x]) {
-                    s.push(get<1>(e));
-                }
+                s.push(get<1>(e));
             }
         }
     }
