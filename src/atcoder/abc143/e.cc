@@ -1376,29 +1376,25 @@ void body() {
     }
     // dp[x][y] := x -> yへ行くときの最小補給回数
     auto dp = make_matrix<i64, 2>({N, N}, std::numeric_limits<i64>::max());
-    auto visited = make_matrix<bool, 2>({N, N}, false);
     REP (i, N) {
         dp[i][i] = 0;
-        visited[i][i] = true;
     }
     auto solve = [&](auto x, auto f) -> void {
         REP (y, N) {
-            if (visited[x][y]) continue ;
+            if (dp[x][y] != std::numeric_limits<i64>::max()) continue ;
             EACH_V (edge, G.outgoings(x)) {
                 auto n = get<1>(edge);
-                visited[x][n] = true;
-                if (!visited[x][n]) {
-                    dp[x][n] = 0;
-                    f(n, f);
-                }
+                dp[x][n] = 0;
             }
             auto cost = std::numeric_limits<i64>::max();
             EACH_V (edge, G.outgoings(x)) {
+                if (dp[n][y] == std::numeric_limits<i64>::max()) {
+                    f(n, f);
+                }
                 auto n = get<1>(edge);
                 cost = std::min(cost, dp[n][y] + 1);
             }
             dp[x][y] = cost;
-            visited[x][y] = true;
         } 
     };
     EACH (st, sts) {
