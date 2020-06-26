@@ -1392,7 +1392,6 @@ void body() {
                 if (dp[n][y] == std::numeric_limits<i64>::max()) {
                     f(n, f);
                 }
-                auto n = get<1>(edge);
                 cost = std::min(cost, dp[n][y] + 1);
             }
             dp[x][y] = cost;
