@@ -830,17 +830,17 @@ void body() {
         return cost <= K;
     };
 
-    i64 lower = 0;
-    i64 upper = (*std::max_element(CTR(As))) * (*std::max_element(CTR(Fs))) + 1;
+    i64 lower = 0; // impossible
+    i64 upper = (*std::max_element(CTR(As))) * (*std::max_element(CTR(Fs))) + 1; // possible
     auto t = (upper + lower) / 2;
     while (upper - lower > 1) {
         dump(lower, upper, t, possible(t));
         if (possible(t)) {
-            lower = t;
-        } else {
             upper = t;
+        } else {
+            lower = t;
         }
         t = (upper + lower) / 2;
     }
-    cout << lower << endl;
+    cout << upper << endl;
 }
