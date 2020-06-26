@@ -1417,10 +1417,25 @@ void body() {
     }
 
     // 閉路があるなら無理
+    auto visited = Vector<bool>(N * (N - 1) / 2, false);
     REP (i, N * (N - 1) / 2) {
-        if (graph::cycle(G, i)) {
-            cout << -1 << endl;
-            return;
+        if (visited[i]) {
+            continue ;
+        }
+        auto s = std::stack<i64>();
+        s.push(i);
+        while (!s.empty()) {
+            auto x = s.pop();
+            if (visited[x]) {
+                cout << -1 << endl;
+                return ;
+            }
+            visited[x] = true;
+            EACH_V(x, G.outgoings[x]) {
+                if (!visited[x]) {
+                    s.push(x);
+                }
+            }
         }
     }
 
