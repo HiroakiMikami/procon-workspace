@@ -1398,6 +1398,7 @@ void body() {
         } 
     };
     EACH (st, sts) {
+        dump(st);
         auto s = st.first - 1;
         auto t = st.second - 1;
         solve(s, solve);
