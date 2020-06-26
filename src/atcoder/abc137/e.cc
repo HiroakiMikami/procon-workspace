@@ -1362,7 +1362,7 @@ void body() {
 
     auto retval = graph::bellman_ford(g, 0)[N  - 1];
     if (!retval) {
-        cout << -1 << endl;
+        //cout << -1 << endl;
     } else {
         if (retval->cost == std::numeric_limits<i64>::max()) {
             cout << -1 << endl;
