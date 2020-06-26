@@ -1386,7 +1386,7 @@ void body() {
             EACH_V (edge, G.outgoings(x)) {
                 auto n = get<1>(edge);
                 if (dp[n][y] == std::numeric_limits<i64>::max()) {
-                    f(n);
+                    f(n, f);
                 }
             }
             auto cost = std::numeric_limits<i64>::max();
@@ -1400,7 +1400,7 @@ void body() {
     EACH (st, sts) {
         auto s = st.first - 1;
         auto t = st.second - 1;
-        solve(s);
+        solve(s, solve);
         cout << dp[s][t] << endl;
     }
 }
