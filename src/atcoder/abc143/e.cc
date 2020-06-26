@@ -1396,7 +1396,7 @@ void body() {
             }
             dp[x][y] = cost;
         } 
-    }
+    };
     EACH (st, sts) {
         auto s = st.first - 1;
         auto t = st.second - 1;
