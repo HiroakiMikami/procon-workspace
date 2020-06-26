@@ -1432,9 +1432,9 @@ void body() {
                 return ;
             }
             visited[x] = true;
-            EACH_V(x, G.outgoings(x)) {
+            EACH_V(e, G.outgoings(x)) {
                 if (!visited[x]) {
-                    s.push(x);
+                    s.push(get<1>(e));
                 }
             }
         }
