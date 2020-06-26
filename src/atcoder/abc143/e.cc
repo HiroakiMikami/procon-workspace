@@ -1379,7 +1379,7 @@ void body() {
     REP (i, N) {
         dp[i][i] = 0;
     }
-    auto solve = [&](auto x, auto f) {
+    auto solve = [&](auto x, auto f) -> void {
         REP (y, N) {
             if (dp[x][y] != std::numeric_limits<i64>::max())
                 continue;
