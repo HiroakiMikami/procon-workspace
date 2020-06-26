@@ -1388,6 +1388,7 @@ void body() {
             }
             auto cost = std::numeric_limits<i64>::max();
             EACH_V (edge, G.outgoings(x)) {
+                auto n = get<1>(edge);
                 if (dp[n][y] == std::numeric_limits<i64>::max()) {
                     f(n, f);
                 }
