@@ -1425,7 +1425,8 @@ void body() {
         auto s = std::stack<i64>();
         s.push(i);
         while (!s.empty()) {
-            auto x = s.pop();
+            auto x = s.top();
+            s.pop();
             if (visited[x]) {
                 cout << -1 << endl;
                 return ;
