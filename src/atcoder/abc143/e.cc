@@ -1382,6 +1382,7 @@ void body() {
         visited[i][i] = true;
     }
     auto solve = [&](auto x, auto f) -> void {
+        dump(x);
         REP (y, N) {
             if (visited[x][y]) continue ;
             EACH_V (edge, G.outgoings(x)) {
