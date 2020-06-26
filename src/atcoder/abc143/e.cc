@@ -1401,6 +1401,6 @@ void body() {
         auto s = st.first - 1;
         auto t = st.second - 1;
         solve(s, solve);
-        cout << (dp[s][t] == std::numeric_limits<i64>::max()) ? -1 : dp[s][t] << endl;
+        cout << ((dp[s][t] == std::numeric_limits<i64>::max()) ? -1 : dp[s][t]) << endl;
     }
 }
