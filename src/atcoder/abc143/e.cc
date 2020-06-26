@@ -1374,33 +1374,33 @@ void body() {
             }
         }
     }
+    // dp[x][y] := x -> yへ行くときの最小補給回数
+    auto dp = make_matrix<i64, 2>({N, N}, std::numeric_limits<i64>::max());
+    REP (i, N) {
+        dp[i][i] = 0;
+    }
+    auto solve = [&](auto x, auto f) {
+        REP (y, N) {
+            if (dp[x][y] != std::numeric_limits<i64>::max())
+                continue;
+            EACH_V (edge, G.outgoings(x)) {
+                auto n = get<1>(edge);
+                if (dp[n][y] == std::numeric_limits<i64>::max()) {
+                    f(n);
+                }
+            }
+            auto cost = std::numeric_limits<i64>::max();
+            EACH_V (edge, G.outgoings(x)) {
+                auto n = get<1>(edge);
+                cost = std::min(cost, dp[n][y] + 1);
+            }
+            dp[x][y] = cost;
+        } 
+    }
     EACH (st, sts) {
         auto s = st.first - 1;
         auto t = st.second - 1;
-
-        // dp[i] := sからiまで移動してiで補給するときの最小回数。ただしdp[s] = 0
-        auto dp = Vector<i64>(N, 2 * N);
-        dp[s] = 0;
-        auto visited = Vector<i64>(N, false);
-        auto solve = [&](auto i, auto f) -> i64 {
-            if (visited[i]) {
-                return dp[i];
-            }
-
-            visited[i] = true;
-            EACH (j, candidates[i]) {
-                dp[i] = std::min(dp[i], f(j, f) + 1);
-            }
-
-            return dp[i];
-        };
-
-        auto ans = solve(t, solve);
-        if (ans == 2 * N) {
-            ans = -1;
-        } else {
-            ans -= 1;
-        }
-        cout << ans << endl;
+        solve(s);
+        cout << dp[s][t] << endl;
     }
 }
