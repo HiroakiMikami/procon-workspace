@@ -814,6 +814,6 @@ void body() {
     auto B = read<string>();
 
     auto B_int = (B[0] - '0') * 100 + (B[2] - '0') * 10 + (B[3] - '0');
-    auto ans = (A * B_int) / 1000;
+    auto ans = (A * B_int) / 100;
     cout << ans << endl;
 }
