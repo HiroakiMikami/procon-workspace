@@ -1354,53 +1354,35 @@ void body() {
     auto Q = read<i64>();
     auto sts = read<i64, i64>(Q);
 
-    auto G = WeightedAdjacencyList(N);
+    auto G_ = WeightedAdjacencyList(N);
     EACH (ABC, ABCs) {
         get<0>(ABC) -= 1;
         get<1>(ABC) -= 1;
-        G.add_edge(ABC);
+        G_.add_edge(ABC);
     }
-    G.to_undirected();
+    G_.to_undirected();
 
-    auto cost = graph::warshall_floyd(G);
-    auto candidates = Vector<Vector<i64>>(N);
-    REP (i, N) {
-        REP (j, N) {
-            if (i == j) {
-                continue;
-            }
-            if (cost[i][j].cost <= L) {
-                candidates[i].push_back(j);
+    auto cost = graph::warshall_floyd(G_);
+    auto G = WeightedAdjacencyList(N); // 移動して給油、をコスト1とする
+    REP (v, N) {
+        REP (w, v + 1, N) {
+            if (cost[v][w].cost <= L) {
+                G.add_edge(tuple<size_t, size_t, i64>(v, w, 1));
             }
         }
     }
-    // dp[x][y] := x -> yへ行くときの最小補給回数
-    auto dp = make_matrix<i64, 2>({N, N}, std::numeric_limits<i64>::max());
-    REP (i, N) {
-        dp[i][i] = 0;
-    }
-    auto solve = [&](auto x, auto f) -> void {
-        REP (y, N) {
-            if (dp[x][y] != std::numeric_limits<i64>::max()) continue ;
-            EACH_V (edge, G.outgoings(x)) {
-                auto n = get<1>(edge);
-                dp[x][n] = 0;
-            }
-            auto cost = std::numeric_limits<i64>::max();
-            EACH_V (edge, G.outgoings(x)) {
-                auto n = get<1>(edge);
-                if (dp[n][y] == std::numeric_limits<i64>::max()) {
-                    f(n, f);
-                }
-                cost = std::min(cost, dp[n][y] + 1);
-            }
-            dp[x][y] = cost;
-        } 
-    };
+    G.to_undirected();
+    auto ans = graph::warshall_floyd(G);
     EACH (st, sts) {
         auto s = st.first - 1;
         auto t = st.second - 1;
-        solve(s, solve);
-        cout << ((dp[s][t] == std::numeric_limits<i64>::max()) ? -1 : dp[s][t]) << endl;
+        auto a = ans[s][t].cost;
+        if (a < 0 || a == std::numeric_limits<i64>::max()) {
+            cout << -1 << endl;
+        } else if (a == 0) {
+            cout << a << endl;
+        } else {
+            cout << a - 1 << endl;
+        }
     }
 }
