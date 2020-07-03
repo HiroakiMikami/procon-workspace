@@ -815,7 +815,7 @@ void body() {
     auto ps = read<i64>(N);
 
     auto P = HashSet<i64>();
-    EACh (p, ps) {
+    EACH (p, ps) {
         P.insert(p);
     }
 
