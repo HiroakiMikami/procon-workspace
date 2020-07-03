@@ -1007,6 +1007,9 @@ void body() {
 
     auto num = [&](auto e) {
         // sum_{i=1}^{t} i <= eを満たす最大のtを求める
+        if (e == 1) {
+            return 1;
+        }
         i64 lower = 0;
         i64 upper = e;
         auto t = (lower + upper) / 2;
