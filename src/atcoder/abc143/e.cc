@@ -1365,7 +1365,7 @@ void body() {
     auto cost = graph::warshall_floyd(G_);
     auto G = WeightedAdjacencyList(N); // 移動して給油、をコスト1とする
     REP (v, N) {
-        REP (w, v + 1, N) {
+        FOR (w, v + 1, N) {
             if (cost[v][w].cost <= L) {
                 G.add_edge(tuple<size_t, size_t, i64>(v, w, 1));
             }
