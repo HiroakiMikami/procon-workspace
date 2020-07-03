@@ -1490,6 +1490,7 @@ void body() {
     EACH_V(edge, G.edges()) {
         uf.merge(get<0>(edge), get<1>(edge));
     }
+    /*
     auto finished = OrderedSet<i64>();
     REP (i, N * (N - 1) / 2) {
         if (finished.find(uf.parent(i)) != finished.end()) continue;
@@ -1499,6 +1500,7 @@ void body() {
         }
         finished.insert(uf.parent(i));
     }
+    */
     dump("find cycle");
 
     // ゲーム開始の前提条件となる試合数の計算
