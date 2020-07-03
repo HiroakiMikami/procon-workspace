@@ -1018,7 +1018,7 @@ void body() {
             }
             t = (lower + upper) / 2;
         }
-        dump(e, lower)
+        dump(e, lower);
         return lower;
     };
 
