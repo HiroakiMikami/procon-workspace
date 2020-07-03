@@ -1482,6 +1482,7 @@ void body() {
             Grev.add_edge(make_tuple(to_index[w], to_index[v]));
         }
     }
+    dump("create graph");
 
     // 閉路があるなら無理
     auto visited = Vector<bool>(N * (N - 1) / 2, false);
@@ -1498,6 +1499,7 @@ void body() {
         }
         finished.insert(uf.parent(i));
     }
+    dump("find cycle");
 
     // ゲーム開始の前提条件となる試合数の計算
     auto n_wait = OrderedMap<size_t, i64>();
