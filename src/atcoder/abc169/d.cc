@@ -1005,7 +1005,7 @@ void body() {
     auto N = read<i64>();
     auto fs = prime_factor(N);
 
-    auto num = [&](auto e) {
+    auto num = [&](auto e) -> i64{
         // sum_{i=1}^{t} i <= eを満たす最大のtを求める
         if (e == 1) {
             return 1;
