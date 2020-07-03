@@ -816,7 +816,7 @@ void body() {
         ans.push_back((N % 23) + 'a');
         N /= 23;
     }
-    ans.reverse();
+    std::reverse(CTR(ans));
 
     cout << std::string(ans.data()) << endl;
 }
