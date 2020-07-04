@@ -1345,7 +1345,7 @@ namespace graph {
         using _Edge = Edge<EdgeLabel>;
         std::vector<_Edge> stack;
         std::optional<std::vector<_Edge>> retval;
-        auto visited = Vector<bool> visited(g.vertex_size(), false);
+        auto visited = Vector<bool>(g.vertex_size(), false);
 
         dfs(g, {start},
                  [&retval, &stack, &visited](const auto &edge_opt, size_t v) {
