@@ -1349,10 +1349,10 @@ namespace graph {
 
         dfs(g, {start},
                  [&retval, &stack, &visited](const auto &edge_opt, size_t v) {
+                     dump(stack);
                      if (!edge_opt) return false;
+                     if (visited[v]) return false;
                      auto edge = edge_opt.value();
-                     dump(edge);
-                     dump(v);
                      while (!stack.empty()) {
                          auto l = stack.back();
                          if (get<1>(l) == get<0>(edge)) {
