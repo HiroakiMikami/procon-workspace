@@ -1494,22 +1494,10 @@ void body() {
     dump("create graph");
 
     // 閉路があるなら無理
-    auto visited = Vector<bool>(N * (N - 1) / 2, false);
-    UnionFind uf(N * (N - 1) / 2);
-    EACH_V(edge, G.edges()) {
-        uf.merge(get<0>(edge), get<1>(edge));
+    if (graph::cycle(G)) {
+        cout << -1 << endl;
+        return ;
     }
-    auto finished = OrderedSet<i64>();
-    REP (i, N * (N - 1) / 2) {
-        // ここが遅い
-        if (finished.find(uf.parent(i)) != finished.end()) continue;
-        if (graph::cycle(G, i)) {
-            cout << -1 << endl;
-            return ;
-        }
-        finished.insert(uf.parent(i));
-    }
-    dump("find cycle");
 
     // ゲーム開始の前提条件となる試合数の計算
     auto n_wait = OrderedMap<size_t, i64>();
