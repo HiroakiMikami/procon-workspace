@@ -1348,13 +1348,11 @@ namespace graph {
         auto visited = Vector<bool>(g.vertices_size(), false);
 
         REP (i, g.vertices_size()) {
-            dump(i);
             if (visited[i]) {
                 continue ;
             }
             dfs(g, {i},
                     [&retval, &stack, &visited](const auto &edge_opt, size_t v) {
-                        dump(v);
                         if (!edge_opt) return false;
                         if (visited[v]) return true;
                         auto edge = edge_opt.value();
