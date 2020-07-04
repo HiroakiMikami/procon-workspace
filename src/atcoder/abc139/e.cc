@@ -1348,7 +1348,7 @@ namespace graph {
         auto visited = Vector<bool> visited(g.vertex_size(), false);
 
         dfs(g, {start},
-                 [&retval, &stack](const auto &edge_opt, size_t v) {
+                 [&retval, &stack, &visited](const auto &edge_opt, size_t v) {
                      dump(stack);
                      dump(v);
                      if (!edge_opt) return false;
