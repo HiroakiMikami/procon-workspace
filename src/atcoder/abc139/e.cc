@@ -1345,10 +1345,12 @@ namespace graph {
         using _Edge = Edge<EdgeLabel>;
         std::vector<_Edge> stack;
         std::optional<std::vector<_Edge>> retval;
+        auto visited = Vector<bool> visited(g.vertex_size(), false);
 
         dfs(g, {start},
-                 [&retval, &stack](const auto &edge_opt, size_t v __attribute__((unused))) {
+                 [&retval, &stack](const auto &edge_opt, size_t v) {
                      dump(stack);
+                     dump(v);
                      if (!edge_opt) return false;
                      auto edge = edge_opt.value();
                      while (!stack.empty()) {
@@ -1369,6 +1371,8 @@ namespace graph {
                              retval.value().push_back(e);
                          }
                      }
+
+                     visited[v] = true;
 
                      if (retval) {
                          retval.value().push_back(edge);
