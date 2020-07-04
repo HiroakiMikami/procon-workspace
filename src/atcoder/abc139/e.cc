@@ -1348,6 +1348,7 @@ namespace graph {
 
         dfs(g, {start},
                  [&retval, &stack](const auto &edge_opt, size_t v __attribute__((unused))) {
+                     dump(stack);
                      if (!edge_opt) return false;
                      auto edge = edge_opt.value();
                      while (!stack.empty()) {
@@ -1494,7 +1495,6 @@ void body() {
     REP (i, N * (N - 1) / 2) {
         // ここが遅い
         if (finished.find(uf.parent(i)) != finished.end()) continue;
-        dump(i);
         if (graph::cycle(G, i)) {
             cout << -1 << endl;
             return ;
