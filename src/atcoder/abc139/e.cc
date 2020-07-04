@@ -1356,7 +1356,7 @@ namespace graph {
                     [&retval, &stack, &visited](const auto &edge_opt, size_t v) {
                         dump(v);
                         if (!edge_opt) return false;
-                        if (visited[v]) return false;
+                        if (visited[v]) return true;
                         auto edge = edge_opt.value();
                         while (!stack.empty()) {
                             auto l = stack.back();
