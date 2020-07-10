@@ -813,7 +813,7 @@ void body() {
     auto N = read<i64>() - 1;
     auto ans = Vector<char>();
     while (N != 0) {
-        ans.push_back(((N - 1) % 26) + 'a');
+        ans.push_back((N % 26) + 'a');
         N /= 26;
     }
     std::reverse(CTR(ans));
