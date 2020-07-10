@@ -823,7 +823,7 @@ void body() {
         }
         digit += 1;
     }
-    N -= psum - pow;
+    N -= psum - pow - 1;
     dump(digit);
     dump(N);
     while (N != 0) {
