@@ -812,6 +812,16 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto ans = Vector<char>();
+    i64 digit = 1;
+    i64 pow = 1;
+    while (true) {
+        pow *= 26;
+        if (N <= pow) {
+            break;
+        }
+        digit += 1;
+    }
+    dump(digit);
     while (N != 0) {
         ans.push_back(((N - 1) % 26) + 'a');
         N /= 26;
