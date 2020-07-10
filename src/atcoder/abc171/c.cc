@@ -824,8 +824,6 @@ void body() {
         digit += 1;
     }
     N -= psum - pow;
-    dump(digit);
-    dump(N);
     while (N != 0) {
         ans.push_back((N % 26) + 'a');
         N /= 26;
