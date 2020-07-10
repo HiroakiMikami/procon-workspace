@@ -1021,7 +1021,7 @@ void body() {
         EACH (elem, ps) {
             auto p = elem.first;
             auto m = elem.second;
-            if (P.find(p) != P.end() && P[p] >= m) {
+            if (P.find(p) != P.end() && P[p] <= m) {
                 f = false;
             }
             P[p] = std::max<i64>(P[p], m);
