@@ -1023,7 +1023,7 @@ void body() {
             if (P.find(p) != P.end() && P[p] >= m) {
                 f = false;
             }
-            P[p] = std::max(P[p], m);
+            P[p] = std::max<i64>(P[p], m);
         }
         if (f && n == 1) {
             ans += 1;
