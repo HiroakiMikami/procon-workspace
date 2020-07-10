@@ -1004,7 +1004,7 @@ static std::optional<pair<i64, i64>> chinese_rem_ctr(const Vector<i64> &b, const
 
 void body() {
     auto N = read<i64>();
-    auto As = read<i64>();
+    auto As = read<i64>(N);
     auto X = OrderedMap<i64, i64>();
     EACH (A, As) {
         X[A] += 1;
