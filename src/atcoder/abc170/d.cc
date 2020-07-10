@@ -1026,6 +1026,7 @@ void body() {
             P[p] = std::max<i64>(P[p], m);
         }
         if (f && n == 1) {
+            dump(A, n);
             ans += 1;
         }
     }
