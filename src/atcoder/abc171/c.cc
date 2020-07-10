@@ -814,9 +814,11 @@ void body() {
     auto ans = Vector<char>();
     i64 digit = 1;
     i64 pow = 1;
+    i64 psum = 0;
     while (true) {
         pow *= 26;
-        if (N <= pow) {
+        psum += pow;
+        if (N <= psum) {
             break;
         }
         digit += 1;
