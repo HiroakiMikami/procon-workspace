@@ -1017,7 +1017,7 @@ void body() {
         auto n = x.second;
         auto ps = prime_factor(A);
         bool f = true;
-        dump(P);
+        dump(A, P);
         EACH (elem, ps) {
             auto p = elem.first;
             auto m = elem.second;
