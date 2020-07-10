@@ -810,7 +810,7 @@ int main (int argc, char **argv) {
 }
 
 void body() {
-    auto N = read<i64>();
+    auto N = read<i64>() - 1;
     auto ans = Vector<char>();
     i64 digit = 1;
     i64 pow = 1;
@@ -818,13 +818,12 @@ void body() {
     while (true) {
         pow *= 26;
         psum += pow;
-        if (N <= psum) {
+        if (N < psum) {
             break;
         }
         digit += 1;
     }
     N -= psum - pow;
-    N -= 1;
     dump(digit);
     dump(N);
     while (N != 0) {
