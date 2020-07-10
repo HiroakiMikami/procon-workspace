@@ -816,7 +816,7 @@ void body() {
         if ((N % 26) == 0) {
             ans.push_back('z');
         } else {
-            ans.push_back((N % 26) + 'a');
+            ans.push_back((N % 26) + 'a' - 1);
         }
         N /= 26;
     }
