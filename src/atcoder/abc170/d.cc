@@ -1011,24 +1011,19 @@ void body() {
     }
 
     i64 ans = 0;
-    auto P = OrderedMap<i64, i64>();
-    EACH (x, X) {
-        auto A = x.first;
-        auto n = x.second;
-        auto ps = prime_factor(A);
-        bool f = true;
-        dump(A, P);
-        EACH (elem, ps) {
-            auto p = elem.first;
-            auto m = elem.second;
-            if (P.find(p) != P.end() && P[p] <= m) {
-                f = false;
-            }
-            P[p] = std::max<i64>(P[p], m);
-        }
-        if (f && n == 1) {
-            dump(A, n);
+    while (!X.empty()) {
+        auto x = X.begin();
+        auto A = x->first;
+        auto n = x->second;
+        X.erase(A);
+        if (n == 1) {
             ans += 1;
+        }
+
+        for (auto &y: X) {
+            if (y.first % A == 0) {
+                y.second = 0;
+            }
         }
     }
 
