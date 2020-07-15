@@ -1020,7 +1020,7 @@ void body() {
             ans += 1;
         }
 
-        auto tmp = UnorderedSet<i64>();
+        auto tmp = HashSet<i64>();
         EACH (y, X) {
             if (y.first % A == 0) {
                 tmp.insert(y.first);
