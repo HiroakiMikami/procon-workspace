@@ -1020,10 +1020,15 @@ void body() {
             ans += 1;
         }
 
-        for (auto &y: X) {
+        auto tmp = UnorderedSet<i64>();
+        EACH (y, X) {
             if (y.first % A == 0) {
-                y.second = 0;
+                tmp.insert(y.first);
+                
             }
+        }
+        EACH (t, tmp) {
+            X.erase(t);
         }
     }
 
