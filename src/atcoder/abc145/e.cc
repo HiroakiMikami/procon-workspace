@@ -821,8 +821,8 @@ void body() {
 
     // dp1の更新
     FOR (i, 1, N + 1) {
-        auto A = ABs[i].first;
-        auto B = ABs[i].second;
+        auto A = ABs[i - 1].first;
+        auto B = ABs[i - 1].second;
         REP (t, T) {
             if (t - A < 0) {
                 continue;
