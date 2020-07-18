@@ -827,7 +827,7 @@ void body() {
             if (t - A < 0) {
                 continue;
             }
-            dp1[t][i] = dp[t - A][i - 1] + B;
+            dp1[t][i] = dp1[t - A][i - 1] + B;
         }
     }
 }
