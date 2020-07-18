@@ -832,9 +832,9 @@ void body() {
     }
     dump(dp1);
     // dp2の更新
-    REP (i, N) {
-        auto A = ABs[i].first;
-        auto B = ABs[i].second;
+    FORR (i, -1 N - 1) {
+        auto A = ABs[i + 1].first;
+        auto B = ABs[i + 1].second;
         REP (t, T) {
             if (t - A < 0) {
                 continue;
@@ -844,11 +844,12 @@ void body() {
     }
     dump(dp2);
 
-    // dp[i]を食べずにT-1までに食べられる最大
+    // dp[i]を食べずにT-1までに食べられる最大 + B_i
     auto dp = Vector<i64>(N);
     REP (i, N) {
+        auto B = ABs[i].second;
         REP (t, T) {
-            dp[i] = std::max(dp[i], dp1[t][i] + dp2[T - 1 - t][i]);
+            dp[i] = std::max(dp[i], dp1[t][i] + dp2[T - 1 - t][i] + B);
         }
     }
     auto ans = *std::max_element(CTR(dp));
