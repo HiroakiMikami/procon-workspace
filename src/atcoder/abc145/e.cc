@@ -815,12 +815,12 @@ void body() {
     auto ABs = read<i64, i64>(N);
 
     // dp1[t][i] := 0...i-1まででtかけて食べられる最大
-    auto dp1 = make_matrix<i64, 2>({T, N}, 0);
+    auto dp1 = make_matrix<i64, 2>({T, N + 1}, 0);
     // dp2[t][i] := i+1...N-1まででtかけて食べられる最大
-    auto dp2 = make_matrix<i64, 2>({T, N}, 0);
+    auto dp2 = make_matrix<i64, 2>({T, N + 1}, 0);
 
     // dp1の更新
-    FOR (i, 1, N) {
+    FOR (i, 1, N + 1) {
         auto A = ABs[i].first;
         auto B = ABs[i].second;
         REP (t, T) {
@@ -831,7 +831,7 @@ void body() {
         }
     }
     // dp2の更新
-    REP (i, N - 1) {
+    REP (i, N) {
         auto A = ABs[i].first;
         auto B = ABs[i].second;
         REP (t, T) {
