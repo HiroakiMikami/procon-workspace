@@ -827,6 +827,7 @@ void body() {
             if (t - A < 0) {
                 continue;
             }
+            dump(t, i);
             dp1[t][i] = dp1[t - A][i - 1] + B;
         }
     }
