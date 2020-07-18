@@ -832,7 +832,7 @@ void body() {
     }
     dump(dp1);
     // dp2の更新
-    FORR (i, -1 N - 1) {
+    FORR (i, -1, N - 1) {
         auto A = ABs[i + 1].first;
         auto B = ABs[i + 1].second;
         REP (t, T) {
