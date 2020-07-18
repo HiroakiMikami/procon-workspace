@@ -831,7 +831,7 @@ void body() {
         }
     }
     // dp2の更新
-    REPR (i, N - 1) {
+    REPR (i, N) {
         auto A = ABs[i + 1].first;
         auto B = ABs[i + 1].second;
         REP (t, T) {
