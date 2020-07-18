@@ -841,6 +841,8 @@ void body() {
             dp2[t][i] = dp2[t - A][i + 1] + B;
         }
     }
+    dump(dp1);
+    dump(dp2);
 
     // dp[i]を食べずにT-1までに食べられる最大
     auto dp = Vector<i64>(N);
