@@ -830,4 +830,25 @@ void body() {
             dp1[t][i] = dp1[t - A][i - 1] + B;
         }
     }
+    // dp2の更新
+    REP (i, N - 1) {
+        auto A = ABs[i].first;
+        auto B = ABs[i].second;
+        REP (t, T) {
+            if (t - A < 0) {
+                continue;
+            }
+            dp2[t][i] = dp2[t - A][i + 1] + B;
+        }
+    }
+
+    // dp[i]を食べずにT-1までに食べられる最大
+    auto dp = Vector<i64>(N);
+    REP (i, N) {
+        REP (t, T) {
+            dp[i] = std::max(dp[i], dp1[t][i] + dp2[T - 1 - t][i]);
+        }
+    }
+    auto ans = *std::max_element(CTR(dp));
+    cout << ans << endl;
 }
