@@ -830,9 +830,8 @@ void body() {
             dp1[t][i] = dp1[t - A][i - 1] + B;
         }
     }
-    dump(dp1);
     // dp2の更新
-    REPR (i, N) {
+    REPR (i, N - 1) {
         auto A = ABs[i + 1].first;
         auto B = ABs[i + 1].second;
         REP (t, T) {
