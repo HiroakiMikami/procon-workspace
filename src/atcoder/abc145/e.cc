@@ -830,6 +830,7 @@ void body() {
             dp1[t][i] = dp1[t - A][i - 1] + B;
         }
     }
+    dump(dp1);
     // dp2の更新
     REP (i, N) {
         auto A = ABs[i].first;
@@ -841,7 +842,6 @@ void body() {
             dp2[t][i] = dp2[t - A][i + 1] + B;
         }
     }
-    dump(dp1);
     dump(dp2);
 
     // dp[i]を食べずにT-1までに食べられる最大
