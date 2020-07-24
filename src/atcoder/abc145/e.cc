@@ -814,6 +814,8 @@ void body() {
     auto T = read<i64>();
     auto ABs = read<i64, i64>(N);
 
+    if (N == 10) return;
+
     // dp1[t][i] := [0, i)まででtかけて食べられる最大
     auto dp1 = make_matrix<i64, 2>({T, N}, 0);
     // dp2[t][i] := [i+1, N)まででtかけて食べられる最大
@@ -828,7 +830,7 @@ void body() {
             if (t - A < 0) {
                 continue;
             }
-            dp1[t][i] = std::max(dp1[t - 1][i], dp1[t - A][i - 1] + B);
+            dp1[t][i] = dp1[t - A][i - 1] + B;
         }
     }
     // dp2の更新
@@ -840,8 +842,11 @@ void body() {
             if (t - A < 0) {
                 continue;
             }
-            dp2[t][i] = std::max(dp2[t - 1][i], dp2[t - A][i + 1] + B);
+            dp2[t][i] = dp2[t - A][i + 1] + B;
         }
+    }
+    REP (t, T) {
+        dump(t, dp1[t]);
     }
 
     // dp[i]を食べずにT-1までに食べられる最大 + B_i
