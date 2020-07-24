@@ -831,6 +831,7 @@ void body() {
             dp1[t][i] = dp1[t - A][i - 1] + B;
         }
     }
+    dump(dp1);
     // dp2の更新
     REPR (i, N - 1) {
         // 新しく追加されるのは i + 1
@@ -849,7 +850,6 @@ void body() {
     REP (i, N) {
         auto B = ABs[i].second;
         REP (t, T) {
-            dump(t, i, T - 1- t);
             dp[i] = std::max(dp[i], dp1[t][i] + dp2[T - 1 - t][i] + B);
         }
     }
