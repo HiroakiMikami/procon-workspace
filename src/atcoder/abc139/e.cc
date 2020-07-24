@@ -1494,7 +1494,7 @@ void body() {
 
     // 最初に実施できるものの初期化
     auto start = OrderedSet<size_t>();
-    REP (v, Grev.vertices_size) {
+    REP (v, Grev.vertices_size()) {
         i64 n = 0;
         EACH_V(_, Grev.outgoings(v)) {
             n += 1;
