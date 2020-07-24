@@ -1494,7 +1494,7 @@ void body() {
 
     // 最初に実施できるものの初期化
     auto start = OrderedSet<size_t>();
-    REP (v, Grev.vertex_size()) {
+    REP (v, Grev.vertex_size) {
         if (Grev.outgoings(v).size() == 0) {
             start.insert(v);
         }
