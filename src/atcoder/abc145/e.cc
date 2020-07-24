@@ -830,7 +830,7 @@ void body() {
             if (t - A < 0) {
                 continue;
             }
-            dp1[t][i] = dp1[t - A][i - 1] + B;
+            dp1[t][i] = std::max(dp1[t][i - 1], dp1[t - A][i - 1] + B);
         }
     }
     // dp2の更新
@@ -842,7 +842,7 @@ void body() {
             if (t - A < 0) {
                 continue;
             }
-            dp2[t][i] = dp2[t - A][i + 1] + B;
+            dp2[t][i] = std::max(dp2[t][i + 1], dp2[t - A][i + 1] + B);
         }
     }
     REP (t, T) {
