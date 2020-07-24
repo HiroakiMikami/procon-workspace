@@ -1494,7 +1494,7 @@ void body() {
 
     // BFSして最長路を求める
     auto visited = OrderedSet<pair<i64, i64>>(); // visited edges
-    auto longest_path = OrderedSet<i64, i64>();
+    auto longest_path = OrderedMap<i64, i64>();
 
     auto q = std::queue<std::pair<i64, i64>>();
     // 最初に実施できるものの初期化
@@ -1509,6 +1509,23 @@ void body() {
     }
 
     while (!q.empty()) {
+        auto edge = q.top();
+        q.pop();
+        if (visited.find(edge) != visited.end()) {
+            // 閉路があるので不可能
+            cout << -1 << endl;
+            return ;
+        }
+
+        auto v = edge.first;
+        auto w = edge.second;
+        visited.insert(edge);
+
+        longest_path[w] = std::max(longest_path[w], longest_path[v] + 1);
+
+        EACH_V (e, G.outgoings(w)) {
+            q.push(std::make_pair(w, std::get<1>(e)));
+        }
 
     }
 
