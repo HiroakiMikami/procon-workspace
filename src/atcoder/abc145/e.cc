@@ -827,6 +827,7 @@ void body() {
         auto A = ABs[i - 1].first;
         auto B = ABs[i - 1].second;
         REP (t, T) {
+            dump(i, t);
             if (t - A < 0) {
                 dp1[t][i] = dp1[t][i - 1];
             } else {
