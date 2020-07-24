@@ -828,10 +828,10 @@ void body() {
             if (t - A < 0) {
                 continue;
             }
+            dump(t, i, T - A, i - 1);
             dp1[t][i] = dp1[t - A][i - 1] + B;
         }
     }
-    dump(dp1);
     // dp2の更新
     REPR (i, N - 1) {
         // 新しく追加されるのは i + 1
