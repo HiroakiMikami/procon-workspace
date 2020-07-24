@@ -820,7 +820,7 @@ void body() {
     auto dp2 = make_matrix<i64, 2>({T, N}, 0);
 
     // dp1の更新
-    FOR (i, 1, N + 1) {
+    FOR (i, 1, N) {
         // 新しく追加されるのは i - 1
         auto A = ABs[i - 1].first;
         auto B = ABs[i - 1].second;
@@ -828,7 +828,6 @@ void body() {
             if (t - A < 0) {
                 continue;
             }
-            dump(t, i, T - A, i - 1);
             dp1[t][i] = dp1[t - A][i - 1] + B;
         }
     }
