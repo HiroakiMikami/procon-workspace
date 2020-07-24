@@ -1504,8 +1504,12 @@ void body() {
             n += 1;
         }
         if (n == 0) {
-            q.push(std::pair<i64, i64>(-1, p));
+            q.push(std::pair<i64, i64>(-1, v));
         }
+    }
+
+    while (!q.empty()) {
+
     }
 
 }
