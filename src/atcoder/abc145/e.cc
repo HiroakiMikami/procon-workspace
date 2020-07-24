@@ -825,7 +825,6 @@ void body() {
         auto A = ABs[i - 1].first;
         auto B = ABs[i - 1].second;
         REP (t, T) {
-            dump(i, t);
             if (t - A < 0) {
                 dp1[t][i] = dp1[t][i - 1];
             } else {
@@ -833,7 +832,6 @@ void body() {
             }
         }
     }
-    dump("foo");
     // dp2の更新
     REPR (i, N - 1) {
         // 新しく追加されるのは i + 1
@@ -847,7 +845,6 @@ void body() {
             }
         }
     }
-    dump("foo");
 
     // dp[i]を食べずにT-1までに食べられる最大 + B_i
     auto dp = Vector<i64>(N);
