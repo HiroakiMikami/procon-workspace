@@ -1500,21 +1500,4 @@ void body() {
         }
     }
     auto visited = OrderedSet<G::Edge>();
-
-    i64 ans = 0;
-    while (!ready.empty()) {
-        auto next = OrderedSet<size_t>();
-        EACH (v, ready) {
-            EACH_V (w, G.outgoings(v)) {
-                auto t = get<1>(w);
-                n_wait[t] -= 1;
-                if (n_wait[t] == 0) {
-                    next.insert(t);
-                }
-            } 
-        }
-        ready = next;
-        ans += 1;
-    }
-    cout << ans << endl;
 }
