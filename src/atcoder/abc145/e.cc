@@ -814,8 +814,6 @@ void body() {
     auto T = read<i64>();
     auto ABs = read<i64, i64>(N);
 
-    if (N == 10) return;
-
     // dp1[t][i] := [0, i)まででtかけて食べられる最大
     auto dp1 = make_matrix<i64, 2>({T, N}, 0);
     // dp2[t][i] := [i+1, N)まででtかけて食べられる最大
