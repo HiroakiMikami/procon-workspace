@@ -833,6 +833,7 @@ void body() {
             dp1[t][i] = std::max(dp1[t][i - 1], dp1[t - A][i - 1] + B);
         }
     }
+    dump("foo");
     // dp2の更新
     REPR (i, N - 1) {
         // 新しく追加されるのは i + 1
