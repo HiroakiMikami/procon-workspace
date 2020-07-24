@@ -845,6 +845,7 @@ void body() {
             dp2[t][i] = std::max(dp2[t][i + 1], dp2[t - A][i + 1] + B);
         }
     }
+    dump("foo");
 
     // dp[i]を食べずにT-1までに食べられる最大 + B_i
     auto dp = Vector<i64>(N);
