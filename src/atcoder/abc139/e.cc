@@ -1492,31 +1492,14 @@ void body() {
         }
     }
 
-    // 閉路があるなら無理
-    if (graph::cycle(G)) {
-        cout << -1 << endl;
-        return ;
-    }
-
-    // ゲーム開始の前提条件となる試合数の計算
-    auto n_wait = OrderedMap<size_t, i64>();
-    REP (i, N * (N - 1) / 2) {
-        n_wait[i] = 0;
-    }
-    REP (i, N) {
-        FOR (j, i + 1, N) {
-            auto x = to_index[pair<i64, i64>(i, j)];
-            n_wait[x] = Grev.container[x].size();
-        }
-    }
-
     // 最初に実施できるものの初期化
-    auto ready = OrderedSet<size_t>();
+    auto start = OrderedSet<size_t>();
     EACH (elem, n_wait) {
         if (elem.second == 0) {
-            ready.insert(elem.first);
+            start.insert(elem.first);
         }
     }
+    auto visited = OrderedSet<G::Edge>();
 
     i64 ans = 0;
     while (!ready.empty()) {
