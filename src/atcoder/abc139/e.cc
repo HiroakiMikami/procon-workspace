@@ -1509,7 +1509,7 @@ void body() {
     }
 
     while (!q.empty()) {
-        auto edge = q.top();
+        auto edge = q.front();
         q.pop();
         if (visited.find(edge) != visited.end()) {
             // 閉路があるので不可能
