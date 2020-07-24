@@ -1494,9 +1494,9 @@ void body() {
 
     // 最初に実施できるものの初期化
     auto start = OrderedSet<size_t>();
-    EACH (elem, n_wait) {
-        if (elem.second == 0) {
-            start.insert(elem.first);
+    REP (v, Grev.vertex_size()) {
+        if (Grev.outgoings(v).size() == 0) {
+            start.insert(v);
         }
     }
     auto visited = OrderedSet<G::Edge>();
