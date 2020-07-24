@@ -849,6 +849,7 @@ void body() {
     REP (i, N) {
         auto B = ABs[i].second;
         REP (t, T) {
+            dump(t, i, T - 1- t);
             dp[i] = std::max(dp[i], dp1[t][i] + dp2[T - 1 - t][i] + B);
         }
     }
