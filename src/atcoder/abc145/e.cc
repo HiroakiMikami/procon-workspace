@@ -852,6 +852,7 @@ void body() {
             dp[i] = std::max(dp[i], dp1[t][i] + dp2[T - 1 - t][i] + B);
         }
     }
+    dump(dp);
     auto ans = *std::max_element(CTR(dp));
     cout << ans << endl;
 }
