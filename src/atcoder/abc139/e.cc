@@ -1526,7 +1526,12 @@ void body() {
         EACH_V (e, G.outgoings(w)) {
             q.push(std::make_pair(w, std::get<1>(e)));
         }
-
     }
+
+    i64 ans = 0;
+    EACH (elem, longest_path) {
+        ans = std::max(ans, elem.second);
+    }
+    cout << ans << endl;
 
 }
