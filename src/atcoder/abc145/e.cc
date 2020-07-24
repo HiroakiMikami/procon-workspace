@@ -850,7 +850,7 @@ void body() {
         auto B = ABs[i].second;
         REP (t, T) {
             if ((dp1[t][i] + dp2[T - 1 - t][i] + B) == 126) {
-                dump(t, i, dp[t][i], dp[T - 1 - t][i]);
+                dump(t, i, dp1[t][i], dp2[T - 1 - t][i]);
             }
             dp[i] = std::max(dp[i], dp1[t][i] + dp2[T - 1 - t][i] + B);
         }
