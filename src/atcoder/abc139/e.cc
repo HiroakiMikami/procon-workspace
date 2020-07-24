@@ -1492,16 +1492,20 @@ void body() {
         }
     }
 
+    // BFSして最長路を求める
+    auto visited = OrderedSet<pair<i64, i64>>(); // visited edges
+    auto longest_path = OrderedSet<i64, i64>();
+
+    auto q = std::queue<std::pair<i64, i64>>();
     // 最初に実施できるものの初期化
-    auto start = OrderedSet<size_t>();
     REP (v, Grev.vertices_size()) {
         i64 n = 0;
         EACH_V(_, Grev.outgoings(v)) {
             n += 1;
         }
         if (n == 0) {
-            start.insert(v);
+            q.push(std::pair<i64, i64>(-1, p));
         }
     }
-    auto visited = OrderedSet<G::Edge>();
+
 }
