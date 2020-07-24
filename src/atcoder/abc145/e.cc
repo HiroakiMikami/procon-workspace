@@ -846,7 +846,7 @@ void body() {
         }
     }
     REP (t, T) {
-        dump(dp1[t]);
+        dump(t, dp1[t]);
     }
 
     // dp[i]を食べずにT-1までに食べられる最大 + B_i
