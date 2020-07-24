@@ -828,9 +828,10 @@ void body() {
         auto B = ABs[i - 1].second;
         REP (t, T) {
             if (t - A < 0) {
-                continue;
+                dp1[t][i] = dp1[t][i - 1];
+            } else {
+                dp1[t][i] = std::max(dp1[t][i - 1], dp1[t - A][i - 1] + B);
             }
-            dp1[t][i] = std::max(dp1[t][i - 1], dp1[t - A][i - 1] + B);
         }
     }
     dump("foo");
@@ -841,9 +842,10 @@ void body() {
         auto B = ABs[i + 1].second;
         REP (t, T) {
             if (t - A < 0) {
-                continue;
+                dp2[t][i] = dp2[t][i + 1];
+            } else {
+                dp2[t][i] = std::max(dp2[t][i + 1], dp2[t - A][i + 1] + B);
             }
-            dp2[t][i] = std::max(dp2[t][i + 1], dp2[t - A][i + 1] + B);
         }
     }
     dump("foo");
