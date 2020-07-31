@@ -1510,7 +1510,7 @@ void body() {
             n += 1;
         }
         if (n == 0) {
-            q.push(std::pair<i64, i64>(0, v));
+            q.push(std::pair<i64, i64>(1, v));
         }
     }
 
