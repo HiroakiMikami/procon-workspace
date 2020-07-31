@@ -1005,7 +1005,7 @@ static std::optional<pair<i64, i64>> chinese_rem_ctr(const Vector<i64> &b, const
 void body() {
     auto N = read<i64>();
     auto As = read<i64>(N);
-    auto Amax = *std::max_element(*As);
+    auto Amax = *std::max_element(CTR(As));
 
     // xs[A] = Aを割り切れるAiの個数
     auto xs = Vector<i64>(Amax + 1, 0);
