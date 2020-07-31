@@ -1520,11 +1520,6 @@ void body() {
         auto d = elem.first;
         auto v = elem.second;
         ans = std::max(d, ans);
-        if (visited.find(v) != visited.end()) {
-            continue ;
-        }
-
-        visited.insert(v);
 
         EACH_V (e, G.outgoings(v)) {
             q.push(std::make_pair(d + 1, std::get<1>(e)));
