@@ -838,7 +838,6 @@ void body() {
         i64 upper = M + 1;
         auto t = (lower + upper) / 2;
         while (upper - lower > 1) {
-            dump(upper, lower);
             if (sumB[t] <= k) {
                 lower = t;
             } else {
