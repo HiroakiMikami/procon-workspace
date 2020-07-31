@@ -1005,31 +1005,27 @@ static std::optional<pair<i64, i64>> chinese_rem_ctr(const Vector<i64> &b, const
 void body() {
     auto N = read<i64>();
     auto As = read<i64>(N);
-    auto X = OrderedMap<i64, i64>();
+    auto Amax = *std::max_element(*As);
+
+    // xs[A] = Aを割り切れるAiの個数
+    auto xs = Vector<i64>(Amax + 1, 0);
+
     EACH (A, As) {
-        X[A] += 1;
+        if (xs[A] == 0) {
+            FOR (i, 1, Amax / A + 1) {
+                auto B = A * i;
+                if(B <= Amax) {
+                    xs[B] += 1;
+                }
+            }
+        } else {
+            xs[A] += 1;
+        }
     }
 
     i64 ans = 0;
-    auto P = OrderedMap<i64, i64>();
-    EACH (x, X) {
-        auto A = x.first;
-        auto n = x.second;
-        auto ps = prime_factor(A);
-        bool f = true;
-        dump(A, P);
-        EACH (elem, ps) {
-            auto p = elem.first;
-            auto m = elem.second;
-            if (P.find(p) != P.end() && P[p] <= m) {
-                f = false;
-            }
-            P[p] = std::max<i64>(P[p], m);
-        }
-        if (f && n == 1) {
-            dump(A, n);
-            ans += 1;
-        }
+    EACH (A, As) {
+        ans += (xs[A] == 1) ? 1 : 0;
     }
 
     cout << ans << endl;
