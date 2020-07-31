@@ -831,6 +831,9 @@ void body() {
     REP (n, N + 1) {
         // Asからn冊読む
         auto k = K - sumA[n]; // 残り時間 k
+        if (k < 0) {
+            continue ;
+        }
         i64 lower = 0;
         i64 upper = N + 1;
         auto t = (lower + upper) / 2;
