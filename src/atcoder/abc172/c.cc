@@ -832,6 +832,7 @@ void body() {
         // Asからn冊読む
         auto k = K - sumA[n]; // 残り時間 k
         if (k < 0) {
+            dump(k);
             continue ;
         }
         i64 lower = 0;
