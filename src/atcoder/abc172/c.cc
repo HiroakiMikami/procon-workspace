@@ -832,13 +832,13 @@ void body() {
         // Asからn冊読む
         auto k = K - sumA[n]; // 残り時間 k
         if (k < 0) {
-            dump(k);
             continue ;
         }
         i64 lower = 0;
         i64 upper = N + 1;
         auto t = (lower + upper) / 2;
         while (upper - lower > 1) {
+            dump(upper, lower);
             if (sumB[t] <= k) {
                 lower = t;
             } else {
