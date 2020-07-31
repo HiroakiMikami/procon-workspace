@@ -842,6 +842,7 @@ void body() {
             }
             t = (lower + upper) / 2;
         }
+        dump(n, t);
         ans = std::max(ans, n + lower);
     }
     cout << ans << endl;
