@@ -1502,7 +1502,7 @@ void body() {
     auto visited = OrderedSet<i64>(); // visited vertices
     i64 ans = 0;
 
-    auto q = std::stacka<std::pair<i64, i64>>();
+    auto q = std::stack<std::pair<i64, i64>>();
     // 最初に実施できるものの初期化
     REP (v, Grev.vertices_size()) {
         i64 n = 0;
