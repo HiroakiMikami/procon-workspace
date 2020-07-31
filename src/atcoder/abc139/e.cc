@@ -1515,7 +1515,7 @@ void body() {
     }
 
     while (!q.empty()) {
-        auto elem = q.front();
+        auto elem = q.top();
         q.pop();
         auto d = elem.first;
         auto v = elem.second;
