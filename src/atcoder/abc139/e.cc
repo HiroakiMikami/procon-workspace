@@ -1492,11 +1492,17 @@ void body() {
         }
     }
 
-    // BFSして最長路を求める
-    auto visited = OrderedSet<pair<i64, i64>>(); // visited edges
-    auto longest_path = OrderedMap<i64, i64>();
+    if (graph::cycle(G)) {
+        // 閉路があるので不可能
+        cout << -1 << endl;
+        return ;
+    }
 
-    auto q = std::queue<std::pair<i64, i64>>();
+    // DFSして最長路を求める
+    auto visited = OrderedSet<i64>(); // visited vertices
+    i64 ans = 0;
+
+    auto q = std::stacka<std::pair<i64, i64>>();
     // 最初に実施できるものの初期化
     REP (v, Grev.vertices_size()) {
         i64 n = 0;
@@ -1504,34 +1510,27 @@ void body() {
             n += 1;
         }
         if (n == 0) {
-            q.push(std::pair<i64, i64>(-1, v));
+            q.push(std::pair<i64, i64>(0, v));
         }
     }
 
     while (!q.empty()) {
-        auto edge = q.front();
+        auto elem = q.front();
         q.pop();
-        if (visited.find(edge) != visited.end()) {
-            // 閉路があるので不可能
-            cout << -1 << endl;
-            return ;
+        auto d = elem.first;
+        auto v = elem.second;
+        ans = std::max(d, ans);
+        if (visited.find(v) != visited.end()) {
+            continue ;
         }
 
-        auto v = edge.first;
-        auto w = edge.second;
-        visited.insert(edge);
+        visited.insert(v);
 
-        longest_path[w] = std::max(longest_path[w], longest_path[v] + 1);
-
-        EACH_V (e, G.outgoings(w)) {
-            q.push(std::make_pair(w, std::get<1>(e)));
+        EACH_V (e, G.outgoings(v)) {
+            q.push(std::make_pair(d + 1, std::get<1>(e)));
         }
     }
 
-    i64 ans = 0;
-    EACH (elem, longest_path) {
-        ans = std::max(ans, elem.second);
-    }
     cout << ans << endl;
 
 }
