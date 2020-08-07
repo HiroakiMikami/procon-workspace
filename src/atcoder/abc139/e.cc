@@ -1492,46 +1492,40 @@ void body() {
         }
     }
 
-    // 閉路があるなら無理
     if (graph::cycle(G)) {
+        // 閉路があるので不可能
         cout << -1 << endl;
         return ;
     }
 
-    // ゲーム開始の前提条件となる試合数の計算
-    auto n_wait = OrderedMap<size_t, i64>();
-    REP (i, N * (N - 1) / 2) {
-        n_wait[i] = 0;
-    }
-    REP (i, N) {
-        FOR (j, i + 1, N) {
-            auto x = to_index[pair<i64, i64>(i, j)];
-            n_wait[x] = Grev.container[x].size();
-        }
-    }
-
-    // 最初に実施できるものの初期化
-    auto ready = OrderedSet<size_t>();
-    EACH (elem, n_wait) {
-        if (elem.second == 0) {
-            ready.insert(elem.first);
-        }
-    }
-
+    // DFSして最長路を求める
+    auto visited = OrderedSet<i64>(); // visited vertices
     i64 ans = 0;
-    while (!ready.empty()) {
-        auto next = OrderedSet<size_t>();
-        EACH (v, ready) {
-            EACH_V (w, G.outgoings(v)) {
-                auto t = get<1>(w);
-                n_wait[t] -= 1;
-                if (n_wait[t] == 0) {
-                    next.insert(t);
-                }
-            } 
+
+    auto q = std::stack<std::pair<i64, i64>>();
+    // 最初に実施できるものの初期化
+    REP (v, Grev.vertices_size()) {
+        i64 n = 0;
+        EACH_V(_, Grev.outgoings(v)) {
+            n += 1;
         }
-        ready = next;
-        ans += 1;
+        if (n == 0) {
+            q.push(std::pair<i64, i64>(1, v));
+        }
     }
+
+    while (!q.empty()) {
+        auto elem = q.top();
+        q.pop();
+        auto d = elem.first;
+        auto v = elem.second;
+        ans = std::max(d, ans);
+
+        EACH_V (e, G.outgoings(v)) {
+            q.push(std::make_pair(d + 1, std::get<1>(e)));
+        }
+    }
+
     cout << ans << endl;
+
 }
