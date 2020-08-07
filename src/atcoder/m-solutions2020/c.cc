@@ -814,11 +814,11 @@ void body() {
     auto K = read<i64>();
     auto As = read<i64>(N);
 
-    i64 ans = 0;
     FOR (i, K, N) {
         if (As[i - K] < As[i]) {
-            ans += 1;
+            cout << "Yes" << endl;
+        } else {
+            cout << "No" << endl;
         }
     }
-    cout << ans << endl;
 }
