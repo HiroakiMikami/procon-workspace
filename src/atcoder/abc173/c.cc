@@ -831,8 +831,8 @@ void body() {
     };
 
     i64 ans = 0;
-    REP (y, 2 << H) {
-        REP (x, 2 << W) {
+    REP (y, 1 << H) {
+        REP (x, 1 << W) {
             if (num(x, y) == K) {
                 dump(x, y);
                 ans += 1;
