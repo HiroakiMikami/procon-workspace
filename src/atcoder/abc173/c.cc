@@ -834,6 +834,7 @@ void body() {
     REP (y, 2 << H) {
         REP (x, 2 << W) {
             if (num(x, y) == K) {
+                dump(x, y);
                 ans += 1;
             }
         }
