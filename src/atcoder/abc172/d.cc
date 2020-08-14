@@ -819,6 +819,7 @@ void body() {
             break ;
         }
     }
+    dump(sqN);
     FOR (i, 1, sqN) {
         if (i * i <= N) {
             f[i * i] += 1; 
