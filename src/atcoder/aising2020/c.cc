@@ -821,8 +821,8 @@ void body() {
 
     auto f = Vector<i64>(N + 1, 0);
     FOR (x, 1, sqN + 1) {
-        FOR (y, sqN + 1) {
-            FOR (z, sqN + 1) {
+        FOR (y, 1, sqN + 1) {
+            FOR (z, 1, sqN + 1) {
                 auto a = x * x + y * y + z * z + x * y + x * z + y * z;
                 if (a > N) continue ;
                 f[a] += 1;
