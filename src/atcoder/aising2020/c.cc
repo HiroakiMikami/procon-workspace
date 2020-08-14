@@ -824,6 +824,7 @@ void body() {
         REP (y, sqN) {
             REP (z, sqN) {
                 auto a = x * x + y * y + z * z + x * y + x * z + y * z;
+                if (a > N) continue ;
                 f[a] += 1;
             }
         }
