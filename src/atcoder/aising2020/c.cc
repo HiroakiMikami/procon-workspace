@@ -829,7 +829,7 @@ void body() {
             }
         }
     }
-    FOR (i, 1, N) {
+    FOR (i, 1, N + 1) {
         cout << f[i] << endl;
     }
 }
