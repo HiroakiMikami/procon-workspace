@@ -813,13 +813,12 @@ void body() {
     auto N = read<i64>();
     auto f = Vector<i64>(N + 1, 0); // f[i] := f(i)
     auto sqN = 0;
-    REP (i, N + 1) {
+    REP (i, N + 2) {
         sqN = i;
         if (sqN * sqN > N) {
             break ;
         }
     }
-    dump(sqN);
     FOR (i, 1, sqN) {
         if (i * i <= N) {
             f[i * i] += 1; 
