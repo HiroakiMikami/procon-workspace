@@ -855,16 +855,14 @@ void body() {
     auto x_pp_minus = Vector<i64>(N, 0);
     auto b = 1;
     REPR(i, N) {
-        auto x = X[i] - '0';
-        x_pp_plus[i] = (x * b) % (pp_X + 1);
+        x_pp_plus[i] = b % (pp_X + 1);
         
         b *= 2;
         b %= (pp_X + 1);
     }
     b = 1;
     REPR(i, N) {
-        auto x = X[i] - '0';
-        x_pp_minus[i] = (x * b) % (pp_X - 1);
+        x_pp_minus[i] = b % (pp_X - 1);
         
         b *= 2;
         b %= (pp_X - 1);
