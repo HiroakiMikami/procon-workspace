@@ -813,9 +813,9 @@ void body() {
     auto N = read<i64>();
     auto As = read<i64>(N);
     sort(CTR(As));
+    reverse(CTR(As));
 
     i64 ans = 0;
-    dump(As);
     FOR (i, 1, N) {
         ans += As[i - 1];
     }
