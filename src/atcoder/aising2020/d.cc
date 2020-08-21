@@ -845,6 +845,8 @@ void body() {
     FOR (i, 1, pp_X + 1) {
         solve(i, solve);
     }
+    dump(pp_X);
+    dump(f);
 
     /*
     Xi % popcount(Xi) = (X % popcount(Xi)) (+ or - ) (x % popcount(Xi))
@@ -881,9 +883,9 @@ void body() {
         auto sign = (X[i] == '1') ? 1 : - 1;
         auto pp = pp_X + sign;
         if (sign == 1) {
-            cout << (X_pp_plus - x_pp_plus[i]) % pp << endl;
+            cout << f[(X_pp_plus - x_pp_plus[i]) % pp] << endl;
         } else {
-            cout << (X_pp_minus + x_pp_minus[i]) % pp << endl;
+            cout << f[(X_pp_minus + x_pp_minus[i]) % pp] << endl;
         }
     }
 
