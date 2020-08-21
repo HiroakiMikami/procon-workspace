@@ -817,6 +817,16 @@ void body() {
     EACH (x, X) {
         pp_X += x - '0';
     }
+    if (pp_X == 0) {
+        /*
+        * X = 0の時、
+        * popcount(Xi) = 1より必ず1回で1になる。
+        */
+        REP (i, N) {
+            cout << 1 << endl;
+        }
+        return ;
+    }
 
     /*
     popcount(Xi)はpp_X+1 or pp_X-1だから、Xi % popcount(Xi)は0 ~ pp_Xになる。
@@ -879,11 +889,14 @@ void body() {
         auto sign = (X[i] == '1') ? 1 : -1;
         auto pp = pp_X - sign;
         dump(i, pp, sign);
-        if (sign == 1) {
-            cout << f[(X_pp_minus - x_pp_minus[i] + pp) % pp] << endl;
+        if (pp == 0) {
+            // 0になるときはそのまま0
+            cout << 0 << endl;
+        } else if (sign == 1) {
+            cout << f[(X_pp_minus - x_pp_minus[i] + pp) % pp] + 1 << endl;
         } else {
             dump( f[(X_pp_plus + x_pp_plus[i]) % pp] );
-            cout << f[(X_pp_plus + x_pp_plus[i]) % pp] << endl;
+            cout << f[(X_pp_plus + x_pp_plus[i]) % pp] + 1 << endl;
         }
         f[-1]; // abort
     }
