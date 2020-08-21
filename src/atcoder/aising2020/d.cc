@@ -886,8 +886,11 @@ void body() {
         auto x = X[i] - '0';
         X_pp_plus += x * x_pp_plus[i];
         X_pp_plus %= (pp_X + 1);
-        X_pp_minus += x * x_pp_minus[i];
-        X_pp_minus %= (pp_X - 1);
+        if (pp_X != 1) {
+            // pp_X = 1の時、X_pp_minusは使わない
+            X_pp_minus += x * x_pp_minus[i];
+            X_pp_minus %= (pp_X - 1);
+        }
     }
     REP (i, N) {
         auto sign = (X[i] == '1') ? 1 : -1;
