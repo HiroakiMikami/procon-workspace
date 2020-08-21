@@ -827,17 +827,17 @@ void body() {
     }
 
     // I[S] = {i | Ss[i] = S}
-    auto I = OrderedMap<i64, OrderedSet<i64>>();
+    auto I = OrderedMap<i64, Vector<i64>>();
     REP (i, N + 1) {
-        I[Ss[i]].insert(i);
+        I[Ss[i]].push_back(i);
     }
 
     i64 ans = 0;
     FOR (q, 1, N + 1) {
         // I[Ss[q]]の中で[q - K + 1, q - 1]に含まれるものを求める
         auto X = I[Ss[q]];
-        auto m = X.lower_bound(q - K + 1);
-        auto M = X.upper_bound(q - 1);
+        auto m = std::lower_bound(CTR(X), q - K + 1);
+        auto M = std::upper_bound(CTR(X), q - 1);
         ans += std::distance(m, M);
     }
     cout << ans << endl;
