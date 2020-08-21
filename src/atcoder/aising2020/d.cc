@@ -884,6 +884,5 @@ void body() {
         } else {
             cout << f[(X_pp_plus + x_pp_plus[i]) % pp] << endl;
         }
-        f[-1]; // abort
     }
 }
