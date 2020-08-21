@@ -880,12 +880,12 @@ void body() {
     REP (i, N) {
         auto sign = (X[i] == '1') ? 1 : -1;
         auto pp = pp_X - sign;
+        dump(i, pp, sign);
         if (sign == 1) {
             cout << f[(X_pp_minus - x_pp_minus[i] + pp) % pp] << endl;
         } else {
             cout << f[(X_pp_plus + x_pp_plus[i]) % pp] << endl;
         }
+        f[-1]; // abort
     }
-
-
 }
