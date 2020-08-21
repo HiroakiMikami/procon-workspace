@@ -882,7 +882,7 @@ void body() {
         if (sign == 1) {
             cout << X_pp_plus - x_pp_plus[i] << endl;
         } else {
-            cout << X_pp_minus + X_pp_minus[i] << endl;
+            cout << X_pp_minus + x_pp_minus[i] << endl;
         }
     }
 
