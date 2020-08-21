@@ -827,7 +827,7 @@ void body() {
     }
 
     // I[S] = {i | Ss[i] = S}
-    auto I = Vector<Vector<i64>>(K);
+    auto I = OrderedMap<i64, Vector<i64>>();
     REP (i, N + 1) {
         I[Ss[i]].push_back(i);
     }
@@ -838,7 +838,7 @@ void body() {
         auto X = I[Ss[q]];
         auto m = std::lower_bound(CTR(X), q - K + 1);
         auto M = std::upper_bound(CTR(X), q - 1);
-        ans += std::distance(m, M);
+        ans += (M - m);
     }
     cout << ans << endl;
 }
