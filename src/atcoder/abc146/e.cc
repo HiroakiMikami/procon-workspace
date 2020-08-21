@@ -845,7 +845,7 @@ void body() {
                 dump(p, q);
                 dump("---");
                 FOR (x, p + 1, q + 1) {
-                    dump(As[x]);
+                    dump(As[x - 1]);
                 }
                 dump("---");
             }
