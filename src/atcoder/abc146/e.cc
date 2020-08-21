@@ -838,8 +838,8 @@ void body() {
         auto X = I[Ss[q]];
         auto m = X.lower_bound(q - K + 1);
         auto M = X.upper_bound(q - 1);
+        dump(q, std::distance(m, M));
         ans += std::distance(m, M);
-        i64 ref = 0;
         EACH (p, X) {
             if (q - K + 1 <= p && p <= q - 1) {
                 dump(p, q);
