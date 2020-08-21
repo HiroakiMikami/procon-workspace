@@ -877,7 +877,7 @@ void body() {
         X_pp_minus += x_pp_minus[i];
         X_pp_minus %= (pp_X - 1);
     }
-    dump(x_pp_plus)
+    dump(x_pp_plus);
     dump(x_pp_minus);
     REP (i, N) {
         auto sign = (X[i] == '1') ? 1 : - 1;
