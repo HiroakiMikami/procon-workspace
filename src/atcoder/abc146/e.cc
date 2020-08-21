@@ -838,11 +838,6 @@ void body() {
         auto X = I[Ss[q]];
         auto m = X.lower_bound(q - K + 1);
         auto M = X.upper_bound(q - 1);
-        dump(Ss[q]);
-        dump(X);
-        dump(q - K + 1, q - 1);
-        dump(q, std::distance(m, M));
-        dump("---");
         ans += std::distance(m, M);
         /*
         EACH (p, X) {
