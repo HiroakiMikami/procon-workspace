@@ -832,12 +832,14 @@ void body() {
             auto B = As[i][j];
             if (i != 0) {
                 EACH (b, dp[i - 1][j]) {
+                    dump(b;
                     dp[i][j].insert(b + A - B);
                     dp[i][j].insert(b - A + B);
                 }
             }
             if (j != 0) {
                 EACH (b, dp[i][j - 1]) {
+                    dump(b);
                     dp[i][j].insert(b + A - B);
                     dp[i][j].insert(b - A + B);
                 }
