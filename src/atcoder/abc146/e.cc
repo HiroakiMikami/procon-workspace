@@ -842,7 +842,7 @@ void body() {
         i64 ref = 0;
         EACH (p, X) {
             if (q - K <= p && p <= q - 1) {
-                dump(p, q);
+                // dump(p, q);
                 ref += 1;
             }
         }
