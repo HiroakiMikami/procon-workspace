@@ -848,9 +848,9 @@ void body() {
     i64 ans = -1;
     EACH (x, dp[H - 1][W - 1]) {
         if (ans < 0) {
-            ans = x;
+            ans = std::abs(x);
         } else {
-            ans = std::min(ans, x);
+            ans = std::min(ans, std::abs(x));
         }
     }
     cout << ans << endl;
