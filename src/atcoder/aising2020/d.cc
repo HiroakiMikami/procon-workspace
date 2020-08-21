@@ -883,7 +883,7 @@ void body() {
         auto sign = (X[i] == '1') ? 1 : - 1;
         auto pp = pp_X + sign;
         if (sign == 1) {
-            cout << f[(X_pp_plus - x_pp_plus[i]) % pp] << endl;
+            cout << f[(X_pp_plus - x_pp_plus[i] + pp) % pp] << endl;
         } else {
             cout << f[(X_pp_minus + x_pp_minus[i]) % pp] << endl;
         }
