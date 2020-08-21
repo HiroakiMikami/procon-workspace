@@ -895,9 +895,7 @@ void body() {
         } else if (sign == 1) {
             cout << f[(X_pp_minus - x_pp_minus[i] + pp) % pp] + 1 << endl;
         } else {
-            dump( f[(X_pp_plus + x_pp_plus[i]) % pp] );
             cout << f[(X_pp_plus + x_pp_plus[i]) % pp] + 1 << endl;
         }
-        f[-1]; // abort
     }
 }
