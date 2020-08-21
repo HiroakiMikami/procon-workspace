@@ -871,12 +871,14 @@ void body() {
         b %= (pp_X + 1);
     }
     b = 1;
-    REPR(i, N) {
-        dump(pp_X - 1);
-        x_pp_minus[i] = b % (pp_X - 1);
-        
-        b *= 2;
-        b %= (pp_X - 1);
+    if (pp_X != 1) {
+        // pp_X = 1の時はx_pp_minusは使わないので放置していい
+        REPR(i, N) {
+            x_pp_minus[i] = b % (pp_X - 1);
+            
+            b *= 2;
+            b %= (pp_X - 1);
+        }
     }
     i64 X_pp_plus = 0;
     i64 X_pp_minus = 0;
