@@ -872,6 +872,7 @@ void body() {
     }
     b = 1;
     REPR(i, N) {
+        dump(pp_X - 1);
         x_pp_minus[i] = b % (pp_X - 1);
         
         b *= 2;
