@@ -845,8 +845,6 @@ void body() {
     FOR (i, 1, pp_X + 1) {
         solve(i, solve);
     }
-    dump(pp_X);
-    dump(f);
 
     /*
     Xi % popcount(Xi) = (X % popcount(Xi)) (+ or - ) (x % popcount(Xi))
@@ -879,6 +877,7 @@ void body() {
         X_pp_minus += x_pp_minus[i];
         X_pp_minus %= (pp_X - 1);
     }
+    dump(X_pp_plus, X_pp_minus);
     REP (i, N) {
         auto sign = (X[i] == '1') ? 1 : - 1;
         auto pp = pp_X + sign;
