@@ -823,7 +823,7 @@ void body() {
     // Ss[i] = (sumAs[i] - i) % K;
     auto Ss = Vector<i64>(N + 1, 0);
     REP (i, N + 1) {
-        Ss[i] = (sumAs[i] - i + K) % K;
+        Ss[i] = (sumAs[i] - (i % K) + K) % K;
     }
 
     // I[S] = {i | Ss[i] = S}
