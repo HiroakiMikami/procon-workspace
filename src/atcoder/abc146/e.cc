@@ -820,12 +820,12 @@ void body() {
         sumAs[i + 1] = sumAs[i] + As[i];
         sumAs[i + 1] %= K;
     }
-    dump(sumAs);
     // Ss[i] = (sumAs[i] - i) % K;
     auto Ss = Vector<i64>(N + 1, 0);
     REP (i, N) {
         Ss[i] = (sumAs[i] - i + K) % K;
     }
+    dump(Ss);
 
     // I[S] = {i | Ss[i] = S}
     auto I = OrderedMap<i64, OrderedSet<i64>>();
