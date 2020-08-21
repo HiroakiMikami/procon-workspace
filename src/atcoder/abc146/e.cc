@@ -842,12 +842,12 @@ void body() {
         i64 ref = 0;
         EACH (p, X) {
             if (q - K <= p && p <= q - 1) {
+                dump(p, q);
+                dump("---");
                 FOR (x, p + 1, q + 1) {
                     dump(As[x]);
                 }
                 dump("---");
-                dump(p, q);
-                // pans += 1;
             }
         }
     }
