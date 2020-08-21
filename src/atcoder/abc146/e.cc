@@ -835,7 +835,7 @@ void body() {
     i64 ans = 0;
     FOR (q, 1, N + 1) {
         // I[Ss[q]]の中で[q - K + 1, q - 1]に含まれるものを求める
-        auto X = I[Ss[q]];
+        auto &X = I[Ss[q]];
         auto m = std::lower_bound(CTR(X), q - K + 1);
         auto M = std::upper_bound(CTR(X), q - 1);
         ans += (M - m);
