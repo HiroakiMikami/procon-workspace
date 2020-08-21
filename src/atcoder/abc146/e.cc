@@ -835,10 +835,10 @@ void body() {
 
     i64 ans = 0;
     FOR (q, 1, N + 1) {
-        // I[Ss[q] - 1]の中で[q - K - 1, q]に含まれるものを求める
-        auto X = I[(Ss[q] - 1 + K ) % K];
+        // I[Ss[q]]の中で[q - K, q - 1]に含まれるものを求める
+        auto X = I[Ss[q]];
         EACH (p, X) {
-            if (q - K - 1 <= p && p <= q) {
+            if (q - K <= p && p <= q - 1) {
                 dump(p, q);
                 ans += 1;
             }
