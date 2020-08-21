@@ -880,15 +880,15 @@ void body() {
     i64 X_pp_plus = 0;
     i64 X_pp_minus = 0;
     REP (i, N) {
-        X_pp_plus += x_pp_plus[i];
+        auto x = X[i] - '0';
+        X_pp_plus += x * x_pp_plus[i];
         X_pp_plus %= (pp_X + 1);
-        X_pp_minus += x_pp_minus[i];
+        X_pp_minus += x * x_pp_minus[i];
         X_pp_minus %= (pp_X - 1);
     }
     REP (i, N) {
         auto sign = (X[i] == '1') ? 1 : -1;
         auto pp = pp_X - sign;
-        dump(i, pp, sign);
         if (pp == 0) {
             // 0になるときはそのまま0
             cout << 0 << endl;
