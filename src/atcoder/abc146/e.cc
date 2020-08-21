@@ -838,6 +838,7 @@ void body() {
         auto X = I[(Ss[q] - 1 + K ) % K];
         EACH (p, X) {
             if (q - K - 1 <= p && p <= q) {
+                dump(p, q);
                 ans += 1;
             }
         }
