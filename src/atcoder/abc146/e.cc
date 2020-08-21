@@ -840,6 +840,7 @@ void body() {
         auto M = X.upper_bound(q - 1);
         dump(q, std::distance(m, M));
         ans += std::distance(m, M);
+        /*
         EACH (p, X) {
             if (q - K + 1 <= p && p <= q - 1) {
                 dump(p, q);
@@ -850,6 +851,7 @@ void body() {
                 dump("---");
             }
         }
+        */
     }
     cout << ans << endl;
 }
