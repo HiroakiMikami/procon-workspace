@@ -827,7 +827,7 @@ void body() {
     }
 
     // I[S] = {i | Ss[i] = S}
-    auto I = OrderedMap<i64, Vector<i64>>();
+    auto I = Vector<Vector<i64>>(K);
     REP (i, N + 1) {
         I[Ss[i]].push_back(i);
     }
