@@ -842,9 +842,9 @@ void body() {
                     dp[i][j].insert(b - A + B);
                 }
             }
+            dump(i, j, dp[i][j]);
         }
     }
-    dump(dp);
 
     i64 ans = -1;
     EACH (x, dp[H - 1][W - 1]) {
