@@ -815,6 +815,7 @@ void body() {
     sort(CTR(As));
 
     i64 ans = 0;
+    dump(As);
     FOR (i, 1, N) {
         ans += As[i - 1];
     }
