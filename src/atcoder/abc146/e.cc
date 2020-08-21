@@ -838,15 +838,18 @@ void body() {
         auto X = I[Ss[q]];
         auto m = X.lower_bound(q - K);
         auto M = X.upper_bound(q - 1);
-        // ans += std::distance(m, M);
+        ans += std::distance(m, M);
         i64 ref = 0;
         EACH (p, X) {
             if (q - K <= p && p <= q - 1) {
-                // dump(p, q);
-                ans += 1;
+                FOR (x, p + 1, q + 1) {
+                    dump(As[x]);
+                }
+                dump("---");
+                dump(p, q);
+                // pans += 1;
             }
         }
-        dump(std::distance(m, M), ref);
     }
     cout << ans << endl;
 }
