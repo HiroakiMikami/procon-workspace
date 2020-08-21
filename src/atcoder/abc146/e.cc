@@ -836,10 +836,13 @@ void body() {
     FOR (q, 1, N + 1) {
         // I[Ss[q]]の中で[q - K, q - 1]に含まれるものを求める
         auto X = I[Ss[q]];
+        auto m = X.lower_bound(q - K);
+        auto M = X.upper_bound(q - 1);
+        ans += std::distance(m, M);
         EACH (p, X) {
             if (q - K <= p && p <= q - 1) {
                 dump(p, q);
-                ans += 1;
+                // ans += 1;
             }
         }
     }
