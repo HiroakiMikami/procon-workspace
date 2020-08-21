@@ -825,6 +825,7 @@ void body() {
     REP (i, N) {
         Ss[i] = (sumAs[i] - i + K) % K;
     }
+    dump(sumAs);
     dump(Ss);
 
     // I[S] = {i | Ss[i] = S}
