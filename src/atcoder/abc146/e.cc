@@ -839,18 +839,6 @@ void body() {
         auto m = X.lower_bound(q - K + 1);
         auto M = X.upper_bound(q - 1);
         ans += std::distance(m, M);
-        /*
-        EACH (p, X) {
-            if (q - K + 1 <= p && p <= q - 1) {
-                dump(p, q);
-                dump("---");
-                FOR (x, p + 1, q + 1) {
-                    dump(As[x - 1]);
-                }
-                dump("---");
-            }
-        }
-        */
     }
     cout << ans << endl;
 }
