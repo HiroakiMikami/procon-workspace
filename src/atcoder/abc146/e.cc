@@ -834,14 +834,14 @@ void body() {
 
     i64 ans = 0;
     FOR (q, 1, N + 1) {
-        // I[Ss[q]]の中で[q - K, q - 1]に含まれるものを求める
+        // I[Ss[q]]の中で[q - K + 1, q - 1]に含まれるものを求める
         auto X = I[Ss[q]];
-        auto m = X.lower_bound(q - K);
+        auto m = X.lower_bound(q - K + 1);
         auto M = X.upper_bound(q - 1);
         ans += std::distance(m, M);
         i64 ref = 0;
         EACH (p, X) {
-            if (q - K <= p && p <= q - 1) {
+            if (q - K + 1 <= p && p <= q - 1) {
                 dump(p, q);
                 dump("---");
                 FOR (x, p + 1, q + 1) {
