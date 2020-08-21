@@ -877,11 +877,8 @@ void body() {
         X_pp_minus += x_pp_minus[i];
         X_pp_minus %= (pp_X - 1);
     }
-    dump(x_pp_plus);
-    dump(x_pp_minus);
     REP (i, N) {
         auto sign = (X[i] == '1') ? 1 : -1;
-        dump(i, sign);
         auto pp = pp_X - sign;
         if (sign == 1) {
             cout << f[(X_pp_minus - x_pp_minus[i] + pp) % pp] << endl;
