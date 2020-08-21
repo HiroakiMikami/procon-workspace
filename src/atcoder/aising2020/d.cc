@@ -879,10 +879,11 @@ void body() {
     }
     REP (i, N) {
         auto sign = (X[i] == '1') ? 1 : - 1;
+        auto pp = pp_X + sign;
         if (sign == 1) {
-            cout << X_pp_plus - x_pp_plus[i] << endl;
+            cout << (X_pp_plus - x_pp_plus[i]) % pp << endl;
         } else {
-            cout << X_pp_minus + x_pp_minus[i] << endl;
+            cout << (X_pp_minus + x_pp_minus[i]) % pp << endl;
         }
     }
 
