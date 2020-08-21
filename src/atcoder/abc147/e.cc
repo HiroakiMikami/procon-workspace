@@ -829,7 +829,7 @@ void body() {
         REP (j, W) {
             // dp[i][j]の更新
             auto A = As[i][j];
-            auto B = As[i][j];
+            auto B = Bs[i][j];
             if (i != 0) {
                 EACH (b, dp[i - 1][j]) {
                     dump(b;
