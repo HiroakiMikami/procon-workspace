@@ -822,9 +822,7 @@ void body() {
         REP (j, i) {
             a /= 2;
         }
-        if (a != 0) {
-            ans += a;        
-        }
+        ans += a;
     }
     cout << ans << endl;
 }
