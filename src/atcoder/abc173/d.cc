@@ -817,7 +817,7 @@ void body() {
 
     i64 ans = 0;
     FOR (i, 1, N) {
-        ans += As[i - 1];
+        ans += As[i / 2];
     }
     cout << ans << endl;
 }
