@@ -822,6 +822,7 @@ void body() {
         REP (j, i) {
             a /= 10;
         }
+        dump(a);
         ans += a;
     }
     cout << ans << endl;
