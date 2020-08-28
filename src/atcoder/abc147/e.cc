@@ -821,12 +821,7 @@ void body() {
         Bs[i] = read<i64>(W);
     }
 
-    i64 mbias = 0;
-    REP (i, H) {
-        REP (j, W) {
-            mbias += std::abs(As[i][j] - Bs[i][j]);
-        } 
-    }
+    i64 mbias = 80 * 160 + 1;
 
     // dp[i][j][k] := (i, j)まで来た時の偏りとしてk - mbiasがありうるか
     auto dp = make_matrix<bool, 3>({H, W, 2 * mbias + 1}, false);
