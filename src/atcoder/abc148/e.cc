@@ -820,7 +820,7 @@ void body() {
     FOR (i, 1, 20) {
         i64 a = N;
         REP (j, i) {
-            a /= 2;
+            a /= 10;
         }
         ans += a;
     }
