@@ -816,14 +816,16 @@ void body() {
         return ;
     }
 
-    i64 ans = 0;
+    i64 five = 0;
     FOR (i, 1, 20) {
         i64 a = N;
         REP (j, i) {
             a /= 10;
         }
         dump(a);
-        ans += a;
+        five += a;
     }
-    cout << ans << endl;
+
+    i64 two = N / 2;
+    cout << std::min(two, five) << endl;
 }
