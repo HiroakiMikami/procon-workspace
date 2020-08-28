@@ -831,6 +831,7 @@ void body() {
 
     // dp[i][j][k] := (i, j)まで来た時の偏りとしてk - mbiasがありうるか
     auto dp = make_matrix<bool, 3>({H, W, 2 * mbias + 1}, false);
+    dump(As[0][0] - Bs[0][0] + mbias);
     dp[0][0][As[0][0] - Bs[0][0] + mbias] = true;
     dp[0][0][Bs[0][0] - As[0][0] + mbias] = true;
     REP (i, H) {
