@@ -821,36 +821,47 @@ void body() {
         Bs[i] = read<i64>(W);
     }
 
-    // dp[i][j] := (i, j)まで来た時の偏りとしてありうる値
-    auto dp = make_matrix<HashSet<i64>, 2>({H, W}, HashSet<i64>());
-    dp[0][0].insert(As[0][0] - Bs[0][0]);
-    dp[0][0].insert(Bs[0][0] - As[0][0]);
+    i64 mbias = 0;
     REP (i, H) {
         REP (j, W) {
-            // dp[i][j]の更新
+            mbias += std::abs(As[i][j] - Bs[i][j]);
+        } 
+    }
+
+    // dp[i][j][k] := (i, j)まで来た時の偏りとしてk - mbiasがありうるか
+    auto dp = make_matrix<bool, 3>({H, W, 2 * mbias + 1}, false);
+    dp[0][0][As[0][0] - Bs[0][0] + mbias] = true;
+    dp[0][0][Bs[0][0] - As[0][0] + mbias] = true;
+    REP (i, H) {
+        REP (j, W) {
             auto A = As[i][j];
             auto B = Bs[i][j];
-            if (i != 0) {
-                EACH (b, dp[i - 1][j]) {
-                    dp[i][j].insert(b + A - B);
-                    dp[i][j].insert(b - A + B);
+            // dp[i][j]の更新
+            REP (k, 2 * mbias + 1) {
+                if (i != 0) {
+                    REP (t, 2 * mbias + 1) {
+                        dp[i][j][k] = dp[i][j][k] || dp[i - 1][j][k - A + B];
+                        dp[i][j][k] = dp[i][j][k] || dp[i - 1][j][k + A - B];
+                    }
                 }
-            }
-            if (j != 0) {
-                EACH (b, dp[i][j - 1]) {
-                    dp[i][j].insert(b + A - B);
-                    dp[i][j].insert(b - A + B);
+                if (j != 0) {
+                    dp[i][j][k] = dp[i][j][k] || dp[i][j - 1][k - A + B];
+                    dp[i][j][k] = dp[i][j][k] || dp[i][j - 1][k + A - B];
                 }
             }
         }
     }
 
     i64 ans = -1;
-    EACH (x, dp[H - 1][W - 1]) {
-        if (ans < 0) {
-            ans = std::abs(x);
-        } else {
-            ans = std::min(ans, std::abs(x));
+    REP (k_, 2 * mbias + 1) {
+        auto k = k_ - mbias;
+        i64 K = std::abs(k);
+        if (dp[H - 1][W - 1][k_]) {
+            if (ans < 0) {
+                ans = K;
+            } else {
+                ans = std::min(ans, K);
+            }
         }
     }
     cout << ans << endl;
