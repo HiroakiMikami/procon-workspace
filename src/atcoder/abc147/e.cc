@@ -827,6 +827,7 @@ void body() {
             mbias += std::abs(As[i][j] - Bs[i][j]);
         } 
     }
+    dump(mbias);
 
     // dp[i][j][k] := (i, j)まで来た時の偏りとしてk - mbiasがありうるか
     auto dp = make_matrix<bool, 3>({H, W, 2 * mbias + 1}, false);
