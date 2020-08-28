@@ -822,7 +822,6 @@ void body() {
         REP (j, i) {
             a /= 10;
         }
-        dump(a);
         five += a;
     }
 
