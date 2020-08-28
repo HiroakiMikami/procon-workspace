@@ -831,7 +831,6 @@ void body() {
 
     // dp[i][j][k] := (i, j)まで来た時の偏りとしてk - mbiasがありうるか
     auto dp = make_matrix<bool, 3>({H, W, 2 * mbias + 1}, false);
-    dump(Bs[0][0] - As[0][0] + mbias);
     dp[0][0][As[0][0] - Bs[0][0] + mbias] = true;
     dp[0][0][Bs[0][0] - As[0][0] + mbias] = true;
     REP (i, H) {
@@ -841,14 +840,20 @@ void body() {
             // dp[i][j]の更新
             REP (k, 2 * mbias + 1) {
                 if (i != 0) {
-                    REP (t, 2 * mbias + 1) {
+                    if (k - A + B >= 0 && k - A + B < 2 * mbias + 1) {
                         dp[i][j][k] = dp[i][j][k] || dp[i - 1][j][k - A + B];
+                    }
+                    if (k + A - B >= 0 && k + A - B < 2 * mbias + 1) {
                         dp[i][j][k] = dp[i][j][k] || dp[i - 1][j][k + A - B];
                     }
                 }
                 if (j != 0) {
-                    dp[i][j][k] = dp[i][j][k] || dp[i][j - 1][k - A + B];
-                    dp[i][j][k] = dp[i][j][k] || dp[i][j - 1][k + A - B];
+                    if (k - A + B >= 0 && k - A + B < 2 * mbias + 1) {
+                        dp[i][j][k] = dp[i][j][k] || dp[i][j - 1][k - A + B];
+                    }
+                    if (k + A - B >= 0 && k + A - B < 2 * mbias + 1) {
+                        dp[i][j][k] = dp[i][j][k] || dp[i][j - 1][k + A - B];
+                    }
                 }
             }
         }
