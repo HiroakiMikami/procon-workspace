@@ -812,12 +812,12 @@ int main (int argc, char **argv) {
 void body() {
     auto N = read<i64>();
     auto As = read<i64>(N);
-    auto m = 1000;
-    auto s = 0;
+    i64 m = 1000;
+    i64 s = 0;
 
     As.push_back(0);
     REP (i, N) {
-        if (As[i] < As[i + 1])         {
+        if (As[i] < As[i + 1]) {
             auto n = m / As[i];
             s += n;
             m -= n * As[i];
