@@ -816,15 +816,22 @@ void body() {
         return ;
     }
 
-    i64 five = 0;
-    FOR (i, 1, 20) {
+    i64 two = N / 2;
+    FOR (i, 1, 60) {
         i64 a = N;
         REP (j, i) {
-            a /= 10;
+            a /= 2;
+        }
+        two += a;
+    }
+    i64 five = 0;
+    FOR (i, 1, 26) {
+        i64 a = N;
+        REP (j, i) {
+            a /= 5;
         }
         five += a;
     }
 
-    i64 two = N / 2;
     cout << std::min(two, five) << endl;
 }
