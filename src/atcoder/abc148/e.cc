@@ -828,7 +828,7 @@ void body() {
     FOR (i, 1, 26) {
         i64 a = N;
         REP (j, i) {
-            a /= 5;
+            a /= 10;
         }
         five += a;
     }
